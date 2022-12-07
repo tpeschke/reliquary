@@ -7,6 +7,7 @@ module.exports = {
     BEVERAGES: 'Beverages',
     CLOTHING: 'Clothing',
     ENTERTAINMENT: 'Entertainment',
+    // STOPPED HERE
     FABRICS_AND_ROPES: 'Fabrics & Ropes',
     FOOD: 'Food',
     HOUSEHOLD_ITEMS: 'Household Items',
@@ -30,7 +31,12 @@ module.exports = {
     PAPER_PRODUCT: 'Paper Product',
     WAX: 'Wax',
     STONE_EARTHWORK: 'Stone/Earthwork',
-    // Subtables
+    // Clothing Subtables
+    ACCESSORIES: 'Accessories',
+    BODY: 'Body',
+    FOOTWEAR: 'Footwear',
+    HEADGEAR: 'Headgear',
+    // MISC SUBTABLES
     SIZE: 'Size',
     ADJECTIVES: 'Adjectives',
     COLORS: 'Colors',
