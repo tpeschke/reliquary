@@ -7,7 +7,6 @@ module.exports = {
     BEVERAGES: 'Beverages',
     CLOTHING: 'Clothing',
     ENTERTAINMENT: 'Entertainment',
-    // STOPPED HERE
     FABRICS_AND_ROPES: 'Fabrics & Ropes',
     FOOD: 'Food',
     HOUSEHOLD_ITEMS: 'Household Items',
@@ -36,7 +35,23 @@ module.exports = {
     BODY: 'Body',
     FOOTWEAR: 'Footwear',
     HEADGEAR: 'Headgear',
-    // MISC SUBTABLES
+    // Food Subtables
+    PREPPED_FOOD: 'Prepped Food',
+    BREAD: 'Bread',
+    FRUIT_AND_VEGATABLES: 'Fruit & Vegetables',
+    PROTEIN: 'Protein',
+    NUTS: 'Nuts',
+    SPICES_AND_SEASONINGS: 'Spices & Seasonings',
+    // Weapon Subtables
+    AXES: 'Axes',
+    POLEARMS: 'Polearms',
+    SIDEARMS: 'Sidearms',
+    SWORDS: 'Swords',
+    TRAUMA: 'Trauma',
+    THROWN: 'Thrown',
+    MECHANICAL_RANGED: 'Mechanical Ranged',
+    FIREARMS: 'Firearms',
+    // Misc Subtables
     SIZE: 'Size',
     ADJECTIVES: 'Adjectives',
     COLORS: 'Colors',

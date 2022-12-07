@@ -1,3 +1,4 @@
+const { ROLL_TWICE } = require('./constants');
 const tables = require('./tables')
 
 let chanceTables = {}
@@ -24,7 +25,12 @@ module.exports = {
     },
     getRandomUniqueItem: (req, res) => {
         let table = chanceTables.start[getRandomIndex(chanceTables.start.length)]
-        let item = chanceTables[table][getRandomIndex(chanceTables[table].length)]
+        let item
+        if (table !== ROLL_TWICE) {
+            item = chanceTables[table][getRandomIndex(chanceTables[table].length)]
+        } else {
+            item = ROLL_TWICE
+        }
         res.send(item)
     },
     getChanceTables: (req, res) => {
