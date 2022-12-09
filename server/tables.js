@@ -3,9 +3,12 @@ const { ACADEMIC_TOOLS, ADVENTURING_GEAR, ALCHEMICAL_SUBSTANCES,
     FOOD, HOUSEHOLD_ITEMS, ILLUMINATION, JEWELRY, MEDICAL_TOOLS,
     MUSICAL_INSTRUMENTS, PERSONAL_CONTAINERS, RAW_GOODS, RELIGIOUS_ITEMS,
     SHIELDS, TRADE_TOOLS, WEAPONS, WORKS_OF_ART, ROLL_TWICE, ACCESSORIES,
-    BODY, FOOTWEAR, HEADGEAR, PREPPED_FOOD, BREAD, FRUIT_AND_VEGATABLES, PROTEIN, NUTS, SPICES_AND_SEASONINGS, POLEARMS, SIDEARMS, TRAUMA, THROWN, MECHANICAL_RANGED, FIREARMS, AXES } = require('./constants')
+    BODY, FOOTWEAR, HEADGEAR, PREPPED_FOOD, BREAD, FRUIT_AND_VEGATABLES, 
+    PROTEIN, NUTS, SPICES_AND_SEASONINGS, POLEARMS, SIDEARMS, TRAUMA, 
+    THROWN, MECHANICAL_RANGED, FIREARMS, AXES, SWORDS } = require('./constants')
 
 module.exports = {
+    item_tables_with_subtables: [CLOTHING, FOOD, WEAPONS, RAW_GOODS],
     start: [
         { weight: 5, entry: ACADEMIC_TOOLS },
         { weight: 5, entry: ADVENTURING_GEAR },
@@ -4008,7 +4011,8 @@ module.exports = {
             Colors: 9,
             'Engraving/Stitchings': 9,
             Gems: 0,
-            Quirks: 1
+            Quirks: 1,
+            Subject: 10
         },
         {
             weight: 1,
@@ -4019,7 +4023,8 @@ module.exports = {
             Colors: 7,
             'Engraving/Stitchings': 9,
             Gems: 1,
-            Quirks: 1
+            Quirks: 1,
+            Subject: 10
         },
         {
             weight: 1,
@@ -4030,7 +4035,8 @@ module.exports = {
             Colors: 8,
             'Engraving/Stitchings': 9,
             Gems: 1,
-            Quirks: 1
+            Quirks: 1,
+            Subject: 10
         },
         {
             weight: 1,
@@ -4040,7 +4046,8 @@ module.exports = {
             Colors: 6,
             'Engraving/Stitchings': 9,
             Gems: 0,
-            Quirks: 1
+            Quirks: 1,
+            Subject: 10
         },
         {
             weight: 1,
@@ -4051,7 +4058,8 @@ module.exports = {
             Colors: 8,
             'Engraving/Stitchings': 9,
             Gems: 1,
-            Quirks: 1
+            Quirks: 1,
+            Subject: 10
         },
         {
             weight: 1,
@@ -4062,7 +4070,8 @@ module.exports = {
             Colors: 9,
             'Engraving/Stitchings': 9,
             Gems: 0,
-            Quirks: 1
+            Quirks: 1,
+            Subject: 10
         }
     ],
     [FOOTWEAR]: [

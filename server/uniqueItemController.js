@@ -1,4 +1,5 @@
-const { ROLL_TWICE } = require('./constants');
+const { ROLL_TWICE, CLOTH, CLOTHING } = require('./constants');
+const { item_tables_with_subtables } = require('./tables');
 const tables = require('./tables')
 
 let chanceTables = {}
@@ -26,7 +27,10 @@ module.exports = {
     getRandomUniqueItem: (req, res) => {
         let table = chanceTables.start[getRandomIndex(chanceTables.start.length)]
         let item
-        if (table !== ROLL_TWICE) {
+        if (item_tables_with_subtables.includes(table)) {
+            let subtable = chanceTables[table][getRandomIndex(chanceTables[table].length)]
+            item = chanceTables[subtable][getRandomIndex(chanceTables[subtable].length)]
+        } else if (table !== ROLL_TWICE) {
             item = chanceTables[table][getRandomIndex(chanceTables[table].length)]
         } else {
             item = ROLL_TWICE
