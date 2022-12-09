@@ -2,7 +2,8 @@ const { ACADEMIC_TOOLS, ADVENTURING_GEAR, ALCHEMICAL_SUBSTANCES,
     ARMOR, BEVERAGES, CLOTHING, ENTERTAINMENT, FABRICS_AND_ROPES,
     FOOD, HOUSEHOLD_ITEMS, ILLUMINATION, JEWELRY, MEDICAL_TOOLS,
     MUSICAL_INSTRUMENTS, PERSONAL_CONTAINERS, RAW_GOODS, RELIGIOUS_ITEMS,
-    SHIELDS, TRADE_TOOLS, WEAPONS, WORKS_OF_ART, ROLL_TWICE, ACCESSORIES, BODY, FOOTWEAR, HEADGEAR } = require('./constants')
+    SHIELDS, TRADE_TOOLS, WEAPONS, WORKS_OF_ART, ROLL_TWICE, ACCESSORIES,
+    BODY, FOOTWEAR, HEADGEAR, PREPPED_FOOD, BREAD, FRUIT_AND_VEGATABLES, PROTEIN, NUTS, SPICES_AND_SEASONINGS, POLEARMS, SIDEARMS, TRAUMA, THROWN, MECHANICAL_RANGED, FIREARMS } = require('./constants')
 
 module.exports = {
     start: [
@@ -1572,12 +1573,12 @@ module.exports = {
         }
     ],
     [FOOD]: [
-        { weight: 1, entry: 'Prepped Food' },
-        { weight: 2, entry: 'Bread' },
-        { weight: 3, entry: 'Fruit & Vegetables' },
-        { weight: 4, entry: 'Protein' },
-        { weight: 5, entry: 'Nuts' },
-        { weight: 6, entry: 'Spices & Seasonings' }
+        { weight: 1, entry: [PREPPED_FOOD] },
+        { weight: 2, entry: [BREAD] },
+        { weight: 3, entry: [FRUIT_AND_VEGATABLES] },
+        { weight: 4, entry: [PROTEIN] },
+        { weight: 5, entry: [NUTS] },
+        { weight: 6, entry: [SPICES_AND_SEASONINGS] }
     ],
     [HOUSEHOLD_ITEMS]: [
         {
@@ -3988,14 +3989,14 @@ module.exports = {
         }
     ],
     [WEAPONS]: [
-        { weight: 1, entry: 'Axes' },
-        { weight: 2, entry: 'Polearms' },
-        { weight: 3, entry: 'Sidearms' },
-        { weight: 4, entry: 'Swords' },
-        { weight: 5, entry: 'Trauma' },
-        { weight: 6, entry: 'Thrown' },
-        { weight: 7, entry: 'Mechanical Ranged' },
-        { weight: 8, entry: 'Firearms' }
+        { weight: 1, entry: [AXES] },
+        { weight: 2, entry: [POLEARMS] },
+        { weight: 3, entry: [SIDEARMS] },
+        { weight: 4, entry: [SWORDS] },
+        { weight: 5, entry: [TRAUMA] },
+        { weight: 6, entry: [THROWN] },
+        { weight: 7, entry: [MECHANICAL_RANGED] },
+        { weight: 8, entry: [FIREARMS] }
     ],
     [WORKS_OF_ART]: [
         {
@@ -4061,6 +4062,1956 @@ module.exports = {
             Colors: 9,
             'Engraving/Stitchings': 9,
             Gems: 0,
+            Quirks: 1
+        }
+    ],
+    [FOOTWEAR]: [
+        {
+            weight: 1,
+            entry: 'Boots, Ankle',
+            base_material: 'Leather',
+            Size: 'S',
+            Adjectives: 2,
+            Colors: 3,
+            Stitchings: 2,
+            Quirks: 1
+        },
+        {
+            weight: 2,
+            entry: 'Boots, Calf',
+            base_material: 'Leather',
+            Size: 'S',
+            Adjectives: 2,
+            Colors: 3,
+            Stitchings: 2,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Boots, Climbing',
+            base_material: 'Leather & Wax',
+            Size: 'S',
+            Adjectives: 2,
+            Colors: 1,
+            Stitchings: 1,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Boots, Knee',
+            base_material: 'Leather',
+            Size: 'S',
+            Adjectives: 2,
+            Colors: 3,
+            Stitchings: 2,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Boots, Riding, Calf',
+            base_material: 'Leather',
+            Size: 'S',
+            Adjectives: 2,
+            Colors: 4,
+            Stitchings: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Boots, Riding, Knee',
+            base_material: 'Leather',
+            Size: 'S',
+            Adjectives: 2,
+            Colors: 4,
+            Stitchings: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Boots, Riding, Thigh',
+            base_material: 'Leather',
+            Size: 'M',
+            Adjectives: 2,
+            Colors: 4,
+            Stitchings: 2,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Boots, Thigh',
+            base_material: 'Leather',
+            Size: 'M',
+            Adjectives: 2,
+            Colors: 4,
+            Stitchings: 2,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Chopines',
+            base_material: '1 - 5 Leather 6 - 10 Cloth with Wood',
+            Size: 'S',
+            Adjectives: 2,
+            Colors: 3,
+            Stitchings: 4,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Clogs',
+            base_material: 'Wood',
+            Size: 'S',
+            Adjectives: 3,
+            Colors: 2,
+            Stitchings: 1,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Moccasins',
+            base_material: 'Leather',
+            Size: 'S',
+            Adjectives: 3,
+            Colors: 2,
+            Stitchings: 7,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Pattens',
+            base_material: 'Leather',
+            Size: 'S',
+            Adjectives: 2,
+            Colors: 1,
+            Stitchings: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Sandals',
+            base_material: '1 - 3 Leather 4 - 10 Cloth',
+            Size: 'S',
+            Adjectives: 1,
+            Colors: 1,
+            Stitchings: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Sandshoes',
+            base_material: '1 - 4 Leather 6 - 10 Cloth',
+            Size: 'M',
+            Adjectives: 3,
+            Colors: 1,
+            Stitchings: 1,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Shoes, Dress',
+            base_material: '1 - 7 Leather 8 - 10 Cloth',
+            Size: 'S',
+            Adjectives: 4,
+            Colors: 9,
+            Stitchings: 9,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Shoes, Simple',
+            base_material: '1 - 5 Leather 6 - 10 Cloth',
+            Size: 'S',
+            Adjectives: 2,
+            Colors: 3,
+            Stitchings: 2,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Slippers',
+            base_material: '1 - 5 Cloth 6 - 10 Fur',
+            Size: 'S',
+            Adjectives: 3,
+            Colors: 9,
+            Stitchings: 4,
+            Quirks: 3
+        },
+        {
+            weight: 1,
+            entry: 'Snowshoes',
+            base_material: '1 - 4 Leather 6 - 10 Cloth',
+            Size: 'M',
+            Adjectives: 2,
+            Colors: 1,
+            Stitchings: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Socks',
+            base_material: '1 - 8 Fur 9 - 10 Cloth',
+            Size: 'S',
+            Adjectives: 4,
+            Colors: 9,
+            Stitchings: 4,
+            Quirks: 2
+        }
+    ],
+    [HEADGEAR]: [
+        {
+            weight: 1,
+            entry: 'Bandana',
+            base_material: 'Cloth',
+            Size: 'S',
+            Adjectives: 3,
+            Colors: 6,
+            Stitchings: 2,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Barbette & Fillet',
+            base_material: 'Cloth',
+            Size: 'S',
+            Adjectives: 1,
+            Colors: 3,
+            Stitchings: 3,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Beret',
+            base_material: '1 - 7 Cloth 8 - 10 Leather',
+            Size: 'S',
+            Adjectives: 2,
+            Colors: 4,
+            Stitchings: 2,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Cap',
+            base_material: '1 - 4 Cloth 5 - 7 Leather 8 - 9 Fur 10 Metal',
+            Size: 'S',
+            Adjectives: 1,
+            Colors: 3,
+            Stitchings: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Caul',
+            base_material: '1 - 8 Cloth 9 - 10 Leather',
+            Size: 'S',
+            Adjectives: 1,
+            Colors: 2,
+            Stitchings: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Chaperon',
+            base_material: 'Cloth',
+            Size: 'L',
+            Adjectives: 2,
+            Colors: 4,
+            Stitchings: 4,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Clogs',
+            base_material: 'Cloth',
+            Size: 'S',
+            Adjectives: 2,
+            Colors: 9,
+            Stitchings: 1,
+            Quirks: 3
+        },
+        {
+            weight: 1,
+            entry: 'Coif',
+            base_material: '1 - 8 Cloth 9 - 10 Leather',
+            Size: 'S',
+            Adjectives: 1,
+            Colors: 1,
+            Stitchings: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Ferroniere',
+            base_material: '1 - 7 Cloth 8 - 10 Leather',
+            Size: 'S',
+            Adjectives: 2,
+            Colors: 1,
+            Stitchings: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Fez',
+            base_material: 'Cloth',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Stitchings: 1,
+            Quirks: 2
+        },
+        {
+            weight: 2,
+            entry: 'Hat',
+            base_material: '1 - 3 Felt4 - 7 Straw 8 Cloth 9 Leather 10 Fur',
+            Size: 'S',
+            Adjectives: 1,
+            Colors: 1,
+            Stitchings: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Headdress',
+            base_material: 'Feathers (see Animal > Air) with 1 - 3 Cloth 4 - 10 Leather',
+            Size: 'L',
+            Adjectives: 3,
+            Colors: 9,
+            Stitchings: 9,
+            Quirks: 2
+        },
+        {
+            weight: 2,
+            entry: 'Hood',
+            base_material: '1 - 7 Cloth 8 - 10 Leather',
+            Size: 'S',
+            Adjectives: 1,
+            Colors: 1,
+            Stitchings: 1,
+            Quirks: 1
+        },
+        {
+            weight: 2,
+            entry: 'Skullcap',
+            base_material: '1 - 6 Cloth 7 - 9 Leather 10 Metal',
+            Size: 'S',
+            Adjectives: 1,
+            Colors: 2,
+            Stitchings: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Turban',
+            base_material: 'Cloth',
+            Size: 'L',
+            Adjectives: 1,
+            Colors: 4,
+            Stitchings: 2,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Veil',
+            base_material: 'Cloth',
+            Size: 'S',
+            Adjectives: 1,
+            Colors: 1,
+            Stitchings: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Wimple',
+            base_material: 'Cloth',
+            Size: 'S',
+            Adjectives: 1,
+            Colors: 1,
+            Stitchings: 1,
+            Quirks: 1
+        }
+    ],
+    [BODY]: [
+        {
+            weight: 1,
+            entry: 'Apron',
+            base_material: '1 - 4 Leather 5 - 10 Cloth',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 3,
+            Stitchings: 1,
+            Gems: 0,
+            Quirks: 3
+        },
+        {
+            weight: 1,
+            entry: 'Belt',
+            base_material: '1 - 8 Leather 9 - 10 Cloth',
+            Size: 'S',
+            Adjectives: 2,
+            Colors: 2,
+            Stitchings: 1,
+            Gems: 1,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Braies',
+            base_material: '1 Leather 2 - 10 Cloth',
+            Size: 'S',
+            Adjectives: 1,
+            Colors: 6,
+            Stitchings: 3,
+            Gems: 0,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Breeches',
+            base_material: '1 Leather 2 - 10 Cloth',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 6,
+            Stitchings: 3,
+            Gems: 0,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Buckle',
+            base_material: '1 - 8 Metal 9 - 10 Wood',
+            Size: 'S',
+            Adjectives: 3,
+            Colors: 4,
+            Stitchings: 3,
+            Gems: 1,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Cape',
+            base_material: '1 Leather 2 - 10 Cloth',
+            Size: 'M',
+            Adjectives: 3,
+            Colors: 6,
+            Stitchings: 2,
+            Gems: 0,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Cassock',
+            base_material: 'Cloth',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 4,
+            Stitchings: 2,
+            Gems: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Chasbule',
+            base_material: 'Cloth',
+            Size: 'L',
+            Adjectives: 1,
+            Colors: 6,
+            Stitchings: 3,
+            Gems: 0,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Chemise',
+            base_material: 'Cloth',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 2,
+            Stitchings: 2,
+            Gems: 0,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Choker',
+            base_material: '1 - 7 Cloth 8 Leather 10 Fur',
+            Size: 'S',
+            Adjectives: 1,
+            Colors: 4,
+            Stitchings: 3,
+            Gems: 1,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Cloak',
+            base_material: '1 - 5 Cloth 6 - 8 Leather 9 - 10 Fur',
+            Size: 'M',
+            Adjectives: 2,
+            Colors: 6,
+            Stitchings: 2,
+            Gems: 0,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Coat',
+            base_material: '1 - 3 Cloth 4 - 10 Leather',
+            Size: 'M',
+            Adjectives: 2,
+            Colors: 5,
+            Stitchings: 3,
+            Gems: 0,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Codpiece',
+            base_material: '1 - 6 Cloth 7 - 9 Leather 10 Metal',
+            Size: 'T',
+            Adjectives: 3,
+            Colors: 9,
+            Stitchings: 6,
+            Gems: 1,
+            Quirks: 3
+        },
+        {
+            weight: 1,
+            entry: 'Cote',
+            base_material: '1 Leather 2 - 10 Cloth',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 5,
+            Stitchings: 5,
+            Gems: 0,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Cotehardie',
+            base_material: '1 - 3 Leather 4 - 10 Cloth',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 7,
+            Stitchings: 5,
+            Gems: 0,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Cyclas',
+            base_material: 'Cloth',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 6,
+            Stitchings: 5,
+            Gems: 0,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Doublet',
+            base_material: '1 - 3 Leather 4 - 10 Cloth',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 7,
+            Stitchings: 6,
+            Gems: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Drawers',
+            base_material: 'Cloth',
+            Size: 'S',
+            Adjectives: 2,
+            Colors: 9,
+            Stitchings: 1,
+            Gems: 0,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Dress',
+            base_material: '1 Leather 2 - 10 Cloth',
+            Size: 'L',
+            Adjectives: 2,
+            Colors: 9,
+            Stitchings: 6,
+            Gems: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Fullclothe',
+            base_material: '1 Leather 2 - 10 Cloth',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 3,
+            Stitchings: 5,
+            Gems: 0,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Gamash',
+            base_material: '1 Leather 2 - 10 Cloth',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 3,
+            Stitchings: 5,
+            Gems: 0,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Gloves',
+            base_material: '1 - 3 Cloth 4 - 8 Leather 9 - 10 Fur',
+            Size: 'S',
+            Adjectives: 1,
+            Colors: 4,
+            Stitchings: 1,
+            Gems: 0,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Hosiery',
+            base_material: 'Cloth',
+            Size: 'S',
+            Adjectives: 1,
+            Colors: 7,
+            Stitchings: 4,
+            Gems: 0,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Houpeland',
+            base_material: 'Cloth',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 6,
+            Stitchings: 4,
+            Gems: 0,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Jerkin',
+            base_material: '1 Leather 2 - 10 Cloth',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 6,
+            Stitchings: 7,
+            Gems: 0,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Kilt',
+            base_material: '1 Leather 2 - 10 Cloth',
+            Size: 'S',
+            Adjectives: 2,
+            Colors: 9,
+            Stitchings: 3,
+            Gems: 0,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Liripipe',
+            base_material: '1 Leather 2 - 10 Cloth',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 5,
+            Stitchings: 4,
+            Gems: 0,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Mittens',
+            base_material: '1 - 3 Cloth 4 - 5 Leather 6 - 10 Fur',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 6,
+            Stitchings: 4,
+            Gems: 0,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Robes',
+            base_material: 'Cloth',
+            Size: 'M',
+            Adjectives: 2,
+            Colors: 7,
+            Stitchings: 6,
+            Gems: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Sash',
+            base_material: '1 Leather 2 - 10 Cloth',
+            Size: 'S',
+            Adjectives: 1,
+            Colors: 8,
+            Stitchings: 3,
+            Gems: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Scarf',
+            base_material: '1 - 6 Cloth 7 - 10 Fur',
+            Size: 'S',
+            Adjectives: 1,
+            Colors: 8,
+            Stitchings: 4,
+            Gems: 0,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Shirt',
+            base_material: '1 Leather 2 - 10 Cloth',
+            Size: 'S',
+            Adjectives: 1,
+            Colors: 6,
+            Stitchings: 4,
+            Gems: 0,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Surcote',
+            base_material: '1 - 3 Leather 4 - 10 Cloth',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 8,
+            Stitchings: 7,
+            Gems: 0,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Sweater',
+            base_material: 'Wool',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 7,
+            Stitchings: 9,
+            Gems: 0,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Toga',
+            base_material: 'Cloth',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 2,
+            Stitchings: 1,
+            Gems: 0,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Tunic',
+            base_material: '1 Leather 2 - 10 Cloth',
+            Size: 'S',
+            Adjectives: 1,
+            Colors: 6,
+            Stitchings: 3,
+            Gems: 0,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Vest',
+            base_material: '1 - 4 Leather 5 - 10 Cloth',
+            Size: 'S',
+            Adjectives: 1,
+            Colors: 6,
+            Stitchings: 3,
+            Gems: 0,
+            Quirks: 1
+        }
+    ],
+    [ACCESSORIES]: [
+        {
+            weight: 1,
+            entry: 'Brush, Grooming',
+            base_material: '1 - 8 Wood 9 - 10 Metal',
+            Size: 'T',
+            Adjectives: 3,
+            Colors: 3,
+            'Engravings/Stitchings': 3,
+            Gems: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Button',
+            base_material: '1 - 2 Ivory 3 - 10 Wood',
+            Size: 'F',
+            Adjectives: 2,
+            Colors: 3,
+            'Engravings/Stitchings': 1,
+            Gems: 0,
+            Quirks: 0
+        },
+        {
+            weight: 1,
+            entry: 'Comb',
+            base_material: '1 - 8 Wood 9 - 10 Metal',
+            Size: 'T',
+            Adjectives: 2,
+            Colors: 1,
+            'Engravings/Stitchings': 2,
+            Gems: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Dog Collar',
+            base_material: '1 - 7 Cloth 8 - 10 Leather',
+            Size: 'T',
+            Adjectives: 2,
+            Colors: 2,
+            'Engravings/Stitchings': 2,
+            Gems: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Handkerchief',
+            base_material: 'Cloth',
+            Size: 'T',
+            Adjectives: 2,
+            Colors: 3,
+            'Engravings/Stitchings': 2,
+            Gems: 0,
+            Quirks: 0
+        },
+        {
+            weight: 1,
+            entry: 'Horse Shoe',
+            base_material: 'Metal',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 0,
+            'Engravings/Stitchings': 1,
+            Gems: 0,
+            Quirks: 0
+        },
+        {
+            weight: 1,
+            entry: 'Napkin',
+            base_material: 'Cloth',
+            Size: 'T',
+            Adjectives: 2,
+            Colors: 2,
+            'Engravings/Stitchings': 1,
+            Gems: 0,
+            Quirks: 0
+        },
+        {
+            weight: 1,
+            entry: 'Saddle',
+            base_material: 'Leather',
+            Size: 'L',
+            Adjectives: 3,
+            Colors: 1,
+            'Engravings/Stitchings': 3,
+            Gems: 1,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Scarf',
+            base_material: '1 - 6 Wool 7 - 9 Gauze 10 Silk (see Cloth)',
+            Size: 'S',
+            Adjectives: 2,
+            Colors: 8,
+            'Engravings/Stitchings': 3,
+            Gems: 0,
+            Quirks: 0
+        },
+        {
+            weight: 1,
+            entry: 'Staff, Walking',
+            base_material: 'Wood',
+            Size: 'S',
+            Adjectives: 2,
+            Colors: 1,
+            'Engravings/Stitchings': 1,
+            Gems: 1,
+            Quirks: 2
+        }
+    ],
+    [PREPPED_FOOD]: [
+        {
+            weight: 1,
+            entry: 'Almond-Cream',
+            base_material: '1 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Bear Fat Dumplings',
+            base_material: '1 sc',
+            Size: 'S',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Bedroll',
+            base_material: '2 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Blood',
+            base_material: '0.02 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Boe',
+            base_material: '1 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Bree',
+            base_material: '1.7 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Brose',
+            base_material: '0.5 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Broth',
+            base_material: '0.02 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Browncap',
+            base_material: '0.01 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Butter (1lb)',
+            base_material: '1.2 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Candy',
+            base_material: '3 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Charmeats',
+            base_material: '1 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Cheese (1lb)',
+            base_material: '1.2 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Comfirts',
+            base_material: '1 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Crips',
+            base_material: '1 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Daintiers',
+            base_material: '2.3 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Egg',
+            base_material: '0.05 sc',
+            Size: 'F',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Fish Flay',
+            base_material: '1 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Forcemeat',
+            base_material: '1 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Fry',
+            base_material: '1 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Galainte',
+            base_material: '1 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Giblets',
+            base_material: '1 - 4 Chicken 5 - 7 Goose (all above 0.01 sc) 8 - 9 Other Animal (0.03 sc) 10 Other Monster (0.1 sc)',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Gut Warmer',
+            base_material: '.75 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Handpie',
+            base_material: '1.2 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Hot Water Pastries',
+            base_material: '1.6 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Lard (1 pt)',
+            base_material: '1 sc',
+            Size: 'S',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Livers',
+            base_material: '0.02 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Muggets',
+            base_material: '1 - 3 Calf 4 - 5 Hogs 6 - 7 Sheep (all above 0.01 sc) 8 - 9 Other Animal (0.03 sc) 10 Other Monster (0.1 sc)',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Musted Sauce',
+            base_material: '0.4 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Nice Drippings',
+            base_material: '0.01 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Numbles',
+            base_material: '0.03 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Pap',
+            base_material: '0.3 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Pasta',
+            base_material: '0.02 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Pie',
+            base_material: '1.3 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Pottage',
+            base_material: '0.3 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Preserves, Fruit',
+            base_material: '3.2 sc For type Food > Fruits & Vegetables',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Pynepaste',
+            base_material: '0.1 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Quenelle',
+            base_material: '1 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Quoses',
+            base_material: '1 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Roe',
+            base_material: '2 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Sausage, Blood',
+            base_material: '0.01 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Sausage, Pepper',
+            base_material: '0.03 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Sausage, Sailor’s',
+            base_material: '0.01 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Scratch-Root Stew',
+            base_material: '0.3 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Soorea',
+            base_material: '1 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Souse',
+            base_material: '1.6 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Syrup',
+            base_material: '0.1 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        }
+    ],
+    [BREAD]: [
+        {
+            weight: 1,
+            entry: 'Corn Dodgers',
+            base_material: '0.3 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Fry Bread',
+            base_material: '0.4 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Horse Bread',
+            base_material: '0.38 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Manchet Bread',
+            base_material: '1.3 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Maslin Bread',
+            base_material: '0.48 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Pan & Egg Bread',
+            base_material: '1 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Sop Bread',
+            base_material: '0.86 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Strongbread',
+            base_material: '.3 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Wastel Bread',
+            base_material: '1 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 3,
+            entry: 'Rations, Day',
+            base_material: '2.5 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Biscuit, Hardtack',
+            base_material: '0.2 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Bread, Rye',
+            base_material: '0.44 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Bread, Wheat',
+            base_material: '0.5 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        }
+    ],
+    [FRUIT_AND_VEGATABLES]: [
+        {
+            weight: 1,
+            entry: 'Barberries',
+            base_material: '1.5 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Bush Tomatoes',
+            base_material: '1 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Canabens',
+            base_material: '1 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Beets',
+            base_material: '1 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Cardoons',
+            base_material: '1 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Carrots',
+            base_material: '1 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Celozia',
+            base_material: '1 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Currants',
+            base_material: '1.5 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Flattops',
+            base_material: '1 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Lemon',
+            base_material: '2 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Liakeer',
+            base_material: '1 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Limes',
+            base_material: '2 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Meat Grass',
+            base_material: '1.5 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Mutries',
+            base_material: '1 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Onions',
+            base_material: '1 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Orange',
+            base_material: '2 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Pippins',
+            base_material: '2 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Pomace',
+            base_material: '1.5 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Quadong',
+            base_material: '1.5 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Quinces',
+            base_material: '1 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Raisins',
+            base_material: '1.5 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Roundberries',
+            base_material: '1.5 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Rozele',
+            base_material: '2 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Salad',
+            base_material: '1 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Smalledge',
+            base_material: '1 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Skyrwits',
+            base_material: '1 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Spinach',
+            base_material: '1 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Taola',
+            base_material: '1 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Wardons',
+            base_material: '1 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Warrigals',
+            base_material: '1 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Wortes',
+            base_material: '1 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Jam',
+            base_material: 'Roll again on this table for type 3 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Pickles',
+            base_material: '2 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Raisins',
+            base_material: '1.5 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Seed, tobacco',
+            base_material: '3 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        }
+    ],
+    [PROTEIN]: [
+        {
+            weight: 1,
+            entry: 'Meat (1 lb) ',
+            base_material: 'Animal > Land Base 4 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Fish (1 lb) ',
+            base_material: 'Animal > Water Base 1 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Fowl (1 lb) ',
+            base_material: 'Animal > Air Base 2 sc',
+            Size: 'T',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        }
+    ],
+    [NUTS]: [
+        {
+            weight: 1,
+            entry: 'Acorns',
+            base_material: '0.3 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Almonds',
+            base_material: '0.5 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Chestnuts',
+            base_material: '0.3 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Hazelnuts',
+            base_material: '0.3 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Pinenuts',
+            base_material: '0.3 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Pistachios',
+            base_material: '0.5 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Sesame Seeds',
+            base_material: '0.5 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Walnuts',
+            base_material: '0.5 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        }
+    ],
+    [SPICES_AND_SEASONINGS]: [
+        {
+            weight: 1,
+            entry: 'Honey (8 oz)',
+            base_material: '1 sc',
+            Size: 'D',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Sugar (1 lb)',
+            base_material: '1 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Cinnamon (1 lb)',
+            base_material: '4 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Ginger (1 lb)',
+            base_material: '1.5 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Mace (1 lb)',
+            base_material: '5 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Molasses (1 lb)',
+            base_material: '4 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Mustard (1 lb)',
+            base_material: '1 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Nutmeg (1 lb)',
+            base_material: '2.5 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Pectin (cup)',
+            base_material: '0.2 sc',
+            Size: 'D',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Salt (1 lb)',
+            base_material: '0.45 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Saffron (1 lb)',
+            base_material: '160 sc',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
             Quirks: 1
         }
     ]
