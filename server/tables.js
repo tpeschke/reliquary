@@ -3,7 +3,7 @@ const { ACADEMIC_TOOLS, ADVENTURING_GEAR, ALCHEMICAL_SUBSTANCES,
     FOOD, HOUSEHOLD_ITEMS, ILLUMINATION, JEWELRY, MEDICAL_TOOLS,
     MUSICAL_INSTRUMENTS, PERSONAL_CONTAINERS, RAW_GOODS, RELIGIOUS_ITEMS,
     SHIELDS, TRADE_TOOLS, WEAPONS, WORKS_OF_ART, ROLL_TWICE, ACCESSORIES,
-    BODY, FOOTWEAR, HEADGEAR, PREPPED_FOOD, BREAD, FRUIT_AND_VEGATABLES, PROTEIN, NUTS, SPICES_AND_SEASONINGS, POLEARMS, SIDEARMS, TRAUMA, THROWN, MECHANICAL_RANGED, FIREARMS } = require('./constants')
+    BODY, FOOTWEAR, HEADGEAR, PREPPED_FOOD, BREAD, FRUIT_AND_VEGATABLES, PROTEIN, NUTS, SPICES_AND_SEASONINGS, POLEARMS, SIDEARMS, TRAUMA, THROWN, MECHANICAL_RANGED, FIREARMS, AXES } = require('./constants')
 
 module.exports = {
     start: [
@@ -6013,6 +6013,706 @@ module.exports = {
             Adjectives: 1,
             Colors: 1,
             Quirks: 1
+        }
+    ],
+    [AXES]: [
+        {
+            weight: 1,
+            entry: 'Bardiche',
+            base_material: 'Wood & Metal',
+            Size: 'L',
+            Adjectives: 1,
+            Colors: 1,
+            Engravings: 5,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Battle Axe',
+            base_material: 'Wood & Metal',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Engravings: 5,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Handaxe',
+            base_material: 'Wood & Metal',
+            Size: 'S',
+            Adjectives: 1,
+            Colors: 1,
+            Engravings: 5,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Horsemans Pick',
+            base_material: 'Wood & Metal',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Engravings: 5,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Lochaber Axe',
+            base_material: 'Wood & Metal',
+            Size: 'L',
+            Adjectives: 1,
+            Colors: 1,
+            Engravings: 5,
+            Quirks: 1
+        }
+    ],
+    [POLEARMS]: [
+        {
+            weight: 1,
+            entry: 'Ahlspiess',
+            base_material: 'Wood & Metal',
+            Size: 'L',
+            Adjectives: 1,
+            Colors: 1,
+            Engravings: 3,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Bill',
+            base_material: 'Wood & Metal',
+            Size: 'L',
+            Adjectives: 1,
+            Colors: 1,
+            Engravings: 3,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Glaive',
+            base_material: 'Wood & Metal',
+            Size: 'L',
+            Adjectives: 1,
+            Colors: 1,
+            Engravings: 3,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Guisarme',
+            base_material: 'Wood & Metal',
+            Size: 'L',
+            Adjectives: 1,
+            Colors: 1,
+            Engravings: 3,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Halberd',
+            base_material: 'Wood & Metal',
+            Size: 'L',
+            Adjectives: 1,
+            Colors: 1,
+            Engravings: 3,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Lance',
+            base_material: 'Wood & Metal',
+            Size: 'L',
+            Adjectives: 1,
+            Colors: 1,
+            Engravings: 3,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Lucerne',
+            base_material: 'Wood & Metal',
+            Size: 'L',
+            Adjectives: 1,
+            Colors: 1,
+            Engravings: 3,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Military Fork',
+            base_material: 'Wood & Metal',
+            Size: 'L',
+            Adjectives: 1,
+            Colors: 1,
+            Engravings: 3,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Pike',
+            base_material: 'Wood & Metal',
+            Size: 'H',
+            Adjectives: 1,
+            Colors: 1,
+            Engravings: 3,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Planson',
+            base_material: 'Wood & Metal',
+            Size: 'S',
+            Adjectives: 1,
+            Colors: 1,
+            Engravings: 3,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Ranseur',
+            base_material: 'Wood & Metal',
+            Size: 'L',
+            Adjectives: 1,
+            Colors: 1,
+            Engravings: 3,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Short Spear',
+            base_material: 'Wood & Metal',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 1,
+            Engravings: 3,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Sovnya',
+            base_material: 'Wood & Metal',
+            Size: 'L',
+            Adjectives: 1,
+            Colors: 1,
+            Engravings: 3,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Voulge',
+            base_material: 'Wood & Metal',
+            Size: 'L',
+            Adjectives: 1,
+            Colors: 1,
+            Engravings: 3,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'War-scythe',
+            base_material: 'Wood & Metal',
+            Size: 'L',
+            Adjectives: 1,
+            Colors: 1,
+            Engravings: 3,
+            Quirks: 2
+        }
+    ],
+    [SIDEARMS]: [
+        {
+            weight: 1,
+            entry: 'Brass Knuckles',
+            base_material: 'Metal',
+            Size: 'S',
+            Adjectives: 1,
+            Colors: 3,
+            'Engravings/Stitchings': 3,
+            Gems: 1,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Cinquedea',
+            base_material: 'Hilt: Leather & Wood Blade: Metal',
+            Size: 'S',
+            Adjectives: 1,
+            Colors: 3,
+            'Engravings/Stitchings': 3,
+            Gems: 1,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Dagger',
+            base_material: 'Hilt: Leather & Wood Blade: Metal',
+            Size: 'S',
+            Adjectives: 1,
+            Colors: 3,
+            'Engravings/Stitchings': 3,
+            Gems: 1,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Knife',
+            base_material: 'Hilt: Leather & Wood Blade: Metal',
+            Size: 'S',
+            Adjectives: 1,
+            Colors: 3,
+            'Engravings/Stitchings': 3,
+            Gems: 1,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Stiletto',
+            base_material: 'Hilt: Leather & Wood Blade: Metal',
+            Size: 'S',
+            Adjectives: 1,
+            Colors: 3,
+            'Engravings/Stitchings': 3,
+            Gems: 2,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Dusack',
+            base_material: 'Hilt: Leather & Wood Blade: Metal',
+            Size: 'S',
+            Adjectives: 1,
+            Colors: 3,
+            'Engravings/Stitchings': 3,
+            Gems: 2,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Katzbalger',
+            base_material: 'Hilt: Leather & Wood Blade: Metal',
+            Size: 'S',
+            Adjectives: 1,
+            Colors: 3,
+            'Engravings/Stitchings': 3,
+            Gems: 2,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Scourge',
+            base_material: 'Handle: 1 - 3 Wood 4 Metal 5 - 10 Leather',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 3,
+            'Engravings/Stitchings': 3,
+            Gems: 1,
+            Quirks: 2
+        }
+    ],
+    [SWORDS]: [
+        {
+            weight: 1,
+            entry: 'Arming Sword',
+            base_material: 'Hilt: Leather & Wood Blade: Metal',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 3,
+            'Engravings/Stitchings': 3,
+            Gems: 2,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Court Sword',
+            base_material: 'Hilt: Leather & Wood Blade: Metal',
+            Size: 'S',
+            Adjectives: 1,
+            Colors: 3,
+            'Engravings/Stitchings': 3,
+            Gems: 2,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Estoc',
+            base_material: 'Hilt: Leather & Wood Blade: Metal',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 3,
+            'Engravings/Stitchings': 3,
+            Gems: 2,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: "Executioner's Sword ",
+            base_material: 'Hilt: Leather & Wood Blade: Metal',
+            Size: 'H',
+            Adjectives: 1,
+            Colors: 3,
+            'Engravings/Stitchings': 3,
+            Gems: 2,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Falchion',
+            base_material: 'Hilt: Leather & Wood Blade: Metal',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 3,
+            'Engravings/Stitchings': 3,
+            Gems: 2,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Koncerz',
+            base_material: 'Hilt: Leather & Wood Blade: Metal',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 3,
+            'Engravings/Stitchings': 3,
+            Gems: 2,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Longsword',
+            base_material: 'Hilt: Leather & Wood Blade: Metal',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 3,
+            'Engravings/Stitchings': 3,
+            Gems: 2,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Messer',
+            base_material: 'Hilt: Leather & Wood Blade: Metal',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 3,
+            'Engravings/Stitchings': 3,
+            Gems: 2,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Rapier',
+            base_material: 'Hilt: Leather & Wood Blade: Metal',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 3,
+            'Engravings/Stitchings': 3,
+            Gems: 2,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Sabre',
+            base_material: 'Hilt: Leather & Wood Blade: Metal',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 3,
+            'Engravings/Stitchings': 3,
+            Gems: 2,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Schaivona',
+            base_material: 'Hilt: Leather & Wood Blade: Metal',
+            Size: 'S',
+            Adjectives: 1,
+            Colors: 3,
+            'Engravings/Stitchings': 3,
+            Gems: 2,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Zweihander',
+            base_material: 'Hilt: Leather & Wood Blade: Metal',
+            Size: 'L',
+            Adjectives: 1,
+            Colors: 3,
+            'Engravings/Stitchings': 3,
+            Gems: 2,
+            Quirks: 2
+        }
+    ],
+    [TRAUMA]: [
+        {
+            weight: 1,
+            entry: 'Bec De Corbin',
+            base_material: 'Metal & Wood',
+            Size: 'L',
+            Adjectives: 1,
+            Colors: 2,
+            'Engravings/Stitchings': 4,
+            Gems: 1,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Bludgeon',
+            base_material: '1 - 6 Wood 7 - 10 Metal',
+            Size: 'S',
+            Adjectives: 1,
+            Colors: 6,
+            'Engravings/Stitchings': 2,
+            Gems: 0,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Club',
+            base_material: 'Wood',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 4,
+            'Engravings/Stitchings': 2,
+            Gems: 0,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Mace',
+            base_material: 'Handle: 1 - 7 Wood 8 - 10 Metal Head: Metal',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 2,
+            'Engravings/Stitchings': 5,
+            Gems: 2,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Maul',
+            base_material: 'Handle: 1 - 7 Wood 8 - 10 Metal Head: 1 - 7 Wood 8 - 10 Metal',
+            Size: 'L',
+            Adjectives: 1,
+            Colors: 2,
+            'Engravings/Stitchings': 4,
+            Gems: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Goedendag',
+            base_material: 'Wood & Metal',
+            Size: 'L',
+            Adjectives: 1,
+            Colors: 3,
+            'Engravings/Stitchings': 3,
+            Gems: 0,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Great Hammer',
+            base_material: 'Wood & Metal',
+            Size: 'H',
+            Adjectives: 1,
+            Colors: 2,
+            'Engravings/Stitchings': 6,
+            Gems: 2,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: "Peasant's Flail",
+            base_material: 'Handle: 1 - 7 Wood 8 - 10 Metal Head: 1 - 7 Wood 8 - 10 Metal',
+            Size: 'L',
+            Adjectives: 1,
+            Colors: 2,
+            'Engravings/Stitchings': 2,
+            Gems: 0,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Quarterstaff',
+            base_material: '1 - 8 Wood 9 - 10 Metal',
+            Size: 'L',
+            Adjectives: 1,
+            Colors: 3,
+            'Engravings/Stitchings': 7,
+            Gems: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'War Flail',
+            base_material: 'Wood & Metal',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 5,
+            'Engravings/Stitchings': 2,
+            Gems: 2,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'War Hammer',
+            base_material: 'Wood & Metal',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 2,
+            'Engravings/Stitchings': 6,
+            Gems: 2,
+            Quirks: 1
+        }
+    ],
+    [THROWN]: [
+        {
+            weight: 1,
+            entry: 'Javelin',
+            base_material: '1 - 8 Wood 9 - 10 Metal',
+            Size: 'L',
+            Adjectives: 1,
+            Colors: 7,
+            Engravings: 3,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Throwing Axe',
+            base_material: 'Wood & Metal',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 3,
+            Engravings: 3,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Throwing Knife',
+            base_material: 'Wood & Metal',
+            Size: 'S',
+            Adjectives: 1,
+            Colors: 2,
+            Engravings: 4,
+            Quirks: 1
+        }
+    ],
+    [MECHANICAL_RANGED]: [
+        {
+            weight: 1,
+            entry: 'Bellybow',
+            base_material: 'Wood & Metal',
+            Size: 'L',
+            Adjectives: 1,
+            Colors: 3,
+            'Engravings/Stitchings': 7,
+            Gems: 1,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Composite Bow',
+            base_material: '1 - 3 Wood 4 - 9 Horn 10 Metal',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 7,
+            'Engravings/Stitchings': 3,
+            Gems: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Crossbow',
+            base_material: 'Wood & Metal',
+            Size: 'L',
+            Adjectives: 1,
+            Colors: 5,
+            'Engravings/Stitchings': 3,
+            Gems: 1,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Latchet Crossbow',
+            base_material: 'Wood & Metal',
+            Size: 'M',
+            Adjectives: 1,
+            Colors: 6,
+            'Engravings/Stitchings': 4,
+            Gems: 1,
+            Quirks: 2
+        },
+        {
+            weight: 1,
+            entry: 'Longbow',
+            base_material: '1 - 9 Wood 10 Metal',
+            Size: 'L',
+            Adjectives: 1,
+            Colors: 8,
+            'Engravings/Stitchings': 2,
+            Gems: 1,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Sling',
+            base_material: '1 - 3 Cloth 4 - 6 Twine 7 - 10 Thread',
+            Size: 'S',
+            Adjectives: 1,
+            Colors: 8,
+            'Engravings/Stitchings': 5,
+            Gems: 0,
+            Quirks: 1
+        },
+        {
+            weight: 1,
+            entry: 'Warbow',
+            base_material: '1 - 6 Wood 7 - 10 Metal',
+            Size: 'H',
+            Adjectives: 1,
+            Colors: 9,
+            'Engravings/Stitchings': 3,
+            Gems: 2,
+            Quirks: 1
+        }
+    ],
+    [FIREARMS]: [
+        {
+            weight: 3,
+            entry: 'Fire Lance',
+            base_material: 'Wood & Metal',
+            Size: 'L',
+            Adjectives: 2,
+            'Weapon Colors': 4,
+            'Explosion Colors': 8,
+            Engravings: 4,
+            Gems: 0,
+            Quirks: 3
+        },
+        {
+            weight: 1,
+            entry: 'Hakenbuchse',
+            base_material: 'Wood & Metal',
+            Size: 'L',
+            Adjectives: 2,
+            'Weapon Colors': 5,
+            'Explosion Colors': 3,
+            Engravings: 6,
+            Gems: 1,
+            Quirks: 3
+        },
+        {
+            weight: 1,
+            entry: 'Handgonne',
+            base_material: 'Wood & Metal',
+            Size: 'M',
+            Adjectives: 2,
+            'Weapon Colors': 6,
+            'Explosion Colors': 5,
+            Engravings: 5,
+            Gems: 1,
+            Quirks: 3
         }
     ]
 }
