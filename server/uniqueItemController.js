@@ -12,8 +12,22 @@ function getRandomNumber(max) {
     return Math.floor(Math.random() * (max - 1) + 1);
 }
 
+function getBaseItem(table) {
+    if (item_tables_with_subtables.includes(table)) {
+        const subtable = chanceTables[table][getRandomIndex(chanceTables[table].length)]
+        let item = chanceTables[subtable][getRandomIndex(chanceTables[subtable].length)]
+        item = getItemFromTable(subtable, item)
+        item.subtable = subtable
+        return item
+    } else if (table !== ROLL_TWICE) {
+        const item = chanceTables[table][getRandomIndex(chanceTables[table].length)]
+        return getItemFromTable(table, item)
+    } else {
+        return ROLL_TWICE
+    }
+}
+
 function getItemFromTable(table, item) {
-    console.log(table)
     const tableArray = tables[table]
     for (let i = 0; i < tableArray.length; i++) {
         if (tableArray[i].entry === item) {
@@ -24,10 +38,10 @@ function getItemFromTable(table, item) {
 
 module.exports = {
     setUpTables: () => {
-        for (const table in tables ) {
+        for (const table in tables) {
             chanceTables[table] = []
             tables[table].forEach(entry => {
-                for(let i = 0; i < entry.weight; i++) {
+                for (let i = 0; i < entry.weight; i++) {
                     chanceTables[table].push(entry.entry)
                 }
             })
@@ -40,17 +54,7 @@ module.exports = {
         const table = chanceTables.start[getRandomIndex(chanceTables.start.length)]
         itemObject.table = table
 
-        let item
-        if (item_tables_with_subtables.includes(table)) {
-            const subtable = chanceTables[table][getRandomIndex(chanceTables[table].length)]
-            item = chanceTables[subtable][getRandomIndex(chanceTables[subtable].length)]
-            itemObject.item = getItemFromTable(subtable, item)
-        } else if (table !== ROLL_TWICE) {
-            item = chanceTables[table][getRandomIndex(chanceTables[table].length)]
-            itemObject.item = getItemFromTable(table, item)
-        } else {
-            item = ROLL_TWICE
-        }
+        itemObject = {...itemObject, ...getBaseItem(table)}
 
         // if not base_material & value, send it
 
