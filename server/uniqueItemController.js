@@ -52,6 +52,8 @@ module.exports = {
             item = ROLL_TWICE
         }
 
+        // if not base_material & value, send it
+
         res.send(itemObject)
     },
     getChanceTables: (req, res) => {

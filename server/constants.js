@@ -66,5 +66,15 @@ module.exports = {
     EXOTIC_CLOTH: 'Exotic Cloth',
     EXOTIC_METAL: 'Exotic Metal',
     EXOTIC_STONE_EARTHWORK: 'Exotic Stone/Earthwork',
-    EXOTIC_WOOD: 'Exotic Wood'
+    EXOTIC_WOOD: 'Exotic Wood',
+    // Detail Subtables
+    SIZE: 'Size',
+    ADJECTIVES: 'Adjectives',
+    COLORS: 'Colors',
+    ENGRAVINGS: 'Engravings',
+    STITCHINGS: 'Stitchings',
+    GEMS: 'Gems',
+    QUIRKS: 'Quirks'
+    // Other
+    
 }
