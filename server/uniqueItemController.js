@@ -31,6 +31,7 @@ function getItemFromTable(table, item) {
     const tableArray = tables[table]
     for (let i = 0; i < tableArray.length; i++) {
         if (tableArray[i].entry === item) {
+            delete tableArray[i].weight
             return tableArray[i]
         }
     }
