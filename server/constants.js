@@ -26,8 +26,12 @@ module.exports = {
     METAL: 'Metal',
     CLOTH: 'Cloth',
     LEATHER: 'Leather',
+    FUR: 'Fur',
+    FUR_OR_LEATHER: 'Fur or Leather',
     WOOD: 'Wood',
     PAPER_PRODUCT: 'Paper Product',
+    PARCHMENT: 'Parchment',
+    VELLUM: 'Vellum',
     WAX: 'Wax',
     STONE_EARTHWORK: 'Stone/Earthwork',
     // Clothing Subtables
@@ -58,4 +62,9 @@ module.exports = {
     ENGRAVINGS: 'Engravings',
     GEMS: 'Gems',
     QUIRKS: 'Quirks',
+    // Exotic Subtables
+    EXOTIC_CLOTH: 'Exotic Cloth',
+    EXOTIC_METAL: 'Exotic Metal',
+    EXOTIC_STONE_EARTHWORK: 'Exotic Stone/Earthwork',
+    EXOTIC_WOOD: 'Exotic Wood'
 }
