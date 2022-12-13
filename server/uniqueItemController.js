@@ -50,12 +50,13 @@ module.exports = {
     },
     getRandomUniqueItem: (req, res) => {
         let itemObject = {}
-        // replace or subtype for base materials
         const table = chanceTables.start[getRandomIndex(chanceTables.start.length)]
         itemObject.table = table
 
         itemObject = {...itemObject, ...getBaseItem(table)}
 
+        // roll twice
+        // replace or subtype for base materials
         // if not base_material & value, send it
 
         res.send(itemObject)
