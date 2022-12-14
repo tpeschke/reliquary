@@ -9,7 +9,7 @@ const { ACADEMIC_TOOLS, ADVENTURING_GEAR, ALCHEMICAL_SUBSTANCES,
     FUR_OR_LEATHER, LEATHER, FUR, EXOTIC_METAL, PAPER_PRODUCT, PARCHMENT,
     VELLUM, STONE_EARTHWORK, EXOTIC_STONE_EARTHWORK, EXOTIC_WOOD, CLOTH,
     METAL, WOOD, WAX, SIZE, ADJECTIVES, COLORS, ENGRAVINGS, STITCHINGS, 
-    GEMS, QUIRKS } = require('./constants')
+    GEMS, QUIRKS, RACE_OF_ORIGIN, ANIMAL_SUBTYPE, ANIMAL_AIR, ANIMAL_LAND, ANIMAL_WATER } = require('./constants')
 
 module.exports = {
     item_tables_with_subtables: [CLOTHING, FOOD, WEAPONS, RAW_GOODS],
@@ -74,7 +74,7 @@ module.exports = {
         {
             weight: 7,
             entry: 'Book, Hollow',
-            base_material: 'Cover: 1 Metal 2 - 7 Cloth 8 - 9 Leather 10 Wood Interior: Paper Product',
+            base_material: [{label: 'Cover', materials: [{weight: 1, material: METAL},{weight: 5, material: CLOTH}, {weight: 2, material: LEATHER}, {weight: 1, material: WOOD}]}, {label: 'Interior', materials: PAPER_PRODUCT}],
             [SIZE]: 'S',
             [ADJECTIVES]: 3,
             [COLORS]: 5,
@@ -140,7 +140,7 @@ module.exports = {
         {
             weight: 7,
             entry: 'Quill',
-            base_material: '1 - 3 Porcupine Spine 4 - 10 Goose Feather',
+            base_material: [{weight: 3, material: 'Porcupine Spine'}, {weight: 6, material: 'Goose Feather'}],
             [SIZE]: 'D',
             [ADJECTIVES]: 2,
             [COLORS]: 2,
@@ -161,7 +161,7 @@ module.exports = {
         },
         {
             weight: 7,
-            entry: 'Sealing Wax',
+            entry: 'Sealing WAX',
             base_material: WAX,
             [SIZE]: 'D',
             [ADJECTIVES]: 1,
@@ -173,7 +173,7 @@ module.exports = {
         {
             weight: 7,
             entry: 'Writing Tablet',
-            base_material: '1 - 6 Clay (See Stone/Earthwork) 7 - 9 Wax 10 Slate (See Stone/Earthwork)',
+            base_material: [{weight: 6, material: 'Clay', subtable: STONE_EARTHWORK}, {weight: 2, material: WAX}, {weight: 1, material: 'Slate', subtable: STONE_EARTHWORK}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 4,
@@ -186,7 +186,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Bedroll',
-            base_material: '1 - 4 Cloth 5 - 8 Leather 9 - 10 Fur',
+            base_material: [{weight: 4, material: CLOTH}, {weight: 3, material: LEATHER}, {weight: 2, material: FUR}],
             [SIZE]: 'M',
             [ADJECTIVES]: 4,
             [COLORS]: 4,
@@ -196,7 +196,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Blade Pole',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -206,7 +206,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Blanket',
-            base_material: '1 - 6 Cloth 7 Leather 8 - 10 Fur',
+            base_material: [{weight: 6, material: CLOTH}, {weight: 1, material: LEATHER}, {weight: 2, material: FUR}],
             [SIZE]: 'S',
             [ADJECTIVES]: 4,
             [COLORS]: 4,
@@ -246,7 +246,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Camp Bed',
-            base_material: '1 - 5 Cloth 6 - 9 Leather 10 Fur',
+            base_material: [{weight: 5, material: CLOTH}, {weight: 3, material: LEATHER}, {weight: 1, material: FUR}],
             [SIZE]: 'L',
             [ADJECTIVES]: 5,
             [COLORS]: 5,
@@ -275,7 +275,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Climbing Harness',
-            base_material: '1 - 3 Cloth 4 - 10 Leather',
+            base_material: [{weight: 3, material: CLOTH}, {weight: 6, material: LEATHER}],
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
             [COLORS]: 2,
@@ -295,7 +295,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Crampons, pair',
-            base_material: 'Leather & Metal',
+            base_material: [LEATHER, METAL],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -305,7 +305,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Cross-Staff',
-            base_material: '1 - 3 Wood 4 - 10 Metal',
+            base_material: [{weight: 3, material: WOOD}, {weight: 6, material: METAL}],
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -325,7 +325,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Darksuit',
-            base_material: '1 - 8 Cloth 9 - 10 Leather',
+            base_material: [{weight: 8, material: CLOTH}, {weight: 2, material: LEATHER}],
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
             [COLORS]: 1,
@@ -335,7 +335,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Dowsing Rod',
-            base_material: '1 - 8 Wood 9 - 10 Metal',
+            base_material: [{weight: 8, material: WOOD}, {weight: 2, material: METAL}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -345,7 +345,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Firestarter',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -355,7 +355,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Fish Trap',
-            base_material: '1- 9 Wicker 10 Metal',
+            base_material: [{weight: 9, material: 'Wicker', subtable: WOOD}, {weight: 10, material: METAL}],
             [SIZE]: 'M',
             [ADJECTIVES]: 2,
             [COLORS]: 1,
@@ -365,7 +365,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Fishhook',
-            base_material: '1 Bone, Sentient 2 - 7 Bone, Animal 8 Bone, Monster 9 - 10 Metal',
+            base_material: [{weight: 1, material: 'Bone, Sentient', subtable: RACE_OF_ORIGIN}, {weight: 6, material: 'Bone, Animal', subtable: ANIMAL_SUBTYPE}, {weight: 1, material: 'Bone, Monster'}, {weight: 2, material: METAL}],
             [SIZE]: 'D',
             [ADJECTIVES]: 2,
             [COLORS]: 1,
@@ -375,7 +375,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Fishing Line ',
-            base_material: '1 - 6 Thread 7 - 10 Twine',
+            base_material: [{weight: 6, material: 'Thread'}, {weight: 3, material: 'Twine'}],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -384,7 +384,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Fishing Net (25 sq ft)',
-            base_material: '1 - 6 Thread 7 - 10 Twine',
+            base_material: [{weight: 6, material: 'Thread'}, {weight: 3, material: 'Twine'}],
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -394,7 +394,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Fishing Pole',
-            base_material: '1 - 9 Wood 10 Metal"',
+            base_material: [{weight: 9, material: WOOD}, {weight: 1, material: METAL}],
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -404,7 +404,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Footpads',
-            base_material: '1 - 8 Cloth 9 - 10 Leather',
+            base_material: [{weight: 8, material: CLOTH}, {weight: 2, material: LEATHER}],
             [SIZE]: 'T',
             [ADJECTIVES]: 2,
             [COLORS]: 1,
@@ -424,7 +424,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Hammock',
-            base_material: '1 - 9 Cloth 10 Leather',
+            base_material: [{weight: 9, material: CLOTH}, {weight: 1, material: LEATHER}],
             [SIZE]: 'S',
             [ADJECTIVES]: 3,
             [COLORS]: 4,
@@ -434,7 +434,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Hooked Pole',
-            base_material: '1 - 3 Metal 4 - 10 Wood',
+            base_material: [{weight: 3, material: METAL}, {weight: 6, material: WOOD}],
             [SIZE]: 'L',
             [ADJECTIVES]: 2,
             [COLORS]: 1,
@@ -454,7 +454,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Insect Netting',
-            base_material: '1 - 6 Thread 7 - 10 Twine',
+            base_material: [{weight: 6, material: 'Thread'}, {weight: 3, material: 'Twine'}],
             [SIZE]: 'M',
             [ADJECTIVES]: 2,
             [COLORS]: 1,
@@ -464,7 +464,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Ladder, 10 ft',
-            base_material: '1 - 9 Wood 10 Metal',
+            base_material: [{weight: 9, material: WOOD}, {weight: 1, material: METAL}],
             [SIZE]: 'L',
             [ADJECTIVES]: 2,
             [COLORS]: 1,
@@ -483,7 +483,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Listening Cone',
-            base_material: '1 - 4 Cloth 5 - 6 Leather 7 - 10 Metal',
+            base_material: [{weight: 4, material: CLOTH}, {weight: 2, material: LEATHER}, {weight: 3, material: METAL}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
@@ -534,7 +534,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Marbles',
-            base_material: '1 - 3 Metal 4 - 10 Wood',
+            base_material: [{weight: 3, material: METAL}, {weight: 6, material: WOOD}],
             [SIZE]: 'D',
             [ADJECTIVES]: 6,
             [COLORS]: 9,
@@ -554,7 +554,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Mirror Pole',
-            base_material: '1 Glass 2 - 3 Silver (See Metal) 7 - 10 Brass (See Metal)',
+            base_material: [{weight: 1, material: 'Glass'}, {weight: 2, material: 'Silver', subtable: METAL}, {weight: 3, material: 'Brass', subtable: METAL}],
             [SIZE]: 'L',
             [ADJECTIVES]: 2,
             [COLORS]: 1,
@@ -564,7 +564,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Pegleg',
-            base_material: '1 - 9 Wood 10 Metal',
+            base_material: [{weight: 9, material: WOOD}, {weight: 1, material: METAL}],
             [SIZE]: 'S',
             [ADJECTIVES]: 4,
             [COLORS]: 3,
@@ -574,7 +574,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Pell',
-            base_material: '1 - 7 Wood 8 - 10 Metal',
+            base_material: [{weight: 7, material: WOOD}, {weight: 2, material: METAL}],
             [SIZE]: 'T',
             [ADJECTIVES]: 2,
             [COLORS]: 2,
@@ -584,7 +584,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Pole, 10 ft',
-            base_material: '1 - 9 Wood 10 Metal',
+            base_material: [{weight: 9, material: WOOD}, {weight: 1, material: METAL}],
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -614,7 +614,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Sewing Needle',
-            base_material: '1 - 4 Wood 5 - 6 Metal 7 Bone, Sentient 8 - 9 Bone, Animal 10 Bone, Monster',
+            base_material: [{weight: 4, material: WOOD}, {weight: 2, material: METAL}, {weight: 1, material: 'Bone, Sentient', subtable: RACE_OF_ORIGIN}, {weight: 2, material: 'Bone, Animal', subtable: ANIMAL_SUBTYPE}, {weight: 1, material: 'Bone, Monster'}],
             [SIZE]: 'D',
             [ADJECTIVES]: 2,
             [COLORS]: 1,
@@ -634,7 +634,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Stake, Anti-Vampire',
-            base_material: '1 - 9 Wood 10 Metal',
+            base_material: [{weight: 9, material: WOOD}, {weight: 1, material: METAL}],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -663,7 +663,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Tent (1-man)',
-            base_material: '1 - 7 Cloth 8 - 9 Leather 10 Fur',
+            base_material: [{weight: 7, material: CLOTH}, {weight: 2, material: LEATHER}, {weight: 1, material: FUR}],
             [SIZE]: 'M',
             [ADJECTIVES]: 3,
             [COLORS]: 4,
@@ -673,7 +673,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Tent (2-man)',
-            base_material: '1 - 7 Cloth 8 - 9 Leather 10 Fur',
+            base_material: [{weight: 7, material: CLOTH}, {weight: 2, material: LEATHER}, {weight: 1, material: FUR}],
             [SIZE]: 'L',
             [ADJECTIVES]: 3,
             [COLORS]: 4,
@@ -703,7 +703,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Whistle',
-            base_material: '1 - 8 Wood 9 - 10 Metal',
+            base_material: [{weight: 8, material: WOOD}, {weight: 2, material: METAL}],
             [SIZE]: 'T',
             [ADJECTIVES]: 2,
             [COLORS]: 2,
@@ -814,7 +814,7 @@ module.exports = {
         {
             weight: 5,
             entry: 'Oil',
-            base_material: '1 - 3 Hemp 4 - 8 Linseed 9 - 10 Whale',
+            base_material: [{weight: 3, material: 'Hemp Oil'}, {weight: 4, material: 'Linseed Oil'}, {weight: 2, material: 'Whale Oil'}],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 4,
@@ -832,7 +832,7 @@ module.exports = {
         {
             weight: 3,
             entry: 'Poison',
-            base_material: '1 Blacknessel 2 Blue Glory 3 Bondweed 4 Griffin Hair 5 Lylullin 6 Maidenscap 7 Palm of St Germain 8 Tears of Sicyon (for the above, see the 2.6 in the SRD) 9 Unknown 10 Monster Poison',
+            base_material: [{weight: 1, material: 'Blacknessel'}, {weight: 1, material: 'Blue Glory'}, {weight: 1, material: 'Bondweed'}, {weight: 1, material: 'Griffin Hair'}, {weight: 1, material: 'Lylullin'}, {weight: 1, material: 'Maidenscap'}, {weight: 1, material: 'Palm of St Germain'}, {weight: 1, material: 'Tears of Sicyon'}, {weight: 1, material: 'Unknown'}, {weight: 1, material: 'Monster Poison'}],
             [SIZE]: 'D',
             [ADJECTIVES]: 1,
             [COLORS]: 9,
@@ -876,7 +876,7 @@ module.exports = {
         },
         {
             weight: 5,
-            entry: 'Wax',
+            entry: 'WAX',
             base_material: WAX,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
@@ -897,7 +897,7 @@ module.exports = {
         {
             weight: 9,
             entry: 'Brigandine',
-            base_material: 'Leather & Metal',
+            base_material: [LEATHER, METAL],
             [SIZE]: 'M',
             [ADJECTIVES]: 2,
             [COLORS]: 7,
@@ -930,7 +930,7 @@ module.exports = {
         {
             weight: 9,
             entry: 'Coat of Plates',
-            base_material: 'Leather & Metal',
+            base_material: [LEATHER, METAL],
             [SIZE]: 'M',
             [ADJECTIVES]: 2,
             [COLORS]: 4,
@@ -952,7 +952,7 @@ module.exports = {
         {
             weight: 9,
             entry: 'Lamellar',
-            base_material: 'Leather & Metal',
+            base_material: [LEATHER, METAL],
             [SIZE]: 'M',
             [ADJECTIVES]: 2,
             [COLORS]: 3,
@@ -1118,7 +1118,7 @@ module.exports = {
         },
         {
             weight: 4,
-            entry: 'Furmore (pint)',
+            entry: 'FURmore (pint)',
             value: '1 sc',
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
@@ -1276,7 +1276,7 @@ module.exports = {
         {
             weight: 5,
             entry: 'Bean Bags',
-            base_material: '1 - 3 Leather 4 - 10 Cloth',
+            base_material: [{weight: 3, material: LEATHER}, {weight: 6, material: CLOTH}],
             [SIZE]: 'D',
             [ADJECTIVES]: 2,
             [COLORS]: 8,
@@ -1288,7 +1288,7 @@ module.exports = {
         {
             weight: 5,
             entry: 'Cane, Collapsing',
-            base_material: '1 - 7 Wood 8 - 10 Metal',
+            base_material: [{weight: 7, material: WOOD}, {weight: 2, material: METAL}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 7,
@@ -1333,7 +1333,7 @@ module.exports = {
         {
             weight: 5,
             entry: 'Chest Set',
-            base_material: '1 - 9 Wood 10 Metal',
+            base_material: [{weight: 9, material: WOOD}, {weight: 1, material: METAL}],
             [SIZE]: 'M',
             [ADJECTIVES]: 3,
             [COLORS]: 3,
@@ -1345,7 +1345,7 @@ module.exports = {
         {
             weight: 5,
             entry: 'Dice',
-            base_material: '1 - 5 Wood 6 Ivory 7 Bone, Sentient 8 - 9 Bone, Animal 10 Bone, Monster',
+            base_material: [{weight: 5, material: WOOD}, {weight: 1, material: 'Ivory'}, {weight: 1, material: 'Bone, Sentient', subtable: RACE_OF_ORIGIN}, {weight: 2, material: 'Bone, Animal', subtable: ANIMAL_SUBTYPE}, {weight: 1, material: 'Bone, Monster'}],
             [SIZE]: 'D',
             [ADJECTIVES]: 2,
             [COLORS]: 4,
@@ -1357,7 +1357,7 @@ module.exports = {
         {
             weight: 5,
             entry: 'Dice, Loaded',
-            base_material: '1 - 5 Wood 6 Ivory 7 Bone, Sentient 8 - 9 Bone, Animal 10 Bone, Monster',
+            base_material: [{weight: 5, material: WOOD}, {weight: 1, material: 'Ivory'}, {weight: 1, material: 'Bone, Sentient', subtable: RACE_OF_ORIGIN}, {weight: 2, material: 'Bone, Animal', subtable: ANIMAL_SUBTYPE}, {weight: 1, material: 'Bone, Monster'}],
             [SIZE]: 'D',
             [ADJECTIVES]: 2,
             [COLORS]: 4,
@@ -1369,7 +1369,7 @@ module.exports = {
         {
             weight: 5,
             entry: 'Fan, Handheld',
-            base_material: '1 - 4 Cloth 5 - 7 Wood 8 - 10 Paper Product',
+            base_material: [{weight: 4, material: CLOTH}, {weight: 2, material: WOOD}, {weight: 2, material: PAPER_PRODUCT}],
             [SIZE]: 'S',
             [ADJECTIVES]: 3,
             [COLORS]: 9,
@@ -1415,7 +1415,7 @@ module.exports = {
         {
             weight: 64,
             entry: 'Horn, Speaking',
-            base_material: '1 - 4 Cloth 5 - 7 Leather 8 - 9 Wood 10 Metal',
+            base_material: [{weight: 4, material: CLOTH}, {weight: 2, material: LEATHER}, {weight: 2, material: WOOD}, {weight: 1, material: METAL}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 4,
@@ -1476,7 +1476,7 @@ module.exports = {
         {
             weight: 5,
             entry: 'Puppet',
-            base_material: '1 - 5 Cloth 6 - 10 Leather',
+            base_material: [{weight: 5, material: CLOTH}, {weight: 4, material: LEATHER}],
             [SIZE]: 'T',
             [ADJECTIVES]: 3,
             [COLORS]: 9,
@@ -1488,7 +1488,7 @@ module.exports = {
         {
             weight: 5,
             entry: 'Tobacco',
-            base_material: '1 - 5 Chewing 6 - 10 Smoking',
+            base_material: [{weight: 5, material: 'Chewing Tabacco'}, {weight: 4, material: 'Smoking Tabacco'}],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -1513,7 +1513,7 @@ module.exports = {
         {
             weight: 3,
             entry: 'Comforter (3.5’ x 6’)',
-            base_material: '1 - 2 Down 3 - 5 Feather  7 - 8 Heavy Down  9 - 10 Heavy Feather (see Animal > Air for type) with Cloth',
+            base_material: [[{weight: 2, material: 'Down', subtable: ANIMAL_AIR}, {weight: 2, material: 'Feather', subtable: ANIMAL_AIR}, {weight: 2, material: 'Heavy Down', subtable: ANIMAL_AIR}, {weight: 2, material: 'Heavy Feather', subtable: ANIMAL_AIR}], CLOTH],
             [SIZE]: 'L',
             [ADJECTIVES]: 2,
             [COLORS]: 7,
@@ -1543,7 +1543,7 @@ module.exports = {
         {
             weight: 3,
             entry: 'Thread, 1d4 yards',
-            base_material: '1 - 7 Thread 8 - 10 Twine',
+            base_material: [{weight: 7, material: 'Thread'}, {weight: 2, material: 'Twine'}],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -1553,7 +1553,7 @@ module.exports = {
         {
             weight: 3,
             entry: 'Yarn, 1d4 yards',
-            base_material: '1 - 5 Cotton 6 - 10 Wool',
+            base_material: [{weight: 5, material: 'Cotton'}, {weight: 4, material: 'Wool'}],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
@@ -1563,7 +1563,7 @@ module.exports = {
         {
             weight: 4,
             entry: 'Rope',
-            base_material: '1 - 4 Hemp  5 - 7 Cotton 8 - 9 Cloth 10 Silk',
+            base_material: [{weight: 4, material: 'Hemp'}, {weight: 2, material: 'Cotton'}, {weight: 2, material: CLOTH}, {weight: 1, material: 'Silk', subtable: CLOTH}],
             [SIZE]: 'M',
             [ADJECTIVES]: 2,
             [COLORS]: 2,
@@ -1594,7 +1594,7 @@ module.exports = {
         {
             weight: 3,
             entry: 'Curtains',
-            base_material: '1 - 8 Cloth 9 - 10 Leather',
+            base_material: [{weight: 8, material: CLOTH}, {weight: 2, material: LEATHER}],
             [SIZE]: 'H',
             [ADJECTIVES]: 2,
             [COLORS]: 4,
@@ -1604,7 +1604,7 @@ module.exports = {
         },
         {
             weight: 3,
-            entry: 'Sleeping Furs',
+            entry: 'Sleeping FURs',
             base_material: FUR,
             [SIZE]: 'H',
             [ADJECTIVES]: 2,
@@ -1616,7 +1616,7 @@ module.exports = {
         {
             weight: 3,
             entry: 'Bench, 1-person',
-            base_material: '1 - 9 Wood 10 Metal',
+            base_material: [{weight: 9, material: WOOD}, {weight: 1, material: METAL}],
             [SIZE]: 'H',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -1627,7 +1627,7 @@ module.exports = {
         {
             weight: 3,
             entry: 'Carpet',
-            base_material: '1 - 3 Cloth 4 - 10 Wool',
+            base_material: [{weight: 3, material: CLOTH}, {weight: 6, material: 'Wool'}],
             [SIZE]: 'G',
             [ADJECTIVES]: 3,
             [COLORS]: 5,
@@ -1638,7 +1638,7 @@ module.exports = {
         {
             weight: 3,
             entry: 'Chair',
-            base_material: '1 - 9 Wood 10 Metal',
+            base_material: [{weight: 9, material: WOOD}, {weight: 1, material: METAL}],
             [SIZE]: 'H',
             [ADJECTIVES]: 2,
             [COLORS]: 1,
@@ -1660,7 +1660,7 @@ module.exports = {
         {
             weight: 3,
             entry: 'Seat Cushion',
-            base_material: '1 - 8 Cloth 9 - 10 Leather',
+            base_material: [{weight: 8, material: CLOTH}, {weight: 2, material: LEATHER}],
             [SIZE]: 'M',
             [ADJECTIVES]: 2,
             [COLORS]: 4,
@@ -1671,7 +1671,7 @@ module.exports = {
         {
             weight: 3,
             entry: 'Stool',
-            base_material: '1 - 9 Wood 10 Metal',
+            base_material: [{weight: 9, material: WOOD}, {weight: 1, material: METAL}],
             [SIZE]: 'L',
             [ADJECTIVES]: 2,
             [COLORS]: 1,
@@ -1682,7 +1682,7 @@ module.exports = {
         {
             weight: 3,
             entry: 'Tapestry',
-            base_material: '1 - 8 Wool 9 Leather 10 Cloth',
+            base_material: [{weight: 8, material: 'Wool'}, {weight: 1, material: LEATHER}, {weight: 1, material: CLOTH}],
             [SIZE]: 'G',
             [ADJECTIVES]: 3,
             [COLORS]: 9,
@@ -1692,7 +1692,7 @@ module.exports = {
         },
         {
             weight: 3,
-            entry: 'Bolter Cloth',
+            entry: 'Bolter CLOTH',
             base_material: CLOTH,
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
@@ -1715,7 +1715,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Coffin, Pastry',
-            base_material: '1 - 7 Wood 8  - 10 Metal',
+            base_material: [{weight: 7, material: WOOD}, {weight: 2, material: METAL}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
@@ -1737,7 +1737,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Larding Needle',
-            base_material: '1 - 3 Metal 4 - 6 Wood 7 Bone, Sentient 8 - 9 Bone, Animal 10 Bone, Monster',
+            base_material: [{weight: 3, material: METAL}, {weight: 2, material: WOOD}, {weight: 1, material: 'Bone, Sentient', subtable: RACE_OF_ORIGIN}, {weight: 2, material: 'Bone, Animal', subtable: ANIMAL_SUBTYPE}, {weight: 1, material: 'Bone, Monster'}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -1759,7 +1759,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Porringers',
-            base_material: '1 - 8 Metal 9 - 10 Stone/Earthwork',
+            base_material: [{weight: 8, material: METAL}, {weight: 2, material: STONE_EARTHWORK}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
@@ -1770,7 +1770,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Querne',
-            base_material: '1 - 8 Stone/Earthwork 9 - 10 Wood',
+            base_material: [{weight: 8, material: STONE_EARTHWORK}, {weight: 2, material: WOOD}],
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
@@ -1825,7 +1825,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Bowl',
-            base_material: '1 - 6 Wood 7 - 10 Metal',
+            base_material: [{weight: 6, material: WOOD}, {weight: 3, material: METAL}],
             [SIZE]: 'S',
             [ADJECTIVES]: 3,
             [COLORS]: 4,
@@ -1858,7 +1858,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Goblet',
-            base_material: '1 - 3 Glass  4 Crystal 6 - 10 Metal',
+            base_material: [{weight: 3, material: 'Glass'}, {weight: 4, material: 'Crystal'}, {weight: 4, material: METAL}],
             [SIZE]: 'T',
             [ADJECTIVES]: 3,
             [COLORS]: 2,
@@ -1891,7 +1891,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Ladle',
-            base_material: '1 - 7 Wood 8 - 10 Metal',
+            base_material: [{weight: 7, material: WOOD}, {weight: 2, material: METAL}],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -1902,7 +1902,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Mug',
-            base_material: '1 - 4 Wood 5 - 6 Metal 7 - 10 Stone/Earthwork',
+            base_material: [{weight: 4, material: WOOD}, {weight: 2, material: METAL}, {weight: 3, material: STONE_EARTHWORK}],
             [SIZE]: 'T',
             [ADJECTIVES]: 2,
             [COLORS]: 4,
@@ -1935,7 +1935,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Platter',
-            base_material: '1 - 7 Wood 8 - 10 Metal',
+            base_material: [{weight: 7, material: WOOD}, {weight: 2, material: METAL}],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 4,
@@ -1957,7 +1957,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Salt Cellar',
-            base_material: '1 - 8 Metal 9 - 10 Wood',
+            base_material: [{weight: 8, material: METAL}, {weight: 2, material: WOOD}],
             [SIZE]: 'D',
             [ADJECTIVES]: 2,
             [COLORS]: 3,
@@ -1979,7 +1979,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Spoon',
-            base_material: '1 - 7 Metal 8 - 10 Wood',
+            base_material: [{weight: 7, material: METAL}, {weight: 2, material: WOOD}],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -2001,7 +2001,7 @@ module.exports = {
         {
             weight: 3,
             entry: 'Pillow',
-            base_material: '1 - 8 Cloth 9 - 10 Leather',
+            base_material: [{weight: 8, material: CLOTH}, {weight: 2, material: LEATHER}],
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
             [COLORS]: 4,
@@ -2012,7 +2012,7 @@ module.exports = {
         {
             weight: 3,
             entry: 'Rug, Woven',
-            base_material: '1 - 3 Cloth 4 - 5 Leather 6 - 10 Wool',
+            base_material: [{weight: 3, material: CLOTH}, {weight: 2, material: LEATHER}, {weight: 4, material: 'Wool'}],
             [SIZE]: 'L',
             [ADJECTIVES]: 3,
             [COLORS]: 8,
@@ -2022,7 +2022,7 @@ module.exports = {
         },
         {
             weight: 3,
-            entry: 'Rug, Fur',
+            entry: 'Rug, FUR',
             base_material: FUR,
             [SIZE]: 'L',
             [ADJECTIVES]: 3,
@@ -2058,7 +2058,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Candle',
-            base_material: '1 - 8 Tallow 9 - 10 Wax',
+            base_material: [{weight: 8, material: 'Tallow'}, {weight: 2, material: WAX}],
             [SIZE]: 'T',
             [ADJECTIVES]: 2,
             [COLORS]: 4,
@@ -2069,7 +2069,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Candle, Timekeeping',
-            base_material: '1 - 7 Tallow 8 - 10 Wax"',
+            base_material: [{weight: 8, material: 'Tallow'}, {weight: 2, material: WAX}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
@@ -2113,7 +2113,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Lantern, Bullseye',
-            base_material: 'Metal & Paper Product',
+            base_material: [METAL, PAPER_PRODUCT],
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
             [COLORS]: 1,
@@ -2146,7 +2146,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Torch',
-            base_material: '1 - 5 Tallow 6 - 10 Cloth',
+            base_material: [{weight: 5, material: 'Tallow'}, {weight: 5, material: CLOTH}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -2170,7 +2170,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Necklace',
-            base_material: '1 - 7 Metal 8 - 9 Cloth 10 both',
+            base_material: [{weight: 7, material: METAL}, {weight: 2, material: CLOTH}, {weight: 1, material: 'both'}],
             [SIZE]: 'D',
             [ADJECTIVES]: 4,
             [COLORS]: 2,
@@ -2181,7 +2181,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Fake Teeth',
-            base_material: '1 - 6 Ivory 7 - 9 Wood 10 Metal',
+            base_material: [{weight: 6, material: 'Ivory'}, {weight: 2, material: WOOD}, {weight: 1, material: METAL}],
             [SIZE]: 'D',
             [ADJECTIVES]: 2,
             [COLORS]: 3,
@@ -2236,7 +2236,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Chatelaine',
-            base_material: '1 - 2 Metal 3 - 4 Cloth 5 - 8 Leather 9 Two 10 all three',
+            base_material: [{weight: 2, material: METAL}, {weight: 2, material: CLOTH}, {weight: 3, material: LEATHER}, {weight: 1, material: 'Two'}, {weight: 1, material: 'all three'}],
             [SIZE]: 'D',
             [ADJECTIVES]: 4,
             [COLORS]: 4,
@@ -2259,7 +2259,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Torc',
-            base_material: '1 - 7 Metal 8 - 9 Leather 10 both',
+            base_material: [{weight: 7, material: METAL}, {weight: 2, material: LEATHER}, {weight: 1, material: 'both'}],
             [SIZE]: 'D',
             [ADJECTIVES]: 3,
             [COLORS]: 2,
@@ -2271,7 +2271,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Bracelet',
-            base_material: '1 - 7 Metal 8 - 9 Leather 10 both',
+            base_material: [{weight: 7, material: METAL}, {weight: 2, material: LEATHER}, {weight: 1, material: 'both'}],
             [SIZE]: 'F',
             [ADJECTIVES]: 3,
             [COLORS]: 5,
@@ -2283,7 +2283,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Choker',
-            base_material: '1 - 5 Metal 6 Cloth 7 - 8 Leather 9 Two 10 all three',
+            base_material: [{weight: 5, material: METAL}, {weight: 6, material: CLOTH}, {weight: 2, material: LEATHER}, {weight: 1, material: 'Two'}, {weight: 1, material: 'all three'}],
             [SIZE]: 'F',
             [ADJECTIVES]: 3,
             [COLORS]: 5,
@@ -2295,7 +2295,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Anklet',
-            base_material: '1 - 8 Metal 9 Cloth 10 both',
+            base_material: [{weight: 8, material: METAL}, {weight: 1, material: CLOTH}, {weight: 1, material: 'both'}],
             [SIZE]: 'F',
             [ADJECTIVES]: 3,
             [COLORS]: 3,
@@ -2307,7 +2307,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Armlet/Bracer',
-            base_material: '1 - 5 Metal 6 Cloth 7 - 8 Leather 9 Two 10 all three"',
+            base_material: [{weight: 5, material: METAL}, {weight: 1, material: CLOTH}, {weight: 2, material: LEATHER}, {weight: 1, material: 'Two'}, {weight: 1, material: 'all three'}],
             [SIZE]: 'F',
             [ADJECTIVES]: 3,
             [COLORS]: 4,
@@ -2330,7 +2330,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Prayer Beads',
-            base_material: '1 - 6 Cloth 7 - 9 Leather 10 both',
+            base_material: [{weight: 6, material: CLOTH}, {weight: 2, material: LEATHER}, {weight: 1, material: 'both'}],
             [SIZE]: 'D',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -2396,7 +2396,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Crutches',
-            base_material: '1 Metal 2 - 10 Wood',
+            base_material: [{weight: 1, material: METAL}, {weight: 8, material: WOOD}],
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
             [COLORS]: 2,
@@ -2406,7 +2406,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Eyeglasses',
-            base_material: '1 - 6 Metal 7 - 10 Wood',
+            base_material: [[{weight: 6, material: METAL}, {weight: 4, material: WOOD}], 'Glass'],
             [SIZE]: 'T',
             [ADJECTIVES]: 2,
             [COLORS]: 1,
@@ -2456,7 +2456,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Sutures',
-            base_material: '1 - 6 Thread 7 - 10 Animal > Land Guts',
+            base_material: [{weight: 6, material: 'Thread'}, {weight: 3, material: 'Animal Guts', subtable: ANIMAL_SUBTYPE}],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -2485,7 +2485,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Stretcher',
-            base_material: 'Wood & Cloth',
+            base_material: [WOOD, CLOTH],
             [SIZE]: 'T',
             [ADJECTIVES]: 2,
             [COLORS]: 3,
@@ -2538,7 +2538,7 @@ module.exports = {
         {
             weight: 4,
             entry: 'Bagpipes',
-            base_material: '1 - 8 Wood 9 - 10 Metal with Cloth',
+            base_material: [[{weight: 8, material: WOOD}, {weight: 2, material: METAL}], CLOTH],
             [SIZE]: 'M',
             [ADJECTIVES]: 3,
             [COLORS]: 3,
@@ -2549,7 +2549,7 @@ module.exports = {
         {
             weight: 4,
             entry: 'Bladder Pipe',
-            base_material: '1 - 8 Wood 9 - 10 Metal with Cloth',
+            base_material: [[{weight: 8, material: WOOD}, {weight: 2, material: METAL}], CLOTH],
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
             [COLORS]: 2,
@@ -2604,7 +2604,7 @@ module.exports = {
         {
             weight: 4,
             entry: 'Frame Drum',
-            base_material: 'Wood & Leather',
+            base_material: [WOOD, LEATHER],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -2626,7 +2626,7 @@ module.exports = {
         {
             weight: 4,
             entry: 'Glockenspiel',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'L',
             [ADJECTIVES]: 3,
             [COLORS]: 1,
@@ -2659,7 +2659,7 @@ module.exports = {
         {
             weight: 4,
             entry: 'Hurdy-Gurdy',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -2692,7 +2692,7 @@ module.exports = {
         {
             weight: 4,
             entry: 'Naqareh',
-            base_material: 'Wood & Leather',
+            base_material: [WOOD, LEATHER],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -2780,7 +2780,7 @@ module.exports = {
         {
             weight: 4,
             entry: 'Tabor Drum',
-            base_material: 'Wood & Leather',
+            base_material: [WOOD, LEATHER],
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
@@ -2802,7 +2802,7 @@ module.exports = {
         {
             weight: 4,
             entry: 'Timbrel',
-            base_material: 'Metal & Wood',
+            base_material: [METAL, WOOD],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -2824,7 +2824,7 @@ module.exports = {
         {
             weight: 4,
             entry: 'Zampogna',
-            base_material: 'Wood with 1 - 2 Cloth 3 - 10 Leather"',
+            base_material: [WOOD, [{weight: 2, material: CLOTH}, {weight: 8, material: LEATHER}]],
             [SIZE]: 'L',
             [ADJECTIVES]: 2,
             [COLORS]: 2,
@@ -2859,7 +2859,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Backpack, Large',
-            base_material: '1 - 7 Cloth 8 - 10 Leather',
+            base_material: [{weight: 7, material: CLOTH}, {weight: 2, material: LEATHER}],
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
             [COLORS]: 3,
@@ -2870,7 +2870,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Backpack, Medium',
-            base_material: '1 - 7 Cloth 8 - 10 Leather',
+            base_material: [{weight: 7, material: CLOTH}, {weight: 2, material: LEATHER}],
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
             [COLORS]: 3,
@@ -2881,7 +2881,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Backpack, Small',
-            base_material: '1 - 7 Cloth 8 - 10 Leather',
+            base_material: [{weight: 7, material: CLOTH}, {weight: 2, material: LEATHER}],
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
             [COLORS]: 3,
@@ -2892,7 +2892,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Bag, Medium',
-            base_material: '1 - 8 Cloth 9 - 10 Leather',
+            base_material: [{weight: 8, material: CLOTH}, {weight: 2, material: LEATHER}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
@@ -2903,7 +2903,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Bag, Small',
-            base_material: '1 - 8 Cloth 9 - 10 Leather',
+            base_material: [{weight: 8, material: CLOTH}, {weight: 2, material: LEATHER}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
@@ -2914,7 +2914,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Bandoleer',
-            base_material: '1 - 4 Cloth 5 - 10 Leather',
+            base_material: [{weight: 4, material: CLOTH}, {weight: 6, material: LEATHER}],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -2936,7 +2936,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Basket, Medium',
-            base_material: 'Wicker (see Wood)',
+            base_material: {material: 'Wicker', subtable: WOOD},
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
             [COLORS]: 1,
@@ -2947,7 +2947,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Basket, Small',
-            base_material: 'Wicker (see Wood)',
+            base_material: {material: 'Wicker', subtable: WOOD},
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
             [COLORS]: 1,
@@ -2969,7 +2969,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Bottle',
-            base_material: '1 - 5 Glass 6 - 10 Metal',
+            base_material: [{weight: 5, material: 'Glass'}, {weight: 5, material: METAL}],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
@@ -2980,7 +2980,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Box, Medium',
-            base_material: '1 - 9 Wood 10 Metal',
+            base_material: [{weight: 9, material: WOOD}, {weight: 1, material: METAL}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
@@ -2991,7 +2991,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Box, Small',
-            base_material: '1 - 8 Wood 9 - 10 Metal',
+            base_material: [{weight: 8, material: WOOD}, {weight: 2, material: METAL}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
@@ -3024,7 +3024,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Canteen',
-            base_material: '1 - 8 Metal 9 - 10 Leather',
+            base_material: [{weight: 8, material: METAL}, {weight: 2, material: LEATHER}],
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
             [COLORS]: 3,
@@ -3036,7 +3036,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Case, Map/Scroll',
-            base_material: '1 - 2 Wood 3 - 4 Metal 5 - 6 Leather 7 - 10 Waxed Cloth',
+            base_material: [{weight: 2, material: WOOD}, {weight: 2, material: METAL}, {weight: 2, material: LEATHER}, {wight: 3, material: 'Waxed Cloth', subtables: [WAX, CLOTH]}],
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
             [COLORS]: 3,
@@ -3059,7 +3059,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Chest, Medium',
-            base_material: '1 - 8 Wood 9 - 10 Metal',
+            base_material: [{weight: 8, material: WOOD}, {weight: 2, material: METAL}],
             [SIZE]: 'L',
             [ADJECTIVES]: 2,
             [COLORS]: 1,
@@ -3070,7 +3070,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Chest, Small',
-            base_material: '1 - 9 Wood 10 Metal',
+            base_material: [{weight: 9, material: WOOD}, {weight: 1, material: METAL}],
             [SIZE]: 'M',
             [ADJECTIVES]: 2,
             [COLORS]: 1,
@@ -3081,7 +3081,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Coin Purse',
-            base_material: '1 - 5 Cloth 6 - 10 Leather',
+            base_material: [{weight: 5, material: CLOTH}, {weight: 4, material: LEATHER}],
             [SIZE]: 'T',
             [ADJECTIVES]: 2,
             [COLORS]: 4,
@@ -3092,7 +3092,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Cup',
-            base_material: '1 - 3 Metal 4 - 9 Stone/Earthwork 10 Porcelain',
+            base_material: [{weight: 3, material: METAL}, {weight: 5, material: STONE_EARTHWORK}, {weight: 1, material: 'Porcelain'}],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -3114,7 +3114,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Jar',
-            base_material: '1 - 3 Glass 4 - 10 Stone/Earthwork',
+            base_material: [{weight: 3, material: 'Glass'}, {weight: 7, material: STONE_EARTHWORK}],
             [SIZE]: 'T',
             [ADJECTIVES]: 2,
             [COLORS]: 1,
@@ -3125,7 +3125,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Jug',
-            base_material: '1 - 3 Metal 4 - 10 Stone/Earthwork',
+            base_material: [{weight: 3, material: METAL}, {weight: 7, material: STONE_EARTHWORK}],
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
             [COLORS]: 1,
@@ -3158,7 +3158,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Pot, Small',
-            base_material: '1 - 7 Stone/Earthwork 8 - 10 Metal',
+            base_material: [{weight: 3, material: METAL}, {weight: 7, material: STONE_EARTHWORK}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -3169,7 +3169,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Pouch, Belt, Medium',
-            base_material: '1 - 5 Cloth 6 - 10 Leather',
+            base_material: [{weight: 5, material: CLOTH}, {weight: 4, material: LEATHER}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
@@ -3180,7 +3180,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Pouch, Belt, Small',
-            base_material: '1 - 5 Cloth 6 - 10 Leather',
+            base_material: [{weight: 5, material: CLOTH}, {weight: 4, material: LEATHER}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
@@ -3191,7 +3191,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Quiver',
-            base_material: '1 - 2 Cloth 3 - 6 Leather 7 Metal 8 - 10 Wood',
+            base_material: [{weight: 2, material: CLOTH}, {weight: 1, material: LEATHER}, {weight: 1, material: METAL}, {weight: 2, material: WOOD}],
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
             [COLORS]: 4,
@@ -3213,7 +3213,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Saddlebags, Large',
-            base_material: '1 - 2 Cloth 3 - 10 Leather',
+            base_material: [{weight: 4, material: CLOTH}, {weight: 6, material: LEATHER}],
             [SIZE]: 'H',
             [ADJECTIVES]: 2,
             [COLORS]: 3,
@@ -3224,7 +3224,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Saddlebags, Medium',
-            base_material: '1 - 3 Cloth 4 - 10 Leather',
+            base_material: [{weight: 4, material: CLOTH}, {weight: 6, material: LEATHER}],
             [SIZE]: 'L',
             [ADJECTIVES]: 2,
             [COLORS]: 3,
@@ -3235,7 +3235,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Saddlebags, Small',
-            base_material: '1 - 4 Cloth 5 - 10 Leather',
+            base_material: [{weight: 4, material: CLOTH}, {weight: 6, material: LEATHER}],
             [SIZE]: 'M',
             [ADJECTIVES]: 2,
             [COLORS]: 3,
@@ -3246,7 +3246,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Scabbard',
-            base_material: '1 - 2 Cloth 3 - 6 Leather 7 Metal 8 - 10 Wood',
+            base_material: [{weight: 2, material: CLOTH}, {weight: 1, material: LEATHER}, {weight: 1, material: METAL}, {weight: 2, material: WOOD}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 4,
@@ -3257,7 +3257,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Sheathe, Small',
-            base_material: '1 - 2 Cloth 3 - 6 Leather 7 Metal 8 - 10 Wood',
+            base_material: [{weight: 2, material: CLOTH}, {weight: 1, material: LEATHER}, {weight: 1, material: METAL}, {weight: 2, material: WOOD}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 4,
@@ -3268,7 +3268,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Sheathe, Wrist',
-            base_material: '1 - 2 Cloth 3 - 6 Leather 7 Metal 8 - 10 Wood',
+            base_material: [{weight: 2, material: CLOTH}, {weight: 1, material: LEATHER}, {weight: 1, material: METAL}, {weight: 2, material: WOOD}],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
@@ -3279,7 +3279,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Vial Holder, Belt',
-            base_material: '1 - 4 Cloth 5 - 10 Leather',
+            base_material: [{weight: 4, material: CLOTH}, {weight: 6, material: LEATHER}],
             [SIZE]: 'T',
             [ADJECTIVES]: 2,
             [COLORS]: 2,
@@ -3310,8 +3310,8 @@ module.exports = {
     [RELIGIOUS_ITEMS]: [
         {
             weight: 2,
-            entry: 'Altar Cloth',
-            base_material: '1 - 9 Cloth 10 Leather',
+            entry: 'Altar CLOTH',
+            base_material: [{weight: 9, material: CLOTH}, {weight: 1, material: LEATHER}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 7,
@@ -3322,7 +3322,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Aspergillum',
-            base_material: 'Metal & Wood',
+            base_material: [METAL, WOOD],
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
             [COLORS]: 1,
@@ -3377,7 +3377,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Holy Symbol',
-            base_material: '1 - 7 Metal 8 - 10 Wood',
+            base_material: [{weight: 7, material: METAL}, {weight: 2, material: WOOD}],
             [SIZE]: 'T',
             [ADJECTIVES]: 2,
             [COLORS]: 3,
@@ -3388,7 +3388,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Incense',
-            base_material: 'See Food > Spices & Seasonings',
+            base_material: SPICES_AND_SEASONINGS,
             [SIZE]: 'D',
             [ADJECTIVES]: 1,
             [COLORS]: 9,
@@ -3398,7 +3398,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Pilgrimage Badge',
-            base_material: '1 - 6 Cloth 7 - 8 Leather 9 Wood 10 Metal',
+            base_material: [{weight: 6, material: CLOTH}, {weight: 2, material: LEATHER}, {weight: 1, material: WOOD}, {weight: 1, material: METAL}],
             [SIZE]: 'D',
             [ADJECTIVES]: 2,
             [COLORS]: 7,
@@ -3410,7 +3410,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Prayer Beads',
-            base_material: '1 - 6 Wood 7 - 10 Metal',
+            base_material: [{weight: 6, material: WOOD}, {weight: 3, material: METAL}],
             [SIZE]: 'D',
             [ADJECTIVES]: 2,
             [COLORS]: 9,
@@ -3421,7 +3421,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Sacred Texts',
-            base_material: 'Cover: 1 Metal 2 - 7 Cloth 8 - 9 Leather 10 Wood Interior: Paper Product',
+            base_material: [{label: 'Cover', materials: [{weight: 1, material: METAL}, {weight: 6, material: CLOTH}, {weight: 2, material: LEATHER}, {weight: 1, material: WOOD}]}, {label: 'Interior', materials: PAPER_PRODUCT}],
             [SIZE]: 'S',
             [ADJECTIVES]: 3,
             [COLORS]: 6,
@@ -3444,7 +3444,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Talisman',
-            base_material: '1 - 2 Metal 3 - 6 Wood 7 Leather 8 - 10 Cloth',
+            base_material: [{weight: 2, material: METAL}, {weight: 3, material: WOOD}, {weight: 1, material: LEATHER}, {weight: 2, material: CLOTH}],
             [SIZE]: 'T',
             [ADJECTIVES]: 2,
             [COLORS]: 5,
@@ -3456,7 +3456,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Totem',
-            base_material: '1 - 4 Metal 5 - 8 Wood 9 Leather 10 Cloth',
+            base_material: [{weight: 4, material: METAL}, {weight: 4, material: WOOD}, {weight: 1, material: LEATHER}, {weight: 1, material: CLOTH}],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 4,
@@ -3470,7 +3470,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Buckler',
-            base_material: '1 - 5 Wood 6 - 10 Metal',
+            base_material: [{weight: 5, material: WOOD}, {weight: 5, material: METAL}],
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
             [COLORS]: 4,
@@ -3480,7 +3480,7 @@ module.exports = {
         },
         {
             weight: 1,
-            entry: 'Clothe',
+            entry: 'CLOTHe',
             base_material: CLOTH,
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
@@ -3492,7 +3492,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Figure Eight',
-            base_material: 'Wood & Leather',
+            base_material: [WOOD, LEATHER],
             [SIZE]: 'M',
             [ADJECTIVES]: 2,
             [COLORS]: 9,
@@ -3503,7 +3503,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Heater',
-            base_material: '1 - 8 Wood 9 - 10 Metal',
+            base_material: [{weight: 8, material: WOOD}, {weight: 2, material: METAL}],
             [SIZE]: 'M',
             [ADJECTIVES]: 2,
             [COLORS]: 6,
@@ -3514,7 +3514,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Hoplon',
-            base_material: '1 - 8 Wood 9 - 10 Metal',
+            base_material: [{weight: 8, material: WOOD}, {weight: 2, material: METAL}],
             [SIZE]: 'M',
             [ADJECTIVES]: 2,
             [COLORS]: 5,
@@ -3525,7 +3525,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Kite',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'L',
             [ADJECTIVES]: 2,
             [COLORS]: 7,
@@ -3547,7 +3547,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Round',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'M',
             [ADJECTIVES]: 2,
             [COLORS]: 6,
@@ -3571,7 +3571,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Adze',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -3581,7 +3581,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Auger',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -3591,7 +3591,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Ax',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -3611,7 +3611,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Bellows',
-            base_material: 'Wood with 1 - 8 Leather 9 - 10 Cloth"',
+            base_material: [WOOD, [{weight: 8, material: LEATHER}, {weight: 2, material: CLOTH}]],
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
@@ -3622,7 +3622,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Bow Drill',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -3652,7 +3652,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Carding Comb',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
@@ -3662,7 +3662,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Carpenter’s Square',
-            base_material: '1 - 8 Wood 9 -10 Metal',
+            base_material: [{weight: 8, material: WOOD}, {weight: 2, material: METAL}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
@@ -3682,7 +3682,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Cleaver',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
             [COLORS]: 1,
@@ -3712,7 +3712,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Funnel',
-            base_material: '1 - 8 Waxed Leather 9 - 10 Waxed Cloth',
+            base_material: [{weight: 8, material: 'Waxed Leather', subtables: [WAX, LEATHER]}, {weight: 2, material: 'Waxed Cloth', subtables: [WAX, CLOTH]}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -3722,7 +3722,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Glass Cutter',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
@@ -3732,7 +3732,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Hammer',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'T',
             [ADJECTIVES]: 2,
             [COLORS]: 1,
@@ -3742,7 +3742,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Hatchet',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
             [COLORS]: 1,
@@ -3752,7 +3752,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Hoe',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -3812,7 +3812,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Pick',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -3822,7 +3822,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Pitch Fork',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -3832,7 +3832,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Planer',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -3871,7 +3871,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Rake',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -3881,7 +3881,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Saw',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -3891,7 +3891,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Scissors',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -3921,7 +3921,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Shovel',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -3931,7 +3931,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Sickle',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -3941,7 +3941,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Sledge',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -3961,7 +3961,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Trowel',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -3971,7 +3971,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Wedge',
-            base_material: '1 - 5 Wood 6 - 10 Metal',
+            base_material: [{weight: 5, material: WOOD}, {weight: 5, material: METAL}],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4013,7 +4013,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Painting',
-            base_material: '1 - 3 Cloth 4 - 7 Leather 8 - 9 Wood 10 Metal',
+            base_material: [{weight: 3, material: CLOTH}, {weight: 3, material: LEATHER}, {weight: 2, material: WOOD}, {weight: 1, material: METAL}],
             [SIZE]: 'L',
             [ADJECTIVES]: 3,
             [COLORS]: 9,
@@ -4049,7 +4049,8 @@ module.exports = {
         {
             weight: 1,
             entry: 'Book',
-            base_material: 'Cover: 1 Metal 2 - 7 Cloth 8 - 9 Leather 10 Wood Interior: Paper Product', [SIZE]: 'S',
+            base_material: [{label: 'Cover', materials: [{weight: 1, material: METAL}, {weight: 5, material: CLOTH}, {weight: 2, material: LEATHER}, {weight: 1, material: WOOD}]}, {label: 'Interior', material: PAPER_PRODUCT}], 
+            [SIZE]: 'S',
             [ADJECTIVES]: 3,
             [COLORS]: 6,
             [ENGRAVINGS]: 9,
@@ -4107,7 +4108,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Boots, Climbing',
-            base_material: 'Leather & Wax',
+            base_material: [LEATHER, WAX],
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
             [COLORS]: 1,
@@ -4167,7 +4168,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Chopines',
-            base_material: '1 - 5 Leather 6 - 10 Cloth with Wood',
+            base_material: [[{weight: 5, material: LEATHER}, {weight: 5, material: CLOTH}], WOOD],
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
             [COLORS]: 3,
@@ -4207,7 +4208,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Sandals',
-            base_material: '1 - 3 Leather 4 - 10 Cloth',
+            base_material: [{weight: 3, material: LEATHER}, {weight: 6, material: CLOTH}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4217,7 +4218,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Sandshoes',
-            base_material: '1 - 4 Leather 6 - 10 Cloth',
+            base_material: [{weight: 4, material: LEATHER}, {weight: 6, material: CLOTH}],
             [SIZE]: 'M',
             [ADJECTIVES]: 3,
             [COLORS]: 1,
@@ -4227,7 +4228,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Shoes, Dress',
-            base_material: '1 - 7 Leather 8 - 10 Cloth',
+            base_material: [{weight: 7, material: LEATHER}, {weight: 3, material: CLOTH}],
             [SIZE]: 'S',
             [ADJECTIVES]: 4,
             [COLORS]: 9,
@@ -4237,7 +4238,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Shoes, Simple',
-            base_material: '1 - 5 Leather 6 - 10 Cloth',
+            base_material: [{weight: 5, material: LEATHER}, {weight: 5, material: CLOTH}],
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
             [COLORS]: 3,
@@ -4247,7 +4248,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Slippers',
-            base_material: '1 - 5 Cloth 6 - 10 Fur',
+            base_material: [{weight: 5, material: CLOTH}, {weight: 5, material: FUR}],
             [SIZE]: 'S',
             [ADJECTIVES]: 3,
             [COLORS]: 9,
@@ -4257,7 +4258,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Snowshoes',
-            base_material: '1 - 4 Leather 6 - 10 Cloth',
+            base_material: [{weight: 4, material: LEATHER}, {weight: 6, material: CLOTH}],
             [SIZE]: 'M',
             [ADJECTIVES]: 2,
             [COLORS]: 1,
@@ -4267,7 +4268,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Socks',
-            base_material: '1 - 8 Fur 9 - 10 Cloth',
+            base_material: [{weight: 8, material: CLOTH}, {weight: 2, material: FUR}],
             [SIZE]: 'S',
             [ADJECTIVES]: 4,
             [COLORS]: 9,
@@ -4299,7 +4300,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Beret',
-            base_material: '1 - 7 Cloth 8 - 10 Leather',
+            base_material: [{weight: 7, material: CLOTH}, {weight: 2, material: LEATHER}],
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
             [COLORS]: 4,
@@ -4309,7 +4310,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Cap',
-            base_material: '1 - 4 Cloth 5 - 7 Leather 8 - 9 Fur 10 Metal',
+            base_material: [{weight: 4, material: CLOTH}, {weight: 3, material: LEATHER}, {weight: 2, material: FUR}, {weight: 1, material: METAL}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
@@ -4319,7 +4320,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Caul',
-            base_material: '1 - 8 Cloth 9 - 10 Leather',
+            base_material: [{weight: 8, material: CLOTH}, {weight: 2, material: LEATHER}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
@@ -4349,7 +4350,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Coif',
-            base_material: '1 - 8 Cloth 9 - 10 Leather',
+            base_material: [{weight: 8, material: CLOTH}, {weight: 2, material: LEATHER}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4359,7 +4360,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Ferroniere',
-            base_material: '1 - 7 Cloth 8 - 10 Leather',
+            base_material: [{weight: 7, material: CLOTH}, {weight: 2, material: LEATHER}],
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
             [COLORS]: 1,
@@ -4379,7 +4380,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Hat',
-            base_material: '1 - 3 Felt 4 - 7 Straw 8 Cloth 9 Leather 10 Fur',
+            base_material: [{weight: 3, material: 'Felt'}, {weight: 3, material: 'Straw'}, {weight: 1, material: CLOTH}, {weight: 1, material: LEATHER}, {weight: 1, material: FUR}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4389,7 +4390,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Headdress',
-            base_material: 'Feathers (see Animal > Air) with 1 - 3 Cloth 4 - 10 Leather',
+            base_material: [{material: 'Feathers', subtable: ANIMAL_AIR}, [{weight: 3, material: CLOTH}, {weight: 6, material: LEATHER}]],
             [SIZE]: 'L',
             [ADJECTIVES]: 3,
             [COLORS]: 9,
@@ -4399,7 +4400,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Hood',
-            base_material: '1 - 7 Cloth 8 - 10 Leather',
+            base_material: [{weight: 7, material: CLOTH}, {weight: 2, material: LEATHER}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4409,7 +4410,7 @@ module.exports = {
         {
             weight: 2,
             entry: 'Skullcap',
-            base_material: '1 - 6 Cloth 7 - 9 Leather 10 Metal',
+            base_material: [{weight: 6, material: CLOTH}, {weight: 3, material: LEATHER}, {weight: 1, material: METAL}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
@@ -4451,7 +4452,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Apron',
-            base_material: '1 - 4 Leather 5 - 10 Cloth',
+            base_material: [{weight: 4, material: LEATHER}, {weight: 6, material: CLOTH}],
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
@@ -4462,7 +4463,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Belt',
-            base_material: '1 - 8 Leather 9 - 10 Cloth',
+            base_material: [{weight: 8, material: LEATHER}, {weight: 2, material: CLOTH}],
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
             [COLORS]: 2,
@@ -4473,7 +4474,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Braies',
-            base_material: '1 Leather 2 - 10 Cloth',
+            base_material: [{weight: 1, material: LEATHER}, {weight: 9, material: CLOTH}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 6,
@@ -4484,7 +4485,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Breeches',
-            base_material: '1 Leather 2 - 10 Cloth',
+            base_material: [{weight: 1, material: LEATHER}, {weight: 9, material: CLOTH}],
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 6,
@@ -4495,7 +4496,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Buckle',
-            base_material: '1 - 8 Metal 9 - 10 Wood',
+            base_material: [{weight: 8, material: METAL}, {weight: 2, material: WOOD}],
             [SIZE]: 'S',
             [ADJECTIVES]: 3,
             [COLORS]: 4,
@@ -4506,7 +4507,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Cape',
-            base_material: '1 Leather 2 - 10 Cloth',
+            base_material: [{weight: 1, material: LEATHER}, {weight: 9, material: CLOTH}],
             [SIZE]: 'M',
             [ADJECTIVES]: 3,
             [COLORS]: 6,
@@ -4550,7 +4551,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Choker',
-            base_material: '1 - 7 Cloth 8 Leather 10 Fur',
+            base_material: [{weight: 1, material: LEATHER}, {weight: 7, material: CLOTH}, {weight: 1, material: FUR}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 4,
@@ -4561,7 +4562,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Cloak',
-            base_material: '1 - 5 Cloth 6 - 8 Leather 9 - 10 Fur',
+            base_material: [{weight: 3, material: LEATHER}, {weight: 5, material: CLOTH}, {weight: 2, material: FUR}],
             [SIZE]: 'M',
             [ADJECTIVES]: 2,
             [COLORS]: 6,
@@ -4572,7 +4573,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Coat',
-            base_material: '1 - 3 Cloth 4 - 10 Leather',
+            base_material: [{weight: 7, material: LEATHER}, {weight: 3, material: CLOTH}],
             [SIZE]: 'M',
             [ADJECTIVES]: 2,
             [COLORS]: 5,
@@ -4583,7 +4584,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Codpiece',
-            base_material: '1 - 6 Cloth 7 - 9 Leather 10 Metal',
+            base_material: [{weight: 6, material: CLOTH}, {weight: 3, material: LEATHER}, {weight: 1, material: METAL}],
             [SIZE]: 'T',
             [ADJECTIVES]: 3,
             [COLORS]: 9,
@@ -4594,7 +4595,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Cote',
-            base_material: '1 Leather 2 - 10 Cloth',
+            base_material: [{weight: 1, material: LEATHER}, {weight: 9, material: CLOTH}],
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 5,
@@ -4605,7 +4606,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Cotehardie',
-            base_material: '1 - 3 Leather 4 - 10 Cloth',
+            base_material: [{weight: 3, material: LEATHER}, {weight: 6, material: CLOTH}],
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 7,
@@ -4627,7 +4628,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Doublet',
-            base_material: '1 - 3 Leather 4 - 10 Cloth',
+            base_material: [{weight: 3, material: LEATHER}, {weight: 6, material: CLOTH}],
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 7,
@@ -4649,7 +4650,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Dress',
-            base_material: '1 Leather 2 - 10 Cloth',
+            base_material: [{weight: 1, material: LEATHER}, {weight: 9, material: CLOTH}],
             [SIZE]: 'L',
             [ADJECTIVES]: 2,
             [COLORS]: 9,
@@ -4660,7 +4661,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Fullclothe',
-            base_material: '1 Leather 2 - 10 Cloth',
+            base_material: [{weight: 1, material: LEATHER}, {weight: 9, material: CLOTH}],
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
@@ -4671,7 +4672,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Gamash',
-            base_material: '1 Leather 2 - 10 Cloth',
+            base_material: [{weight: 1, material: LEATHER}, {weight: 9, material: CLOTH}],
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
@@ -4682,7 +4683,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Gloves',
-            base_material: '1 - 3 Cloth 4 - 8 Leather 9 - 10 Fur',
+            base_material: [{weight: 5, material: LEATHER}, {weight: 3, material: CLOTH}, {weight: 2, material: FUR}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 4,
@@ -4715,7 +4716,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Jerkin',
-            base_material: '1 Leather 2 - 10 Cloth',
+            base_material: [{weight: 1, material: LEATHER}, {weight: 9, material: CLOTH}],
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 6,
@@ -4726,7 +4727,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Kilt',
-            base_material: '1 Leather 2 - 10 Cloth',
+            base_material: [{weight: 1, material: LEATHER}, {weight: 9, material: CLOTH}],
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
             [COLORS]: 9,
@@ -4737,7 +4738,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Liripipe',
-            base_material: '1 Leather 2 - 10 Cloth',
+            base_material: [{weight: 1, material: LEATHER}, {weight: 9, material: CLOTH}],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 5,
@@ -4748,7 +4749,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Mittens',
-            base_material: '1 - 3 Cloth 4 - 5 Leather 6 - 10 Fur',
+            base_material: [{weight: 3, material: LEATHER}, {weight: 3, material: CLOTH}, {weight: 4, material: FUR}],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 6,
@@ -4770,7 +4771,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Sash',
-            base_material: '1 Leather 2 - 10 Cloth',
+            base_material: [{weight: 1, material: LEATHER}, {weight: 9, material: CLOTH}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 8,
@@ -4781,7 +4782,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Scarf',
-            base_material: '1 - 6 Cloth 7 - 10 Fur',
+            base_material: [{weight: 6, material: CLOTH}, {weight: 4, material: FUR}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 8,
@@ -4792,7 +4793,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Shirt',
-            base_material: '1 Leather 2 - 10 Cloth',
+            base_material: [{weight: 1, material: LEATHER}, {weight: 9, material: CLOTH}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 6,
@@ -4803,7 +4804,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Surcote',
-            base_material: '1 - 3 Leather 4 - 10 Cloth',
+            base_material: [{weight: 3, material: LEATHER}, {weight: 6, material: CLOTH}],
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 8,
@@ -4836,7 +4837,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Tunic',
-            base_material: '1 Leather 2 - 10 Cloth',
+            base_material: [{weight: 1, material: LEATHER}, {weight: 9, material: CLOTH}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 6,
@@ -4847,7 +4848,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Vest',
-            base_material: '1 - 4 Leather 5 - 10 Cloth',
+            base_material: [{weight: 4, material: LEATHER}, {weight: 6, material: CLOTH}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 6,
@@ -4860,7 +4861,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Brush, Grooming',
-            base_material: '1 - 8 Wood 9 - 10 Metal',
+            base_material: [{weight: 8, material: WOOD}, {weight: 2, material: METAL}],
             [SIZE]: 'T',
             [ADJECTIVES]: 3,
             [COLORS]: 3,
@@ -4871,7 +4872,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Button',
-            base_material: '1 - 2 Ivory 3 - 10 Wood',
+            base_material: [{weight: 2, material: 'Ivory'}, {weight: 8, material: WOOD}],
             [SIZE]: 'F',
             [ADJECTIVES]: 2,
             [COLORS]: 3,
@@ -4882,7 +4883,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Comb',
-            base_material: '1 - 8 Wood 9 - 10 Metal',
+            base_material: [{weight: 8, material: WOOD}, {weight: 2, material: METAL}],
             [SIZE]: 'T',
             [ADJECTIVES]: 2,
             [COLORS]: 1,
@@ -4893,7 +4894,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Dog Collar',
-            base_material: '1 - 7 Cloth 8 - 10 Leather',
+            base_material: [{weight: 7, material: CLOTH}, {weight: 2, material: LEATHER}],
             [SIZE]: 'T',
             [ADJECTIVES]: 2,
             [COLORS]: 2,
@@ -4948,7 +4949,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Scarf',
-            base_material: '1 - 6 Wool 7 - 9 Gauze 10 Silk (see Cloth)',
+            base_material: [{weight: 6, material: 'Wool'}, {weight: 2, material: 'Gauze'}, {weight: 1, material: "Silk", subtable: CLOTH}],
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
             [COLORS]: 8,
@@ -5161,7 +5162,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Giblets',
-            base_material: '1 - 4 Chicken 5 - 7 Goose (all above 0.01 sc) 8 - 9 Other Animal (0.03 sc) 10 Other Monster (0.1 sc)',
+            base_material: [{weight: 4, material: 'Chicken', valuie: '0.01 sc'}, {weight: 3, material: 'Goose', valuie: '0.01 sc'}, {weight: 2, material: 'Animal', subtable: ANIMAL_SUBTYPE, value: '0.03 sc'}, {weight: 1, material: 'Monster', value: '0.1 sc'}],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5215,7 +5216,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Muggets',
-            base_material: '1 - 3 Calf 4 - 5 Hogs 6 - 7 Sheep (all above 0.01 sc) 8 - 9 Other Animal (0.03 sc) 10 Other Monster (0.1 sc)',
+            base_material: [{weight: 3, material: 'Calf', value: '0.01 sc'}, {weight: 2, material: 'Hog', value: '0.01 sc'}, {weight: 2, material: 'Sheep', value: '0.01 sc'}, {weight: 2, material: 'Animal', subtable: ANIMAL_SUBTYPE, value: '0.03 sc'}, {weight: 1, material: 'Monster', value: '0.1 sc'}],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5287,7 +5288,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Preserves, Fruit',
-            base_material: '3.2 sc For type Food > Fruits & Vegetables',
+            base_material: [{value: '3.2 sc', material: FRUIT_AND_VEGATABLES}],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5795,7 +5796,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Jam',
-            base_material: 'Roll again on this table for type 3 sc',
+            base_material: [{material: FRUIT_AND_VEGATABLES, exclude: 'JAM', value: '3 sc'}],
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5833,7 +5834,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Meat (1 lb) ',
-            base_material: 'Animal > Land Base 4 sc',
+            base_material: [{material: ANIMAL_LAND, value: '4 sc'}],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5842,7 +5843,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Fish (1 lb) ',
-            base_material: 'Animal > Water Base 1 sc',
+            base_material: [{material: ANIMAL_WATER, value: '1 sc'}],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5851,7 +5852,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Fowl (1 lb) ',
-            base_material: 'Animal > Air Base 2 sc',
+            base_material: [{material: ANIMAL_AIR, value: '2 sc'}],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -6037,7 +6038,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Bardiche',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -6047,7 +6048,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Battle Axe',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -6057,7 +6058,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Handaxe',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -6067,7 +6068,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Horsemans Pick',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -6077,7 +6078,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Lochaber Axe',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -6089,7 +6090,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Ahlspiess',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -6099,7 +6100,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Bill',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -6109,7 +6110,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Glaive',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -6119,7 +6120,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Guisarme',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -6129,7 +6130,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Halberd',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -6139,7 +6140,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Lance',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -6149,7 +6150,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Lucerne',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -6159,7 +6160,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Military Fork',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -6169,7 +6170,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Pike',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'H',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -6179,7 +6180,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Planson',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -6189,7 +6190,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Ranseur',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -6199,7 +6200,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Short Spear',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -6209,7 +6210,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Sovnya',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -6219,7 +6220,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Voulge',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -6229,7 +6230,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'War-scythe',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -6252,7 +6253,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Cinquedea',
-            base_material: 'Hilt: Leather & Wood Blade: Metal',
+            base_material: [{label: 'Hilt', materials: [LEATHER, WOOD]}, {label: 'Blade', material: METAL}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
@@ -6263,7 +6264,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Dagger',
-            base_material: 'Hilt: Leather & Wood Blade: Metal',
+            base_material: [{label: 'Hilt', materials: [LEATHER, WOOD]}, {label: 'Blade', material: METAL}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
@@ -6274,7 +6275,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Knife',
-            base_material: 'Hilt: Leather & Wood Blade: Metal',
+            base_material: [{label: 'Hilt', materials: [LEATHER, WOOD]}, {label: 'Blade', material: METAL}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
@@ -6285,7 +6286,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Stiletto',
-            base_material: 'Hilt: Leather & Wood Blade: Metal',
+            base_material: [{label: 'Hilt', materials: [LEATHER, WOOD]}, {label: 'Blade', material: METAL}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
@@ -6296,7 +6297,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Dusack',
-            base_material: 'Hilt: Leather & Wood Blade: Metal',
+            base_material: [{label: 'Hilt', materials: [LEATHER, WOOD]}, {label: 'Blade', material: METAL}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
@@ -6307,7 +6308,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Katzbalger',
-            base_material: 'Hilt: Leather & Wood Blade: Metal',
+            base_material: [{label: 'Hilt', materials: [LEATHER, WOOD]}, {label: 'Blade', material: METAL}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
@@ -6318,7 +6319,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Scourge',
-            base_material: 'Handle: 1 - 3 Wood 4 Metal 5 - 10 Leather',
+            base_material: [{weight: 3, material: WOOD}, {weight: 1, material: METAL}, {weight: 6, material: LEATHER}],
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
@@ -6331,7 +6332,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Arming Sword',
-            base_material: 'Hilt: Leather & Wood Blade: Metal',
+            base_material: [{label: 'Hilt', materials: [LEATHER, WOOD]}, {label: 'Blade', material: METAL}],
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
@@ -6342,7 +6343,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Court Sword',
-            base_material: 'Hilt: Leather & Wood Blade: Metal',
+            base_material: [{label: 'Hilt', materials: [LEATHER, WOOD]}, {label: 'Blade', material: METAL}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
@@ -6353,7 +6354,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Estoc',
-            base_material: 'Hilt: Leather & Wood Blade: Metal',
+            base_material: [{label: 'Hilt', materials: [LEATHER, WOOD]}, {label: 'Blade', material: METAL}],
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
@@ -6364,7 +6365,7 @@ module.exports = {
         {
             weight: 1,
             entry: "Executioner's Sword ",
-            base_material: 'Hilt: Leather & Wood Blade: Metal',
+            base_material: [{label: 'Hilt', materials: [LEATHER, WOOD]}, {label: 'Blade', material: METAL}],
             [SIZE]: 'H',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
@@ -6375,7 +6376,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Falchion',
-            base_material: 'Hilt: Leather & Wood Blade: Metal',
+            base_material: [{label: 'Hilt', materials: [LEATHER, WOOD]}, {label: 'Blade', material: METAL}],
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
@@ -6386,7 +6387,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Koncerz',
-            base_material: 'Hilt: Leather & Wood Blade: Metal',
+            base_material: [{label: 'Hilt', materials: [LEATHER, WOOD]}, {label: 'Blade', material: METAL}],
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
@@ -6397,7 +6398,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Longsword',
-            base_material: 'Hilt: Leather & Wood Blade: Metal',
+            base_material: [{label: 'Hilt', materials: [LEATHER, WOOD]}, {label: 'Blade', material: METAL}],
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
@@ -6408,7 +6409,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Messer',
-            base_material: 'Hilt: Leather & Wood Blade: Metal',
+            base_material: [{label: 'Hilt', materials: [LEATHER, WOOD]}, {label: 'Blade', material: METAL}],
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
@@ -6419,7 +6420,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Rapier',
-            base_material: 'Hilt: Leather & Wood Blade: Metal',
+            base_material: [{label: 'Hilt', materials: [LEATHER, WOOD]}, {label: 'Blade', material: METAL}],
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
@@ -6430,7 +6431,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Sabre',
-            base_material: 'Hilt: Leather & Wood Blade: Metal',
+            base_material: [{label: 'Hilt', materials: [LEATHER, WOOD]}, {label: 'Blade', material: METAL}],
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
@@ -6441,7 +6442,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Schaivona',
-            base_material: 'Hilt: Leather & Wood Blade: Metal',
+            base_material: [{label: 'Hilt', materials: [LEATHER, WOOD]}, {label: 'Blade', material: METAL}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
@@ -6452,7 +6453,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Zweihander',
-            base_material: 'Hilt: Leather & Wood Blade: Metal',
+            base_material: [{label: 'Hilt', materials: [LEATHER, WOOD]}, {label: 'Blade', material: METAL}],
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
@@ -6465,7 +6466,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Bec De Corbin',
-            base_material: 'Metal & Wood',
+            base_material: [METAL, WOOD],
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
@@ -6476,7 +6477,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Bludgeon',
-            base_material: '1 - 6 Wood 7 - 10 Metal',
+            base_material: [{weight: 6, material: WOOD}, {weight: 3, material: METAL}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 6,
@@ -6498,7 +6499,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Mace',
-            base_material: 'Handle: 1 - 7 Wood 8 - 10 Metal Head: Metal',
+            base_material: [{label: 'Handle', materials: [{weight: 7, material: WOOD}, {weight: 2, material: METAL}]}, {label: 'Head', material: METAL}],
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
@@ -6509,7 +6510,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Maul',
-            base_material: 'Handle: 1 - 7 Wood 8 - 10 Metal Head: 1 - 7 Wood 8 - 10 Metal',
+            base_material: [{label: 'Handle', materials: [{weight: 7, material: WOOD}, {weight: 2, material: METAL}]}, {label: 'Head', materials: [{weight: 7, material: WOOD}, {weight: 3, material: METAL}]}],
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
@@ -6520,7 +6521,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Goedendag',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
@@ -6531,7 +6532,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Great Hammer',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'H',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
@@ -6542,7 +6543,7 @@ module.exports = {
         {
             weight: 1,
             entry: "Peasant's Flail",
-            base_material: 'Handle: 1 - 7 Wood 8 - 10 Metal Head: 1 - 7 Wood 8 - 10 Metal',
+            base_material: [{label: 'Handle', materials: [{weight: 7, material: WOOD}, {weight: 2, material: METAL}]}, {label: 'Head', materials: [{weight: 7, material: WOOD}, {weight: 3, material: METAL}]}],
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
@@ -6553,7 +6554,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Quarterstaff',
-            base_material: '1 - 8 Wood 9 - 10 Metal',
+            base_material: [{weight: 8, material: WOOD}, {weight: 2, material: METAL}],
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
@@ -6564,7 +6565,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'War Flail',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 5,
@@ -6575,7 +6576,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'War Hammer',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
@@ -6588,7 +6589,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Javelin',
-            base_material: '1 - 8 Wood 9 - 10 Metal',
+            base_material: [{weight: 8, material: WOOD}, {weight: 2, material: METAL}],
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 7,
@@ -6598,7 +6599,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Throwing Axe',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
@@ -6608,7 +6609,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Throwing Knife',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
@@ -6620,7 +6621,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Bellybow',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
@@ -6631,7 +6632,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Composite Bow',
-            base_material: '1 - 3 Wood 4 - 9 Horn 10 Metal',
+            base_material: [{weight: 3, material: WOOD}, {weight: 6, material: 'Horn'}, {weight: 1, material: METAL}],
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 7,
@@ -6642,7 +6643,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Crossbow',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 5,
@@ -6653,7 +6654,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Latchet Crossbow',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 6,
@@ -6664,7 +6665,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Longbow',
-            base_material: '1 - 9 Wood 10 Metal',
+            base_material: [{weight: 9, material: WOOD}, {weight: 1, material: METAL}],
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 8,
@@ -6675,7 +6676,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Sling',
-            base_material: '1 - 3 Cloth 4 - 6 Twine 7 - 10 Thread',
+            base_material: [{weight: 3, material: CLOTH}, {weight: 2, material: 'Twine'}, {weight: 3, material: 'Thread'}],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 8,
@@ -6686,7 +6687,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Warbow',
-            base_material: '1 - 6 Wood 7 - 10 Metal',
+            base_material: [{weight: 6, material: WOOD}, {weight: 3, material: METAL}],
             [SIZE]: 'H',
             [ADJECTIVES]: 1,
             [COLORS]: 9,
@@ -6699,11 +6700,11 @@ module.exports = {
         {
             weight: 3,
             entry: 'Fire Lance',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'L',
             [ADJECTIVES]: 2,
-            'Weapon [COLORS]': 4,
-            'Explosion [COLORS]': 8,
+            'Weapon Colors': 4,
+            'Explosion Colors': 8,
             [ENGRAVINGS]: 4,
             [GEMS]: 0,
             [QUIRKS]: 3
@@ -6711,11 +6712,11 @@ module.exports = {
         {
             weight: 1,
             entry: 'Hakenbuchse',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'L',
             [ADJECTIVES]: 2,
-            'Weapon [COLORS]': 5,
-            'Explosion [COLORS]': 3,
+            'Weapon Colors': 5,
+            'Explosion Colors': 3,
             [ENGRAVINGS]: 6,
             [GEMS]: 1,
             [QUIRKS]: 3
@@ -6723,7 +6724,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Handgonne',
-            base_material: 'Wood & Metal',
+            base_material: [WOOD, METAL],
             [SIZE]: 'M',
             [ADJECTIVES]: 2,
             'Weapon [COLORS]': 6,
@@ -6763,12 +6764,12 @@ module.exports = {
         { weight: 1, entry: EXOTIC_CLOTH, value: 0 }
     ],
     [EXOTIC_CLOTH]: [
-        { weight: 1, entry: 'Aegis Cloth', value: 0 },
-        { weight: 1, entry: 'Brisingamen Cloth', value: 0 },
-        { weight: 1, entry: 'Cloth of Nessus', value: 0 },
-        { weight: 1, entry: 'Babr-e Bayan Cloth', value: 0 },
+        { weight: 1, entry: 'Aegis CLOTH', value: 0 },
+        { weight: 1, entry: 'Brisingamen CLOTH', value: 0 },
+        { weight: 1, entry: 'CLOTH of Nessus', value: 0 },
+        { weight: 1, entry: 'Babr-e Bayan CLOTH', value: 0 },
         { weight: 1, entry: 'Spidersilk', value: 0 },
-        { weight: 1, entry: 'Woven Metal (See Metal)', value: 0 }
+        { weight: 1, entry: 'Woven METAL (See METAL)', value: 0 }
     ],
     [FUR_OR_LEATHER]: [
         { weight: 1, entry: FUR },
@@ -6825,13 +6826,13 @@ module.exports = {
         { weight: 6, entry: 'Orichalcum', value: 0 },
         { weight: 6, entry: 'Plutulium', value: 0 },
         { weight: 6, entry: 'Red Mercury', value: 0 },
-        { weight: 5, entry: 'Star Metal', value: 0 },
+        { weight: 5, entry: 'Star METAL', value: 0 },
         { weight: 5, entry: 'Terrelium', value: 0 },
         { weight: 5, entry: 'Versamina', value: 0 },
         { weight: 5, entry: 'Volcanic Glass', value: 0 },
         {
             weight: 5,
-            entry: 'Enchanted Stone (See Exotic Stone/Earthwork)',
+            entry: 'Enchanted Stone (See Exotic STONE_EARTHWORK)',
             value: 0
         }
     ],
@@ -6845,7 +6846,7 @@ module.exports = {
         { weight: 5, entry: 'Cow' },
         { weight: 4, entry: 'Goat' },
         { weight: 4, entry: 'Sheep' },
-        { weight: 3, entry: 'Other Common Animal (See Leather)' },
+        { weight: 3, entry: 'Other Common Animal (See LEATHER)' },
         { weight: 1, entry: 'Other Animal' },
         { weight: 1, entry: 'Monster' },
         { weight: 1, entry: 'Sentient Person (see Race of Origin)' }
@@ -6854,7 +6855,7 @@ module.exports = {
         { weight: 5, entry: 'Cow' },
         { weight: 4, entry: 'Goat' },
         { weight: 4, entry: 'Sheep' },
-        { weight: 3, entry: 'Other Common Animal (See Leather)' },
+        { weight: 3, entry: 'Other Common Animal (See LEATHER)' },
         { weight: 1, entry: 'Other Animal' },
         { weight: 1, entry: 'Monster' },
         { weight: 1, entry: 'Sentient Person (see Race of Origin)' }
@@ -6984,7 +6985,7 @@ module.exports = {
         { weight: 1, entry: 'Tree of Jiva and Atman', value: 0 },
         { weight: 1, entry: 'Tree of Life', value: 0 },
         { weight: 1, entry: 'Tree of Paradise', value: 0 },
-        { weight: 1, entry: 'True Maypole Wood', value: 0 },
+        { weight: 1, entry: 'True Maypole WOOD', value: 0 },
         { weight: 1, entry: 'Tuba', value: 0 },
         { weight: 1, entry: 'Tulasi', value: 0 },
         { weight: 1, entry: 'Uekera', value: 0 },
@@ -6992,7 +6993,7 @@ module.exports = {
         { weight: 1, entry: 'Weirdwood', value: 0 },
         { weight: 1, entry: 'White Tree', value: 0 },
         { weight: 1, entry: 'Wishing Tree', value: 0 },
-        { weight: 1, entry: 'Wood from the Five Trees', value: 0 },
+        { weight: 1, entry: 'WOOD from the Five Trees', value: 0 },
         { weight: 1, entry: 'World Tree', value: 0 },
         { weight: 1, entry: 'Zapis', value: 0 },
         { weight: 1, entry: 'Zaqqum', value: 0 }
@@ -7067,7 +7068,7 @@ module.exports = {
         { entry: 'Thread', value: '0.009 sc' },
         { entry: 'Twine', value: '0.02 sc' },
         { entry: 'Whale Oil', value: '0.0097 sc' },
-        { entry: 'Wicker (see Wood)', value: '0.08 sc', subtable: 'See Wood subtable' },
+        { entry: {material: 'Wicker', subtable: WOOD}, value: '0.08 sc', subtable: 'See WOOD subtable' },
         { entry: 'Wool', value: '0.48 sc' }
     ]
 }

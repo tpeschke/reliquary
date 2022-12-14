@@ -74,7 +74,12 @@ module.exports = {
     ENGRAVINGS: 'Engravings',
     STITCHINGS: 'Stitchings',
     GEMS: 'Gems',
-    QUIRKS: 'Quirks'
+    QUIRKS: 'Quirks',
+    RACE_OF_ORIGIN: 'Race of Origin',
+    ANIMAL_SUBTYPE: 'Animal Subtype',
+    ANIMAL_AIR: 'Animal Air',
+    ANIMAL_LAND: 'Animal Land',
+    ANIMAL_WATER: 'Animal Water'
     // Other
     
 }
