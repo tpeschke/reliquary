@@ -1,4 +1,3 @@
-const e = require('express');
 const { ROLL_TWICE } = require('./constants');
 const { item_tables_with_subtables } = require('./tables');
 const tables = require('./tables')
@@ -37,44 +36,16 @@ function getItemFromTable(table, item) {
     }
 }
 
-function getItemFromSpecificTable(table, item) {
-    for (let i = 0; i < table.length; i++) {
-        if (table[i].entry === item || table[i].material === item) {
-            return table[i]
-        }
-    }
-}
-
 function itemDetailsFromChanceTables(subtable) {
     let itemToGet = chanceTables[subtable][getRandomIndex(chanceTables[subtable].length)]
     return getItemFromTable(subtable, itemToGet)
 }
 
-function buildChanceTablesAndRollOnThem(tableArray) {
-    let chanceTable = []
-    tableArray.forEach(entry => {
-        for (let i = 0; i < entry.weight; i++) {
-            if (entry.entry) {
-                chanceTable.push(entry.entry)
-            } else if (entry.material) {
-                chanceTable.push(entry.material)
-            }
-        }
-    })
-
-    return chanceTable[getRandomIndex(chanceTable.length)]
-}
-
-function convertMaterial(itemObject) {
-    if (itemObject.base_material) {
-
-        // [{weight: 7, material: METAL}, {weight: 2, material: CLOTH}, {weight: 1, material: 'both'}]
-        // [{weight: 2, material: METAL}, {weight: 2, material: CLOTH}, {weight: 3, material: LEATHER}, {weight: 1, material: 'Two'}, {weight: 1, material: 'all three'}]
-        // exotic materials
-        // subtables
-
-        // if substance isn't on the OTHER_MATERIALS table
+function changeSCStringToNumber(scString) {
+    if (isNaN(scString)) {
+        return +scString.split('sc')[0].trim()
     }
+    return scString
 }
 
 module.exports = {
@@ -97,20 +68,25 @@ module.exports = {
         let itemObject = {}
         const table = chanceTables.start[getRandomIndex(chanceTables.start.length)]
         itemObject.table = table
+        
+        console.log(table)
+        // roll twice
 
         itemObject = { ...itemObject, ...getBaseItem(table) }
 
-        // roll twice
-
-        // replace or subtype for base materials
-
-        // if no base_material & value, send it
-        // if no base_material but it has a value, do details and then send it
-
-        convertMaterial(itemObject)
+        if (itemObject.base_material) {
+            itemObject.base_material = handleMaterials(itemObject.base_material)
+            // exotic materials
+            // subtables
+        } else if (!itemObject.base_material && itemObject.value) {
+            itemObject.value = changeSCStringToNumber(itemObject.value)
+        } else {
+            console.log('something went wrong:', itemObject)
+        }
 
         // if value = 0, do details, then return 'priceless'
 
+        // trim down final item
         res.send(itemObject)
     },
     getChanceTables: (req, res) => {
@@ -118,14 +94,22 @@ module.exports = {
     },
     runTests: () => {
         let itemArray = [
-            {
-                weight: 2,
-                entry: 'Basket, Medium',
-                base_material: [{weight: 1, material: 'Metal'}, {weight: 1, material: 'Cloth'}, {weight: 3, material: 'BOTH'}],
-                Size: 'S',
-                Adjectives: 2,
-                Colors: 1
-            },
+            // {
+            //     weight: 2,
+            //     entry: 'Basket, Medium',
+            //     base_material: [{weight: 2, material: 'Metal'}, {weight: 2, material: 'Cloth'}, {weight: 3, material: 'Leather'}, {weight: 1, material: 'TWO'}, {weight: 1, material: 'ALL THREE'}],
+            //     Size: 'S',
+            //     Adjectives: 2,
+            //     Colors: 1
+            // },
+            // {
+            //     weight: 2,
+            //     entry: 'Basket, Medium',
+            //     base_material: [{weight: 1, material: 'Metal'}, {weight: 1, material: 'Cloth'}, {weight: 3, material: 'BOTH'}],
+            //     Size: 'S',
+            //     Adjectives: 2,
+            //     Colors: 1
+            // },
             // {
             //     weight: 2,
             //     entry: 'Basket, Medium',
@@ -272,27 +256,36 @@ module.exports = {
             // },
         ]
 
-        itemArray.forEach(item => {
-            handleMaterials(item)
-        })
     }
 }
 
-function handleMaterials(item) {
+function handleMaterials(base_material) {
     let finalItem = {
         materials: []
     }
 
-    const stringObjectOrArray = checkIfStringObjectOrArray(item.base_material)
-    if (stringObjectOrArray === 'array' && !item.base_material[0].weight) {
-        item.base_material.forEach(base_material => {
-            finalItem.materials.push(sortItems(base_material))
+    const stringObjectOrArray = checkIfStringObjectOrArray(base_material)
+    if (stringObjectOrArray === 'array' && !base_material[0].weight) {
+        base_material.forEach(base_material => {
+            const itemArray = sortItems(base_material)
+            isArray = Array.isArray(itemArray)
+            if (isArray) {
+                finalItem.materials = [...finalItem.materials, ...itemArray]
+            } else {
+                finalItem.materials.push(sortItems(base_material))
+            }
         })
     } else {
-        finalItem.materials.push(sortItems(item.base_material))
+        const itemArray = sortItems(base_material)
+        isArray = Array.isArray(itemArray)
+        if (isArray) {
+            finalItem.materials = [...finalItem.materials, ...itemArray]
+        } else {
+            finalItem.materials.push(sortItems(base_material))
+        }
     }
 
-    console.log(finalItem.materials)
+    return finalItem.materials
 }
 
 function sortItems(base_material) {
@@ -315,13 +308,6 @@ function checkIfStringObjectOrArray(variable) {
         return 'object'
     }
     return 'none of the above'
-}
-
-function changeSCStringToNumber(scString) {
-    if (isNaN(scString)) {
-        return +scString.split('sc')[0].trim()
-    }
-    return scString
 }
 
 function getAverageFromMaterialArray(subMaterials) {
@@ -401,9 +387,20 @@ function handleChanceOfMaterial(itemArray) {
     })
 
     let item = chanceArray[getRandomIndex(chanceArray.length)]
-    console.log(item)
     if (item === 'BOTH') {
-        
+        return [handleSingleMaterial(itemArray[0].material), handleSingleMaterial(itemArray[1].material)]
+    } else if (item === 'TWO') {
+        let itemOne = chanceArray[getRandomIndex(chanceArray.length)]
+        let itemTwo = chanceArray[getRandomIndex(chanceArray.length)]
+        while (itemOne === 'TWO' || itemOne === 'ALL THREE') {
+            itemOne = chanceArray[getRandomIndex(chanceArray.length)]
+        }
+        while (itemTwo === 'TWO' || itemTwo === 'ALL THREE' || itemTwo === itemOne) {
+            itemTwo = chanceArray[getRandomIndex(chanceArray.length)]
+        }
+        return [handleSingleMaterial(itemOne), handleSingleMaterial(itemTwo)]
+    } else if (item === 'ALL THREE') {
+        return [handleSingleMaterial(itemArray[0].material), handleSingleMaterial(itemArray[1].material), handleSingleMaterial(itemArray[2].material)]
     } else {
         return handleSingleMaterial(item)
     }
