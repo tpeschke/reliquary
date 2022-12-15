@@ -1,4 +1,4 @@
-const { ROLL_TWICE, ADJECTIVES, COLORS, WEAPON_COLORS, EXPLOSION_COLORS, ENGRAVINGS, STITCHINGS, QUIRKS, SUBJECT, GEMS, RAW_GOODS } = require('./constants');
+const { ROLL_TWICE, ADJECTIVES, COLORS, WEAPON_COLORS, EXPLOSION_COLORS, ENGRAVINGS, STITCHINGS, QUIRKS, SUBJECT, GEMS, RAW_GOODS, ANIMAL_SUBTYPE, PERSONS, EVENTS, BODY_PARTS } = require('./constants');
 const { item_tables_with_subtables } = require('./tables');
 const tables = require('./tables')
 
@@ -30,7 +30,7 @@ function getBaseItem(table) {
 function getItemFromTable(table, item) {
     const tableArray = tables[table]
     for (let i = 0; i < tableArray.length; i++) {
-        if (tableArray[i].entry === item || tableArray[i].material === item || tableArray[i].detail === item) {
+        if (tableArray[i].entry === item || tableArray[i].material === item || tableArray[i].detail === item || tableArray[i].subject === item) {
             return tableArray[i]
         }
     }
@@ -65,6 +65,8 @@ module.exports = {
                         chanceTables[table].push(entry.material)
                     } else if (entry.detail) {
                         chanceTables[table].push(entry.detail)
+                    } else if (entry.subject) {
+                        chanceTables[table].push(entry.subject)
                     }
                 }
             })
@@ -80,7 +82,7 @@ module.exports = {
         itemObject.table = table
 
         rawObject = { ...rawObject, ...getBaseItem(table) }
-        if (table === RAW_GOODS) { console.log(rawObject)}
+        if (table === RAW_GOODS) { console.log(rawObject) }
         itemObject.entry = rawObject.entry
 
         if (rawObject.base_material) {
@@ -108,21 +110,26 @@ module.exports = {
                     tableToLookAt = COLORS
                 }
 
-                console.log(tableToLookAt, table)
-                let detailNumber = Math.floor(getRandomNumber(rawObject[tableToLookAt]) / rawObject[tableToLookAt])
-                
+                let detailNumber = Math.floor(getRandomNumber(10) / rawObject[tableToLookAt])
+
                 if (detailNumber >= 1) {
                     itemObject[tableToLookAt] = generateDetails(tableToLookAt, detailNumber)
                     startingValue += .05 * itemObject[tableToLookAt].length
                 }
-            } else if (table === ENGRAVINGS || table === STITCHINGS || table === GEMS) {
-
             } else if (table === SUBJECT) {
+
+            } else if (table === ENGRAVINGS) {
+
+            } else if (table === STITCHINGS) {
+
+            } else if (table === GEMS) {
 
             } else {
                 console.log(table)
             }
         }
+
+        // size
 
         itemObject.value = startingValue
 
@@ -146,8 +153,40 @@ module.exports = {
         // { weight: 1, detail: 'Subject of Infamy (reroll)' }
 
         // console.log(handleMaterials('Animal'))
-        console.log(generateDetails('Adjectives', 15))
+        console.log(generateSubject())
     }
+}
+
+function generateSubject() {
+    let subject = {}
+    const possibleSubjects = detailInfoFromChanceTables('Subject')
+    subject.focalpoint = possibleSubjects.subject
+    let valueMultiplier = 0
+
+    for (const table in possibleSubjects) {
+        let detailNumber = Math.floor(getRandomNumber(10) / +possibleSubjects[table])
+
+        if (detailNumber >= 1) {
+            if (table === COLORS || table === ADJECTIVES) {
+                subject[table] = generateDetails(table, detailNumber)
+                valueMultiplier += subject[table].length
+            } else if (table === 'secondary subject') {
+
+            } else if (table === ANIMAL_SUBTYPE) {
+
+            } else if (table === PERSONS) {
+
+            } else if (table === EVENTS) {
+
+            } else if (table === BODY_PARTS) {
+
+            }
+        }
+    }
+
+    subject.valueMultiplier = valueMultiplier
+
+    return subject
 }
 
 function generateDetails(detailTable, numberOfDetails) {
