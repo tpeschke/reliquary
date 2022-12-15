@@ -71,6 +71,8 @@ module.exports = {
     SIZE: 'Size',
     ADJECTIVES: 'Adjectives',
     COLORS: 'Colors',
+    WEAPON_COLORS: 'Weapon Colors',
+    EXPLOSION_COLORS: 'Explosion Colors',
     ENGRAVINGS: 'Engravings',
     STITCHINGS: 'Stitchings',
     GEMS: 'Gems',
@@ -79,7 +81,23 @@ module.exports = {
     ANIMAL_SUBTYPE: 'Animal Subtype',
     ANIMAL_AIR: 'Animal Air',
     ANIMAL_LAND: 'Animal Land',
-    ANIMAL_WATER: 'Animal Water'
+    ANIMAL_WATER: 'Animal Water',
+    BODY_PARTS: 'Body Parts',
+    BODY_HEAD: 'Head Parts',
+    BODY_ARM: 'Arm Parts',
+    BODY_BODY: 'Body Parts',
+    BODY_LEGS: 'Leg Parts',
+    ENGRAVING_TYPE_WITH_GEMS: 'Engraving Type with Gems',
+    ENGRAVING_TYPE_WITH_NO_GEMS: 'Engraving Type Without Gems',
+    STITCHING_TYPE: 'Stitching Type',
+    SUBJECT: 'Subject',
+    PERSONS: 'Persons',
+    EVENTS: 'Events',
+    EVENTS_TIMEPERIOD: 'Time Period',
+    EVENTS_SUBJECT: 'Event Subject',
+    GEM_SIZE: 'Gem Size',
+    GEM_SHAPE: 'Gem Shape',
+    GEM_TYPE: 'Gem Type'
     // Other
     
 }

@@ -84,6 +84,8 @@ module.exports = {
             console.log('something went wrong:', itemObject)
         }
 
+        // get starting value
+
         // if value = 0, do details, then return 'priceless'
 
         // trim down final item
@@ -93,169 +95,17 @@ module.exports = {
         res.send(chanceTables)
     },
     runTests: () => {
-        let itemArray = [
-            // {
-            //     weight: 2,
-            //     entry: 'Basket, Medium',
-            //     base_material: [{weight: 2, material: 'Metal'}, {weight: 2, material: 'Cloth'}, {weight: 3, material: 'Leather'}, {weight: 1, material: 'TWO'}, {weight: 1, material: 'ALL THREE'}],
-            //     Size: 'S',
-            //     Adjectives: 2,
-            //     Colors: 1
-            // },
-            // {
-            //     weight: 2,
-            //     entry: 'Basket, Medium',
-            //     base_material: [{weight: 1, material: 'Metal'}, {weight: 1, material: 'Cloth'}, {weight: 3, material: 'BOTH'}],
-            //     Size: 'S',
-            //     Adjectives: 2,
-            //     Colors: 1
-            // },
-            // {
-            //     weight: 2,
-            //     entry: 'Basket, Medium',
-            //     base_material: [{label: 'Hilt', materials: ['Leather', 'Wood']}, {label: 'Blade', material: 'Metal'}],
-            //     Size: 'S',
-            //     Adjectives: 2,
-            //     Colors: 1
-            // },
-            // {
-            //     weight: 2,
-            //     entry: 'Basket, Medium',
-            //     base_material: [[{weight: 6, material: 'Metal'}, {weight: 4, material: 'Wood'}], 'Glass'],
-            //     Size: 'S',
-            //     Adjectives: 2,
-            //     Colors: 1
-            // },
-            // {
-            //     weight: 2,
-            //     entry: 'Basket, Medium',
-            //     base_material: [{weight: 1, material: 'Wood'}, {weight: 1, material: 'Metal'}, {weight: 1, material: 'Leather'}, {weight: 3, material: 'Waxed Cloth', subtables: ['Wax', 'Cloth']}],
-            //     Size: 'S',
-            //     Adjectives: 2,
-            //     Colors: 1
-            // },
-            // {
-            //     weight: 2,
-            //     entry: 'Basket, Medium',
-            //     base_material: [{weight: 4, material: 'Chicken'}, {weight: 3, material: 'Goose'}, {weight: 2, material: 'Animal', value: '0.03 sc'}, {weight: 1, material: 'Monster', value: '0.1 sc'}],
-            //     Size: 'S',
-            //     Adjectives: 2,
-            //     Colors: 1
-            // },
-            // {
-            //     weight: 2,
-            //     entry: 'Basket, Medium',
-            //     base_material: [{ material: 'Ivory' }, [{ weight: 3, material: 'Cloth' }, { weight: 6, material: 'Leather' }]],
-            //     Size: 'S',
-            //     Adjectives: 2,
-            //     Colors: 1
-            // },
-            // {
-            //     weight: 2,
-            //     entry: 'Basket, Medium',
-            //     base_material: [{ label: 'Cover', materials: [{ weight: 1, material: 'Metal' }, { weight: 5, material: 'Cloth' }, { weight: 2, material: 'Leather' }, { weight: 1, material: 'Wood' }] }, { label: 'Interior', materials: 'Paper Product' }],
-            //     Size: 'S',
-            //     Adjectives: 2,
-            //     Colors: 1
-            // },
-            // {
-            //     weight: 2,
-            //     entry: 'Basket, Medium',
-            //     base_material: [{label: 'Hilt', material: 'Wicker'}],
-            //     Size: 'S',
-            //     Adjectives: 2,
-            //     Colors: 1
-            // },
-            // {
-            //     weight: 2,
-            //     entry: 'Basket, Medium',
-            //     base_material: ['Metal', 'Tallow'],
-            //     Size: 'S',
-            //     Adjectives: 2,
-            //     Colors: 1
-            // },
-            // {
-            //     weight: 2,
-            //     entry: 'Basket, Medium',
-            //     base_material: ['Metal'],
-            //     Size: 'S',
-            //     Adjectives: 2,
-            //     Colors: 1
-            // },
-            // {
-            //     weight: 2,
-            //     entry: 'Basket, Medium',
-            //     base_material: ['Metal', [{ weight: 1, material: 'Metal' }, { weight: 1, material: 'Leather' }]],
-            //     Size: 'S',
-            //     Adjectives: 2,
-            //     Colors: 1
-            // },
-            // {
-            //     weight: 2,
-            //     entry: 'Basket, Medium',
-            //     base_material: [{ weight: 1, material: 'Metal' }, { weight: 1, material: 'Leather' }],
-            //     Size: 'S',
-            //     Adjectives: 2,
-            //     Colors: 1
-            // },
-            // {
-            //     weight: 2,
-            //     entry: 'Basket, Medium',
-            //     base_material: { material: 'Waxed Cloth' },
-            //     Size: 'S',
-            //     Adjectives: 2,
-            //     Colors: 1
-            // },
-            // {
-            //     weight: 2,
-            //     entry: 'Basket, Medium',
-            //     base_material: {label: 'Hilt', material: 'Wicker'},
-            //     Size: 'S',
-            //     Adjectives: 2,
-            //     Colors: 1
-            // },
-            // {
-            //     weight: 2,
-            //     entry: 'Basket, Medium',
-            //     base_material: {label: 'Hilt', material: 'Tallow'},
-            //     Size: 'S',
-            //     Adjectives: 2,
-            //     Colors: 1
-            // },
-            // {
-            //     weight: 2,
-            //     entry: 'Basket, Medium',
-            //     base_material: { label: 'Hilt', material: 'Metal' },
-            //     Size: 'S',
-            //     Adjectives: 2,
-            //     Colors: 1
-            // },
-            // {
-            //     weight: 2,
-            //     entry: 'Basket, Medium',
-            //     base_material: 'Wicker',
-            //     Size: 'S',
-            //     Adjectives: 2,
-            //     Colors: 1
-            // },
-            // {
-            //     weight: 2,
-            //     entry: 'Basket, Medium',
-            //     base_material: 'Tallow',
-            //     Size: 'S',
-            //     Adjectives: 2,
-            //     Colors: 1
-            // },
-            // {
-            //     weight: 2,
-            //     entry: 'Basket, Medium',
-            //     base_material: 'Metal',
-            //     Size: 'S',
-            //     Adjectives: 2,
-            //     Colors: 1
-            // },
-        ]
+        // let itemArray = [
+        //     'Animal'
+        // ]
 
+        // { weight: 1, detail: 'Related to', subtable: RACE_OF_ORIGIN },
+        // { weight: 1, detail: 'TWO' }
+        // { weight: 1, detail: 'THREE' }
+        // Weapon & Explosion Colors
+        // { weight: 1, detail: 'Subject of Infamy (reroll)' }
+        // { weight: 1, detail: 'Chimera' }
+        console.log(handleMaterials('Animal'))
     }
 }
 
