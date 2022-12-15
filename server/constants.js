@@ -15,7 +15,7 @@ module.exports = {
     MEDICAL_TOOLS: 'Medical Tools',
     MUSICAL_INSTRUMENTS: 'Musical Instruments',
     PERSONAL_CONTAINERS: 'Personal Containers',
-    RAW_GOODS: 'Raw Goods',
+    RAW_GOODS: 'Raw Good',
     RELIGIOUS_ITEMS: 'Religious Items',
     SHIELDS: 'Shields',
     TRADE_TOOLS: 'Trade Tools',

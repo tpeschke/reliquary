@@ -126,8 +126,6 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 4,
-            [ENGRAVINGS]: 0,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -148,8 +146,6 @@ module.exports = {
             [SIZE]: 'D',
             [ADJECTIVES]: 2,
             [COLORS]: 2,
-            [ENGRAVINGS]: 0,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -170,8 +166,6 @@ module.exports = {
             [SIZE]: 'D',
             [ADJECTIVES]: 1,
             [COLORS]: 9,
-            [ENGRAVINGS]: 0,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -182,7 +176,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 4,
             [ENGRAVINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 1
         }
     ],
@@ -642,8 +635,7 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [ENGRAVINGS]: 1,
-            [QUIRKS]: 0
+            [ENGRAVINGS]: 1
         },
         {
             weight: 2,
@@ -740,8 +732,7 @@ module.exports = {
             value: '141 sc',
             [SIZE]: 'D',
             [ADJECTIVES]: 1,
-            [COLORS]: 2,
-            [QUIRKS]: 0
+            [COLORS]: 2
         },
         {
             weight: 5,
@@ -776,8 +767,7 @@ module.exports = {
             value: '0.02 sc',
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
-            [COLORS]: 1,
-            [QUIRKS]: 0
+            [COLORS]: 1
         },
         {
             weight: 5,
@@ -794,8 +784,7 @@ module.exports = {
             value: '0.6 sc',
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
-            [COLORS]: 1,
-            [QUIRKS]: 0
+            [COLORS]: 1
         },
         {
             weight: 5,
@@ -812,8 +801,7 @@ module.exports = {
             value: '1 sc',
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
-            [COLORS]: 1,
-            [QUIRKS]: 0
+            [COLORS]: 1
         },
         {
             weight: 5,
@@ -821,8 +809,7 @@ module.exports = {
             base_material: [{ weight: 3, material: 'Hemp Oil' }, { weight: 4, material: 'Linseed Oil' }, { weight: 2, material: 'Whale Oil' }],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
-            [COLORS]: 4,
-            [QUIRKS]: 0
+            [COLORS]: 4
         },
         {
             weight: 5,
@@ -830,8 +817,7 @@ module.exports = {
             value: '4 sc',
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
-            [COLORS]: 3,
-            [QUIRKS]: 0
+            [COLORS]: 3
         },
         {
             weight: 3,
@@ -848,8 +834,7 @@ module.exports = {
             value: '1 sc',
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
-            [COLORS]: 3,
-            [QUIRKS]: 0
+            [COLORS]: 3
         },
         {
             weight: 5,
@@ -866,8 +851,7 @@ module.exports = {
             value: '0.05 sc',
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
-            [COLORS]: 4,
-            [QUIRKS]: 0
+            [COLORS]: 4
         },
         {
             weight: 5,
@@ -875,8 +859,7 @@ module.exports = {
             value: '1.3 sc',
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
-            [COLORS]: 4,
-            [QUIRKS]: 0
+            [COLORS]: 4
         },
         {
             weight: 5,
@@ -884,8 +867,7 @@ module.exports = {
             base_material: WAX,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
-            [COLORS]: 9,
-            [QUIRKS]: 0
+            [COLORS]: 9
         },
         {
             weight: 5,
@@ -893,8 +875,7 @@ module.exports = {
             value: '1 sc',
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
-            [COLORS]: 1,
-            [QUIRKS]: 0
+            [COLORS]: 1
         }
     ],
     [ARMOR]: [
@@ -917,7 +898,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 8,
             [STITCHINGS]: 2,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -950,7 +930,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 8,
             [STITCHINGS]: 2,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -983,7 +962,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 4,
             [STITCHINGS]: 2,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -1275,7 +1253,6 @@ module.exports = {
             [ENGRAVINGS]: 3,
             [GEMS]: 2,
             [QUIRKS]: 1,
-            Subject: 0
         },
         {
             weight: 5,
@@ -1285,9 +1262,7 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 8,
             [STITCHINGS]: 2,
-            [GEMS]: 0,
             [QUIRKS]: 1,
-            Subject: 0
         },
         {
             weight: 5,
@@ -1299,7 +1274,6 @@ module.exports = {
             [ENGRAVINGS]: 1,
             [GEMS]: 6,
             [QUIRKS]: 3,
-            Subject: 0
         },
         {
             weight: 5,
@@ -1308,9 +1282,6 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 2,
             [COLORS]: 8,
-            [GEMS]: 0,
-            [QUIRKS]: 0,
-            Subject: 0
         },
         {
             weight: 5,
@@ -1319,9 +1290,6 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 2,
             [COLORS]: 8,
-            [GEMS]: 0,
-            [QUIRKS]: 0,
-            Subject: 0
         },
         {
             weight: 5,
@@ -1330,8 +1298,6 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 3,
             [COLORS]: 9,
-            [GEMS]: 0,
-            [QUIRKS]: 0,
             Subject: 9
         },
         {
@@ -1344,7 +1310,6 @@ module.exports = {
             [ENGRAVINGS]: 2,
             [GEMS]: 3,
             [QUIRKS]: 1,
-            Subject: 0
         },
         {
             weight: 5,
@@ -1356,7 +1321,6 @@ module.exports = {
             [ENGRAVINGS]: 1,
             [GEMS]: 1,
             [QUIRKS]: 1,
-            Subject: 0
         },
         {
             weight: 5,
@@ -1368,7 +1332,6 @@ module.exports = {
             [ENGRAVINGS]: 1,
             [GEMS]: 1,
             [QUIRKS]: 1,
-            Subject: 0
         },
         {
             weight: 5,
@@ -1378,9 +1341,6 @@ module.exports = {
             [ADJECTIVES]: 3,
             [COLORS]: 9,
             [STITCHINGS]: 6,
-            [GEMS]: 0,
-            [QUIRKS]: 0,
-            Subject: 0
         },
         {
             weight: 5,
@@ -1390,9 +1350,6 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 3,
             [ENGRAVINGS]: 3,
-            [GEMS]: 0,
-            [QUIRKS]: 0,
-            Subject: 0
         },
         {
             weight: 5,
@@ -1401,9 +1358,6 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 9,
-            [GEMS]: 0,
-            [QUIRKS]: 0,
-            Subject: 0
         },
         {
             weight: 4,
@@ -1412,9 +1366,6 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 7,
-            [GEMS]: 0,
-            [QUIRKS]: 0,
-            Subject: 0
         },
         {
             weight: 64,
@@ -1425,9 +1376,7 @@ module.exports = {
             [COLORS]: 4,
             [ENGRAVINGS]: 2,
             [STITCHINGS]: 2,
-            [GEMS]: 0,
             [QUIRKS]: 1,
-            Subject: 0
         },
         {
             weight: 4,
@@ -1438,8 +1387,6 @@ module.exports = {
             [COLORS]: 5,
             [ENGRAVINGS]: 1,
             [GEMS]: 1,
-            [QUIRKS]: 0,
-            Subject: 0
         },
         {
             weight: 4,
@@ -1451,7 +1398,6 @@ module.exports = {
             [ENGRAVINGS]: 2,
             [GEMS]: 3,
             [QUIRKS]: 2,
-            Subject: 0
         },
         {
             weight: 4,
@@ -1475,7 +1421,6 @@ module.exports = {
             [ENGRAVINGS]: 3,
             [GEMS]: 4,
             [QUIRKS]: 2,
-            Subject: 0
         },
         {
             weight: 5,
@@ -1485,7 +1430,6 @@ module.exports = {
             [ADJECTIVES]: 3,
             [COLORS]: 9,
             [STITCHINGS]: 3,
-            [GEMS]: 0,
             [QUIRKS]: 1,
             Subject: 9
         },
@@ -1496,9 +1440,6 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [GEMS]: 0,
-            [QUIRKS]: 0,
-            Subject: 0
         },
         {
             weight: 5,
@@ -1510,7 +1451,6 @@ module.exports = {
             [ENGRAVINGS]: 2,
             [GEMS]: 1,
             [QUIRKS]: 1,
-            Subject: 0
         }
     ],
     [FABRICS_AND_ROPES]: [
@@ -1531,8 +1471,7 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
-            [STITCHINGS]: 2,
-            [QUIRKS]: 0
+            [STITCHINGS]: 2
         },
         {
             weight: 3,
@@ -1551,8 +1490,6 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [STITCHINGS]: 0,
-            [QUIRKS]: 0
         },
         {
             weight: 3,
@@ -1561,8 +1498,6 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
-            [STITCHINGS]: 0,
-            [QUIRKS]: 0
         },
         {
             weight: 4,
@@ -1591,9 +1526,7 @@ module.exports = {
             [SIZE]: 'L',
             [ADJECTIVES]: 2,
             [COLORS]: 3,
-            [STITCHINGS]: 2,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [STITCHINGS]: 2
         },
         {
             weight: 3,
@@ -1602,9 +1535,7 @@ module.exports = {
             [SIZE]: 'H',
             [ADJECTIVES]: 2,
             [COLORS]: 4,
-            [STITCHINGS]: 3,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [STITCHINGS]: 3
         },
         {
             weight: 3,
@@ -1614,7 +1545,6 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 2,
             [STITCHINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -1625,7 +1555,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -1635,9 +1564,7 @@ module.exports = {
             [SIZE]: 'G',
             [ADJECTIVES]: 3,
             [COLORS]: 5,
-            [STITCHINGS]: 2,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [STITCHINGS]: 2
         },
         {
             weight: 3,
@@ -1647,7 +1574,6 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -1668,9 +1594,7 @@ module.exports = {
             [SIZE]: 'M',
             [ADJECTIVES]: 2,
             [COLORS]: 4,
-            [STITCHINGS]: 3,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [STITCHINGS]: 3
         },
         {
             weight: 3,
@@ -1680,7 +1604,6 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -1690,9 +1613,7 @@ module.exports = {
             [SIZE]: 'G',
             [ADJECTIVES]: 3,
             [COLORS]: 9,
-            [STITCHINGS]: 9,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [STITCHINGS]: 9
         },
         {
             weight: 3,
@@ -1701,9 +1622,7 @@ module.exports = {
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 6,
-            [STITCHINGS]: 1,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [STITCHINGS]: 1
         },
         {
             weight: 3,
@@ -1735,7 +1654,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -1746,7 +1664,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -1756,9 +1673,7 @@ module.exports = {
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
-            [ENGRAVINGS]: 1,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [ENGRAVINGS]: 1
         },
         {
             weight: 2,
@@ -1767,9 +1682,7 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
-            [ENGRAVINGS]: 1,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [ENGRAVINGS]: 1
         },
         {
             weight: 2,
@@ -1778,9 +1691,7 @@ module.exports = {
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
-            [ENGRAVINGS]: 1,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [ENGRAVINGS]: 1
         },
         {
             weight: 2,
@@ -1789,9 +1700,7 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
-            [ENGRAVINGS]: 1,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [ENGRAVINGS]: 1
         },
         {
             weight: 2,
@@ -1800,9 +1709,7 @@ module.exports = {
             [SIZE]: 'M',
             [ADJECTIVES]: 2,
             [COLORS]: 2,
-            [ENGRAVINGS]: 2,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [ENGRAVINGS]: 2
         },
         {
             weight: 2,
@@ -1811,9 +1718,7 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
-            [ENGRAVINGS]: 1,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [ENGRAVINGS]: 1
         },
         {
             weight: 2,
@@ -1822,9 +1727,7 @@ module.exports = {
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [ENGRAVINGS]: 1,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [ENGRAVINGS]: 1
         },
         {
             weight: 2,
@@ -1834,8 +1737,7 @@ module.exports = {
             [ADJECTIVES]: 3,
             [COLORS]: 4,
             [ENGRAVINGS]: 3,
-            [GEMS]: 1,
-            [QUIRKS]: 0
+            [GEMS]: 1
         },
         {
             weight: 2,
@@ -1855,9 +1757,7 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [ENGRAVINGS]: 1,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [ENGRAVINGS]: 1
         },
         {
             weight: 2,
@@ -1867,8 +1767,7 @@ module.exports = {
             [ADJECTIVES]: 3,
             [COLORS]: 2,
             [ENGRAVINGS]: 3,
-            [GEMS]: 1,
-            [QUIRKS]: 0
+            [GEMS]: 1
         },
         {
             weight: 2,
@@ -1877,9 +1776,7 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [ENGRAVINGS]: 2,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [ENGRAVINGS]: 2
         },
         {
             weight: 2,
@@ -1888,9 +1785,7 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [ENGRAVINGS]: 1,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [ENGRAVINGS]: 1
         },
         {
             weight: 2,
@@ -1899,9 +1794,7 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [ENGRAVINGS]: 1,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [ENGRAVINGS]: 1
         },
         {
             weight: 2,
@@ -1911,8 +1804,7 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 4,
             [ENGRAVINGS]: 3,
-            [GEMS]: 1,
-            [QUIRKS]: 0
+            [GEMS]: 1
         },
         {
             weight: 2,
@@ -1921,9 +1813,7 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [ENGRAVINGS]: 2,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [ENGRAVINGS]: 2
         },
         {
             weight: 2,
@@ -1933,8 +1823,7 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 2,
             [ENGRAVINGS]: 2,
-            [GEMS]: 1,
-            [QUIRKS]: 0
+            [GEMS]: 1
         },
         {
             weight: 2,
@@ -1943,9 +1832,7 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 4,
-            [ENGRAVINGS]: 2,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [ENGRAVINGS]: 2
         },
         {
             weight: 2,
@@ -1954,9 +1841,7 @@ module.exports = {
             [SIZE]: 'D',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [ENGRAVINGS]: 1,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [ENGRAVINGS]: 1
         },
         {
             weight: 2,
@@ -1966,8 +1851,7 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 3,
             [ENGRAVINGS]: 2,
-            [GEMS]: 1,
-            [QUIRKS]: 0
+            [GEMS]: 1
         },
         {
             weight: 2,
@@ -1976,9 +1860,7 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [ENGRAVINGS]: 1,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [ENGRAVINGS]: 1
         },
         {
             weight: 2,
@@ -1987,9 +1869,7 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [ENGRAVINGS]: 1,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [ENGRAVINGS]: 1
         },
         {
             weight: 2,
@@ -1998,9 +1878,7 @@ module.exports = {
             [SIZE]: 'D',
             [ADJECTIVES]: 2,
             [COLORS]: 4,
-            [ENGRAVINGS]: 2,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [ENGRAVINGS]: 2
         },
         {
             weight: 3,
@@ -2010,7 +1888,6 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 4,
             [STITCHINGS]: 3,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -2021,7 +1898,6 @@ module.exports = {
             [ADJECTIVES]: 3,
             [COLORS]: 8,
             [STITCHINGS]: 5,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -2032,7 +1908,6 @@ module.exports = {
             [ADJECTIVES]: 3,
             [COLORS]: 2,
             [STITCHINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -2066,9 +1941,7 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 2,
             [COLORS]: 4,
-            [ENGRAVINGS]: 1,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [ENGRAVINGS]: 1
         },
         {
             weight: 1,
@@ -2076,10 +1949,7 @@ module.exports = {
             base_material: [{ weight: 8, material: 'Tallow' }, { weight: 2, material: WAX }],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
-            [COLORS]: 3,
-            [ENGRAVINGS]: 0,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [COLORS]: 3
         },
         {
             weight: 1,
@@ -2089,8 +1959,7 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 2,
             [ENGRAVINGS]: 2,
-            [GEMS]: 1,
-            [QUIRKS]: 0
+            [GEMS]: 1
         },
         {
             weight: 1,
@@ -2122,7 +1991,6 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -2133,7 +2001,6 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -2144,7 +2011,6 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 2,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -2153,10 +2019,7 @@ module.exports = {
             base_material: [{ weight: 5, material: 'Tallow' }, { weight: 5, material: CLOTH }],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
-            [COLORS]: 1,
-            [ENGRAVINGS]: 0,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [COLORS]: 1
         }
     ],
     [JEWELRY]: [
@@ -2384,8 +2247,7 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
-            [STITCHINGS]: 1,
-            [QUIRKS]: 0
+            [STITCHINGS]: 1
         },
         {
             weight: 1,
@@ -2394,8 +2256,7 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
             [COLORS]: 2,
-            [ENGRAVINGS]: 2,
-            [QUIRKS]: 0
+            [ENGRAVINGS]: 2
         },
         {
             weight: 2,
@@ -2423,9 +2284,7 @@ module.exports = {
             base_material: METAL,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
-            [COLORS]: 1,
-            [ENGRAVINGS]: 0,
-            [QUIRKS]: 0
+            [COLORS]: 1
         },
         {
             weight: 1,
@@ -2433,9 +2292,7 @@ module.exports = {
             base_material: METAL,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
-            [COLORS]: 1,
-            [ENGRAVINGS]: 0,
-            [QUIRKS]: 0
+            [COLORS]: 1
         },
         {
             weight: 1,
@@ -2443,9 +2300,7 @@ module.exports = {
             base_material: METAL,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
-            [COLORS]: 1,
-            [ENGRAVINGS]: 0,
-            [QUIRKS]: 0
+            [COLORS]: 1
         },
         {
             weight: 1,
@@ -2454,8 +2309,7 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [STITCHINGS]: 1,
-            [QUIRKS]: 0
+            [STITCHINGS]: 1
         },
         {
             weight: 1,
@@ -2463,8 +2317,7 @@ module.exports = {
             base_material: [{ weight: 6, material: 'Thread' }, { weight: 3, material: 'Animal Guts', subtable: ANIMAL_SUBTYPE }],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
-            [COLORS]: 1,
-            [QUIRKS]: 0
+            [COLORS]: 1
         },
         {
             weight: 2,
@@ -2482,9 +2335,7 @@ module.exports = {
             base_material: METAL,
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
-            [COLORS]: 1,
-            [ENGRAVINGS]: 0,
-            [QUIRKS]: 0
+            [COLORS]: 1
         },
         {
             weight: 1,
@@ -2503,7 +2354,6 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 2,
             [COLORS]: 1,
-            [ENGRAVINGS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -2513,7 +2363,6 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [ENGRAVINGS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -2547,7 +2396,6 @@ module.exports = {
             [ADJECTIVES]: 3,
             [COLORS]: 3,
             [ENGRAVINGS]: 2,
-            [GEMS]: 0,
             [QUIRKS]: 2
         },
         {
@@ -2558,7 +2406,6 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 2,
             [ENGRAVINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 2
         },
         {
@@ -2569,7 +2416,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 2
         },
         {
@@ -2580,7 +2426,6 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 2
         },
         {
@@ -2613,7 +2458,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 2
         },
         {
@@ -2624,7 +2468,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 2
         },
         {
@@ -2646,7 +2489,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 2,
-            [GEMS]: 0,
             [QUIRKS]: 2
         },
         {
@@ -2668,7 +2510,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 2,
-            [GEMS]: 0,
             [QUIRKS]: 2
         },
         {
@@ -2679,7 +2520,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 2,
-            [GEMS]: 0,
             [QUIRKS]: 2
         },
         {
@@ -2690,7 +2530,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 2,
-            [GEMS]: 0,
             [QUIRKS]: 2
         },
         {
@@ -2701,7 +2540,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 2,
-            [GEMS]: 0,
             [QUIRKS]: 2
         },
         {
@@ -2712,7 +2550,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 2
         },
         {
@@ -2734,7 +2571,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 2
         },
         {
@@ -2745,7 +2581,6 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 2
         },
         {
@@ -2756,7 +2591,6 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 2
         },
         {
@@ -2767,7 +2601,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 2
         },
         {
@@ -2778,7 +2611,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 2,
             [ENGRAVINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 2
         },
         {
@@ -2789,7 +2621,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 2,
             [ENGRAVINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 2
         },
         {
@@ -2800,7 +2631,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 2
         },
         {
@@ -2811,7 +2641,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 2
         },
         {
@@ -2822,7 +2651,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 2
         },
         {
@@ -2833,7 +2661,6 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 2,
             [ENGRAVINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 2
         },
         {
@@ -2844,7 +2671,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 2
         }
     ],
@@ -2857,8 +2683,7 @@ module.exports = {
             [ADJECTIVES]: 3,
             [COLORS]: 9,
             [ENGRAVINGS]: 7,
-            [GEMS]: 1,
-            [QUIRKS]: 0
+            [GEMS]: 1
         },
         {
             weight: 2,
@@ -2868,7 +2693,6 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 3,
             [STITCHINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -2879,7 +2703,6 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 3,
             [STITCHINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -2890,7 +2713,6 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 3,
             [STITCHINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -2900,9 +2722,7 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
-            [STITCHINGS]: 1,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [STITCHINGS]: 1
         },
         {
             weight: 2,
@@ -2911,9 +2731,7 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
-            [STITCHINGS]: 1,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [STITCHINGS]: 1
         },
         {
             weight: 2,
@@ -2923,7 +2741,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [STITCHINGS]: 2,
-            [GEMS]: 0,
             [QUIRKS]: 2
         },
         {
@@ -2934,7 +2751,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -2943,10 +2759,7 @@ module.exports = {
             base_material: 'Wicker',
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
-            [COLORS]: 1,
-            [ENGRAVINGS]: 0,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [COLORS]: 1
         },
         {
             weight: 2,
@@ -2954,10 +2767,7 @@ module.exports = {
             base_material: 'Wicker',
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
-            [COLORS]: 1,
-            [ENGRAVINGS]: 0,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [COLORS]: 1
         },
         {
             weight: 2,
@@ -2965,10 +2775,7 @@ module.exports = {
             base_material: 'Glass',
             [SIZE]: 'D',
             [ADJECTIVES]: 1,
-            [COLORS]: 1,
-            [ENGRAVINGS]: 0,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [COLORS]: 1
         },
         {
             weight: 2,
@@ -2977,9 +2784,7 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
-            [ENGRAVINGS]: 1,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [ENGRAVINGS]: 1
         },
         {
             weight: 2,
@@ -2989,7 +2794,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 3,
             [ENGRAVINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -3000,7 +2804,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 3,
             [ENGRAVINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -3009,10 +2812,7 @@ module.exports = {
             base_material: WOOD,
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
-            [COLORS]: 1,
-            [ENGRAVINGS]: 0,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [COLORS]: 1
         },
         {
             weight: 2,
@@ -3020,10 +2820,7 @@ module.exports = {
             base_material: WOOD,
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
-            [COLORS]: 1,
-            [ENGRAVINGS]: 0,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [COLORS]: 1
         },
         {
             weight: 2,
@@ -3034,8 +2831,7 @@ module.exports = {
             [COLORS]: 3,
             [ENGRAVINGS]: 3,
             [STITCHINGS]: 3,
-            [GEMS]: 1,
-            [QUIRKS]: 0
+            [GEMS]: 1
         },
         {
             weight: 2,
@@ -3056,9 +2852,7 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [ENGRAVINGS]: 1,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [ENGRAVINGS]: 1
         },
         {
             weight: 2,
@@ -3068,7 +2862,6 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 2,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -3079,7 +2872,6 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 2,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -3090,7 +2882,6 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 4,
             [STITCHINGS]: 3,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -3101,8 +2892,7 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [GEMS]: 1,
-            [QUIRKS]: 0
+            [GEMS]: 1
         },
         {
             weight: 2,
@@ -3112,8 +2902,7 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 4,
-            [GEMS]: 1,
-            [QUIRKS]: 0
+            [GEMS]: 1
         },
         {
             weight: 2,
@@ -3122,9 +2911,7 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 2,
             [COLORS]: 1,
-            [ENGRAVINGS]: 1,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [ENGRAVINGS]: 1
         },
         {
             weight: 2,
@@ -3134,7 +2921,6 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -3144,9 +2930,7 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 2,
             [COLORS]: 1,
-            [ENGRAVINGS]: 2,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [ENGRAVINGS]: 2
         },
         {
             weight: 2,
@@ -3155,9 +2939,7 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
             [COLORS]: 1,
-            [ENGRAVINGS]: 2,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [ENGRAVINGS]: 2
         },
         {
             weight: 2,
@@ -3166,9 +2948,7 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [ENGRAVINGS]: 1,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [ENGRAVINGS]: 1
         },
         {
             weight: 2,
@@ -3177,9 +2957,7 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
-            [STITCHINGS]: 1,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [STITCHINGS]: 1
         },
         {
             weight: 2,
@@ -3188,9 +2966,7 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
-            [STITCHINGS]: 1,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [STITCHINGS]: 1
         },
         {
             weight: 2,
@@ -3277,7 +3053,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 2,
             [STITCHINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -3288,7 +3063,6 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 2,
             [STITCHINGS]: 2,
-            [GEMS]: 0,
             [QUIRKS]: 2
         },
         {
@@ -3299,7 +3073,6 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [STITCHINGS]: 2,
-            [GEMS]: 0,
             [QUIRKS]: 1
         }
     ],
@@ -3319,9 +3092,7 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 7,
-            [STITCHINGS]: 9,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [STITCHINGS]: 9
         },
         {
             weight: 1,
@@ -3352,9 +3123,7 @@ module.exports = {
             [SIZE]: 'M',
             [ADJECTIVES]: 2,
             [COLORS]: 8,
-            [ENGRAVINGS]: 2,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [ENGRAVINGS]: 2
         },
         {
             weight: 1,
@@ -3386,8 +3155,7 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 3,
             [ENGRAVINGS]: 5,
-            [GEMS]: 2,
-            [QUIRKS]: 0
+            [GEMS]: 2
         },
         {
             weight: 1,
@@ -3395,9 +3163,7 @@ module.exports = {
             base_material: SPICES_AND_SEASONINGS,
             [SIZE]: 'D',
             [ADJECTIVES]: 1,
-            [COLORS]: 9,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [COLORS]: 9
         },
         {
             weight: 1,
@@ -3408,7 +3174,6 @@ module.exports = {
             [COLORS]: 7,
             [ENGRAVINGS]: 9,
             [STITCHINGS]: 9,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -3431,7 +3196,6 @@ module.exports = {
             [COLORS]: 6,
             [ENGRAVINGS]: 7,
             [STITCHINGS]: 7,
-            [GEMS]: 0,
             [QUIRKS]: 2
         },
         {
@@ -3454,8 +3218,7 @@ module.exports = {
             [COLORS]: 5,
             [ENGRAVINGS]: 1,
             [STITCHINGS]: 1,
-            [GEMS]: 2,
-            [QUIRKS]: 0
+            [GEMS]: 2
         },
         {
             weight: 1,
@@ -3466,8 +3229,7 @@ module.exports = {
             [COLORS]: 4,
             [ENGRAVINGS]: 1,
             [STITCHINGS]: 1,
-            [GEMS]: 1,
-            [QUIRKS]: 0
+            [GEMS]: 1
         }
     ],
     [SHIELDS]: [
@@ -3490,7 +3252,6 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 9,
             [STITCHINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -3640,8 +3401,7 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [ENGRAVINGS]: 1,
-            [QUIRKS]: 0
+            [ENGRAVINGS]: 1
         },
         {
             weight: 1,
@@ -3859,8 +3619,7 @@ module.exports = {
             base_material: 'Chalk',
             [SIZE]: 'D',
             [ADJECTIVES]: 1,
-            [COLORS]: 4,
-            [QUIRKS]: 0
+            [COLORS]: 4
         },
         {
             weight: 1,
@@ -3998,9 +3757,7 @@ module.exports = {
             base_material: METAL,
             [SIZE]: 'D',
             [ADJECTIVES]: 1,
-            [COLORS]: 3,
-            [ENGRAVINGS]: 0,
-            [QUIRKS]: 0
+            [COLORS]: 3
         }
     ],
     [WEAPONS]: [
@@ -4022,7 +3779,6 @@ module.exports = {
             [ADJECTIVES]: 3,
             [COLORS]: 9,
             [ENGRAVINGS]: 9,
-            [GEMS]: 0,
             [QUIRKS]: 1,
             Subject: 10
         },
@@ -4059,7 +3815,6 @@ module.exports = {
             [COLORS]: 6,
             [ENGRAVINGS]: 9,
             [STITCHINGS]: 9,
-            [GEMS]: 0,
             [QUIRKS]: 1,
             Subject: 10
         },
@@ -4083,7 +3838,6 @@ module.exports = {
             [ADJECTIVES]: 3,
             [COLORS]: 9,
             [STITCHINGS]: 9,
-            [GEMS]: 0,
             [QUIRKS]: 1,
             Subject: 10
         }
@@ -4461,7 +4215,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 3,
             [STITCHINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 3
         },
         {
@@ -4483,7 +4236,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 6,
             [STITCHINGS]: 3,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -4494,7 +4246,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 6,
             [STITCHINGS]: 3,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -4516,7 +4267,6 @@ module.exports = {
             [ADJECTIVES]: 3,
             [COLORS]: 6,
             [STITCHINGS]: 2,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -4538,7 +4288,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 6,
             [STITCHINGS]: 3,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -4549,7 +4298,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 2,
             [STITCHINGS]: 2,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -4571,7 +4319,6 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 6,
             [STITCHINGS]: 2,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -4582,7 +4329,6 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 5,
             [STITCHINGS]: 3,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -4604,7 +4350,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 5,
             [STITCHINGS]: 5,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -4615,7 +4360,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 7,
             [STITCHINGS]: 5,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -4626,7 +4370,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 6,
             [STITCHINGS]: 5,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -4648,7 +4391,6 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 9,
             [STITCHINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -4670,7 +4412,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 3,
             [STITCHINGS]: 5,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -4681,7 +4422,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 3,
             [STITCHINGS]: 5,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -4692,7 +4432,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 4,
             [STITCHINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -4703,7 +4442,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 7,
             [STITCHINGS]: 4,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -4714,7 +4452,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 6,
             [STITCHINGS]: 4,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -4725,7 +4462,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 6,
             [STITCHINGS]: 7,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -4736,7 +4472,6 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 9,
             [STITCHINGS]: 3,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -4747,7 +4482,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 5,
             [STITCHINGS]: 4,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -4758,7 +4492,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 6,
             [STITCHINGS]: 4,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -4791,7 +4524,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 8,
             [STITCHINGS]: 4,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -4802,7 +4534,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 6,
             [STITCHINGS]: 4,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -4813,7 +4544,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 8,
             [STITCHINGS]: 7,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -4824,7 +4554,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 7,
             [STITCHINGS]: 9,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -4835,7 +4564,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 2,
             [STITCHINGS]: 1,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -4846,7 +4574,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 6,
             [STITCHINGS]: 3,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -4857,7 +4584,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 6,
             [STITCHINGS]: 3,
-            [GEMS]: 0,
             [QUIRKS]: 1
         }
     ],
@@ -4880,9 +4606,7 @@ module.exports = {
             [SIZE]: 'F',
             [ADJECTIVES]: 2,
             [COLORS]: 3,
-            [ENGRAVINGS]: 1,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [ENGRAVINGS]: 1
         },
         {
             weight: 1,
@@ -4913,9 +4637,7 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 2,
             [COLORS]: 3,
-            [STITCHINGS]: 2,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [STITCHINGS]: 2
         },
         {
             weight: 1,
@@ -4923,10 +4645,7 @@ module.exports = {
             base_material: METAL,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
-            [COLORS]: 0,
-            [ENGRAVINGS]: 1,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [ENGRAVINGS]: 1
         },
         {
             weight: 1,
@@ -4935,9 +4654,7 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 2,
             [COLORS]: 2,
-            [STITCHINGS]: 1,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [STITCHINGS]: 1
         },
         {
             weight: 1,
@@ -4957,9 +4674,7 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
             [COLORS]: 8,
-            [STITCHINGS]: 3,
-            [GEMS]: 0,
-            [QUIRKS]: 0
+            [STITCHINGS]: 3
         },
         {
             weight: 1,
@@ -6486,7 +6201,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 6,
             [ENGRAVINGS]: 2,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -6497,7 +6211,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 4,
             [ENGRAVINGS]: 2,
-            [GEMS]: 0,
             [QUIRKS]: 2
         },
         {
@@ -6530,7 +6243,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 3,
             [ENGRAVINGS]: 3,
-            [GEMS]: 0,
             [QUIRKS]: 2
         },
         {
@@ -6552,7 +6264,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 2,
             [ENGRAVINGS]: 2,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -6685,7 +6396,6 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 8,
             [STITCHINGS]: 5,
-            [GEMS]: 0,
             [QUIRKS]: 1
         },
         {
@@ -6710,7 +6420,6 @@ module.exports = {
             [WEAPON_COLORS]: 4,
             [EXPLOSION_COLORS]: 8,
             [ENGRAVINGS]: 4,
-            [GEMS]: 0,
             [QUIRKS]: 3
         },
         {
@@ -7612,8 +7321,8 @@ module.exports = {
         { weight: 1, detail: 'Cursed, Lightly' },
         { weight: 1, detail: 'Dirty' },
         { weight: 1, detail: 'Sad' },
-        { weight: 1, detail: 'Haunted, Metaphorically' },
-        { weight: 1, detail: 'Haunted, Literally' },
+        { weight: 1, detail: 'Metaphorically Haunted' },
+        { weight: 1, detail: 'Literally Haunted' },
         { weight: 1, detail: 'Ugly' },
         { weight: 1, detail: 'Broken' },
         { weight: 1, detail: 'Off-putting' },

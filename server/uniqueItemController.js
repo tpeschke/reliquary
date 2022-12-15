@@ -1,4 +1,4 @@
-const { ROLL_TWICE } = require('./constants');
+const { ROLL_TWICE, ADJECTIVES, COLORS, WEAPON_COLORS, EXPLOSION_COLORS, ENGRAVINGS, STITCHINGS, QUIRKS, SUBJECT, GEMS, RAW_GOODS } = require('./constants');
 const { item_tables_with_subtables } = require('./tables');
 const tables = require('./tables')
 
@@ -30,14 +30,19 @@ function getBaseItem(table) {
 function getItemFromTable(table, item) {
     const tableArray = tables[table]
     for (let i = 0; i < tableArray.length; i++) {
-        if (tableArray[i].entry === item || tableArray[i].material === item) {
+        if (tableArray[i].entry === item || tableArray[i].material === item || tableArray[i].detail === item) {
             return tableArray[i]
         }
     }
 }
 
+function detailInfoFromChanceTables(detailTable) {
+    const detailToGet = chanceTables[detailTable][getRandomIndex(chanceTables[detailTable].length)]
+    return getItemFromTable(detailTable, detailToGet)
+}
+
 function itemDetailsFromChanceTables(subtable) {
-    let itemToGet = chanceTables[subtable][getRandomIndex(chanceTables[subtable].length)]
+    const itemToGet = chanceTables[subtable][getRandomIndex(chanceTables[subtable].length)]
     return getItemFromTable(subtable, itemToGet)
 }
 
@@ -58,6 +63,8 @@ module.exports = {
                         chanceTables[table].push(entry.entry)
                     } else if (entry.material) {
                         chanceTables[table].push(entry.material)
+                    } else if (entry.detail) {
+                        chanceTables[table].push(entry.detail)
                     }
                 }
             })
@@ -65,31 +72,63 @@ module.exports = {
         console.log('Chance Tables Set Up')
     },
     getRandomUniqueItem: (req, res) => {
+        // roll twice
+
         let itemObject = {}
+            , rawObject = {}
         const table = chanceTables.start[getRandomIndex(chanceTables.start.length)]
         itemObject.table = table
 
-        console.log(table)
-        // roll twice
+        rawObject = { ...rawObject, ...getBaseItem(table) }
+        if (table === RAW_GOODS) { console.log(rawObject)}
+        itemObject.entry = rawObject.entry
 
-        itemObject = { ...itemObject, ...getBaseItem(table) }
-
-        if (itemObject.base_material) {
-            itemObject.base_material = handleMaterials(itemObject.base_material)
-            // exotic materials
-            // subtables
-        } else if (!itemObject.base_material && itemObject.value) {
-            itemObject.value = changeSCStringToNumber(itemObject.value)
+        if (rawObject.base_material) {
+            itemObject.material = handleMaterials(rawObject.base_material)
+        } else if (!rawObject.base_material && rawObject.value) {
+            itemObject.value = changeSCStringToNumber(rawObject.value)
         } else {
-            console.log('something went wrong:', itemObject)
+            res.send('something went wrong:', rawObject)
         }
 
-        // get starting value
+        let startingValue;
+        if (!itemObject.value) {
+            startingValue = itemObject.material.reduce((acc, { value }) => acc + value, 0)
+            isNaN(startingValue) ? 0 : startingValue
+        } else {
+            startingValue = itemObject.value
+        }
 
-        // if value = 0, do details, then return 'priceless'
+        for (const table in rawObject) {
+            if (table === ADJECTIVES || table === COLORS || table === WEAPON_COLORS || table === EXPLOSION_COLORS || table === QUIRKS) {
+                let tableToLookAt = table
+                if (table === EXPLOSION_COLORS) {
+                    tableToLookAt = COLORS
+                } else if (table === WEAPON_COLORS) {
+                    tableToLookAt = COLORS
+                }
 
+                console.log(tableToLookAt, table)
+                let detailNumber = Math.floor(getRandomNumber(rawObject[tableToLookAt]) / rawObject[tableToLookAt])
+                
+                if (detailNumber >= 1) {
+                    itemObject[tableToLookAt] = generateDetails(tableToLookAt, detailNumber)
+                    startingValue += .05 * itemObject[tableToLookAt].length
+                }
+            } else if (table === ENGRAVINGS || table === STITCHINGS || table === GEMS) {
+
+            } else if (table === SUBJECT) {
+
+            } else {
+                console.log(table)
+            }
+        }
+
+        itemObject.value = startingValue
+
+        console.log(itemObject)
         // trim down final item
-        res.send(itemObject)
+        // res.send(itemObject)
     },
     getChanceTables: (req, res) => {
         res.send(chanceTables)
@@ -99,16 +138,69 @@ module.exports = {
         //     'Animal'
         // ]
 
-        // { weight: 1, detail: 'Related to', subtable: RACE_OF_ORIGIN },
-        // { weight: 1, detail: 'TWO' }
-        // { weight: 1, detail: 'THREE' }
         // Weapon & Explosion Colors
+
+        // Gems
+        // Events
+        // probably do a whole thing for subjects
         // { weight: 1, detail: 'Subject of Infamy (reroll)' }
-        // { weight: 1, detail: 'Chimera' }
 
         // console.log(handleMaterials('Animal'))
-        console.log(handleSingleMaterial('Paper Product'))
+        console.log(generateDetails('Adjectives', 15))
     }
+}
+
+function generateDetails(detailTable, numberOfDetails) {
+    let detailArray = []
+
+    for (i = 0; i < numberOfDetails; i++) {
+        detailArray = [...detailArray, ...handleSingleDetail(detailTable)]
+    }
+
+    detailArray = [...new Set(detailArray.filter(detail => !(detail === 'TWO' || detail === 'THREE')))]
+
+    return detailArray
+}
+
+function handleSingleDetail(detailTable) {
+    let detailArray = []
+    const { detail, subtable } = detailInfoFromChanceTables(detailTable)
+    if (detail === 'TWO') {
+        let detailOne = handleSingleDetail(detailTable)
+        let detailTwo = handleSingleDetail(detailTable)
+        while (detailOne === 'TWO' || detailOne === 'THREE') {
+            detailOne = handleSingleDetail(detailTable)
+        }
+        while (detailTwo === 'TWO' || detailTwo === 'THREE' || detailTwo === detailOne) {
+            detailTwo = handleSingleDetail(detailTable)
+        }
+        detailArray.push(...detailOne)
+        detailArray.push(...detailTwo)
+    } else if (detail == 'THREE') {
+        let detailOne = handleSingleDetail(detailTable)
+        let detailTwo = handleSingleDetail(detailTable)
+        let detailThree = handleSingleDetail(detailTable)
+        while (detailOne === 'TWO' || detailOne === 'THREE') {
+            detailOne = handleSingleDetail(detailTable)
+        }
+        while (detailTwo === 'TWO' || detailTwo === 'THREE' || detailTwo === detailOne) {
+            detailTwo = handleSingleDetail(detailTable)
+        }
+        while (detailThree === 'TWO' || detailThree === 'THREE' || detailThree === detailOne || detailThree === detailTwo) {
+            detailThree = handleSingleDetail(detailTable)
+        }
+        detailArray.push(...detailOne)
+        detailArray.push(...detailTwo)
+        detailArray.push(...detailThree)
+    }
+    if (subtable) {
+        const subdetail = handleSingleDetail(subtable)
+        detailArray.push(`${detail} ${subdetail}s`)
+    } else {
+        detailArray.push(detail)
+    }
+
+    return detailArray
 }
 
 function handleMaterials(base_material) {
