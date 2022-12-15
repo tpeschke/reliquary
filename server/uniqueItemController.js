@@ -41,7 +41,7 @@ function itemDetailsFromChanceTables(subtable) {
     return getItemFromTable(subtable, itemToGet)
 }
 
-function changeSCStringToNumber(scString) {
+function changeSCStringToNumber(scString = 0) {
     if (isNaN(scString)) {
         return +scString.split('sc')[0].trim()
     }
@@ -68,7 +68,7 @@ module.exports = {
         let itemObject = {}
         const table = chanceTables.start[getRandomIndex(chanceTables.start.length)]
         itemObject.table = table
-        
+
         console.log(table)
         // roll twice
 
@@ -105,7 +105,9 @@ module.exports = {
         // Weapon & Explosion Colors
         // { weight: 1, detail: 'Subject of Infamy (reroll)' }
         // { weight: 1, detail: 'Chimera' }
-        console.log(handleMaterials('Animal'))
+
+        // console.log(handleMaterials('Animal'))
+        console.log(handleSingleMaterial('Paper Product'))
     }
 }
 
@@ -167,8 +169,16 @@ function getAverageFromMaterialArray(subMaterials) {
 
 function handleSingleMaterial(material) {
     if (tables[material]) {
-        const { material: specificMaterial, value } = itemDetailsFromChanceTables(material)
-        // subtable handling
+        const { material: specificMaterial, value, subtable } = itemDetailsFromChanceTables(material)
+        if (subtable) {
+            const { materialCategory, specificMaterial: subMaterial } = handleSingleMaterial(subtable)
+            return {
+                materialCategory: materialCategory === specificMaterial ? material : materialCategory,
+                specificMaterial,
+                subMaterial,
+                value: changeSCStringToNumber(value)
+            }
+        }
         return {
             materialCategory: material,
             specificMaterial,

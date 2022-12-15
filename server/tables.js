@@ -9,7 +9,11 @@ const { ACADEMIC_TOOLS, ADVENTURING_GEAR, ALCHEMICAL_SUBSTANCES,
     FUR_OR_LEATHER, LEATHER, FUR, EXOTIC_METAL, PAPER_PRODUCT, PARCHMENT,
     VELLUM, STONE_EARTHWORK, EXOTIC_STONE_EARTHWORK, EXOTIC_WOOD, CLOTH,
     METAL, WOOD, WAX, SIZE, ADJECTIVES, COLORS, ENGRAVINGS, STITCHINGS,
-    GEMS, QUIRKS, RACE_OF_ORIGIN, ANIMAL_SUBTYPE, ANIMAL_AIR, ANIMAL_LAND, ANIMAL_WATER, BODY_PARTS, BODY_HEAD, BODY_ARM, BODY_BODY, BODY_LEGS, WEAPON_COLORS, EXPLOSION_COLORS, ENGRAVING_TYPE_WITH_GEMS, ENGRAVING_TYPE_WITH_NO_GEMS, STITCHING_TYPE, PERSONS, EVENTS_TIMEPERIOD, EVENTS_SUBJECT, GEM_SIZE, GEM_SHAPE, GEM_TYPE } = require('./constants')
+    GEMS, QUIRKS, RACE_OF_ORIGIN, ANIMAL_SUBTYPE, ANIMAL_AIR, ANIMAL_LAND, ANIMAL_WATER,
+    BODY_PARTS, BODY_HEAD, BODY_ARM, BODY_BODY, BODY_LEGS, WEAPON_COLORS, EXPLOSION_COLORS,
+    ENGRAVING_TYPE_WITH_GEMS, ENGRAVING_TYPE_WITH_NO_GEMS, STITCHING_TYPE, PERSONS,
+    EVENTS_TIMEPERIOD, EVENTS_SUBJECT, GEM_SIZE, GEM_SHAPE, GEM_TYPE, SUBJECT, EVENTS,
+} = require('./constants')
 
 module.exports = {
     item_tables_with_subtables: [CLOTHING, FOOD, WEAPONS, RAW_GOODS, FUR_OR_LEATHER, WAX, PARCHMENT, VELLUM, EXOTIC_CLOTH, EXOTIC_METAL, EXOTIC_STONE_EARTHWORK, EXOTIC_WOOD, ANIMAL_SUBTYPE, BODY_PARTS],
@@ -6761,15 +6765,15 @@ module.exports = {
         { weight: 1, material: 'Brocade', value: '10.5 sc' },
         { weight: 1, material: 'Samite', value: '12.5 sc' },
         { weight: 1, material: 'Velvet', value: '12.5 sc' },
-        { weight: 1, material: EXOTIC_CLOTH, value: 0 }
+        { weight: 1, material: EXOTIC_CLOTH, value: 0, subtable: EXOTIC_CLOTH }
     ],
     [EXOTIC_CLOTH]: [
-        { weight: 1, material: 'Aegis CLOTH', value: 0 },
-        { weight: 1, material: 'Brisingamen CLOTH', value: 0 },
-        { weight: 1, material: 'CLOTH of Nessus', value: 0 },
-        { weight: 1, material: 'Babr-e Bayan CLOTH', value: 0 },
+        { weight: 1, material: 'Aegis Cloth', value: 0 },
+        { weight: 1, material: 'Brisingamen Cloth', value: 0 },
+        { weight: 1, material: 'Cloth of Nessus', value: 0 },
+        { weight: 1, material: 'Babr-e Bayan Cloth', value: 0 },
         { weight: 1, material: 'Spidersilk', value: 0 },
-        { weight: 1, material: 'Woven METAL (See METAL)', value: 0 }
+        { weight: 1, material: 'Woven Metal', value: 0, subtable: METAL }
     ],
     [FUR_OR_LEATHER]: [
         { weight: 1, material: FUR },
@@ -6795,11 +6799,7 @@ module.exports = {
         { weight: 14, material: 'Snakeskin', value: '125 sc' },
         { weight: 14, material: 'Other Animal', value: '1.25 sc' },
         { weight: 9, material: 'Monster, Common', value: '25 sc' },
-        {
-            weight: 4,
-            material: 'Sentient Person (See Race of Origin)',
-            value: '60 sc'
-        },
+        { weight: 4, material: 'Sentient Person', value: '60 sc', subtable: RACE_OF_ORIGIN },
         { weight: 4, material: 'Monster, Uncommon', value: '62.5 sc' },
         { weight: 2, material: 'Monster, Rare', value: '125 sc' },
         { weight: 1, material: 'Monster, Legendary', value: '250 sc' }
@@ -6813,7 +6813,7 @@ module.exports = {
         { weight: 11, material: 'Bronze', value: '.5 sc' },
         { weight: 11, material: 'Silver', value: '1.5 sc' },
         { weight: 10, material: 'Gold', value: '12 sc' },
-        { weight: 1, material: EXOTIC_METAL, value: 0 }
+        { weight: 1, material: EXOTIC_METAL, value: 0, subtable: EXOTIC_METAL }
     ],
     [EXOTIC_METAL]: [
         { weight: 6, material: 'Adamant', value: 0 },
@@ -6840,26 +6840,26 @@ module.exports = {
     [PAPER_PRODUCT]: [
         { weight: 1, material: 'Paper', value: '.25 sc' },
         { weight: 1, material: 'Papyrus', value: '1 sc' },
-        { weight: 1, material: PARCHMENT, value: '.75 sc' },
-        { weight: 1, material: VELLUM, value: '.5 sc' }
+        { weight: 1, material: PARCHMENT, value: '.75 sc', subtable: PARCHMENT },
+        { weight: 1, material: VELLUM, value: '.5 sc', subtable: VELLUM }
     ],
     [PARCHMENT]: [
         { weight: 5, material: 'Cow' },
         { weight: 4, material: 'Goat' },
         { weight: 4, material: 'Sheep' },
-        { weight: 3, material: 'Other Common Animal (See LEATHER)' },
+        { weight: 3, material: 'Other Common Animal', subtable: LEATHER },
         { weight: 1, material: 'Other Animal' },
         { weight: 1, material: 'Monster' },
-        { weight: 1, material: 'Sentient Person (see Race of Origin)' }
+        { weight: 1, material: 'Sentient Person', subtable: RACE_OF_ORIGIN }
     ],
     [VELLUM]: [
         { weight: 5, material: 'Cow' },
         { weight: 4, material: 'Goat' },
         { weight: 4, material: 'Sheep' },
-        { weight: 3, material: 'Other Common Animal (See LEATHER)' },
+        { weight: 3, material: 'Other Common Animal', subtable: LEATHER },
         { weight: 1, material: 'Other Animal' },
         { weight: 1, material: 'Monster' },
-        { weight: 1, material: 'Sentient Person (see Race of Origin)' }
+        { weight: 1, material: 'Sentient Person', subtable: RACE_OF_ORIGIN }
     ],
     [STONE_EARTHWORK]: [
         { weight: 5, material: 'Clay', value: '.00095 sc' },
@@ -6880,7 +6880,7 @@ module.exports = {
         { weight: 4, material: 'Marble', value: '9.375 sc' },
         { weight: 4, material: 'Crystal', value: '11.25 sc' },
         { weight: 3, material: 'Glass', value: '12.5 sc' },
-        { weight: 1, material: EXOTIC_STONE_EARTHWORK, value: 0 }
+        { weight: 1, material: EXOTIC_STONE_EARTHWORK, value: 0, subtable: EXOTIC_STONE_EARTHWORK }
     ],
     [EXOTIC_STONE_EARTHWORK]: [
         { weight: 3, material: 'Adder Stone', value: 0 },
@@ -6962,7 +6962,7 @@ module.exports = {
         { weight: 2, material: 'Teak', value: '5.325 sc' },
         { weight: 2, material: 'Cocobolo', value: '8.125 sc' },
         { weight: 2, material: 'Ebony', value: '18.75 sc' },
-        { weight: 1, material: EXOTIC_WOOD, value: 0 }
+        { weight: 1, material: EXOTIC_WOOD, value: 0, subtable: EXOTIC_WOOD }
     ],
     [EXOTIC_WOOD]: [
         { weight: 1, material: 'Akshayavat', value: 0 },
@@ -7089,6 +7089,16 @@ module.exports = {
         { material: 'Wool', value: '0.48 sc' },
         { material: 'Waxed Cloth', subtables: [WAX, CLOTH] },
         { material: 'Waxed Leather', subtables: [WAX, LEATHER] },
+        { material: 'Blacknessel', value: '110 sc' },
+        { material: 'Blue Glory', value: '77 sc' },
+        { material: 'Bondweed', value: '60.5 sc' },
+        { material: 'Griffin Hair', value: '40 sc' },
+        { material: 'Lylullin', value: '105 sc' },
+        { material: 'Maidenscap', value: '135 sc' },
+        { material: 'Palm of St Germain', value: '60 sc' },
+        { material: 'Tears of Sicyon', value: '115 sc' },
+        { material: 'Unknown', value: '0 sc' },
+        { material: 'Monster Poison', value: '215 sc' }
     ],
     [ADJECTIVES]: [
         { weight: 1, detail: 'Related to', subtable: RACE_OF_ORIGIN },
@@ -7307,7 +7317,7 @@ module.exports = {
         { valueMultiplier: 150, detail: 'Inside Engraving', weight: 3 },
         { valueMultiplier: 250, detail: 'Gem Engraving', weight: 1 }
     ],
-    [STITCHING_TYPE]: { valueMultiplier: 0.5, detail: 'Hand Stitching' },
+    [STITCHING_TYPE]: [{ valueMultiplier: 0.5, detail: 'Hand Stitching' }],
     [SUBJECT]: [
         { 'weight': 1, 'subject': 'Abstract', 'secondardy subject': '1', [ANIMAL_SUBTYPE]: '2', [PERSONS]: '2', [EVENTS]: '2', [COLORS]: '2', [ADJECTIVES]: '2', [BODY_PARTS]: '3' },
         { 'weight': 2, 'subject': 'Historical', 'secondardy subject': '4', [ANIMAL_SUBTYPE]: '1', [PERSONS]: '3', [EVENTS]: '4', [COLORS]: '2', [ADJECTIVES]: '2', [BODY_PARTS]: '1' },
