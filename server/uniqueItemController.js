@@ -1,5 +1,6 @@
-const { ROLL_TWICE, CLOTH, CLOTHING } = require('./constants');
-const { item_tables_with_subtables, other_table } = require('./tables');
+const e = require('express');
+const { ROLL_TWICE } = require('./constants');
+const { item_tables_with_subtables } = require('./tables');
 const tables = require('./tables')
 
 let chanceTables = {}
@@ -44,44 +45,9 @@ function getItemFromSpecificTable(table, item) {
     }
 }
 
-function handleMaterial(base_material) {
-    let materialObject = { baseMaterial: base_material }
-
-    if (typeof (base_material) === 'string' && tables[base_material]) {
-        let itemToGet = chanceTables[base_material][getRandomIndex(chanceTables[base_material].length)]
-        materialObject = { ...materialObject, ...getItemFromTable(base_material, itemToGet) }
-    } else if (typeof (base_material) === 'string' && !tables[base_material]) {
-
-        materialObject = { ...materialObject, ...getItemFromTable('other_table', base_material) }
-
-        if (materialObject.subtable) {
-            let submaterial = chanceTables[materialObject.subtable][getRandomIndex(chanceTables[materialObject.subtable].length)]
-            materialObject.submaterial = getItemFromTable(materialObject.subtable, submaterial).material
-        }
-        if (base_material.subtable) {
-            let submaterial = chanceTables[materialObject.subtable][getRandomIndex(chanceTables[materialObject.subtable].length)]
-            materialObject.submaterial = getItemFromTable(materialObject.subtable, submaterial).material
-        }
-    } else if (typeof (base_material) === 'object') {
-        const { material } = base_material
-
-        if (typeof (material) === 'string' && tables[material]) {
-            let itemToGet = chanceTables[material][getRandomIndex(chanceTables[material].length)]
-            materialObject = { ...materialObject, ...getItemFromTable(material, itemToGet) }
-
-        } else if (typeof (material) === 'string' && !tables[material]) {
-            materialObject = { ...materialObject, ...getItemFromTable('other_table', material) }
-        }
-
-        if (materialObject.subtable) {
-            let submaterial = chanceTables[materialObject.subtable][getRandomIndex(chanceTables[materialObject.subtable].length)]
-            materialObject.submaterial = getItemFromTable(materialObject.subtable, submaterial).material
-        }
-    } else {
-        console.log('something went wrong: ', base_material)
-    }
-
-    return materialObject
+function itemDetailsFromChanceTables(subtable) {
+    let itemToGet = chanceTables[subtable][getRandomIndex(chanceTables[subtable].length)]
+    return getItemFromTable(subtable, itemToGet)
 }
 
 function buildChanceTablesAndRollOnThem(tableArray) {
@@ -101,40 +67,11 @@ function buildChanceTablesAndRollOnThem(tableArray) {
 
 function convertMaterial(itemObject) {
     if (itemObject.base_material) {
-        const { base_material } = itemObject
-        let materialArray = []
 
-        if (typeof (base_material) === 'string' || base_material.material) {
-            materialArray.push(handleMaterial(base_material))
-        } else {
-            if (base_material[0].weight) {
-                let item = buildChanceTablesAndRollOnThem(base_material)
-                let itemToGet = getItemFromSpecificTable(base_material, item)
-                if (itemToGet.subtable) {
-                    let itemObject = { baseMaterial: itemToGet.subtable }
-                    materialArray.push({ ...itemObject, ...getItemFromTable(itemToGet.subtable, itemToGet.material) })
-                } else {
-                    materialArray.push(handleMaterial(item))
-                }
-            } else {
-                for (let i = 0; i < base_material.length; i++) {
-                    materialArray.push(handleMaterial(base_material[i]))
-                }
-            }
-            // ARRAY
-            // [{material: 'Feathers', subtable: ANIMAL_AIR}, [{weight: 3, material: CLOTH}, {6, material: LEATHER}]]
-            // [{weight: 7, material: METAL}, {weight: 2, material: CLOTH}, {weight: 1, material: 'both'}]
-            // [{weight: 2, material: METAL}, {weight: 2, material: CLOTH}, {weight: 3, material: LEATHER}, {weight: 1, material: 'Two'}, {weight: 1, material: 'all three'}]
-            // [{weight: 4, material: 'Chicken', valuie: '0.01 sc'}, {weight: 3, material: 'Goose', valuie: '0.01 sc'}, {weight: 2, material: 'Animal', subtable: ANIMAL_SUBTYPE, value: '0.03 sc'}, {weight: 1, material: 'Monster', value: '0.1 sc'}]
-            // [{weight: 2, material: WOOD}, {weight: 2, material: METAL}, {weight: 2, material: LEATHER}, {wight: 3, material: 'Waxed Cloth', subtables: [WAX, CLOTH]}]
-            // [[{weight: 6, material: METAL}, {weight: 4, material: WOOD}], 'Glass']
-            // [[{weight: 2, material: 'Down', subtable: ANIMAL_AIR}, {weight: 2, material: Feather, subtable: ANIMAL_AIR}], CLOTH]
-            // [{label: 'Cover', materials: [{weight: 1, material: METAL},{weight: 5, material: CLOTH}, {weight: 2, material: LEATHER}, {weight: 1, material: WOOD}]}, 
-            // {label: 'Interior', materials: PAPER_PRODUCT}]
-            //  [{label: 'Hilt', materials: [LEATHER, WOOD]}, {label: 'Blade', material: METAL}]
-        }
-
-        console.log(materialArray)
+        // [{weight: 7, material: METAL}, {weight: 2, material: CLOTH}, {weight: 1, material: 'both'}]
+        // [{weight: 2, material: METAL}, {weight: 2, material: CLOTH}, {weight: 3, material: LEATHER}, {weight: 1, material: 'Two'}, {weight: 1, material: 'all three'}]
+        // exotic materials
+        // subtables
 
         // if substance isn't on the OTHER_MATERIALS table
     }
@@ -184,40 +121,290 @@ module.exports = {
             {
                 weight: 2,
                 entry: 'Basket, Medium',
-                base_material: [{ wight: 3, material: 'Waxed Cloth', subtables: ['Wax', 'Cloth'] }],
+                base_material: [{weight: 1, material: 'Metal'}, {weight: 1, material: 'Cloth'}, {weight: 3, material: 'BOTH'}],
                 Size: 'S',
                 Adjectives: 2,
                 Colors: 1
             },
-            {
-                weight: 2,
-                entry: 'Basket, Medium',
-                base_material: 'Horn',
-                Size: 'S',
-                Adjectives: 2,
-                Colors: 1
-            },
-            {
-                weight: 2,
-                entry: 'Basket, Medium',
-                base_material: 'Metal',
-                Size: 'S',
-                Adjectives: 2,
-                Colors: 1
-            },
-            {
-                weight: 2,
-                entry: 'Basket, Medium',
-                base_material: ['Metal', 'Wood'],
-                Size: 'S',
-                Adjectives: 2,
-                Colors: 1
-            }
+            // {
+            //     weight: 2,
+            //     entry: 'Basket, Medium',
+            //     base_material: [{label: 'Hilt', materials: ['Leather', 'Wood']}, {label: 'Blade', material: 'Metal'}],
+            //     Size: 'S',
+            //     Adjectives: 2,
+            //     Colors: 1
+            // },
+            // {
+            //     weight: 2,
+            //     entry: 'Basket, Medium',
+            //     base_material: [[{weight: 6, material: 'Metal'}, {weight: 4, material: 'Wood'}], 'Glass'],
+            //     Size: 'S',
+            //     Adjectives: 2,
+            //     Colors: 1
+            // },
+            // {
+            //     weight: 2,
+            //     entry: 'Basket, Medium',
+            //     base_material: [{weight: 1, material: 'Wood'}, {weight: 1, material: 'Metal'}, {weight: 1, material: 'Leather'}, {weight: 3, material: 'Waxed Cloth', subtables: ['Wax', 'Cloth']}],
+            //     Size: 'S',
+            //     Adjectives: 2,
+            //     Colors: 1
+            // },
+            // {
+            //     weight: 2,
+            //     entry: 'Basket, Medium',
+            //     base_material: [{weight: 4, material: 'Chicken'}, {weight: 3, material: 'Goose'}, {weight: 2, material: 'Animal', value: '0.03 sc'}, {weight: 1, material: 'Monster', value: '0.1 sc'}],
+            //     Size: 'S',
+            //     Adjectives: 2,
+            //     Colors: 1
+            // },
+            // {
+            //     weight: 2,
+            //     entry: 'Basket, Medium',
+            //     base_material: [{ material: 'Ivory' }, [{ weight: 3, material: 'Cloth' }, { weight: 6, material: 'Leather' }]],
+            //     Size: 'S',
+            //     Adjectives: 2,
+            //     Colors: 1
+            // },
+            // {
+            //     weight: 2,
+            //     entry: 'Basket, Medium',
+            //     base_material: [{ label: 'Cover', materials: [{ weight: 1, material: 'Metal' }, { weight: 5, material: 'Cloth' }, { weight: 2, material: 'Leather' }, { weight: 1, material: 'Wood' }] }, { label: 'Interior', materials: 'Paper Product' }],
+            //     Size: 'S',
+            //     Adjectives: 2,
+            //     Colors: 1
+            // },
+            // {
+            //     weight: 2,
+            //     entry: 'Basket, Medium',
+            //     base_material: [{label: 'Hilt', material: 'Wicker'}],
+            //     Size: 'S',
+            //     Adjectives: 2,
+            //     Colors: 1
+            // },
+            // {
+            //     weight: 2,
+            //     entry: 'Basket, Medium',
+            //     base_material: ['Metal', 'Tallow'],
+            //     Size: 'S',
+            //     Adjectives: 2,
+            //     Colors: 1
+            // },
+            // {
+            //     weight: 2,
+            //     entry: 'Basket, Medium',
+            //     base_material: ['Metal'],
+            //     Size: 'S',
+            //     Adjectives: 2,
+            //     Colors: 1
+            // },
+            // {
+            //     weight: 2,
+            //     entry: 'Basket, Medium',
+            //     base_material: ['Metal', [{ weight: 1, material: 'Metal' }, { weight: 1, material: 'Leather' }]],
+            //     Size: 'S',
+            //     Adjectives: 2,
+            //     Colors: 1
+            // },
+            // {
+            //     weight: 2,
+            //     entry: 'Basket, Medium',
+            //     base_material: [{ weight: 1, material: 'Metal' }, { weight: 1, material: 'Leather' }],
+            //     Size: 'S',
+            //     Adjectives: 2,
+            //     Colors: 1
+            // },
+            // {
+            //     weight: 2,
+            //     entry: 'Basket, Medium',
+            //     base_material: { material: 'Waxed Cloth' },
+            //     Size: 'S',
+            //     Adjectives: 2,
+            //     Colors: 1
+            // },
+            // {
+            //     weight: 2,
+            //     entry: 'Basket, Medium',
+            //     base_material: {label: 'Hilt', material: 'Wicker'},
+            //     Size: 'S',
+            //     Adjectives: 2,
+            //     Colors: 1
+            // },
+            // {
+            //     weight: 2,
+            //     entry: 'Basket, Medium',
+            //     base_material: {label: 'Hilt', material: 'Tallow'},
+            //     Size: 'S',
+            //     Adjectives: 2,
+            //     Colors: 1
+            // },
+            // {
+            //     weight: 2,
+            //     entry: 'Basket, Medium',
+            //     base_material: { label: 'Hilt', material: 'Metal' },
+            //     Size: 'S',
+            //     Adjectives: 2,
+            //     Colors: 1
+            // },
+            // {
+            //     weight: 2,
+            //     entry: 'Basket, Medium',
+            //     base_material: 'Wicker',
+            //     Size: 'S',
+            //     Adjectives: 2,
+            //     Colors: 1
+            // },
+            // {
+            //     weight: 2,
+            //     entry: 'Basket, Medium',
+            //     base_material: 'Tallow',
+            //     Size: 'S',
+            //     Adjectives: 2,
+            //     Colors: 1
+            // },
+            // {
+            //     weight: 2,
+            //     entry: 'Basket, Medium',
+            //     base_material: 'Metal',
+            //     Size: 'S',
+            //     Adjectives: 2,
+            //     Colors: 1
+            // },
         ]
 
         itemArray.forEach(item => {
-            convertMaterial(item)
+            handleMaterials(item)
         })
     }
 }
 
+function handleMaterials(item) {
+    let finalItem = {
+        materials: []
+    }
+
+    const stringObjectOrArray = checkIfStringObjectOrArray(item.base_material)
+    if (stringObjectOrArray === 'array' && !item.base_material[0].weight) {
+        item.base_material.forEach(base_material => {
+            finalItem.materials.push(sortItems(base_material))
+        })
+    } else {
+        finalItem.materials.push(sortItems(item.base_material))
+    }
+
+    console.log(finalItem.materials)
+}
+
+function sortItems(base_material) {
+    const stringObjectOrArray = checkIfStringObjectOrArray(base_material)
+    if (stringObjectOrArray === 'string') {
+        return handleSingleMaterial(base_material)
+    } else if (stringObjectOrArray === 'object') {
+        return handleObjectMaterial(base_material)
+    } else if (stringObjectOrArray === 'array') {
+        return handleChanceOfMaterial(base_material)
+    }
+}
+
+function checkIfStringObjectOrArray(variable) {
+    if (typeof (variable) === 'string') {
+        return 'string'
+    } else if (Array.isArray(variable)) {
+        return 'array'
+    } else if (typeof (variable) === 'object') {
+        return 'object'
+    }
+    return 'none of the above'
+}
+
+function changeSCStringToNumber(scString) {
+    if (isNaN(scString)) {
+        return +scString.split('sc')[0].trim()
+    }
+    return scString
+}
+
+function getAverageFromMaterialArray(subMaterials) {
+    let value = subMaterials.reduce((acc, { value }) => acc + value, 0)
+    return +(value / subMaterials.length).toFixed(2)
+}
+
+function handleSingleMaterial(material) {
+    if (tables[material]) {
+        const { material: specificMaterial, value } = itemDetailsFromChanceTables(material)
+        // subtable handling
+        return {
+            materialCategory: material,
+            specificMaterial,
+            value: changeSCStringToNumber(value)
+        }
+    } else {
+        const { material: specificMaterial, value, subtable, subtables } = getItemFromTable('other_table', material)
+        if (subtable) {
+            const { materialCategory, specificMaterial: subMaterial } = handleSingleMaterial(subtable)
+            return {
+                materialCategory,
+                specificMaterial,
+                subMaterial,
+                value: changeSCStringToNumber(value)
+            }
+        }
+        if (subtables) {
+            let subMaterials = subtables.map(subtable => {
+                const { materialCategory, specificMaterial: subMaterial, value } = handleSingleMaterial(subtable)
+                return {
+                    materialCategory,
+                    subMaterial,
+                    value: changeSCStringToNumber(value)
+                }
+            })
+            return {
+                specificMaterial,
+                value: getAverageFromMaterialArray(subMaterials),
+                subMaterials
+            }
+        }
+        return {
+            specificMaterial,
+            value: changeSCStringToNumber(value)
+        }
+    }
+}
+
+function handleObjectMaterial({ label, material, materials }) {
+    let materialObject = {}
+    if (material) {
+        materialObject = handleSingleMaterial(material)
+    } else if (materials) {
+        const stringObjectOrArray = checkIfStringObjectOrArray(materials)
+        if (stringObjectOrArray === 'array' && !materials[0].weight) {
+            materials.forEach(base_material => {
+                materialObject = sortItems(base_material)
+            })
+        } else {
+            materialObject = sortItems(materials)
+        }
+    }
+    if (label) {
+        materialObject = { label, ...materialObject }
+    }
+
+    return materialObject
+}
+
+function handleChanceOfMaterial(itemArray) {
+    let chanceArray = []
+    itemArray.forEach(item => {
+        for (let i = 0; i < item.weight; i++) {
+            chanceArray.push(item.material)
+        }
+    })
+
+    let item = chanceArray[getRandomIndex(chanceArray.length)]
+    console.log(item)
+    if (item === 'BOTH') {
+        
+    } else {
+        return handleSingleMaterial(item)
+    }
+}

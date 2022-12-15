@@ -3,7 +3,7 @@ const { connection } = require('./serverConfig')
     , bodyParser = require('body-parser')
     , cors = require('cors')
     , massive = require('massive')
-const uniqueItemCtrl = require('./uniqueItemController')
+const uniqueItemCtrl = require('./uniqueItemController.js')
 
 const app = new express()
 app.use(bodyParser.json())
