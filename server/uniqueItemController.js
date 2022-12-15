@@ -1,5 +1,5 @@
 const { ROLL_TWICE, CLOTH, CLOTHING } = require('./constants');
-const { item_tables_with_subtables } = require('./tables');
+const { item_tables_with_subtables, other_table } = require('./tables');
 const tables = require('./tables')
 
 let chanceTables = {}
@@ -30,10 +30,113 @@ function getBaseItem(table) {
 function getItemFromTable(table, item) {
     const tableArray = tables[table]
     for (let i = 0; i < tableArray.length; i++) {
-        if (tableArray[i].entry === item) {
-            delete tableArray[i].weight
+        if (tableArray[i].entry === item || tableArray[i].material === item) {
             return tableArray[i]
         }
+    }
+}
+
+function getItemFromSpecificTable(table, item) {
+    for (let i = 0; i < table.length; i++) {
+        if (table[i].entry === item || table[i].material === item) {
+            return table[i]
+        }
+    }
+}
+
+function handleMaterial(base_material) {
+    let materialObject = { baseMaterial: base_material }
+
+    if (typeof (base_material) === 'string' && tables[base_material]) {
+        let itemToGet = chanceTables[base_material][getRandomIndex(chanceTables[base_material].length)]
+        materialObject = { ...materialObject, ...getItemFromTable(base_material, itemToGet) }
+    } else if (typeof (base_material) === 'string' && !tables[base_material]) {
+
+        materialObject = { ...materialObject, ...getItemFromTable('other_table', base_material) }
+
+        if (materialObject.subtable) {
+            let submaterial = chanceTables[materialObject.subtable][getRandomIndex(chanceTables[materialObject.subtable].length)]
+            materialObject.submaterial = getItemFromTable(materialObject.subtable, submaterial).material
+        }
+        if (base_material.subtable) {
+            let submaterial = chanceTables[materialObject.subtable][getRandomIndex(chanceTables[materialObject.subtable].length)]
+            materialObject.submaterial = getItemFromTable(materialObject.subtable, submaterial).material
+        }
+    } else if (typeof (base_material) === 'object') {
+        const { material } = base_material
+
+        if (typeof (material) === 'string' && tables[material]) {
+            let itemToGet = chanceTables[material][getRandomIndex(chanceTables[material].length)]
+            materialObject = { ...materialObject, ...getItemFromTable(material, itemToGet) }
+
+        } else if (typeof (material) === 'string' && !tables[material]) {
+            materialObject = { ...materialObject, ...getItemFromTable('other_table', material) }
+        }
+
+        if (materialObject.subtable) {
+            let submaterial = chanceTables[materialObject.subtable][getRandomIndex(chanceTables[materialObject.subtable].length)]
+            materialObject.submaterial = getItemFromTable(materialObject.subtable, submaterial).material
+        }
+    } else {
+        console.log('something went wrong: ', base_material)
+    }
+
+    return materialObject
+}
+
+function buildChanceTablesAndRollOnThem(tableArray) {
+    let chanceTable = []
+    tableArray.forEach(entry => {
+        for (let i = 0; i < entry.weight; i++) {
+            if (entry.entry) {
+                chanceTable.push(entry.entry)
+            } else if (entry.material) {
+                chanceTable.push(entry.material)
+            }
+        }
+    })
+
+    return chanceTable[getRandomIndex(chanceTable.length)]
+}
+
+function convertMaterial(itemObject) {
+    if (itemObject.base_material) {
+        const { base_material } = itemObject
+        let materialArray = []
+
+        if (typeof (base_material) === 'string' || base_material.material) {
+            materialArray.push(handleMaterial(base_material))
+        } else {
+            if (base_material[0].weight) {
+                let item = buildChanceTablesAndRollOnThem(base_material)
+                let itemToGet = getItemFromSpecificTable(base_material, item)
+                if (itemToGet.subtable) {
+                    let itemObject = { baseMaterial: itemToGet.subtable }
+                    materialArray.push({ ...itemObject, ...getItemFromTable(itemToGet.subtable, itemToGet.material) })
+                } else {
+                    materialArray.push(handleMaterial(item))
+                }
+            } else {
+                for (let i = 0; i < base_material.length; i++) {
+                    materialArray.push(handleMaterial(base_material[i]))
+                }
+            }
+            // ARRAY
+            // [{material: 'Feathers', subtable: ANIMAL_AIR}, [{weight: 3, material: CLOTH}, {6, material: LEATHER}]]
+            // [{weight: 7, material: METAL}, {weight: 2, material: CLOTH}, {weight: 1, material: 'both'}]
+            // [{weight: 2, material: METAL}, {weight: 2, material: CLOTH}, {weight: 3, material: LEATHER}, {weight: 1, material: 'Two'}, {weight: 1, material: 'all three'}]
+            // [{weight: 4, material: 'Chicken', valuie: '0.01 sc'}, {weight: 3, material: 'Goose', valuie: '0.01 sc'}, {weight: 2, material: 'Animal', subtable: ANIMAL_SUBTYPE, value: '0.03 sc'}, {weight: 1, material: 'Monster', value: '0.1 sc'}]
+            // [{weight: 2, material: WOOD}, {weight: 2, material: METAL}, {weight: 2, material: LEATHER}, {wight: 3, material: 'Waxed Cloth', subtables: [WAX, CLOTH]}]
+            // [[{weight: 6, material: METAL}, {weight: 4, material: WOOD}], 'Glass']
+            // [[{weight: 2, material: 'Down', subtable: ANIMAL_AIR}, {weight: 2, material: Feather, subtable: ANIMAL_AIR}], CLOTH]
+            // [{label: 'Cover', materials: [{weight: 1, material: METAL},{weight: 5, material: CLOTH}, {weight: 2, material: LEATHER}, {weight: 1, material: WOOD}]}, 
+            // {label: 'Interior', materials: PAPER_PRODUCT}]
+            //  [{label: 'Hilt', materials: [LEATHER, WOOD]}, {label: 'Blade', material: METAL}]
+        }
+
+        console.log(materialArray)
+
+        // if substance isn't on the OTHER_MATERIALS table
     }
 }
 
@@ -43,7 +146,11 @@ module.exports = {
             chanceTables[table] = []
             tables[table].forEach(entry => {
                 for (let i = 0; i < entry.weight; i++) {
-                    chanceTables[table].push(entry.entry)
+                    if (entry.entry) {
+                        chanceTables[table].push(entry.entry)
+                    } else if (entry.material) {
+                        chanceTables[table].push(entry.material)
+                    }
                 }
             })
         }
@@ -54,7 +161,7 @@ module.exports = {
         const table = chanceTables.start[getRandomIndex(chanceTables.start.length)]
         itemObject.table = table
 
-        itemObject = {...itemObject, ...getBaseItem(table)}
+        itemObject = { ...itemObject, ...getBaseItem(table) }
 
         // roll twice
 
@@ -63,33 +170,54 @@ module.exports = {
         // if no base_material & value, send it
         // if no base_material but it has a value, do details and then send it
 
-        // METAL
-        // 'Horn'
-        // {material: 'Wicker', subtable: WOOD}
-        // [WOOD, METAL]
-        // [{material: FRUIT_AND_VEGATABLES, exclude: 'JAM', value: '3 sc'}]
-        // [{weight: 3, material: METAL}, {weight: 6, material: 'Goose Feather'}]
-        // [{weight: 3, material: 'Porcupine Spine'}, {weight: 6, material: 'Goose Feather'}]
-        // [{weight: 6, material: Clay, subtable: STONE_EARTHWORK}, {weight: 2, material: WAX}, {weight: 1, material: Slate, subtable: STONE_EARTHWORK}]
-        // [{weight: 2, material: WOOD}, {weight: 2, material: METAL}, {weight: 2, material: LEATHER}, {wight: 3, material: 'Waxed Cloth', subtables: [WAX, CLOTH]}]
-        // [{label: 'Cover', materials: [{weight: 1, material: METAL},{weight: 5, material: CLOTH}, {weight: 2, material: LEATHER}, {weight: 1, material: WOOD}]}, 
-               // {label: 'Interior', materials: PAPER_PRODUCT}]
-        //  [{label: 'Hilt', materials: [LEATHER, WOOD]}, {label: 'Blade', material: METAL}]
-        // [[{weight: 2, material: 'Down', subtable: ANIMAL_AIR}, {weight: 2, material: Feather, subtable: ANIMAL_AIR}], CLOTH]
-        // [[{weight: 6, material: METAL}, {weight: 4, material: WOOD}], 'Glass']
-        // [{material: 'Feathers', subtable: ANIMAL_AIR}, [{weight: 3, material: CLOTH}, {6, material: LEATHER}]]
-        // [{weight: 7, material: METAL}, {weight: 2, material: CLOTH}, {weight: 1, material: 'both'}]
-        // [{weight: 2, material: METAL}, {weight: 2, material: CLOTH}, {weight: 3, material: LEATHER}, {weight: 1, material: 'Two'}, {weight: 1, material: 'all three'}]
-        // [{weight: 4, material: 'Chicken', valuie: '0.01 sc'}, {weight: 3, material: 'Goose', valuie: '0.01 sc'}, {weight: 2, material: 'Animal', subtable: ANIMAL_SUBTYPE, value: '0.03 sc'}, {weight: 1, material: 'Monster', value: '0.1 sc'}]
+        convertMaterial(itemObject)
 
-        // if substance isn't on the OTHER_MATERIALS table
         // if value = 0, do details, then return 'priceless'
-
 
         res.send(itemObject)
     },
     getChanceTables: (req, res) => {
         res.send(chanceTables)
+    },
+    runTests: () => {
+        let itemArray = [
+            {
+                weight: 2,
+                entry: 'Basket, Medium',
+                base_material: [{ wight: 3, material: 'Waxed Cloth', subtables: ['Wax', 'Cloth'] }],
+                Size: 'S',
+                Adjectives: 2,
+                Colors: 1
+            },
+            {
+                weight: 2,
+                entry: 'Basket, Medium',
+                base_material: 'Horn',
+                Size: 'S',
+                Adjectives: 2,
+                Colors: 1
+            },
+            {
+                weight: 2,
+                entry: 'Basket, Medium',
+                base_material: 'Metal',
+                Size: 'S',
+                Adjectives: 2,
+                Colors: 1
+            },
+            {
+                weight: 2,
+                entry: 'Basket, Medium',
+                base_material: ['Metal', 'Wood'],
+                Size: 'S',
+                Adjectives: 2,
+                Colors: 1
+            }
+        ]
+
+        itemArray.forEach(item => {
+            convertMaterial(item)
+        })
     }
 }
 
