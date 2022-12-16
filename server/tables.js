@@ -33,13 +33,13 @@ module.exports = {
         { weight: 5, entry: MEDICAL_TOOLS },
         { weight: 5, entry: MUSICAL_INSTRUMENTS },
         { weight: 5, entry: PERSONAL_CONTAINERS },
-        { weight: 5, entry: RAW_GOODS },
+        // { weight: 5, entry: RAW_GOODS },
         { weight: 5, entry: RELIGIOUS_ITEMS },
         { weight: 5, entry: SHIELDS },
         { weight: 5, entry: TRADE_TOOLS },
         { weight: 5, entry: WEAPONS },
         { weight: 5, entry: WORKS_OF_ART },
-        { weight: 3, entry: ROLL_TWICE }
+        // { weight: 3, entry: ROLL_TWICE }
     ],
     [ACADEMIC_TOOLS]: [
         {

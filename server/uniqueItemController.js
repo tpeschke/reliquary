@@ -78,108 +78,136 @@ module.exports = {
         console.log('Chance Tables Set Up')
     },
     getRandomUniqueItem: (req, res) => {
-        // roll twice
+        itemObject = getSingleUniqueItem()
 
-        let itemObject = {}
-            , rawObject = {}
-        const table = chanceTables.start[getRandomIndex(chanceTables.start.length)]
-        itemObject.table = table
+        let { budget } = req.query
+        
+        if (budget) {
+            budget = +budget
 
-        rawObject = { ...rawObject, ...getBaseItem(table) }
-        if (table === RAW_GOODS) { console.log(rawObject) }
-        itemObject.entry = rawObject.entry
-
-        if (rawObject.base_material) {
-            itemObject.material = handleMaterials(rawObject.base_material)
-        } else if (!rawObject.base_material && rawObject.value) {
-            itemObject.value = changeSCStringToNumber(rawObject.value)
-        } else {
-            res.send('something went wrong:', rawObject)
+            while (itemObject.value < budget) {
+                console.log('grabbing another item')
+                itemObject = getSingleUniqueItem()
+            }
+            if (itemObject.value > budget) {
+                console.log(itemObject.value, ' Add Wear')
+                // add Wear
+            }
         }
 
-        let startingValue;
-        if (!itemObject.value) {
-            startingValue = itemObject.material.reduce((acc, { value }) => acc + value, 0)
-            isNaN(startingValue) ? 0 : startingValue
-        } else {
-            startingValue = itemObject.value
-        }
+        res.send(itemObject)
+    },
+    getChanceTables: (req, res) => {
+        res.send(chanceTables)
+    }
+}
 
-        for (const table in rawObject) {
-            if (table === ADJECTIVES || table === COLORS || table === WEAPON_COLORS || table === EXPLOSION_COLORS || table === QUIRKS) {
-                let tableToLookAt = table
-                if (table === EXPLOSION_COLORS) {
-                    tableToLookAt = COLORS
-                } else if (table === WEAPON_COLORS) {
-                    tableToLookAt = COLORS
-                }
+function getSingleUniqueItem() {
+    // roll twice
 
-                let detailNumber = Math.floor(rawObject[tableToLookAt] / getRandomNumber(10))
+    let itemObject = {}
+        , rawObject = {}
+    const table = chanceTables.start[getRandomIndex(chanceTables.start.length)]
+    itemObject.table = table
 
-                if (detailNumber >= 1) {
-                    itemObject[tableToLookAt] = generateDetails(tableToLookAt, detailNumber)
-                    startingValue += .05 * itemObject[tableToLookAt].length
+    rawObject = { ...rawObject, ...getBaseItem(table) }
+    if (table === RAW_GOODS) { 
+        console.log('RAW GOOD', rawObject) 
+    }
+    itemObject.entry = rawObject.entry
+
+    if (rawObject.base_material) {
+        itemObject.material = handleMaterials(rawObject.base_material)
+    } else if (!rawObject.base_material && rawObject.value) {
+        itemObject.value = changeSCStringToNumber(rawObject.value)
+    } else {
+        res.send('something went wrong:', rawObject)
+    }
+
+    let startingValue;
+    if (!itemObject.value) {
+        startingValue = itemObject.material.reduce((acc, { value }) => acc + value, 0)
+        isNaN(startingValue) ? 0 : startingValue
+    } else {
+        startingValue = itemObject.value
+    }
+
+    for (const table in rawObject) {
+        if (table === ADJECTIVES || table === COLORS || table === WEAPON_COLORS || table === EXPLOSION_COLORS || table === QUIRKS) {
+            let tableToLookAt = table
+            if (table === EXPLOSION_COLORS) {
+                tableToLookAt = COLORS
+            } else if (table === WEAPON_COLORS) {
+                tableToLookAt = COLORS
+            }
+
+            let detailNumber = Math.floor(rawObject[tableToLookAt] / getRandomNumber(10))
+
+            if (detailNumber >= 1) {
+                itemObject[tableToLookAt] = generateDetails(tableToLookAt, detailNumber)
+                startingValue += .05 * itemObject[tableToLookAt].length
+            }
+        } else if (table === SUBJECT) {
+            let subjectArray = []
+            let detailNumber = Math.floor(rawObject[table] / getRandomNumber(10))
+            for (i = 0; i < detailNumber; i++) {
+                subjectArray.push(generateSubject())
+            }
+            valueMultiplier = subjectArray.reduce((acc, { valueMultiplier }) => acc + valueMultiplier, 0)
+            itemObject.subject = subjectArray
+            startingValue += .05 * valueMultiplier
+        } else if (table === STITCHINGS) {
+            let stitchingArray = []
+            let detailNumber = Math.floor(rawObject[table] / getRandomNumber(10))
+            for (i = 0; i < detailNumber; i++) {
+                let stitchingObject = {
+                    type: tables[STITCHING_TYPE][0].detail,
+                    value: changeSCStringToNumber(tables[STITCHING_TYPE][0].value),
+                    subject: generateSubject()
                 }
-            } else if (table === SUBJECT) {
-                let subjectArray = []
-                let detailNumber = Math.floor(rawObject[table] / getRandomNumber(10))
-                for (i = 0; i < detailNumber; i++) {
-                    subjectArray.push(generateSubject())
-                }
-                valueMultiplier = subjectArray.reduce((acc, { valueMultiplier }) => acc + valueMultiplier, 0)
-                itemObject.subject = subjectArray
-                startingValue += .05 * valueMultiplier
-            } else if (table === STITCHINGS) {
-                let stitchingArray = []
-                let detailNumber = Math.floor(rawObject[table] / getRandomNumber(10))
-                for (i = 0; i < detailNumber; i++) {
-                    let stitchingObject = {
-                        type: tables[STITCHING_TYPE][0].detail,
-                        value: changeSCStringToNumber(tables[STITCHING_TYPE][0].value),
-                        subject: generateSubject()
-                    }
-                    stitchingArray.push(stitchingObject)
-                }
+                stitchingArray.push(stitchingObject)
+            }
+            if (detailNumber > 0) {
                 let valueMultiplier = 0
                 let stitchValue = 0
                 valueMultiplier = stitchingArray.forEach(stitch => {
-                    stitchValue += stitch.reduce((acc, { value }) => acc + value, 0)
-                    valueMultiplier += stitch.subject.reduce((acc, { valueMultiplier }) => acc + valueMultiplier, 0)
+                    stitchValue += stitch.value
+                    valueMultiplier += stitch.subject.valueMultiplier
                 })
                 itemObject.stitchings = stitchingArray
                 startingValue += stitchValue
                 startingValue += .05 * valueMultiplier
-            } else if (table === GEMS) {
-                let gemArray = []
-                let detailNumber = Math.floor(rawObject[table] / getRandomNumber(10))
-                for (i = 0; i < detailNumber; i++) {
-                    gemArray.push(generateGems())
-                }
-                itemObject.gems = gemArray
-                startingValue += gemArray.reduce((acc, { value }) => acc + value, 0)
-            } else {
-                console.log(table)
             }
-        }
-
-        if (rawObject[ENGRAVINGS]) {
-            let engravingArray = []
+        } else if (table === GEMS) {
+            let gemArray = []
             let detailNumber = Math.floor(rawObject[table] / getRandomNumber(10))
             for (i = 0; i < detailNumber; i++) {
-                let engravingObject = {
-                    subject: generateSubject()
-                }
-                if (itemObject.gems.length > 0) {
-                    const type = itemDetailsFromChanceTables(ENGRAVING_TYPE_WITH_GEMS)
-                    engravingObject.value = changeSCStringToNumber(type.value)
-                    engravingObject.type = type.type
-                } else {
-                    const type = itemDetailsFromChanceTables(ENGRAVING_TYPE_WITH_NO_GEMS)
-                    engravingObject.value = changeSCStringToNumber(type.value)
-                    engravingObject.type = type.type
-                }
-                engravingArray.push(engravingObject)
+                gemArray.push(generateGems())
             }
+            itemObject.gems = gemArray
+            startingValue += gemArray.reduce((acc, { value }) => acc + value, 0)
+        }
+    }
+
+    if (rawObject[ENGRAVINGS]) {
+        let engravingArray = []
+        let detailNumber = Math.floor(rawObject[table] / getRandomNumber(10))
+        for (i = 0; i < detailNumber; i++) {
+            let engravingObject = {
+                subject: generateSubject()
+            }
+            if (itemObject.gems.length > 0) {
+                const type = itemDetailsFromChanceTables(ENGRAVING_TYPE_WITH_GEMS)
+                engravingObject.value = changeSCStringToNumber(type.value)
+                engravingObject.type = type.type
+            } else {
+                const type = itemDetailsFromChanceTables(ENGRAVING_TYPE_WITH_NO_GEMS)
+                engravingObject.value = changeSCStringToNumber(type.value)
+                engravingObject.type = type.type
+            }
+            engravingArray.push(engravingObject)
+        }
+        if (detailNumber > 0) {
             let valueMultiplier = 0
             let engravingValue = 0
             valueMultiplier = engravingArray.forEach(engraving => {
@@ -190,32 +218,27 @@ module.exports = {
             startingValue += engravingValue
             startingValue += .05 * valueMultiplier
         }
-
-        // size
-
-        itemObject.value = +startingValue.toFixed(2)
-
-        console.log(itemObject)
-        // trim down final item
-        // res.send(itemObject)
-    },
-    getChanceTables: (req, res) => {
-        res.send(chanceTables)
-    },
-    runTests: () => {
-        // let itemArray = [
-        //     'Animal'
-        // ]
-
-        // Weapon & Explosion Colors
-
-        // Gems
-        // Events
-        // probably do a whole thing for subjects
-        // { weight: 1, detail: 'Subject of Infamy (reroll)' }
-
-        console.log(handleSingleMaterial('Feather'))
     }
+
+    const sizeModifier = {
+        F: 1,
+        D: 2,
+        T: 3,
+        S: 4,
+        M: 5,
+        L: 6,
+        H: 7,
+        G: 8,
+        E: 9,
+        C: 10
+    }
+
+    itemObject.size = rawObject.Size
+    startingValue += sizeModifier[itemObject.size]
+
+    itemObject.value = +startingValue.toFixed(2)
+
+    return itemObject
 }
 
 function generateGems() {
@@ -230,7 +253,6 @@ function generateGems() {
 
     gem.shape = detailInfoFromChanceTables(GEM_SHAPE).shape
 
-    console.log(gem)
     return gem
 }
 
