@@ -1494,7 +1494,7 @@ module.exports = {
         {
             weight: 3,
             entry: 'Yarn, 1d4 yards',
-            base_material: [{ weight: 5, material: 'Cotton' }, { weight: 4, material: 'Wool' }],
+            base_material: [{ weight: 5, material: 'Cotton', subtable: CLOTH }, { weight: 4, material: 'Wool', subtable: CLOTH }],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
@@ -1502,7 +1502,7 @@ module.exports = {
         {
             weight: 4,
             entry: 'Rope',
-            base_material: [{ weight: 4, material: 'Hemp' }, { weight: 2, material: 'Cotton' }, { weight: 2, material: CLOTH }, { weight: 1, material: 'Silk', subtable: CLOTH }],
+            base_material: [{ weight: 4, material: 'Hemp', subtable: CLOTH }, { weight: 2, material: 'Cotton', subtable: CLOTH }, { weight: 2, material: CLOTH }, { weight: 1, material: 'Silk', subtable: CLOTH }],
             [SIZE]: 'M',
             [ADJECTIVES]: 2,
             [COLORS]: 2,
@@ -1560,7 +1560,7 @@ module.exports = {
         {
             weight: 3,
             entry: 'Carpet',
-            base_material: [{ weight: 3, material: CLOTH }, { weight: 6, material: 'Wool' }],
+            base_material: [{ weight: 3, material: CLOTH }, { weight: 6, material: 'Wool', subtable: CLOTH }],
             [SIZE]: 'G',
             [ADJECTIVES]: 3,
             [COLORS]: 5,
@@ -1609,7 +1609,7 @@ module.exports = {
         {
             weight: 3,
             entry: 'Tapestry',
-            base_material: [{ weight: 8, material: 'Wool' }, { weight: 1, material: LEATHER }, { weight: 1, material: CLOTH }],
+            base_material: [{ weight: 8, material: 'Wool', subtable: CLOTH }, { weight: 1, material: LEATHER }, { weight: 1, material: CLOTH }],
             [SIZE]: 'G',
             [ADJECTIVES]: 3,
             [COLORS]: 9,
@@ -1893,7 +1893,7 @@ module.exports = {
         {
             weight: 3,
             entry: 'Rug, Woven',
-            base_material: [{ weight: 3, material: CLOTH }, { weight: 2, material: LEATHER }, { weight: 4, material: 'Wool' }],
+            base_material: [{ weight: 3, material: CLOTH }, { weight: 2, material: LEATHER }, { weight: 4, material: 'Wool', subtable: CLOTH }],
             [SIZE]: 'L',
             [ADJECTIVES]: 3,
             [COLORS]: 8,
@@ -2314,7 +2314,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Sutures',
-            base_material: [{ weight: 6, material: 'Thread' }, { weight: 3, material: 'Animal Guts', subtable: ANIMAL_SUBTYPE }],
+            base_material: [{ weight: 6, material: 'Thread' }, { weight: 3, material: 'Animal Guts' }],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1
@@ -3833,7 +3833,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Tapestry',
-            base_material: 'Wool',
+            base_material: [{weight: 1, material: 'Wool', subtable: CLOTH}],
             [SIZE]: 'H',
             [ADJECTIVES]: 3,
             [COLORS]: 9,
@@ -4549,7 +4549,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Sweater',
-            base_material: 'Wool',
+            base_material: [{material: 'Wool', weight: 1, subtable: CLOTH}],
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 7,
@@ -4670,7 +4670,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Scarf',
-            base_material: [{ weight: 6, material: 'Wool' }, { weight: 2, material: 'Gauze' }, { weight: 1, material: "Silk", subtable: CLOTH }],
+            base_material: [{ weight: 6, material: 'Wool', subtable: CLOTH }, { weight: 2, material: 'Gauze' }, { weight: 1, material: "Silk", subtable: CLOTH }],
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
             [COLORS]: 8,
@@ -6798,6 +6798,7 @@ module.exports = {
         { material: 'Tallow', value: '0.091 sc' },
         { material: 'Thread', value: '0.009 sc' },
         { material: 'Twine', value: '0.02 sc' },
+        { material: 'Animal Guts', value: '0.01 sc', subtable: ANIMAL_LAND},
         { material: 'Whale Oil', value: '0.0097 sc' },
         { material: 'Wicker', value: '0.08 sc', subtable: WOOD },
         { material: 'Wool', value: '0.48 sc' },

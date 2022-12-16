@@ -79,30 +79,16 @@ module.exports = {
     },
     getRandomUniqueItem: (req, res) => {
         itemObject = getSingleUniqueItem()
-        console.log('Original', itemObject.value)
 
-        let { budget } = req.query
+        // let { budget } = req.query
 
-        if (budget) {
-            budget = +budget
-
-            while (itemObject.value < budget) {
-                console.log('grabbing another item')
-                itemObject = getSingleUniqueItem()
-            }
-            if (itemObject.value > budget) {
-                console.log(itemObject.value, ' Add Wear')
-                // add Wear
-            }
-        }
-
-        res.send(itemObject)
+        console.log(itemObject)
+        // res.send(itemObject)
     },
     getChanceTables: (req, res) => {
         res.send(chanceTables)
     },
     runTest: () => {
-       console.log(handleChanceOfMaterial([{ weight: 1, material: 'Slate', subtable: 'Stone/Earthwork' }]))
     }
 }
 
@@ -175,12 +161,10 @@ function getSingleUniqueItem() {
             if (detailNumber > 0) {
                 let valueMultiplier = 0
                 let stitchValue = 0
-                valueMultiplier = stitchingArray.forEach(stitch => {
-                    console.log(stitch.subject.valueMultiplier)
+                stitchingArray.forEach(stitch => {
                     stitchValue += stitch.value
                     valueMultiplier += stitch.subject.valueMultiplier
                 })
-                console.log(stitchValue, valueMultiplier)
                 itemObject.stitchings = stitchingArray
                 startingValue += stitchValue
                 startingValue += .05 * valueMultiplier
@@ -217,7 +201,7 @@ function getSingleUniqueItem() {
         if (detailNumber > 0) {
             let valueMultiplier = 0
             let engravingValue = 0
-            valueMultiplier = engravingArray.forEach(engraving => {
+            engravingArray.forEach(engraving => {
                 engravingValue += engraving.reduce((acc, { value }) => acc + value, 0)
                 valueMultiplier += engraving.subject.reduce((acc, { valueMultiplier }) => acc + valueMultiplier, 0)
             })
@@ -239,12 +223,10 @@ function getSingleUniqueItem() {
         E: 9,
         C: 10
     }
-    console.log(startingValue)
 
     itemObject.size = rawObject.Size
     startingValue *= sizeModifier[itemObject.size]
 
-    console.log(startingValue)
     itemObject.value = +startingValue.toFixed(2)
 
     return itemObject
@@ -480,9 +462,9 @@ function handleSingleMaterial(material) {
             const { materialCategory, specificMaterial: subMaterial } = handleSingleMaterial(result.subtable)
             return {
                 materialCategory,
-                specificMaterial,
+                specificMaterial: result.specificMaterial,
                 subMaterial,
-                value: changeSCStringToNumber(value)
+                value: changeSCStringToNumber(result.value)
             }
         }
         if (result.subtables) {
@@ -495,13 +477,13 @@ function handleSingleMaterial(material) {
                 }
             })
             return {
-                specificMaterial,
+                specificMaterial: result.specificMaterial,
                 value: getAverageFromMaterialArray(subMaterials),
                 subMaterials
             }
         }
         return {
-            specificMaterial : result.specificMaterial,
+            specificMaterial: result.specificMaterial,
             value: changeSCStringToNumber(result.value)
         }
     }
@@ -551,8 +533,8 @@ function handleChanceOfMaterial(itemArray) {
         return [handleSingleMaterial(itemOne), handleSingleMaterial(itemTwo)]
     } else if (item === 'ALL THREE') {
         return [handleSingleMaterial(itemArray[0].material), handleSingleMaterial(itemArray[1].material), handleSingleMaterial(itemArray[2].material)]
-    } 
-    
+    }
+
     let itemDetails
     for (let i = 0; i < itemArray.length; i++) {
         if (itemArray[i].material === item) {
@@ -561,11 +543,16 @@ function handleChanceOfMaterial(itemArray) {
         }
     }
     if (itemDetails && itemDetails.subtable) {
-        let itemValue = getItemFromTable(itemDetails.subtable, item).value
+        let item = detailInfoFromChanceTables(itemDetails.subtable)
+        if (!item.value) {
+            let newItem = getItemFromTable('other_table', itemDetails.material)
+            console.log(newItem)
+            item.value = newItem.value
+        }
         return {
             materialCategory: itemDetails.subtable,
             specificMaterial: item,
-            value: changeSCStringToNumber(itemValue)
+            value: changeSCStringToNumber(item.value)
         }
     } else {
         return handleSingleMaterial(item)
