@@ -152,7 +152,6 @@ function getSingleUniqueItem(budget = null) {
         }
 
         tries++
-        console.log('Try: ', tries)
     } while (budget && ((startingValue * sizeModifier[rawObject.Size]) > (budget * .50) || (startingValue * sizeModifier[rawObject.Size]) < (budget * 1.75) && tries < 300))
 
     for (const table in rawObject) {
