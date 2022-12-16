@@ -78,12 +78,11 @@ module.exports = {
         console.log('Chance Tables Set Up')
     },
     getRandomUniqueItem: (req, res) => {
-        itemObject = getSingleUniqueItem()
+        let { budget } = req.query
+        itemObject = getSingleUniqueItem(+budget)
 
-        // let { budget } = req.query
-
-        console.log(itemObject)
-        // res.send(itemObject)
+        // return itemObject
+        res.send(itemObject)
     },
     getChanceTables: (req, res) => {
         res.send(chanceTables)
@@ -92,39 +91,70 @@ module.exports = {
     }
 }
 
-function getSingleUniqueItem() {
+function getSingleUniqueItem(budget = null) {
     // roll twice
 
     let itemObject = {}
         , rawObject = {}
-    const table = chanceTables.start[getRandomIndex(chanceTables.start.length)]
-    itemObject.table = table
+        , startingValue
+        , table
+        , tries = 0
 
-    rawObject = { ...rawObject, ...getBaseItem(table) }
-    if (table === RAW_GOODS) {
-        console.log('RAW GOOD', rawObject)
-    }
-    itemObject.entry = rawObject.entry
-
-    console.log(rawObject.base_material)
-    if (rawObject.base_material) {
-        itemObject.material = handleMaterials(rawObject.base_material)
-    } else if (!rawObject.base_material && rawObject.value) {
-        itemObject.value = changeSCStringToNumber(rawObject.value)
-    } else {
-        res.send('something went wrong:', rawObject)
+    const sizeModifier = {
+        F: 2,
+        D: 3,
+        T: 4,
+        S: 5,
+        M: 8,
+        L: 11,
+        H: 14,
+        G: 17,
+        E: 20,
+        C: 23
     }
 
-    let startingValue;
-    if (!itemObject.value) {
-        startingValue = itemObject.material.reduce((acc, { value }) => acc + value, 0)
-        isNaN(startingValue) ? 0 : startingValue
-    } else {
-        startingValue = itemObject.value
-    }
+    do {
+        startingValue = 0
+        table = chanceTables.start[getRandomIndex(chanceTables.start.length)]
+        itemObject.table = table
+
+        rawObject = { ...rawObject, ...getBaseItem(table) }
+        if (table === RAW_GOODS) {
+            console.log('RAW GOOD', rawObject)
+        }
+        itemObject.entry = rawObject.entry
+
+        console.log(rawObject.base_material)
+        if (rawObject.base_material) {
+            itemObject.material = handleMaterials(rawObject.base_material)
+        } else if (!rawObject.base_material && rawObject.value) {
+            itemObject.value = changeSCStringToNumber(rawObject.value)
+        } else {
+            res.send('something went wrong:', rawObject)
+        }
+        if (itemObject.material && Array.isArray(itemObject.material[0])) {
+            itemObject.material = itemObject.material[0]
+        }
+        if (!itemObject.value) {
+            startingValue = itemObject.material.reduce((acc, item) => {
+                if (item.value || item.value === 0) {
+                    return acc + item.value
+                } else if (item.materials) {
+                    return item.materials.reduce((acc, innerItem) => acc + innerItem.value, 0)
+                }
+            }, 0)
+            isNaN(startingValue) ? 0 : startingValue
+            console.log('item: ', startingValue)
+        } else {
+            startingValue = itemObject.value
+        }
+
+        tries++
+        console.log('Try: ', tries)
+    } while (budget && ((startingValue * sizeModifier[rawObject.Size]) > (budget * .50) || (startingValue * sizeModifier[rawObject.Size]) < (budget * 1.75) && tries < 300))
 
     for (const table in rawObject) {
-        if (table === ADJECTIVES || table === COLORS || table === WEAPON_COLORS || table === EXPLOSION_COLORS || table === QUIRKS) {
+        if ((table === ADJECTIVES || table === COLORS || table === WEAPON_COLORS || table === EXPLOSION_COLORS || table === QUIRKS) && (startingValue * sizeModifier[rawObject.Size]) < (budget * 1.75)) {
             let tableToLookAt = table
             if (table === EXPLOSION_COLORS) {
                 tableToLookAt = COLORS
@@ -132,24 +162,24 @@ function getSingleUniqueItem() {
                 tableToLookAt = COLORS
             }
 
-            let detailNumber = Math.floor(rawObject[tableToLookAt] / getRandomNumber(10))
+            let detailNumber = rawObject[table] ? Math.floor(rawObject[tableToLookAt] / getRandomNumber(10)) : 0
 
             if (detailNumber >= 1) {
                 itemObject[tableToLookAt] = generateDetails(tableToLookAt, detailNumber)
                 startingValue += .05 * itemObject[tableToLookAt].length
             }
-        } else if (table === SUBJECT) {
+        } else if (table === SUBJECT && (startingValue * sizeModifier[rawObject.Size]) < (budget * 1.75)) {
             let subjectArray = []
-            let detailNumber = Math.floor(rawObject[table] / getRandomNumber(10))
+            let detailNumber = rawObject[table] ? Math.floor(rawObject[table] / getRandomNumber(10)) : 0
             for (i = 0; i < detailNumber; i++) {
                 subjectArray.push(generateSubject())
             }
             valueMultiplier = subjectArray.reduce((acc, { valueMultiplier }) => acc + valueMultiplier, 0)
             itemObject.subject = subjectArray
             startingValue += .05 * valueMultiplier
-        } else if (table === STITCHINGS) {
+        } else if (table === STITCHINGS && (startingValue * sizeModifier[rawObject.Size]) < (budget * 1.75)) {
             let stitchingArray = []
-            let detailNumber = Math.floor(rawObject[table] / getRandomNumber(10))
+            let detailNumber = rawObject[table] ? Math.floor(rawObject[table] / getRandomNumber(10)) : 0
             for (i = 0; i < detailNumber; i++) {
                 let stitchingObject = {
                     type: tables[STITCHING_TYPE][0].detail,
@@ -169,9 +199,9 @@ function getSingleUniqueItem() {
                 startingValue += stitchValue
                 startingValue += .05 * valueMultiplier
             }
-        } else if (table === GEMS) {
+        } else if (table === GEMS && (startingValue * sizeModifier[rawObject.Size]) < (budget * 1.75)) {
             let gemArray = []
-            let detailNumber = Math.floor(rawObject[table] / getRandomNumber(10))
+            let detailNumber = rawObject[table] ? Math.floor(rawObject[table] / getRandomNumber(10)) : 0
             for (i = 0; i < detailNumber; i++) {
                 gemArray.push(generateGems())
             }
@@ -179,10 +209,10 @@ function getSingleUniqueItem() {
             startingValue += gemArray.reduce((acc, { value }) => acc + value, 0)
         }
     }
-
-    if (rawObject[ENGRAVINGS]) {
+ 
+    if (rawObject[ENGRAVINGS] && (startingValue * sizeModifier[rawObject.Size]) < (budget * 1.75)) {
         let engravingArray = []
-        let detailNumber = Math.floor(rawObject[table] / getRandomNumber(10))
+        let detailNumber = rawObject[table] ? Math.floor(rawObject[table] / getRandomNumber(10)) : 0
         for (i = 0; i < detailNumber; i++) {
             let engravingObject = {
                 subject: generateSubject()
@@ -209,19 +239,6 @@ function getSingleUniqueItem() {
             startingValue += engravingValue
             startingValue += .05 * valueMultiplier
         }
-    }
-
-    const sizeModifier = {
-        F: 1,
-        D: 2,
-        T: 3,
-        S: 4,
-        M: 5,
-        L: 6,
-        H: 7,
-        G: 8,
-        E: 9,
-        C: 10
     }
 
     itemObject.size = rawObject.Size
@@ -543,10 +560,13 @@ function handleChanceOfMaterial(itemArray) {
         }
     }
     if (itemDetails && itemDetails.subtable) {
-        let item = detailInfoFromChanceTables(itemDetails.subtable)
+        let item = getItemFromTable(itemDetails.subtable, itemDetails.material);
+        if (!item) {
+            item = detailInfoFromChanceTables(itemDetails.subtable)
+        }
         if (!item.value) {
+            console.log('material: ', itemDetails)
             let newItem = getItemFromTable('other_table', itemDetails.material)
-            console.log(newItem)
             item.value = newItem.value
         }
         return {

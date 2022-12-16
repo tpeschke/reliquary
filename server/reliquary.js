@@ -17,10 +17,10 @@ massive(connection).then(dbI => {
     app.listen(3434, _ => {
         uniqueItemCtrl.setUpTables()
         console.log(`One Thousand Good Deeds Cannot Blot Out the Stain of One Sin 3434`)
-        for (let i = 0; i < 1000; i++) {
-            uniqueItemCtrl.getRandomUniqueItem()
-            console.log('ITEM NUMBER: ', i)
-        }
+        // for (let i = 0; i <= 500; i++) {
+        //     uniqueItemCtrl.getRandomUniqueItem(50)
+        //     console.log('ITEM NUMBER: ', i)
+        // }
         // uniqueItemCtrl.runTest()
     })
 })
