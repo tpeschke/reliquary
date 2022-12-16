@@ -1,4 +1,4 @@
-const { ROLL_TWICE, ADJECTIVES, COLORS, WEAPON_COLORS, EXPLOSION_COLORS, ENGRAVINGS, STITCHINGS, QUIRKS, SUBJECT, GEMS, RAW_GOODS, ANIMAL_SUBTYPE, PERSONS, EVENTS, BODY_PARTS, RACE_OF_ORIGIN, EVENTS_TIMEPERIOD } = require('./constants');
+const { ROLL_TWICE, ADJECTIVES, COLORS, WEAPON_COLORS, EXPLOSION_COLORS, ENGRAVINGS, STITCHINGS, QUIRKS, SUBJECT, GEMS, RAW_GOODS, ANIMAL_SUBTYPE, PERSONS, EVENTS, BODY_PARTS, RACE_OF_ORIGIN, EVENTS_TIMEPERIOD, EVENTS_SUBJECT, GEM_SIZE, GEM_TYPE, GEM_SHAPE, STITCHING_TYPE, ENGRAVING_TYPE_WITH_GEMS, ENGRAVING_TYPE_WITH_NO_GEMS } = require('./constants');
 const { item_tables_with_subtables } = require('./tables');
 const tables = require('./tables')
 
@@ -30,7 +30,7 @@ function getBaseItem(table) {
 function getItemFromTable(table, item) {
     const tableArray = tables[table]
     for (let i = 0; i < tableArray.length; i++) {
-        if (tableArray[i].entry === item || tableArray[i].material === item || tableArray[i].detail === item || tableArray[i].subject === item) {
+        if (tableArray[i].entry === item || tableArray[i].material === item || tableArray[i].detail === item || tableArray[i].subject === item || tableArray[i].type === item || tableArray[i].shape === item) {
             return tableArray[i]
         }
     }
@@ -67,6 +67,10 @@ module.exports = {
                         chanceTables[table].push(entry.detail)
                     } else if (entry.subject) {
                         chanceTables[table].push(entry.subject)
+                    } else if (entry.type) {
+                        chanceTables[table].push(entry.type)
+                    } else if (entry.shape) {
+                        chanceTables[table].push(entry.shape)
                     }
                 }
             })
@@ -110,28 +114,86 @@ module.exports = {
                     tableToLookAt = COLORS
                 }
 
-                let detailNumber = Math.floor(getRandomNumber(10) / rawObject[tableToLookAt])
+                let detailNumber = Math.floor(rawObject[tableToLookAt] / getRandomNumber(10))
 
                 if (detailNumber >= 1) {
                     itemObject[tableToLookAt] = generateDetails(tableToLookAt, detailNumber)
                     startingValue += .05 * itemObject[tableToLookAt].length
                 }
             } else if (table === SUBJECT) {
-
-            } else if (table === ENGRAVINGS) {
-
+                let subjectArray = []
+                let detailNumber = Math.floor(rawObject[table] / getRandomNumber(10))
+                for (i = 0; i < detailNumber; i++) {
+                    subjectArray.push(generateSubject())
+                }
+                valueMultiplier = subjectArray.reduce((acc, { valueMultiplier }) => acc + valueMultiplier, 0)
+                itemObject.subject = subjectArray
+                startingValue += .05 * valueMultiplier
             } else if (table === STITCHINGS) {
-
+                let stitchingArray = []
+                let detailNumber = Math.floor(rawObject[table] / getRandomNumber(10))
+                for (i = 0; i < detailNumber; i++) {
+                    let stitchingObject = {
+                        type: tables[STITCHING_TYPE][0].detail,
+                        value: changeSCStringToNumber(tables[STITCHING_TYPE][0].value),
+                        subject: generateSubject()
+                    }
+                    stitchingArray.push(stitchingObject)
+                }
+                let valueMultiplier = 0
+                let stitchValue = 0
+                valueMultiplier = stitchingArray.forEach(stitch => {
+                    stitchValue += stitch.reduce((acc, { value }) => acc + value, 0)
+                    valueMultiplier += stitch.subject.reduce((acc, { valueMultiplier }) => acc + valueMultiplier, 0)
+                })
+                itemObject.stitchings = stitchingArray
+                startingValue += stitchValue
+                startingValue += .05 * valueMultiplier
             } else if (table === GEMS) {
-
+                let gemArray = []
+                let detailNumber = Math.floor(rawObject[table] / getRandomNumber(10))
+                for (i = 0; i < detailNumber; i++) {
+                    gemArray.push(generateGems())
+                }
+                itemObject.gems = gemArray
+                startingValue += gemArray.reduce((acc, { value }) => acc + value, 0)
             } else {
                 console.log(table)
             }
         }
 
+        if (rawObject[ENGRAVINGS]) {
+            let engravingArray = []
+            let detailNumber = Math.floor(rawObject[table] / getRandomNumber(10))
+            for (i = 0; i < detailNumber; i++) {
+                let engravingObject = {
+                    subject: generateSubject()
+                }
+                if (itemObject.gems.length > 0) {
+                    const type = itemDetailsFromChanceTables(ENGRAVING_TYPE_WITH_GEMS)
+                    engravingObject.value = changeSCStringToNumber(type.value)
+                    engravingObject.type = type.type
+                } else {
+                    const type = itemDetailsFromChanceTables(ENGRAVING_TYPE_WITH_NO_GEMS)
+                    engravingObject.value = changeSCStringToNumber(type.value)
+                    engravingObject.type = type.type
+                }
+                engravingArray.push(engravingObject)
+            }
+            let valueMultiplier = 0
+            let engravingValue = 0
+            valueMultiplier = engravingArray.forEach(engraving => {
+                engravingValue += engraving.reduce((acc, { value }) => acc + value, 0)
+                valueMultiplier += engraving.subject.reduce((acc, { valueMultiplier }) => acc + valueMultiplier, 0)
+            })
+            itemObject.engravings = engravingArray
+            startingValue += engravingValue
+            startingValue += .05 * valueMultiplier
+        }
+
         // size
 
-        itemObject.value = startingValue
+        itemObject.value = +startingValue.toFixed(2)
 
         console.log(itemObject)
         // trim down final item
@@ -152,9 +214,24 @@ module.exports = {
         // probably do a whole thing for subjects
         // { weight: 1, detail: 'Subject of Infamy (reroll)' }
 
-        // console.log(handleMaterials('Animal'))
-        console.log(generateSubject())
+        console.log(handleSingleMaterial('Feather'))
     }
+}
+
+function generateGems() {
+    let gem = {}
+
+    let { detail: size, valueMultiplier } = detailInfoFromChanceTables(GEM_SIZE)
+    let { type, value } = detailInfoFromChanceTables(GEM_TYPE)
+
+    gem.size = size + ' mm'
+    gem.type = type
+    gem.value = value * valueMultiplier
+
+    gem.shape = detailInfoFromChanceTables(GEM_SHAPE).shape
+
+    console.log(gem)
+    return gem
 }
 
 function generateSubject() {
@@ -207,12 +284,25 @@ function generateSubject() {
                 subject.persons = personArray
                 valueMultiplier += detailNumber
             } else if (table === EVENTS) {
+                let eventArray = []
 
+                for (i = 0; i < detailNumber; i++) {
+                    let eventObject = {}
+
+                    eventObject.subject = handleSingleDetail(EVENTS_SUBJECT)[0]
+                    if (eventObject.subject.length === 1 && eventObject.subject[0] === 'Subject of Infamy') {
+                        eventObject.subject.push(handleSingleDetail(PERSONS))
+                    }
+                    eventObject.timeperiod = handleSingleDetail(EVENTS_TIMEPERIOD)[0]
+
+                    eventArray.push(eventObject)
+                }
+                subject.events = eventArray
+                valueMultiplier += detailNumber
             } else if (table === BODY_PARTS) {
                 let bodyArray = []
                 for (i = 0; i < detailNumber; i++) {
                     const bodyPartSubtable = detailInfoFromChanceTables(BODY_PARTS).subtable
-                    console.log(bodyPartSubtable)
                     bodyArray = [...bodyArray, detailInfoFromChanceTables(bodyPartSubtable).detail]
                 }
 
@@ -338,7 +428,7 @@ function getAverageFromMaterialArray(subMaterials) {
 
 function handleSingleMaterial(material) {
     if (tables[material]) {
-        const { material: specificMaterial, value, subtable } = itemDetailsFromChanceTables(material)
+        const { material: specificMaterial, value, subtable, detail } = itemDetailsFromChanceTables(material)
         if (subtable) {
             const { materialCategory, specificMaterial: subMaterial } = handleSingleMaterial(subtable)
             return {
@@ -350,11 +440,11 @@ function handleSingleMaterial(material) {
         }
         return {
             materialCategory: material,
-            specificMaterial,
+            specificMaterial: specificMaterial ? specificMaterial : detail,
             value: changeSCStringToNumber(value)
         }
     } else {
-        const { material: specificMaterial, value, subtable, subtables } = getItemFromTable('other_table', material)
+        const { material: specificMaterial, value, subtable, subtables, detail } = getItemFromTable('other_table', material)
         if (subtable) {
             const { materialCategory, specificMaterial: subMaterial } = handleSingleMaterial(subtable)
             return {

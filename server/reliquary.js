@@ -17,7 +17,7 @@ massive(connection).then(dbI => {
     app.listen(3434, _ => {
         uniqueItemCtrl.setUpTables()
         console.log(`One Thousand Good Deeds Cannot Blot Out the Stain of One Sin 3434`)
-        // uniqueItemCtrl.getRandomUniqueItem(null, null)
-        uniqueItemCtrl.runTests()
+        uniqueItemCtrl.getRandomUniqueItem(null, null)
+        // uniqueItemCtrl.runTests()
     })
 })

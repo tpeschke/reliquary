@@ -1457,7 +1457,7 @@ module.exports = {
         {
             weight: 3,
             entry: 'Comforter (3.5’ x 6’)',
-            base_material: [[{ weight: 2, material: 'Down', subtable: ANIMAL_AIR }, { weight: 2, material: 'Feather', subtable: ANIMAL_AIR }, { weight: 2, material: 'Heavy Down', subtable: ANIMAL_AIR }, { weight: 2, material: 'Heavy Feather', subtable: ANIMAL_AIR }], CLOTH],
+            base_material: [[{ weight: 2, material: 'Down' }, { weight: 2, material: 'Feather' }, { weight: 2, material: 'Heavy Down' }, { weight: 2, material: 'Heavy Feather' }], CLOTH],
             [SIZE]: 'L',
             [ADJECTIVES]: 2,
             [COLORS]: 7,
@@ -6760,6 +6760,11 @@ module.exports = {
             value: '1.18 sc',
             subtable: ANIMAL_AIR
         },
+        {
+            material: 'Feathers',
+            value: '1.18 sc',
+            subtable: ANIMAL_AIR
+        },
         { material: 'Felt', value: '2.5 sc' },
         { material: 'Gauze', value: '1.1725 sc' },
         { material: 'Glass', value: '5 sc' },
@@ -7018,25 +7023,25 @@ module.exports = {
         { weight: 1, detail: 'Yellow' }
     ],
     [ENGRAVING_TYPE_WITH_GEMS]: [
-        { valueMultiplier: 100, detail: 'Etching', weight: 4 },
-        { valueMultiplier: 150, detail: 'Inside Engraving', weight: 3 }
+        { value: '100 sc', detail: 'Etching', weight: 4 },
+        { value: '150 sc', detail: 'Inside Engraving', weight: 3 }
     ],
     [ENGRAVING_TYPE_WITH_NO_GEMS]: [
-        { valueMultiplier: 100, detail: 'Etching', weight: 4 },
-        { valueMultiplier: 150, detail: 'Inside Engraving', weight: 3 },
-        { valueMultiplier: 250, detail: 'Gem Engraving', weight: 1 }
+        { value: '100 sc', detail: 'Etching', weight: 4 },
+        { value: '150 sc', detail: 'Inside Engraving', weight: 3 },
+        { value: '250 sc', detail: 'Gem Engraving', weight: 1 }
     ],
-    [STITCHING_TYPE]: [{ valueMultiplier: 0.5, detail: 'Hand Stitching' }],
+    [STITCHING_TYPE]: [{ value: '0.5 sc', detail: 'Hand Stitching' }],
     [SUBJECT]: [
         { 'weight': 1, 'subject': 'Abstract', 'secondary subject': '1', [ANIMAL_SUBTYPE]: '2', [PERSONS]: '2', [EVENTS]: '2', [COLORS]: '2', [ADJECTIVES]: '4', [BODY_PARTS]: '3' }, 
-        // { 'weight': 1, 'subject': 'Historical', 'secondary subject': '4', [ANIMAL_SUBTYPE]: '1', [PERSONS]: '3', [EVENTS]: '4', [COLORS]: '2', [ADJECTIVES]: '2', [BODY_PARTS]: '1' },
-        // { 'weight': 1, 'subject': 'Inscription', 'secondary subject': '1', [ANIMAL_SUBTYPE]: '1', [PERSONS]: '3', [EVENTS]: '3', [COLORS]: '1', [ADJECTIVES]: '2', [BODY_PARTS]: '3' },
-        // { 'weight': 1, 'subject': 'Pastoral', 'secondary subject': '3', [ANIMAL_SUBTYPE]: '4', [PERSONS]: '3', [EVENTS]: '2', [COLORS]: '2', [ADJECTIVES]: '2', [BODY_PARTS]: '1' },
-        // { 'weight': 1, 'subject': 'Pattern Work', 'secondary subject': '1', [ANIMAL_SUBTYPE]: '2', [PERSONS]: '2', [EVENTS]: '1', [COLORS]: '4', [ADJECTIVES]: '4', [BODY_PARTS]: '4' },
-        // { 'weight': 1, 'subject': 'Personal', 'secondary subject': '2', [ANIMAL_SUBTYPE]: '1', [PERSONS]: '4', [EVENTS]: '2', [COLORS]: '1', [ADJECTIVES]: '2', [BODY_PARTS]: '4' },
-        // { 'weight': 1, 'subject': 'Propaganda', 'secondary subject': '2', [ANIMAL_SUBTYPE]: '2', [PERSONS]: '5', [EVENTS]: '4', [COLORS]: '2', [ADJECTIVES]: '3', [BODY_PARTS]: '3' },
-        // { 'weight': 1, 'subject': 'Religious', 'secondary subject': '4', [ANIMAL_SUBTYPE]: '4', [PERSONS]: '4', [EVENTS]: '4', [COLORS]: '3', [ADJECTIVES]: '3', [BODY_PARTS]: '3' },
-        // { 'weight': 1, 'subject': 'Sigil', 'secondary subject': '1', [ANIMAL_SUBTYPE]: '5', [PERSONS]: '3', [EVENTS]: '1', [COLORS]: '4', [ADJECTIVES]: '3', [BODY_PARTS]: '5' }
+        { 'weight': 1, 'subject': 'Historical', 'secondary subject': '4', [ANIMAL_SUBTYPE]: '1', [PERSONS]: '3', [EVENTS]: '4', [COLORS]: '2', [ADJECTIVES]: '2', [BODY_PARTS]: '1' },
+        { 'weight': 1, 'subject': 'Inscription', 'secondary subject': '1', [ANIMAL_SUBTYPE]: '1', [PERSONS]: '3', [EVENTS]: '3', [COLORS]: '1', [ADJECTIVES]: '2', [BODY_PARTS]: '3' },
+        { 'weight': 1, 'subject': 'Pastoral', 'secondary subject': '3', [ANIMAL_SUBTYPE]: '4', [PERSONS]: '3', [EVENTS]: '2', [COLORS]: '2', [ADJECTIVES]: '2', [BODY_PARTS]: '1' },
+        { 'weight': 1, 'subject': 'Pattern Work', 'secondary subject': '1', [ANIMAL_SUBTYPE]: '2', [PERSONS]: '2', [EVENTS]: '1', [COLORS]: '4', [ADJECTIVES]: '4', [BODY_PARTS]: '4' },
+        { 'weight': 1, 'subject': 'Personal', 'secondary subject': '2', [ANIMAL_SUBTYPE]: '1', [PERSONS]: '4', [EVENTS]: '2', [COLORS]: '1', [ADJECTIVES]: '2', [BODY_PARTS]: '4' },
+        { 'weight': 1, 'subject': 'Propaganda', 'secondary subject': '2', [ANIMAL_SUBTYPE]: '2', [PERSONS]: '5', [EVENTS]: '4', [COLORS]: '2', [ADJECTIVES]: '3', [BODY_PARTS]: '3' },
+        { 'weight': 1, 'subject': 'Religious', 'secondary subject': '4', [ANIMAL_SUBTYPE]: '4', [PERSONS]: '4', [EVENTS]: '4', [COLORS]: '3', [ADJECTIVES]: '3', [BODY_PARTS]: '3' },
+        { 'weight': 1, 'subject': 'Sigil', 'secondary subject': '1', [ANIMAL_SUBTYPE]: '5', [PERSONS]: '3', [EVENTS]: '1', [COLORS]: '4', [ADJECTIVES]: '3', [BODY_PARTS]: '5' }
     ],
     [EVENTS_TIMEPERIOD]: [
         { 'weight': 1, 'detail': 'Ancient' },
