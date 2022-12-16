@@ -6747,7 +6747,7 @@ module.exports = {
             subtable: RACE_OF_ORIGIN
         },
         { material: 'Chalk', value: '0.1 sc' },
-        { material: 'Chewing Tobacco', value: '0.873 sc' },
+        { material: 'Chewing Tabacco', value: '0.873 sc' },
         { material: 'Cotton', value: '0.148 sc' },
         { material: 'Crystal', value: '3.75 sc' },
         {
@@ -6793,7 +6793,7 @@ module.exports = {
         { material: 'Linseed Oil', value: '0.581 sc' },
         { material: 'Porcelain', value: '3.75 sc' },
         { material: 'Porcupine Spine', value: '0.737 sc' },
-        { material: 'Smoking Tobacco', value: '1.5 sc' },
+        { material: 'Smoking Tabacco', value: '1.5 sc' },
         { material: 'Straw', value: '0.0005 sc' },
         { material: 'Tallow', value: '0.091 sc' },
         { material: 'Thread', value: '0.009 sc' },

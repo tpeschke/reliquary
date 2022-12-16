@@ -79,9 +79,10 @@ module.exports = {
     },
     getRandomUniqueItem: (req, res) => {
         itemObject = getSingleUniqueItem()
+        console.log('Original', itemObject.value)
 
         let { budget } = req.query
-        
+
         if (budget) {
             budget = +budget
 
@@ -99,6 +100,9 @@ module.exports = {
     },
     getChanceTables: (req, res) => {
         res.send(chanceTables)
+    },
+    runTest: () => {
+       console.log(handleChanceOfMaterial([{ weight: 1, material: 'Slate', subtable: 'Stone/Earthwork' }]))
     }
 }
 
@@ -111,11 +115,12 @@ function getSingleUniqueItem() {
     itemObject.table = table
 
     rawObject = { ...rawObject, ...getBaseItem(table) }
-    if (table === RAW_GOODS) { 
-        console.log('RAW GOOD', rawObject) 
+    if (table === RAW_GOODS) {
+        console.log('RAW GOOD', rawObject)
     }
     itemObject.entry = rawObject.entry
 
+    console.log(rawObject.base_material)
     if (rawObject.base_material) {
         itemObject.material = handleMaterials(rawObject.base_material)
     } else if (!rawObject.base_material && rawObject.value) {
@@ -171,9 +176,11 @@ function getSingleUniqueItem() {
                 let valueMultiplier = 0
                 let stitchValue = 0
                 valueMultiplier = stitchingArray.forEach(stitch => {
+                    console.log(stitch.subject.valueMultiplier)
                     stitchValue += stitch.value
                     valueMultiplier += stitch.subject.valueMultiplier
                 })
+                console.log(stitchValue, valueMultiplier)
                 itemObject.stitchings = stitchingArray
                 startingValue += stitchValue
                 startingValue += .05 * valueMultiplier
@@ -232,10 +239,12 @@ function getSingleUniqueItem() {
         E: 9,
         C: 10
     }
+    console.log(startingValue)
 
     itemObject.size = rawObject.Size
-    startingValue += sizeModifier[itemObject.size]
+    startingValue *= sizeModifier[itemObject.size]
 
+    console.log(startingValue)
     itemObject.value = +startingValue.toFixed(2)
 
     return itemObject
@@ -466,9 +475,9 @@ function handleSingleMaterial(material) {
             value: changeSCStringToNumber(value)
         }
     } else {
-        const { material: specificMaterial, value, subtable, subtables, detail } = getItemFromTable('other_table', material)
-        if (subtable) {
-            const { materialCategory, specificMaterial: subMaterial } = handleSingleMaterial(subtable)
+        const result = getItemFromTable('other_table', material)
+        if (result.subtable) {
+            const { materialCategory, specificMaterial: subMaterial } = handleSingleMaterial(result.subtable)
             return {
                 materialCategory,
                 specificMaterial,
@@ -476,8 +485,8 @@ function handleSingleMaterial(material) {
                 value: changeSCStringToNumber(value)
             }
         }
-        if (subtables) {
-            let subMaterials = subtables.map(subtable => {
+        if (result.subtables) {
+            let subMaterials = result.subtables.map(subtable => {
                 const { materialCategory, specificMaterial: subMaterial, value } = handleSingleMaterial(subtable)
                 return {
                     materialCategory,
@@ -492,8 +501,8 @@ function handleSingleMaterial(material) {
             }
         }
         return {
-            specificMaterial,
-            value: changeSCStringToNumber(value)
+            specificMaterial : result.specificMaterial,
+            value: changeSCStringToNumber(result.value)
         }
     }
 }
@@ -542,6 +551,22 @@ function handleChanceOfMaterial(itemArray) {
         return [handleSingleMaterial(itemOne), handleSingleMaterial(itemTwo)]
     } else if (item === 'ALL THREE') {
         return [handleSingleMaterial(itemArray[0].material), handleSingleMaterial(itemArray[1].material), handleSingleMaterial(itemArray[2].material)]
+    } 
+    
+    let itemDetails
+    for (let i = 0; i < itemArray.length; i++) {
+        if (itemArray[i].material === item) {
+            itemDetails = itemArray[i]
+            i = itemArray.length
+        }
+    }
+    if (itemDetails && itemDetails.subtable) {
+        let itemValue = getItemFromTable(itemDetails.subtable, item).value
+        return {
+            materialCategory: itemDetails.subtable,
+            specificMaterial: item,
+            value: changeSCStringToNumber(itemValue)
+        }
     } else {
         return handleSingleMaterial(item)
     }
