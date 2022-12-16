@@ -7028,15 +7028,15 @@ module.exports = {
     ],
     [STITCHING_TYPE]: [{ valueMultiplier: 0.5, detail: 'Hand Stitching' }],
     [SUBJECT]: [
-        { 'weight': 1, 'subject': 'Abstract', 'secondary subject': '1', [ANIMAL_SUBTYPE]: '2', [PERSONS]: '2', [EVENTS]: '2', [COLORS]: '2', [ADJECTIVES]: '2', [BODY_PARTS]: '3' },
-        { 'weight': 1, 'subject': 'Historical', 'secondary subject': '4', [ANIMAL_SUBTYPE]: '1', [PERSONS]: '3', [EVENTS]: '4', [COLORS]: '2', [ADJECTIVES]: '2', [BODY_PARTS]: '1' },
-        { 'weight': 1, 'subject': 'Inscription', 'secondary subject': '1', [ANIMAL_SUBTYPE]: '1', [PERSONS]: '3', [EVENTS]: '3', [COLORS]: '1', [ADJECTIVES]: '2', [BODY_PARTS]: '3' },
-        { 'weight': 1, 'subject': 'Pastoral', 'secondary subject': '3', [ANIMAL_SUBTYPE]: '4', [PERSONS]: '3', [EVENTS]: '2', [COLORS]: '2', [ADJECTIVES]: '2', [BODY_PARTS]: '1' },
-        { 'weight': 1, 'subject': 'Pattern Work', 'secondary subject': '1', [ANIMAL_SUBTYPE]: '2', [PERSONS]: '2', [EVENTS]: '1', [COLORS]: '4', [ADJECTIVES]: '4', [BODY_PARTS]: '4' },
-        { 'weight': 1, 'subject': 'Personal', 'secondary subject': '2', [ANIMAL_SUBTYPE]: '1', [PERSONS]: '4', [EVENTS]: '2', [COLORS]: '1', [ADJECTIVES]: '2', [BODY_PARTS]: '4' },
-        { 'weight': 1, 'subject': 'Propaganda', 'secondary subject': '2', [ANIMAL_SUBTYPE]: '2', [PERSONS]: '5', [EVENTS]: '4', [COLORS]: '2', [ADJECTIVES]: '3', [BODY_PARTS]: '3' },
-        { 'weight': 1, 'subject': 'Religious', 'secondary subject': '4', [ANIMAL_SUBTYPE]: '4', [PERSONS]: '4', [EVENTS]: '4', [COLORS]: '3', [ADJECTIVES]: '3', [BODY_PARTS]: '3' },
-        { 'weight': 1, 'subject': 'Sigil', 'secondary subject': '1', [ANIMAL_SUBTYPE]: '5', [PERSONS]: '3', [EVENTS]: '1', [COLORS]: '4', [ADJECTIVES]: '3', [BODY_PARTS]: '5' }
+        { 'weight': 1, 'subject': 'Abstract', 'secondary subject': '1', [ANIMAL_SUBTYPE]: '2', [PERSONS]: '2', [EVENTS]: '2', [COLORS]: '2', [ADJECTIVES]: '4', [BODY_PARTS]: '3' }, 
+        // { 'weight': 1, 'subject': 'Historical', 'secondary subject': '4', [ANIMAL_SUBTYPE]: '1', [PERSONS]: '3', [EVENTS]: '4', [COLORS]: '2', [ADJECTIVES]: '2', [BODY_PARTS]: '1' },
+        // { 'weight': 1, 'subject': 'Inscription', 'secondary subject': '1', [ANIMAL_SUBTYPE]: '1', [PERSONS]: '3', [EVENTS]: '3', [COLORS]: '1', [ADJECTIVES]: '2', [BODY_PARTS]: '3' },
+        // { 'weight': 1, 'subject': 'Pastoral', 'secondary subject': '3', [ANIMAL_SUBTYPE]: '4', [PERSONS]: '3', [EVENTS]: '2', [COLORS]: '2', [ADJECTIVES]: '2', [BODY_PARTS]: '1' },
+        // { 'weight': 1, 'subject': 'Pattern Work', 'secondary subject': '1', [ANIMAL_SUBTYPE]: '2', [PERSONS]: '2', [EVENTS]: '1', [COLORS]: '4', [ADJECTIVES]: '4', [BODY_PARTS]: '4' },
+        // { 'weight': 1, 'subject': 'Personal', 'secondary subject': '2', [ANIMAL_SUBTYPE]: '1', [PERSONS]: '4', [EVENTS]: '2', [COLORS]: '1', [ADJECTIVES]: '2', [BODY_PARTS]: '4' },
+        // { 'weight': 1, 'subject': 'Propaganda', 'secondary subject': '2', [ANIMAL_SUBTYPE]: '2', [PERSONS]: '5', [EVENTS]: '4', [COLORS]: '2', [ADJECTIVES]: '3', [BODY_PARTS]: '3' },
+        // { 'weight': 1, 'subject': 'Religious', 'secondary subject': '4', [ANIMAL_SUBTYPE]: '4', [PERSONS]: '4', [EVENTS]: '4', [COLORS]: '3', [ADJECTIVES]: '3', [BODY_PARTS]: '3' },
+        // { 'weight': 1, 'subject': 'Sigil', 'secondary subject': '1', [ANIMAL_SUBTYPE]: '5', [PERSONS]: '3', [EVENTS]: '1', [COLORS]: '4', [ADJECTIVES]: '3', [BODY_PARTS]: '5' }
     ],
     [EVENTS_TIMEPERIOD]: [
         { 'weight': 1, 'detail': 'Ancient' },
@@ -7056,7 +7056,7 @@ module.exports = {
         { weight: 1, detail: 'Metaphorically Aligned with Another Part of the Piece' },
         { weight: 1, detail: 'TWO' },
         { weight: 1, detail: 'THREE' },
-        { weight: 1, detail: 'Subject of Infamy (reroll)' }
+        { weight: 1, detail: 'Subject of Infamy' }
     ],
     [GEM_SIZE]: [
         { weight: 81, detail: '0.2', valueMultiplier: 0.1 },
@@ -7297,9 +7297,9 @@ module.exports = {
         { weight: 1, detail: 'Political' },
         { weight: 1, detail: 'Legendary' },
         { weight: 1, detail: 'Mythical' },
-        { weight: 1, detail: 'Literary' },
+        { weight: 1, detail: 'Literature' },
         { weight: 1, detail: 'Abstract' },
-        { weight: 1, detail: 'Subject of Infamy (Roll again for specifics of how)' },
+        { weight: 1, detail: 'Infamous' },
         { weight: 1, detail: 'TWO' },
         { weight: 1, detail: 'THREE' }
     ],

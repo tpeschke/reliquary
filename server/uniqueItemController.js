@@ -1,4 +1,4 @@
-const { ROLL_TWICE, ADJECTIVES, COLORS, WEAPON_COLORS, EXPLOSION_COLORS, ENGRAVINGS, STITCHINGS, QUIRKS, SUBJECT, GEMS, RAW_GOODS, ANIMAL_SUBTYPE, PERSONS, EVENTS, BODY_PARTS } = require('./constants');
+const { ROLL_TWICE, ADJECTIVES, COLORS, WEAPON_COLORS, EXPLOSION_COLORS, ENGRAVINGS, STITCHINGS, QUIRKS, SUBJECT, GEMS, RAW_GOODS, ANIMAL_SUBTYPE, PERSONS, EVENTS, BODY_PARTS, RACE_OF_ORIGIN, EVENTS_TIMEPERIOD } = require('./constants');
 const { item_tables_with_subtables } = require('./tables');
 const tables = require('./tables')
 
@@ -164,22 +164,60 @@ function generateSubject() {
     let valueMultiplier = 0
 
     for (const table in possibleSubjects) {
-        let detailNumber = Math.floor(getRandomNumber(10) / +possibleSubjects[table])
+        let detailNumber = Math.floor(+possibleSubjects[table] / getRandomNumber(10))
 
         if (detailNumber >= 1) {
             if (table === COLORS || table === ADJECTIVES) {
                 subject[table] = generateDetails(table, detailNumber)
+
                 valueMultiplier += subject[table].length
             } else if (table === 'secondary subject') {
+                let subjectArray = []
+                for (i = 0; i < detailNumber; i++) {
+                    subjectArray = [...subjectArray, detailInfoFromChanceTables('Subject').subject]
+                }
+                subjectArray = [...new Set(subjectArray)]
 
+                subject.secondary_subjects = subjectArray
+                valueMultiplier += subject.secondary_subjects.length
             } else if (table === ANIMAL_SUBTYPE) {
+                let animalArray = []
+                for (i = 0; i < detailNumber; i++) {
+                    const animalSubtype = detailInfoFromChanceTables(ANIMAL_SUBTYPE).subtable
+                    animalArray = [...animalArray, detailInfoFromChanceTables(animalSubtype).detail]
+                }
 
+                subject.animals = animalArray
+                valueMultiplier += subject.animals.length
             } else if (table === PERSONS) {
+                let personArray = []
 
+                for (i = 0; i < detailNumber; i++) {
+                    let personObject = {}
+
+                    personObject.spheres = handleSingleDetail(PERSONS)
+                    if (personObject.spheres.length === 1 && personObject.spheres[0] === 'Infamous') {
+                        personObject.spheres.push(handleSingleDetail(PERSONS))
+                    }
+                    personObject.race = handleSingleDetail(RACE_OF_ORIGIN)[0]
+                    personObject.timeperiod = handleSingleDetail(EVENTS_TIMEPERIOD)[0]
+
+                    personArray.push(personObject)
+                }
+                subject.persons = personArray
+                valueMultiplier += detailNumber
             } else if (table === EVENTS) {
 
             } else if (table === BODY_PARTS) {
+                let bodyArray = []
+                for (i = 0; i < detailNumber; i++) {
+                    const bodyPartSubtable = detailInfoFromChanceTables(BODY_PARTS).subtable
+                    console.log(bodyPartSubtable)
+                    bodyArray = [...bodyArray, detailInfoFromChanceTables(bodyPartSubtable).detail]
+                }
 
+                subject.bodyparts = bodyArray
+                valueMultiplier += detailNumber
             }
         }
     }

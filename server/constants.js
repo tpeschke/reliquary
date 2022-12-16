@@ -85,7 +85,7 @@ module.exports = {
     BODY_PARTS: 'Body Parts',
     BODY_HEAD: 'Head Parts',
     BODY_ARM: 'Arm Parts',
-    BODY_BODY: 'Body Parts',
+    BODY_BODY: 'Body Body',
     BODY_LEGS: 'Leg Parts',
     ENGRAVING_TYPE_WITH_GEMS: 'Engraving Type with Gems',
     ENGRAVING_TYPE_WITH_NO_GEMS: 'Engraving Type Without Gems',
