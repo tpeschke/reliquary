@@ -161,7 +161,7 @@ module.exports = {
         },
         {
             weight: 7,
-            entry: 'Sealing WAX',
+            entry: 'Sealing Wax',
             base_material: WAX,
             [SIZE]: 'D',
             [ADJECTIVES]: 1,
@@ -863,7 +863,7 @@ module.exports = {
         },
         {
             weight: 5,
-            entry: 'WAX',
+            entry: 'Wax',
             base_material: WAX,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
@@ -1100,7 +1100,7 @@ module.exports = {
         },
         {
             weight: 4,
-            entry: 'FURmore (pint)',
+            entry: 'Furmore (pint)',
             value: '1 sc',
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
@@ -1516,7 +1516,7 @@ module.exports = {
         { weight: 3, entry: [FRUIT_AND_VEGATABLES] },
         { weight: 4, entry: [PROTEIN] },
         { weight: 5, entry: [NUTS] },
-        { weight: 6, entry: [SPICES_AND_SEASONINGS] }
+        // { weight: 6, entry: [SPICES_AND_SEASONINGS] }
     ],
     [HOUSEHOLD_ITEMS]: [
         {
@@ -3246,7 +3246,7 @@ module.exports = {
         },
         {
             weight: 1,
-            entry: 'CLOTHe',
+            entry: 'Clothe',
             base_material: CLOTH,
             [SIZE]: 'S',
             [ADJECTIVES]: 2,

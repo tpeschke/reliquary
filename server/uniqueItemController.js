@@ -115,6 +115,8 @@ function getSingleUniqueItem(budget = null) {
 
     do {
         startingValue = 0
+        rawObject = {}
+        itemObject = {}
         table = chanceTables.start[getRandomIndex(chanceTables.start.length)]
         itemObject.table = table
 
@@ -170,8 +172,9 @@ function getSingleUniqueItem(budget = null) {
             }
         } else if (table === SUBJECT && (startingValue * sizeModifier[rawObject.Size]) < (budget * 1.75)) {
             let subjectArray = []
+            console.log(rawObject, table, rawObject[table])
             let detailNumber = rawObject[table] ? Math.floor(rawObject[table] / getRandomNumber(10)) : 0
-            for (i = 0; i < detailNumber; i++) {
+            for (i = 0; i <= detailNumber; i++) {
                 subjectArray.push(generateSubject())
             }
             valueMultiplier = subjectArray.reduce((acc, { valueMultiplier }) => acc + valueMultiplier, 0)
@@ -180,7 +183,7 @@ function getSingleUniqueItem(budget = null) {
         } else if (table === STITCHINGS && (startingValue * sizeModifier[rawObject.Size]) < (budget * 1.75)) {
             let stitchingArray = []
             let detailNumber = rawObject[table] ? Math.floor(rawObject[table] / getRandomNumber(10)) : 0
-            for (i = 0; i < detailNumber; i++) {
+            for (i = 0; i <= detailNumber; i++) {
                 let stitchingObject = {
                     type: tables[STITCHING_TYPE][0].detail,
                     value: changeSCStringToNumber(tables[STITCHING_TYPE][0].value),
@@ -202,7 +205,7 @@ function getSingleUniqueItem(budget = null) {
         } else if (table === GEMS && (startingValue * sizeModifier[rawObject.Size]) < (budget * 1.75)) {
             let gemArray = []
             let detailNumber = rawObject[table] ? Math.floor(rawObject[table] / getRandomNumber(10)) : 0
-            for (i = 0; i < detailNumber; i++) {
+            for (i = 0; i <= detailNumber; i++) {
                 gemArray.push(generateGems())
             }
             itemObject.gems = gemArray
@@ -213,11 +216,12 @@ function getSingleUniqueItem(budget = null) {
     if (rawObject[ENGRAVINGS] && (startingValue * sizeModifier[rawObject.Size]) < (budget * 1.75)) {
         let engravingArray = []
         let detailNumber = rawObject[table] ? Math.floor(rawObject[table] / getRandomNumber(10)) : 0
-        for (i = 0; i < detailNumber; i++) {
+        for (i = 0; i <= detailNumber; i++) {
             let engravingObject = {
                 subject: generateSubject()
             }
-            if (itemObject.gems.length > 0) {
+            
+            if (itemObject.gems && itemObject.gems.length > 0) {
                 const type = itemDetailsFromChanceTables(ENGRAVING_TYPE_WITH_GEMS)
                 engravingObject.value = changeSCStringToNumber(type.value)
                 engravingObject.type = type.type
