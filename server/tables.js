@@ -13,11 +13,11 @@ const { ACADEMIC_TOOLS, ADVENTURING_GEAR, ALCHEMICAL_SUBSTANCES,
     BODY_PARTS, BODY_HEAD, BODY_ARM, BODY_BODY, BODY_LEGS, WEAPON_COLORS, EXPLOSION_COLORS,
     ENGRAVING_TYPE_WITH_GEMS, ENGRAVING_TYPE_WITH_NO_GEMS, STITCHING_TYPE, PERSONS,
     EVENTS_TIMEPERIOD, EVENTS_SUBJECT, GEM_SIZE, GEM_SHAPE, GEM_TYPE, SUBJECT, EVENTS,
-    PRICE, AMOUNT, TYPE
+    PRICE, AMOUNT, TYPE, MULTIPLIER
 } = require('./constants')
 
 module.exports = {
-    item_tables_with_subtables: [CLOTHING, FOOD, WEAPONS, RAW_GOODS, FUR_OR_LEATHER, WAX, PARCHMENT, VELLUM, EXOTIC_CLOTH, EXOTIC_METAL, EXOTIC_STONE_EARTHWORK, EXOTIC_WOOD, ANIMAL_SUBTYPE, BODY_PARTS],
+    // item_tables_with_subtables: [CLOTHING, FOOD, WEAPONS, RAW_GOODS, FUR_OR_LEATHER, WAX, PARCHMENT, VELLUM, EXOTIC_CLOTH, EXOTIC_METAL, EXOTIC_STONE_EARTHWORK, EXOTIC_WOOD, ANIMAL_SUBTYPE, BODY_PARTS],
     start: [
         { weight: 5, entry: ACADEMIC_TOOLS },
         { weight: 5, entry: ADVENTURING_GEAR },
@@ -41,6 +41,41 @@ module.exports = {
         { weight: 5, entry: WEAPONS },
         { weight: 5, entry: WORKS_OF_ART },
         { weight: 3, entry: ROLL_TWICE }
+    ],
+    [CLOTHING]: [
+        {
+            weight: 1,
+            entry: ACCESSORIES
+        },
+        {
+            weight: 1,
+            entry: BODY
+        }, {
+            weight: 1,
+            entry: FOOTWEAR
+        },
+        {
+            weight: 1,
+            entry: HEADGEAR
+        },
+    ],
+    [FOOD]: [
+        { weight: 1, entry: [PREPPED_FOOD] },
+        { weight: 2, entry: [BREAD] },
+        { weight: 3, entry: [FRUIT_AND_VEGATABLES] },
+        { weight: 4, entry: [PROTEIN] },
+        { weight: 5, entry: [NUTS] },
+        { weight: 6, entry: [SPICES_AND_SEASONINGS] }
+    ],
+    [WEAPONS]: [
+        { weight: 1, entry: [AXES] },
+        { weight: 2, entry: [POLEARMS] },
+        { weight: 3, entry: [SIDEARMS] },
+        { weight: 4, entry: [SWORDS] },
+        { weight: 5, entry: [TRAUMA] },
+        { weight: 6, entry: [THROWN] },
+        { weight: 7, entry: [MECHANICAL_RANGED] },
+        { weight: 8, entry: [FIREARMS] }
     ],
     [ACADEMIC_TOOLS]: [
         {
@@ -1356,23 +1391,6 @@ module.exports = {
             [PRICE]: 5.4
         }
     ],
-    [CLOTHING]: [
-        {
-            weight: 1,
-            entry: ACCESSORIES
-        },
-        {
-            weight: 1,
-            entry: BODY
-        }, {
-            weight: 1,
-            entry: FOOTWEAR
-        },
-        {
-            weight: 1,
-            entry: HEADGEAR
-        },
-    ],
     [ENTERTAINMENT]: [
         {
             weight: 5,
@@ -1674,14 +1692,6 @@ module.exports = {
             [AMOUNT]: '20 + 2d20',
             [TYPE]: 'ft'
         }
-    ],
-    [FOOD]: [
-        { weight: 1, entry: [PREPPED_FOOD] },
-        { weight: 2, entry: [BREAD] },
-        { weight: 3, entry: [FRUIT_AND_VEGATABLES] },
-        { weight: 4, entry: [PROTEIN] },
-        { weight: 5, entry: [NUTS] },
-        { weight: 6, entry: [SPICES_AND_SEASONINGS] }
     ],
     [HOUSEHOLD_ITEMS]: [
         {
@@ -4154,16 +4164,6 @@ module.exports = {
             [AMOUNT]: '1d10 * 10',
             [TYPE]: 'ft'
         }
-    ],
-    [WEAPONS]: [
-        { weight: 1, entry: [AXES] },
-        { weight: 2, entry: [POLEARMS] },
-        { weight: 3, entry: [SIDEARMS] },
-        { weight: 4, entry: [SWORDS] },
-        { weight: 5, entry: [TRAUMA] },
-        { weight: 6, entry: [THROWN] },
-        { weight: 7, entry: [MECHANICAL_RANGED] },
-        { weight: 8, entry: [FIREARMS] }
     ],
     [WORKS_OF_ART]: [
         {
@@ -7036,10 +7036,6 @@ module.exports = {
         { weight: 1, material: 'Spidersilk', [MULTIPLIER]: 0 },
         { weight: 1, material: 'Woven Metal', [MULTIPLIER]: 0, subtable: METAL }
     ],
-    [FUR_OR_LEATHER]: [
-        { weight: 1, material: FUR },
-        { weight: 1, material: LEATHER },
-    ],
     [FUR]: [
         { weight: 12, material: 'Marten', [MULTIPLIER]: 2.5 },
         { weight: 12, material: 'Stoat', [MULTIPLIER]: 12.5 },
@@ -7098,29 +7094,29 @@ module.exports = {
             subtable: STONE_EARTHWORK
         }
     ],
-    [PAPER_PRODUCT]: [
-        { weight: 1, material: 'Paper', [PRICE]: .25 },
-        { weight: 1, material: 'Papyrus', [PRICE]: 1 },
-        { weight: 1, material: PARCHMENT, [PRICE]: .75, subtable: PARCHMENT },
-        { weight: 1, material: VELLUM, [PRICE]: .5, subtable: VELLUM }
-    ],
+    // [PAPER_PRODUCT]: [
+    //     { weight: 1, material: 'Paper', [PRICE]: .25 },
+    //     { weight: 1, material: 'Papyrus', [PRICE]: 1 },
+    //     { weight: 1, material: PARCHMENT, [PRICE]: .75, subtable: PARCHMENT },
+    //     { weight: 1, material: VELLUM, [PRICE]: .5, subtable: VELLUM }
+    // ],
     [PARCHMENT]: [
-        { weight: 5, material: 'Cow' },
-        { weight: 4, material: 'Goat' },
-        { weight: 4, material: 'Sheep' },
+        { weight: 5, material: 'Cow', [MULTIPLIER]: 1 },
+        { weight: 4, material: 'Goat', [MULTIPLIER]: 2 },
+        { weight: 4, material: 'Sheep', [MULTIPLIER]: 2 },
         { weight: 3, material: 'Other Common Animal', subtable: LEATHER },
-        { weight: 1, material: 'Other Animal' },
-        { weight: 1, material: 'Monster' },
-        { weight: 1, material: 'Sentient Person', subtable: RACE_OF_ORIGIN }
+        { weight: 1, material: 'Other Animal', [MULTIPLIER]: 4 },
+        { weight: 1, material: 'Monster', [MULTIPLIER]: 5 },
+        { weight: 1, material: 'Sentient Person', [MULTIPLIER]: 6, subtable: RACE_OF_ORIGIN }
     ],
     [VELLUM]: [
-        { weight: 5, material: 'Cow' },
-        { weight: 4, material: 'Goat' },
-        { weight: 4, material: 'Sheep' },
+        { weight: 5, material: 'Cow', [MULTIPLIER]: 1 },
+        { weight: 4, material: 'Goat', [MULTIPLIER]: 2 },
+        { weight: 4, material: 'Sheep', [MULTIPLIER]: 2 },
         { weight: 3, material: 'Other Common Animal', subtable: LEATHER },
-        { weight: 1, material: 'Other Animal' },
-        { weight: 1, material: 'Monster' },
-        { weight: 1, material: 'Sentient Person', subtable: RACE_OF_ORIGIN }
+        { weight: 1, material: 'Other Animal', [MULTIPLIER]: 4 },
+        { weight: 1, material: 'Monster', [MULTIPLIER]: 5 },
+        { weight: 1, material: 'Sentient Person', [MULTIPLIER]: 6, subtable: RACE_OF_ORIGIN }
     ],
     [STONE_EARTHWORK]: [
         { weight: 5, material: 'Clay', [MULTIPLIER]: .0095 },
@@ -7260,113 +7256,113 @@ module.exports = {
         { weight: 1, material: 'Zapis', [MULTIPLIER]: 0 },
         { weight: 1, material: 'Zaqqum', [MULTIPLIER]: 0 }
     ],
-    [WAX]: [
-        { [PRICE]: 1.368, material: 'Bee', weight: 1 },
-        { [PRICE]: 5, material: 'Whale Head', weight: 1 },
-        { [PRICE]: 2.5, material: 'Bayberry', weight: 1 },
-        { [PRICE]: 0.162, material: 'Carnauba', weight: 1 },
-        { [PRICE]: 0.179, material: 'Candelilla', weight: 1 },
-        { [PRICE]: 0.148, material: 'Rice Bran', weight: 1 },
-        { [PRICE]: 0.028, material: 'Soy', weight: 1 },
-        { [PRICE]: 0.6, material: 'Jojoba', weight: 1 }
-    ],
-    other_table: [
-        {
-            material: 'Animal',
-            [PRICE]: 0.03,
-            subtable: ANIMAL_SUBTYPE
-        }, {
-            material: 'Chicken',
-            [PRICE]: 0.01
-        },
-        {
-            material: 'Goose',
-            [PRICE]: 0.01
-        },
-        {
-            material: 'Monster',
-            [PRICE]: 0.1
-        },
-        {
-            material: 'Bone, Animal',
-            [PRICE]: 0.25,
-            subtable: ANIMAL_SUBTYPE
-        },
-        { material: 'Bone, Monster', [PRICE]: 3 },
-        {
-            material: 'Bone, Sentient',
-            [PRICE]: 5,
-            subtable: RACE_OF_ORIGIN
-        },
-        { material: 'Chalk', [PRICE]: 0.1 },
-        { material: 'Chewing Tabacco', [PRICE]: 0.873 },
-        { material: 'Cotton', [PRICE]: 0.148 },
-        { material: 'Crystal', [PRICE]: 3.75 },
-        {
-            material: 'Down',
-            [PRICE]: 1.75,
-            subtable: ANIMAL_AIR
-        },
-        {
-            material: 'Feather',
-            [PRICE]: 1.18,
-            subtable: ANIMAL_AIR
-        },
-        {
-            material: 'Feathers',
-            [PRICE]: 1.18,
-            subtable: ANIMAL_AIR
-        },
-        { material: 'Felt', [PRICE]: 2.5 },
-        { material: 'Gauze', [PRICE]: 1.1725 },
-        { material: 'Glass', [PRICE]: 5 },
-        {
-            material: 'Goose Feather',
-            [PRICE]: 1.18
-        },
-        {
-            material: 'Heavy Down',
-            [PRICE]: 2.1,
-            subtable: ANIMAL_AIR
-        },
-        {
-            material: 'Heavy Feather',
-            [PRICE]: 2,
-            subtable: ANIMAL_AIR
-        },
-        { material: 'Hemp Oil', [PRICE]: 0.17 },
-        {
-            material: 'Horn',
-            [PRICE]: 2.25,
-            subtable: ANIMAL_LAND
-        },
-        { material: 'Feathers', [PRICE]: 1, subtable: ANIMAL_AIR },
-        { material: 'Ivory', [PRICE]: 5 },
-        { material: 'Linseed Oil', [PRICE]: 0.581 },
-        { material: 'Porcelain', [PRICE]: 3.75 },
-        { material: 'Porcupine Spine', [PRICE]: 0.737 },
-        { material: 'Smoking Tabacco', [PRICE]: 1.5 },
-        { material: 'Straw', [PRICE]: 0.0005 },
-        { material: 'Tallow', [PRICE]: 0.091 },
-        { material: 'Thread', [PRICE]: 0.009 },
-        { material: 'Twine', [PRICE]: 0.02 },
-        { material: 'Animal Guts', [PRICE]: 0.01, subtable: ANIMAL_LAND},
-        { material: 'Whale Oil', [PRICE]: 0.0097 },
-        { material: 'Wicker', [PRICE]: 0.08, subtable: WOOD },
-        { material: 'Wool', [PRICE]: 0.48 },
-        { material: 'Waxed Cloth', subtables: [WAX, CLOTH] },
-        { material: 'Waxed Leather', subtables: [WAX, LEATHER] },
-        { material: 'Blacknessel', [PRICE]: 110 },
-        { material: 'Blue Glory', [PRICE]: 77 },
-        { material: 'Bondweed', [PRICE]: 60.5 },
-        { material: 'Griffin Hair', [PRICE]: 40 },
-        { material: 'Lylullin', [PRICE]: 105 },
-        { material: 'Maidenscap', [PRICE]: 135 },
-        { material: 'Palm of St Germain', [PRICE]: 60 },
-        { material: 'Tears of Sicyon', [PRICE]: 115 },
-        { material: 'Unknown', [PRICE]: 0 },
-        { material: 'Monster Poison', [PRICE]: 215 }
-    ],
+    // [WAX]: [
+    //     { [PRICE]: 1.368, material: 'Bee', weight: 1 },
+    //     { [PRICE]: 5, material: 'Whale Head', weight: 1 },
+    //     { [PRICE]: 2.5, material: 'Bayberry', weight: 1 },
+    //     { [PRICE]: 0.162, material: 'Carnauba', weight: 1 },
+    //     { [PRICE]: 0.179, material: 'Candelilla', weight: 1 },
+    //     { [PRICE]: 0.148, material: 'Rice Bran', weight: 1 },
+    //     { [PRICE]: 0.028, material: 'Soy', weight: 1 },
+    //     { [PRICE]: 0.6, material: 'Jojoba', weight: 1 }
+    // ],
+    // other_table: [
+    //     {
+    //         material: 'Animal',
+    //         [PRICE]: 0.03,
+    //         subtable: ANIMAL_SUBTYPE
+    //     }, {
+    //         material: 'Chicken',
+    //         [PRICE]: 0.01
+    //     },
+    //     {
+    //         material: 'Goose',
+    //         [PRICE]: 0.01
+    //     },
+    //     {
+    //         material: 'Monster',
+    //         [PRICE]: 0.1
+    //     },
+    //     {
+    //         material: 'Bone, Animal',
+    //         [PRICE]: 0.25,
+    //         subtable: ANIMAL_SUBTYPE
+    //     },
+    //     { material: 'Bone, Monster', [PRICE]: 3 },
+    //     {
+    //         material: 'Bone, Sentient',
+    //         [PRICE]: 5,
+    //         subtable: RACE_OF_ORIGIN
+    //     },
+    //     { material: 'Chalk', [PRICE]: 0.1 },
+    //     { material: 'Chewing Tabacco', [PRICE]: 0.873 },
+    //     { material: 'Cotton', [PRICE]: 0.148 },
+    //     { material: 'Crystal', [PRICE]: 3.75 },
+    //     {
+    //         material: 'Down',
+    //         [PRICE]: 1.75,
+    //         subtable: ANIMAL_AIR
+    //     },
+    //     {
+    //         material: 'Feather',
+    //         [PRICE]: 1.18,
+    //         subtable: ANIMAL_AIR
+    //     },
+    //     {
+    //         material: 'Feathers',
+    //         [PRICE]: 1.18,
+    //         subtable: ANIMAL_AIR
+    //     },
+    //     { material: 'Felt', [PRICE]: 2.5 },
+    //     { material: 'Gauze', [PRICE]: 1.1725 },
+    //     { material: 'Glass', [PRICE]: 5 },
+    //     {
+    //         material: 'Goose Feather',
+    //         [PRICE]: 1.18
+    //     },
+    //     {
+    //         material: 'Heavy Down',
+    //         [PRICE]: 2.1,
+    //         subtable: ANIMAL_AIR
+    //     },
+    //     {
+    //         material: 'Heavy Feather',
+    //         [PRICE]: 2,
+    //         subtable: ANIMAL_AIR
+    //     },
+    //     { material: 'Hemp Oil', [PRICE]: 0.17 },
+    //     {
+    //         material: 'Horn',
+    //         [PRICE]: 2.25,
+    //         subtable: ANIMAL_LAND
+    //     },
+    //     { material: 'Feathers', [PRICE]: 1, subtable: ANIMAL_AIR },
+    //     { material: 'Ivory', [PRICE]: 5 },
+    //     { material: 'Linseed Oil', [PRICE]: 0.581 },
+    //     { material: 'Porcelain', [PRICE]: 3.75 },
+    //     { material: 'Porcupine Spine', [PRICE]: 0.737 },
+    //     { material: 'Smoking Tabacco', [PRICE]: 1.5 },
+    //     { material: 'Straw', [PRICE]: 0.0005 },
+    //     { material: 'Tallow', [PRICE]: 0.091 },
+    //     { material: 'Thread', [PRICE]: 0.009 },
+    //     { material: 'Twine', [PRICE]: 0.02 },
+    //     { material: 'Animal Guts', [PRICE]: 0.01, subtable: ANIMAL_LAND},
+    //     { material: 'Whale Oil', [PRICE]: 0.0097 },
+    //     { material: 'Wicker', [PRICE]: 0.08, subtable: WOOD },
+    //     { material: 'Wool', [PRICE]: 0.48 },
+    //     { material: 'Waxed Cloth', subtables: [WAX, CLOTH] },
+    //     { material: 'Waxed Leather', subtables: [WAX, LEATHER] },
+    //     { material: 'Blacknessel', [PRICE]: 110 },
+    //     { material: 'Blue Glory', [PRICE]: 77 },
+    //     { material: 'Bondweed', [PRICE]: 60.5 },
+    //     { material: 'Griffin Hair', [PRICE]: 40 },
+    //     { material: 'Lylullin', [PRICE]: 105 },
+    //     { material: 'Maidenscap', [PRICE]: 135 },
+    //     { material: 'Palm of St Germain', [PRICE]: 60 },
+    //     { material: 'Tears of Sicyon', [PRICE]: 115 },
+    //     { material: 'Unknown', [PRICE]: 0 },
+    //     { material: 'Monster Poison', [PRICE]: 215 }
+    // ],
     [ADJECTIVES]: [
         { weight: 1, detail: 'Related to', subtable: RACE_OF_ORIGIN },
         { weight: 1, detail: 'Secret' },
@@ -7379,11 +7375,11 @@ module.exports = {
         { weight: 1, detail: 'Solid' },
         { weight: 1, detail: 'TWO' }
     ],
-    [ANIMAL_SUBTYPE]: [
-        { weight: 1, subtable: ANIMAL_LAND },
-        { weight: 1, subtable: ANIMAL_AIR },
-        { weight: 1, subtable: ANIMAL_WATER }
-    ],
+    // [ANIMAL_SUBTYPE]: [
+    //     { weight: 1, subtable: ANIMAL_LAND },
+    //     { weight: 1, subtable: ANIMAL_AIR },
+    //     { weight: 1, subtable: ANIMAL_WATER }
+    // ],
     [ANIMAL_LAND]: [
         { weight: 1, detail: 'Ant' },
         { weight: 1, detail: 'Antelope' },
@@ -7500,12 +7496,12 @@ module.exports = {
         { weight: 1, detail: 'Whale' },
         { weight: 1, detail: 'Whelk' }
     ],
-    [BODY_PARTS]: [
-        { weight: 1, subtable: BODY_HEAD },
-        { weight: 1, subtable: BODY_ARM },
-        { weight: 1, subtable: BODY_BODY },
-        { weight: 1, subtable: BODY_LEGS }
-    ],
+    // [BODY_PARTS]: [
+    //     { weight: 1, subtable: BODY_HEAD },
+    //     { weight: 1, subtable: BODY_ARM },
+    //     { weight: 1, subtable: BODY_BODY },
+    //     { weight: 1, subtable: BODY_LEGS }
+    // ],
     [BODY_HEAD]: [
         { weight: 1, detail: 'Head' },
         { weight: 1, detail: 'Face' },
@@ -7584,18 +7580,18 @@ module.exports = {
         { [PRICE]: 150, detail: 'Inside Engraving', weight: 3 },
         { [PRICE]: 250, detail: 'Gem Engraving', weight: 1 }
     ],
-    [STITCHING_TYPE]: [{ [PRICE]: 0.5, detail: 'Hand Stitching' }],
-    [SUBJECT]: [
-        { 'weight': 1, 'subject': 'Abstract', 'secondary subject': '1', [ANIMAL_SUBTYPE]: '2', [PERSONS]: '2', [EVENTS]: '2', [COLORS]: '2', [ADJECTIVES]: '4', [BODY_PARTS]: '3' }, 
-        { 'weight': 1, 'subject': 'Historical', 'secondary subject': '4', [ANIMAL_SUBTYPE]: '1', [PERSONS]: '3', [EVENTS]: '4', [COLORS]: '2', [ADJECTIVES]: '2', [BODY_PARTS]: '1' },
-        { 'weight': 1, 'subject': 'Inscription', 'secondary subject': '1', [ANIMAL_SUBTYPE]: '1', [PERSONS]: '3', [EVENTS]: '3', [COLORS]: '1', [ADJECTIVES]: '2', [BODY_PARTS]: '3' },
-        { 'weight': 1, 'subject': 'Pastoral', 'secondary subject': '3', [ANIMAL_SUBTYPE]: '4', [PERSONS]: '3', [EVENTS]: '2', [COLORS]: '2', [ADJECTIVES]: '2', [BODY_PARTS]: '1' },
-        { 'weight': 1, 'subject': 'Pattern Work', 'secondary subject': '1', [ANIMAL_SUBTYPE]: '2', [PERSONS]: '2', [EVENTS]: '1', [COLORS]: '4', [ADJECTIVES]: '4', [BODY_PARTS]: '4' },
-        { 'weight': 1, 'subject': 'Personal', 'secondary subject': '2', [ANIMAL_SUBTYPE]: '1', [PERSONS]: '4', [EVENTS]: '2', [COLORS]: '1', [ADJECTIVES]: '2', [BODY_PARTS]: '4' },
-        { 'weight': 1, 'subject': 'Propaganda', 'secondary subject': '2', [ANIMAL_SUBTYPE]: '2', [PERSONS]: '5', [EVENTS]: '4', [COLORS]: '2', [ADJECTIVES]: '3', [BODY_PARTS]: '3' },
-        { 'weight': 1, 'subject': 'Religious', 'secondary subject': '4', [ANIMAL_SUBTYPE]: '4', [PERSONS]: '4', [EVENTS]: '4', [COLORS]: '3', [ADJECTIVES]: '3', [BODY_PARTS]: '3' },
-        { 'weight': 1, 'subject': 'Sigil', 'secondary subject': '1', [ANIMAL_SUBTYPE]: '5', [PERSONS]: '3', [EVENTS]: '1', [COLORS]: '4', [ADJECTIVES]: '3', [BODY_PARTS]: '5' }
-    ],
+    // [STITCHING_TYPE]: [{ [PRICE]: 0.5, detail: 'Hand Stitching' }],
+    // [SUBJECT]: [
+    //     { 'weight': 1, 'subject': 'Abstract', 'secondary subject': '1', [ANIMAL_SUBTYPE]: '2', [PERSONS]: '2', [EVENTS]: '2', [COLORS]: '2', [ADJECTIVES]: '4', [BODY_PARTS]: '3' }, 
+    //     { 'weight': 1, 'subject': 'Historical', 'secondary subject': '4', [ANIMAL_SUBTYPE]: '1', [PERSONS]: '3', [EVENTS]: '4', [COLORS]: '2', [ADJECTIVES]: '2', [BODY_PARTS]: '1' },
+    //     { 'weight': 1, 'subject': 'Inscription', 'secondary subject': '1', [ANIMAL_SUBTYPE]: '1', [PERSONS]: '3', [EVENTS]: '3', [COLORS]: '1', [ADJECTIVES]: '2', [BODY_PARTS]: '3' },
+    //     { 'weight': 1, 'subject': 'Pastoral', 'secondary subject': '3', [ANIMAL_SUBTYPE]: '4', [PERSONS]: '3', [EVENTS]: '2', [COLORS]: '2', [ADJECTIVES]: '2', [BODY_PARTS]: '1' },
+    //     { 'weight': 1, 'subject': 'Pattern Work', 'secondary subject': '1', [ANIMAL_SUBTYPE]: '2', [PERSONS]: '2', [EVENTS]: '1', [COLORS]: '4', [ADJECTIVES]: '4', [BODY_PARTS]: '4' },
+    //     { 'weight': 1, 'subject': 'Personal', 'secondary subject': '2', [ANIMAL_SUBTYPE]: '1', [PERSONS]: '4', [EVENTS]: '2', [COLORS]: '1', [ADJECTIVES]: '2', [BODY_PARTS]: '4' },
+    //     { 'weight': 1, 'subject': 'Propaganda', 'secondary subject': '2', [ANIMAL_SUBTYPE]: '2', [PERSONS]: '5', [EVENTS]: '4', [COLORS]: '2', [ADJECTIVES]: '3', [BODY_PARTS]: '3' },
+    //     { 'weight': 1, 'subject': 'Religious', 'secondary subject': '4', [ANIMAL_SUBTYPE]: '4', [PERSONS]: '4', [EVENTS]: '4', [COLORS]: '3', [ADJECTIVES]: '3', [BODY_PARTS]: '3' },
+    //     { 'weight': 1, 'subject': 'Sigil', 'secondary subject': '1', [ANIMAL_SUBTYPE]: '5', [PERSONS]: '3', [EVENTS]: '1', [COLORS]: '4', [ADJECTIVES]: '3', [BODY_PARTS]: '5' }
+    // ],
     [EVENTS_TIMEPERIOD]: [
         { 'weight': 1, 'detail': 'Ancient' },
         { 'weight': 1, 'detail': 'Recent' },

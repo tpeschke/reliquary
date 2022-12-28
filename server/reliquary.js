@@ -4,23 +4,21 @@ const { connection } = require('./serverConfig')
     , cors = require('cors')
     , massive = require('massive')
 const uniqueItemCtrl = require('./uniqueItemController.js')
+const tables = require('./tables')
 
 const app = new express()
 app.use(bodyParser.json())
 app.use(cors())
 
-app.get('/api/getChanceTables', uniqueItemCtrl.getChanceTables)
-app.get('/api/getUniquieItem', uniqueItemCtrl.getRandomUniqueItem)
+// app.get('/api/getUniquieItem', uniqueItemCtrl.getRandomUniqueItem)
 
 massive(connection).then(dbI => {
     app.set('db', dbI)
     app.listen(3434, _ => {
-        uniqueItemCtrl.setUpTables()
         console.log(`One Thousand Good Deeds Cannot Blot Out the Stain of One Sin 3434`)
         // for (let i = 0; i <= 500; i++) {
         //     uniqueItemCtrl.getRandomUniqueItem(50)
         //     console.log('ITEM NUMBER: ', i)
         // }
-        // uniqueItemCtrl.runTest()
     })
 })
