@@ -10,7 +10,8 @@ create table ritems (
 	engravings int,
 	stitchings int,
 	gems int,
-	quirks int
+	quirks int,
+	subject int
 )
 
 create table ritemcategory (
@@ -42,4 +43,17 @@ create table rmaterial (
 	subtable text,
 	multiplier float,
 	price float
+)
+
+create table rsubject (
+	id serial primary key,
+	weight int,
+	subject text,
+	secondary_subject text,
+	animal_subtype int,
+	persons int,
+	events int,
+	colors int,
+	adjectives int,
+	body_parts int
 )

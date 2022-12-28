@@ -16,8 +16,5 @@ massive(connection).then(dbI => {
     app.set('db', dbI)
     app.listen(3434, _ => {
         console.log(`One Thousand Good Deeds Cannot Blot Out the Stain of One Sin 3434`)
-
-        // eventually have to SUBJECT
-        // Gem types & shapes
     })
 })
