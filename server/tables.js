@@ -24,10 +24,29 @@ module.exports = {
         { weight: 5, entry: ALCHEMICAL_SUBSTANCES },
         { weight: 3, entry: ARMOR },
         { weight: 5, entry: BEVERAGES },
-        { weight: 5, entry: CLOTHING },
+        {
+            weight: 1,
+            entry: CLOTHING + "_" + ACCESSORIES
+        },
+        {
+            weight: 1,
+            entry: CLOTHING + "_" + BODY
+        }, {
+            weight: 1,
+            entry: CLOTHING + "_" + FOOTWEAR
+        },
+        {
+            weight: 1,
+            entry: CLOTHING + "_" + HEADGEAR
+        },
+        { weight: 1, entry: FOOD + "_" + PREPPED_FOOD },
+        { weight: 2, entry: FOOD + "_" + BREAD },
+        { weight: 3, entry: FOOD + "_" + FRUIT_AND_VEGATABLES },
+        { weight: 4, entry: FOOD + "_" + PROTEIN },
+        { weight: 5, entry: FOOD + "_" + NUTS },
+        { weight: 6, entry: FOOD + "_" + SPICES_AND_SEASONINGS },
         { weight: 5, entry: ENTERTAINMENT },
         { weight: 5, entry: FABRICS_AND_ROPES },
-        { weight: 4, entry: FOOD },
         { weight: 5, entry: HOUSEHOLD_ITEMS },
         { weight: 5, entry: ILLUMINATION },
         { weight: 5, entry: JEWELRY },
@@ -38,44 +57,16 @@ module.exports = {
         { weight: 5, entry: RELIGIOUS_ITEMS },
         { weight: 5, entry: SHIELDS },
         { weight: 5, entry: TRADE_TOOLS },
-        { weight: 5, entry: WEAPONS },
+        { weight: 1, entry: WEAPONS + "_" + AXES },
+        { weight: 2, entry: WEAPONS + "_" + POLEARMS },
+        { weight: 3, entry: WEAPONS + "_" + SIDEARMS },
+        { weight: 4, entry: WEAPONS + "_" + SWORDS },
+        { weight: 5, entry: WEAPONS + "_" + TRAUMA },
+        { weight: 6, entry: WEAPONS + "_" + THROWN },
+        { weight: 7, entry: WEAPONS + "_" + MECHANICAL_RANGED },
+        { weight: 8, entry: WEAPONS + "_" + FIREARMS },
         { weight: 5, entry: WORKS_OF_ART },
         { weight: 3, entry: ROLL_TWICE }
-    ],
-    [CLOTHING]: [
-        {
-            weight: 1,
-            entry: ACCESSORIES
-        },
-        {
-            weight: 1,
-            entry: BODY
-        }, {
-            weight: 1,
-            entry: FOOTWEAR
-        },
-        {
-            weight: 1,
-            entry: HEADGEAR
-        },
-    ],
-    [FOOD]: [
-        { weight: 1, entry: [PREPPED_FOOD] },
-        { weight: 2, entry: [BREAD] },
-        { weight: 3, entry: [FRUIT_AND_VEGATABLES] },
-        { weight: 4, entry: [PROTEIN] },
-        { weight: 5, entry: [NUTS] },
-        { weight: 6, entry: [SPICES_AND_SEASONINGS] }
-    ],
-    [WEAPONS]: [
-        { weight: 1, entry: [AXES] },
-        { weight: 2, entry: [POLEARMS] },
-        { weight: 3, entry: [SIDEARMS] },
-        { weight: 4, entry: [SWORDS] },
-        { weight: 5, entry: [TRAUMA] },
-        { weight: 6, entry: [THROWN] },
-        { weight: 7, entry: [MECHANICAL_RANGED] },
-        { weight: 8, entry: [FIREARMS] }
     ],
     [ACADEMIC_TOOLS]: [
         {
@@ -3503,7 +3494,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Incense',
-            base_material: SPICES_AND_SEASONINGS,
+            base_material: FOOD + "_" + SPICES_AND_SEASONINGS,
             [SIZE]: 'D',
             [ADJECTIVES]: 1,
             [COLORS]: 9,
@@ -4243,7 +4234,7 @@ module.exports = {
             [PRICE]: 250
         }
     ],
-    [FOOTWEAR]: [
+    [CLOTHING + "_" + FOOTWEAR]: [
         {
             weight: 1,
             entry: 'Boots, Ankle',
@@ -4454,7 +4445,7 @@ module.exports = {
             [PRICE]: 2
         }
     ],
-    [HEADGEAR]: [
+    [CLOTHING + "_" + HEADGEAR]: [
         {
             weight: 1,
             entry: 'Bandana',
@@ -4643,7 +4634,7 @@ module.exports = {
             [PRICE]: .5
         }
     ],
-    [BODY]: [
+    [CLOTHING + "_" + BODY]: [
         {
             weight: 1,
             entry: 'Apron',
@@ -5061,7 +5052,7 @@ module.exports = {
             [PRICE]: 9
         }
     ],
-    [ACCESSORIES]: [
+    [CLOTHING + "_" + ACCESSORIES]: [
         {
             weight: 1,
             entry: 'Brush, Grooming',
@@ -5172,7 +5163,7 @@ module.exports = {
             [PRICE]: 2
         }
     ],
-    [PREPPED_FOOD]: [
+    [FOOD + "_" + PREPPED_FOOD]: [
         {
             weight: 1,
             entry: 'Almond-Cream',
@@ -5491,7 +5482,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Preserves, Fruit',
-            base_material: [{ [PRICE]: 3.2, material: FRUIT_AND_VEGATABLES }],
+            base_material: [{ [PRICE]: 3.2, subtable: FOOD + "_" + FRUIT_AND_VEGATABLES }],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5597,7 +5588,7 @@ module.exports = {
             [QUIRKS]: 1
         }
     ],
-    [BREAD]: [
+    [FOOD + "_" + BREAD]: [
         {
             weight: 1,
             entry: 'Corn Dodgers',
@@ -5716,7 +5707,7 @@ module.exports = {
             [QUIRKS]: 1
         }
     ],
-    [FRUIT_AND_VEGATABLES]: [
+    [FOOD + "_" + FRUIT_AND_VEGATABLES]: [
         {
             weight: 1,
             entry: 'Barberries',
@@ -6034,7 +6025,7 @@ module.exports = {
             [QUIRKS]: 1
         }
     ],
-    [PROTEIN]: [
+    [FOOD + "_" + PROTEIN]: [
         {
             weight: 1,
             entry: 'Meat (1 lb) ',
@@ -6066,7 +6057,7 @@ module.exports = {
             [PRICE]: 30
         }
     ],
-    [NUTS]: [
+    [FOOD + "_" + NUTS]: [
         {
             weight: 1,
             entry: 'Acorns',
@@ -6140,7 +6131,7 @@ module.exports = {
             [QUIRKS]: 1
         }
     ],
-    [SPICES_AND_SEASONINGS]: [
+    [FOOD + "_" + SPICES_AND_SEASONINGS]: [
         {
             weight: 1,
             entry: 'Honey (8 oz)',
@@ -6241,7 +6232,7 @@ module.exports = {
             [QUIRKS]: 1
         }
     ],
-    [AXES]: [
+    [WEAPONS + "_" + AXES]: [
         {
             weight: 1,
             entry: 'Bardiche',
@@ -6298,7 +6289,7 @@ module.exports = {
             [PRICE]: 117
         }
     ],
-    [POLEARMS]: [
+    [WEAPONS + "_" + POLEARMS]: [
         {
             weight: 1,
             entry: 'Ahlspiess',
@@ -6465,7 +6456,7 @@ module.exports = {
             [PRICE]: 16
         }
     ],
-    [SIDEARMS]: [
+    [WEAPONS + "_" + SIDEARMS]: [
         {
             weight: 1,
             entry: 'Brass Knuckles',
@@ -6563,7 +6554,7 @@ module.exports = {
             [PRICE]: 10
         }
     ],
-    [SWORDS]: [
+    [WEAPONS + "_" + SWORDS]: [
         {
             weight: 1,
             entry: 'Arming Sword',
@@ -6709,7 +6700,7 @@ module.exports = {
             [PRICE]: 130
         }
     ],
-    [TRAUMA]: [
+    [WEAPONS + "_" + TRAUMA]: [
         {
             weight: 1,
             entry: 'Bec De Corbin',
@@ -6839,7 +6830,7 @@ module.exports = {
             [PRICE]: 83
         }
     ],
-    [THROWN]: [
+    [WEAPONS + "_" + THROWN]: [
         {
             weight: 1,
             entry: 'Javelin',
@@ -6874,7 +6865,7 @@ module.exports = {
             [PRICE]: 10
         }
     ],
-    [MECHANICAL_RANGED]: [
+    [WEAPONS + "_" + MECHANICAL_RANGED]: [
         {
             weight: 1,
             entry: 'Bellybow',
@@ -6959,7 +6950,7 @@ module.exports = {
             [PRICE]: 255
         }
     ],
-    [FIREARMS]: [
+    [WEAPONS + "_" + FIREARMS]: [
         {
             weight: 3,
             entry: 'Fire Lance',
@@ -7256,113 +7247,113 @@ module.exports = {
         { weight: 1, material: 'Zapis', [MULTIPLIER]: 0 },
         { weight: 1, material: 'Zaqqum', [MULTIPLIER]: 0 }
     ],
-    // [WAX]: [
-    //     { [PRICE]: 1.368, material: 'Bee', weight: 1 },
-    //     { [PRICE]: 5, material: 'Whale Head', weight: 1 },
-    //     { [PRICE]: 2.5, material: 'Bayberry', weight: 1 },
-    //     { [PRICE]: 0.162, material: 'Carnauba', weight: 1 },
-    //     { [PRICE]: 0.179, material: 'Candelilla', weight: 1 },
-    //     { [PRICE]: 0.148, material: 'Rice Bran', weight: 1 },
-    //     { [PRICE]: 0.028, material: 'Soy', weight: 1 },
-    //     { [PRICE]: 0.6, material: 'Jojoba', weight: 1 }
-    // ],
-    // other_table: [
-    //     {
-    //         material: 'Animal',
-    //         [PRICE]: 0.03,
-    //         subtable: ANIMAL_SUBTYPE
-    //     }, {
-    //         material: 'Chicken',
-    //         [PRICE]: 0.01
-    //     },
-    //     {
-    //         material: 'Goose',
-    //         [PRICE]: 0.01
-    //     },
-    //     {
-    //         material: 'Monster',
-    //         [PRICE]: 0.1
-    //     },
-    //     {
-    //         material: 'Bone, Animal',
-    //         [PRICE]: 0.25,
-    //         subtable: ANIMAL_SUBTYPE
-    //     },
-    //     { material: 'Bone, Monster', [PRICE]: 3 },
-    //     {
-    //         material: 'Bone, Sentient',
-    //         [PRICE]: 5,
-    //         subtable: RACE_OF_ORIGIN
-    //     },
-    //     { material: 'Chalk', [PRICE]: 0.1 },
-    //     { material: 'Chewing Tabacco', [PRICE]: 0.873 },
-    //     { material: 'Cotton', [PRICE]: 0.148 },
-    //     { material: 'Crystal', [PRICE]: 3.75 },
-    //     {
-    //         material: 'Down',
-    //         [PRICE]: 1.75,
-    //         subtable: ANIMAL_AIR
-    //     },
-    //     {
-    //         material: 'Feather',
-    //         [PRICE]: 1.18,
-    //         subtable: ANIMAL_AIR
-    //     },
-    //     {
-    //         material: 'Feathers',
-    //         [PRICE]: 1.18,
-    //         subtable: ANIMAL_AIR
-    //     },
-    //     { material: 'Felt', [PRICE]: 2.5 },
-    //     { material: 'Gauze', [PRICE]: 1.1725 },
-    //     { material: 'Glass', [PRICE]: 5 },
-    //     {
-    //         material: 'Goose Feather',
-    //         [PRICE]: 1.18
-    //     },
-    //     {
-    //         material: 'Heavy Down',
-    //         [PRICE]: 2.1,
-    //         subtable: ANIMAL_AIR
-    //     },
-    //     {
-    //         material: 'Heavy Feather',
-    //         [PRICE]: 2,
-    //         subtable: ANIMAL_AIR
-    //     },
-    //     { material: 'Hemp Oil', [PRICE]: 0.17 },
-    //     {
-    //         material: 'Horn',
-    //         [PRICE]: 2.25,
-    //         subtable: ANIMAL_LAND
-    //     },
-    //     { material: 'Feathers', [PRICE]: 1, subtable: ANIMAL_AIR },
-    //     { material: 'Ivory', [PRICE]: 5 },
-    //     { material: 'Linseed Oil', [PRICE]: 0.581 },
-    //     { material: 'Porcelain', [PRICE]: 3.75 },
-    //     { material: 'Porcupine Spine', [PRICE]: 0.737 },
-    //     { material: 'Smoking Tabacco', [PRICE]: 1.5 },
-    //     { material: 'Straw', [PRICE]: 0.0005 },
-    //     { material: 'Tallow', [PRICE]: 0.091 },
-    //     { material: 'Thread', [PRICE]: 0.009 },
-    //     { material: 'Twine', [PRICE]: 0.02 },
-    //     { material: 'Animal Guts', [PRICE]: 0.01, subtable: ANIMAL_LAND},
-    //     { material: 'Whale Oil', [PRICE]: 0.0097 },
-    //     { material: 'Wicker', [PRICE]: 0.08, subtable: WOOD },
-    //     { material: 'Wool', [PRICE]: 0.48 },
-    //     { material: 'Waxed Cloth', subtables: [WAX, CLOTH] },
-    //     { material: 'Waxed Leather', subtables: [WAX, LEATHER] },
-    //     { material: 'Blacknessel', [PRICE]: 110 },
-    //     { material: 'Blue Glory', [PRICE]: 77 },
-    //     { material: 'Bondweed', [PRICE]: 60.5 },
-    //     { material: 'Griffin Hair', [PRICE]: 40 },
-    //     { material: 'Lylullin', [PRICE]: 105 },
-    //     { material: 'Maidenscap', [PRICE]: 135 },
-    //     { material: 'Palm of St Germain', [PRICE]: 60 },
-    //     { material: 'Tears of Sicyon', [PRICE]: 115 },
-    //     { material: 'Unknown', [PRICE]: 0 },
-    //     { material: 'Monster Poison', [PRICE]: 215 }
-    // ],
+    [WAX]: [
+        { [PRICE]: 1.368, material: 'Bee', weight: 1 },
+        { [PRICE]: 5, material: 'Whale Head', weight: 1 },
+        { [PRICE]: 2.5, material: 'Bayberry', weight: 1 },
+        { [PRICE]: 0.162, material: 'Carnauba', weight: 1 },
+        { [PRICE]: 0.179, material: 'Candelilla', weight: 1 },
+        { [PRICE]: 0.148, material: 'Rice Bran', weight: 1 },
+        { [PRICE]: 0.028, material: 'Soy', weight: 1 },
+        { [PRICE]: 0.6, material: 'Jojoba', weight: 1 }
+    ],
+    other_table: [
+        {
+            material: 'Animal',
+            [PRICE]: 0.03,
+            subtable: ANIMAL_SUBTYPE
+        }, {
+            material: 'Chicken',
+            [PRICE]: 0.01
+        },
+        {
+            material: 'Goose',
+            [PRICE]: 0.01
+        },
+        {
+            material: 'Monster',
+            [PRICE]: 0.1
+        },
+        {
+            material: 'Bone, Animal',
+            [PRICE]: 0.25,
+            subtable: ANIMAL_SUBTYPE
+        },
+        { material: 'Bone, Monster', [PRICE]: 3 },
+        {
+            material: 'Bone, Sentient',
+            [PRICE]: 5,
+            subtable: RACE_OF_ORIGIN
+        },
+        { material: 'Chalk', [PRICE]: 0.1 },
+        { material: 'Chewing Tabacco', [PRICE]: 0.873 },
+        { material: 'Cotton', [PRICE]: 0.148 },
+        { material: 'Crystal', [PRICE]: 3.75 },
+        {
+            material: 'Down',
+            [PRICE]: 1.75,
+            subtable: ANIMAL_AIR
+        },
+        {
+            material: 'Feather',
+            [PRICE]: 1.18,
+            subtable: ANIMAL_AIR
+        },
+        {
+            material: 'Feathers',
+            [PRICE]: 1.18,
+            subtable: ANIMAL_AIR
+        },
+        { material: 'Felt', [PRICE]: 2.5 },
+        { material: 'Gauze', [PRICE]: 1.1725 },
+        { material: 'Glass', [PRICE]: 5 },
+        {
+            material: 'Goose Feather',
+            [PRICE]: 1.18
+        },
+        {
+            material: 'Heavy Down',
+            [PRICE]: 2.1,
+            subtable: ANIMAL_AIR
+        },
+        {
+            material: 'Heavy Feather',
+            [PRICE]: 2,
+            subtable: ANIMAL_AIR
+        },
+        { material: 'Hemp Oil', [PRICE]: 0.17 },
+        {
+            material: 'Horn',
+            [PRICE]: 2.25,
+            subtable: ANIMAL_LAND
+        },
+        { material: 'Feathers', [PRICE]: 1, subtable: ANIMAL_AIR },
+        { material: 'Ivory', [PRICE]: 5 },
+        { material: 'Linseed Oil', [PRICE]: 0.581 },
+        { material: 'Porcelain', [PRICE]: 3.75 },
+        { material: 'Porcupine Spine', [PRICE]: 0.737 },
+        { material: 'Smoking Tabacco', [PRICE]: 1.5 },
+        { material: 'Straw', [PRICE]: 0.0005 },
+        { material: 'Tallow', [PRICE]: 0.091 },
+        { material: 'Thread', [PRICE]: 0.009 },
+        { material: 'Twine', [PRICE]: 0.02 },
+        { material: 'Animal Guts', [PRICE]: 0.01, subtable: ANIMAL_LAND},
+        { material: 'Whale Oil', [PRICE]: 0.0097 },
+        { material: 'Wicker', [PRICE]: 0.08, subtable: WOOD },
+        { material: 'Wool', [PRICE]: 0.48 },
+        { material: 'Waxed Cloth', subtables: [WAX, CLOTH] },
+        { material: 'Waxed Leather', subtables: [WAX, LEATHER] },
+        { material: 'Blacknessel', [PRICE]: 110 },
+        { material: 'Blue Glory', [PRICE]: 77 },
+        { material: 'Bondweed', [PRICE]: 60.5 },
+        { material: 'Griffin Hair', [PRICE]: 40 },
+        { material: 'Lylullin', [PRICE]: 105 },
+        { material: 'Maidenscap', [PRICE]: 135 },
+        { material: 'Palm of St Germain', [PRICE]: 60 },
+        { material: 'Tears of Sicyon', [PRICE]: 115 },
+        { material: 'Unknown', [PRICE]: 0 },
+        { material: 'Monster Poison', [PRICE]: 215 }
+    ],
     [ADJECTIVES]: [
         { weight: 1, detail: 'Related to', subtable: RACE_OF_ORIGIN },
         { weight: 1, detail: 'Secret' },
@@ -7375,11 +7366,11 @@ module.exports = {
         { weight: 1, detail: 'Solid' },
         { weight: 1, detail: 'TWO' }
     ],
-    // [ANIMAL_SUBTYPE]: [
-    //     { weight: 1, subtable: ANIMAL_LAND },
-    //     { weight: 1, subtable: ANIMAL_AIR },
-    //     { weight: 1, subtable: ANIMAL_WATER }
-    // ],
+    [ANIMAL_SUBTYPE]: [
+        { weight: 1, subtable: ANIMAL_LAND },
+        { weight: 1, subtable: ANIMAL_AIR },
+        { weight: 1, subtable: ANIMAL_WATER }
+    ],
     [ANIMAL_LAND]: [
         { weight: 1, detail: 'Ant' },
         { weight: 1, detail: 'Antelope' },
@@ -7496,12 +7487,12 @@ module.exports = {
         { weight: 1, detail: 'Whale' },
         { weight: 1, detail: 'Whelk' }
     ],
-    // [BODY_PARTS]: [
-    //     { weight: 1, subtable: BODY_HEAD },
-    //     { weight: 1, subtable: BODY_ARM },
-    //     { weight: 1, subtable: BODY_BODY },
-    //     { weight: 1, subtable: BODY_LEGS }
-    // ],
+    [BODY_PARTS]: [
+        { weight: 1, subtable: BODY_HEAD },
+        { weight: 1, subtable: BODY_ARM },
+        { weight: 1, subtable: BODY_BODY },
+        { weight: 1, subtable: BODY_LEGS }
+    ],
     [BODY_HEAD]: [
         { weight: 1, detail: 'Head' },
         { weight: 1, detail: 'Face' },
@@ -7580,7 +7571,7 @@ module.exports = {
         { [PRICE]: 150, detail: 'Inside Engraving', weight: 3 },
         { [PRICE]: 250, detail: 'Gem Engraving', weight: 1 }
     ],
-    // [STITCHING_TYPE]: [{ [PRICE]: 0.5, detail: 'Hand Stitching' }],
+    [STITCHING_TYPE]: [{ [PRICE]: 0.5, detail: 'Hand Stitching' }],
     // [SUBJECT]: [
     //     { 'weight': 1, 'subject': 'Abstract', 'secondary subject': '1', [ANIMAL_SUBTYPE]: '2', [PERSONS]: '2', [EVENTS]: '2', [COLORS]: '2', [ADJECTIVES]: '4', [BODY_PARTS]: '3' }, 
     //     { 'weight': 1, 'subject': 'Historical', 'secondary subject': '4', [ANIMAL_SUBTYPE]: '1', [PERSONS]: '3', [EVENTS]: '4', [COLORS]: '2', [ADJECTIVES]: '2', [BODY_PARTS]: '1' },
@@ -7623,226 +7614,226 @@ module.exports = {
         { weight: 1, detail: '4', [PRICE]: 10 },
         { weight: 1, detail: '5', [PRICE]: 20 }
     ],
-    [GEM_SHAPE]: [
-        { weight: 2, shape: 'Round' },
-        { weight: 1, shape: 'Princess' },
-        { weight: 1, shape: 'Marquise' },
-        { weight: 1, shape: 'Emerald' },
-        { weight: 1, shape: 'Pear' },
-        { weight: 1, shape: 'Oval' },
-        { weight: 1, shape: 'Heart' }
-    ],
-    [GEM_TYPE]: [
-        { weight: 1, type: 'Alexandrite', [PRICE]: 15000 },
-        { weight: 1, type: 'Alexandrite Cat\'s Eye', [PRICE]: 12000 },
-        { weight: 1, type: 'Almandine Garnet', [PRICE]: 400 },
-        { weight: 11, type: 'Amber', [PRICE]: 30 },
-        { weight: 11, type: 'Amethyst', [PRICE]: 30 },
-        { weight: 11, type: 'Amethyst Cabochon', [PRICE]: 30 },
-        { weight: 1, type: 'Ametrine', [PRICE]: 150 },
-        { weight: 1, type: 'Ammolite', [PRICE]: 500 },
-        { weight: 7, type: 'Andalusite', [PRICE]: 43 },
-        { weight: 11, type: 'Andesine', [PRICE]: 30 },
-        { weight: 1, type: 'Apatite', [PRICE]: 150 },
-        { weight: 21, type: 'Apatite Cat\'s Eye', [PRICE]: 16 },
-        { weight: 1, type: 'Aquamarine', [PRICE]: 300 },
-        { weight: 35, type: 'Australian Opal', [PRICE]: 10 },
-        { weight: 1, type: 'Aventurine', [PRICE]: 125 },
-        { weight: 17, type: 'Azurite', [PRICE]: 20 },
-        { weight: 1, type: 'Basra Pearls', [PRICE]: 230 },
-        { weight: 35, type: 'Beryl', [PRICE]: 10 },
-        { weight: 1, type: 'Bicolor Sapphire', [PRICE]: 4000 },
-        { weight: 1, type: 'Bixbite', [PRICE]: 10000 },
-        { weight: 9, type: 'Black Onyz', [PRICE]: 40 },
-        { weight: 1, type: 'Black Opal', [PRICE]: 10000 },
-        { weight: 1, type: 'Black Pearl', [PRICE]: 200 },
-        { weight: 1, type: 'Black Spinel', [PRICE]: 200 },
-        { weight: 1, type: 'Black Tourmaline', [PRICE]: 500 },
-        { weight: 31, type: 'Blizzard Stone', [PRICE]: 11 },
-        { weight: 1, type: 'Bloodstone', [PRICE]: 1000 },
-        { weight: 119, type: 'Blue Fluorite', [PRICE]: 3 },
-        { weight: 6, type: 'Blue Moonstone', [PRICE]: 50 },
-        { weight: 1, type: 'Blue Opal', [PRICE]: 250 },
-        { weight: 1, type: 'Blue Sapphire', [PRICE]: 450 },
-        { weight: 1, type: 'Blue Spinel', [PRICE]: 2000 },
-        { weight: 17, type: 'Blue Topaz', [PRICE]: 20 },
-        { weight: 1, type: 'Blue Tourmaline', [PRICE]: 595 },
-        { weight: 3, type: 'Blue Zircon', [PRICE]: 75 },
-        { weight: 1, type: 'Boulder Opal', [PRICE]: 3500 },
-        { weight: 24, type: 'Brazilian Emerald', [PRICE]: 14 },
-        { weight: 71, type: 'Brown Moonstone', [PRICE]: 5 },
-        { weight: 2, type: 'Brown Zircon', [PRICE]: 100 },
-        { weight: 2, type: 'Burmese Ruby', [PRICE]: 112 },
-        { weight: 1, type: 'Burmese Sapphire', [PRICE]: 10000 },
-        { weight: 47, type: 'Carnelian', [PRICE]: 8 },
-        { weight: 27, type: 'Cat\'s Eye', [PRICE]: 13 },
-        { weight: 21, type: 'Cat\'s Eye Moonstone', [PRICE]: 16 },
-        { weight: 21, type: 'Cat\'s Eye Opla', [PRICE]: 16 },
-        { weight: 21, type: 'Cat\'s Eye Quartz', [PRICE]: 16 },
-        { weight: 1, type: 'Ceylon Blue Sapphire', [PRICE]: 200 },
-        { weight: 2, type: 'Chrome Diopside', [PRICE]: 100 },
-        { weight: 6, type: 'Chrome Tourmaline', [PRICE]: 50 },
-        { weight: 13, type: 'Chrysoberyl', [PRICE]: 25 },
-        { weight: 11, type: 'Chrysoberyl Cat\'s Eye', [PRICE]: 30 },
-        { weight: 3, type: 'Chrysocolla', [PRICE]: 100 },
-        { weight: 71, type: 'Citrine', [PRICE]: 5 },
-        { weight: 6, type: 'Colombian Emerald', [PRICE]: 50 },
-        { weight: 71, type: 'Color Change Fluorite', [PRICE]: 5 },
-        { weight: 1, type: 'Color Change Sapphire', [PRICE]: 756 },
-        { weight: 1, type: 'Cornflower Blue Sapphire', [PRICE]: 2300 },
-        { weight: 1, type: 'Cultured Pearls', [PRICE]: 300 },
-        { weight: 5, type: 'Danburite', [PRICE]: 55 },
-        { weight: 1, type: 'Demantoid Garnet', [PRICE]: 10000 },
-        { weight: 3, type: 'Diopside', [PRICE]: 100 },
-        { weight: 360, type: 'Emerald', [PRICE]: 1 },
-        { weight: 4, type: 'Ethiopian Emerald', [PRICE]: 80 },
-        { weight: 110, type: 'Ethiopian Opal', [PRICE]: 3 },
-        { weight: 44, type: 'Fire Agate', [PRICE]: 8 },
-        { weight: 35, type: 'Fire Opal', [PRICE]: 10 },
-        { weight: 119, type: 'Fluorite', [PRICE]: 3 },
-        { weight: 288, type: 'Freshwater Pearl', [PRICE]: 1 },
-        { weight: 1, type: 'Garnet', [PRICE]: 400 },
-        { weight: 360, type: 'Glass Filled Ruby', [PRICE]: 1 },
-        { weight: 1, type: 'Golden Sapphire', [PRICE]: 185 },
-        { weight: 65, type: 'Golden Topaz', [PRICE]: 5 },
-        { weight: 1, type: 'Goshenite', [PRICE]: 500 },
-        { weight: 1, type: 'Grandidierite', [PRICE]: 20000 },
-        { weight: 143, type: 'Green Amethyst', [PRICE]: 3 },
-        { weight: 1, type: 'Green Garnet', [PRICE]: 500 },
-        { weight: 59, type: 'Green Kyanite', [PRICE]: 6 },
-        { weight: 179, type: 'Green Sapphire', [PRICE]: 2 },
-        { weight: 1, type: 'Green Tourmaline', [PRICE]: 400 },
-        { weight: 1, type: 'Grey Sapphire', [PRICE]: 4675 },
-        { weight: 5, type: 'Heliodor', [PRICE]: 55 },
-        { weight: 1, type: 'Hessonite', [PRICE]: 500 },
-        { weight: 44, type: 'Imperial Topaz', [PRICE]: 8 },
-        { weight: 28, type: 'Indian Emerald', [PRICE]: 12 },
-        { weight: 59, type: 'Indian Ruby', [PRICE]: 6 },
-        { weight: 13, type: 'Indraneelam', [PRICE]: 25 },
-        { weight: 1, type: 'Insignificant Oil Emerald', [PRICE]: 615 },
-        { weight: 1, type: 'Iolite', [PRICE]: 150 },
-        { weight: 360, type: 'Iranian Turquoise', [PRICE]: 1 },
-        { weight: 360, type: 'Jade', [PRICE]: 1 },
-        { weight: 11, type: 'Jade Nephrite', [PRICE]: 30 },
-        { weight: 1, type: 'Jadeite', [PRICE]: 3000000 },
-        { weight: 3, type: 'Japanese Red Coral', [PRICE]: 75 },
-        { weight: 179, type: 'Jasper', [PRICE]: 2 },
-        { weight: 1, type: 'Kashmir Blue Sapphire', [PRICE]: 4675 },
-        { weight: 23, type: 'Keshi Pearls', [PRICE]: 15 },
-        { weight: 4, type: 'Khooni Neelam', [PRICE]: 70 },
-        { weight: 17, type: 'Kunzite', [PRICE]: 20 },
-        { weight: 21, type: 'Kyanite', [PRICE]: 16 },
-        { weight: 8, type: 'Labradorite', [PRICE]: 40 },
-        { weight: 6, type: 'Lapis Lazuli', [PRICE]: 50 },
-        { weight: 1, type: 'Lavender Quartz', [PRICE]: 100 },
-        { weight: 179, type: 'Lemon Quartz', [PRICE]: 2 },
-        { weight: 44, type: 'London Blue Topaz', [PRICE]: 8 },
-        { weight: 179, type: 'Malachite', [PRICE]: 2 },
-        { weight: 1, type: 'Mandarin Garnet', [PRICE]: 260 },
-        { weight: 35, type: 'Mexican Fire Opal', [PRICE]: 10 },
-        { weight: 13, type: 'Mocha Scapolite', [PRICE]: 25 },
-        { weight: 1, type: 'Mogok Ruby', [PRICE]: 1400 },
-        { weight: 50, type: 'Moldavite', [PRICE]: 7 },
-        { weight: 71, type: 'Moonstone', [PRICE]: 5 },
-        { weight: 3, type: 'Morganite', [PRICE]: 85 },
-        { weight: 60, type: 'Moss Agate', [PRICE]: 6 },
-        { weight: 1, type: 'Mozambique Ruby', [PRICE]: 315 },
-        { weight: 1, type: 'Natural Pearl', [PRICE]: 270 },
-        { weight: 21, type: 'Navratna', [PRICE]: 16 },
-        { weight: 23, type: 'Neon Apatite', [PRICE]: 15 },
-        { weight: 0, type: 'No Oil Emerald', [PRICE]: 10000 },
-        { weight: 360, type: 'Obsidian', [PRICE]: 1 },
-        { weight: 119, type: 'Chalcedony', [PRICE]: 3 },
-        { weight: 5, type: 'Opal', [PRICE]: 60 },
-        { weight: 60, type: 'Orange Kyanite', [PRICE]: 6 },
-        { weight: 360, type: 'Orange Sapphire', [PRICE]: 1 },
-        { weight: 1, type: 'Padparadscha Sapphire', [PRICE]: 30000 },
-        { weight: 11, type: 'Pakistan Emerald', [PRICE]: 30 },
-        { weight: 6, type: 'Panjshir Emerald', [PRICE]: 50 },
-        { weight: 1, type: 'Paraiba Tourmaline', [PRICE]: 2000 },
-        { weight: 2, type: 'Peach Morganite', [PRICE]: 100 },
-        { weight: 1, type: 'Peach Sapphire', [PRICE]: 1500 },
-        { weight: 23, type: 'Moti Pearl', [PRICE]: 15 },
-        { weight: 6, type: 'Peridot', [PRICE]: 50 },
-        { weight: 71, type: 'Persian Turquoise', [PRICE]: 5 },
-        { weight: 89, type: 'Petalite', [PRICE]: 4 },
-        { weight: 360, type: 'Petrified Wood', [PRICE]: 1 },
-        { weight: 1, type: 'Pigeon Blood Ruby', [PRICE]: 500 },
-        { weight: 23, type: 'Pink Fluorite', [PRICE]: 15 },
-        { weight: 7, type: 'Pink Morganite', [PRICE]: 41 },
-        { weight: 89, type: 'Pink Opal', [PRICE]: 4 },
-        { weight: 1, type: 'Pink Sapphire', [PRICE]: 900 },
-        { weight: 1, type: 'Pink Spinel', [PRICE]: 500 },
-        { weight: 1, type: 'Pink Topaz', [PRICE]: 3500 },
-        { weight: 1, type: 'Pink Tourmaline', [PRICE]: 400 },
-        { weight: 1, type: 'Pitambari Neelam', [PRICE]: 2500 },
-        { weight: 360, type: 'Prehnite', [PRICE]: 1 },
-        { weight: 1, type: 'Purple Garnet', [PRICE]: 500 },
-        { weight: 1, type: 'Purple Sapphire', [PRICE]: 1000 },
-        { weight: 89, type: 'Rainbow Fluorite', [PRICE]: 4 },
-        { weight: 71, type: 'Rainbow Moonstone', [PRICE]: 5 },
-        { weight: 50, type: 'Red Coral', [PRICE]: 7 },
-        { weight: 1, type: 'Red Spinel', [PRICE]: 800 },
-        { weight: 1, type: 'Red Tourmaline', [PRICE]: 500 },
-        { weight: 3, type: 'Red Zircon', [PRICE]: 75 },
-        { weight: 1, type: 'Rhodochrosite', [PRICE]: 500 },
-        { weight: 360, type: 'Rhodonite', [PRICE]: 1 },
-        { weight: 2, type: 'Rose Quartz', [PRICE]: 100 },
-        { weight: 1, type: 'Royal Blue Sapphire', [PRICE]: 4675 },
-        { weight: 1, type: 'Rubellite', [PRICE]: 400 },
-        { weight: 1, type: 'Ruby', [PRICE]: 1000 },
-        { weight: 8, type: 'Ruby Cabochon', [PRICE]: 43 },
-        { weight: 1, type: 'Russian Alexandrite', [PRICE]: 10000 },
-        { weight: 1, type: 'Russian Emerald', [PRICE]: 40000 },
-        { weight: 16, type: 'Rutilated Quartz', [PRICE]: 20 },
-        { weight: 35, type: 'Sang-e-maryam', [PRICE]: 10 },
-        { weight: 1, type: 'Sapphire', [PRICE]: 500 },
-        { weight: 39, type: 'Schorl Tourmaline', [PRICE]: 12 },
-        { weight: 360, type: 'Serpentine', [PRICE]: 1 },
-        { weight: 9, type: 'Sillimanite Cat\'s Eye', [PRICE]: 1300 },
-        { weight: 119, type: 'Sky Blue Topaz', [PRICE]: 3 },
-        { weight: 44, type: 'Smoky Quartz', [PRICE]: 8 },
-        { weight: 89, type: 'Sodalite', [PRICE]: 4 },
-        { weight: 179, type: 'South Sea Pearl', [PRICE]: 2 },
-        { weight: 1, type: 'Spectrolite', [PRICE]: 3 },
-        { weight: 1, type: 'Spessartite', [PRICE]: 750 },
-        { weight: 1, type: 'Spinel', [PRICE]: 800 },
-        { weight: 50, type: 'Sir Lank Moonstone', [PRICE]: 7 },
-        { weight: 119, type: 'Star Garnet', [PRICE]: 3 },
-        { weight: 89, type: 'Star Ruby', [PRICE]: 4 },
-        { weight: 2, type: 'Star Sapphire', [PRICE]: 100 },
-        { weight: 16, type: 'Sunstone', [PRICE]: 20 },
-        { weight: 31, type: 'Swiss Blue Topaz', [PRICE]: 11 },
-        { weight: 1, type: 'Tassffeite', [PRICE]: 1500 },
-        { weight: 1, type: 'Tahitian Pearl', [PRICE]: 500 },
-        { weight: 1, type: 'Tanzania Ruby', [PRICE]: 100000 },
-        { weight: 1, type: 'Tanzanite', [PRICE]: 200 },
-        { weight: 1, type: 'Teal Sapphire', [PRICE]: 4675 },
-        { weight: 360, type: 'Tibetian Turquoise', [PRICE]: 1 },
-        { weight: 360, type: 'Tiger Eye', [PRICE]: 1 },
-        { weight: 6, type: 'Titanite', [PRICE]: 50 },
-        { weight: 44, type: 'Topaz', [PRICE]: 8 },
-        { weight: 1, type: 'Tourmaline', [PRICE]: 500 },
-        { weight: 2, type: 'Trapiche Emerald', [PRICE]: 100 },
-        { weight: 1, type: 'Tsavorite', [PRICE]: 550 },
-        { weight: 360, type: 'Turquoise', [PRICE]: 1 },
-        { weight: 1, type: 'Violet Sapphire', [PRICE]: 1000 },
-        { weight: 1, type: 'Vivid Green Emerald', [PRICE]: 1900 },
-        { weight: 1, type: 'Watermelon Tourmaline', [PRICE]: 1000 },
-        { weight: 119, type: 'White Coral', [PRICE]: 3 },
-        { weight: 35, type: 'White Opal', [PRICE]: 10 },
-        { weight: 1, type: 'White Sapphire', [PRICE]: 3000 },
-        { weight: 98, type: 'White Topaz', [PRICE]: 4 },
-        { weight: 9, type: 'White Zircon', [PRICE]: 35 },
-        { weight: 24, type: 'Yellow Beryl', [PRICE]: 15 },
-        { weight: 98, type: 'Yellow Fluorite', [PRICE]: 4 },
-        { weight: 1, type: 'Yellow Sapphire', [PRICE]: 420 },
-        { weight: 71, type: 'Yellow Topaz', [PRICE]: 5 },
-        { weight: 2, type: 'Yellow Zircon', [PRICE]: 100 },
-        { weight: 9, type: 'Zambian Emerald', [PRICE]: 40 },
-        { weight: 10, type: 'Zircon', [PRICE]: 35 },
-        { weight: 2, type: 'Zoisite', [PRICE]: 93 }
-    ],
+    // [GEM_SHAPE]: [
+    //     { weight: 2, shape: 'Round' },
+    //     { weight: 1, shape: 'Princess' },
+    //     { weight: 1, shape: 'Marquise' },
+    //     { weight: 1, shape: 'Emerald' },
+    //     { weight: 1, shape: 'Pear' },
+    //     { weight: 1, shape: 'Oval' },
+    //     { weight: 1, shape: 'Heart' }
+    // ],
+    // [GEM_TYPE]: [
+    //     { weight: 1, type: 'Alexandrite', [PRICE]: 15000 },
+    //     { weight: 1, type: 'Alexandrite Cat\'s Eye', [PRICE]: 12000 },
+    //     { weight: 1, type: 'Almandine Garnet', [PRICE]: 400 },
+    //     { weight: 11, type: 'Amber', [PRICE]: 30 },
+    //     { weight: 11, type: 'Amethyst', [PRICE]: 30 },
+    //     { weight: 11, type: 'Amethyst Cabochon', [PRICE]: 30 },
+    //     { weight: 1, type: 'Ametrine', [PRICE]: 150 },
+    //     { weight: 1, type: 'Ammolite', [PRICE]: 500 },
+    //     { weight: 7, type: 'Andalusite', [PRICE]: 43 },
+    //     { weight: 11, type: 'Andesine', [PRICE]: 30 },
+    //     { weight: 1, type: 'Apatite', [PRICE]: 150 },
+    //     { weight: 21, type: 'Apatite Cat\'s Eye', [PRICE]: 16 },
+    //     { weight: 1, type: 'Aquamarine', [PRICE]: 300 },
+    //     { weight: 35, type: 'Australian Opal', [PRICE]: 10 },
+    //     { weight: 1, type: 'Aventurine', [PRICE]: 125 },
+    //     { weight: 17, type: 'Azurite', [PRICE]: 20 },
+    //     { weight: 1, type: 'Basra Pearls', [PRICE]: 230 },
+    //     { weight: 35, type: 'Beryl', [PRICE]: 10 },
+    //     { weight: 1, type: 'Bicolor Sapphire', [PRICE]: 4000 },
+    //     { weight: 1, type: 'Bixbite', [PRICE]: 10000 },
+    //     { weight: 9, type: 'Black Onyz', [PRICE]: 40 },
+    //     { weight: 1, type: 'Black Opal', [PRICE]: 10000 },
+    //     { weight: 1, type: 'Black Pearl', [PRICE]: 200 },
+    //     { weight: 1, type: 'Black Spinel', [PRICE]: 200 },
+    //     { weight: 1, type: 'Black Tourmaline', [PRICE]: 500 },
+    //     { weight: 31, type: 'Blizzard Stone', [PRICE]: 11 },
+    //     { weight: 1, type: 'Bloodstone', [PRICE]: 1000 },
+    //     { weight: 119, type: 'Blue Fluorite', [PRICE]: 3 },
+    //     { weight: 6, type: 'Blue Moonstone', [PRICE]: 50 },
+    //     { weight: 1, type: 'Blue Opal', [PRICE]: 250 },
+    //     { weight: 1, type: 'Blue Sapphire', [PRICE]: 450 },
+    //     { weight: 1, type: 'Blue Spinel', [PRICE]: 2000 },
+    //     { weight: 17, type: 'Blue Topaz', [PRICE]: 20 },
+    //     { weight: 1, type: 'Blue Tourmaline', [PRICE]: 595 },
+    //     { weight: 3, type: 'Blue Zircon', [PRICE]: 75 },
+    //     { weight: 1, type: 'Boulder Opal', [PRICE]: 3500 },
+    //     { weight: 24, type: 'Brazilian Emerald', [PRICE]: 14 },
+    //     { weight: 71, type: 'Brown Moonstone', [PRICE]: 5 },
+    //     { weight: 2, type: 'Brown Zircon', [PRICE]: 100 },
+    //     { weight: 2, type: 'Burmese Ruby', [PRICE]: 112 },
+    //     { weight: 1, type: 'Burmese Sapphire', [PRICE]: 10000 },
+    //     { weight: 47, type: 'Carnelian', [PRICE]: 8 },
+    //     { weight: 27, type: 'Cat\'s Eye', [PRICE]: 13 },
+    //     { weight: 21, type: 'Cat\'s Eye Moonstone', [PRICE]: 16 },
+    //     { weight: 21, type: 'Cat\'s Eye Opla', [PRICE]: 16 },
+    //     { weight: 21, type: 'Cat\'s Eye Quartz', [PRICE]: 16 },
+    //     { weight: 1, type: 'Ceylon Blue Sapphire', [PRICE]: 200 },
+    //     { weight: 2, type: 'Chrome Diopside', [PRICE]: 100 },
+    //     { weight: 6, type: 'Chrome Tourmaline', [PRICE]: 50 },
+    //     { weight: 13, type: 'Chrysoberyl', [PRICE]: 25 },
+    //     { weight: 11, type: 'Chrysoberyl Cat\'s Eye', [PRICE]: 30 },
+    //     { weight: 3, type: 'Chrysocolla', [PRICE]: 100 },
+    //     { weight: 71, type: 'Citrine', [PRICE]: 5 },
+    //     { weight: 6, type: 'Colombian Emerald', [PRICE]: 50 },
+    //     { weight: 71, type: 'Color Change Fluorite', [PRICE]: 5 },
+    //     { weight: 1, type: 'Color Change Sapphire', [PRICE]: 756 },
+    //     { weight: 1, type: 'Cornflower Blue Sapphire', [PRICE]: 2300 },
+    //     { weight: 1, type: 'Cultured Pearls', [PRICE]: 300 },
+    //     { weight: 5, type: 'Danburite', [PRICE]: 55 },
+    //     { weight: 1, type: 'Demantoid Garnet', [PRICE]: 10000 },
+    //     { weight: 3, type: 'Diopside', [PRICE]: 100 },
+    //     { weight: 360, type: 'Emerald', [PRICE]: 1 },
+    //     { weight: 4, type: 'Ethiopian Emerald', [PRICE]: 80 },
+    //     { weight: 110, type: 'Ethiopian Opal', [PRICE]: 3 },
+    //     { weight: 44, type: 'Fire Agate', [PRICE]: 8 },
+    //     { weight: 35, type: 'Fire Opal', [PRICE]: 10 },
+    //     { weight: 119, type: 'Fluorite', [PRICE]: 3 },
+    //     { weight: 288, type: 'Freshwater Pearl', [PRICE]: 1 },
+    //     { weight: 1, type: 'Garnet', [PRICE]: 400 },
+    //     { weight: 360, type: 'Glass Filled Ruby', [PRICE]: 1 },
+    //     { weight: 1, type: 'Golden Sapphire', [PRICE]: 185 },
+    //     { weight: 65, type: 'Golden Topaz', [PRICE]: 5 },
+    //     { weight: 1, type: 'Goshenite', [PRICE]: 500 },
+    //     { weight: 1, type: 'Grandidierite', [PRICE]: 20000 },
+    //     { weight: 143, type: 'Green Amethyst', [PRICE]: 3 },
+    //     { weight: 1, type: 'Green Garnet', [PRICE]: 500 },
+    //     { weight: 59, type: 'Green Kyanite', [PRICE]: 6 },
+    //     { weight: 179, type: 'Green Sapphire', [PRICE]: 2 },
+    //     { weight: 1, type: 'Green Tourmaline', [PRICE]: 400 },
+    //     { weight: 1, type: 'Grey Sapphire', [PRICE]: 4675 },
+    //     { weight: 5, type: 'Heliodor', [PRICE]: 55 },
+    //     { weight: 1, type: 'Hessonite', [PRICE]: 500 },
+    //     { weight: 44, type: 'Imperial Topaz', [PRICE]: 8 },
+    //     { weight: 28, type: 'Indian Emerald', [PRICE]: 12 },
+    //     { weight: 59, type: 'Indian Ruby', [PRICE]: 6 },
+    //     { weight: 13, type: 'Indraneelam', [PRICE]: 25 },
+    //     { weight: 1, type: 'Insignificant Oil Emerald', [PRICE]: 615 },
+    //     { weight: 1, type: 'Iolite', [PRICE]: 150 },
+    //     { weight: 360, type: 'Iranian Turquoise', [PRICE]: 1 },
+    //     { weight: 360, type: 'Jade', [PRICE]: 1 },
+    //     { weight: 11, type: 'Jade Nephrite', [PRICE]: 30 },
+    //     { weight: 1, type: 'Jadeite', [PRICE]: 3000000 },
+    //     { weight: 3, type: 'Japanese Red Coral', [PRICE]: 75 },
+    //     { weight: 179, type: 'Jasper', [PRICE]: 2 },
+    //     { weight: 1, type: 'Kashmir Blue Sapphire', [PRICE]: 4675 },
+    //     { weight: 23, type: 'Keshi Pearls', [PRICE]: 15 },
+    //     { weight: 4, type: 'Khooni Neelam', [PRICE]: 70 },
+    //     { weight: 17, type: 'Kunzite', [PRICE]: 20 },
+    //     { weight: 21, type: 'Kyanite', [PRICE]: 16 },
+    //     { weight: 8, type: 'Labradorite', [PRICE]: 40 },
+    //     { weight: 6, type: 'Lapis Lazuli', [PRICE]: 50 },
+    //     { weight: 1, type: 'Lavender Quartz', [PRICE]: 100 },
+    //     { weight: 179, type: 'Lemon Quartz', [PRICE]: 2 },
+    //     { weight: 44, type: 'London Blue Topaz', [PRICE]: 8 },
+    //     { weight: 179, type: 'Malachite', [PRICE]: 2 },
+    //     { weight: 1, type: 'Mandarin Garnet', [PRICE]: 260 },
+    //     { weight: 35, type: 'Mexican Fire Opal', [PRICE]: 10 },
+    //     { weight: 13, type: 'Mocha Scapolite', [PRICE]: 25 },
+    //     { weight: 1, type: 'Mogok Ruby', [PRICE]: 1400 },
+    //     { weight: 50, type: 'Moldavite', [PRICE]: 7 },
+    //     { weight: 71, type: 'Moonstone', [PRICE]: 5 },
+    //     { weight: 3, type: 'Morganite', [PRICE]: 85 },
+    //     { weight: 60, type: 'Moss Agate', [PRICE]: 6 },
+    //     { weight: 1, type: 'Mozambique Ruby', [PRICE]: 315 },
+    //     { weight: 1, type: 'Natural Pearl', [PRICE]: 270 },
+    //     { weight: 21, type: 'Navratna', [PRICE]: 16 },
+    //     { weight: 23, type: 'Neon Apatite', [PRICE]: 15 },
+    //     { weight: 0, type: 'No Oil Emerald', [PRICE]: 10000 },
+    //     { weight: 360, type: 'Obsidian', [PRICE]: 1 },
+    //     { weight: 119, type: 'Chalcedony', [PRICE]: 3 },
+    //     { weight: 5, type: 'Opal', [PRICE]: 60 },
+    //     { weight: 60, type: 'Orange Kyanite', [PRICE]: 6 },
+    //     { weight: 360, type: 'Orange Sapphire', [PRICE]: 1 },
+    //     { weight: 1, type: 'Padparadscha Sapphire', [PRICE]: 30000 },
+    //     { weight: 11, type: 'Pakistan Emerald', [PRICE]: 30 },
+    //     { weight: 6, type: 'Panjshir Emerald', [PRICE]: 50 },
+    //     { weight: 1, type: 'Paraiba Tourmaline', [PRICE]: 2000 },
+    //     { weight: 2, type: 'Peach Morganite', [PRICE]: 100 },
+    //     { weight: 1, type: 'Peach Sapphire', [PRICE]: 1500 },
+    //     { weight: 23, type: 'Moti Pearl', [PRICE]: 15 },
+    //     { weight: 6, type: 'Peridot', [PRICE]: 50 },
+    //     { weight: 71, type: 'Persian Turquoise', [PRICE]: 5 },
+    //     { weight: 89, type: 'Petalite', [PRICE]: 4 },
+    //     { weight: 360, type: 'Petrified Wood', [PRICE]: 1 },
+    //     { weight: 1, type: 'Pigeon Blood Ruby', [PRICE]: 500 },
+    //     { weight: 23, type: 'Pink Fluorite', [PRICE]: 15 },
+    //     { weight: 7, type: 'Pink Morganite', [PRICE]: 41 },
+    //     { weight: 89, type: 'Pink Opal', [PRICE]: 4 },
+    //     { weight: 1, type: 'Pink Sapphire', [PRICE]: 900 },
+    //     { weight: 1, type: 'Pink Spinel', [PRICE]: 500 },
+    //     { weight: 1, type: 'Pink Topaz', [PRICE]: 3500 },
+    //     { weight: 1, type: 'Pink Tourmaline', [PRICE]: 400 },
+    //     { weight: 1, type: 'Pitambari Neelam', [PRICE]: 2500 },
+    //     { weight: 360, type: 'Prehnite', [PRICE]: 1 },
+    //     { weight: 1, type: 'Purple Garnet', [PRICE]: 500 },
+    //     { weight: 1, type: 'Purple Sapphire', [PRICE]: 1000 },
+    //     { weight: 89, type: 'Rainbow Fluorite', [PRICE]: 4 },
+    //     { weight: 71, type: 'Rainbow Moonstone', [PRICE]: 5 },
+    //     { weight: 50, type: 'Red Coral', [PRICE]: 7 },
+    //     { weight: 1, type: 'Red Spinel', [PRICE]: 800 },
+    //     { weight: 1, type: 'Red Tourmaline', [PRICE]: 500 },
+    //     { weight: 3, type: 'Red Zircon', [PRICE]: 75 },
+    //     { weight: 1, type: 'Rhodochrosite', [PRICE]: 500 },
+    //     { weight: 360, type: 'Rhodonite', [PRICE]: 1 },
+    //     { weight: 2, type: 'Rose Quartz', [PRICE]: 100 },
+    //     { weight: 1, type: 'Royal Blue Sapphire', [PRICE]: 4675 },
+    //     { weight: 1, type: 'Rubellite', [PRICE]: 400 },
+    //     { weight: 1, type: 'Ruby', [PRICE]: 1000 },
+    //     { weight: 8, type: 'Ruby Cabochon', [PRICE]: 43 },
+    //     { weight: 1, type: 'Russian Alexandrite', [PRICE]: 10000 },
+    //     { weight: 1, type: 'Russian Emerald', [PRICE]: 40000 },
+    //     { weight: 16, type: 'Rutilated Quartz', [PRICE]: 20 },
+    //     { weight: 35, type: 'Sang-e-maryam', [PRICE]: 10 },
+    //     { weight: 1, type: 'Sapphire', [PRICE]: 500 },
+    //     { weight: 39, type: 'Schorl Tourmaline', [PRICE]: 12 },
+    //     { weight: 360, type: 'Serpentine', [PRICE]: 1 },
+    //     { weight: 9, type: 'Sillimanite Cat\'s Eye', [PRICE]: 1300 },
+    //     { weight: 119, type: 'Sky Blue Topaz', [PRICE]: 3 },
+    //     { weight: 44, type: 'Smoky Quartz', [PRICE]: 8 },
+    //     { weight: 89, type: 'Sodalite', [PRICE]: 4 },
+    //     { weight: 179, type: 'South Sea Pearl', [PRICE]: 2 },
+    //     { weight: 1, type: 'Spectrolite', [PRICE]: 3 },
+    //     { weight: 1, type: 'Spessartite', [PRICE]: 750 },
+    //     { weight: 1, type: 'Spinel', [PRICE]: 800 },
+    //     { weight: 50, type: 'Sir Lank Moonstone', [PRICE]: 7 },
+    //     { weight: 119, type: 'Star Garnet', [PRICE]: 3 },
+    //     { weight: 89, type: 'Star Ruby', [PRICE]: 4 },
+    //     { weight: 2, type: 'Star Sapphire', [PRICE]: 100 },
+    //     { weight: 16, type: 'Sunstone', [PRICE]: 20 },
+    //     { weight: 31, type: 'Swiss Blue Topaz', [PRICE]: 11 },
+    //     { weight: 1, type: 'Tassffeite', [PRICE]: 1500 },
+    //     { weight: 1, type: 'Tahitian Pearl', [PRICE]: 500 },
+    //     { weight: 1, type: 'Tanzania Ruby', [PRICE]: 100000 },
+    //     { weight: 1, type: 'Tanzanite', [PRICE]: 200 },
+    //     { weight: 1, type: 'Teal Sapphire', [PRICE]: 4675 },
+    //     { weight: 360, type: 'Tibetian Turquoise', [PRICE]: 1 },
+    //     { weight: 360, type: 'Tiger Eye', [PRICE]: 1 },
+    //     { weight: 6, type: 'Titanite', [PRICE]: 50 },
+    //     { weight: 44, type: 'Topaz', [PRICE]: 8 },
+    //     { weight: 1, type: 'Tourmaline', [PRICE]: 500 },
+    //     { weight: 2, type: 'Trapiche Emerald', [PRICE]: 100 },
+    //     { weight: 1, type: 'Tsavorite', [PRICE]: 550 },
+    //     { weight: 360, type: 'Turquoise', [PRICE]: 1 },
+    //     { weight: 1, type: 'Violet Sapphire', [PRICE]: 1000 },
+    //     { weight: 1, type: 'Vivid Green Emerald', [PRICE]: 1900 },
+    //     { weight: 1, type: 'Watermelon Tourmaline', [PRICE]: 1000 },
+    //     { weight: 119, type: 'White Coral', [PRICE]: 3 },
+    //     { weight: 35, type: 'White Opal', [PRICE]: 10 },
+    //     { weight: 1, type: 'White Sapphire', [PRICE]: 3000 },
+    //     { weight: 98, type: 'White Topaz', [PRICE]: 4 },
+    //     { weight: 9, type: 'White Zircon', [PRICE]: 35 },
+    //     { weight: 24, type: 'Yellow Beryl', [PRICE]: 15 },
+    //     { weight: 98, type: 'Yellow Fluorite', [PRICE]: 4 },
+    //     { weight: 1, type: 'Yellow Sapphire', [PRICE]: 420 },
+    //     { weight: 71, type: 'Yellow Topaz', [PRICE]: 5 },
+    //     { weight: 2, type: 'Yellow Zircon', [PRICE]: 100 },
+    //     { weight: 9, type: 'Zambian Emerald', [PRICE]: 40 },
+    //     { weight: 10, type: 'Zircon', [PRICE]: 35 },
+    //     { weight: 2, type: 'Zoisite', [PRICE]: 93 }
+    // ],
     [PERSONS]: [
         { weight: 1, detail: 'Civic' },
         { weight: 1, detail: 'Personal' },

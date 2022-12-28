@@ -30,7 +30,8 @@ create table ritemdetails (
 	id serial primary key,
 	detail text,
 	weight int,
-	price int
+	price int,
+	subtable text
 )
 
 create table rmaterial (
