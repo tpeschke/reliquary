@@ -13,6 +13,7 @@ const { ACADEMIC_TOOLS, ADVENTURING_GEAR, ALCHEMICAL_SUBSTANCES,
     BODY_PARTS, BODY_HEAD, BODY_ARM, BODY_BODY, BODY_LEGS, WEAPON_COLORS, EXPLOSION_COLORS,
     ENGRAVING_TYPE_WITH_GEMS, ENGRAVING_TYPE_WITH_NO_GEMS, STITCHING_TYPE, PERSONS,
     EVENTS_TIMEPERIOD, EVENTS_SUBJECT, GEM_SIZE, GEM_SHAPE, GEM_TYPE, SUBJECT, EVENTS,
+    PRICE, AMOUNT, TYPE
 } = require('./constants')
 
 module.exports = {
@@ -33,13 +34,13 @@ module.exports = {
         { weight: 5, entry: MEDICAL_TOOLS },
         { weight: 5, entry: MUSICAL_INSTRUMENTS },
         { weight: 5, entry: PERSONAL_CONTAINERS },
-        // { weight: 5, entry: RAW_GOODS },
+        { weight: 5, entry: RAW_GOODS },
         { weight: 5, entry: RELIGIOUS_ITEMS },
         { weight: 5, entry: SHIELDS },
         { weight: 5, entry: TRADE_TOOLS },
         { weight: 5, entry: WEAPONS },
         { weight: 5, entry: WORKS_OF_ART },
-        // { weight: 3, entry: ROLL_TWICE }
+        { weight: 3, entry: ROLL_TWICE }
     ],
     [ACADEMIC_TOOLS]: [
         {
@@ -51,7 +52,9 @@ module.exports = {
             [COLORS]: 2,
             [ENGRAVINGS]: 3,
             [GEMS]: 4,
-            [QUIRKS]: 3
+            [QUIRKS]: 3,
+            [PRICE]: 300
+
         },
         {
             weight: 6,
@@ -62,7 +65,8 @@ module.exports = {
             [COLORS]: 2,
             [ENGRAVINGS]: 3,
             [GEMS]: 3,
-            [QUIRKS]: 3
+            [QUIRKS]: 3,
+            [PRICE]: 150
         },
         {
             weight: 7,
@@ -73,7 +77,8 @@ module.exports = {
             [COLORS]: 2,
             [ENGRAVINGS]: 1,
             [GEMS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 1
         },
         {
             weight: 7,
@@ -84,7 +89,8 @@ module.exports = {
             [COLORS]: 5,
             [ENGRAVINGS]: 2,
             [GEMS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 20
         },
         {
             weight: 6,
@@ -95,7 +101,8 @@ module.exports = {
             [COLORS]: 2,
             [ENGRAVINGS]: 3,
             [GEMS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 20
         },
         {
             weight: 7,
@@ -106,7 +113,8 @@ module.exports = {
             [COLORS]: 6,
             [ENGRAVINGS]: 1,
             [GEMS]: 2,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 10
         },
         {
             weight: 6,
@@ -117,16 +125,20 @@ module.exports = {
             [COLORS]: 2,
             [ENGRAVINGS]: 2,
             [GEMS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 100
         },
         {
             weight: 7,
-            entry: 'Paper (per 50 sheets)',
+            entry: 'Paper',
             base_material: PAPER_PRODUCT,
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 4,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 2,
+            [AMOUNT]: '1d100',
+            [TYPE]: 'Sheet'
         },
         {
             weight: 7,
@@ -137,7 +149,8 @@ module.exports = {
             [COLORS]: 8,
             [ENGRAVINGS]: 9,
             [GEMS]: 3,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 10
         },
         {
             weight: 7,
@@ -146,7 +159,8 @@ module.exports = {
             [SIZE]: 'D',
             [ADJECTIVES]: 2,
             [COLORS]: 2,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 1
         },
         {
             weight: 7,
@@ -157,7 +171,8 @@ module.exports = {
             [COLORS]: 2,
             [ENGRAVINGS]: 1,
             [GEMS]: 1,
-            [QUIRKS]: 3
+            [QUIRKS]: 3,
+            [PRICE]: 20
         },
         {
             weight: 7,
@@ -166,7 +181,8 @@ module.exports = {
             [SIZE]: 'D',
             [ADJECTIVES]: 1,
             [COLORS]: 9,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 1
         },
         {
             weight: 7,
@@ -176,7 +192,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 4,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 1
         }
     ],
     [ADVENTURING_GEAR]: [
@@ -188,7 +205,8 @@ module.exports = {
             [ADJECTIVES]: 4,
             [COLORS]: 4,
             [STITCHINGS]: 3,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 1
         },
         {
             weight: 2,
@@ -198,7 +216,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 3
         },
         {
             weight: 2,
@@ -208,7 +227,8 @@ module.exports = {
             [ADJECTIVES]: 4,
             [COLORS]: 4,
             [STITCHINGS]: 4,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 4.5
         },
         {
             weight: 2,
@@ -218,7 +238,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 5
         },
         {
             weight: 2,
@@ -228,7 +249,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 3
+            [QUIRKS]: 3,
+            [PRICE]: 16
         },
         {
             weight: 2,
@@ -238,7 +260,9 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .3,
+            [AMOUNT]: '1d10'
         },
         {
             weight: 2,
@@ -248,17 +272,21 @@ module.exports = {
             [ADJECTIVES]: 5,
             [COLORS]: 5,
             [STITCHINGS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 16
         },
         {
             weight: 2,
-            entry: 'Chain, 1d10 ft',
+            entry: 'Chain',
             base_material: METAL,
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 1,
+            [AMOUNT]: '1d10',
+            [TYPE]: 'ft'
         },
         {
             weight: 2,
@@ -267,7 +295,9 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 7,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .05,
+            [AMOUNT]: '1d20'
         },
         {
             weight: 2,
@@ -277,7 +307,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 2,
             [STITCHINGS]: 2,
-            [QUIRKS]: 3
+            [QUIRKS]: 3,
+            [PRICE]: 8
         },
         {
             weight: 1,
@@ -287,7 +318,8 @@ module.exports = {
             [ADJECTIVES]: 3,
             [COLORS]: 1,
             [ENGRAVINGS]: 3,
-            [QUIRKS]: 3
+            [QUIRKS]: 3,
+            [PRICE]: 75
         },
         {
             weight: 2,
@@ -297,7 +329,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 4
         },
         {
             weight: 2,
@@ -307,7 +340,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 15
         },
         {
             weight: 2,
@@ -317,7 +351,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 1
         },
         {
             weight: 2,
@@ -327,7 +362,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [STITCHINGS]: 2,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 25
         },
         {
             weight: 2,
@@ -337,7 +373,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 1
         },
         {
             weight: 2,
@@ -347,7 +384,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 1
         },
         {
             weight: 2,
@@ -357,7 +395,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .5
         },
         {
             weight: 2,
@@ -367,7 +406,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 1
         },
         {
             weight: 2,
@@ -376,7 +416,10 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .5,
+            [AMOUNT]: '10 + 1d10',
+            [TYPE]: 'ft'
         },
         {
             weight: 2,
@@ -386,7 +429,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [STITCHINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 3
         },
         {
             weight: 2,
@@ -396,7 +440,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 3,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 1.2
         },
         {
             weight: 2,
@@ -406,7 +451,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [STITCHINGS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 4
         },
         {
             weight: 2,
@@ -416,7 +462,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 16
         },
         {
             weight: 2,
@@ -426,7 +473,8 @@ module.exports = {
             [ADJECTIVES]: 3,
             [COLORS]: 4,
             [STITCHINGS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 2
         },
         {
             weight: 2,
@@ -436,7 +484,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 5
         },
         {
             weight: 2,
@@ -446,7 +495,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 2,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .2
         },
         {
             weight: 2,
@@ -456,7 +506,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [STITCHINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 3
         },
         {
             weight: 2,
@@ -466,16 +517,18 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 3
+            [QUIRKS]: 3,
+            [PRICE]: 1
         },
         {
             weight: 1,
             entry: 'Lard (pint)',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 1
         },
         {
             weight: 1,
@@ -486,7 +539,8 @@ module.exports = {
             [COLORS]: 3,
             [ENGRAVINGS]: 1,
             [STITCHINGS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 2
         },
         {
             weight: 2,
@@ -496,7 +550,8 @@ module.exports = {
             [ADJECTIVES]: 4,
             [COLORS]: 1,
             [ENGRAVINGS]: 2,
-            [QUIRKS]: 3
+            [QUIRKS]: 3,
+            [PRICE]: 100
         },
         {
             weight: 2,
@@ -506,7 +561,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 2
         },
         {
             weight: 2,
@@ -516,7 +572,8 @@ module.exports = {
             [ADJECTIVES]: 4,
             [COLORS]: 1,
             [ENGRAVINGS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 12
         },
         {
             weight: 2,
@@ -526,7 +583,8 @@ module.exports = {
             [ADJECTIVES]: 4,
             [COLORS]: 1,
             [ENGRAVINGS]: 2,
-            [QUIRKS]: 4
+            [QUIRKS]: 4,
+            [PRICE]: 15
         },
         {
             weight: 1,
@@ -536,7 +594,9 @@ module.exports = {
             [ADJECTIVES]: 6,
             [COLORS]: 9,
             [ENGRAVINGS]: 3,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 15,
+            [AMOUNT]: '1d4'
         },
         {
             weight: 2,
@@ -546,7 +606,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .5
         },
         {
             weight: 2,
@@ -556,7 +617,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 22
         },
         {
             weight: 2,
@@ -566,7 +628,8 @@ module.exports = {
             [ADJECTIVES]: 4,
             [COLORS]: 3,
             [ENGRAVINGS]: 4,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 8
         },
         {
             weight: 1,
@@ -576,7 +639,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 2,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .5
         },
         {
             weight: 2,
@@ -586,7 +650,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 2
         },
         {
             weight: 2,
@@ -596,7 +661,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 1
         },
         {
             weight: 2,
@@ -606,7 +672,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 1
         },
         {
             weight: 1,
@@ -616,7 +683,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .5
         },
         {
             weight: 2,
@@ -626,7 +694,8 @@ module.exports = {
             [ADJECTIVES]: 3,
             [COLORS]: 1,
             [ENGRAVINGS]: 4,
-            [QUIRKS]: 3
+            [QUIRKS]: 3,
+            [PRICE]: 500
         },
         {
             weight: 2,
@@ -635,7 +704,8 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [ENGRAVINGS]: 1
+            [ENGRAVINGS]: 1,
+            [PRICE]: .25
         },
         {
             weight: 2,
@@ -645,7 +715,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .01
         },
         {
             weight: 2,
@@ -654,7 +725,8 @@ module.exports = {
             [SIZE]: 'F',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 1
         },
         {
             weight: 2,
@@ -664,7 +736,8 @@ module.exports = {
             [ADJECTIVES]: 3,
             [COLORS]: 4,
             [STITCHINGS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 5
         },
         {
             weight: 2,
@@ -674,7 +747,8 @@ module.exports = {
             [ADJECTIVES]: 3,
             [COLORS]: 4,
             [STITCHINGS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 12
         },
         {
             weight: 2,
@@ -684,7 +758,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 3
         },
         {
             weight: 2,
@@ -694,7 +769,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .02
         },
         {
             weight: 2,
@@ -704,104 +780,116 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 2,
             [ENGRAVINGS]: 3,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 2
         }
     ],
     [ALCHEMICAL_SUBSTANCES]: [
         {
             weight: 5,
             entry: 'Acid, metal-eating (1 oz)',
-            value: '13.74 sc',
+            [PRICE]: 13.74,
             [SIZE]: 'D',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 13.74
         },
         {
             weight: 5,
             entry: 'Alchemist’s Fire (pint)',
-            value: '124 sc',
+            [PRICE]: 124,
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
-            [QUIRKS]: 4
+            [QUIRKS]: 4,
+            [PRICE]: 124
         },
         {
             weight: 2,
             entry: 'Ambergris (1 oz)',
-            value: '141 sc',
+            [PRICE]: 141,
             [SIZE]: 'D',
             [ADJECTIVES]: 1,
-            [COLORS]: 2
+            [COLORS]: 2,
+            [PRICE]: 141
         },
         {
             weight: 5,
             entry: 'Aniseed (1 oz)',
-            value: '0.21 sc',
+            [PRICE]: 0.21,
             [SIZE]: 'D',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .21
         },
         {
             weight: 5,
             entry: 'Antitoxin (1 dose)',
-            value: '10 sc',
+            [PRICE]: 10,
             [SIZE]: 'D',
             [ADJECTIVES]: 1,
             [COLORS]: 6,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 10
         },
         {
             weight: 6,
             entry: 'Blinding Powder (1 handful)',
-            value: '16 sc',
+            [PRICE]: 16,
             [SIZE]: 'D',
             [ADJECTIVES]: 1,
             [COLORS]: 5,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 16
         },
         {
             weight: 6,
             entry: 'Coal (1 lb)',
-            value: '0.02 sc',
+            [PRICE]: 0.02,
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
-            [COLORS]: 1
+            [COLORS]: 1,
+            [PRICE]: .02
         },
         {
             weight: 5,
             entry: 'Disappearing Ink (1 oz)',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 4,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 1
         },
         {
             weight: 6,
             entry: 'Faceblack (1 pint)',
-            value: '0.6 sc',
+            [PRICE]: 0.6,
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
-            [COLORS]: 1
+            [COLORS]: 1,
+            [PRICE]: .6
         },
         {
             weight: 5,
             entry: 'Healing Salve',
-            value: '7 sc',
+            [PRICE]: 7,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 7,
-            [QUIRKS]: 3
+            [QUIRKS]: 3,
+            [PRICE]: 7
         },
         {
             weight: 5,
             entry: 'Holy Water',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
-            [COLORS]: 1
+            [COLORS]: 1,
+            [PRICE]: 1
         },
         {
             weight: 5,
@@ -809,15 +897,17 @@ module.exports = {
             base_material: [{ weight: 3, material: 'Hemp Oil' }, { weight: 4, material: 'Linseed Oil' }, { weight: 2, material: 'Whale Oil' }],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
-            [COLORS]: 4
+            [COLORS]: 4,
+            [PRICE]: 1
         },
         {
             weight: 5,
             entry: 'Pearlash (1 lb)',
-            value: '4 sc',
+            [PRICE]: 4,
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
-            [COLORS]: 3
+            [COLORS]: 3,
+            [PRICE]: 4
         },
         {
             weight: 3,
@@ -831,35 +921,39 @@ module.exports = {
         {
             weight: 6,
             entry: 'Potash (1 lb)',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
-            [COLORS]: 3
+            [COLORS]: 3,
+            [PRICE]: 1
         },
         {
             weight: 5,
             entry: 'Shell, Pearly',
-            value: '0.03 sc',
+            [PRICE]: 0.03,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: .03
         },
         {
             weight: 6,
             entry: 'Soap (1 oz)',
-            value: '0.05 sc',
+            [PRICE]: 0.05,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
-            [COLORS]: 4
+            [COLORS]: 4,
+            [PRICE]: .05
         },
         {
             weight: 5,
             entry: 'Talcum Powder',
-            value: '1.3 sc',
+            [PRICE]: 1.3,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
-            [COLORS]: 4
+            [COLORS]: 4,
+            [PRICE]: 1.3
         },
         {
             weight: 5,
@@ -867,12 +961,13 @@ module.exports = {
             base_material: WAX,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
-            [COLORS]: 9
+            [COLORS]: 9,
+            [PRICE]: 1
         },
         {
             weight: 5,
             entry: 'Weaponblack',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1
@@ -888,7 +983,8 @@ module.exports = {
             [COLORS]: 7,
             [STITCHINGS]: 4,
             [GEMS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 400
         },
         {
             weight: 9,
@@ -898,7 +994,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 8,
             [STITCHINGS]: 2,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 130
         },
         {
             weight: 9,
@@ -909,7 +1006,8 @@ module.exports = {
             [COLORS]: 2,
             [ENGRAVINGS]: 2,
             [GEMS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 410
         },
         {
             weight: 9,
@@ -920,7 +1018,8 @@ module.exports = {
             [COLORS]: 4,
             [STITCHINGS]: 4,
             [GEMS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 200
         },
         {
             weight: 9,
@@ -930,7 +1029,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 8,
             [STITCHINGS]: 2,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 90
         },
         {
             weight: 9,
@@ -941,7 +1041,8 @@ module.exports = {
             [COLORS]: 3,
             [ENGRAVINGS]: 4,
             [GEMS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 370
         },
         {
             weight: 9,
@@ -952,7 +1053,8 @@ module.exports = {
             [COLORS]: 2,
             [ENGRAVINGS]: 4,
             [GEMS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 390
         },
         {
             weight: 9,
@@ -962,7 +1064,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 4,
             [STITCHINGS]: 2,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 190
         },
         {
             weight: 9,
@@ -973,7 +1076,8 @@ module.exports = {
             [COLORS]: 2,
             [ENGRAVINGS]: 7,
             [GEMS]: 2,
-            [QUIRKS]: 3
+            [QUIRKS]: 3,
+            [PRICE]: 1040
         },
         {
             weight: 9,
@@ -984,7 +1088,8 @@ module.exports = {
             [COLORS]: 2,
             [ENGRAVINGS]: 6,
             [GEMS]: 2,
-            [QUIRKS]: 3
+            [QUIRKS]: 3,
+            [PRICE]: 760
         },
         {
             weight: 9,
@@ -995,234 +1100,260 @@ module.exports = {
             [COLORS]: 2,
             [ENGRAVINGS]: 6,
             [GEMS]: 2,
-            [QUIRKS]: 3
+            [QUIRKS]: 3,
+            [PRICE]: 740
         }
     ],
     [BEVERAGES]: [
         {
             weight: 4,
             entry: 'Ale (gallon)',
-            value: '0.8 sc',
+            [PRICE]: 0.8,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .8
         },
         {
             weight: 4,
             entry: 'Almond Milk (pint)',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 1
         },
         {
             weight: 4,
             entry: 'Applejack (pint)',
-            value: '2 sc',
+            [PRICE]: 2,
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 2
         },
         {
             weight: 4,
             entry: 'Barley-Broth',
-            value: '0.01 sc',
+            [PRICE]: 0.01,
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .01
         },
         {
             weight: 4,
             entry: 'Beer (gallon)',
-            value: '0.8 sc',
+            [PRICE]: 0.8,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 0.8
         },
         {
             weight: 4,
             entry: 'Bitter Broth (pint)',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 1
         },
         {
             weight: 4,
             entry: 'Braggart (pint)',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 1
         },
         {
             weight: 4,
             entry: 'Brandy (gallon)',
-            value: '4 sc',
+            [PRICE]: 4,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 4
         },
         {
             weight: 4,
             entry: 'Cider, Hard (gallon)',
-            value: '3.2 sc',
+            [PRICE]: 3.2,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 3.2
         },
         {
             weight: 4,
             entry: 'Cider, Sweet (Gallon)',
-            value: '2 sc',
+            [PRICE]: 2,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 2
         },
         {
             weight: 4,
             entry: 'Decoction (pint)',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 1
         },
         {
             weight: 4,
             entry: 'Furmore (pint)',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 1
         },
         {
             weight: 4,
             entry: 'Grog (gallon)',
-            value: '0.5 sc',
+            [PRICE]: 0.5,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .5
         },
         {
             weight: 4,
             entry: 'Lemon Juice (gallon)',
-            value: '4 sc',
+            [PRICE]: 4,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 4
         },
         {
             weight: 4,
             entry: 'Liver Squeezings (cup)',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 1
         },
         {
             weight: 4,
             entry: 'Mead (gallon)',
-            value: '3.8 sc',
+            [PRICE]: 3.8,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 3.8
         },
         {
             weight: 4,
             entry: 'Milk (gallon)',
-            value: '0.2 sc',
+            [PRICE]: 0.2,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .2
         },
         {
             weight: 4,
             entry: 'Miracle Water (cup)',
-            value: '5 sc',
+            [PRICE]: 5,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 5
         },
         {
             weight: 4,
             entry: 'Must (cup)',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 1
         },
         {
             weight: 4,
             entry: 'Posset',
-            value: '.5 sc',
+            [PRICE]: .5,
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .5
         },
         {
             weight: 4,
             entry: 'Rum (gallon)',
-            value: '15 sc',
+            [PRICE]: 15,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 15
         },
         {
             weight: 4,
             entry: 'Tea (cup)',
-            value: '4 sc',
+            [PRICE]: 4,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 4
         },
         {
             weight: 4,
             entry: 'Vinegar (gallon)',
-            value: '6 sc',
+            [PRICE]: 6,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 6
         },
         {
             weight: 4,
             entry: 'Whiskey (gallon)',
-            value: '0.4 sc',
+            [PRICE]: 0.4,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .4
         },
         {
             weight: 4,
             entry: 'Wine (gallon)',
-            value: '5.4 sc',
+            [PRICE]: 5.4,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 5.4
         }
     ],
     [CLOTHING]: [
@@ -1253,6 +1384,7 @@ module.exports = {
             [ENGRAVINGS]: 3,
             [GEMS]: 2,
             [QUIRKS]: 1,
+            [PRICE]: 3
         },
         {
             weight: 5,
@@ -1263,6 +1395,7 @@ module.exports = {
             [COLORS]: 8,
             [STITCHINGS]: 2,
             [QUIRKS]: 1,
+            [PRICE]: 3
         },
         {
             weight: 5,
@@ -1274,6 +1407,7 @@ module.exports = {
             [ENGRAVINGS]: 1,
             [GEMS]: 6,
             [QUIRKS]: 3,
+            [PRICE]: 4
         },
         {
             weight: 5,
@@ -1282,6 +1416,7 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 2,
             [COLORS]: 8,
+            [PRICE]: .5
         },
         {
             weight: 5,
@@ -1290,6 +1425,7 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 2,
             [COLORS]: 8,
+            [PRICE]: 1
         },
         {
             weight: 5,
@@ -1298,11 +1434,12 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 3,
             [COLORS]: 9,
-            [SUBJECT]: 9
+            [SUBJECT]: 9,
+            [PRICE]: 1
         },
         {
             weight: 5,
-            entry: 'Chest Set',
+            entry: 'Chess Set',
             base_material: [{ weight: 9, material: WOOD }, { weight: 1, material: METAL }],
             [SIZE]: 'M',
             [ADJECTIVES]: 3,
@@ -1310,6 +1447,7 @@ module.exports = {
             [ENGRAVINGS]: 2,
             [GEMS]: 3,
             [QUIRKS]: 1,
+            [PRICE]: 5
         },
         {
             weight: 5,
@@ -1321,6 +1459,7 @@ module.exports = {
             [ENGRAVINGS]: 1,
             [GEMS]: 1,
             [QUIRKS]: 1,
+            [PRICE]: .2
         },
         {
             weight: 5,
@@ -1332,6 +1471,7 @@ module.exports = {
             [ENGRAVINGS]: 1,
             [GEMS]: 1,
             [QUIRKS]: 1,
+            [PRICE]: 5
         },
         {
             weight: 5,
@@ -1341,6 +1481,7 @@ module.exports = {
             [ADJECTIVES]: 3,
             [COLORS]: 9,
             [STITCHINGS]: 6,
+            [PRICE]: 3
         },
         {
             weight: 5,
@@ -1350,22 +1491,25 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 3,
             [ENGRAVINGS]: 3,
+            [PRICE]: 2
         },
         {
             weight: 5,
             entry: 'Hair Dye',
-            value: '5 sc',
+            [PRICE]: 5,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 9,
+            [PRICE]: .1
         },
         {
             weight: 4,
             entry: 'Hair Extensions',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 7,
+            [PRICE]: .1
         },
         {
             weight: 64,
@@ -1377,6 +1521,7 @@ module.exports = {
             [ENGRAVINGS]: 2,
             [STITCHINGS]: 2,
             [QUIRKS]: 1,
+            [PRICE]: 4
         },
         {
             weight: 4,
@@ -1387,6 +1532,7 @@ module.exports = {
             [COLORS]: 5,
             [ENGRAVINGS]: 1,
             [GEMS]: 1,
+            [PRICE]: 14
         },
         {
             weight: 4,
@@ -1398,6 +1544,7 @@ module.exports = {
             [ENGRAVINGS]: 2,
             [GEMS]: 3,
             [QUIRKS]: 2,
+            [PRICE]: 12
         },
         {
             weight: 4,
@@ -1409,18 +1556,20 @@ module.exports = {
             [ENGRAVINGS]: 5,
             [GEMS]: 1,
             [QUIRKS]: 3,
-            [SUBJECT]: 9
+            [SUBJECT]: 9,
+            [PRICE]: 7
         },
         {
             weight: 5,
             entry: 'Perfumes',
-            value: '3 sc',
+            [PRICE]: 3,
             [SIZE]: 'T',
             [ADJECTIVES]: 2,
             [COLORS]: 7,
             [ENGRAVINGS]: 3,
             [GEMS]: 4,
             [QUIRKS]: 2,
+            [PRICE]: 15
         },
         {
             weight: 5,
@@ -1431,7 +1580,8 @@ module.exports = {
             [COLORS]: 9,
             [STITCHINGS]: 3,
             [QUIRKS]: 1,
-            [SUBJECT]: 9
+            [SUBJECT]: 9,
+            [PRICE]: 10
         },
         {
             weight: 5,
@@ -1440,6 +1590,8 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
+            [AMOUNT]: '1d10',
+            [TYPE]: 'pinch'
         },
         {
             weight: 5,
@@ -1451,6 +1603,7 @@ module.exports = {
             [ENGRAVINGS]: 2,
             [GEMS]: 1,
             [QUIRKS]: 1,
+            [PRICE]: 2
         }
     ],
     [FABRICS_AND_ROPES]: [
@@ -1462,7 +1615,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 7,
             [STITCHINGS]: 4,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 10
         },
         {
             weight: 4,
@@ -1471,7 +1625,8 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
-            [STITCHINGS]: 2
+            [STITCHINGS]: 2,
+            [PRICE]: 2.6
         },
         {
             weight: 3,
@@ -1481,23 +1636,30 @@ module.exports = {
             [ADJECTIVES]: 3,
             [COLORS]: 9,
             [STITCHINGS]: 3,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 5
         },
         {
             weight: 3,
-            entry: 'Thread, 1d4 yards',
+            entry: 'Thread',
             base_material: [{ weight: 7, material: 'Thread' }, { weight: 2, material: 'Twine' }],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
+            [PRICE]: .01,
+            [AMOUNT]: '1d4',
+            [TYPE]: 'yard'
         },
         {
             weight: 3,
-            entry: 'Yarn, 1d4 yards',
+            entry: 'Yarn',
             base_material: [{ weight: 5, material: 'Cotton', subtable: CLOTH }, { weight: 4, material: 'Wool', subtable: CLOTH }],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
+            [PRICE]: .01,
+            [AMOUNT]: '1d4',
+            [TYPE]: 'yard'
         },
         {
             weight: 4,
@@ -1507,7 +1669,10 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 2,
             [STITCHINGS]: 2,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 13,
+            [AMOUNT]: '20 + 2d20',
+            [TYPE]: 'ft'
         }
     ],
     [FOOD]: [
@@ -1516,7 +1681,7 @@ module.exports = {
         { weight: 3, entry: [FRUIT_AND_VEGATABLES] },
         { weight: 4, entry: [PROTEIN] },
         { weight: 5, entry: [NUTS] },
-        // { weight: 6, entry: [SPICES_AND_SEASONINGS] }
+        { weight: 6, entry: [SPICES_AND_SEASONINGS] }
     ],
     [HOUSEHOLD_ITEMS]: [
         {
@@ -1526,7 +1691,8 @@ module.exports = {
             [SIZE]: 'L',
             [ADJECTIVES]: 2,
             [COLORS]: 3,
-            [STITCHINGS]: 2
+            [STITCHINGS]: 2,
+            [PRICE]: .5
         },
         {
             weight: 3,
@@ -1535,7 +1701,8 @@ module.exports = {
             [SIZE]: 'H',
             [ADJECTIVES]: 2,
             [COLORS]: 4,
-            [STITCHINGS]: 3
+            [STITCHINGS]: 3,
+            [PRICE]: 5
         },
         {
             weight: 3,
@@ -1545,7 +1712,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 2,
             [STITCHINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 5
         },
         {
             weight: 3,
@@ -1555,7 +1723,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 10
         },
         {
             weight: 3,
@@ -1564,7 +1733,8 @@ module.exports = {
             [SIZE]: 'G',
             [ADJECTIVES]: 3,
             [COLORS]: 5,
-            [STITCHINGS]: 2
+            [STITCHINGS]: 2,
+            [PRICE]: 6
         },
         {
             weight: 3,
@@ -1574,7 +1744,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 35
         },
         {
             weight: 3,
@@ -1585,7 +1756,8 @@ module.exports = {
             [COLORS]: 1,
             [ENGRAVINGS]: 4,
             [GEMS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 20
         },
         {
             weight: 3,
@@ -1594,7 +1766,8 @@ module.exports = {
             [SIZE]: 'M',
             [ADJECTIVES]: 2,
             [COLORS]: 4,
-            [STITCHINGS]: 3
+            [STITCHINGS]: 3,
+            [PRICE]: 2
         },
         {
             weight: 3,
@@ -1604,7 +1777,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 30
         },
         {
             weight: 3,
@@ -1613,16 +1787,18 @@ module.exports = {
             [SIZE]: 'G',
             [ADJECTIVES]: 3,
             [COLORS]: 9,
-            [STITCHINGS]: 9
+            [STITCHINGS]: 9,
+            [PRICE]: 20
         },
         {
             weight: 3,
-            entry: 'Bolter CLOTH',
+            entry: 'Bolt of Cloth',
             base_material: CLOTH,
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 6,
-            [STITCHINGS]: 1
+            [STITCHINGS]: 1,
+            [PRICE]: 11
         },
         {
             weight: 3,
@@ -1633,7 +1809,8 @@ module.exports = {
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
             [GEMS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 12
         },
         {
             weight: 2,
@@ -1644,7 +1821,8 @@ module.exports = {
             [COLORS]: 2,
             [ENGRAVINGS]: 2,
             [GEMS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .5
         },
         {
             weight: 2,
@@ -1654,7 +1832,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 1
         },
         {
             weight: 2,
@@ -1664,7 +1843,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .05
         },
         {
             weight: 2,
@@ -1673,7 +1853,8 @@ module.exports = {
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
-            [ENGRAVINGS]: 1
+            [ENGRAVINGS]: 1,
+            [PRICE]: .02
         },
         {
             weight: 2,
@@ -1682,7 +1863,8 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
-            [ENGRAVINGS]: 1
+            [ENGRAVINGS]: 1,
+            [PRICE]: 2
         },
         {
             weight: 2,
@@ -1691,7 +1873,8 @@ module.exports = {
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
-            [ENGRAVINGS]: 1
+            [ENGRAVINGS]: 1,
+            [PRICE]: 16
         },
         {
             weight: 2,
@@ -1700,7 +1883,8 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
-            [ENGRAVINGS]: 1
+            [ENGRAVINGS]: 1,
+            [PRICE]: .4
         },
         {
             weight: 2,
@@ -1709,7 +1893,8 @@ module.exports = {
             [SIZE]: 'M',
             [ADJECTIVES]: 2,
             [COLORS]: 2,
-            [ENGRAVINGS]: 2
+            [ENGRAVINGS]: 2,
+            [PRICE]: 2
         },
         {
             weight: 2,
@@ -1718,7 +1903,8 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
-            [ENGRAVINGS]: 1
+            [ENGRAVINGS]: 1,
+            [PRICE]: .1
         },
         {
             weight: 2,
@@ -1727,7 +1913,8 @@ module.exports = {
             [SIZE]: 'L',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [ENGRAVINGS]: 1
+            [ENGRAVINGS]: 1,
+            [PRICE]: .5
         },
         {
             weight: 2,
@@ -1737,7 +1924,8 @@ module.exports = {
             [ADJECTIVES]: 3,
             [COLORS]: 4,
             [ENGRAVINGS]: 3,
-            [GEMS]: 1
+            [GEMS]: 1,
+            [PRICE]: .6
         },
         {
             weight: 2,
@@ -1748,7 +1936,8 @@ module.exports = {
             [COLORS]: 2,
             [ENGRAVINGS]: 2,
             [GEMS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 1
         },
         {
             weight: 2,
@@ -1757,7 +1946,8 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [ENGRAVINGS]: 1
+            [ENGRAVINGS]: 1,
+            [PRICE]: .4
         },
         {
             weight: 2,
@@ -1767,7 +1957,8 @@ module.exports = {
             [ADJECTIVES]: 3,
             [COLORS]: 2,
             [ENGRAVINGS]: 3,
-            [GEMS]: 1
+            [GEMS]: 1,
+            [PRICE]: .5
         },
         {
             weight: 2,
@@ -1776,7 +1967,8 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [ENGRAVINGS]: 2
+            [ENGRAVINGS]: 2,
+            [PRICE]: 3
         },
         {
             weight: 2,
@@ -1785,7 +1977,8 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [ENGRAVINGS]: 1
+            [ENGRAVINGS]: 1,
+            [PRICE]: 2.5
         },
         {
             weight: 2,
@@ -1794,7 +1987,8 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [ENGRAVINGS]: 1
+            [ENGRAVINGS]: 1,
+            [PRICE]: .01
         },
         {
             weight: 2,
@@ -1804,7 +1998,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 4,
             [ENGRAVINGS]: 3,
-            [GEMS]: 1
+            [GEMS]: 1,
+            [PRICE]: .1
         },
         {
             weight: 2,
@@ -1813,7 +2008,8 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [ENGRAVINGS]: 2
+            [ENGRAVINGS]: 2,
+            [PRICE]: 1
         },
         {
             weight: 2,
@@ -1823,7 +2019,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 2,
             [ENGRAVINGS]: 2,
-            [GEMS]: 1
+            [GEMS]: 1,
+            [PRICE]: .5
         },
         {
             weight: 2,
@@ -1832,7 +2029,8 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 4,
-            [ENGRAVINGS]: 2
+            [ENGRAVINGS]: 2,
+            [PRICE]: 1.25
         },
         {
             weight: 2,
@@ -1841,7 +2039,8 @@ module.exports = {
             [SIZE]: 'D',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [ENGRAVINGS]: 1
+            [ENGRAVINGS]: 1,
+            [PRICE]: .08
         },
         {
             weight: 2,
@@ -1851,7 +2050,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 3,
             [ENGRAVINGS]: 2,
-            [GEMS]: 1
+            [GEMS]: 1,
+            [PRICE]: .3
         },
         {
             weight: 2,
@@ -1860,7 +2060,8 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [ENGRAVINGS]: 1
+            [ENGRAVINGS]: 1,
+            [PRICE]: .3
         },
         {
             weight: 2,
@@ -1869,7 +2070,8 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [ENGRAVINGS]: 1
+            [ENGRAVINGS]: 1,
+            [PRICE]: .3
         },
         {
             weight: 2,
@@ -1878,7 +2080,8 @@ module.exports = {
             [SIZE]: 'D',
             [ADJECTIVES]: 2,
             [COLORS]: 4,
-            [ENGRAVINGS]: 2
+            [ENGRAVINGS]: 2,
+            [PRICE]: 1
         },
         {
             weight: 3,
@@ -1888,7 +2091,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 4,
             [STITCHINGS]: 3,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 4
         },
         {
             weight: 3,
@@ -1898,7 +2102,8 @@ module.exports = {
             [ADJECTIVES]: 3,
             [COLORS]: 8,
             [STITCHINGS]: 5,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 10
         },
         {
             weight: 3,
@@ -1908,7 +2113,8 @@ module.exports = {
             [ADJECTIVES]: 3,
             [COLORS]: 2,
             [STITCHINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 50
         },
         {
             weight: 3,
@@ -1919,7 +2125,8 @@ module.exports = {
             [COLORS]: 1,
             [ENGRAVINGS]: 4,
             [GEMS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 2
         }
     ],
     [ILLUMINATION]: [
@@ -1932,7 +2139,8 @@ module.exports = {
             [COLORS]: 2,
             [ENGRAVINGS]: 3,
             [GEMS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 1
         },
         {
             weight: 1,
@@ -1941,7 +2149,8 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 2,
             [COLORS]: 4,
-            [ENGRAVINGS]: 1
+            [ENGRAVINGS]: 1,
+            [PRICE]: .05
         },
         {
             weight: 1,
@@ -1949,7 +2158,8 @@ module.exports = {
             base_material: [{ weight: 8, material: 'Tallow' }, { weight: 2, material: WAX }],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
-            [COLORS]: 3
+            [COLORS]: 3,
+            [PRICE]: 3
         },
         {
             weight: 1,
@@ -1959,7 +2169,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 2,
             [ENGRAVINGS]: 2,
-            [GEMS]: 1
+            [GEMS]: 1,
+            [PRICE]: .5
         },
         {
             weight: 1,
@@ -1970,7 +2181,8 @@ module.exports = {
             [COLORS]: 1,
             [ENGRAVINGS]: 2,
             [GEMS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 3
         },
         {
             weight: 1,
@@ -1981,7 +2193,8 @@ module.exports = {
             [COLORS]: 1,
             [ENGRAVINGS]: 2,
             [GEMS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 5
         },
         {
             weight: 1,
@@ -1991,7 +2204,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 7
         },
         {
             weight: 1,
@@ -2001,7 +2215,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 9
         },
         {
             weight: 1,
@@ -2011,7 +2226,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 2,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 2
         },
         {
             weight: 1,
@@ -2019,7 +2235,8 @@ module.exports = {
             base_material: [{ weight: 5, material: 'Tallow' }, { weight: 5, material: CLOTH }],
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
-            [COLORS]: 1
+            [COLORS]: 1,
+            [PRICE]: .04
         }
     ],
     [JEWELRY]: [
@@ -2032,7 +2249,8 @@ module.exports = {
             [COLORS]: 2,
             [ENGRAVINGS]: 3,
             [GEMS]: 4,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 5
         },
         {
             weight: 1,
@@ -2043,7 +2261,8 @@ module.exports = {
             [COLORS]: 2,
             [ENGRAVINGS]: 1,
             [GEMS]: 3,
-            [QUIRKS]: 3
+            [QUIRKS]: 3,
+            [PRICE]: 1
         },
         {
             weight: 1,
@@ -2054,7 +2273,8 @@ module.exports = {
             [COLORS]: 3,
             [ENGRAVINGS]: 5,
             [GEMS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 1
         },
         {
             weight: 1,
@@ -2065,7 +2285,8 @@ module.exports = {
             [COLORS]: 2,
             [ENGRAVINGS]: 2,
             [GEMS]: 4,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: .5
         },
         {
             weight: 1,
@@ -2076,7 +2297,8 @@ module.exports = {
             [COLORS]: 2,
             [ENGRAVINGS]: 2,
             [GEMS]: 4,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 1
         },
         {
             weight: 1,
@@ -2087,7 +2309,8 @@ module.exports = {
             [COLORS]: 3,
             [ENGRAVINGS]: 2,
             [GEMS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 1
         },
         {
             weight: 1,
@@ -2098,7 +2321,8 @@ module.exports = {
             [COLORS]: 3,
             [ENGRAVINGS]: 1,
             [GEMS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 1
         },
         {
             weight: 1,
@@ -2110,7 +2334,8 @@ module.exports = {
             [ENGRAVINGS]: 2,
             [STITCHINGS]: 2,
             [GEMS]: 2,
-            [QUIRKS]: 3
+            [QUIRKS]: 3,
+            [PRICE]: 10
         },
         {
             weight: 1,
@@ -2121,7 +2346,8 @@ module.exports = {
             [COLORS]: 2,
             [ENGRAVINGS]: 2,
             [GEMS]: 4,
-            [QUIRKS]: 4
+            [QUIRKS]: 4,
+            [PRICE]: 1
         },
         {
             weight: 1,
@@ -2133,7 +2359,8 @@ module.exports = {
             [ENGRAVINGS]: 4,
             [STITCHINGS]: 4,
             [GEMS]: 3,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 1
         },
         {
             weight: 1,
@@ -2145,7 +2372,8 @@ module.exports = {
             [ENGRAVINGS]: 4,
             [STITCHINGS]: 4,
             [GEMS]: 2,
-            [QUIRKS]: 3
+            [QUIRKS]: 3,
+            [PRICE]: 1
         },
         {
             weight: 1,
@@ -2157,7 +2385,8 @@ module.exports = {
             [ENGRAVINGS]: 2,
             [STITCHINGS]: 2,
             [GEMS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: .5
         },
         {
             weight: 1,
@@ -2169,7 +2398,8 @@ module.exports = {
             [ENGRAVINGS]: 3,
             [STITCHINGS]: 3,
             [GEMS]: 2,
-            [QUIRKS]: 3
+            [QUIRKS]: 3,
+            [PRICE]: 1
         },
         {
             weight: 1,
@@ -2181,7 +2411,8 @@ module.exports = {
             [ENGRAVINGS]: 3,
             [STITCHINGS]: 3,
             [GEMS]: 3,
-            [QUIRKS]: 3
+            [QUIRKS]: 3,
+            [PRICE]: 1
         },
         {
             weight: 1,
@@ -2192,7 +2423,8 @@ module.exports = {
             [COLORS]: 4,
             [ENGRAVINGS]: 1,
             [GEMS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 1
         },
         {
             weight: 1,
@@ -2203,7 +2435,8 @@ module.exports = {
             [COLORS]: 1,
             [STITCHINGS]: 1,
             [GEMS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .5
         },
         {
             weight: 1,
@@ -2214,7 +2447,8 @@ module.exports = {
             [COLORS]: 2,
             [ENGRAVINGS]: 4,
             [GEMS]: 4,
-            [QUIRKS]: 4
+            [QUIRKS]: 4,
+            [PRICE]: 1
         },
         {
             weight: 1,
@@ -2225,7 +2459,8 @@ module.exports = {
             [COLORS]: 2,
             [ENGRAVINGS]: 2,
             [GEMS]: 4,
-            [QUIRKS]: 4
+            [QUIRKS]: 4,
+            [PRICE]: 1
         },
         {
             weight: 1,
@@ -2236,7 +2471,8 @@ module.exports = {
             [COLORS]: 3,
             [ENGRAVINGS]: 4,
             [GEMS]: 5,
-            [QUIRKS]: 3
+            [QUIRKS]: 3,
+            [PRICE]: 20
         }
     ],
     [MEDICAL_TOOLS]: [
@@ -2247,7 +2483,8 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
-            [STITCHINGS]: 1
+            [STITCHINGS]: 1,
+            [PRICE]: .01
         },
         {
             weight: 1,
@@ -2256,7 +2493,8 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
             [COLORS]: 2,
-            [ENGRAVINGS]: 2
+            [ENGRAVINGS]: 2,
+            [PRICE]: 1
         },
         {
             weight: 2,
@@ -2266,7 +2504,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 2,
             [ENGRAVINGS]: 3,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .3
         },
         {
             weight: 1,
@@ -2276,7 +2515,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 3,
-            [QUIRKS]: 3
+            [QUIRKS]: 3,
+            [PRICE]: 100
         },
         {
             weight: 1,
@@ -2284,7 +2524,8 @@ module.exports = {
             base_material: METAL,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
-            [COLORS]: 1
+            [COLORS]: 1,
+            [PRICE]: .4
         },
         {
             weight: 1,
@@ -2292,7 +2533,8 @@ module.exports = {
             base_material: METAL,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
-            [COLORS]: 1
+            [COLORS]: 1,
+            [PRICE]: 15
         },
         {
             weight: 1,
@@ -2300,7 +2542,8 @@ module.exports = {
             base_material: METAL,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
-            [COLORS]: 1
+            [COLORS]: 1,
+            [PRICE]: 1
         },
         {
             weight: 1,
@@ -2309,7 +2552,8 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [STITCHINGS]: 1
+            [STITCHINGS]: 1,
+            [PRICE]: 3
         },
         {
             weight: 1,
@@ -2317,7 +2561,8 @@ module.exports = {
             base_material: [{ weight: 6, material: 'Thread' }, { weight: 3, material: 'Animal Guts' }],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
-            [COLORS]: 1
+            [COLORS]: 1,
+            [PRICE]: 1
         },
         {
             weight: 2,
@@ -2327,7 +2572,8 @@ module.exports = {
             [ADJECTIVES]: 3,
             [COLORS]: 2,
             [ENGRAVINGS]: 3,
-            [QUIRKS]: 3
+            [QUIRKS]: 3,
+            [PRICE]: 8
         },
         {
             weight: 1,
@@ -2335,7 +2581,8 @@ module.exports = {
             base_material: METAL,
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
-            [COLORS]: 1
+            [COLORS]: 1,
+            [PRICE]: 15
         },
         {
             weight: 1,
@@ -2345,7 +2592,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 3,
             [STITCHINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 3
         },
         {
             weight: 1,
@@ -2354,7 +2602,8 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 2,
             [COLORS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 2
         },
         {
             weight: 1,
@@ -2363,7 +2612,8 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 4
         },
         {
             weight: 1,
@@ -2373,7 +2623,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 3,
             [STITCHINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .01
         }
     ],
     [MUSICAL_INSTRUMENTS]: [
@@ -2386,7 +2637,8 @@ module.exports = {
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
             [GEMS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 5.3
         },
         {
             weight: 4,
@@ -2396,7 +2648,8 @@ module.exports = {
             [ADJECTIVES]: 3,
             [COLORS]: 3,
             [ENGRAVINGS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 94.9
         },
         {
             weight: 4,
@@ -2406,7 +2659,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 2,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 35
         },
         {
             weight: 4,
@@ -2416,7 +2670,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 50
         },
         {
             weight: 4,
@@ -2426,7 +2681,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 25
         },
         {
             weight: 4,
@@ -2437,7 +2693,8 @@ module.exports = {
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
             [GEMS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 70
         },
         {
             weight: 4,
@@ -2448,7 +2705,8 @@ module.exports = {
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
             [GEMS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 80
         },
         {
             weight: 4,
@@ -2458,7 +2716,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 3
         },
         {
             weight: 4,
@@ -2468,7 +2727,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 75
         },
         {
             weight: 4,
@@ -2479,7 +2739,8 @@ module.exports = {
             [COLORS]: 1,
             [ENGRAVINGS]: 2,
             [GEMS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 7
         },
         {
             weight: 4,
@@ -2489,7 +2750,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 35
         },
         {
             weight: 4,
@@ -2500,7 +2762,8 @@ module.exports = {
             [COLORS]: 1,
             [ENGRAVINGS]: 3,
             [GEMS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 40
         },
         {
             weight: 4,
@@ -2510,7 +2773,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 100
         },
         {
             weight: 4,
@@ -2520,7 +2784,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 95
         },
         {
             weight: 4,
@@ -2530,7 +2795,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 60
         },
         {
             weight: 4,
@@ -2540,7 +2806,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 18.7
         },
         {
             weight: 4,
@@ -2550,7 +2817,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 42.5
         },
         {
             weight: 4,
@@ -2561,7 +2829,8 @@ module.exports = {
             [COLORS]: 1,
             [ENGRAVINGS]: 3,
             [GEMS]: 3,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 200
         },
         {
             weight: 4,
@@ -2571,7 +2840,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 42.5
         },
         {
             weight: 4,
@@ -2581,7 +2851,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 5
         },
         {
             weight: 4,
@@ -2591,7 +2862,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 41.5
         },
         {
             weight: 4,
@@ -2601,7 +2873,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 34.5
         },
         {
             weight: 4,
@@ -2611,7 +2884,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 2,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 27
         },
         {
             weight: 4,
@@ -2621,7 +2895,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 2,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 6.5
         },
         {
             weight: 4,
@@ -2631,7 +2906,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 26.5
         },
         {
             weight: 4,
@@ -2641,7 +2917,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 5.5
         },
         {
             weight: 4,
@@ -2651,7 +2928,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 100
         },
         {
             weight: 4,
@@ -2661,7 +2939,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 2,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 75
         },
         {
             weight: 4,
@@ -2671,7 +2950,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 25
         }
     ],
     [PERSONAL_CONTAINERS]: [
@@ -2683,7 +2963,8 @@ module.exports = {
             [ADJECTIVES]: 3,
             [COLORS]: 9,
             [ENGRAVINGS]: 7,
-            [GEMS]: 1
+            [GEMS]: 1,
+            [PRICE]: .5
         },
         {
             weight: 2,
@@ -2693,7 +2974,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 3,
             [STITCHINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 15
         },
         {
             weight: 2,
@@ -2703,7 +2985,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 3,
             [STITCHINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 10
         },
         {
             weight: 2,
@@ -2713,7 +2996,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 3,
             [STITCHINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 9
         },
         {
             weight: 2,
@@ -2722,7 +3006,8 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
-            [STITCHINGS]: 1
+            [STITCHINGS]: 1,
+            [PRICE]: 6.5
         },
         {
             weight: 2,
@@ -2731,7 +3016,8 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
-            [STITCHINGS]: 1
+            [STITCHINGS]: 1,
+            [PRICE]: 5
         },
         {
             weight: 2,
@@ -2741,7 +3027,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [STITCHINGS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 5
         },
         {
             weight: 2,
@@ -2751,7 +3038,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 10
         },
         {
             weight: 2,
@@ -2759,7 +3047,8 @@ module.exports = {
             base_material: 'Wicker',
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
-            [COLORS]: 1
+            [COLORS]: 1,
+            [PRICE]: 10
         },
         {
             weight: 2,
@@ -2767,7 +3056,8 @@ module.exports = {
             base_material: 'Wicker',
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
-            [COLORS]: 1
+            [COLORS]: 1,
+            [PRICE]: 5
         },
         {
             weight: 2,
@@ -2775,7 +3065,8 @@ module.exports = {
             base_material: 'Glass',
             [SIZE]: 'D',
             [ADJECTIVES]: 1,
-            [COLORS]: 1
+            [COLORS]: 1,
+            [PRICE]: 50
         },
         {
             weight: 2,
@@ -2784,7 +3075,8 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 2,
-            [ENGRAVINGS]: 1
+            [ENGRAVINGS]: 1,
+            [PRICE]: .04
         },
         {
             weight: 2,
@@ -2794,7 +3086,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 3,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 10
         },
         {
             weight: 2,
@@ -2804,7 +3097,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 3,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 5
         },
         {
             weight: 2,
@@ -2812,7 +3106,8 @@ module.exports = {
             base_material: WOOD,
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
-            [COLORS]: 1
+            [COLORS]: 1,
+            [PRICE]: 3
         },
         {
             weight: 2,
@@ -2820,7 +3115,8 @@ module.exports = {
             base_material: WOOD,
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
-            [COLORS]: 1
+            [COLORS]: 1,
+            [PRICE]: 5
         },
         {
             weight: 2,
@@ -2831,7 +3127,8 @@ module.exports = {
             [COLORS]: 3,
             [ENGRAVINGS]: 3,
             [STITCHINGS]: 3,
-            [GEMS]: 1
+            [GEMS]: 1,
+            [PRICE]: 2
         },
         {
             weight: 2,
@@ -2843,7 +3140,8 @@ module.exports = {
             [ENGRAVINGS]: 4,
             [STITCHINGS]: 4,
             [GEMS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 6
         },
         {
             weight: 2,
@@ -2852,7 +3150,8 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [ENGRAVINGS]: 1
+            [ENGRAVINGS]: 1,
+            [PRICE]: 3
         },
         {
             weight: 2,
@@ -2862,7 +3161,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 2,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 6
         },
         {
             weight: 2,
@@ -2872,7 +3172,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 2,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 3
         },
         {
             weight: 2,
@@ -2882,7 +3183,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 4,
             [STITCHINGS]: 3,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .4
         },
         {
             weight: 2,
@@ -2892,7 +3194,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [GEMS]: 1
+            [GEMS]: 1,
+            [PRICE]: .7
         },
         {
             weight: 2,
@@ -2902,7 +3205,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 4,
-            [GEMS]: 1
+            [GEMS]: 1,
+            [PRICE]: .7
         },
         {
             weight: 2,
@@ -2911,7 +3215,8 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 2,
             [COLORS]: 1,
-            [ENGRAVINGS]: 1
+            [ENGRAVINGS]: 1,
+            [PRICE]: .7
         },
         {
             weight: 2,
@@ -2921,7 +3226,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 5
         },
         {
             weight: 2,
@@ -2930,7 +3236,8 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 2,
             [COLORS]: 1,
-            [ENGRAVINGS]: 2
+            [ENGRAVINGS]: 2,
+            [PRICE]: .02
         },
         {
             weight: 2,
@@ -2939,7 +3246,8 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
             [COLORS]: 1,
-            [ENGRAVINGS]: 2
+            [ENGRAVINGS]: 2,
+            [PRICE]: .5
         },
         {
             weight: 2,
@@ -2948,7 +3256,8 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [ENGRAVINGS]: 1
+            [ENGRAVINGS]: 1,
+            [PRICE]: 1.2
         },
         {
             weight: 2,
@@ -2957,7 +3266,8 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
-            [STITCHINGS]: 1
+            [STITCHINGS]: 1,
+            [PRICE]: 1.2
         },
         {
             weight: 2,
@@ -2966,7 +3276,8 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
-            [STITCHINGS]: 1
+            [STITCHINGS]: 1,
+            [PRICE]: .5
         },
         {
             weight: 2,
@@ -2977,7 +3288,8 @@ module.exports = {
             [COLORS]: 4,
             [STITCHINGS]: 2,
             [GEMS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 2.5
         },
         {
             weight: 2,
@@ -2988,7 +3300,8 @@ module.exports = {
             [COLORS]: 4,
             [ENGRAVINGS]: 4,
             [GEMS]: 3,
-            [QUIRKS]: 3
+            [QUIRKS]: 3,
+            [PRICE]: 15
         },
         {
             weight: 2,
@@ -2999,7 +3312,8 @@ module.exports = {
             [COLORS]: 3,
             [STITCHINGS]: 2,
             [GEMS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 15
         },
         {
             weight: 2,
@@ -3010,7 +3324,8 @@ module.exports = {
             [COLORS]: 3,
             [STITCHINGS]: 2,
             [GEMS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 10
         },
         {
             weight: 2,
@@ -3021,7 +3336,8 @@ module.exports = {
             [COLORS]: 3,
             [STITCHINGS]: 2,
             [GEMS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 5
         },
         {
             weight: 2,
@@ -3032,7 +3348,8 @@ module.exports = {
             [COLORS]: 4,
             [STITCHINGS]: 3,
             [GEMS]: 2,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 5
         },
         {
             weight: 2,
@@ -3043,7 +3360,8 @@ module.exports = {
             [COLORS]: 4,
             [STITCHINGS]: 2,
             [GEMS]: 2,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 2.5
         },
         {
             weight: 2,
@@ -3053,7 +3371,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 2,
             [STITCHINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 5
         },
         {
             weight: 2,
@@ -3063,7 +3382,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 2,
             [STITCHINGS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 5
         },
         {
             weight: 2,
@@ -3073,15 +3393,21 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [STITCHINGS]: 2,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 4.5
         }
     ],
     [RAW_GOODS]: [
-        { weight: 1, entry: CLOTH },
-        { weight: 2, entry: FUR_OR_LEATHER },
-        { weight: 3, entry: METAL },
-        { weight: 4, entry: STONE_EARTHWORK },
-        { weight: 5, entry: WOOD },
+        { weight: 1, entry: CLOTH,
+            [PRICE]: 10 },
+        { weight: 2, entry: FUR_OR_LEATHER,
+            [PRICE]: 30 },
+        { weight: 3, entry: METAL,
+            [PRICE]: 20 },
+        { weight: 4, entry: STONE_EARTHWORK,
+            [PRICE]: 5 },
+        { weight: 5, entry: WOOD,
+            [PRICE]: 5 },
         { weight: 6, entry: [GEMS] }
     ],
     [RELIGIOUS_ITEMS]: [
@@ -3092,7 +3418,8 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 7,
-            [STITCHINGS]: 9
+            [STITCHINGS]: 9,
+            [PRICE]: 10
         },
         {
             weight: 1,
@@ -3103,7 +3430,8 @@ module.exports = {
             [COLORS]: 1,
             [ENGRAVINGS]: 3,
             [GEMS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 5
         },
         {
             weight: 2,
@@ -3114,7 +3442,8 @@ module.exports = {
             [COLORS]: 1,
             [ENGRAVINGS]: 7,
             [GEMS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 5
         },
         {
             weight: 2,
@@ -3123,7 +3452,8 @@ module.exports = {
             [SIZE]: 'M',
             [ADJECTIVES]: 2,
             [COLORS]: 8,
-            [ENGRAVINGS]: 2
+            [ENGRAVINGS]: 2,
+            [PRICE]: .5
         },
         {
             weight: 1,
@@ -3134,7 +3464,8 @@ module.exports = {
             [COLORS]: 1,
             [ENGRAVINGS]: 6,
             [GEMS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 3
         },
         {
             weight: 1,
@@ -3145,7 +3476,8 @@ module.exports = {
             [COLORS]: 2,
             [ENGRAVINGS]: 6,
             [GEMS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 5
         },
         {
             weight: 2,
@@ -3155,7 +3487,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 3,
             [ENGRAVINGS]: 5,
-            [GEMS]: 2
+            [GEMS]: 2,
+            [PRICE]: 5
         },
         {
             weight: 1,
@@ -3163,7 +3496,8 @@ module.exports = {
             base_material: SPICES_AND_SEASONINGS,
             [SIZE]: 'D',
             [ADJECTIVES]: 1,
-            [COLORS]: 9
+            [COLORS]: 9,
+            [PRICE]: 10
         },
         {
             weight: 1,
@@ -3174,7 +3508,8 @@ module.exports = {
             [COLORS]: 7,
             [ENGRAVINGS]: 9,
             [STITCHINGS]: 9,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 1
         },
         {
             weight: 1,
@@ -3185,7 +3520,8 @@ module.exports = {
             [COLORS]: 9,
             [ENGRAVINGS]: 5,
             [GEMS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 1
         },
         {
             weight: 1,
@@ -3196,7 +3532,8 @@ module.exports = {
             [COLORS]: 6,
             [ENGRAVINGS]: 7,
             [STITCHINGS]: 7,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 50
         },
         {
             weight: 1,
@@ -3207,7 +3544,8 @@ module.exports = {
             [COLORS]: 2,
             [ENGRAVINGS]: 4,
             [GEMS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 2
         },
         {
             weight: 1,
@@ -3218,7 +3556,8 @@ module.exports = {
             [COLORS]: 5,
             [ENGRAVINGS]: 1,
             [STITCHINGS]: 1,
-            [GEMS]: 2
+            [GEMS]: 2,
+            [PRICE]: 1
         },
         {
             weight: 1,
@@ -3229,7 +3568,8 @@ module.exports = {
             [COLORS]: 4,
             [ENGRAVINGS]: 1,
             [STITCHINGS]: 1,
-            [GEMS]: 1
+            [GEMS]: 1,
+            [PRICE]: .5
         }
     ],
     [SHIELDS]: [
@@ -3242,7 +3582,8 @@ module.exports = {
             [COLORS]: 4,
             [ENGRAVINGS]: 4,
             [GEMS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 40
         },
         {
             weight: 1,
@@ -3252,7 +3593,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 9,
             [STITCHINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .5
         },
         {
             weight: 1,
@@ -3263,7 +3605,8 @@ module.exports = {
             [COLORS]: 9,
             [ENGRAVINGS]: 3,
             [GEMS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 60
         },
         {
             weight: 1,
@@ -3274,7 +3617,8 @@ module.exports = {
             [COLORS]: 6,
             [ENGRAVINGS]: 4,
             [GEMS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 70
         },
         {
             weight: 1,
@@ -3285,7 +3629,8 @@ module.exports = {
             [COLORS]: 5,
             [ENGRAVINGS]: 3,
             [GEMS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 45
         },
         {
             weight: 1,
@@ -3296,7 +3641,8 @@ module.exports = {
             [COLORS]: 7,
             [ENGRAVINGS]: 4,
             [GEMS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 110
         },
         {
             weight: 1,
@@ -3307,7 +3653,8 @@ module.exports = {
             [COLORS]: 9,
             [ENGRAVINGS]: 7,
             [GEMS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 135
         },
         {
             weight: 1,
@@ -3318,7 +3665,8 @@ module.exports = {
             [COLORS]: 6,
             [ENGRAVINGS]: 5,
             [GEMS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 95
         },
         {
             weight: 1,
@@ -3329,7 +3677,8 @@ module.exports = {
             [COLORS]: 7,
             [ENGRAVINGS]: 6,
             [GEMS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 100
         }
     ],
     [TRADE_TOOLS]: [
@@ -3341,7 +3690,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 5
         },
         {
             weight: 1,
@@ -3351,7 +3701,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 15
         },
         {
             weight: 1,
@@ -3361,7 +3712,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 2,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 12
         },
         {
             weight: 1,
@@ -3371,7 +3723,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 3
+            [QUIRKS]: 3,
+            [PRICE]: 40
         },
         {
             weight: 1,
@@ -3382,7 +3735,8 @@ module.exports = {
             [COLORS]: 2,
             [ENGRAVINGS]: 1,
             [STITCHINGS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 1
         },
         {
             weight: 1,
@@ -3392,7 +3746,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 2
         },
         {
             weight: 1,
@@ -3401,7 +3756,8 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [ENGRAVINGS]: 1
+            [ENGRAVINGS]: 1,
+            [PRICE]: .5
         },
         {
             weight: 1,
@@ -3411,7 +3767,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 3
         },
         {
             weight: 1,
@@ -3421,7 +3778,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 2,
             [ENGRAVINGS]: 3,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 3
         },
         {
             weight: 1,
@@ -3431,7 +3789,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 2,
             [ENGRAVINGS]: 2,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .5
         },
         {
             weight: 1,
@@ -3441,7 +3800,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .5
         },
         {
             weight: 1,
@@ -3451,7 +3811,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 12
         },
         {
             weight: 1,
@@ -3461,7 +3822,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 6
         },
         {
             weight: 1,
@@ -3471,7 +3833,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 7
         },
         {
             weight: 1,
@@ -3481,7 +3844,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [STITCHINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 3
         },
         {
             weight: 1,
@@ -3491,7 +3855,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 2,
             [ENGRAVINGS]: 2,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 15
         },
         {
             weight: 1,
@@ -3501,7 +3866,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 2,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 10
         },
         {
             weight: 1,
@@ -3511,7 +3877,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 12
         },
         {
             weight: 1,
@@ -3521,7 +3888,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 10
         },
         {
             weight: 1,
@@ -3531,7 +3899,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 1
         },
         {
             weight: 1,
@@ -3541,17 +3910,20 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 1
         },
         {
             weight: 1,
-            entry: 'Nail 3”',
+            entry: '3" Nail',
             base_material: METAL,
             [SIZE]: 'F',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .5,
+            [AMOUNT]: '3d10',
         },
         {
             weight: 1,
@@ -3561,7 +3933,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 2,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 15
         },
         {
             weight: 1,
@@ -3571,7 +3944,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 2,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 15
         },
         {
             weight: 1,
@@ -3581,7 +3955,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 20
         },
         {
             weight: 1,
@@ -3591,7 +3966,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 7
         },
         {
             weight: 1,
@@ -3601,7 +3977,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 3
         },
         {
             weight: 1,
@@ -3611,7 +3988,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 1
         },
         {
             weight: 1,
@@ -3619,7 +3997,8 @@ module.exports = {
             base_material: 'Chalk',
             [SIZE]: 'D',
             [ADJECTIVES]: 1,
-            [COLORS]: 4
+            [COLORS]: 4,
+            [PRICE]: .1
         },
         {
             weight: 1,
@@ -3629,7 +4008,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 15
         },
         {
             weight: 1,
@@ -3639,7 +4019,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 7
         },
         {
             weight: 1,
@@ -3649,7 +4030,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 13
         },
         {
             weight: 1,
@@ -3659,7 +4041,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 8
         },
         {
             weight: 1,
@@ -3669,7 +4052,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 9
         },
         {
             weight: 1,
@@ -3679,7 +4063,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 2,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 3
         },
         {
             weight: 1,
@@ -3689,7 +4074,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 9
         },
         {
             weight: 1,
@@ -3699,7 +4085,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 2,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 9
         },
         {
             weight: 1,
@@ -3709,7 +4096,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 12
         },
         {
             weight: 1,
@@ -3719,7 +4107,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 3
         },
         {
             weight: 1,
@@ -3729,7 +4118,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 1
         },
         {
             weight: 1,
@@ -3739,7 +4129,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .5
         },
         {
             weight: 1,
@@ -3749,7 +4140,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [ENGRAVINGS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 5
         },
         {
             weight: 1,
@@ -3757,7 +4149,10 @@ module.exports = {
             base_material: METAL,
             [SIZE]: 'D',
             [ADJECTIVES]: 1,
-            [COLORS]: 3
+            [COLORS]: 3,
+            [PRICE]: 1,
+            [AMOUNT]: '1d10 * 10',
+            [TYPE]: 'ft'
         }
     ],
     [WEAPONS]: [
@@ -3780,7 +4175,8 @@ module.exports = {
             [COLORS]: 9,
             [ENGRAVINGS]: 9,
             [QUIRKS]: 1,
-            [SUBJECT]: 10
+            [SUBJECT]: 10,
+            [PRICE]: 150
         },
         {
             weight: 1,
@@ -3792,7 +4188,8 @@ module.exports = {
             [ENGRAVINGS]: 9,
             [GEMS]: 1,
             [QUIRKS]: 1,
-            [SUBJECT]: 10
+            [SUBJECT]: 10,
+            [PRICE]: 25
         },
         {
             weight: 1,
@@ -3804,7 +4201,8 @@ module.exports = {
             [ENGRAVINGS]: 9,
             [GEMS]: 1,
             [QUIRKS]: 1,
-            [SUBJECT]: 10
+            [SUBJECT]: 10,
+            [PRICE]: 200
         },
         {
             weight: 1,
@@ -3816,7 +4214,8 @@ module.exports = {
             [ENGRAVINGS]: 9,
             [STITCHINGS]: 9,
             [QUIRKS]: 1,
-            [SUBJECT]: 10
+            [SUBJECT]: 10,
+            [PRICE]: 50
         },
         {
             weight: 1,
@@ -3828,7 +4227,8 @@ module.exports = {
             [ENGRAVINGS]: 9,
             [GEMS]: 1,
             [QUIRKS]: 1,
-            [SUBJECT]: 10
+            [SUBJECT]: 10,
+            [PRICE]: 100
         },
         {
             weight: 1,
@@ -3839,7 +4239,8 @@ module.exports = {
             [COLORS]: 9,
             [STITCHINGS]: 9,
             [QUIRKS]: 1,
-            [SUBJECT]: 10
+            [SUBJECT]: 10,
+            [PRICE]: 250
         }
     ],
     [FOOTWEAR]: [
@@ -3851,7 +4252,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 3,
             [STITCHINGS]: 2,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 3
         },
         {
             weight: 2,
@@ -3861,7 +4263,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 3,
             [STITCHINGS]: 2,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 2
         },
         {
             weight: 1,
@@ -3871,7 +4274,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [STITCHINGS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 12
         },
         {
             weight: 1,
@@ -3881,7 +4285,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 3,
             [STITCHINGS]: 2,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 4
         },
         {
             weight: 1,
@@ -3891,7 +4296,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 4,
             [STITCHINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 2
         },
         {
             weight: 1,
@@ -3901,7 +4307,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 4,
             [STITCHINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 4
         },
         {
             weight: 1,
@@ -3911,7 +4318,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 4,
             [STITCHINGS]: 2,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 6
         },
         {
             weight: 1,
@@ -3921,7 +4329,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 4,
             [STITCHINGS]: 2,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 6
         },
         {
             weight: 1,
@@ -3931,7 +4340,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 3,
             [STITCHINGS]: 4,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 1
         },
         {
             weight: 1,
@@ -3941,7 +4351,8 @@ module.exports = {
             [ADJECTIVES]: 3,
             [COLORS]: 2,
             [STITCHINGS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 1
         },
         {
             weight: 1,
@@ -3951,7 +4362,8 @@ module.exports = {
             [ADJECTIVES]: 3,
             [COLORS]: 2,
             [STITCHINGS]: 7,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .05
         },
         {
             weight: 1,
@@ -3961,7 +4373,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [STITCHINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .5
         },
         {
             weight: 1,
@@ -3971,7 +4384,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [STITCHINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .4
         },
         {
             weight: 1,
@@ -3981,7 +4395,8 @@ module.exports = {
             [ADJECTIVES]: 3,
             [COLORS]: 1,
             [STITCHINGS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 3
         },
         {
             weight: 1,
@@ -3991,7 +4406,8 @@ module.exports = {
             [ADJECTIVES]: 4,
             [COLORS]: 9,
             [STITCHINGS]: 9,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 10
         },
         {
             weight: 1,
@@ -4001,7 +4417,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 3,
             [STITCHINGS]: 2,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 2
         },
         {
             weight: 1,
@@ -4011,7 +4428,8 @@ module.exports = {
             [ADJECTIVES]: 3,
             [COLORS]: 9,
             [STITCHINGS]: 4,
-            [QUIRKS]: 3
+            [QUIRKS]: 3,
+            [PRICE]: .2
         },
         {
             weight: 1,
@@ -4021,7 +4439,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [STITCHINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 3
         },
         {
             weight: 1,
@@ -4031,7 +4450,8 @@ module.exports = {
             [ADJECTIVES]: 4,
             [COLORS]: 9,
             [STITCHINGS]: 4,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 2
         }
     ],
     [HEADGEAR]: [
@@ -4043,7 +4463,8 @@ module.exports = {
             [ADJECTIVES]: 3,
             [COLORS]: 6,
             [STITCHINGS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: .05
         },
         {
             weight: 1,
@@ -4053,7 +4474,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 3,
             [STITCHINGS]: 3,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .1
         },
         {
             weight: 1,
@@ -4063,7 +4485,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 4,
             [STITCHINGS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 5
         },
         {
             weight: 1,
@@ -4073,7 +4496,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 3,
             [STITCHINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .1
         },
         {
             weight: 1,
@@ -4083,7 +4507,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 2,
             [STITCHINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .05
         },
         {
             weight: 1,
@@ -4093,7 +4518,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 4,
             [STITCHINGS]: 4,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 15
         },
         {
             weight: 1,
@@ -4103,7 +4529,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 9,
             [STITCHINGS]: 1,
-            [QUIRKS]: 3
+            [QUIRKS]: 3,
+            [PRICE]: 3
         },
         {
             weight: 1,
@@ -4113,7 +4540,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [STITCHINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .03
         },
         {
             weight: 1,
@@ -4123,7 +4551,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 1,
             [STITCHINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 50
         },
         {
             weight: 1,
@@ -4133,7 +4562,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [STITCHINGS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: .3
         },
         {
             weight: 2,
@@ -4143,7 +4573,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [STITCHINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .3
         },
         {
             weight: 1,
@@ -4153,7 +4584,8 @@ module.exports = {
             [ADJECTIVES]: 3,
             [COLORS]: 9,
             [STITCHINGS]: 9,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 1
         },
         {
             weight: 2,
@@ -4163,7 +4595,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [STITCHINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .5
         },
         {
             weight: 2,
@@ -4173,7 +4606,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 2,
             [STITCHINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .05
         },
         {
             weight: 1,
@@ -4183,7 +4617,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 4,
             [STITCHINGS]: 2,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .2
         },
         {
             weight: 1,
@@ -4193,7 +4628,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [STITCHINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .3
         },
         {
             weight: 1,
@@ -4203,7 +4639,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [STITCHINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .5
         }
     ],
     [BODY]: [
@@ -4215,7 +4652,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 3,
             [STITCHINGS]: 1,
-            [QUIRKS]: 3
+            [QUIRKS]: 3,
+            [PRICE]: .02
         },
         {
             weight: 1,
@@ -4226,7 +4664,8 @@ module.exports = {
             [COLORS]: 2,
             [STITCHINGS]: 1,
             [GEMS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: .05
         },
         {
             weight: 1,
@@ -4236,7 +4675,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 6,
             [STITCHINGS]: 3,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .02
         },
         {
             weight: 1,
@@ -4246,7 +4686,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 6,
             [STITCHINGS]: 3,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .05
         },
         {
             weight: 1,
@@ -4257,7 +4698,8 @@ module.exports = {
             [COLORS]: 4,
             [STITCHINGS]: 3,
             [GEMS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: .1
         },
         {
             weight: 1,
@@ -4267,7 +4709,8 @@ module.exports = {
             [ADJECTIVES]: 3,
             [COLORS]: 6,
             [STITCHINGS]: 2,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 1
         },
         {
             weight: 1,
@@ -4278,7 +4721,8 @@ module.exports = {
             [COLORS]: 4,
             [STITCHINGS]: 2,
             [GEMS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 25
         },
         {
             weight: 1,
@@ -4288,7 +4732,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 6,
             [STITCHINGS]: 3,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .3
         },
         {
             weight: 1,
@@ -4298,7 +4743,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 2,
             [STITCHINGS]: 2,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .1
         },
         {
             weight: 1,
@@ -4309,7 +4755,8 @@ module.exports = {
             [COLORS]: 4,
             [STITCHINGS]: 3,
             [GEMS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: .01
         },
         {
             weight: 1,
@@ -4319,7 +4766,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 6,
             [STITCHINGS]: 2,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 3
         },
         {
             weight: 1,
@@ -4329,7 +4777,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 5,
             [STITCHINGS]: 3,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 10
         },
         {
             weight: 1,
@@ -4340,7 +4789,8 @@ module.exports = {
             [COLORS]: 9,
             [STITCHINGS]: 6,
             [GEMS]: 1,
-            [QUIRKS]: 3
+            [QUIRKS]: 3,
+            [PRICE]: 1
         },
         {
             weight: 1,
@@ -4350,7 +4800,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 5,
             [STITCHINGS]: 5,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 12
         },
         {
             weight: 1,
@@ -4360,7 +4811,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 7,
             [STITCHINGS]: 5,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 6
         },
         {
             weight: 1,
@@ -4370,7 +4822,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 6,
             [STITCHINGS]: 5,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 3
         },
         {
             weight: 1,
@@ -4381,7 +4834,8 @@ module.exports = {
             [COLORS]: 7,
             [STITCHINGS]: 6,
             [GEMS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 3
         },
         {
             weight: 1,
@@ -4391,7 +4845,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 9,
             [STITCHINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .06
         },
         {
             weight: 1,
@@ -4402,7 +4857,8 @@ module.exports = {
             [COLORS]: 9,
             [STITCHINGS]: 6,
             [GEMS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 3
         },
         {
             weight: 1,
@@ -4412,7 +4868,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 3,
             [STITCHINGS]: 5,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 5
         },
         {
             weight: 1,
@@ -4422,7 +4879,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 3,
             [STITCHINGS]: 5,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .2
         },
         {
             weight: 1,
@@ -4432,7 +4890,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 4,
             [STITCHINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 1
         },
         {
             weight: 1,
@@ -4442,7 +4901,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 7,
             [STITCHINGS]: 4,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 4
         },
         {
             weight: 1,
@@ -4452,7 +4912,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 6,
             [STITCHINGS]: 4,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 6
         },
         {
             weight: 1,
@@ -4462,7 +4923,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 6,
             [STITCHINGS]: 7,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 38
         },
         {
             weight: 1,
@@ -4472,7 +4934,8 @@ module.exports = {
             [ADJECTIVES]: 2,
             [COLORS]: 9,
             [STITCHINGS]: 3,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 18
         },
         {
             weight: 1,
@@ -4482,7 +4945,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 5,
             [STITCHINGS]: 4,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .5
         },
         {
             weight: 1,
@@ -4492,7 +4956,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 6,
             [STITCHINGS]: 4,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .3
         },
         {
             weight: 1,
@@ -4503,7 +4968,8 @@ module.exports = {
             [COLORS]: 7,
             [STITCHINGS]: 6,
             [GEMS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 1
         },
         {
             weight: 1,
@@ -4514,7 +4980,8 @@ module.exports = {
             [COLORS]: 8,
             [STITCHINGS]: 3,
             [GEMS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 5.5
         },
         {
             weight: 1,
@@ -4524,7 +4991,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 8,
             [STITCHINGS]: 4,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 5.5
         },
         {
             weight: 1,
@@ -4534,7 +5002,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 6,
             [STITCHINGS]: 4,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 1
         },
         {
             weight: 1,
@@ -4544,7 +5013,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 8,
             [STITCHINGS]: 7,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 2
         },
         {
             weight: 1,
@@ -4554,7 +5024,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 7,
             [STITCHINGS]: 9,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 12
         },
         {
             weight: 1,
@@ -4564,7 +5035,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 2,
             [STITCHINGS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 3
         },
         {
             weight: 1,
@@ -4574,7 +5046,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 6,
             [STITCHINGS]: 3,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 1
         },
         {
             weight: 1,
@@ -4584,7 +5057,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 6,
             [STITCHINGS]: 3,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 9
         }
     ],
     [ACCESSORIES]: [
@@ -4597,7 +5071,8 @@ module.exports = {
             [COLORS]: 3,
             [ENGRAVINGS]: 3,
             [GEMS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 1
         },
         {
             weight: 1,
@@ -4606,7 +5081,8 @@ module.exports = {
             [SIZE]: 'F',
             [ADJECTIVES]: 2,
             [COLORS]: 3,
-            [ENGRAVINGS]: 1
+            [ENGRAVINGS]: 1,
+            [PRICE]: .3
         },
         {
             weight: 1,
@@ -4617,7 +5093,8 @@ module.exports = {
             [COLORS]: 1,
             [ENGRAVINGS]: 2,
             [GEMS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 1
         },
         {
             weight: 1,
@@ -4628,7 +5105,8 @@ module.exports = {
             [COLORS]: 2,
             [STITCHINGS]: 2,
             [GEMS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: .8
         },
         {
             weight: 1,
@@ -4637,7 +5115,8 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 2,
             [COLORS]: 3,
-            [STITCHINGS]: 2
+            [STITCHINGS]: 2,
+            [PRICE]: .7
         },
         {
             weight: 1,
@@ -4645,7 +5124,8 @@ module.exports = {
             base_material: METAL,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
-            [ENGRAVINGS]: 1
+            [ENGRAVINGS]: 1,
+            [PRICE]: 5
         },
         {
             weight: 1,
@@ -4654,7 +5134,8 @@ module.exports = {
             [SIZE]: 'T',
             [ADJECTIVES]: 2,
             [COLORS]: 2,
-            [STITCHINGS]: 1
+            [STITCHINGS]: 1,
+            [PRICE]: .7
         },
         {
             weight: 1,
@@ -4665,7 +5146,8 @@ module.exports = {
             [COLORS]: 1,
             [STITCHINGS]: 3,
             [GEMS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 75
         },
         {
             weight: 1,
@@ -4674,7 +5156,8 @@ module.exports = {
             [SIZE]: 'S',
             [ADJECTIVES]: 2,
             [COLORS]: 8,
-            [STITCHINGS]: 3
+            [STITCHINGS]: 3,
+            [PRICE]: 5.5
         },
         {
             weight: 1,
@@ -4685,14 +5168,15 @@ module.exports = {
             [COLORS]: 1,
             [ENGRAVINGS]: 1,
             [GEMS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 2
         }
     ],
     [PREPPED_FOOD]: [
         {
             weight: 1,
             entry: 'Almond-Cream',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4701,7 +5185,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Bear Fat Dumplings',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4710,7 +5194,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Bedroll',
-            value: '2 sc',
+            [PRICE]: 2,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4719,7 +5203,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Blood',
-            value: '0.02 sc',
+            [PRICE]: 0.02,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4728,7 +5212,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Boe',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4737,7 +5221,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Bree',
-            value: '1.7 sc',
+            [PRICE]: 1.7,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4746,7 +5230,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Brose',
-            value: '0.5 sc',
+            [PRICE]: 0.5,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4755,7 +5239,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Broth',
-            value: '0.02 sc',
+            [PRICE]: 0.02,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4764,7 +5248,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Browncap',
-            value: '0.01 sc',
+            [PRICE]: 0.01,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4773,7 +5257,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Butter (1lb)',
-            value: '1.2 sc',
+            [PRICE]: 1.2,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4782,7 +5266,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Candy',
-            value: '3 sc',
+            [PRICE]: 3,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4791,7 +5275,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Charmeats',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4800,7 +5284,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Cheese (1lb)',
-            value: '1.2 sc',
+            [PRICE]: 1.2,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4809,7 +5293,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Comfirts',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4818,7 +5302,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Crips',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4827,7 +5311,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Daintiers',
-            value: '2.3 sc',
+            [PRICE]: 2.3,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4836,7 +5320,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Egg',
-            value: '0.05 sc',
+            [PRICE]: 0.05,
             [SIZE]: 'F',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4845,7 +5329,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Fish Flay',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4854,7 +5338,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Forcemeat',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4863,7 +5347,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Fry',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4872,7 +5356,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Galainte',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4881,7 +5365,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Giblets',
-            base_material: [{ weight: 4, material: 'Chicken', valuie: '0.01 sc' }, { weight: 3, material: 'Goose', valuie: '0.01 sc' }, { weight: 2, material: 'Animal', subtable: ANIMAL_SUBTYPE, value: '0.03 sc' }, { weight: 1, material: 'Monster', value: '0.1 sc' }],
+            base_material: [{ weight: 4, material: 'Chicken', [PRICE]: 0.01 }, { weight: 3, material: 'Goose', [PRICE]: 0.01 }, { weight: 2, material: 'Animal', subtable: ANIMAL_SUBTYPE, [PRICE]: 0.03 }, { weight: 1, material: 'Monster', [PRICE]: 0.1 }],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4890,7 +5374,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Gut Warmer',
-            value: '.75 sc',
+            [PRICE]: .75,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4899,7 +5383,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Handpie',
-            value: '1.2 sc',
+            [PRICE]: 1.2,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4908,7 +5392,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Hot Water Pastries',
-            value: '1.6 sc',
+            [PRICE]: 1.6,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4917,7 +5401,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Lard (1 pt)',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'S',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4926,7 +5410,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Livers',
-            value: '0.02 sc',
+            [PRICE]: 0.02,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4935,7 +5419,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Muggets',
-            base_material: [{ weight: 3, material: 'Calf', value: '0.01 sc' }, { weight: 2, material: 'Hog', value: '0.01 sc' }, { weight: 2, material: 'Sheep', value: '0.01 sc' }, { weight: 2, material: 'Animal', subtable: ANIMAL_SUBTYPE, value: '0.03 sc' }, { weight: 1, material: 'Monster', value: '0.1 sc' }],
+            base_material: [{ weight: 3, material: 'Calf', [PRICE]: 0.01 }, { weight: 2, material: 'Hog', [PRICE]: 0.01 }, { weight: 2, material: 'Sheep', [PRICE]: 0.01 }, { weight: 2, material: 'Animal', subtable: ANIMAL_SUBTYPE, [PRICE]: 0.03 }, { weight: 1, material: 'Monster', [PRICE]: 0.1 }],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4944,7 +5428,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Musted Sauce',
-            value: '0.4 sc',
+            [PRICE]: 0.4,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4953,7 +5437,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Nice Drippings',
-            value: '0.01 sc',
+            [PRICE]: 0.01,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4962,7 +5446,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Numbles',
-            value: '0.03 sc',
+            [PRICE]: 0.03,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4971,7 +5455,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Pap',
-            value: '0.3 sc',
+            [PRICE]: 0.3,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4980,7 +5464,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Pasta',
-            value: '0.02 sc',
+            [PRICE]: 0.02,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4989,7 +5473,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Pie',
-            value: '1.3 sc',
+            [PRICE]: 1.3,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -4998,7 +5482,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Pottage',
-            value: '0.3 sc',
+            [PRICE]: 0.3,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5007,7 +5491,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Preserves, Fruit',
-            base_material: [{ value: '3.2 sc', material: FRUIT_AND_VEGATABLES }],
+            base_material: [{ [PRICE]: 3.2, material: FRUIT_AND_VEGATABLES }],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5016,7 +5500,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Pynepaste',
-            value: '0.1 sc',
+            [PRICE]: 0.1,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5025,7 +5509,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Quenelle',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5034,7 +5518,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Quoses',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5043,7 +5527,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Roe',
-            value: '2 sc',
+            [PRICE]: 2,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5052,7 +5536,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Sausage, Blood',
-            value: '0.01 sc',
+            [PRICE]: 0.01,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5061,7 +5545,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Sausage, Pepper',
-            value: '0.03 sc',
+            [PRICE]: 0.03,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5070,7 +5554,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Sausage, Sailor’s',
-            value: '0.01 sc',
+            [PRICE]: 0.01,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5079,7 +5563,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Scratch-Root Stew',
-            value: '0.3 sc',
+            [PRICE]: 0.3,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5088,7 +5572,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Soorea',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5097,7 +5581,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Souse',
-            value: '1.6 sc',
+            [PRICE]: 1.6,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5106,7 +5590,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Syrup',
-            value: '0.1 sc',
+            [PRICE]: 0.1,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5117,7 +5601,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Corn Dodgers',
-            value: '0.3 sc',
+            [PRICE]: 0.3,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5126,7 +5610,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Fry Bread',
-            value: '0.4 sc',
+            [PRICE]: 0.4,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5135,7 +5619,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Horse Bread',
-            value: '0.38 sc',
+            [PRICE]: 0.38,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5144,7 +5628,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Manchet Bread',
-            value: '1.3 sc',
+            [PRICE]: 1.3,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5153,7 +5637,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Maslin Bread',
-            value: '0.48 sc',
+            [PRICE]: 0.48,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5162,7 +5646,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Pan & Egg Bread',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5171,7 +5655,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Sop Bread',
-            value: '0.86 sc',
+            [PRICE]: 0.86,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5180,7 +5664,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Strongbread',
-            value: '.3 sc',
+            [PRICE]: .3,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5189,7 +5673,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Wastel Bread',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5198,7 +5682,7 @@ module.exports = {
         {
             weight: 3,
             entry: 'Rations, Day',
-            value: '2.5 sc',
+            [PRICE]: 2.5,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5207,7 +5691,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Biscuit, Hardtack',
-            value: '0.2 sc',
+            [PRICE]: 0.2,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5216,7 +5700,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Bread, Rye',
-            value: '0.44 sc',
+            [PRICE]: 0.44,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5225,7 +5709,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Bread, Wheat',
-            value: '0.5 sc',
+            [PRICE]: 0.5,
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5236,7 +5720,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Barberries',
-            value: '1.5 sc',
+            [PRICE]: 1.5,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5245,7 +5729,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Bush Tomatoes',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5254,7 +5738,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Canabens',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5263,7 +5747,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Beets',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5272,7 +5756,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Cardoons',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5281,7 +5765,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Carrots',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5290,7 +5774,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Celozia',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5299,7 +5783,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Currants',
-            value: '1.5 sc',
+            [PRICE]: 1.5,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5308,7 +5792,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Flattops',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5317,7 +5801,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Lemon',
-            value: '2 sc',
+            [PRICE]: 2,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5326,7 +5810,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Liakeer',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5335,7 +5819,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Limes',
-            value: '2 sc',
+            [PRICE]: 2,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5344,7 +5828,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Meat Grass',
-            value: '1.5 sc',
+            [PRICE]: 1.5,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5353,7 +5837,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Mutries',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5362,7 +5846,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Onions',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5371,7 +5855,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Orange',
-            value: '2 sc',
+            [PRICE]: 2,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5380,7 +5864,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Pippins',
-            value: '2 sc',
+            [PRICE]: 2,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5389,7 +5873,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Pomace',
-            value: '1.5 sc',
+            [PRICE]: 1.5,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5398,7 +5882,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Quadong',
-            value: '1.5 sc',
+            [PRICE]: 1.5,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5407,7 +5891,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Quinces',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5416,7 +5900,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Raisins',
-            value: '1.5 sc',
+            [PRICE]: 1.5,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5425,7 +5909,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Roundberries',
-            value: '1.5 sc',
+            [PRICE]: 1.5,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5434,7 +5918,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Rozele',
-            value: '2 sc',
+            [PRICE]: 2,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5443,7 +5927,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Salad',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5452,7 +5936,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Smalledge',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5461,7 +5945,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Skyrwits',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5470,7 +5954,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Spinach',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5479,7 +5963,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Taola',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5488,7 +5972,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Wardons',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5497,7 +5981,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Warrigals',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5506,7 +5990,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Wortes',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5515,16 +5999,17 @@ module.exports = {
         {
             weight: 1,
             entry: 'Jam',
-            base_material: [{ material: FRUIT_AND_VEGATABLES, exclude: 'JAM', value: '3 sc' }],
+            base_material: [{ material: FRUIT_AND_VEGATABLES, exclude: 'JAM', [PRICE]: 3 }],
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 3
         },
         {
             weight: 1,
             entry: 'Pickles',
-            value: '2 sc',
+            [PRICE]: 2,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5533,7 +6018,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Raisins',
-            value: '1.5 sc',
+            [PRICE]: 1.5,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5542,7 +6027,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Seed, tobacco',
-            value: '3 sc',
+            [PRICE]: 3,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5553,36 +6038,39 @@ module.exports = {
         {
             weight: 1,
             entry: 'Meat (1 lb) ',
-            base_material: [{ material: ANIMAL_LAND, value: '4 sc' }],
+            base_material: [{ material: ANIMAL_LAND, [PRICE]: 4 }],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 20
         },
         {
             weight: 1,
             entry: 'Fish (1 lb) ',
-            base_material: [{ material: ANIMAL_WATER, value: '1 sc' }],
+            base_material: [{ material: ANIMAL_WATER, [PRICE]: 1 }],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 10
         },
         {
             weight: 1,
             entry: 'Fowl (1 lb) ',
-            base_material: [{ material: ANIMAL_AIR, value: '2 sc' }],
+            base_material: [{ material: ANIMAL_AIR, [PRICE]: 2 }],
             [SIZE]: 'T',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 30
         }
     ],
     [NUTS]: [
         {
             weight: 1,
             entry: 'Acorns',
-            value: '0.3 sc',
+            [PRICE]: 0.3,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5591,7 +6079,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Almonds',
-            value: '0.5 sc',
+            [PRICE]: 0.5,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5600,7 +6088,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Chestnuts',
-            value: '0.3 sc',
+            [PRICE]: 0.3,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5609,7 +6097,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Hazelnuts',
-            value: '0.3 sc',
+            [PRICE]: 0.3,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5618,7 +6106,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Pinenuts',
-            value: '0.3 sc',
+            [PRICE]: 0.3,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5627,7 +6115,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Pistachios',
-            value: '0.5 sc',
+            [PRICE]: 0.5,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5636,7 +6124,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Sesame Seeds',
-            value: '0.5 sc',
+            [PRICE]: 0.5,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5645,7 +6133,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Walnuts',
-            value: '0.5 sc',
+            [PRICE]: 0.5,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5656,7 +6144,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Honey (8 oz)',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'D',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5665,7 +6153,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Sugar (1 lb)',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5674,7 +6162,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Cinnamon (1 lb)',
-            value: '4 sc',
+            [PRICE]: 4,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5683,7 +6171,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Ginger (1 lb)',
-            value: '1.5 sc',
+            [PRICE]: 1.5,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5692,7 +6180,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Mace (1 lb)',
-            value: '5 sc',
+            [PRICE]: 5,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5701,7 +6189,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Molasses (1 lb)',
-            value: '4 sc',
+            [PRICE]: 4,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5710,7 +6198,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Mustard (1 lb)',
-            value: '1 sc',
+            [PRICE]: 1,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5719,7 +6207,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Nutmeg (1 lb)',
-            value: '2.5 sc',
+            [PRICE]: 2.5,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5728,7 +6216,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Pectin (cup)',
-            value: '0.2 sc',
+            [PRICE]: 0.2,
             [SIZE]: 'D',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5737,7 +6225,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Salt (1 lb)',
-            value: '0.45 sc',
+            [PRICE]: 0.45,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5746,7 +6234,7 @@ module.exports = {
         {
             weight: 1,
             entry: 'Saffron (1 lb)',
-            value: '160 sc',
+            [PRICE]: 160,
             [SIZE]: 'M',
             [ADJECTIVES]: 1,
             [COLORS]: 1,
@@ -5762,7 +6250,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 5,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 120
         },
         {
             weight: 1,
@@ -5772,7 +6261,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 5,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 90
         },
         {
             weight: 1,
@@ -5782,7 +6272,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 5,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 12
         },
         {
             weight: 1,
@@ -5792,7 +6283,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 5,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 105
         },
         {
             weight: 1,
@@ -5802,7 +6294,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 5,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 117
         }
     ],
     [POLEARMS]: [
@@ -5814,7 +6307,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 3,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 17
         },
         {
             weight: 1,
@@ -5824,7 +6318,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 3,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 17
         },
         {
             weight: 1,
@@ -5834,7 +6329,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 3,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 35
         },
         {
             weight: 1,
@@ -5844,7 +6340,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 3,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 22
         },
         {
             weight: 1,
@@ -5854,7 +6351,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 3,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 42
         },
         {
             weight: 1,
@@ -5864,7 +6362,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 3,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 45
         },
         {
             weight: 1,
@@ -5874,7 +6373,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 3,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 37
         },
         {
             weight: 1,
@@ -5884,7 +6384,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 3,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 19
         },
         {
             weight: 1,
@@ -5894,7 +6395,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 3,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 10
         },
         {
             weight: 1,
@@ -5904,7 +6406,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 3,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 20
         },
         {
             weight: 1,
@@ -5914,7 +6417,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 3,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 33
         },
         {
             weight: 1,
@@ -5924,7 +6428,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 3,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 16
         },
         {
             weight: 1,
@@ -5934,7 +6439,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 3,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 32
         },
         {
             weight: 1,
@@ -5944,7 +6450,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 3,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 27
         },
         {
             weight: 1,
@@ -5954,7 +6461,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 1,
             [ENGRAVINGS]: 3,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 16
         }
     ],
     [SIDEARMS]: [
@@ -5967,7 +6475,8 @@ module.exports = {
             [COLORS]: 3,
             [ENGRAVINGS]: 3,
             [GEMS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 10
         },
         {
             weight: 1,
@@ -5978,7 +6487,8 @@ module.exports = {
             [COLORS]: 3,
             [ENGRAVINGS]: 3,
             [GEMS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 15
         },
         {
             weight: 1,
@@ -5989,7 +6499,8 @@ module.exports = {
             [COLORS]: 3,
             [ENGRAVINGS]: 3,
             [GEMS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 12
         },
         {
             weight: 1,
@@ -6000,7 +6511,8 @@ module.exports = {
             [COLORS]: 3,
             [ENGRAVINGS]: 3,
             [GEMS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 10
         },
         {
             weight: 1,
@@ -6011,7 +6523,8 @@ module.exports = {
             [COLORS]: 3,
             [ENGRAVINGS]: 3,
             [GEMS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 17
         },
         {
             weight: 1,
@@ -6022,7 +6535,8 @@ module.exports = {
             [COLORS]: 3,
             [ENGRAVINGS]: 3,
             [GEMS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 49
         },
         {
             weight: 1,
@@ -6033,7 +6547,8 @@ module.exports = {
             [COLORS]: 3,
             [ENGRAVINGS]: 3,
             [GEMS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 55
         },
         {
             weight: 1,
@@ -6044,7 +6559,8 @@ module.exports = {
             [COLORS]: 3,
             [ENGRAVINGS]: 3,
             [GEMS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 10
         }
     ],
     [SWORDS]: [
@@ -6057,7 +6573,8 @@ module.exports = {
             [COLORS]: 3,
             [ENGRAVINGS]: 3,
             [GEMS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 70
         },
         {
             weight: 1,
@@ -6068,7 +6585,8 @@ module.exports = {
             [COLORS]: 3,
             [ENGRAVINGS]: 3,
             [GEMS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 63
         },
         {
             weight: 1,
@@ -6079,18 +6597,20 @@ module.exports = {
             [COLORS]: 3,
             [ENGRAVINGS]: 3,
             [GEMS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 78
         },
         {
             weight: 1,
-            entry: "Executioner's Sword ",
+            entry: "Executioner's Sword",
             base_material: [{ label: 'Hilt', materials: [LEATHER, WOOD] }, { label: 'Blade', material: METAL }],
             [SIZE]: 'H',
             [ADJECTIVES]: 1,
             [COLORS]: 3,
             [ENGRAVINGS]: 3,
             [GEMS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 250
         },
         {
             weight: 1,
@@ -6101,7 +6621,8 @@ module.exports = {
             [COLORS]: 3,
             [ENGRAVINGS]: 3,
             [GEMS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 80
         },
         {
             weight: 1,
@@ -6112,7 +6633,8 @@ module.exports = {
             [COLORS]: 3,
             [ENGRAVINGS]: 3,
             [GEMS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 83
         },
         {
             weight: 1,
@@ -6123,7 +6645,8 @@ module.exports = {
             [COLORS]: 3,
             [ENGRAVINGS]: 3,
             [GEMS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 75
         },
         {
             weight: 1,
@@ -6134,7 +6657,8 @@ module.exports = {
             [COLORS]: 3,
             [ENGRAVINGS]: 3,
             [GEMS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 68
         },
         {
             weight: 1,
@@ -6145,7 +6669,8 @@ module.exports = {
             [COLORS]: 3,
             [ENGRAVINGS]: 3,
             [GEMS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 80
         },
         {
             weight: 1,
@@ -6156,7 +6681,8 @@ module.exports = {
             [COLORS]: 3,
             [ENGRAVINGS]: 3,
             [GEMS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 78
         },
         {
             weight: 1,
@@ -6167,7 +6693,8 @@ module.exports = {
             [COLORS]: 3,
             [ENGRAVINGS]: 3,
             [GEMS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 60
         },
         {
             weight: 1,
@@ -6178,7 +6705,8 @@ module.exports = {
             [COLORS]: 3,
             [ENGRAVINGS]: 3,
             [GEMS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 130
         }
     ],
     [TRAUMA]: [
@@ -6191,7 +6719,8 @@ module.exports = {
             [COLORS]: 2,
             [ENGRAVINGS]: 4,
             [GEMS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 75
         },
         {
             weight: 1,
@@ -6201,7 +6730,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 6,
             [ENGRAVINGS]: 2,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 8
         },
         {
             weight: 1,
@@ -6211,7 +6741,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 4,
             [ENGRAVINGS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 5
         },
         {
             weight: 1,
@@ -6222,7 +6753,8 @@ module.exports = {
             [COLORS]: 2,
             [ENGRAVINGS]: 5,
             [GEMS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 48
         },
         {
             weight: 1,
@@ -6233,7 +6765,8 @@ module.exports = {
             [COLORS]: 2,
             [ENGRAVINGS]: 4,
             [GEMS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 35
         },
         {
             weight: 1,
@@ -6243,7 +6776,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 3,
             [ENGRAVINGS]: 3,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 24
         },
         {
             weight: 1,
@@ -6254,7 +6788,8 @@ module.exports = {
             [COLORS]: 2,
             [ENGRAVINGS]: 6,
             [GEMS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 200
         },
         {
             weight: 1,
@@ -6264,7 +6799,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 2,
             [ENGRAVINGS]: 2,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 20
         },
         {
             weight: 1,
@@ -6275,7 +6811,8 @@ module.exports = {
             [COLORS]: 3,
             [ENGRAVINGS]: 7,
             [GEMS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 8
         },
         {
             weight: 1,
@@ -6286,7 +6823,8 @@ module.exports = {
             [COLORS]: 5,
             [ENGRAVINGS]: 2,
             [GEMS]: 2,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 50
         },
         {
             weight: 1,
@@ -6297,7 +6835,8 @@ module.exports = {
             [COLORS]: 2,
             [ENGRAVINGS]: 6,
             [GEMS]: 2,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 83
         }
     ],
     [THROWN]: [
@@ -6309,7 +6848,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 7,
             [ENGRAVINGS]: 3,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 8
         },
         {
             weight: 1,
@@ -6319,7 +6859,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 3,
             [ENGRAVINGS]: 3,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 12
         },
         {
             weight: 1,
@@ -6329,7 +6870,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 2,
             [ENGRAVINGS]: 4,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 10
         }
     ],
     [MECHANICAL_RANGED]: [
@@ -6342,7 +6884,8 @@ module.exports = {
             [COLORS]: 3,
             [ENGRAVINGS]: 7,
             [GEMS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 175
         },
         {
             weight: 1,
@@ -6353,7 +6896,8 @@ module.exports = {
             [COLORS]: 7,
             [ENGRAVINGS]: 3,
             [GEMS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 45
         },
         {
             weight: 1,
@@ -6364,7 +6908,8 @@ module.exports = {
             [COLORS]: 5,
             [ENGRAVINGS]: 3,
             [GEMS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 75
         },
         {
             weight: 1,
@@ -6375,7 +6920,8 @@ module.exports = {
             [COLORS]: 6,
             [ENGRAVINGS]: 4,
             [GEMS]: 1,
-            [QUIRKS]: 2
+            [QUIRKS]: 2,
+            [PRICE]: 50
         },
         {
             weight: 1,
@@ -6386,7 +6932,8 @@ module.exports = {
             [COLORS]: 8,
             [ENGRAVINGS]: 2,
             [GEMS]: 1,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 60
         },
         {
             weight: 1,
@@ -6396,7 +6943,8 @@ module.exports = {
             [ADJECTIVES]: 1,
             [COLORS]: 8,
             [STITCHINGS]: 5,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 5
         },
         {
             weight: 1,
@@ -6407,7 +6955,8 @@ module.exports = {
             [COLORS]: 9,
             [ENGRAVINGS]: 3,
             [GEMS]: 2,
-            [QUIRKS]: 1
+            [QUIRKS]: 1,
+            [PRICE]: 255
         }
     ],
     [FIREARMS]: [
@@ -6420,7 +6969,8 @@ module.exports = {
             [WEAPON_COLORS]: 4,
             [EXPLOSION_COLORS]: 8,
             [ENGRAVINGS]: 4,
-            [QUIRKS]: 3
+            [QUIRKS]: 3,
+            [PRICE]: 105
         },
         {
             weight: 1,
@@ -6432,7 +6982,8 @@ module.exports = {
             [EXPLOSION_COLORS]: 3,
             [ENGRAVINGS]: 6,
             [GEMS]: 1,
-            [QUIRKS]: 3
+            [QUIRKS]: 3,
+            [PRICE]: 235
         },
         {
             weight: 1,
@@ -6444,113 +6995,114 @@ module.exports = {
             [EXPLOSION_COLORS]: 5,
             [ENGRAVINGS]: 5,
             [GEMS]: 1,
-            [QUIRKS]: 3
+            [QUIRKS]: 3,
+            [PRICE]: 110
         }
     ],
     [CLOTH]: [
-        { weight: 1, material: 'Serge', value: '.19 sc' },
-        { weight: 1, material: 'Burlap', value: '.3 sc' },
-        { weight: 1, material: 'Canvas', value: '.32 sc' },
-        { weight: 1, material: 'Linen', value: '.37 sc' },
-        { weight: 1, material: 'Cotton', value: '.5 sc' },
-        { weight: 1, material: 'Wool', value: '.54 sc' },
-        { weight: 1, material: 'Calico', value: '.62 sc' },
-        { weight: 1, material: 'Satin', value: '.66 sc' },
-        { weight: 1, material: 'Taffeta', value: '.75 sc' },
-        { weight: 1, material: 'Cambric', value: '.87 sc' },
-        { weight: 1, material: 'Muslin', value: '1 sc' },
-        { weight: 1, material: 'Worsted', value: '1 sc' },
-        { weight: 1, material: 'Hemp', value: '1.25 sc' },
-        { weight: 1, material: 'Fustian', value: '1.87 sc' },
-        { weight: 1, material: 'Bokeram', value: '2.25 sc' },
-        { weight: 1, material: 'Pintado', value: '2.5 sc' },
-        { weight: 1, material: 'Mohair', value: '3.12 sc' },
-        { weight: 1, material: 'Damask', value: '3.75 sc' },
-        { weight: 1, material: 'Tussah', value: '4 sc' },
-        { weight: 1, material: 'Silk', value: '4.125 sc' },
-        { weight: 1, material: 'Tartan', value: '5 sc' },
-        { weight: 1, material: 'Cashmere', value: '5.62 sc' },
-        { weight: 1, material: 'Merino', value: '7.5 sc' },
-        { weight: 1, material: 'Brocade', value: '10.5 sc' },
-        { weight: 1, material: 'Samite', value: '12.5 sc' },
-        { weight: 1, material: 'Velvet', value: '12.5 sc' },
-        { weight: 1, material: EXOTIC_CLOTH, value: 0, subtable: EXOTIC_CLOTH }
+        { weight: 1, material: 'Serge', [MULTIPLIER]: .19 },
+        { weight: 1, material: 'Burlap', [MULTIPLIER]: .3 },
+        { weight: 1, material: 'Canvas', [MULTIPLIER]: .32 },
+        { weight: 1, material: 'Linen', [MULTIPLIER]: .37 },
+        { weight: 1, material: 'Cotton', [MULTIPLIER]: .5 },
+        { weight: 1, material: 'Wool', [MULTIPLIER]: .54 },
+        { weight: 1, material: 'Calico', [MULTIPLIER]: .62 },
+        { weight: 1, material: 'Satin', [MULTIPLIER]: .66 },
+        { weight: 1, material: 'Taffeta', [MULTIPLIER]: .75 },
+        { weight: 1, material: 'Cambric', [MULTIPLIER]: .87 },
+        { weight: 1, material: 'Muslin', [MULTIPLIER]: 1 },
+        { weight: 1, material: 'Worsted', [MULTIPLIER]: 1 },
+        { weight: 1, material: 'Hemp', [MULTIPLIER]: 1.25 },
+        { weight: 1, material: 'Fustian', [MULTIPLIER]: 1.87 },
+        { weight: 1, material: 'Bokeram', [MULTIPLIER]: 2.25 },
+        { weight: 1, material: 'Pintado', [MULTIPLIER]: 2.5 },
+        { weight: 1, material: 'Mohair', [MULTIPLIER]: 3.12 },
+        { weight: 1, material: 'Damask', [MULTIPLIER]: 3.75 },
+        { weight: 1, material: 'Tussah', [MULTIPLIER]: 4 },
+        { weight: 1, material: 'Silk', [MULTIPLIER]: 4.125 },
+        { weight: 1, material: 'Tartan', [MULTIPLIER]: 5 },
+        { weight: 1, material: 'Cashmere', [MULTIPLIER]: 5.62 },
+        { weight: 1, material: 'Merino', [MULTIPLIER]: 7.5 },
+        { weight: 1, material: 'Brocade', [MULTIPLIER]: 10.5 },
+        { weight: 1, material: 'Samite', [MULTIPLIER]: 12.5 },
+        { weight: 1, material: 'Velvet', [MULTIPLIER]: 12.5 },
+        { weight: 1, material: EXOTIC_CLOTH, [MULTIPLIER]: 0, subtable: EXOTIC_CLOTH }
     ],
     [EXOTIC_CLOTH]: [
-        { weight: 1, material: 'Aegis Cloth', value: 0 },
-        { weight: 1, material: 'Brisingamen Cloth', value: 0 },
-        { weight: 1, material: 'Cloth of Nessus', value: 0 },
-        { weight: 1, material: 'Babr-e Bayan Cloth', value: 0 },
-        { weight: 1, material: 'Spidersilk', value: 0 },
-        { weight: 1, material: 'Woven Metal', value: 0, subtable: METAL }
+        { weight: 1, material: 'Aegis Cloth', [MULTIPLIER]: 0 },
+        { weight: 1, material: 'Brisingamen Cloth', [MULTIPLIER]: 0 },
+        { weight: 1, material: 'Cloth of Nessus', [MULTIPLIER]: 0 },
+        { weight: 1, material: 'Babr-e Bayan Cloth', [MULTIPLIER]: 0 },
+        { weight: 1, material: 'Spidersilk', [MULTIPLIER]: 0 },
+        { weight: 1, material: 'Woven Metal', [MULTIPLIER]: 0, subtable: METAL }
     ],
     [FUR_OR_LEATHER]: [
         { weight: 1, material: FUR },
         { weight: 1, material: LEATHER },
     ],
     [FUR]: [
-        { weight: 12, material: 'Marten', value: '2.5 sc' },
-        { weight: 12, material: 'Stoat', value: '12.5 sc' },
-        { weight: 12, material: 'Other Animal', value: '12.5 sc' },
-        { weight: 11, material: 'Sable', value: '18.75 sc' },
-        { weight: 10, material: 'Beaver', value: '25 sc' },
-        { weight: 10, material: 'Ermine', value: '31.25 sc' },
-        { weight: 10, material: 'Vair', value: '37.5 sc' },
-        { weight: 4, material: 'Monster, Common', value: '25 sc' },
-        { weight: 3, material: 'Monster, Uncommon', value: '62.5 sc' },
-        { weight: 2, material: 'Monster, Rare', value: '125 sc' },
-        { weight: 1, material: 'Monster, Legendary', value: '250 sc' }
+        { weight: 12, material: 'Marten', [MULTIPLIER]: 2.5 },
+        { weight: 12, material: 'Stoat', [MULTIPLIER]: 12.5 },
+        { weight: 12, material: 'Other Animal', [MULTIPLIER]: 12.5 },
+        { weight: 11, material: 'Sable', [MULTIPLIER]: 18.75 },
+        { weight: 10, material: 'Beaver', [MULTIPLIER]: 25 },
+        { weight: 10, material: 'Ermine', [MULTIPLIER]: 31.25 },
+        { weight: 10, material: 'Vair', [MULTIPLIER]: 37.5 },
+        { weight: 4, material: 'Monster, Common', [MULTIPLIER]: 25 },
+        { weight: 3, material: 'Monster, Uncommon', [MULTIPLIER]: 62.5 },
+        { weight: 2, material: 'Monster, Rare', [MULTIPLIER]: 125 },
+        { weight: 1, material: 'Monster, Legendary', [MULTIPLIER]: 250 }
     ],
     [LEATHER]: [
-        { weight: 16, material: 'Cow', value: '1 sc' },
-        { weight: 16, material: 'Chamois', value: '3.125 sc' },
-        { weight: 15, material: 'Cordovan', value: '20.625 sc' },
-        { weight: 14, material: 'Snakeskin', value: '125 sc' },
-        { weight: 14, material: 'Other Animal', value: '1.25 sc' },
-        { weight: 9, material: 'Monster, Common', value: '25 sc' },
-        { weight: 4, material: 'Sentient Person', value: '60 sc', subtable: RACE_OF_ORIGIN },
-        { weight: 4, material: 'Monster, Uncommon', value: '62.5 sc' },
-        { weight: 2, material: 'Monster, Rare', value: '125 sc' },
-        { weight: 1, material: 'Monster, Legendary', value: '250 sc' }
+        { weight: 16, material: 'Cow', [MULTIPLIER]: 1 },
+        { weight: 16, material: 'Chamois', [MULTIPLIER]: 3.125 },
+        { weight: 15, material: 'Cordovan', [MULTIPLIER]: 20.625 },
+        { weight: 14, material: 'Snakeskin', [MULTIPLIER]: 125 },
+        { weight: 14, material: 'Other Animal', [MULTIPLIER]: 1.25 },
+        { weight: 9, material: 'Monster, Common', [MULTIPLIER]: 25 },
+        { weight: 4, material: 'Sentient Person', [MULTIPLIER]: 60, subtable: RACE_OF_ORIGIN },
+        { weight: 4, material: 'Monster, Uncommon', [MULTIPLIER]: 62.5 },
+        { weight: 2, material: 'Monster, Rare', [MULTIPLIER]: 125 },
+        { weight: 1, material: 'Monster, Legendary', [MULTIPLIER]: 250 }
     ],
     [METAL]: [
-        { weight: 13, material: 'Lead', value: '5 sc' },
-        { weight: 13, material: 'Iron', value: '7 sc' },
-        { weight: 12, material: 'Tin', value: '1 sc' },
-        { weight: 12, material: 'Copper', value: '15 sc' },
-        { weight: 12, material: 'Brass', value: '25 sc' },
-        { weight: 11, material: 'Bronze', value: '5 sc' },
-        { weight: 11, material: 'Silver', value: '15 sc' },
-        { weight: 10, material: 'Gold', value: '120 sc' },
-        { weight: 1, material: EXOTIC_METAL, value: 0, subtable: EXOTIC_METAL }
+        { weight: 13, material: 'Lead', [MULTIPLIER]: 5 },
+        { weight: 13, material: 'Iron', [MULTIPLIER]: 7 },
+        { weight: 12, material: 'Tin', [MULTIPLIER]: 1 },
+        { weight: 12, material: 'Copper', [MULTIPLIER]: 15 },
+        { weight: 12, material: 'Brass', [MULTIPLIER]: 25 },
+        { weight: 11, material: 'Bronze', [MULTIPLIER]: 5 },
+        { weight: 11, material: 'Silver', [MULTIPLIER]: 15 },
+        { weight: 10, material: 'Gold', [MULTIPLIER]: 120 },
+        { weight: 1, material: EXOTIC_METAL, [MULTIPLIER]: 0, subtable: EXOTIC_METAL }
     ],
     [EXOTIC_METAL]: [
-        { weight: 6, material: 'Adamant', value: 0 },
-        { weight: 6, material: 'Adamantium', value: 0 },
-        { weight: 6, material: 'Administratium', value: 0 },
-        { weight: 6, material: 'Aquelium', value: 0 },
-        { weight: 6, material: 'Chronoton', value: 0 },
-        { weight: 6, material: 'Hedonium', value: 0 },
-        { weight: 6, material: 'Mithril', value: 0 },
-        { weight: 6, material: 'Orichalcum', value: 0 },
-        { weight: 6, material: 'Plutulium', value: 0 },
-        { weight: 6, material: 'Red Mercury', value: 0 },
-        { weight: 5, material: 'Star METAL', value: 0 },
-        { weight: 5, material: 'Terrelium', value: 0 },
-        { weight: 5, material: 'Versamina', value: 0 },
-        { weight: 5, material: 'Volcanic Glass', value: 0 },
+        { weight: 6, material: 'Adamant', [MULTIPLIER]: 0 },
+        { weight: 6, material: 'Adamantium', [MULTIPLIER]: 0 },
+        { weight: 6, material: 'Administratium', [MULTIPLIER]: 0 },
+        { weight: 6, material: 'Aquelium', [MULTIPLIER]: 0 },
+        { weight: 6, material: 'Chronoton', [MULTIPLIER]: 0 },
+        { weight: 6, material: 'Hedonium', [MULTIPLIER]: 0 },
+        { weight: 6, material: 'Mithril', [MULTIPLIER]: 0 },
+        { weight: 6, material: 'Orichalcum', [MULTIPLIER]: 0 },
+        { weight: 6, material: 'Plutulium', [MULTIPLIER]: 0 },
+        { weight: 6, material: 'Red Mercury', [MULTIPLIER]: 0 },
+        { weight: 5, material: 'Star METAL', [MULTIPLIER]: 0 },
+        { weight: 5, material: 'Terrelium', [MULTIPLIER]: 0 },
+        { weight: 5, material: 'Versamina', [MULTIPLIER]: 0 },
+        { weight: 5, material: 'Volcanic Glass', [MULTIPLIER]: 0 },
         {
             weight: 5,
             material: 'Enchanted Stone',
-            value: 0,
+            [MULTIPLIER]: 0,
             subtable: STONE_EARTHWORK
         }
     ],
     [PAPER_PRODUCT]: [
-        { weight: 1, material: 'Paper', value: '.25 sc' },
-        { weight: 1, material: 'Papyrus', value: '1 sc' },
-        { weight: 1, material: PARCHMENT, value: '.75 sc', subtable: PARCHMENT },
-        { weight: 1, material: VELLUM, value: '.5 sc', subtable: VELLUM }
+        { weight: 1, material: 'Paper', [PRICE]: .25 },
+        { weight: 1, material: 'Papyrus', [PRICE]: 1 },
+        { weight: 1, material: PARCHMENT, [PRICE]: .75, subtable: PARCHMENT },
+        { weight: 1, material: VELLUM, [PRICE]: .5, subtable: VELLUM }
     ],
     [PARCHMENT]: [
         { weight: 5, material: 'Cow' },
@@ -6571,249 +7123,249 @@ module.exports = {
         { weight: 1, material: 'Sentient Person', subtable: RACE_OF_ORIGIN }
     ],
     [STONE_EARTHWORK]: [
-        { weight: 5, material: 'Clay', value: '.0095 sc' },
-        { weight: 5, material: 'Armorstone', value: '.01625 sc' },
-        { weight: 5, material: 'Basalt', value: '.05375 sc' },
-        { weight: 5, material: 'Limestone', value: '.089 sc' },
-        { weight: 5, material: 'Earthenware', value: '.625 sc' },
-        { weight: 5, material: 'Pottery', value: '1.25 sc' },
-        { weight: 5, material: 'Tufa', value: '3.125 sc' },
-        { weight: 5, material: 'Travertine', value: '3.75 sc' },
-        { weight: 5, material: WAX, value: '10 sc', subtable: WAX },
-        { weight: 5, material: 'Slate', value: '1.875 sc' },
-        { weight: 4, material: 'Granite', value: '2.4 sc' },
-        { weight: 4, material: 'Flint', value: '2.5 sc' },
-        { weight: 4, material: 'Alabaster', value: '2.875 sc' },
-        { weight: 4, material: 'Sandstone', value: '2.8725 sc' },
-        { weight: 4, material: 'Quartz', value: '75 sc' },
-        { weight: 4, material: 'Marble', value: '93.75 sc' },
-        { weight: 4, material: 'Crystal', value: '112.5 sc' },
-        { weight: 3, material: 'Glass', value: '12.5 sc' },
-        { weight: 1, material: EXOTIC_STONE_EARTHWORK, value: 0, subtable: EXOTIC_STONE_EARTHWORK }
+        { weight: 5, material: 'Clay', [MULTIPLIER]: .0095 },
+        { weight: 5, material: 'Armorstone', [MULTIPLIER]: .01625 },
+        { weight: 5, material: 'Basalt', [MULTIPLIER]: .05375 },
+        { weight: 5, material: 'Limestone', [MULTIPLIER]: .089 },
+        { weight: 5, material: 'Earthenware', [MULTIPLIER]: .625 },
+        { weight: 5, material: 'Pottery', [MULTIPLIER]: 1.25 },
+        { weight: 5, material: 'Tufa', [MULTIPLIER]: 3.125 },
+        { weight: 5, material: 'Travertine', [MULTIPLIER]: 3.75 },
+        { weight: 5, material: WAX, [MULTIPLIER]: 10, subtable: WAX },
+        { weight: 5, material: 'Slate', [MULTIPLIER]: 1.875 },
+        { weight: 4, material: 'Granite', [MULTIPLIER]: 2.4 },
+        { weight: 4, material: 'Flint', [MULTIPLIER]: 2.5 },
+        { weight: 4, material: 'Alabaster', [MULTIPLIER]: 2.875 },
+        { weight: 4, material: 'Sandstone', [MULTIPLIER]: 2.8725 },
+        { weight: 4, material: 'Quartz', [MULTIPLIER]: 75 },
+        { weight: 4, material: 'Marble', [MULTIPLIER]: 93.75 },
+        { weight: 4, material: 'Crystal', [MULTIPLIER]: 112.5 },
+        { weight: 3, material: 'Glass', [MULTIPLIER]: 12.5 },
+        { weight: 1, material: EXOTIC_STONE_EARTHWORK, [MULTIPLIER]: 0, subtable: EXOTIC_STONE_EARTHWORK }
     ],
     [EXOTIC_STONE_EARTHWORK]: [
-        { weight: 3, material: 'Adder Stone', value: 0 },
-        { weight: 3, material: 'Alatyr', value: 0 },
-        { weight: 3, material: 'Baetylus', value: 0 },
-        { weight: 3, material: 'Benben', value: 0 },
-        { weight: 3, material: 'Bezoar', value: 0 },
-        { weight: 3, material: 'Charmstone', value: 0 },
-        { weight: 3, material: 'Colored Stone of Nuwa', value: 0 },
-        { weight: 3, material: 'Edun Ara', value: 0 },
-        { weight: 3, material: 'Gjoll', value: 0 },
-        { weight: 3, material: 'Lapis Manalis', value: 0 },
-        { weight: 3, material: 'Lia Fail', value: 0 },
-        { weight: 3, material: 'Llech Ronw', value: 0 },
-        { weight: 3, material: 'Madstone', value: 0 },
-        { weight: 2, material: 'Omphalos', value: 0 },
-        { weight: 2, material: "Philosopher's Stone", value: 0 },
-        { weight: 2, material: 'Seer Stone', value: 0 },
-        { weight: 2, material: 'Sessho-seki', value: 0 },
-        { weight: 2, material: 'Singasteinn', value: 0 },
-        { weight: 2, material: 'Skofnung', value: 0 },
-        { weight: 2, material: 'Sledovik', value: 0 },
-        { weight: 2, material: 'Snakestone', value: 0 },
-        { weight: 2, material: 'Stone of Giramphiel', value: 0 },
-        { weight: 2, material: 'Stone of Scone', value: 0 },
-        { weight: 2, material: 'Thunderstone', value: 0 },
-        { weight: 2, material: 'Toadstone', value: 0 },
-        { weight: 2, material: 'Uluru', value: 0 },
-        { weight: 2, material: 'Urim & Thummim', value: 0 },
-        { weight: 2, material: 'Vaidurya', value: 0 },
-        { weight: 2, material: 'Xirang', value: 0 }
+        { weight: 3, material: 'Adder Stone', [MULTIPLIER]: 0 },
+        { weight: 3, material: 'Alatyr', [MULTIPLIER]: 0 },
+        { weight: 3, material: 'Baetylus', [MULTIPLIER]: 0 },
+        { weight: 3, material: 'Benben', [MULTIPLIER]: 0 },
+        { weight: 3, material: 'Bezoar', [MULTIPLIER]: 0 },
+        { weight: 3, material: 'Charmstone', [MULTIPLIER]: 0 },
+        { weight: 3, material: 'Colored Stone of Nuwa', [MULTIPLIER]: 0 },
+        { weight: 3, material: 'Edun Ara', [MULTIPLIER]: 0 },
+        { weight: 3, material: 'Gjoll', [MULTIPLIER]: 0 },
+        { weight: 3, material: 'Lapis Manalis', [MULTIPLIER]: 0 },
+        { weight: 3, material: 'Lia Fail', [MULTIPLIER]: 0 },
+        { weight: 3, material: 'Llech Ronw', [MULTIPLIER]: 0 },
+        { weight: 3, material: 'Madstone', [MULTIPLIER]: 0 },
+        { weight: 2, material: 'Omphalos', [MULTIPLIER]: 0 },
+        { weight: 2, material: "Philosopher's Stone", [MULTIPLIER]: 0 },
+        { weight: 2, material: 'Seer Stone', [MULTIPLIER]: 0 },
+        { weight: 2, material: 'Sessho-seki', [MULTIPLIER]: 0 },
+        { weight: 2, material: 'Singasteinn', [MULTIPLIER]: 0 },
+        { weight: 2, material: 'Skofnung', [MULTIPLIER]: 0 },
+        { weight: 2, material: 'Sledovik', [MULTIPLIER]: 0 },
+        { weight: 2, material: 'Snakestone', [MULTIPLIER]: 0 },
+        { weight: 2, material: 'Stone of Giramphiel', [MULTIPLIER]: 0 },
+        { weight: 2, material: 'Stone of Scone', [MULTIPLIER]: 0 },
+        { weight: 2, material: 'Thunderstone', [MULTIPLIER]: 0 },
+        { weight: 2, material: 'Toadstone', [MULTIPLIER]: 0 },
+        { weight: 2, material: 'Uluru', [MULTIPLIER]: 0 },
+        { weight: 2, material: 'Urim & Thummim', [MULTIPLIER]: 0 },
+        { weight: 2, material: 'Vaidurya', [MULTIPLIER]: 0 },
+        { weight: 2, material: 'Xirang', [MULTIPLIER]: 0 }
     ],
     [WOOD]: [
-        { weight: 3, material: 'Pine', value: '3.5875 sc' },
-        { weight: 3, material: 'Aspen', value: '5 sc' },
-        { weight: 3, material: 'Oak', value: '5.5 sc' },
-        { weight: 2, material: 'Basswood', value: '5.75 sc' },
-        { weight: 2, material: 'Hickory', value: '5.9375 sc' },
-        { weight: 2, material: 'Poplar', value: '6.25 sc' },
-        { weight: 2, material: 'Ash', value: '6.25 sc' },
-        { weight: 2, material: 'Cherry', value: '6.75 sc' },
-        { weight: 2, material: 'Butternut', value: '7.75 sc' },
-        { weight: 2, material: 'Beech', value: '7.8625 sc' },
-        { weight: 2, material: 'Ambrosia Maple', value: '8.75 sc' },
-        { weight: 2, material: 'Yew', value: '10 sc' },
-        { weight: 2, material: 'Sapele', value: '10 sc' },
-        { weight: 2, material: 'Balsa', value: '10.625 sc' },
-        { weight: 2, material: 'Mahogany', value: '11.5 sc' },
-        { weight: 2, material: 'Bark Pocket Maple', value: '11.25 sc' },
-        { weight: 2, material: 'Jatoba', value: '12.375 sc' },
-        { weight: 2, material: 'Acacia', value: '13.125 sc' },
-        { weight: 2, material: 'Cedar', value: '13.75 sc' },
-        { weight: 2, material: 'Paduk', value: '15.625 sc' },
-        { weight: 2, material: 'Walnut', value: '15.875 sc' },
-        { weight: 2, material: 'Birch', value: '16.25 sc' },
-        { weight: 2, material: 'Purpleheart', value: '17.5 sc' },
-        { weight: 2, material: 'Redwood', value: '18.75 sc' },
-        { weight: 2, material: 'Goncalo Alves', value: '20 sc' },
-        { weight: 2, material: 'Chechen', value: '20.2 sc5' },
-        { weight: 2, material: 'Canarywood', value: '20.75 sc' },
-        { weight: 2, material: 'Yellowheart', value: '21.25 sc' },
-        { weight: 2, material: 'Chakte Viga', value: '21.875 sc' },
-        { weight: 2, material: 'Ebiara', value: '22.0625 sc' },
-        { weight: 2, material: 'Lacewood', value: '22.25 sc' },
-        { weight: 2, material: 'Bloodwood', value: '22.5 sc' },
-        { weight: 2, material: 'Leopardwood', value: '23.3125 sc' },
-        { weight: 2, material: 'Granadillo', value: '23.75 sc' },
-        { weight: 2, material: 'Osage Orange', value: '25 sc' },
-        { weight: 2, material: 'Katalox', value: '27.5 sc' },
-        { weight: 2, material: 'Bubinga', value: '28.125 sc' },
-        { weight: 2, material: 'Wenge', value: '28.75 sc' },
-        { weight: 2, material: 'Zebrawood', value: '28.75 sc' },
-        { weight: 2, material: 'Mango', value: '28.75 sc' },
-        { weight: 2, material: 'Redheart', value: '33.625 sc' },
-        { weight: 2, material: 'Bocote', value: '40 sc' },
-        { weight: 2, material: 'Rosewood', value: '41.25 sc' },
-        { weight: 2, material: 'Holly', value: '43.75 sc' },
-        { weight: 2, material: 'Olivewood', value: '46.25 sc' },
-        { weight: 2, material: 'Teak', value: '53.25 sc' },
-        { weight: 2, material: 'Cocobolo', value: '81.25 sc' },
-        { weight: 2, material: 'Ebony', value: '187.5 sc' },
-        { weight: 1, material: EXOTIC_WOOD, value: 0, subtable: EXOTIC_WOOD }
+        { weight: 3, material: 'Pine', [MULTIPLIER]: 3.5875 },
+        { weight: 3, material: 'Aspen', [MULTIPLIER]: 5 },
+        { weight: 3, material: 'Oak', [MULTIPLIER]: 5.5 },
+        { weight: 2, material: 'Basswood', [MULTIPLIER]: 5.75 },
+        { weight: 2, material: 'Hickory', [MULTIPLIER]: 5.9375 },
+        { weight: 2, material: 'Poplar', [MULTIPLIER]: 6.25 },
+        { weight: 2, material: 'Ash', [MULTIPLIER]: 6.25 },
+        { weight: 2, material: 'Cherry', [MULTIPLIER]: 6.75 },
+        { weight: 2, material: 'Butternut', [MULTIPLIER]: 7.75 },
+        { weight: 2, material: 'Beech', [MULTIPLIER]: 7.8625 },
+        { weight: 2, material: 'Ambrosia Maple', [MULTIPLIER]: 8.75 },
+        { weight: 2, material: 'Yew', [MULTIPLIER]: 10 },
+        { weight: 2, material: 'Sapele', [MULTIPLIER]: 10 },
+        { weight: 2, material: 'Balsa', [MULTIPLIER]: 10.625 },
+        { weight: 2, material: 'Mahogany', [MULTIPLIER]: 11.5 },
+        { weight: 2, material: 'Bark Pocket Maple', [MULTIPLIER]: 11.25 },
+        { weight: 2, material: 'Jatoba', [MULTIPLIER]: 12.375 },
+        { weight: 2, material: 'Acacia', [MULTIPLIER]: 13.125 },
+        { weight: 2, material: 'Cedar', [MULTIPLIER]: 13.75 },
+        { weight: 2, material: 'Paduk', [MULTIPLIER]: 15.625 },
+        { weight: 2, material: 'Walnut', [MULTIPLIER]: 15.875 },
+        { weight: 2, material: 'Birch', [MULTIPLIER]: 16.25 },
+        { weight: 2, material: 'Purpleheart', [MULTIPLIER]: 17.5 },
+        { weight: 2, material: 'Redwood', [MULTIPLIER]: 18.75 },
+        { weight: 2, material: 'Goncalo Alves', [MULTIPLIER]: 20 },
+        { weight: 2, material: 'Chechen', [MULTIPLIER]: 20.2 },
+        { weight: 2, material: 'Canarywood', [MULTIPLIER]: 20.75 },
+        { weight: 2, material: 'Yellowheart', [MULTIPLIER]: 21.25 },
+        { weight: 2, material: 'Chakte Viga', [MULTIPLIER]: 21.875 },
+        { weight: 2, material: 'Ebiara', [MULTIPLIER]: 22.0625 },
+        { weight: 2, material: 'Lacewood', [MULTIPLIER]: 22.25 },
+        { weight: 2, material: 'Bloodwood', [MULTIPLIER]: 22.5 },
+        { weight: 2, material: 'Leopardwood', [MULTIPLIER]: 23.3125 },
+        { weight: 2, material: 'Granadillo', [MULTIPLIER]: 23.75 },
+        { weight: 2, material: 'Osage Orange', [MULTIPLIER]: 25 },
+        { weight: 2, material: 'Katalox', [MULTIPLIER]: 27.5 },
+        { weight: 2, material: 'Bubinga', [MULTIPLIER]: 28.125 },
+        { weight: 2, material: 'Wenge', [MULTIPLIER]: 28.75 },
+        { weight: 2, material: 'Zebrawood', [MULTIPLIER]: 28.75 },
+        { weight: 2, material: 'Mango', [MULTIPLIER]: 28.75 },
+        { weight: 2, material: 'Redheart', [MULTIPLIER]: 33.625 },
+        { weight: 2, material: 'Bocote', [MULTIPLIER]: 40 },
+        { weight: 2, material: 'Rosewood', [MULTIPLIER]: 41.25 },
+        { weight: 2, material: 'Holly', [MULTIPLIER]: 43.75 },
+        { weight: 2, material: 'Olivewood', [MULTIPLIER]: 46.25 },
+        { weight: 2, material: 'Teak', [MULTIPLIER]: 53.25 },
+        { weight: 2, material: 'Cocobolo', [MULTIPLIER]: 81.25 },
+        { weight: 2, material: 'Ebony', [MULTIPLIER]: 187.5 },
+        { weight: 1, material: EXOTIC_WOOD, [MULTIPLIER]: 0, subtable: EXOTIC_WOOD }
     ],
     [EXOTIC_WOOD]: [
-        { weight: 1, material: 'Akshayavat', value: 0 },
-        { weight: 1, material: 'Ashvattha', value: 0 },
-        { weight: 1, material: 'Displacer Tree', value: 0 },
-        { weight: 1, material: 'Dryad Heartwood, Unwillingly Taken', value: 0 },
-        { weight: 1, material: 'Dryad Heartwood, Willingly Given', value: 0 },
-        { weight: 1, material: 'Ent', value: 0 },
-        { weight: 1, material: 'Fusang', value: 0 },
-        { weight: 1, material: 'Guardian Tree', value: 0 },
-        { weight: 1, material: 'Jinmenju', value: 0 },
-        { weight: 1, material: 'Jubokko', value: 0 },
-        { weight: 1, material: 'Kai-n-Tiku-Aba', value: 0 },
-        { weight: 1, material: 'Kapre', value: 0 },
-        { weight: 1, material: 'Lotus Tree', value: 0 },
-        { weight: 1, material: 'Money Tree', value: 0 },
-        { weight: 1, material: 'Nariphon', value: 0 },
-        { weight: 1, material: 'Shatrin', value: 0 },
-        { weight: 1, material: 'Sky-High Tree', value: 0 },
-        { weight: 1, material: 'Talking Tree', value: 0 },
-        { weight: 1, material: 'Tree of Jiva and Atman', value: 0 },
-        { weight: 1, material: 'Tree of Life', value: 0 },
-        { weight: 1, material: 'Tree of Paradise', value: 0 },
-        { weight: 1, material: 'True Maypole Wood', value: 0 },
-        { weight: 1, material: 'Tuba', value: 0 },
-        { weight: 1, material: 'Tulasi', value: 0 },
-        { weight: 1, material: 'Uekera', value: 0 },
-        { weight: 1, material: 'Vine of Sodom', value: 0 },
-        { weight: 1, material: 'Weirdwood', value: 0 },
-        { weight: 1, material: 'White Tree', value: 0 },
-        { weight: 1, material: 'Wishing Tree', value: 0 },
-        { weight: 1, material: 'Wood from the Five Trees', value: 0 },
-        { weight: 1, material: 'World Tree', value: 0 },
-        { weight: 1, material: 'Zapis', value: 0 },
-        { weight: 1, material: 'Zaqqum', value: 0 }
+        { weight: 1, material: 'Akshayavat', [MULTIPLIER]: 0 },
+        { weight: 1, material: 'Ashvattha', [MULTIPLIER]: 0 },
+        { weight: 1, material: 'Displacer Tree', [MULTIPLIER]: 0 },
+        { weight: 1, material: 'Dryad Heartwood, Unwillingly Taken', [MULTIPLIER]: 0 },
+        { weight: 1, material: 'Dryad Heartwood, Willingly Given', [MULTIPLIER]: 0 },
+        { weight: 1, material: 'Ent', [MULTIPLIER]: 0 },
+        { weight: 1, material: 'Fusang', [MULTIPLIER]: 0 },
+        { weight: 1, material: 'Guardian Tree', [MULTIPLIER]: 0 },
+        { weight: 1, material: 'Jinmenju', [MULTIPLIER]: 0 },
+        { weight: 1, material: 'Jubokko', [MULTIPLIER]: 0 },
+        { weight: 1, material: 'Kai-n-Tiku-Aba', [MULTIPLIER]: 0 },
+        { weight: 1, material: 'Kapre', [MULTIPLIER]: 0 },
+        { weight: 1, material: 'Lotus Tree', [MULTIPLIER]: 0 },
+        { weight: 1, material: 'Money Tree', [MULTIPLIER]: 0 },
+        { weight: 1, material: 'Nariphon', [MULTIPLIER]: 0 },
+        { weight: 1, material: 'Shatrin', [MULTIPLIER]: 0 },
+        { weight: 1, material: 'Sky-High Tree', [MULTIPLIER]: 0 },
+        { weight: 1, material: 'Talking Tree', [MULTIPLIER]: 0 },
+        { weight: 1, material: 'Tree of Jiva and Atman', [MULTIPLIER]: 0 },
+        { weight: 1, material: 'Tree of Life', [MULTIPLIER]: 0 },
+        { weight: 1, material: 'Tree of Paradise', [MULTIPLIER]: 0 },
+        { weight: 1, material: 'True Maypole Wood', [MULTIPLIER]: 0 },
+        { weight: 1, material: 'Tuba', [MULTIPLIER]: 0 },
+        { weight: 1, material: 'Tulasi', [MULTIPLIER]: 0 },
+        { weight: 1, material: 'Uekera', [MULTIPLIER]: 0 },
+        { weight: 1, material: 'Vine of Sodom', [MULTIPLIER]: 0 },
+        { weight: 1, material: 'Weirdwood', [MULTIPLIER]: 0 },
+        { weight: 1, material: 'White Tree', [MULTIPLIER]: 0 },
+        { weight: 1, material: 'Wishing Tree', [MULTIPLIER]: 0 },
+        { weight: 1, material: 'Wood from the Five Trees', [MULTIPLIER]: 0 },
+        { weight: 1, material: 'World Tree', [MULTIPLIER]: 0 },
+        { weight: 1, material: 'Zapis', [MULTIPLIER]: 0 },
+        { weight: 1, material: 'Zaqqum', [MULTIPLIER]: 0 }
     ],
     [WAX]: [
-        { value: '1.368 sc', material: 'Bee', weight: 1 },
-        { value: '5 sc', material: 'Whale Head', weight: 1 },
-        { value: '2.5 sc', material: 'Bayberry', weight: 1 },
-        { value: '0.162 sc', material: 'Carnauba', weight: 1 },
-        { value: '0.179 sc', material: 'Candelilla', weight: 1 },
-        { value: '0.148 sc', material: 'Rice Bran', weight: 1 },
-        { value: '0.028 sc', material: 'Soy', weight: 1 },
-        { value: '0.6 sc', material: 'Jojoba', weight: 1 }
+        { [PRICE]: 1.368, material: 'Bee', weight: 1 },
+        { [PRICE]: 5, material: 'Whale Head', weight: 1 },
+        { [PRICE]: 2.5, material: 'Bayberry', weight: 1 },
+        { [PRICE]: 0.162, material: 'Carnauba', weight: 1 },
+        { [PRICE]: 0.179, material: 'Candelilla', weight: 1 },
+        { [PRICE]: 0.148, material: 'Rice Bran', weight: 1 },
+        { [PRICE]: 0.028, material: 'Soy', weight: 1 },
+        { [PRICE]: 0.6, material: 'Jojoba', weight: 1 }
     ],
     other_table: [
         {
             material: 'Animal',
-            value: '0.03 sc',
+            [PRICE]: 0.03,
             subtable: ANIMAL_SUBTYPE
         }, {
             material: 'Chicken',
-            value: '0.01 sc'
+            [PRICE]: 0.01
         },
         {
             material: 'Goose',
-            value: '0.01 sc'
+            [PRICE]: 0.01
         },
         {
             material: 'Monster',
-            value: '0.1 sc'
+            [PRICE]: 0.1
         },
         {
             material: 'Bone, Animal',
-            value: '0.25 sc',
+            [PRICE]: 0.25,
             subtable: ANIMAL_SUBTYPE
         },
-        { material: 'Bone, Monster', value: '3 sc' },
+        { material: 'Bone, Monster', [PRICE]: 3 },
         {
             material: 'Bone, Sentient',
-            value: '5 sc',
+            [PRICE]: 5,
             subtable: RACE_OF_ORIGIN
         },
-        { material: 'Chalk', value: '0.1 sc' },
-        { material: 'Chewing Tabacco', value: '0.873 sc' },
-        { material: 'Cotton', value: '0.148 sc' },
-        { material: 'Crystal', value: '3.75 sc' },
+        { material: 'Chalk', [PRICE]: 0.1 },
+        { material: 'Chewing Tabacco', [PRICE]: 0.873 },
+        { material: 'Cotton', [PRICE]: 0.148 },
+        { material: 'Crystal', [PRICE]: 3.75 },
         {
             material: 'Down',
-            value: '1.75 sc',
+            [PRICE]: 1.75,
             subtable: ANIMAL_AIR
         },
         {
             material: 'Feather',
-            value: '1.18 sc',
+            [PRICE]: 1.18,
             subtable: ANIMAL_AIR
         },
         {
             material: 'Feathers',
-            value: '1.18 sc',
+            [PRICE]: 1.18,
             subtable: ANIMAL_AIR
         },
-        { material: 'Felt', value: '2.5 sc' },
-        { material: 'Gauze', value: '1.1725 sc' },
-        { material: 'Glass', value: '5 sc' },
+        { material: 'Felt', [PRICE]: 2.5 },
+        { material: 'Gauze', [PRICE]: 1.1725 },
+        { material: 'Glass', [PRICE]: 5 },
         {
             material: 'Goose Feather',
-            value: '1.18 sc'
+            [PRICE]: 1.18
         },
         {
             material: 'Heavy Down',
-            value: '2.1 sc',
+            [PRICE]: 2.1,
             subtable: ANIMAL_AIR
         },
         {
             material: 'Heavy Feather',
-            value: '2 sc',
+            [PRICE]: 2,
             subtable: ANIMAL_AIR
         },
-        { material: 'Hemp Oil', value: '0.17 sc' },
+        { material: 'Hemp Oil', [PRICE]: 0.17 },
         {
             material: 'Horn',
-            value: '2.25 sc',
+            [PRICE]: 2.25,
             subtable: ANIMAL_LAND
         },
-        { material: 'Feathers', value: '1 sc', subtable: ANIMAL_AIR },
-        { material: 'Ivory', value: '5 sc' },
-        { material: 'Linseed Oil', value: '0.581 sc' },
-        { material: 'Porcelain', value: '3.75 sc' },
-        { material: 'Porcupine Spine', value: '0.737 sc' },
-        { material: 'Smoking Tabacco', value: '1.5 sc' },
-        { material: 'Straw', value: '0.0005 sc' },
-        { material: 'Tallow', value: '0.091 sc' },
-        { material: 'Thread', value: '0.009 sc' },
-        { material: 'Twine', value: '0.02 sc' },
-        { material: 'Animal Guts', value: '0.01 sc', subtable: ANIMAL_LAND},
-        { material: 'Whale Oil', value: '0.0097 sc' },
-        { material: 'Wicker', value: '0.08 sc', subtable: WOOD },
-        { material: 'Wool', value: '0.48 sc' },
+        { material: 'Feathers', [PRICE]: 1, subtable: ANIMAL_AIR },
+        { material: 'Ivory', [PRICE]: 5 },
+        { material: 'Linseed Oil', [PRICE]: 0.581 },
+        { material: 'Porcelain', [PRICE]: 3.75 },
+        { material: 'Porcupine Spine', [PRICE]: 0.737 },
+        { material: 'Smoking Tabacco', [PRICE]: 1.5 },
+        { material: 'Straw', [PRICE]: 0.0005 },
+        { material: 'Tallow', [PRICE]: 0.091 },
+        { material: 'Thread', [PRICE]: 0.009 },
+        { material: 'Twine', [PRICE]: 0.02 },
+        { material: 'Animal Guts', [PRICE]: 0.01, subtable: ANIMAL_LAND},
+        { material: 'Whale Oil', [PRICE]: 0.0097 },
+        { material: 'Wicker', [PRICE]: 0.08, subtable: WOOD },
+        { material: 'Wool', [PRICE]: 0.48 },
         { material: 'Waxed Cloth', subtables: [WAX, CLOTH] },
         { material: 'Waxed Leather', subtables: [WAX, LEATHER] },
-        { material: 'Blacknessel', value: '110 sc' },
-        { material: 'Blue Glory', value: '77 sc' },
-        { material: 'Bondweed', value: '60.5 sc' },
-        { material: 'Griffin Hair', value: '40 sc' },
-        { material: 'Lylullin', value: '105 sc' },
-        { material: 'Maidenscap', value: '135 sc' },
-        { material: 'Palm of St Germain', value: '60 sc' },
-        { material: 'Tears of Sicyon', value: '115 sc' },
-        { material: 'Unknown', value: '0 sc' },
-        { material: 'Monster Poison', value: '215 sc' }
+        { material: 'Blacknessel', [PRICE]: 110 },
+        { material: 'Blue Glory', [PRICE]: 77 },
+        { material: 'Bondweed', [PRICE]: 60.5 },
+        { material: 'Griffin Hair', [PRICE]: 40 },
+        { material: 'Lylullin', [PRICE]: 105 },
+        { material: 'Maidenscap', [PRICE]: 135 },
+        { material: 'Palm of St Germain', [PRICE]: 60 },
+        { material: 'Tears of Sicyon', [PRICE]: 115 },
+        { material: 'Unknown', [PRICE]: 0 },
+        { material: 'Monster Poison', [PRICE]: 215 }
     ],
     [ADJECTIVES]: [
         { weight: 1, detail: 'Related to', subtable: RACE_OF_ORIGIN },
@@ -7024,15 +7576,15 @@ module.exports = {
         { weight: 1, detail: 'Yellow' }
     ],
     [ENGRAVING_TYPE_WITH_GEMS]: [
-        { value: '100 sc', detail: 'Etching', weight: 4 },
-        { value: '150 sc', detail: 'Inside Engraving', weight: 3 }
+        { [PRICE]: 100, detail: 'Etching', weight: 4 },
+        { [PRICE]: 150, detail: 'Inside Engraving', weight: 3 }
     ],
     [ENGRAVING_TYPE_WITH_NO_GEMS]: [
-        { value: '100 sc', detail: 'Etching', weight: 4 },
-        { value: '150 sc', detail: 'Inside Engraving', weight: 3 },
-        { value: '250 sc', detail: 'Gem Engraving', weight: 1 }
+        { [PRICE]: 100, detail: 'Etching', weight: 4 },
+        { [PRICE]: 150, detail: 'Inside Engraving', weight: 3 },
+        { [PRICE]: 250, detail: 'Gem Engraving', weight: 1 }
     ],
-    [STITCHING_TYPE]: [{ value: '0.5 sc', detail: 'Hand Stitching' }],
+    [STITCHING_TYPE]: [{ [PRICE]: 0.5, detail: 'Hand Stitching' }],
     [SUBJECT]: [
         { 'weight': 1, 'subject': 'Abstract', 'secondary subject': '1', [ANIMAL_SUBTYPE]: '2', [PERSONS]: '2', [EVENTS]: '2', [COLORS]: '2', [ADJECTIVES]: '4', [BODY_PARTS]: '3' }, 
         { 'weight': 1, 'subject': 'Historical', 'secondary subject': '4', [ANIMAL_SUBTYPE]: '1', [PERSONS]: '3', [EVENTS]: '4', [COLORS]: '2', [ADJECTIVES]: '2', [BODY_PARTS]: '1' },
@@ -7065,15 +7617,15 @@ module.exports = {
         { weight: 1, detail: 'Subject of Infamy' }
     ],
     [GEM_SIZE]: [
-        { weight: 81, detail: '0.2', valueMultiplier: 0.1 },
-        { weight: 7, detail: '0.5', valueMultiplier: 0.25 },
-        { weight: 3, detail: '1', valueMultiplier: 0.5 },
-        { weight: 2, detail: '1.5', valueMultiplier: 0.75 },
-        { weight: 1, detail: '2', valueMultiplier: 1 },
-        { weight: 1, detail: '2.5', valueMultiplier: 2 },
-        { weight: 1, detail: '3', valueMultiplier: 5 },
-        { weight: 1, detail: '4', valueMultiplier: 10 },
-        { weight: 1, detail: '5', valueMultiplier: 20 }
+        { weight: 81, detail: '0.2', [PRICE]: 0.1 },
+        { weight: 7, detail: '0.5', [PRICE]: 0.25 },
+        { weight: 3, detail: '1', [PRICE]: 0.5 },
+        { weight: 2, detail: '1.5', [PRICE]: 0.75 },
+        { weight: 1, detail: '2', [PRICE]: 1 },
+        { weight: 1, detail: '2.5', [PRICE]: 2 },
+        { weight: 1, detail: '3', [PRICE]: 5 },
+        { weight: 1, detail: '4', [PRICE]: 10 },
+        { weight: 1, detail: '5', [PRICE]: 20 }
     ],
     [GEM_SHAPE]: [
         { weight: 2, shape: 'Round' },
@@ -7085,215 +7637,215 @@ module.exports = {
         { weight: 1, shape: 'Heart' }
     ],
     [GEM_TYPE]: [
-        { weight: 1, type: 'Alexandrite', value: 15000 },
-        { weight: 1, type: 'Alexandrite Cat\'s Eye', value: 12000 },
-        { weight: 1, type: 'Almandine Garnet', value: 400 },
-        { weight: 11, type: 'Amber', value: 30 },
-        { weight: 11, type: 'Amethyst', value: 30 },
-        { weight: 11, type: 'Amethyst Cabochon', value: 30 },
-        { weight: 1, type: 'Ametrine', value: 150 },
-        { weight: 1, type: 'Ammolite', value: 500 },
-        { weight: 7, type: 'Andalusite', value: 43 },
-        { weight: 11, type: 'Andesine', value: 30 },
-        { weight: 1, type: 'Apatite', value: 150 },
-        { weight: 21, type: 'Apatite Cat\'s Eye', value: 16 },
-        { weight: 1, type: 'Aquamarine', value: 300 },
-        { weight: 35, type: 'Australian Opal', value: 10 },
-        { weight: 1, type: 'Aventurine', value: 125 },
-        { weight: 17, type: 'Azurite', value: 20 },
-        { weight: 1, type: 'Basra Pearls', value: 230 },
-        { weight: 35, type: 'Beryl', value: 10 },
-        { weight: 1, type: 'Bicolor Sapphire', value: 4000 },
-        { weight: 1, type: 'Bixbite', value: 10000 },
-        { weight: 9, type: 'Black Onyz', value: 40 },
-        { weight: 1, type: 'Black Opal', value: 10000 },
-        { weight: 1, type: 'Black Pearl', value: 200 },
-        { weight: 1, type: 'Black Spinel', value: 200 },
-        { weight: 1, type: 'Black Tourmaline', value: 500 },
-        { weight: 31, type: 'Blizzard Stone', value: 11 },
-        { weight: 1, type: 'Bloodstone', value: 1000 },
-        { weight: 119, type: 'Blue Fluorite', value: 3 },
-        { weight: 6, type: 'Blue Moonstone', value: 50 },
-        { weight: 1, type: 'Blue Opal', value: 250 },
-        { weight: 1, type: 'Blue Sapphire', value: 450 },
-        { weight: 1, type: 'Blue Spinel', value: 2000 },
-        { weight: 17, type: 'Blue Topaz', value: 20 },
-        { weight: 1, type: 'Blue Tourmaline', value: 595 },
-        { weight: 3, type: 'Blue Zircon', value: 75 },
-        { weight: 1, type: 'Boulder Opal', value: 3500 },
-        { weight: 24, type: 'Brazilian Emerald', value: 14 },
-        { weight: 71, type: 'Brown Moonstone', value: 5 },
-        { weight: 2, type: 'Brown Zircon', value: 100 },
-        { weight: 2, type: 'Burmese Ruby', value: 112 },
-        { weight: 1, type: 'Burmese Sapphire', value: 10000 },
-        { weight: 47, type: 'Carnelian', value: 8 },
-        { weight: 27, type: 'Cat\'s Eye', value: 13 },
-        { weight: 21, type: 'Cat\'s Eye Moonstone', value: 16 },
-        { weight: 21, type: 'Cat\'s Eye Opla', value: 16 },
-        { weight: 21, type: 'Cat\'s Eye Quartz', value: 16 },
-        { weight: 1, type: 'Ceylon Blue Sapphire', value: 200 },
-        { weight: 2, type: 'Chrome Diopside', value: 100 },
-        { weight: 6, type: 'Chrome Tourmaline', value: 50 },
-        { weight: 13, type: 'Chrysoberyl', value: 25 },
-        { weight: 11, type: 'Chrysoberyl Cat\'s Eye', value: 30 },
-        { weight: 3, type: 'Chrysocolla', value: 100 },
-        { weight: 71, type: 'Citrine', value: 5 },
-        { weight: 6, type: 'Colombian Emerald', value: 50 },
-        { weight: 71, type: 'Color Change Fluorite', value: 5 },
-        { weight: 1, type: 'Color Change Sapphire', value: 756 },
-        { weight: 1, type: 'Cornflower Blue Sapphire', value: 2300 },
-        { weight: 1, type: 'Cultured Pearls', value: 300 },
-        { weight: 5, type: 'Danburite', value: 55 },
-        { weight: 1, type: 'Demantoid Garnet', value: 10000 },
-        { weight: 3, type: 'Diopside', value: 100 },
-        { weight: 360, type: 'Emerald', value: 1 },
-        { weight: 4, type: 'Ethiopian Emerald', value: 80 },
-        { weight: 110, type: 'Ethiopian Opal', value: 3 },
-        { weight: 44, type: 'Fire Agate', value: 8 },
-        { weight: 35, type: 'Fire Opal', value: 10 },
-        { weight: 119, type: 'Fluorite', value: 3 },
-        { weight: 288, type: 'Freshwater Pearl', value: 1 },
-        { weight: 1, type: 'Garnet', value: 400 },
-        { weight: 360, type: 'Glass Filled Ruby', value: 1 },
-        { weight: 1, type: 'Golden Sapphire', value: 185 },
-        { weight: 65, type: 'Golden Topaz', value: 5 },
-        { weight: 1, type: 'Goshenite', value: 500 },
-        { weight: 1, type: 'Grandidierite', value: 20000 },
-        { weight: 143, type: 'Green Amethyst', value: 3 },
-        { weight: 1, type: 'Green Garnet', value: 500 },
-        { weight: 59, type: 'Green Kyanite', value: 6 },
-        { weight: 179, type: 'Green Sapphire', value: 2 },
-        { weight: 1, type: 'Green Tourmaline', value: 400 },
-        { weight: 1, type: 'Grey Sapphire', value: 4675 },
-        { weight: 5, type: 'Heliodor', value: 55 },
-        { weight: 1, type: 'Hessonite', value: 500 },
-        { weight: 44, type: 'Imperial Topaz', value: 8 },
-        { weight: 28, type: 'Indian Emerald', value: 12 },
-        { weight: 59, type: 'Indian Ruby', value: 6 },
-        { weight: 13, type: 'Indraneelam', value: 25 },
-        { weight: 1, type: 'Insignificant Oil Emerald', value: 615 },
-        { weight: 1, type: 'Iolite', value: 150 },
-        { weight: 360, type: 'Iranian Turquoise', value: 1 },
-        { weight: 360, type: 'Jade', value: 1 },
-        { weight: 11, type: 'Jade Nephrite', value: 30 },
-        { weight: 1, type: 'Jadeite', value: 3000000 },
-        { weight: 3, type: 'Japanese Red Coral', value: 75 },
-        { weight: 179, type: 'Jasper', value: 2 },
-        { weight: 1, type: 'Kashmir Blue Sapphire', value: 4675 },
-        { weight: 23, type: 'Keshi Pearls', value: 15 },
-        { weight: 4, type: 'Khooni Neelam', value: 70 },
-        { weight: 17, type: 'Kunzite', value: 20 },
-        { weight: 21, type: 'Kyanite', value: 16 },
-        { weight: 8, type: 'Labradorite', value: 40 },
-        { weight: 6, type: 'Lapis Lazuli', value: 50 },
-        { weight: 1, type: 'Lavender Quartz', value: 100 },
-        { weight: 179, type: 'Lemon Quartz', value: 2 },
-        { weight: 44, type: 'London Blue Topaz', value: 8 },
-        { weight: 179, type: 'Malachite', value: 2 },
-        { weight: 1, type: 'Mandarin Garnet', value: 260 },
-        { weight: 35, type: 'Mexican Fire Opal', value: 10 },
-        { weight: 13, type: 'Mocha Scapolite', value: 25 },
-        { weight: 1, type: 'Mogok Ruby', value: 1400 },
-        { weight: 50, type: 'Moldavite', value: 7 },
-        { weight: 71, type: 'Moonstone', value: 5 },
-        { weight: 3, type: 'Morganite', value: 85 },
-        { weight: 60, type: 'Moss Agate', value: 6 },
-        { weight: 1, type: 'Mozambique Ruby', value: 315 },
-        { weight: 1, type: 'Natural Pearl', value: 270 },
-        { weight: 21, type: 'Navratna', value: 16 },
-        { weight: 23, type: 'Neon Apatite', value: 15 },
-        { weight: 0, type: 'No Oil Emerald', value: 10000 },
-        { weight: 360, type: 'Obsidian', value: 1 },
-        { weight: 119, type: 'Chalcedony', value: 3 },
-        { weight: 5, type: 'Opal', value: 60 },
-        { weight: 60, type: 'Orange Kyanite', value: 6 },
-        { weight: 360, type: 'Orange Sapphire', value: 1 },
-        { weight: 1, type: 'Padparadscha Sapphire', value: 30000 },
-        { weight: 11, type: 'Pakistan Emerald', value: 30 },
-        { weight: 6, type: 'Panjshir Emerald', value: 50 },
-        { weight: 1, type: 'Paraiba Tourmaline', value: 2000 },
-        { weight: 2, type: 'Peach Morganite', value: 100 },
-        { weight: 1, type: 'Peach Sapphire', value: 1500 },
-        { weight: 23, type: 'Moti Pearl', value: 15 },
-        { weight: 6, type: 'Peridot', value: 50 },
-        { weight: 71, type: 'Persian Turquoise', value: 5 },
-        { weight: 89, type: 'Petalite', value: 4 },
-        { weight: 360, type: 'Petrified Wood', value: 1 },
-        { weight: 1, type: 'Pigeon Blood Ruby', value: 500 },
-        { weight: 23, type: 'Pink Fluorite', value: 15 },
-        { weight: 7, type: 'Pink Morganite', value: 41 },
-        { weight: 89, type: 'Pink Opal', value: 4 },
-        { weight: 1, type: 'Pink Sapphire', value: 900 },
-        { weight: 1, type: 'Pink Spinel', value: 500 },
-        { weight: 1, type: 'Pink Topaz', value: 3500 },
-        { weight: 1, type: 'Pink Tourmaline', value: 400 },
-        { weight: 1, type: 'Pitambari Neelam', value: 2500 },
-        { weight: 360, type: 'Prehnite', value: 1 },
-        { weight: 1, type: 'Purple Garnet', value: 500 },
-        { weight: 1, type: 'Purple Sapphire', value: 1000 },
-        { weight: 89, type: 'Rainbow Fluorite', value: 4 },
-        { weight: 71, type: 'Rainbow Moonstone', value: 5 },
-        { weight: 50, type: 'Red Coral', value: 7 },
-        { weight: 1, type: 'Red Spinel', value: 800 },
-        { weight: 1, type: 'Red Tourmaline', value: 500 },
-        { weight: 3, type: 'Red Zircon', value: 75 },
-        { weight: 1, type: 'Rhodochrosite', value: 500 },
-        { weight: 360, type: 'Rhodonite', value: 1 },
-        { weight: 2, type: 'Rose Quartz', value: 100 },
-        { weight: 1, type: 'Royal Blue Sapphire', value: 4675 },
-        { weight: 1, type: 'Rubellite', value: 400 },
-        { weight: 1, type: 'Ruby', value: 1000 },
-        { weight: 8, type: 'Ruby Cabochon', value: 43 },
-        { weight: 1, type: 'Russian Alexandrite', value: 10000 },
-        { weight: 1, type: 'Russian Emerald', value: 40000 },
-        { weight: 16, type: 'Rutilated Quartz', value: 20 },
-        { weight: 35, type: 'Sang-e-maryam', value: 10 },
-        { weight: 1, type: 'Sapphire', value: 500 },
-        { weight: 39, type: 'Schorl Tourmaline', value: 12 },
-        { weight: 360, type: 'Serpentine', value: 1 },
-        { weight: 9, type: 'Sillimanite Cat\'s Eye', value: 1300 },
-        { weight: 119, type: 'Sky Blue Topaz', value: 3 },
-        { weight: 44, type: 'Smoky Quartz', value: 8 },
-        { weight: 89, type: 'Sodalite', value: 4 },
-        { weight: 179, type: 'South Sea Pearl', value: 2 },
-        { weight: 1, type: 'Spectrolite', value: 3 },
-        { weight: 1, type: 'Spessartite', value: 750 },
-        { weight: 1, type: 'Spinel', value: 800 },
-        { weight: 50, type: 'Sir Lank Moonstone', value: 7 },
-        { weight: 119, type: 'Star Garnet', value: 3 },
-        { weight: 89, type: 'Star Ruby', value: 4 },
-        { weight: 2, type: 'Star Sapphire', value: 100 },
-        { weight: 16, type: 'Sunstone', value: 20 },
-        { weight: 31, type: 'Swiss Blue Topaz', value: 11 },
-        { weight: 1, type: 'Tassffeite', value: 1500 },
-        { weight: 1, type: 'Tahitian Pearl', value: 500 },
-        { weight: 1, type: 'Tanzania Ruby', value: 100000 },
-        { weight: 1, type: 'Tanzanite', value: 200 },
-        { weight: 1, type: 'Teal Sapphire', value: 4675 },
-        { weight: 360, type: 'Tibetian Turquoise', value: 1 },
-        { weight: 360, type: 'Tiger Eye', value: 1 },
-        { weight: 6, type: 'Titanite', value: 50 },
-        { weight: 44, type: 'Topaz', value: 8 },
-        { weight: 1, type: 'Tourmaline', value: 500 },
-        { weight: 2, type: 'Trapiche Emerald', value: 100 },
-        { weight: 1, type: 'Tsavorite', value: 550 },
-        { weight: 360, type: 'Turquoise', value: 1 },
-        { weight: 1, type: 'Violet Sapphire', value: 1000 },
-        { weight: 1, type: 'Vivid Green Emerald', value: 1900 },
-        { weight: 1, type: 'Watermelon Tourmaline', value: 1000 },
-        { weight: 119, type: 'White Coral', value: 3 },
-        { weight: 35, type: 'White Opal', value: 10 },
-        { weight: 1, type: 'White Sapphire', value: 3000 },
-        { weight: 98, type: 'White Topaz', value: 4 },
-        { weight: 9, type: 'White Zircon', value: 35 },
-        { weight: 24, type: 'Yellow Beryl', value: 15 },
-        { weight: 98, type: 'Yellow Fluorite', value: 4 },
-        { weight: 1, type: 'Yellow Sapphire', value: 420 },
-        { weight: 71, type: 'Yellow Topaz', value: 5 },
-        { weight: 2, type: 'Yellow Zircon', value: 100 },
-        { weight: 9, type: 'Zambian Emerald', value: 40 },
-        { weight: 10, type: 'Zircon', value: 35 },
-        { weight: 2, type: 'Zoisite', value: 93 }
+        { weight: 1, type: 'Alexandrite', [PRICE]: 15000 },
+        { weight: 1, type: 'Alexandrite Cat\'s Eye', [PRICE]: 12000 },
+        { weight: 1, type: 'Almandine Garnet', [PRICE]: 400 },
+        { weight: 11, type: 'Amber', [PRICE]: 30 },
+        { weight: 11, type: 'Amethyst', [PRICE]: 30 },
+        { weight: 11, type: 'Amethyst Cabochon', [PRICE]: 30 },
+        { weight: 1, type: 'Ametrine', [PRICE]: 150 },
+        { weight: 1, type: 'Ammolite', [PRICE]: 500 },
+        { weight: 7, type: 'Andalusite', [PRICE]: 43 },
+        { weight: 11, type: 'Andesine', [PRICE]: 30 },
+        { weight: 1, type: 'Apatite', [PRICE]: 150 },
+        { weight: 21, type: 'Apatite Cat\'s Eye', [PRICE]: 16 },
+        { weight: 1, type: 'Aquamarine', [PRICE]: 300 },
+        { weight: 35, type: 'Australian Opal', [PRICE]: 10 },
+        { weight: 1, type: 'Aventurine', [PRICE]: 125 },
+        { weight: 17, type: 'Azurite', [PRICE]: 20 },
+        { weight: 1, type: 'Basra Pearls', [PRICE]: 230 },
+        { weight: 35, type: 'Beryl', [PRICE]: 10 },
+        { weight: 1, type: 'Bicolor Sapphire', [PRICE]: 4000 },
+        { weight: 1, type: 'Bixbite', [PRICE]: 10000 },
+        { weight: 9, type: 'Black Onyz', [PRICE]: 40 },
+        { weight: 1, type: 'Black Opal', [PRICE]: 10000 },
+        { weight: 1, type: 'Black Pearl', [PRICE]: 200 },
+        { weight: 1, type: 'Black Spinel', [PRICE]: 200 },
+        { weight: 1, type: 'Black Tourmaline', [PRICE]: 500 },
+        { weight: 31, type: 'Blizzard Stone', [PRICE]: 11 },
+        { weight: 1, type: 'Bloodstone', [PRICE]: 1000 },
+        { weight: 119, type: 'Blue Fluorite', [PRICE]: 3 },
+        { weight: 6, type: 'Blue Moonstone', [PRICE]: 50 },
+        { weight: 1, type: 'Blue Opal', [PRICE]: 250 },
+        { weight: 1, type: 'Blue Sapphire', [PRICE]: 450 },
+        { weight: 1, type: 'Blue Spinel', [PRICE]: 2000 },
+        { weight: 17, type: 'Blue Topaz', [PRICE]: 20 },
+        { weight: 1, type: 'Blue Tourmaline', [PRICE]: 595 },
+        { weight: 3, type: 'Blue Zircon', [PRICE]: 75 },
+        { weight: 1, type: 'Boulder Opal', [PRICE]: 3500 },
+        { weight: 24, type: 'Brazilian Emerald', [PRICE]: 14 },
+        { weight: 71, type: 'Brown Moonstone', [PRICE]: 5 },
+        { weight: 2, type: 'Brown Zircon', [PRICE]: 100 },
+        { weight: 2, type: 'Burmese Ruby', [PRICE]: 112 },
+        { weight: 1, type: 'Burmese Sapphire', [PRICE]: 10000 },
+        { weight: 47, type: 'Carnelian', [PRICE]: 8 },
+        { weight: 27, type: 'Cat\'s Eye', [PRICE]: 13 },
+        { weight: 21, type: 'Cat\'s Eye Moonstone', [PRICE]: 16 },
+        { weight: 21, type: 'Cat\'s Eye Opla', [PRICE]: 16 },
+        { weight: 21, type: 'Cat\'s Eye Quartz', [PRICE]: 16 },
+        { weight: 1, type: 'Ceylon Blue Sapphire', [PRICE]: 200 },
+        { weight: 2, type: 'Chrome Diopside', [PRICE]: 100 },
+        { weight: 6, type: 'Chrome Tourmaline', [PRICE]: 50 },
+        { weight: 13, type: 'Chrysoberyl', [PRICE]: 25 },
+        { weight: 11, type: 'Chrysoberyl Cat\'s Eye', [PRICE]: 30 },
+        { weight: 3, type: 'Chrysocolla', [PRICE]: 100 },
+        { weight: 71, type: 'Citrine', [PRICE]: 5 },
+        { weight: 6, type: 'Colombian Emerald', [PRICE]: 50 },
+        { weight: 71, type: 'Color Change Fluorite', [PRICE]: 5 },
+        { weight: 1, type: 'Color Change Sapphire', [PRICE]: 756 },
+        { weight: 1, type: 'Cornflower Blue Sapphire', [PRICE]: 2300 },
+        { weight: 1, type: 'Cultured Pearls', [PRICE]: 300 },
+        { weight: 5, type: 'Danburite', [PRICE]: 55 },
+        { weight: 1, type: 'Demantoid Garnet', [PRICE]: 10000 },
+        { weight: 3, type: 'Diopside', [PRICE]: 100 },
+        { weight: 360, type: 'Emerald', [PRICE]: 1 },
+        { weight: 4, type: 'Ethiopian Emerald', [PRICE]: 80 },
+        { weight: 110, type: 'Ethiopian Opal', [PRICE]: 3 },
+        { weight: 44, type: 'Fire Agate', [PRICE]: 8 },
+        { weight: 35, type: 'Fire Opal', [PRICE]: 10 },
+        { weight: 119, type: 'Fluorite', [PRICE]: 3 },
+        { weight: 288, type: 'Freshwater Pearl', [PRICE]: 1 },
+        { weight: 1, type: 'Garnet', [PRICE]: 400 },
+        { weight: 360, type: 'Glass Filled Ruby', [PRICE]: 1 },
+        { weight: 1, type: 'Golden Sapphire', [PRICE]: 185 },
+        { weight: 65, type: 'Golden Topaz', [PRICE]: 5 },
+        { weight: 1, type: 'Goshenite', [PRICE]: 500 },
+        { weight: 1, type: 'Grandidierite', [PRICE]: 20000 },
+        { weight: 143, type: 'Green Amethyst', [PRICE]: 3 },
+        { weight: 1, type: 'Green Garnet', [PRICE]: 500 },
+        { weight: 59, type: 'Green Kyanite', [PRICE]: 6 },
+        { weight: 179, type: 'Green Sapphire', [PRICE]: 2 },
+        { weight: 1, type: 'Green Tourmaline', [PRICE]: 400 },
+        { weight: 1, type: 'Grey Sapphire', [PRICE]: 4675 },
+        { weight: 5, type: 'Heliodor', [PRICE]: 55 },
+        { weight: 1, type: 'Hessonite', [PRICE]: 500 },
+        { weight: 44, type: 'Imperial Topaz', [PRICE]: 8 },
+        { weight: 28, type: 'Indian Emerald', [PRICE]: 12 },
+        { weight: 59, type: 'Indian Ruby', [PRICE]: 6 },
+        { weight: 13, type: 'Indraneelam', [PRICE]: 25 },
+        { weight: 1, type: 'Insignificant Oil Emerald', [PRICE]: 615 },
+        { weight: 1, type: 'Iolite', [PRICE]: 150 },
+        { weight: 360, type: 'Iranian Turquoise', [PRICE]: 1 },
+        { weight: 360, type: 'Jade', [PRICE]: 1 },
+        { weight: 11, type: 'Jade Nephrite', [PRICE]: 30 },
+        { weight: 1, type: 'Jadeite', [PRICE]: 3000000 },
+        { weight: 3, type: 'Japanese Red Coral', [PRICE]: 75 },
+        { weight: 179, type: 'Jasper', [PRICE]: 2 },
+        { weight: 1, type: 'Kashmir Blue Sapphire', [PRICE]: 4675 },
+        { weight: 23, type: 'Keshi Pearls', [PRICE]: 15 },
+        { weight: 4, type: 'Khooni Neelam', [PRICE]: 70 },
+        { weight: 17, type: 'Kunzite', [PRICE]: 20 },
+        { weight: 21, type: 'Kyanite', [PRICE]: 16 },
+        { weight: 8, type: 'Labradorite', [PRICE]: 40 },
+        { weight: 6, type: 'Lapis Lazuli', [PRICE]: 50 },
+        { weight: 1, type: 'Lavender Quartz', [PRICE]: 100 },
+        { weight: 179, type: 'Lemon Quartz', [PRICE]: 2 },
+        { weight: 44, type: 'London Blue Topaz', [PRICE]: 8 },
+        { weight: 179, type: 'Malachite', [PRICE]: 2 },
+        { weight: 1, type: 'Mandarin Garnet', [PRICE]: 260 },
+        { weight: 35, type: 'Mexican Fire Opal', [PRICE]: 10 },
+        { weight: 13, type: 'Mocha Scapolite', [PRICE]: 25 },
+        { weight: 1, type: 'Mogok Ruby', [PRICE]: 1400 },
+        { weight: 50, type: 'Moldavite', [PRICE]: 7 },
+        { weight: 71, type: 'Moonstone', [PRICE]: 5 },
+        { weight: 3, type: 'Morganite', [PRICE]: 85 },
+        { weight: 60, type: 'Moss Agate', [PRICE]: 6 },
+        { weight: 1, type: 'Mozambique Ruby', [PRICE]: 315 },
+        { weight: 1, type: 'Natural Pearl', [PRICE]: 270 },
+        { weight: 21, type: 'Navratna', [PRICE]: 16 },
+        { weight: 23, type: 'Neon Apatite', [PRICE]: 15 },
+        { weight: 0, type: 'No Oil Emerald', [PRICE]: 10000 },
+        { weight: 360, type: 'Obsidian', [PRICE]: 1 },
+        { weight: 119, type: 'Chalcedony', [PRICE]: 3 },
+        { weight: 5, type: 'Opal', [PRICE]: 60 },
+        { weight: 60, type: 'Orange Kyanite', [PRICE]: 6 },
+        { weight: 360, type: 'Orange Sapphire', [PRICE]: 1 },
+        { weight: 1, type: 'Padparadscha Sapphire', [PRICE]: 30000 },
+        { weight: 11, type: 'Pakistan Emerald', [PRICE]: 30 },
+        { weight: 6, type: 'Panjshir Emerald', [PRICE]: 50 },
+        { weight: 1, type: 'Paraiba Tourmaline', [PRICE]: 2000 },
+        { weight: 2, type: 'Peach Morganite', [PRICE]: 100 },
+        { weight: 1, type: 'Peach Sapphire', [PRICE]: 1500 },
+        { weight: 23, type: 'Moti Pearl', [PRICE]: 15 },
+        { weight: 6, type: 'Peridot', [PRICE]: 50 },
+        { weight: 71, type: 'Persian Turquoise', [PRICE]: 5 },
+        { weight: 89, type: 'Petalite', [PRICE]: 4 },
+        { weight: 360, type: 'Petrified Wood', [PRICE]: 1 },
+        { weight: 1, type: 'Pigeon Blood Ruby', [PRICE]: 500 },
+        { weight: 23, type: 'Pink Fluorite', [PRICE]: 15 },
+        { weight: 7, type: 'Pink Morganite', [PRICE]: 41 },
+        { weight: 89, type: 'Pink Opal', [PRICE]: 4 },
+        { weight: 1, type: 'Pink Sapphire', [PRICE]: 900 },
+        { weight: 1, type: 'Pink Spinel', [PRICE]: 500 },
+        { weight: 1, type: 'Pink Topaz', [PRICE]: 3500 },
+        { weight: 1, type: 'Pink Tourmaline', [PRICE]: 400 },
+        { weight: 1, type: 'Pitambari Neelam', [PRICE]: 2500 },
+        { weight: 360, type: 'Prehnite', [PRICE]: 1 },
+        { weight: 1, type: 'Purple Garnet', [PRICE]: 500 },
+        { weight: 1, type: 'Purple Sapphire', [PRICE]: 1000 },
+        { weight: 89, type: 'Rainbow Fluorite', [PRICE]: 4 },
+        { weight: 71, type: 'Rainbow Moonstone', [PRICE]: 5 },
+        { weight: 50, type: 'Red Coral', [PRICE]: 7 },
+        { weight: 1, type: 'Red Spinel', [PRICE]: 800 },
+        { weight: 1, type: 'Red Tourmaline', [PRICE]: 500 },
+        { weight: 3, type: 'Red Zircon', [PRICE]: 75 },
+        { weight: 1, type: 'Rhodochrosite', [PRICE]: 500 },
+        { weight: 360, type: 'Rhodonite', [PRICE]: 1 },
+        { weight: 2, type: 'Rose Quartz', [PRICE]: 100 },
+        { weight: 1, type: 'Royal Blue Sapphire', [PRICE]: 4675 },
+        { weight: 1, type: 'Rubellite', [PRICE]: 400 },
+        { weight: 1, type: 'Ruby', [PRICE]: 1000 },
+        { weight: 8, type: 'Ruby Cabochon', [PRICE]: 43 },
+        { weight: 1, type: 'Russian Alexandrite', [PRICE]: 10000 },
+        { weight: 1, type: 'Russian Emerald', [PRICE]: 40000 },
+        { weight: 16, type: 'Rutilated Quartz', [PRICE]: 20 },
+        { weight: 35, type: 'Sang-e-maryam', [PRICE]: 10 },
+        { weight: 1, type: 'Sapphire', [PRICE]: 500 },
+        { weight: 39, type: 'Schorl Tourmaline', [PRICE]: 12 },
+        { weight: 360, type: 'Serpentine', [PRICE]: 1 },
+        { weight: 9, type: 'Sillimanite Cat\'s Eye', [PRICE]: 1300 },
+        { weight: 119, type: 'Sky Blue Topaz', [PRICE]: 3 },
+        { weight: 44, type: 'Smoky Quartz', [PRICE]: 8 },
+        { weight: 89, type: 'Sodalite', [PRICE]: 4 },
+        { weight: 179, type: 'South Sea Pearl', [PRICE]: 2 },
+        { weight: 1, type: 'Spectrolite', [PRICE]: 3 },
+        { weight: 1, type: 'Spessartite', [PRICE]: 750 },
+        { weight: 1, type: 'Spinel', [PRICE]: 800 },
+        { weight: 50, type: 'Sir Lank Moonstone', [PRICE]: 7 },
+        { weight: 119, type: 'Star Garnet', [PRICE]: 3 },
+        { weight: 89, type: 'Star Ruby', [PRICE]: 4 },
+        { weight: 2, type: 'Star Sapphire', [PRICE]: 100 },
+        { weight: 16, type: 'Sunstone', [PRICE]: 20 },
+        { weight: 31, type: 'Swiss Blue Topaz', [PRICE]: 11 },
+        { weight: 1, type: 'Tassffeite', [PRICE]: 1500 },
+        { weight: 1, type: 'Tahitian Pearl', [PRICE]: 500 },
+        { weight: 1, type: 'Tanzania Ruby', [PRICE]: 100000 },
+        { weight: 1, type: 'Tanzanite', [PRICE]: 200 },
+        { weight: 1, type: 'Teal Sapphire', [PRICE]: 4675 },
+        { weight: 360, type: 'Tibetian Turquoise', [PRICE]: 1 },
+        { weight: 360, type: 'Tiger Eye', [PRICE]: 1 },
+        { weight: 6, type: 'Titanite', [PRICE]: 50 },
+        { weight: 44, type: 'Topaz', [PRICE]: 8 },
+        { weight: 1, type: 'Tourmaline', [PRICE]: 500 },
+        { weight: 2, type: 'Trapiche Emerald', [PRICE]: 100 },
+        { weight: 1, type: 'Tsavorite', [PRICE]: 550 },
+        { weight: 360, type: 'Turquoise', [PRICE]: 1 },
+        { weight: 1, type: 'Violet Sapphire', [PRICE]: 1000 },
+        { weight: 1, type: 'Vivid Green Emerald', [PRICE]: 1900 },
+        { weight: 1, type: 'Watermelon Tourmaline', [PRICE]: 1000 },
+        { weight: 119, type: 'White Coral', [PRICE]: 3 },
+        { weight: 35, type: 'White Opal', [PRICE]: 10 },
+        { weight: 1, type: 'White Sapphire', [PRICE]: 3000 },
+        { weight: 98, type: 'White Topaz', [PRICE]: 4 },
+        { weight: 9, type: 'White Zircon', [PRICE]: 35 },
+        { weight: 24, type: 'Yellow Beryl', [PRICE]: 15 },
+        { weight: 98, type: 'Yellow Fluorite', [PRICE]: 4 },
+        { weight: 1, type: 'Yellow Sapphire', [PRICE]: 420 },
+        { weight: 71, type: 'Yellow Topaz', [PRICE]: 5 },
+        { weight: 2, type: 'Yellow Zircon', [PRICE]: 100 },
+        { weight: 9, type: 'Zambian Emerald', [PRICE]: 40 },
+        { weight: 10, type: 'Zircon', [PRICE]: 35 },
+        { weight: 2, type: 'Zoisite', [PRICE]: 93 }
     ],
     [PERSONS]: [
         { weight: 1, detail: 'Civic' },

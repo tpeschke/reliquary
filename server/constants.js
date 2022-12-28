@@ -97,7 +97,10 @@ module.exports = {
     EVENTS_SUBJECT: 'Event Subject',
     GEM_SIZE: 'Gem Size',
     GEM_SHAPE: 'Gem Shape',
-    GEM_TYPE: 'Gem Type'
+    GEM_TYPE: 'Gem Type',
     // Other
-    
+    PRICE: 'Price',
+    AMOUNT: 'Amount',
+    TYPE: 'Type',
+    MULTIPLIER: 'Multiplier'
 }
