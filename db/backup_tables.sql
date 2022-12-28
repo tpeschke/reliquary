@@ -30,7 +30,7 @@ create table ritemdetails (
 	id serial primary key,
 	detail text,
 	weight int,
-	price int,
+	price float,
 	subtable text
 )
 
@@ -40,6 +40,6 @@ create table rmaterial (
 	materialcategory text,
 	weight int,
 	subtable text,
-	multiplier int,
-	price int
+	multiplier float,
+	price float
 )

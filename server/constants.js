@@ -100,7 +100,8 @@ module.exports = {
     GEM_TYPE: 'Gem Type',
     // Other
     PRICE: 'Price',
-    AMOUNT: 'Amount',
+    AMOUNT_MAX: 'Amount_Max',
+    AMOUNT_MIN: 'Amount_Min',
     TYPE: 'Type',
     MULTIPLIER: 'Multiplier'
 }

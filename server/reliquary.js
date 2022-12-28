@@ -17,15 +17,7 @@ massive(connection).then(dbI => {
     app.listen(3434, _ => {
         console.log(`One Thousand Good Deeds Cannot Blot Out the Stain of One Sin 3434`)
 
-        // if SIZE, item
-            // add materials to item material
-                // if label, add to label to all materials it applies to
-        // if material, material
-        // if detail, details
-        // if !SIZE, category
-
-        // ------------------------ \\
         // eventually have to SUBJECT
-            // Gem types & shapes
+        // Gem types & shapes
     })
 })
