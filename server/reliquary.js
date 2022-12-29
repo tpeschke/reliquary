@@ -4,13 +4,12 @@ const { connection } = require('./serverConfig')
     , cors = require('cors')
     , massive = require('massive')
 const uniqueItemCtrl = require('./uniqueItemController.js')
-const tables = require('./tables')
 
 const app = new express()
 app.use(bodyParser.json())
 app.use(cors())
 
-// app.get('/api/getUniquieItem', uniqueItemCtrl.getRandomUniqueItem)
+app.get('/api/getUniquieItem', uniqueItemCtrl.getRandomUniqueItem)
 
 massive(connection).then(dbI => {
     app.set('db', dbI)

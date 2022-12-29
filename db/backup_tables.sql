@@ -3,7 +3,7 @@ create table ritems (
 	itemcategory text,
 	item text,
 	itemsubcategory text,
-	price int,
+	price float,
 	size varchar(5),
 	adjectives int,
 	colors int,
