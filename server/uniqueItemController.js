@@ -5,8 +5,14 @@ module.exports = {
         db.get.random.item().then(itemResult => {
             let rawItem = itemResult[0]
             let promiseArray = []
-            promiseArray.push(db.get.random.item_materials(rawItem.id).then(materialResult => {
-            // promiseArray.push(db.get.random.item_materials(2).then(materialResult => {
+            // promiseArray.push(db.get.random.item_materials(rawItem.id).then(materialResult => {
+
+            // material cases:
+            //  Shovel: id 366
+            //  Talisman: id 325
+            //  Incence: id 319
+
+            promiseArray.push(db.get.random.item_materials(2).then(materialResult => {
                 if (materialResult[0].material) {
                     let materials = []
                     materialResult.forEach(material => {
