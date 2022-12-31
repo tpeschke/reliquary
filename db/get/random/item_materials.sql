@@ -1,4 +1,4 @@
-select label, material, RANDOM() * weight as weight, subtable from ritemmaterials r 
+select label, material, RANDOM() * weight as weight, subtable, isand from ritemmaterials r 
 where itemid = $1
-group by label, material, weight, subtable
+group by label, material, weight, subtable, isand
 order by weight desc
