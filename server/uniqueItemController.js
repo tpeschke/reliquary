@@ -1,3 +1,5 @@
+const { compose } = require("@mui/system")
+
 module.exports = {
     getRandomUniqueItem: (req, res) => {
         const db = req.app.get('db')
@@ -66,8 +68,41 @@ module.exports = {
                     } else {
                         delete rawItem[key]
                     }
-                } else if (rawItem[key] && key === 'gems') {
+                } else if (key === 'gems') {
+                    let randomNumber = getRandomInt(10)
+                    if (randomNumber <= rawItem[key]) {
+                        const detailAmount = Math.ceil(rawItem[key] / randomNumber)
+                        
+                        rawItem[key] = []
+                        const GEM_SHAPE = 'Gem Shape'
+                            , GEM_SIZE = 'Gem Size'
+                            , GEM_TYPE = 'Gem Type'
 
+                        for (let i = 0; i < detailAmount; i++) {
+                            promiseArray.push(new Promise(resolve => {
+                                let rawGem = { type: null, shape: null, size: null }
+
+                                let gemPromiseArray = []
+                                gemPromiseArray.push(getFromTableToObject(rawGem, 'shape', { subtable: GEM_SHAPE }, db))
+                                gemPromiseArray.push(getFromTableToObject(rawGem, 'size', { subtable: GEM_SIZE }, db))
+                                gemPromiseArray.push(getFromTableToObject(rawGem, 'type', { subtable: GEM_TYPE }, db))
+
+                                Promise.all(gemPromiseArray).then(finalGem => {
+                                    let gem = {
+                                        type: rawGem.type.subtableResults[0],
+                                        shape: rawGem.shape.subtableResults[0],
+                                        size: rawGem.size.subtableResults[0]
+                                    }
+
+                                    rawItem[key].push(gem)
+                                    resolve(true);
+                                })
+                            }))
+
+                        }
+                    } else {
+                        delete rawItem[key]
+                    }
                 } else if (rawItem[key] && key === 'subject') {
 
                 }
@@ -141,6 +176,42 @@ async function getFromTable(arrayToPushTo, result, db) {
                 })
             } else {
                 arrayToPushTo.push(result)
+                return true
+            }
+        })
+    }
+}
+
+async function getFromTableToObject(objectToAddTo, key, result, db) {
+    let materialCategoryArray = ['Cloth', 'Exotic Cloth', 'Exotic Metal', 'Exotic Stone/Earthwork', 'Exotic Wood', 'Fur', 'Leather', 'Metal', 'other_table', 'Paper Product', 'Parchment', 'Stone/Earthwork', 'Vellum', 'Wax', 'Wood']
+
+    if (materialCategoryArray.includes(result.subtable)) {
+        return db.get.random.material_by_category(result.subtable).then(subtableResult => {
+            result.subtableResults = subtableResult;
+
+            if (subtableResult[0].subtable) {
+                result.subtableResults = []
+                return getFromTable(result.subtableResults, subtableResult[0], db).then(_ => {
+                    objectToAddTo[key] = result
+                    return true
+                })
+            } else {
+                objectToAddTo[key] = result
+                return true
+            }
+        })
+    } else {
+        return db.get.random.detail_by_category(result.subtable).then(subtableResult => {
+            result.subtableResults = subtableResult;
+
+            if (subtableResult[0].subtable) {
+                result.subtableResults = []
+                return getFromTable(result.subtableResults, subtableResult[0], db).then(_ => {
+                    objectToAddTo[key] = result
+                    return true
+                })
+            } else {
+                objectToAddTo[key] = result
                 return true
             }
         })
