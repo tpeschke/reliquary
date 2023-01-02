@@ -1,23 +1,21 @@
-// Raw Goods has "Leather & Fur"
-
 module.exports = {
     getRandomUniqueItem: (req, res) => {
         const db = req.app.get('db')
 
-        db.get.random.item().then(itemResult => {
+        // material cases:
+        //  id 2
+        //  Shovel: id 366
+        //  Talisman: id 325
+        //  Incence: id 319
+        //  Bellows: id 336
+        //  Funnel: id 348
+
+        // db.get.random.item().then(itemResult => {
+        db.get.random.item_by_id(325).then(itemResult => {
             let rawItem = itemResult[0]
             let promiseArray = []
-            // promiseArray.push(db.get.random.item_materials(rawItem.id).then(materialResult => {
 
-            // material cases:
-            //  id 2
-            //  Shovel: id 366
-            //  Talisman: id 325
-            //  Incence: id 319
-            //  Bellows: id 336
-            //  Funnel: id 348
-
-            promiseArray.push(db.get.random.item_materials(2).then(materialResult => {
+            promiseArray.push(db.get.random.item_materials(rawItem.id).then(materialResult => {
                 if (materialResult[0].material) {
                     let materials = []
                     materialResult.forEach(material => {
@@ -52,6 +50,28 @@ module.exports = {
                 }
                 return true
             }))
+
+            let detailKeys = ['adjectives', 'colors', 'quirks']
+            for (const key in rawItem) {
+                if (rawItem[key] && detailKeys.includes(key)) {
+                    let randomNumber = getRandomInt(10)
+                    if (randomNumber <= rawItem[key]) {
+                        const detailAmount = Math.ceil(rawItem[key] / randomNumber)
+                        rawItem[key] = []
+                        for (let i = 1; i < detailAmount; i++) {
+                            promiseArray.push(getFromTable(rawItem[key], { subtable: toTitleCase(key) }, db))
+                        }
+                    } else {
+                        rawItem[key] = null
+                    }
+                } else if (rawItem[key] && key === 'gems') {
+
+                } else if (rawItem[key] && key === 'subject') {
+
+                }
+            }
+
+            let specialKeys = ['engravings', 'stitchings']
 
             Promise.all(promiseArray).then(_ => {
 
@@ -123,4 +143,17 @@ async function getFromTable(arrayToPushTo, result, db) {
             }
         })
     }
+}
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max) + 1;
+}
+
+function toTitleCase(str) {
+    return str.replace(
+        /\w\S*/g,
+        function (txt) {
+            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        }
+    );
 }
