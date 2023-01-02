@@ -109,9 +109,12 @@ module.exports = {
                 }
             }
 
+            // let randomNumberStitching = randomNumber(10)
+            // if (rawItem.stitchings && randomNumberStitching <= rawItem.stitchings) {
+            //     const detailAmount = Math.ceil(rawItem.stitchings / randomNumberStitching)
             let randomNumberStitching = 1
-            if (rawItem.stitchings && randomNumberStitching <= rawItem.stitchings) {
-                const detailAmount = Math.ceil(rawItem.stitchings / randomNumberStitching)
+            if (true) {
+                const detailAmount = Math.ceil(1 / randomNumberStitching)
 
                 rawItem.stitchings = []
 
@@ -144,9 +147,12 @@ module.exports = {
                 delete rawItem.stitchings
             }
 
+            // let randomNumberEngraving = randomNumber(10)
+            // if (rawItem.engravings && randomNumberEngraving <= rawItem.engravings) {
+            // const detailAmount = Math.ceil(rawItem.engravings / randomNumberEngraving)
             let randomNumberEngraving = 1
-            if (rawItem.engravings && randomNumberEngraving <= rawItem.engravings) {
-                const detailAmount = Math.ceil(rawItem.engravings / randomNumberEngraving)
+            if (true) {
+                const detailAmount = Math.ceil(1 / randomNumberEngraving)
                 rawItem.engravings = []
                 const ENGRAVING_WITHOUT_GEMS = 'Engraving Type Without Gems'
                     , ENGRAVING_WITH_GEMS = 'Engraving Type with Gems'

@@ -193,9 +193,6 @@ const helperObjects = {
         delete object.id
         delete itemsubcategory
 
-
-        // Make sure label: 'None' is removed
-
         let detailKeys = ['adjectives', 'colors', 'quirks']
         for (let key in object) {
             if (!object[key]) {
@@ -276,10 +273,16 @@ const helperObjects = {
                     return newGem
                 })
             }
+
+            // subject
+
             // engravings
             // stitchings
 
         }
+
+        // generate number
+            // detele amount_min & amount_max
 
         object.totalPrice = price
         object.totalMultiplier = multiplier
