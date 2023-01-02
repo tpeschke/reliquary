@@ -108,9 +108,9 @@ module.exports = {
             }
 
             let specialKeys = ['engravings', 'stitchings']
+            
 
             Promise.all(promiseArray).then(_ => {
-
                 let innerPromiseArray = []
                 let populatedMaterials = []
                 rawItem.materials.forEach(material => {
