@@ -1,4 +1,5 @@
 const { compose } = require("@mui/system")
+const e = require("cors")
 
 module.exports = {
     getRandomUniqueItem: (req, res) => {
@@ -68,11 +69,11 @@ module.exports = {
                     } else {
                         delete rawItem[key]
                     }
-                } else if (key === 'gems') {
+                } else if (rawItem[key] && key === 'gems') {
                     let randomNumber = getRandomInt(10)
                     if (randomNumber <= rawItem[key]) {
                         const detailAmount = Math.ceil(rawItem[key] / randomNumber)
-                        
+
                         rawItem[key] = []
                         const GEM_SHAPE = 'Gem Shape'
                             , GEM_SIZE = 'Gem Size'
@@ -103,8 +104,11 @@ module.exports = {
                     } else {
                         delete rawItem[key]
                     }
-                } else if (rawItem[key] && key === 'subject') {
+                    // rawItem[key] && 
+                } else if (key === 'subject') {
+                    rawItem[key] = []
 
+                    promiseArray.push(getSubject(rawItem[key], db, false))
                 }
             }
 
@@ -146,6 +150,111 @@ module.exports = {
     }
 }
 
+async function getSubject(arrayToPushTo, db, isSecondary = false) {
+    return db.get.random.subject().then(subjectResult => {
+        let subjectPromiseArray = []
+        subjectResult = subjectResult[0]
+
+        const subjectKeys = ['persons', 'colors', 'adjectives']
+
+        for (let key in subjectResult) {
+            if (subjectResult[key] && subjectKeys.includes(key)) {
+                let randomNumber = getRandomInt(10)
+                if (randomNumber <= subjectResult[key]) {
+                    const detailAmount = Math.ceil(subjectResult[key] / randomNumber)
+                    subjectResult[key] = []
+                    for (let i = 0; i < detailAmount; i++) {
+                        subjectPromiseArray.push(getFromTable(subjectResult[key], { subtable: toTitleCase(key) }, db))
+                    }
+                } else {
+                    delete subjectResult[key]
+                }
+            } else if (subjectResult[key] && key === 'animal_subtype') {
+                let randomNumber = getRandomInt(10)
+                if (randomNumber <= subjectResult[key]) {
+                    const detailAmount = Math.ceil(subjectResult[key] / randomNumber)
+                    subjectResult[key] = []
+                    for (let i = 0; i < detailAmount; i++) {
+                        subjectPromiseArray.push(getFromTable(subjectResult[key], { subtable: 'Animal Subtype' }, db))
+                    }
+                } else {
+                    delete subjectResult[key]
+                }
+            } else if (subjectResult[key] && key === 'body_parts') {
+                let randomNumber = getRandomInt(10)
+                if (randomNumber <= subjectResult[key]) {
+                    const detailAmount = Math.ceil(subjectResult[key] / randomNumber)
+                    subjectResult[key] = []
+                    for (let i = 0; i < detailAmount; i++) {
+                        subjectPromiseArray.push(getFromTable(subjectResult[key], { subtable: 'Body Parts' }, db))
+                    }
+                } else {
+                    delete subjectResult[key]
+                }
+            } else if (subjectResult[key] && key === 'events') {
+                let randomNumber = getRandomInt(10)
+                if (randomNumber <= subjectResult[key]) {
+                    const detailAmount = Math.ceil(subjectResult[key] / randomNumber)
+
+                    subjectResult[key] = []
+                    const EVENT_SUBJECT = 'Event Subject'
+                        , EVENT_TIME_PERIOD = 'Time Period'
+
+                    for (let i = 0; i < detailAmount; i++) {
+                        subjectPromiseArray.push(new Promise(resolve => {
+                            let rawEvent = { subject: null, time_period: null }
+
+                            let eventPromiseArray = []
+                            eventPromiseArray.push(getFromTableToObject(rawEvent, 'time_period', { subtable: EVENT_TIME_PERIOD }, db))
+                            eventPromiseArray.push(getFromTableToObject(rawEvent, 'subject', { subtable: EVENT_SUBJECT }, db))
+
+                            Promise.all(eventPromiseArray).then(finalGem => {
+                                let event = {
+                                    type: rawEvent.time_period.subtableResults[0],
+                                    shape: rawEvent.subject.subtableResults[0]
+                                }
+
+                                subjectResult[key].push(event)
+                                resolve(true);
+                            })
+                        }))
+
+                    }
+                } else {
+                    delete subjectResult[key]
+                }
+            } else if (subjectResult[key] && key === 'secondary_subject') {
+                let randomNumber = 1
+                if (randomNumber <= subjectResult[key] && !isSecondary) {
+                    const detailAmount = Math.ceil(subjectResult[key] / randomNumber)
+
+                    subjectResult[key] = []
+
+                    for (let i = 0; i < detailAmount; i++) {
+                        subjectPromiseArray.push(new Promise(resolve => {
+                            let secondarySubjectArray = []
+                            secondarySubjectArray.push(getSubject(subjectResult[key], db, true))
+
+                            Promise.all(secondarySubjectArray).then(_ => {
+                                resolve(true);
+                            })
+                        }))
+
+                    }
+                } else {
+                    delete subjectResult[key]
+                }
+            }
+        }
+
+        return Promise.all(subjectPromiseArray).then(_ => {
+            arrayToPushTo.push(subjectResult)
+            return true
+        })
+
+    })
+}
+
 async function getFromTable(arrayToPushTo, result, db) {
     let materialCategoryArray = ['Cloth', 'Exotic Cloth', 'Exotic Metal', 'Exotic Stone/Earthwork', 'Exotic Wood', 'Fur', 'Leather', 'Metal', 'other_table', 'Paper Product', 'Parchment', 'Stone/Earthwork', 'Vellum', 'Wax', 'Wood']
 
@@ -168,7 +277,7 @@ async function getFromTable(arrayToPushTo, result, db) {
         return db.get.random.detail_by_category(result.subtable).then(subtableResult => {
             result.subtableResults = subtableResult;
 
-            if (subtableResult[0].subtable) {
+            if (subtableResult.length > 0 && subtableResult[0].subtable) {
                 result.subtableResults = []
                 return getFromTable(result.subtableResults, subtableResult[0], db).then(_ => {
                     arrayToPushTo.push(result)
