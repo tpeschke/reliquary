@@ -107,8 +107,75 @@ module.exports = {
                 }
             }
 
-            let specialKeys = ['engravings', 'stitchings']
-            
+            let randomNumberStitching = getRandomInt(10)
+            if (rawItem.stitchings && randomNumberStitching <= rawItem.stitchings) {
+                const detailAmount = Math.ceil(rawItem.stitchings / randomNumberStitching)
+
+                rawItem.stitchings = []
+
+                for (let i = 0; i < detailAmount; i++) {
+                    promiseArray.push(new Promise(resolve => {
+                        let rawStitching = {
+                            type: {
+                                detail: 'Hand Stitching',
+                                price: 0.5
+                            },
+                            subject: []
+                        }
+
+                        let stitchingPromiseArray = []
+                        stitchingPromiseArray.push(getSubject(rawStitching.subject, db, false))
+
+                        Promise.all(stitchingPromiseArray).then(_ => {
+                            let stitchings = {
+                                subject: rawStitching.subject[0],
+                                type: rawStitching.type
+                            }
+
+                            rawItem.stitchings.push(stitchings)
+                            resolve(true);
+                        })
+                    }))
+
+                }
+            } else {
+                delete rawItem.stitchings
+            }
+
+            let randomNumberEngraving = getRandomInt(10)
+            if (rawItem.engravings && randomNumberEngraving <= rawItem.engravings) {
+                const detailAmount = Math.ceil(rawItem.engravings / randomNumberEngraving)
+                rawItem.engravings = []
+                const ENGRAVING_WITHOUT_GEMS = 'Engraving Type Without Gems'
+                    , ENGRAVING_WITH_GEMS = 'Engraving Type with Gems'
+
+                for (let i = 0; i < detailAmount; i++) {
+                    promiseArray.push(new Promise(resolve => {
+                        let rawEngraving = {
+                            type: {},
+                            subject: []
+                        }
+
+                        let engarvingPromiseArray = []
+                        engarvingPromiseArray.push(getSubject(rawEngraving.subject, db, false))
+                        const engravigSubtable = rawItem.gems ? ENGRAVING_WITH_GEMS : ENGRAVING_WITHOUT_GEMS
+                        engarvingPromiseArray.push(getFromTableToObject(rawEngraving.type, 'type', { subtable: engravigSubtable }, db))
+
+                        Promise.all(engarvingPromiseArray).then(_ => {
+                            let engravings = {
+                                subject: rawEngraving.subject[0],
+                                type: rawEngraving.type
+                            }
+
+                            rawItem.engravings.push(engravings)
+                            resolve(true);
+                        })
+                    }))
+
+                }
+            } else {
+                delete rawItem.engravings
+            }
 
             Promise.all(promiseArray).then(_ => {
                 let innerPromiseArray = []
@@ -219,7 +286,7 @@ async function getSubject(arrayToPushTo, db, isSecondary = false) {
                     delete subjectResult[key]
                 }
             } else if (subjectResult[key] && key === 'secondary_subject') {
-                let randomNumber = 1
+                let randomNumber = getRandomInt(10)
                 if (randomNumber <= subjectResult[key] && !isSecondary) {
                     const detailAmount = Math.ceil(subjectResult[key] / randomNumber)
 
