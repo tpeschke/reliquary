@@ -15,6 +15,8 @@ module.exports = {
             let rawItem = itemResult[0]
             let promiseArray = []
 
+            delete rawItem['?column?']
+
             promiseArray.push(db.get.random.item_materials(rawItem.id).then(materialResult => {
                 if (materialResult[0].material) {
                     let materials = []
@@ -58,11 +60,11 @@ module.exports = {
                     if (randomNumber <= rawItem[key]) {
                         const detailAmount = Math.ceil(rawItem[key] / randomNumber)
                         rawItem[key] = []
-                        for (let i = 1; i < detailAmount; i++) {
+                        for (let i = 0; i < detailAmount; i++) {
                             promiseArray.push(getFromTable(rawItem[key], { subtable: toTitleCase(key) }, db))
                         }
                     } else {
-                        rawItem[key] = null
+                        delete rawItem[key]
                     }
                 } else if (rawItem[key] && key === 'gems') {
 
