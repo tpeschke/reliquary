@@ -1,6 +1,3 @@
-const { compose } = require("@mui/system")
-const e = require("cors")
-
 module.exports = {
     getRandomUniqueItem: (req, res) => {
         const db = req.app.get('db')
@@ -104,10 +101,8 @@ module.exports = {
                     } else {
                         delete rawItem[key]
                     }
-                    // rawItem[key] && 
-                } else if (key === 'subject') {
+                } else if (rawItem[key] && key === 'subject') {
                     rawItem[key] = []
-
                     promiseArray.push(getSubject(rawItem[key], db, false))
                 }
             }
