@@ -1,3 +1,5 @@
+const { getSubject, getFromTable, getFromTableToObject, getRandomInt, toTitleCase, reformatObject } = require('./helpers')
+
 module.exports = {
     getRandomUniqueItem: (req, res) => {
         const db = req.app.get('db')
@@ -56,7 +58,7 @@ module.exports = {
             let detailKeys = ['adjectives', 'colors', 'quirks']
             for (const key in rawItem) {
                 if (rawItem[key] && detailKeys.includes(key)) {
-                    let randomNumber = getRandomInt(10)
+                    let randomNumber = 1
                     if (randomNumber <= rawItem[key]) {
                         const detailAmount = Math.ceil(rawItem[key] / randomNumber)
                         rawItem[key] = []
@@ -67,7 +69,7 @@ module.exports = {
                         delete rawItem[key]
                     }
                 } else if (rawItem[key] && key === 'gems') {
-                    let randomNumber = getRandomInt(10)
+                    let randomNumber = 1
                     if (randomNumber <= rawItem[key]) {
                         const detailAmount = Math.ceil(rawItem[key] / randomNumber)
 
@@ -107,7 +109,7 @@ module.exports = {
                 }
             }
 
-            let randomNumberStitching = getRandomInt(10)
+            let randomNumberStitching = 1
             if (rawItem.stitchings && randomNumberStitching <= rawItem.stitchings) {
                 const detailAmount = Math.ceil(rawItem.stitchings / randomNumberStitching)
 
@@ -142,7 +144,7 @@ module.exports = {
                 delete rawItem.stitchings
             }
 
-            let randomNumberEngraving = getRandomInt(10)
+            let randomNumberEngraving = 1
             if (rawItem.engravings && randomNumberEngraving <= rawItem.engravings) {
                 const detailAmount = Math.ceil(rawItem.engravings / randomNumberEngraving)
                 rawItem.engravings = []
@@ -204,200 +206,11 @@ module.exports = {
 
                 Promise.all(innerPromiseArray).then(_ => {
                     rawItem.materials = populatedMaterials
-                    res.send(rawItem)
+
+                    res.send(reformatObject(rawItem))
                 })
 
             })
         })
     }
-}
-
-async function getSubject(arrayToPushTo, db, isSecondary = false) {
-    return db.get.random.subject().then(subjectResult => {
-        let subjectPromiseArray = []
-        subjectResult = subjectResult[0]
-
-        const subjectKeys = ['persons', 'colors', 'adjectives']
-
-        for (let key in subjectResult) {
-            if (subjectResult[key] && subjectKeys.includes(key)) {
-                let randomNumber = getRandomInt(10)
-                if (randomNumber <= subjectResult[key]) {
-                    const detailAmount = Math.ceil(subjectResult[key] / randomNumber)
-                    subjectResult[key] = []
-                    for (let i = 0; i < detailAmount; i++) {
-                        subjectPromiseArray.push(getFromTable(subjectResult[key], { subtable: toTitleCase(key) }, db))
-                    }
-                } else {
-                    delete subjectResult[key]
-                }
-            } else if (subjectResult[key] && key === 'animal_subtype') {
-                let randomNumber = getRandomInt(10)
-                if (randomNumber <= subjectResult[key]) {
-                    const detailAmount = Math.ceil(subjectResult[key] / randomNumber)
-                    subjectResult[key] = []
-                    for (let i = 0; i < detailAmount; i++) {
-                        subjectPromiseArray.push(getFromTable(subjectResult[key], { subtable: 'Animal Subtype' }, db))
-                    }
-                } else {
-                    delete subjectResult[key]
-                }
-            } else if (subjectResult[key] && key === 'body_parts') {
-                let randomNumber = getRandomInt(10)
-                if (randomNumber <= subjectResult[key]) {
-                    const detailAmount = Math.ceil(subjectResult[key] / randomNumber)
-                    subjectResult[key] = []
-                    for (let i = 0; i < detailAmount; i++) {
-                        subjectPromiseArray.push(getFromTable(subjectResult[key], { subtable: 'Body Parts' }, db))
-                    }
-                } else {
-                    delete subjectResult[key]
-                }
-            } else if (subjectResult[key] && key === 'events') {
-                let randomNumber = getRandomInt(10)
-                if (randomNumber <= subjectResult[key]) {
-                    const detailAmount = Math.ceil(subjectResult[key] / randomNumber)
-
-                    subjectResult[key] = []
-                    const EVENT_SUBJECT = 'Event Subject'
-                        , EVENT_TIME_PERIOD = 'Time Period'
-
-                    for (let i = 0; i < detailAmount; i++) {
-                        subjectPromiseArray.push(new Promise(resolve => {
-                            let rawEvent = { subject: null, time_period: null }
-
-                            let eventPromiseArray = []
-                            eventPromiseArray.push(getFromTableToObject(rawEvent, 'time_period', { subtable: EVENT_TIME_PERIOD }, db))
-                            eventPromiseArray.push(getFromTableToObject(rawEvent, 'subject', { subtable: EVENT_SUBJECT }, db))
-
-                            Promise.all(eventPromiseArray).then(finalGem => {
-                                let event = {
-                                    type: rawEvent.time_period.subtableResults[0],
-                                    shape: rawEvent.subject.subtableResults[0]
-                                }
-
-                                subjectResult[key].push(event)
-                                resolve(true);
-                            })
-                        }))
-
-                    }
-                } else {
-                    delete subjectResult[key]
-                }
-            } else if (subjectResult[key] && key === 'secondary_subject') {
-                let randomNumber = getRandomInt(10)
-                if (randomNumber <= subjectResult[key] && !isSecondary) {
-                    const detailAmount = Math.ceil(subjectResult[key] / randomNumber)
-
-                    subjectResult[key] = []
-
-                    for (let i = 0; i < detailAmount; i++) {
-                        subjectPromiseArray.push(new Promise(resolve => {
-                            let secondarySubjectArray = []
-                            secondarySubjectArray.push(getSubject(subjectResult[key], db, true))
-
-                            Promise.all(secondarySubjectArray).then(_ => {
-                                resolve(true);
-                            })
-                        }))
-
-                    }
-                } else {
-                    delete subjectResult[key]
-                }
-            }
-        }
-
-        return Promise.all(subjectPromiseArray).then(_ => {
-            arrayToPushTo.push(subjectResult)
-            return true
-        })
-
-    })
-}
-
-async function getFromTable(arrayToPushTo, result, db) {
-    let materialCategoryArray = ['Cloth', 'Exotic Cloth', 'Exotic Metal', 'Exotic Stone/Earthwork', 'Exotic Wood', 'Fur', 'Leather', 'Metal', 'other_table', 'Paper Product', 'Parchment', 'Stone/Earthwork', 'Vellum', 'Wax', 'Wood']
-
-    if (materialCategoryArray.includes(result.subtable)) {
-        return db.get.random.material_by_category(result.subtable).then(subtableResult => {
-            result.subtableResults = subtableResult;
-
-            if (subtableResult[0].subtable) {
-                result.subtableResults = []
-                return getFromTable(result.subtableResults, subtableResult[0], db).then(_ => {
-                    arrayToPushTo.push(result)
-                    return true
-                })
-            } else {
-                arrayToPushTo.push(result)
-                return true
-            }
-        })
-    } else {
-        return db.get.random.detail_by_category(result.subtable).then(subtableResult => {
-            result.subtableResults = subtableResult;
-
-            if (subtableResult.length > 0 && subtableResult[0].subtable) {
-                result.subtableResults = []
-                return getFromTable(result.subtableResults, subtableResult[0], db).then(_ => {
-                    arrayToPushTo.push(result)
-                    return true
-                })
-            } else {
-                arrayToPushTo.push(result)
-                return true
-            }
-        })
-    }
-}
-
-async function getFromTableToObject(objectToAddTo, key, result, db) {
-    let materialCategoryArray = ['Cloth', 'Exotic Cloth', 'Exotic Metal', 'Exotic Stone/Earthwork', 'Exotic Wood', 'Fur', 'Leather', 'Metal', 'other_table', 'Paper Product', 'Parchment', 'Stone/Earthwork', 'Vellum', 'Wax', 'Wood']
-
-    if (materialCategoryArray.includes(result.subtable)) {
-        return db.get.random.material_by_category(result.subtable).then(subtableResult => {
-            result.subtableResults = subtableResult;
-
-            if (subtableResult[0].subtable) {
-                result.subtableResults = []
-                return getFromTable(result.subtableResults, subtableResult[0], db).then(_ => {
-                    objectToAddTo[key] = result
-                    return true
-                })
-            } else {
-                objectToAddTo[key] = result
-                return true
-            }
-        })
-    } else {
-        return db.get.random.detail_by_category(result.subtable).then(subtableResult => {
-            result.subtableResults = subtableResult;
-
-            if (subtableResult[0].subtable) {
-                result.subtableResults = []
-                return getFromTable(result.subtableResults, subtableResult[0], db).then(_ => {
-                    objectToAddTo[key] = result
-                    return true
-                })
-            } else {
-                objectToAddTo[key] = result
-                return true
-            }
-        })
-    }
-}
-
-function getRandomInt(max) {
-    return Math.floor(Math.random() * max) + 1;
-}
-
-function toTitleCase(str) {
-    return str.replace(
-        /\w\S*/g,
-        function (txt) {
-            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-        }
-    );
 }
