@@ -11,7 +11,7 @@ module.exports = {
         //  Funnel: id 348
 
         // db.get.random.item().then(itemResult => {
-        db.get.random.item_by_id(325).then(itemResult => {
+        db.get.random.item_by_id(2).then(itemResult => {
             let rawItem = itemResult[0]
             let promiseArray = []
 
