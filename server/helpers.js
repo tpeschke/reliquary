@@ -556,7 +556,7 @@ const helperObjects = {
                             populatedMaterials.push(innerMaterialResult[0])
                             return true
                         }
-                        return getFromTable(populatedMaterials, innerMaterialResult[0], db)
+                        return helperObjects.getFromTable(populatedMaterials, innerMaterialResult[0], db)
                     } else {
                         return db.get.random.item_by_category(material.material).then(itemByCategory => {
                             itemByCategory[0].label = material.label
@@ -564,7 +564,7 @@ const helperObjects = {
                                 populatedMaterials.push(itemByCategory[0])
                                 return true
                             }
-                            return getFromTable(populatedMaterials, itemByCategory[0], db)
+                            return helperObjects.getFromTable(populatedMaterials, itemByCategory[0], db)
                         })
                     }
                 }))
@@ -760,28 +760,32 @@ const helperObjects = {
             let populatedMaterials = []
             rawItem.materials.forEach(material => {
                 console.log('line 762: ', material.material, rawItem.price, budget)
-                innerPromiseArray.push(db.get.semi_random.material(material.material, rawItem.price, budget).then(innerMaterialResult => {
-                    console.log('line 764: ', innerMaterialResult)
-                    if (innerMaterialResult[0]) {
-                        innerMaterialResult[0].label = material.label
-                        if (!innerMaterialResult[0].subtable) {
-                            populatedMaterials.push(innerMaterialResult[0])
-                            return true
-                        }
-                        return getFromTable(populatedMaterials, innerMaterialResult[0], db)
-                    } else {
-                        console.log("line 771: ", material)
-                        return db.get.random.item_by_category(material.material).then(itemByCategory => {
-                            console.log("line 773: ", itemByCategory)
-                            itemByCategory[0].label = material.label
-                            if (!itemByCategory[0].subtable) {
-                                populatedMaterials.push(itemByCategory[0])
+                if (material.subtable) {
+                    innerPromiseArray.push(helperObjects.getFromTable(populatedMaterials, material, db))
+                } else {
+                    innerPromiseArray.push(db.get.semi_random.material(material.material, rawItem.price, budget).then(innerMaterialResult => {
+                        console.log('line 764: ', innerMaterialResult)
+                        if (innerMaterialResult[0]) {
+                            innerMaterialResult[0].label = material.label
+                            if (!innerMaterialResult[0].subtable) {
+                                populatedMaterials.push(innerMaterialResult[0])
                                 return true
                             }
-                            return getFromTable(populatedMaterials, itemByCategory[0], db)
-                        })
-                    }
-                }))
+                            return helperObjects.getFromTable(populatedMaterials, innerMaterialResult[0], db)
+                        } else {
+                            console.log("line 771: ", material)
+                            return db.get.random.item_by_category(material.material).then(itemByCategory => {
+                                console.log("line 773: ", itemByCategory)
+                                itemByCategory[0].label = material.label
+                                if (!itemByCategory[0].subtable) {
+                                    populatedMaterials.push(itemByCategory[0])
+                                    return true
+                                }
+                                return helperObjects.getFromTable(populatedMaterials, itemByCategory[0], db)
+                            })
+                        }
+                    }))
+                }
             })
 
             Promise.all(innerPromiseArray).then(_ => {
