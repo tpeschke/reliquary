@@ -9,7 +9,7 @@ const app = new express()
 app.use(bodyParser.json())
 app.use(cors())
 
-app.get('/api/getUniquieItem', uniqueItemCtrl.getRandomUniqueItem)
+app.get('/api/getUniquieItem', uniqueItemCtrl.getUniqueItem)
 
 massive(connection).then(dbI => {
     app.set('db', dbI)
