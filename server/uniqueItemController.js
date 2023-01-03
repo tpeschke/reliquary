@@ -1,4 +1,4 @@
-const { getRestOfItem } = require('./helpers')
+const { getRestOfItem, getRestOfItemOnBudget } = require('./helpers')
 
 controllerFunctions = {
     getUniqueItem: (req, res) => {

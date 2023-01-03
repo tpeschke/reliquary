@@ -1,3 +1,15 @@
+const GemSizeDictionary = {
+    '0.2': .1,
+    '0.5': .25,
+    '1': .5,
+    '1.5': .75,
+    '2': 1,
+    '2.5': 2,
+    '3': 5,
+    '4': 10,
+    '5': 20
+}
+
 const helperObjects = {
     getSubject: async function (arrayToPushTo, db, isSecondary = false) {
         return db.get.random.subject().then(subjectResult => {
@@ -194,7 +206,8 @@ const helperObjects = {
             , totalGemPrice = 0
 
         delete object.id
-        delete itemsubcategory
+        delete object.itemsubcategory
+        delete object.total
 
         let detailKeys = ['adjectives', 'colors', 'quirks']
         for (let key in object) {
@@ -249,17 +262,6 @@ const helperObjects = {
                 })
             } else if (key === 'gems') {
                 object.gems = object.gems.map(gem => {
-                    const GemSizeDictionary = {
-                        '0.2': .1,
-                        '0.5': .25,
-                        '1': .5,
-                        '1.5': .75,
-                        '2': 1,
-                        '2.5': 2,
-                        '3': 5,
-                        '4': 10,
-                        '5': 20
-                    }
 
                     let gemPrice = gem.type.price
                     let gemMultipier = GemSizeDictionary[gem.size.detail]
@@ -313,7 +315,7 @@ const helperObjects = {
 
         let detailPercentage = helperObjects.getRandomInt(10) * .1
         let detailModifier = (detailNumber * detailPercentage) + 1
-        object.finalPrice = ((price * object.aveMultipliers) * detailModifier) + totalGemPrice
+        object.finalPrice = +(((price * object.aveMultipliers) * detailModifier) + totalGemPrice).toFixed(2)
 
         return object
     },
@@ -376,7 +378,7 @@ const helperObjects = {
 
         delete rawItem['?column?']
 
-        promiseArray.push(db.get.random.item_materials(rawItem.id).then(materialResult => {
+        promiseArray.push(db.get.not_random.item_materials(rawItem.id).then(materialResult => {
             if (materialResult[0].material) {
                 let materials = []
                 materialResult.forEach(material => {
@@ -581,7 +583,8 @@ const helperObjects = {
 
         delete rawItem['?column?']
 
-        promiseArray.push(db.get.random.item_materials(rawItem.id).then(materialResult => {
+        promiseArray.push(db.get.not_random.item_materials(rawItem.id).then(materialResult => {
+            console.log(materialResult)
             if (materialResult[0].material) {
                 let materials = []
                 materialResult.forEach(material => {
@@ -645,15 +648,19 @@ const helperObjects = {
                             let rawGem = { type: null, shape: null, size: null }
 
                             let gemPromiseArray = []
+                            gemPromiseArray.push(db.get.semi_random.gem_type(budget - rawItem.price).then(result => {
+                                rawGem.type = result[0]
+                                return true
+                            }))
+                            gemPromiseArray.push(db.get.semi_random.gem_size().then(result => {
+                                rawGem.size = result[0]
+                                return true
+                            }))
                             gemPromiseArray.push(helperObjects.getFromTableToObject(rawGem, 'shape', { subtable: GEM_SHAPE }, db))
-                            gemPromiseArray.push(helperObjects.getFromTableToObject(rawGem, 'size', { subtable: GEM_SIZE }, db))
-                            gemPromiseArray.push(helperObjects.getFromTableToObject(rawGem, 'type', { subtable: GEM_TYPE }, db))
 
                             Promise.all(gemPromiseArray).then(finalGem => {
                                 let gem = {
-                                    type: rawGem.type.subtableResults[0],
-                                    shape: rawGem.shape.subtableResults[0],
-                                    size: rawGem.size.subtableResults[0]
+                                    shape: rawGem.shape.subtableResults[0]
                                 }
 
                                 rawItem[key].push(gem)
@@ -752,7 +759,9 @@ const helperObjects = {
             let innerPromiseArray = []
             let populatedMaterials = []
             rawItem.materials.forEach(material => {
-                innerPromiseArray.push(db.get.random.material(material.material).then(innerMaterialResult => {
+                console.log('line 762: ', material.material, rawItem.price, budget)
+                innerPromiseArray.push(db.get.semi_random.material(material.material, rawItem.price, budget).then(innerMaterialResult => {
+                    console.log('line 764: ', innerMaterialResult)
                     if (innerMaterialResult[0]) {
                         innerMaterialResult[0].label = material.label
                         if (!innerMaterialResult[0].subtable) {
@@ -761,7 +770,9 @@ const helperObjects = {
                         }
                         return getFromTable(populatedMaterials, innerMaterialResult[0], db)
                     } else {
+                        console.log("line 771: ", material)
                         return db.get.random.item_by_category(material.material).then(itemByCategory => {
+                            console.log("line 773: ", itemByCategory)
                             itemByCategory[0].label = material.label
                             if (!itemByCategory[0].subtable) {
                                 populatedMaterials.push(itemByCategory[0])
@@ -776,7 +787,13 @@ const helperObjects = {
             Promise.all(innerPromiseArray).then(_ => {
                 rawItem.materials = populatedMaterials
 
-                res.send(helperObjects.reformatObject(rawItem))
+                let finalObject = helperObjects.reformatObject(rawItem)
+
+                if (finalObject.finalPrice > budget) {
+                    finalObject.wear = Math.ceil((finalObject.finalPrice - budget) / (finalObject.finalPrice * .1))
+                }
+
+                res.send(finalObject)
             })
 
         })
