@@ -103,9 +103,10 @@ module.exports = {
                     } else {
                         delete rawItem[key]
                     }
-                } else if (rawItem[key] && key === 'subject') {
+                } else if (key === 'subject') {
+                // } else if (rawItem[key] && key === 'subject') {
                     rawItem[key] = []
-                    promiseArray.push(getSubject(rawItem[key], db, false))
+                    getSubject(rawItem[key], db, false)
                 }
             }
 
@@ -166,8 +167,8 @@ module.exports = {
 
                         let engarvingPromiseArray = []
                         engarvingPromiseArray.push(getSubject(rawEngraving.subject, db, false))
-                        const engravigSubtable = rawItem.gems ? ENGRAVING_WITH_GEMS : ENGRAVING_WITHOUT_GEMS
-                        engarvingPromiseArray.push(getFromTableToObject(rawEngraving.type, 'type', { subtable: engravigSubtable }, db))
+                        const engravingSubtable = rawItem.gems ? ENGRAVING_WITH_GEMS : ENGRAVING_WITHOUT_GEMS
+                        engarvingPromiseArray.push(getFromTableToObject(rawEngraving, 'type', { subtable: engravingSubtable }, db))
 
                         Promise.all(engarvingPromiseArray).then(_ => {
                             let engravings = {

@@ -59,8 +59,8 @@ const helperObjects = {
 
                                 Promise.all(eventPromiseArray).then(finalGem => {
                                     let event = {
-                                        type: rawEvent.time_period.subtableResults[0],
-                                        shape: rawEvent.subject.subtableResults[0]
+                                        time_period: rawEvent.time_period.subtableResults[0],
+                                        subject: rawEvent.subject.subtableResults[0]
                                     }
 
                                     subjectResult[key].push(event)
@@ -272,17 +272,29 @@ const helperObjects = {
 
                     return newGem
                 })
+            } else if (key === 'subject') {
+                object.subject = object.subject.map(subject => helperObjects.cleanUpSubject(subject))
+            } else if (key === 'stitchings') {
+                object.stitchings.map(stitching => {
+                    stitching.subject = helperObjects.cleanUpSubject(stitching.subject)
+                    return stitching
+                })
+            } else if (key === 'engravings') {
+                object.engravings.map(engraving => {
+                    engraving.subject = helperObjects.cleanUpSubject(engraving.subject)
+                    engraving.type = {
+                        type: engraving.type.subtable,
+                        detail: engraving.type.subtableResults[0].detail,
+                        price: engraving.type.subtableResults[0].price
+                    }
+                    return engraving
+                })
             }
-
-            // subject
-
-            // engravings
-            // stitchings
-
         }
 
         // generate number
-            // detele amount_min & amount_max
+            // delete amount_min & amount_max
+        
 
         object.totalPrice = price
         object.totalMultiplier = multiplier
@@ -290,6 +302,60 @@ const helperObjects = {
         object.totalGemPrice = totalGemPrice
 
         return object
+    },
+    cleanUpSubject: function (subject) {
+        delete subject.randomweight
+        delete subject.id
+        delete subject.weight
+
+        const subjectKeys = ['persons', 'colors', 'adjectives', 'body_parts', 'animal_subtype']
+
+        for (let key in subject) {
+            if (subject[key] && subjectKeys.includes(key)) {
+                subject[key] = subject[key].map(object => {
+                    return helperObjects.cleanUpDetailSubtableResults(object)[0]
+                })
+            } else if (subject[key] && key === 'events') {
+                subject[key] = subject[key].map(object => {
+                    return {
+                        subject: object.subject.detail,
+                        time_period: object.time_period.detail
+                    }
+                })
+            } else if (subject[key] && key === 'secondary_subject') {
+                subject[key] = subject[key].map(secondary => helperObjects.cleanUpSubject(secondary))
+            }
+        }
+
+        return subject
+    },
+    cleanUpDetailSubtableResults: function (object) {
+        return object.subtableResults.map(innerObject => {
+            delete innerObject.random
+            delete innerObject.id
+            delete innerObject.weight
+            delete innerObject.category
+
+            if (!innerObject.price) {
+                delete innerObject.price
+            }
+
+            if (!innerObject.subtable) {
+                delete innerObject.subtable
+            }
+
+            if (innerObject.subtableResults) {
+                let submaterial = helperObjects.cleanUpDetailSubtableResults(innerObject)[0]
+                if (submaterial.length === 1 && !object.detail) {
+                    object.detail = submaterial[0].detail
+                } else {
+                    innerObject.submaterial = submaterial
+                }
+                delete innerObject.subtableResults
+            }
+
+            return innerObject
+        })
     }
 }
 
