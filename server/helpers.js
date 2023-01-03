@@ -176,6 +176,9 @@ const helperObjects = {
     getRandomInt: function (max) {
         return Math.floor(Math.random() * max) + 1;
     },
+    randomIntBetweenTwoInts: function (min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min)
+    },
     toTitleCase: function (str) {
         return str.replace(
             /\w\S*/g,
@@ -186,7 +189,7 @@ const helperObjects = {
     },
     reformatObject: function (object) {
         let price = object.price ? object.price : 0
-            , multiplier = 1
+            , multipliers = []
             , detailNumber = 0
             , totalGemPrice = 0
 
@@ -217,7 +220,7 @@ const helperObjects = {
                         delete material.price
                     }
                     if (material.multiplier) {
-                        multiplier += material.multiplier
+                        multipliers.push(material.multiplier)
                     } else {
                         delete material.multiplier
                     }
@@ -236,7 +239,7 @@ const helperObjects = {
                                 material.subprice = innerMaterial.price
                             }
                             if (innerMaterial.multiplier) {
-                                multiplier += innerMaterial.multiplier
+                                multipliers.push(innerMaterial.multiplier)
                                 material.submultiplier = innerMaterial.multiplier
                             }
                         })
@@ -292,14 +295,23 @@ const helperObjects = {
             }
         }
 
-        // generate number
-            // delete amount_min & amount_max
-        
+        const min = object.amount_min ? object.amount_min : 1
+            , max = object.amount_max ? object.amount_max : 1
+
+        object.number = helperObjects.randomIntBetweenTwoInts(min, max)
+
+        delete object.amount_min
+        delete object.amount_max
 
         object.totalPrice = price
-        object.totalMultiplier = multiplier
+        object.totalMultipliers = multipliers
+        object.aveMultipliers = multipliers.reduce((a, b) => a + b, 0) / multipliers.length
         object.totalDetails = detailNumber
         object.totalGemPrice = totalGemPrice
+
+        let detailPercentage = helperObjects.getRandomInt(10) * .1
+        let detailModifier = (detailNumber * detailPercentage) + 1
+        object.finalPrice = ((price * object.aveMultipliers) * detailModifier) + totalGemPrice
 
         return object
     },
