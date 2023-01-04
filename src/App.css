@@ -1,5 +1,9 @@
+body {
+  background: whitesmoke;
+}
+
 .tab-menu {
   display: flex;
-  justify-content: start;
+  justify-content: space-between;
   align-items: baseline;
 }

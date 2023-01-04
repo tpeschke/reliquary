@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import * as React from 'react';
 import PropTypes from 'prop-types';
@@ -6,6 +5,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import UniqueItems from './components/UniqueItems'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -20,7 +20,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+          <Typography component={'span'} variant={'body2'}>{children}</Typography>
         </Box>
       )}
     </div>
@@ -60,13 +60,13 @@ function App() {
         </Box>
       </div>
       <TabPanel value={value} index={0}>
-        Item One
+        <UniqueItems />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        Relics (under construction)
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        Enchanted Items (under construction)
       </TabPanel>
     </div>
   );

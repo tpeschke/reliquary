@@ -587,7 +587,7 @@ const helperObjects = {
                                 itemDescription += ' and'
                             }
                             itemDescription += ` ${event.subject} events from ${event.time_period} times`
-                            if (index < event.events.length - 1) {
+                            if (index < subject.events.length - 1) {
                                 itemDescription += ','
                             }
                         }
@@ -1123,12 +1123,16 @@ const helperObjects = {
                         return helperObjects.getFromTable(populatedMaterials, innerMaterialResult[0], db)
                     } else {
                         return db.get.random.item_by_category(material.material).then(itemByCategory => {
-                            itemByCategory[0].label = material.label
-                            if (!itemByCategory[0].subtable) {
-                                populatedMaterials.push(itemByCategory[0])
-                                return true
+                            if (itemByCategory.length > 0) {
+                                itemByCategory[0].label = material.label
+                                if (!itemByCategory[0].subtable) {
+                                    populatedMaterials.push(itemByCategory[0])
+                                    return true
+                                }
+                                return helperObjects.getFromTable(populatedMaterials, itemByCategory[0], db)
+                            } else {
+                                return helperObjects.getFromTable(populatedMaterials, material, db)
                             }
-                            return helperObjects.getFromTable(populatedMaterials, itemByCategory[0], db)
                         })
                     }
                 }))
