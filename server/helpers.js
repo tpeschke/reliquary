@@ -241,6 +241,7 @@ const helperObjects = {
 
                 detailNumber += object[key].length
             } else if (key === 'materials') {
+                console.log(object.materials)
                 object.materials = object.materials.map(material => {
                     delete material.randomweight
                     delete material.id
@@ -725,7 +726,7 @@ const helperObjects = {
                                 itemDescription += ' and'
                             }
                             itemDescription += ` ${event.subject} events from ${event.time_period} times`
-                            if (index < event.events.length - 1) {
+                            if (index < subject.events.length - 1) {
                                 itemDescription += ','
                             }
                         }
@@ -943,7 +944,7 @@ const helperObjects = {
         delete rawItem['?column?']
 
         promiseArray.push(db.get.not_random.item_materials(rawItem.id).then(materialResult => {
-            if (materialResult[0].material) {
+            if (materialResult.length > 0 && materialResult[0].material) {
                 let materials = []
                 materialResult.forEach(material => {
                     if (materials.length === 0) {
@@ -1152,7 +1153,7 @@ const helperObjects = {
         delete rawItem['?column?']
 
         promiseArray.push(db.get.not_random.item_materials(rawItem.id).then(materialResult => {
-            if (materialResult[0].material) {
+            if (materialResult.length > 0 && materialResult[0].material) {
                 let materials = []
                 materialResult.forEach(material => {
                     if (materials.length === 0) {

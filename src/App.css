@@ -1,4 +1,23 @@
 body {
+  background: grey;
+}
+
+h1, h2 {
+  margin: 0;
+}
+
+h1 {
+  color: whitesmoke
+}
+
+h2 {
+  color: #CD7F32
+}
+
+input {
+  border: none;
+  text-align: right;
+  padding: 5px;
   background: whitesmoke;
 }
 
@@ -6,4 +25,23 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  background: #CD7F32;
+  padding: 0 24px;
+}
+
+.input-shell {
+  padding: 15px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-shell div {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.input-shell p {
+  padding-left: 5px;
+  color: whitesmoke
 }
