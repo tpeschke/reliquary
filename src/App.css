@@ -1,3 +1,12 @@
+@font-face {
+  font-family: 'Baldur';
+  src: local('Baldur'), url(./assets/Baldur.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Ancient';
+  src: url(./assets/jancient.ttf) format('truetype');
+}
+
 body {
   background: grey;
 }
@@ -7,21 +16,26 @@ h1, h2, h3, h4, p {
 }
 
 h1 {
-  color: whitesmoke
+  color: whitesmoke;
+  font-family: 'Baldur';
+  font-size: 38px;
 }
 
 h2 {
-  color: #CD7F32
+  color: #CD7F32;
+  font-family: 'Baldur';
 }
 
 h3 {
-  font-size: 15px;
+  font-size: 18px;
   color: grey;
+  font-family: 'Ancient';
 }
 
 h4 {
   font-weight: 100;
   color: grey;
+  font-family: 'Ancient';
 }
 
 ul {
@@ -68,7 +82,9 @@ input {
 
 .input-shell p {
   padding-left: 5px;
-  color: whitesmoke
+  color: whitesmoke;
+  font-family: 'Ancient';
+  font-size: 18px;
 }
 
 .accordion-shell {
@@ -84,6 +100,9 @@ input {
 .item-title-shell p {
   color: gray;
   margin-left: 5px;
+  font-family: 'Ancient';
+  font-size: 18px;
+
 }
 
 .construction-title {
@@ -102,10 +121,18 @@ input {
 
 .item-detail-shell {
   display: flex;
+  justify-content: start;
+  flex-wrap: wrap;
+  flex-direction: column;
+  height: 150px;
+}
+
+.item-detail {
+  display: flex;
   align-items: baseline;
 }
 
-.item-detail-shell p {
+.item-detail p {
   margin-left: 5px;
 }
 

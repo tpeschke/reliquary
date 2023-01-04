@@ -23,8 +23,12 @@ const StyledTab = styled((props) => <Tab disableRipple {...props} />)(
     fontSize: theme.typography.pxToRem(15),
     marginRight: theme.spacing(1),
     color: '#f5f5f5',
+    fontFamily: 'Ancient',
+    fontSize: '18px',
     '&.Mui-selected': {
       color: '#f5f5f5 ',
+      fontFamily: 'Ancient',
+      fontSize: '18px'
     },
     '&.Mui-focusVisible': {
       backgroundColor: 'rgba(100, 95, 228, 0.32)',

@@ -39,12 +39,14 @@ export default function UniqueItems() {
     }, [loading]);
 
     function getBudget(event) {
-        setLoading(true)
-        setBudget(event.target.value)
-        axios.post(constants.baseUrl + constants.endpoint + event.target.value).then(({ data }) => {
-            setItems(data);
-            setLoading(false)
-        })
+        if (budget !== event.target.value) {
+            setLoading(true)
+            setBudget(event.target.value)
+            axios.post(constants.baseUrl + constants.endpoint + event.target.value).then(({ data }) => {
+                setItems(data);
+                setLoading(false)
+            })
+        }
     }
 
     function refreshItems() {
