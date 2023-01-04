@@ -6,6 +6,29 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import UniqueItems from './components/UniqueItems'
+import { styled } from '@mui/material/styles';
+
+const StyledTabs = styled(Tabs)({
+  '& .MuiTabs-indicator': {
+    backgroundColor: '#f5f5f5',
+  },
+});
+
+const StyledTab = styled((props) => <Tab disableRipple {...props} />)(
+  ({ theme }) => ({
+    textTransform: 'none',
+    fontWeight: theme.typography.fontWeightRegular,
+    fontSize: theme.typography.pxToRem(15),
+    marginRight: theme.spacing(1),
+    color: '#f5f5f5',
+    '&.Mui-selected': {
+      color: '#f5f5f5 ',
+    },
+    '&.Mui-focusVisible': {
+      backgroundColor: 'rgba(100, 95, 228, 0.32)',
+    },
+  }),
+);
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -52,11 +75,11 @@ function App() {
       <div className="tab-menu">
         <h1>Bonfire Reliquary</h1>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-            <Tab label="Unique Items" {...a11yProps(0)} />
-            <Tab label="Relics" {...a11yProps(1)} />
-            <Tab label="Enchanted Items" {...a11yProps(2)} />
-          </Tabs>
+          <StyledTabs value={value} onChange={handleChange} aria-label="basic tabs example" >
+            <StyledTab label="Unique Items" {...a11yProps(0)} />
+            <StyledTab label="Relics" {...a11yProps(1)} />
+            <StyledTab label="Enchanted Items" {...a11yProps(2)} />
+          </StyledTabs>
         </Box>
       </div>
       <TabPanel value={value} index={0}>

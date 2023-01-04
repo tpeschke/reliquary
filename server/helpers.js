@@ -447,11 +447,11 @@ const helperObjects = {
                     } else if (index === 1) {
                         itemDescription += `. It also draws parallels to ${event.subject} events from ${event.time_period} times`
                     } else {
-                        if (index === event.events.length - 1 && event.events.length > 1) {
+                        if (index === subject[0].events.length - 1 && event.events.length > 1) {
                             itemDescription += ' and'
                         }
                         itemDescription += ` ${event.subject} events from ${event.time_period} times`
-                        if (index < event.events.length - 1) {
+                        if (index < subject[0].events.length - 1) {
                             itemDescription += ','
                         }
                     }

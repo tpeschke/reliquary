@@ -9,6 +9,19 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Button from '@mui/material/Button';
 import RefreshIcon from '@mui/icons-material/Refresh';
 
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+const theme = createTheme({
+    palette: {
+      primary: {
+        main: '#CD7F32',
+      },
+      secondary: {
+        main: '#11cb5f',
+      },
+    },
+  });
+
 export default function UniqueItems() {
     const [loading, setLoading] = useState(true);
     const [items, setItems] = useState([]);
@@ -48,34 +61,39 @@ export default function UniqueItems() {
                     <div className='input-shell'>
                         <div>
                             <input onBlur={getBudget} placeholder={budget}></input>
-                            <p>Budget</p>
+                            <p>Budget (sc)</p>
                         </div>
-                        <Button variant="contained" onClick={refreshItems}><RefreshIcon /></Button>
+                        <Button variant="contained" onClick={refreshItems} theme={theme}><RefreshIcon /></Button>
                     </div>
-                    {items.map((item, i) => {
-                        return (
-                            <Accordion key={i}>
-                                <AccordionSummary
-                                    expandIcon={<ExpandMoreIcon />}
-                                    aria-controls="panel1a-content"
-                                    id="panel1a-header"
-                                >
-                                    <Typography component={'span'} variant={'body2'}><div>
-                                        <h2>{item.item}</h2>
-                                        <div>
-                                            {item.description}
-                                        </div>
-                                    </div></Typography>
-                                </AccordionSummary>
-                                <AccordionDetails>
-                                    <Typography>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                                        malesuada lacus ex, sit amet blandit leo lobortis eget.
-                                    </Typography>
-                                </AccordionDetails>
-                            </Accordion>
-                        )
-                    })}
+                    <div className='accordion-shell'>
+                        {items.map((item, i) => {
+                            return (
+                                <Accordion key={i}>
+                                    <AccordionSummary
+                                        expandIcon={<ExpandMoreIcon />}
+                                        aria-controls="panel1a-content"
+                                        id="panel1a-header"
+                                    >
+                                        <Typography component={'span'} variant={'body2'}><div>
+                                            <div className='item-title-shell'>
+                                                <h2>{item.item}</h2>
+                                                <p>{item.finalPrice} sc</p>
+                                            </div>
+                                            <div>
+                                                {item.description}
+                                            </div>
+                                        </div></Typography>
+                                    </AccordionSummary>
+                                    <AccordionDetails>
+                                        <Typography>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                                            malesuada lacus ex, sit amet blandit leo lobortis eget.
+                                        </Typography>
+                                    </AccordionDetails>
+                                </Accordion>
+                            )
+                        })}
+                    </div>
                 </div>
             )}
         </div>
