@@ -353,6 +353,9 @@ const helperObjects = {
         if (materials && materials.length > 0) {
             materials.forEach((material, i) => {
                 // subtableResults
+                if (materials.subjectResults) {
+                    console.log(materials)
+                }
                 if (i === 0 && material.label) {
                     itemDescription += ` with a ${material.label} of ${material.material}`
                 } else if (material.label) {
@@ -388,13 +391,16 @@ const helperObjects = {
         if (gems && gems.length > 0) {
             const plural = gems.length > 1
 
-
             if (plural) {
                 itemDescription += ` It has ${gems.length + 1} gems:`
-                gems.forEach(gem => {
-                    // add commas
-                    // add and
+                gems.forEach((gem, index) => {
+                    if (index === gems.length - 1 && gems.length > 1) {
+                        itemDescription += ' and'
+                    }
                     itemDescription += ` a ${gem.shape} ${gem.type} about ${gem.size} mm in size`
+                    if (index < gems.length - 1) {
+                        itemDescription += ','
+                    }
                 })
                 itemDescription += '.'
             } else {
@@ -403,24 +409,25 @@ const helperObjects = {
         }
 
         // subject
-        //          subject
-        //          secondary_subject
+        //          subject ('The subject of the work appears to be ... in nature')
+        //          secondary_subject (' as well as ')
         //                  AS SUBJECT
-        //          animal_subtype
-        //              submaterial
-        //                  detail
-        //          persons
-        //              detail
-        //          events
+        //          events ('It depicts ${subject} events from ${time_period} times')
         //              subject
         //              time_period
-        //          body_parts
+        //          persons ('Its main character(s) appear to be ... in nature (and) a subject of infamy.' < if that's applicable)
+        //              detail
+        //          body_parts ('There is a motif(s) of ${body_parts.submaterial.detail})
         //              submaterial
         //                  detail
-        //          colors
+        //          animal_subtype (if body_parts: 'as well as ${animal_subtype}', if not, use body_parts as a template)
+        //              submaterial
+        //                  detail
+        //          colors ('The color(s) ... feature heavily')
         //              detail
-        //          adjectives
+        //          adjectives ('You'd probably describe the subject as ')
         //              detail
+
         // engravings
         //      subject
         //          AS SUBJECT
@@ -431,17 +438,42 @@ const helperObjects = {
         //       adjectives
         //          detail
 
+        // stitchings
+        //      As Engravings
+
         if (adjectives && adjectives.length > 0) {
             itemDescription += ` You'd probably describe it as`
-            adjectives.forEach(({ detail }) => {
-                // add and
-                // add commas
+            adjectives.forEach(({ detail }, index) => {
+                if (index === adjectives.length - 1 && adjectives.length > 1) {
+                    itemDescription += ' and'
+                }
                 itemDescription += ` ${detail}`
+                if (index < adjectives.length - 1) {
+                    itemDescription += ','
+                }
             })
             itemDescription += "."
         }
 
-        // quirks
+        if (quirks && quirks.length > 0) {
+            const plural = quirks.length > 1
+
+            if (plural) {
+                itemDescription += ` It also appears to have some faults. Namely, it's`
+            } else {
+                itemDescription += ` It also appears to have a fault. It's`
+            }
+            quirks.forEach(({ detail }, index) => {
+                if (index === quirks.length - 1 && quirks.length > 1) {
+                    itemDescription += ' and'
+                }
+                itemDescription += ` ${detail}`
+                if (index < quirks.length - 1) {
+                    itemDescription += ','
+                }
+            })
+            itemDescription += "."
+        }
 
         if (wear) {
             if (wear >= 2) {
@@ -813,7 +845,7 @@ const helperObjects = {
                                         type: rawGem.type,
                                         size: rawGem.size
                                     }
-    
+
                                     rawItem[key].push(gem)
                                 }
                                 resolve(true);
