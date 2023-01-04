@@ -344,7 +344,7 @@ const helperObjects = {
 
         return object
     },
-    getStringDescription: function ({ number, item, materials, colors, adjectives, wear, finalPrice, gems, subject, quirks, itemcategory, engravings }) {
+    getStringDescription: function ({ number, item, materials, colors, adjectives, wear, finalPrice, gems, subject, quirks, itemcategory, engravings, stitchings }) {
         let itemDescription = ''
 
         if (number > 1) {
@@ -460,7 +460,6 @@ const helperObjects = {
 
             if (subject[0].persons && subject[0].persons.length > 0) {
                 itemDescription += ` Its main character appears to be`
-                console.log(subject[0].persons)
                 subject[0].persons.forEach(({ detail }, index) => {
                     if (index === subject[0].persons.length - 1 && subject[0].persons.length > 1) {
                         itemDescription += ' and'
@@ -654,7 +653,7 @@ const helperObjects = {
                     itemDescription += '.'
                 }
             }
-            
+
             if (engravings[0].colors && engravings[0].colors.length > 0) {
                 const colors = engravings[0].colors
                 const plural = colors.length > 1
@@ -690,6 +689,141 @@ const helperObjects = {
 
         // stitchings
         //      As Engravings
+
+
+        if (stitchings && stitchings.length > 0) {
+            const plural = stitchings.length > 1
+
+            itemDescription += ' The item also has hand stitching'
+
+            if (stitchings[0].subject) {
+                const subject = stitchings[0].subject
+                itemDescription += ` which are ${subject.subject} in nature`
+                if (subject.secondary_subject && subject.secondary_subject.length > 0) {
+                    itemDescription += ` as well as`
+                    subject.secondary_subject.forEach((innerSubject, index) => {
+                        if (index === subject.secondary_subject.length - 1 && subject.secondary_subject.length > 1) {
+                            itemDescription += ' and'
+                        }
+                        itemDescription += ` ${subject.shape}`
+                        if (index < subject.secondary_subject.length - 1) {
+                            itemDescription += ','
+                        }
+                    })
+                }
+                itemDescription += '.'
+
+                if (subject.events && subject.events.length > 0) {
+                    itemDescription += ` It depicts`
+                    subject.events.forEach((event, index) => {
+                        if (index === 0) {
+                            itemDescription += ` ${event.subject} events from ${event.time_period} times`
+                        } else if (index === 1) {
+                            itemDescription += `. It also draws parallels to ${event.subject} events from ${event.time_period} times`
+                        } else {
+                            if (index === subject.events.length - 1 && subject.events.length > 1) {
+                                itemDescription += ' and'
+                            }
+                            itemDescription += ` ${event.subject} events from ${event.time_period} times`
+                            if (index < event.events.length - 1) {
+                                itemDescription += ','
+                            }
+                        }
+                    })
+                    itemDescription += '.'
+                }
+
+                if (subject.persons && subject.persons.length > 0) {
+                    itemDescription += ` Its main character appears to be`
+                    subject.persons.forEach(({ detail }, index) => {
+                        if (index === subject.persons.length - 1 && subject.persons.length > 1) {
+                            itemDescription += ' and'
+                        }
+                        itemDescription += ` ${detail}`
+                        if (index < subject.persons.length - 1) {
+                            itemDescription += ','
+                        }
+                    })
+                    itemDescription += '.'
+                }
+
+                let thereAreBodyParts = false
+                if (subject.body_parts && subject.body_parts.length > 0) {
+                    thereAreBodyParts = true
+                    const plural = subject.body_parts.length > 1
+                    itemDescription += ` There ${plural ? 'are' : 'is a'} motif${plural ? 's' : ''} of`
+
+                    subject.body_parts.forEach(({ submaterial }, index) => {
+                        if (index === subject.body_parts.length - 1 && subject.body_parts.length > 1) {
+                            itemDescription += ' and'
+                        }
+                        itemDescription += ` ${submaterial.detail}`
+                        if (submaterial.detail.charAt(submaterial.detail.length - 1) !== 's') {
+                            itemDescription += 's'
+                        }
+                        if (index < subject.body_parts.length - 1) {
+                            itemDescription += ','
+                        }
+                    })
+
+                    if (!subject.animal_subtype || !subject.animal_subtype.length > 0) {
+                        itemDescription += '.'
+                    }
+                }
+
+                if (subject.animal_subtype && subject.animal_subtype.length > 0) {
+                    const plural = subject.animal_subtype.length > 1
+                    if (thereAreBodyParts) {
+                        itemDescription += ` as well as`
+                    } else {
+                        itemDescription += ` There ${plural ? 'are' : 'is a'} motif${plural ? 's' : ''} of`
+                    }
+
+                    subject.animal_subtype.forEach(({ submaterial }, index) => {
+                        if (index === subject.animal_subtype.length - 1 && subject.animal_subtype.length > 1) {
+                            itemDescription += ' and'
+                        }
+                        itemDescription += ` ${submaterial.detail}s`
+                        if (index < subject.animal_subtype.length - 1) {
+                            itemDescription += ','
+                        }
+                    })
+                    itemDescription += '.'
+                }
+            }
+
+            if (stitchings[0].colors && stitchings[0].colors.length > 0) {
+                const colors = stitchings[0].colors
+                const plural = colors.length > 1
+
+                itemDescription += ` The color${plural ? 's ' : ''}`
+                colors.forEach(({ detail }, index) => {
+                    if (index === colors.length - 1 && colors.length > 1) {
+                        itemDescription += ' and'
+                    }
+                    itemDescription += ` ${detail}`
+                    if (index < colors.length - 1) {
+                        itemDescription += ','
+                    }
+                })
+                itemDescription += "feature prominantly."
+            }
+
+            if (stitchings[0].adjectives && stitchings[0].adjectives.length > 0) {
+                const adjectives = stitchings[0].adjectives
+                itemDescription += ` You'd probably describe the work as`
+                adjectives.forEach(({ detail }, index) => {
+                    if (index === adjectives.length - 1 && adjectives.length > 1) {
+                        itemDescription += ' and'
+                    }
+                    itemDescription += ` ${detail}`
+                    if (index < adjectives.length - 1) {
+                        itemDescription += ','
+                    }
+                })
+                itemDescription += "."
+            }
+        }
 
         if (adjectives && adjectives.length > 0) {
             itemDescription += ` You'd probably describe the craftsmanship as`
