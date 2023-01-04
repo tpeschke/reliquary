@@ -11,6 +11,8 @@ app.use(cors())
 
 app.get('/api/getUniquieItem', uniqueItemCtrl.getUniqueItem)
 
+app.post('/api/getUniquieItems', uniqueItemCtrl.getUniqueItems)
+
 massive(connection).then(dbI => {
     app.set('db', dbI)
     app.listen(3434, _ => {
