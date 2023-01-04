@@ -31,7 +31,7 @@ controllerFunctions = {
     },
     getUniqueItems: (req, res) => {
         const db = req.app.get('db')
-        const { numberOfItems, budget } = req.query
+        let { numberOfItems, budget } = req.query
         const { budgets } = req.body
 
         let promiseArray = []

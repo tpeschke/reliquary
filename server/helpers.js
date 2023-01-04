@@ -116,12 +116,11 @@ const helperObjects = {
         })
     },
     getFromTable: async function (arrayToPushTo, result, db) {
-        let materialCategoryArray = ['Cloth', 'Exotic Cloth', 'Exotic Metal', 'Exotic Stone/Earthwork', 'Exotic Wood', 'Fur', 'Leather', 'Metal', 'other_table', 'Paper Product', 'Parchment', 'Stone/Earthwork', 'Vellum', 'Wax', 'Wood']
+        let materialCategoryArray = ['Cloth', 'Exotic Cloth', 'Exotic Metal', 'Exotic Stone/Earthwork', 'Exotic Wood', 'Fur', 'Leather', 'Metal', 'other_table', 'Paper Product', 'Parchment', 'Stone/Earthwork', 'Vellum', 'Wax', 'Wood', 'other_table']
 
         if (materialCategoryArray.includes(result.subtable)) {
-            return db.get.random.material_by_category(result.subtable).then(subtableResult => {
+            return db.get.random.material_by_category(result.subtable ? result.subtable : 'other_table').then(subtableResult => {
                 result.subtableResults = subtableResult;
-
                 if (subtableResult[0].subtable) {
                     result.subtableResults = []
                     return helperObjects.getFromTable(result.subtableResults, subtableResult[0], db).then(_ => {
@@ -133,6 +132,27 @@ const helperObjects = {
                     return true
                 }
             })
+        } else if (!result.subtable) {
+            if (materialCategoryArray.includes(result.material)) {
+                return db.get.random.material_by_category(result.material).then(subtableResult => {
+                    result.subtableResults = subtableResult;
+                    if (subtableResult[0].subtable) {
+                        result.subtableResults = []
+                        return helperObjects.getFromTable(result.subtableResults, subtableResult[0], db).then(_ => {
+                            arrayToPushTo.push(result)
+                            return true
+                        })
+                    } else {
+                        arrayToPushTo.push(result)
+                        return true
+                    }
+                })
+            } else {
+                return db.get.not_random.material(result.material, 'other_table').then(subtableResult => {
+                    result = subtableResult[0]
+                    arrayToPushTo.push(result)
+                })
+            }
         } else {
             return db.get.random.detail_by_category(result.subtable).then(subtableResult => {
                 result.subtableResults = subtableResult;
@@ -238,7 +258,7 @@ const helperObjects = {
                         delete material.multiplier
                     }
 
-                    if (material.label === 'None' || !material.label) {
+                    if (material.label === 'NONE' || !material.label) {
                         delete material.label
                     }
 
@@ -262,7 +282,7 @@ const helperObjects = {
                 })
             } else if (key === 'gems') {
                 object.gems = object.gems.map(gem => {
-
+                    console.log(gem)
                     let gemPrice = gem.type.price
                     let gemMultipier = GemSizeDictionary[gem.size.detail]
 
@@ -317,7 +337,136 @@ const helperObjects = {
         let detailModifier = (detailNumber * detailPercentage) + 1
         object.finalPrice = +(((price * object.aveMultipliers) * detailModifier) + totalGemPrice).toFixed(2)
 
+        object.description = helperObjects.getStringDescription(object)
+
         return object
+    },
+    getStringDescription: function ({ number, item, materials, colors, adjectives, wear, finalPrice, gems }) {
+        let itemDescription = ''
+
+        if (number > 1) {
+            itemDescription += `${number} ${item}s`
+        } else {
+            itemDescription += `A ${item}`
+        }
+
+        if (materials && materials.length > 0) {
+            materials.forEach((material, i) => {
+                // subtableResults
+                if (i === 0 && material.label) {
+                    itemDescription += ` with a ${material.label} of ${material.material}`
+                } else if (material.label) {
+                    itemDescription += ` and a ${material.label} of ${material.material}`
+                } else if (i === 0 && !material.label) {
+                    itemDescription += ` made of ${material.material}`
+                } else if (!material.label) {
+                    itemDescription += ` and ${material.material}`
+                } else {
+                    console.log("something went wrong: ", material)
+                }
+            })
+        }
+
+        itemDescription += "."
+
+        if (colors && colors.length > 0) {
+            const plural = colors.length > 1
+
+            itemDescription += ` It's primary color${plural ? 's are' : ' is'}`
+            colors.forEach(({ detail }, index) => {
+                if (index === colors.length - 1 && colors.length > 1) {
+                    itemDescription += ' and'
+                }
+                itemDescription += ` ${detail}`
+                if (index < colors.length - 1) {
+                    itemDescription += ','
+                }
+            })
+            itemDescription += "."
+        }
+
+        if (gems && gems.length > 0) {
+            const plural = gems.length > 1
+
+
+            if (plural) {
+                itemDescription += ` It has ${gems.length + 1} gems:`
+                gems.forEach(gem => {
+                    // add commas
+                    // add and
+                    itemDescription += ` a ${gem.shape} ${gem.type} about ${gem.size} mm in size`
+                })
+                itemDescription += '.'
+            } else {
+                itemDescription += ` It has a single gem: a ${gems[0].shape} ${gems[0].type} about ${gems[0].size} mm in size.`
+            }
+        }
+
+        // subject
+        //          subject
+        //          secondary_subject
+        //                  AS SUBJECT
+        //          animal_subtype
+        //              submaterial
+        //                  detail
+        //          persons
+        //              detail
+        //          events
+        //              subject
+        //              time_period
+        //          body_parts
+        //              submaterial
+        //                  detail
+        //          colors
+        //              detail
+        //          adjectives
+        //              detail
+        // engravings
+        //      subject
+        //          AS SUBJECT
+        //      type
+        //          detail
+        //      colors
+        //          detail
+        //       adjectives
+        //          detail
+
+        if (adjectives && adjectives.length > 0) {
+            itemDescription += ` You'd probably describe it as`
+            adjectives.forEach(({ detail }) => {
+                // add and
+                // add commas
+                itemDescription += ` ${detail}`
+            })
+            itemDescription += "."
+        }
+
+        // quirks
+
+        if (wear) {
+            if (wear >= 2) {
+                itemDescription += ` It has a little worn (${wear} Wear).`
+            } else if (wear >= 4) {
+                itemDescription += ` It's slightly worn (${wear} Wear).`
+            } else if (wear >= 6) {
+                itemDescription += ` It's pretty worn (${wear} Wear).`
+            } else if (wear >= 8) {
+                itemDescription += ` It's very worn (${wear} Wear).`
+            } else if (wear >= 10) {
+                itemDescription += ` It's about to break (${wear} Wear).`
+            } else {
+                itemDescription += ` It's broken (${wear} Wear).`
+            }
+        }
+
+        itemDescription += ` It's probably worth about ${finalPrice} sc`
+        if (wear) {
+            itemDescription += " after it's repaired."
+        } else {
+            itemDescription += "."
+        }
+
+        return itemDescription
     },
     cleanUpSubject: function (subject) {
         delete subject.randomweight
@@ -584,7 +733,6 @@ const helperObjects = {
         delete rawItem['?column?']
 
         promiseArray.push(db.get.not_random.item_materials(rawItem.id).then(materialResult => {
-            console.log(materialResult)
             if (materialResult[0].material) {
                 let materials = []
                 materialResult.forEach(material => {
@@ -659,11 +807,15 @@ const helperObjects = {
                             gemPromiseArray.push(helperObjects.getFromTableToObject(rawGem, 'shape', { subtable: GEM_SHAPE }, db))
 
                             Promise.all(gemPromiseArray).then(finalGem => {
-                                let gem = {
-                                    shape: rawGem.shape.subtableResults[0]
+                                if (rawGem.type) {
+                                    let gem = {
+                                        shape: rawGem.shape.subtableResults[0],
+                                        type: rawGem.type,
+                                        size: rawGem.size
+                                    }
+    
+                                    rawItem[key].push(gem)
                                 }
-
-                                rawItem[key].push(gem)
                                 resolve(true);
                             })
                         }))
@@ -759,12 +911,10 @@ const helperObjects = {
             let innerPromiseArray = []
             let populatedMaterials = []
             rawItem.materials.forEach(material => {
-                console.log('line 762: ', material.material, rawItem.price, budget)
                 if (material.subtable) {
                     innerPromiseArray.push(helperObjects.getFromTable(populatedMaterials, material, db))
                 } else {
                     innerPromiseArray.push(db.get.semi_random.material(material.material, rawItem.price, budget).then(innerMaterialResult => {
-                        console.log('line 764: ', innerMaterialResult)
                         if (innerMaterialResult[0]) {
                             innerMaterialResult[0].label = material.label
                             if (!innerMaterialResult[0].subtable) {
@@ -773,15 +923,17 @@ const helperObjects = {
                             }
                             return helperObjects.getFromTable(populatedMaterials, innerMaterialResult[0], db)
                         } else {
-                            console.log("line 771: ", material)
                             return db.get.random.item_by_category(material.material).then(itemByCategory => {
-                                console.log("line 773: ", itemByCategory)
-                                itemByCategory[0].label = material.label
-                                if (!itemByCategory[0].subtable) {
-                                    populatedMaterials.push(itemByCategory[0])
-                                    return true
+                                if (itemByCategory.length > 0) {
+                                    itemByCategory[0].label = material.label
+                                    if (!itemByCategory[0].subtable) {
+                                        populatedMaterials.push(itemByCategory[0])
+                                        return true
+                                    }
+                                    return helperObjects.getFromTable(populatedMaterials, itemByCategory[0], db)
+                                } else {
+                                    return helperObjects.getFromTable(populatedMaterials, material, db)
                                 }
-                                return helperObjects.getFromTable(populatedMaterials, itemByCategory[0], db)
                             })
                         }
                     }))
