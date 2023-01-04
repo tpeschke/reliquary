@@ -9,6 +9,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Button from '@mui/material/Button';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import Loading from './loading/Loading'
+import ItemDetails from './ItemDetails'
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
@@ -86,9 +87,8 @@ export default function UniqueItems() {
                                         </div></Typography>
                                     </AccordionSummary>
                                     <AccordionDetails>
-                                        <Typography>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                                            malesuada lacus ex, sit amet blandit leo lobortis eget.
+                                        <Typography component={'span'} variant={'body2'}>
+                                            <ItemDetails item={item} ></ItemDetails>
                                         </Typography>
                                     </AccordionDetails>
                                 </Accordion>

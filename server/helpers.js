@@ -240,8 +240,7 @@ const helperObjects = {
                 })
 
                 detailNumber += object[key].length
-            } else if (key === 'materials') {
-                console.log(object.materials)
+            } else if (key === 'materials' && object[key][0]) {
                 object.materials = object.materials.map(material => {
                     delete material.randomweight
                     delete material.id
@@ -360,11 +359,14 @@ const helperObjects = {
             itemDescription += ` ${itemcategory}`
         }
 
-        if (materials && materials.length > 0) {
+        if (materials && materials[0] && materials.length > 0) {
             materials.forEach((material, index) => {
                 let materialToShow = material.material
-                if (materials.subtableResults) {
-                    materialToShow = materials.subtableResults[0].material
+                if (material.subtableResults) {
+                    materialToShow = material.subtableResults[0].material
+                }
+                if (material.submaterial) {
+                    materialToShow = material.submaterial
                 }
                 if (index === 0 && material.label) {
                     itemDescription += ` with a ${material.label} of ${materialToShow}`
@@ -378,7 +380,7 @@ const helperObjects = {
                     console.log("something went wrong: ", material)
                 }
 
-                let materialCategoriesToInclude = ['Leather', 'Wood']
+                const materialCategoriesToInclude = ['Leather', 'Wood', 'Wax']
                 if (materialCategoriesToInclude.includes(material.materialcategory)) {
                     itemDescription += ` ${material.materialcategory}`
                 }
@@ -447,7 +449,7 @@ const helperObjects = {
                     } else if (index === 1) {
                         itemDescription += `. It also draws parallels to ${event.subject} events from ${event.time_period} times`
                     } else {
-                        if (index === subject[0].events.length - 1 && event.events.length > 1) {
+                        if (index === subject[0].events.length - 1 && subject[0].events.length > 1) {
                             itemDescription += ' and'
                         }
                         itemDescription += ` ${event.subject} events from ${event.time_period} times`
@@ -535,11 +537,14 @@ const helperObjects = {
 
             if (subject[0].adjectives && subject[0].adjectives.length > 0) {
                 itemDescription += ` You'd probably describe the work as`
-                subject[0].adjectives.forEach(({ detail }, index) => {
+                subject[0].adjectives.forEach(({ detail, submaterial }, index) => {
                     if (index === subject[0].adjectives.length - 1 && subject[0].adjectives.length > 1) {
                         itemDescription += ' and'
                     }
                     itemDescription += ` ${detail}`
+                    if (submaterial) {
+                        itemDescription += ` ${submaterial.detail}`
+                    }
                     if (index < subject[0].adjectives.length - 1) {
                         itemDescription += ','
                     }

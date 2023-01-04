@@ -2,7 +2,7 @@ body {
   background: grey;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4, p {
   margin: 0;
 }
 
@@ -11,7 +11,22 @@ h1 {
 }
 
 h2 {
-  color: grey
+  color: #CD7F32
+}
+
+h3 {
+  font-size: 15px;
+  color: grey;
+}
+
+h4 {
+  font-weight: 100;
+  color: grey;
+}
+
+ul {
+  margin: 0;
+  padding-left: 25px;
 }
 
 input {
@@ -83,4 +98,17 @@ input {
   justify-content: center;
   align-items: center;
   color: whitesmoke;
+}
+
+.item-detail-shell {
+  display: flex;
+  align-items: baseline;
+}
+
+.item-detail-shell p {
+  margin-left: 5px;
+}
+
+.subject-shell { 
+  margin-left: 15px;
 }
