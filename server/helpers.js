@@ -545,7 +545,7 @@ const helperObjects = {
             delete rawItem.engravings
         }
 
-        Promise.all(promiseArray).then(_ => {
+        return Promise.all(promiseArray).then(_ => {
             let innerPromiseArray = []
             let populatedMaterials = []
             rawItem.materials.forEach(material => {
@@ -570,10 +570,10 @@ const helperObjects = {
                 }))
             })
 
-            Promise.all(innerPromiseArray).then(_ => {
+            return Promise.all(innerPromiseArray).then(_ => {
                 rawItem.materials = populatedMaterials
 
-                res.send(helperObjects.reformatObject(rawItem))
+                return helperObjects.reformatObject(rawItem)
             })
 
         })
@@ -755,7 +755,7 @@ const helperObjects = {
             delete rawItem.engravings
         }
 
-        Promise.all(promiseArray).then(_ => {
+        return Promise.all(promiseArray).then(_ => {
             let innerPromiseArray = []
             let populatedMaterials = []
             rawItem.materials.forEach(material => {
@@ -788,7 +788,7 @@ const helperObjects = {
                 }
             })
 
-            Promise.all(innerPromiseArray).then(_ => {
+            return Promise.all(innerPromiseArray).then(_ => {
                 rawItem.materials = populatedMaterials
 
                 let finalObject = helperObjects.reformatObject(rawItem)
@@ -797,7 +797,7 @@ const helperObjects = {
                     finalObject.wear = Math.ceil((finalObject.finalPrice - budget) / (finalObject.finalPrice * .1))
                 }
 
-                res.send(finalObject)
+                return finalObject
             })
 
         })

@@ -23,7 +23,9 @@ controllerFunctions = {
 
         db.get.random.item().then(itemResult => {
         // db.get.random.item_by_id(2).then(itemResult => {
-            getRestOfItem(itemResult[0], db, req, res)
+            getRestOfItem(itemResult[0], db, req, res).then(item => {
+                res.send(item)
+            })
         })
     },
     getItemOnBudget: (budget, req, res) => {
@@ -31,7 +33,9 @@ controllerFunctions = {
 
         db.get.semi_random.item(budget * .5, budget).then(itemResult => {
         // db.get.random.item_by_id(2).then(itemResult => {
-            getRestOfItemOnBudget(budget, itemResult[0], db, req, res)
+            getRestOfItemOnBudget(budget, itemResult[0], db, req, res).then(item => {
+                res.send(item)
+            })
         })
     }
 }
