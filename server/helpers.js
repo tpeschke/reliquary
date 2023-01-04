@@ -548,10 +548,10 @@ const helperObjects = {
             }
         }
 
-
         // engravings
         //      subject
         //          AS SUBJECT
+        //              remove color & adjectives
         //      type
         //          detail
         //      colors
