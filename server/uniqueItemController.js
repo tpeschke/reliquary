@@ -41,8 +41,8 @@ controllerFunctions = {
                 promiseArray.push(db.get.semi_random.item(budget * .5, budget).then(itemResult => getRestOfItemOnBudget(budget, itemResult[0], db, req, res)))
             }
         } else {
-            if (numberOfItems > 10) {
-                numberOfItems = 10
+            if (numberOfItems > 25) {
+                numberOfItems = 25
             }
 
             for (let i = 0; i < numberOfItems; i++) {
