@@ -219,7 +219,7 @@ const helperObjects = {
             }
         );
     },
-    reformatObject: function (object) {
+    reformatObject: function (object, budget = false) {
         let price = object.price ? object.price : 0
             , multipliers = []
             , detailNumber = 0
@@ -282,7 +282,6 @@ const helperObjects = {
                 })
             } else if (key === 'gems') {
                 object.gems = object.gems.map(gem => {
-                    console.log(gem)
                     let gemPrice = gem.type.price
                     let gemMultipier = GemSizeDictionary[gem.size.detail]
 
@@ -337,11 +336,15 @@ const helperObjects = {
         let detailModifier = (detailNumber * detailPercentage) + 1
         object.finalPrice = +(((price * object.aveMultipliers) * detailModifier) + totalGemPrice).toFixed(2)
 
+        if (budget && object.finalPrice > budget) {
+            object.wear = Math.ceil((object.finalPrice - budget) / (object.finalPrice * .1))
+        }
+
         object.description = helperObjects.getStringDescription(object)
 
         return object
     },
-    getStringDescription: function ({ number, item, materials, colors, adjectives, wear, finalPrice, gems }) {
+    getStringDescription: function ({ number, item, materials, colors, adjectives, wear, finalPrice, gems, subject, quirks, itemcategory, body_parts }) {
         let itemDescription = ''
 
         if (number > 1) {
@@ -350,22 +353,33 @@ const helperObjects = {
             itemDescription += `A ${item}`
         }
 
+        if (itemcategory === 'Shields') {
+            itemDescription += ` ${itemcategory.slice(0, -1)}`
+        } else if (itemcategory === 'Armor' || itemcategory === 'Cloth') {
+            itemDescription += ` ${itemcategory}`
+        }
+
         if (materials && materials.length > 0) {
-            materials.forEach((material, i) => {
-                // subtableResults
-                if (materials.subjectResults) {
-                    console.log(materials)
+            materials.forEach((material, index) => {
+                let materialToShow = material.material
+                if (materials.subtableResults) {
+                    materialToShow = materials.subtableResults[0].material
                 }
-                if (i === 0 && material.label) {
-                    itemDescription += ` with a ${material.label} of ${material.material}`
+                if (index === 0 && material.label) {
+                    itemDescription += ` with a ${material.label} of ${materialToShow}`
                 } else if (material.label) {
-                    itemDescription += ` and a ${material.label} of ${material.material}`
-                } else if (i === 0 && !material.label) {
-                    itemDescription += ` made of ${material.material}`
+                    itemDescription += ` and a ${material.label} of ${materialToShow}`
+                } else if (index === 0 && !material.label) {
+                    itemDescription += ` made of ${materialToShow}`
                 } else if (!material.label) {
-                    itemDescription += ` and ${material.material}`
+                    itemDescription += ` and ${materialToShow}`
                 } else {
                     console.log("something went wrong: ", material)
+                }
+
+                let materialCategoriesToInclude = ['Leather', 'Wood']
+                if (materialCategoriesToInclude.includes(material.materialcategory)) {
+                    itemDescription += ` ${material.materialcategory}`
                 }
             })
         }
@@ -392,7 +406,7 @@ const helperObjects = {
             const plural = gems.length > 1
 
             if (plural) {
-                itemDescription += ` It has ${gems.length + 1} gems:`
+                itemDescription += ` It has ${gems.length - 1} gems:`
                 gems.forEach((gem, index) => {
                     if (index === gems.length - 1 && gems.length > 1) {
                         itemDescription += ' and'
@@ -408,25 +422,132 @@ const helperObjects = {
             }
         }
 
-        // subject
-        //          subject ('The subject of the work appears to be ... in nature')
-        //          secondary_subject (' as well as ')
-        //                  AS SUBJECT
-        //          events ('It depicts ${subject} events from ${time_period} times')
-        //              subject
-        //              time_period
-        //          persons ('Its main character(s) appear to be ... in nature (and) a subject of infamy.' < if that's applicable)
-        //              detail
-        //          body_parts ('There is a motif(s) of ${body_parts.submaterial.detail})
-        //              submaterial
-        //                  detail
-        //          animal_subtype (if body_parts: 'as well as ${animal_subtype}', if not, use body_parts as a template)
-        //              submaterial
-        //                  detail
-        //          colors ('The color(s) ... feature heavily')
-        //              detail
-        //          adjectives ('You'd probably describe the subject as ')
-        //              detail
+        if (subject && subject.length > 0) {
+            itemDescription += ` The subject of the work appears to be ${subject[0].subject} in nature`
+            if (subject[0].secondary_subject && subject[0].secondary_subject[0].length > 0) {
+                itemDescription += ` as well as`
+                subject[0].secondary_subject[0].forEach((subject, index) => {
+                    if (index === subject[0].secondary_subject[0].length - 1 && subject[0].secondary_subject[0].length > 1) {
+                        itemDescription += ' and'
+                    }
+                    itemDescription += ` ${subject[0].shape}`
+                    if (index < subject[0].secondary_subject[0].length - 1) {
+                        itemDescription += ','
+                    }
+                })
+            }
+            itemDescription += '.'
+
+            if (subject[0].events && subject[0].events.length > 0) {
+                itemDescription += ` It depicts`
+                subject[0].events.forEach((event, index) => {
+                    if (index === 0) {
+                        itemDescription += ` ${event.subject} events from ${event.time_period} times`
+                    } else if (index === 1) {
+                        itemDescription += `. It also draws parallels to ${event.subject} events from ${event.time_period} times`
+                    } else {
+                        if (index === event.events.length - 1 && event.events.length > 1) {
+                            itemDescription += ' and'
+                        }
+                        itemDescription += ` ${events.subject} events from ${event.time_period} times`
+                        if (index < event.events.length - 1) {
+                            itemDescription += ','
+                        }
+                    }
+                })
+                itemDescription += '.'
+            }
+
+            if (subject[0].persons && subject[0].persons.length > 0) {
+                itemDescription += ` Its main character appears to be`
+                console.log(subject[0].persons)
+                subject[0].persons.forEach(({ detail }, index) => {
+                    if (index === subject[0].persons.length - 1 && subject[0].persons.length > 1) {
+                        itemDescription += ' and'
+                    }
+                    itemDescription += ` ${detail}`
+                    if (index < subject[0].persons.length - 1) {
+                        itemDescription += ','
+                    }
+                })
+                itemDescription += '.'
+            }
+
+            let thereAreBodyParts = false
+            if (subject[0].body_parts && subject[0].body_parts.length > 0) {
+                thereAreBodyParts = true
+                const plural = subject[0].body_parts.length > 1
+                itemDescription += ` There ${plural ? 'are' : 'is a'} motif${plural ? 's' : ''} of`
+
+                subject[0].body_parts.forEach(({ submaterial }, index) => {
+                    if (index === subject[0].body_parts.length - 1 && subject[0].body_parts.length > 1) {
+                        itemDescription += ' and'
+                    }
+                    itemDescription += ` ${submaterial.detail}`
+                    if (submaterial.detail.charAt(submaterial.detail.length - 1) !== 's') {
+                        itemDescription += 's'
+                    }
+                    if (index < subject[0].body_parts.length - 1) {
+                        itemDescription += ','
+                    }
+                })
+
+                if (!subject[0].animal_subtype || !subject[0].animal_subtype.length > 0) {
+                    itemDescription += '.'
+                }
+            }
+
+            if (subject[0].animal_subtype && subject[0].animal_subtype.length > 0) {
+                const plural = subject[0].animal_subtype.length > 1
+                if (thereAreBodyParts) {
+                    itemDescription += ` as well as`
+                } else {
+                    itemDescription += ` There ${plural ? 'are' : 'is a'} motif${plural ? 's' : ''} of`
+                }
+
+                subject[0].animal_subtype.forEach(({ submaterial }, index) => {
+                    if (index === subject[0].animal_subtype.length - 1 && subject[0].animal_subtype.length > 1) {
+                        itemDescription += ' and'
+                    }
+                    itemDescription += ` ${submaterial.detail}s`
+                    if (index < subject[0].animal_subtype.length - 1) {
+                        itemDescription += ','
+                    }
+                })
+                itemDescription += '.'
+            }
+
+            if (subject[0].colors && subject[0].colors.length > 0) {
+                const plural = subject[0].colors.length > 1
+
+                itemDescription += ` The color${plural ? 's ' : ''}`
+                subject[0].colors.forEach(({ detail }, index) => {
+                    if (index === subject[0].colors.length - 1 && subject[0].colors.length > 1) {
+                        itemDescription += ' and'
+                    }
+                    itemDescription += ` ${detail}`
+                    if (index < subject[0].colors.length - 1) {
+                        itemDescription += ','
+                    }
+                })
+                itemDescription += "feature prominantly."
+            }
+
+            if (subject[0].adjectives && subject[0].adjectives.length > 0) {
+                itemDescription += ` You'd probably describe the work as`
+                subject[0].adjectives.forEach(({ detail }, index) => {
+                    if (index === subject[0].adjectives.length - 1 && subject[0].adjectives.length > 1) {
+                        itemDescription += ' and'
+                    }
+                    itemDescription += ` ${detail}`
+                    if (index < subject[0].adjectives.length - 1) {
+                        itemDescription += ','
+                    }
+                })
+                itemDescription += "."
+            }
+        }
+
 
         // engravings
         //      subject
@@ -442,7 +563,7 @@ const helperObjects = {
         //      As Engravings
 
         if (adjectives && adjectives.length > 0) {
-            itemDescription += ` You'd probably describe it as`
+            itemDescription += ` You'd probably describe the craftsmanship as`
             adjectives.forEach(({ detail }, index) => {
                 if (index === adjectives.length - 1 && adjectives.length > 1) {
                     itemDescription += ' and'
@@ -461,7 +582,7 @@ const helperObjects = {
             if (plural) {
                 itemDescription += ` It also appears to have some faults. Namely, it's`
             } else {
-                itemDescription += ` It also appears to have a fault. It's`
+                itemDescription += ` It also appears to have a fault; it's`
             }
             quirks.forEach(({ detail }, index) => {
                 if (index === quirks.length - 1 && quirks.length > 1) {
@@ -476,26 +597,25 @@ const helperObjects = {
         }
 
         if (wear) {
-            if (wear >= 2) {
+            if (wear <= 2) {
                 itemDescription += ` It has a little worn (${wear} Wear).`
-            } else if (wear >= 4) {
+            } else if (wear <= 4) {
                 itemDescription += ` It's slightly worn (${wear} Wear).`
-            } else if (wear >= 6) {
+            } else if (wear <= 6) {
                 itemDescription += ` It's pretty worn (${wear} Wear).`
-            } else if (wear >= 8) {
+            } else if (wear <= 8) {
                 itemDescription += ` It's very worn (${wear} Wear).`
-            } else if (wear >= 10) {
+            } else if (wear <= 10) {
                 itemDescription += ` It's about to break (${wear} Wear).`
             } else {
                 itemDescription += ` It's broken (${wear} Wear).`
             }
         }
 
-        itemDescription += ` It's probably worth about ${finalPrice} sc`
         if (wear) {
-            itemDescription += " after it's repaired."
+            itemDescription += ` It would probably worth about ${finalPrice} sc after it's repaired.`
         } else {
-            itemDescription += "."
+            itemDescription += ` It's probably worth about ${finalPrice} sc.`
         }
 
         return itemDescription
@@ -856,7 +976,7 @@ const helperObjects = {
                 } else {
                     delete rawItem[key]
                 }
-            } else if (key === 'subject') {
+            } else if (rawItem[key] && key === 'subject') {
                 // } else if (rawItem[key] && key === 'subject') {
                 rawItem[key] = []
                 helperObjects.getSubject(rawItem[key], db, false)
@@ -975,11 +1095,7 @@ const helperObjects = {
             return Promise.all(innerPromiseArray).then(_ => {
                 rawItem.materials = populatedMaterials
 
-                let finalObject = helperObjects.reformatObject(rawItem)
-
-                if (finalObject.finalPrice > budget) {
-                    finalObject.wear = Math.ceil((finalObject.finalPrice - budget) / (finalObject.finalPrice * .1))
-                }
+                let finalObject = helperObjects.reformatObject(rawItem, budget)
 
                 return finalObject
             })
