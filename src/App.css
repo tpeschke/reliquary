@@ -2,7 +2,7 @@ body {
   background: grey;
 }
 
-h1, h2 {
+h1, h2, h3 {
   margin: 0;
 }
 
@@ -11,7 +11,7 @@ h1 {
 }
 
 h2 {
-  color: #CD7F32
+  color: grey
 }
 
 input {
@@ -29,11 +29,18 @@ input {
   align-items: center;
   background: #CD7F32;
   padding: 0 24px;
-  border-bottom: 1px solid whitesmoke;
+  border-width: 2px;
+  border-style: none none solid none;
+  border-color: lightgrey;
+}
+
+.title-shell {
+  display: flex;
+  align-items: center;
 }
 
 .input-shell {
-  padding: 15px 0;
+  padding: 0 0 15px;
   display: flex;
   justify-content: space-between;
 }
@@ -62,4 +69,18 @@ input {
 .item-title-shell p {
   color: gray;
   margin-left: 5px;
+}
+
+.construction-title {
+  display: flex;
+  align-items: center;
+}
+
+.construction-shell {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: whitesmoke;
 }

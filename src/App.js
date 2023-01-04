@@ -7,6 +7,8 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import UniqueItems from './components/UniqueItems'
 import { styled } from '@mui/material/styles';
+import ConstructionIcon from '@mui/icons-material/Construction';
+import WhiteFire from './assets/WhiteFire.png'
 
 const StyledTabs = styled(Tabs)({
   '& .MuiTabs-indicator': {
@@ -73,7 +75,10 @@ function App() {
   return (
     <div className="App">
       <div className="tab-menu">
-        <h1>Bonfire Reliquary</h1>
+        <div className='title-shell'>
+          <img src={WhiteFire} alt="Bonfire Logo" width="50" height="50" />
+          <h1>Bonfire Reliquary</h1>
+        </div>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <StyledTabs value={value} onChange={handleChange} aria-label="basic tabs example" >
             <StyledTab label="Unique Items" {...a11yProps(0)} />
@@ -86,10 +91,24 @@ function App() {
         <UniqueItems />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Relics (under construction)
+        <div className='construction-shell'>
+          <div className='construction-title'>
+            <ConstructionIcon />
+            <h3>Relics</h3>
+            <ConstructionIcon />
+          </div>
+          (under construction)
+        </div>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Enchanted Items (under construction)
+      <div className='construction-shell'>
+          <div className='construction-title'>
+            <ConstructionIcon />
+            <h3>Enchanted Items</h3>
+            <ConstructionIcon />
+          </div>
+          (under construction)
+        </div>
       </TabPanel>
     </div>
   );

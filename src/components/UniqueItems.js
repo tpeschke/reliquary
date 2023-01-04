@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Button from '@mui/material/Button';
 import RefreshIcon from '@mui/icons-material/Refresh';
+import Loading from './loading/Loading'
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
@@ -55,7 +56,7 @@ export default function UniqueItems() {
 
     return (
         <div>
-            {loading && <div>Loading</div>}
+            {loading && <Loading />}
             {!loading && (
                 <div>
                     <div className='input-shell'>
