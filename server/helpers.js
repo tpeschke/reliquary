@@ -1374,6 +1374,15 @@ const helperObjects = {
             })
 
         })
+    },
+    getFormat: function (item, format) {
+        if (format.toUpperCase() === 'JSON') {
+            delete item.description
+            return item
+        } else if (format.toUpperCase() === 'STRING') {
+            return item.description
+        } else 
+        return item
     }
 }
 
