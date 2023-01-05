@@ -11,7 +11,7 @@ body {
   background: grey;
 }
 
-h1, h2, h3, h4, p {
+h1, h2, h3, h4, h5, p {
   margin: 0;
 }
 
@@ -36,6 +36,13 @@ h4 {
   font-weight: 100;
   color: grey;
   font-family: 'Ancient';
+  font-size: 17px;
+}
+
+h5 {
+  font-weight: 100;
+  font-family: 'Ancient';
+  font-size: 16px;
 }
 
 ul {
@@ -125,11 +132,15 @@ input {
   flex-wrap: wrap;
   flex-direction: column;
   height: 150px;
+  overflow: auto;
+  border-top: 1px solid lightgrey;
+  padding-top: 15px;
 }
 
 .item-detail {
   display: flex;
   align-items: baseline;
+  padding: 0 5px;
 }
 
 .item-detail p {

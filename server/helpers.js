@@ -472,7 +472,7 @@ const helperObjects = {
                         itemDescription += ','
                     }
                 })
-                itemDescription += '.'
+                itemDescription += ' in nature.'
             }
 
             let thereAreBodyParts = false
@@ -612,7 +612,7 @@ const helperObjects = {
                             itemDescription += ','
                         }
                     })
-                    itemDescription += '.'
+                    itemDescription += ' in nature.'
                 }
 
                 let thereAreBodyParts = false
@@ -693,13 +693,7 @@ const helperObjects = {
             }
         }
 
-        // stitchings
-        //      As Engravings
-
-
         if (stitchings && stitchings.length > 0) {
-            const plural = stitchings.length > 1
-
             itemDescription += ' The item also has hand stitching'
 
             if (stitchings[0].subject) {
@@ -750,7 +744,7 @@ const helperObjects = {
                             itemDescription += ','
                         }
                     })
-                    itemDescription += '.'
+                    itemDescription += ' in nature.'
                 }
 
                 let thereAreBodyParts = false
@@ -1376,13 +1370,14 @@ const helperObjects = {
         })
     },
     getFormat: function (item, format) {
-        if (format.toUpperCase() === 'JSON') {
+        if (format && format.toUpperCase() === 'JSON') {
             delete item.description
             return item
-        } else if (format.toUpperCase() === 'STRING') {
+        } else if (format && format.toUpperCase() === 'STRING') {
             return item.description
-        } else 
-        return item
+        } else {
+            return item
+        }
     }
 }
 
