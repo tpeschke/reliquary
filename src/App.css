@@ -7,6 +7,21 @@
   src: url(./assets/jancient.ttf) format('truetype');
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: grey;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #CD7F32;
+}
+
 body {
   background: grey;
 }
@@ -140,7 +155,6 @@ input {
 .item-detail {
   display: flex;
   align-items: baseline;
-  padding: 0 5px;
 }
 
 .item-detail p {

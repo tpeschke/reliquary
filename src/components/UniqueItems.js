@@ -81,7 +81,7 @@ export default function UniqueItems() {
                                         <Typography component={'span'} variant={'body2'}><div>
                                             <div className='item-title-shell'>
                                                 <h2>{item.item}</h2>
-                                                <p>{item.finalPrice} sc</p>
+                                                <p>{item.finalPrice} sc {item.wear ? ` with ${item.wear} Wear` : ''}</p>
                                             </div>
                                             <div>
                                                 {item.description}

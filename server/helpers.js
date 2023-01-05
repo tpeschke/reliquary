@@ -347,10 +347,16 @@ const helperObjects = {
     getStringDescription: function ({ number, item, materials, colors, adjectives, wear, finalPrice, gems, subject, quirks, itemcategory, engravings, stitchings }) {
         let itemDescription = ''
 
+        let itemName = item
+
+        if (itemName.includes(',')) {
+            let itemArray = itemName.split(',')
+            itemName = [itemArray[1], itemArray[0]].join(' ')
+        }
         if (number > 1) {
-            itemDescription += `${number} ${item}s`
+            itemDescription += `${number} ${itemName}s`
         } else {
-            itemDescription += `A ${item}`
+            itemDescription += `A ${itemName}`
         }
 
         if (itemcategory === 'Shields') {
@@ -861,17 +867,17 @@ const helperObjects = {
 
         if (wear) {
             if (wear <= 2) {
-                itemDescription += ` It has a little worn (${wear} Wear).`
+                itemDescription += ` It has a little worn.`
             } else if (wear <= 4) {
-                itemDescription += ` It's slightly worn (${wear} Wear).`
+                itemDescription += ` It's slightly worn.`
             } else if (wear <= 6) {
-                itemDescription += ` It's pretty worn (${wear} Wear).`
+                itemDescription += ` It's pretty worn.`
             } else if (wear <= 8) {
-                itemDescription += ` It's very worn (${wear} Wear).`
+                itemDescription += ` It's very worn.`
             } else if (wear <= 10) {
-                itemDescription += ` It's about to break (${wear} Wear).`
+                itemDescription += ` It's about to break.`
             } else {
-                itemDescription += ` It's broken (${wear} Wear).`
+                itemDescription += ` It's broken.`
             }
         }
 

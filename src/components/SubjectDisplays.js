@@ -141,7 +141,7 @@ export function mapSecondaryObject(subject) {
     }
     return (
         <div>
-            <h4>Secondary Subject</h4>
+            <h4>Subject</h4>
             <div className='subject-shell'>
                 {subject.subject && <div className='item-detail'><h5>Subject</h5> <p>{subject.subject}</p></div>}
                 {subject.persons ? (<>
