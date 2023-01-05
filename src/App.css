@@ -24,6 +24,8 @@
 
 body {
   background: grey;
+  background-image: url(./assets/background.png);
+  background-repeat: repeat;
 }
 
 h1, h2, h3, h4, h5, p {
@@ -83,6 +85,8 @@ input {
   border-width: 2px;
   border-style: none none solid none;
   border-color: lightgrey;
+  background-image: url(./assets/background.png);
+  background-repeat: repeat;
 }
 
 .title-shell {
