@@ -867,17 +867,17 @@ const helperObjects = {
 
         if (wear) {
             if (wear <= 2) {
-                itemDescription += ` It has a little worn.`
+                itemDescription += ` It has a little worn (${wear} Wear).`
             } else if (wear <= 4) {
-                itemDescription += ` It's slightly worn.`
+                itemDescription += ` It's slightly worn (${wear} Wear).`
             } else if (wear <= 6) {
-                itemDescription += ` It's pretty worn.`
+                itemDescription += ` It's pretty worn (${wear} Wear).`
             } else if (wear <= 8) {
-                itemDescription += ` It's very worn.`
+                itemDescription += ` It's very worn (${wear} Wear).`
             } else if (wear <= 10) {
-                itemDescription += ` It's about to break.`
+                itemDescription += ` It's about to break (${wear} Wear).`
             } else {
-                itemDescription += ` It's broken.`
+                itemDescription += ` It's broken (${wear} Wear).`
             }
         }
 
