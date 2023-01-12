@@ -235,8 +235,11 @@ const helperObjects = {
                 delete object[key]
             } else if (detailKeys.includes(key)) {
                 object[key] = object[key].map(entry => {
-                    let { detail, category } = entry.subtableResults[0]
-                    return { detail, category }
+                    let { detail } = entry.subtableResults[0]
+                    if (detail === 'Related to') {
+                        detail = detail + " " + entry.subtableResults[0].subtableResults[0].detail + "s"
+                    }
+                    return { detail }
                 })
 
                 detailNumber += object[key].length

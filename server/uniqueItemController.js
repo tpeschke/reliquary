@@ -26,7 +26,7 @@ controllerFunctions = {
         const db = req.app.get('db')
         let { format } = req.query
 
-        db.get.semi_random.item(budget * .5, budget).then(itemResult => {
+        db.get.semi_random.item(budget).then(itemResult => {
             getRestOfItemOnBudget(budget, itemResult[0], db, req, res).then(item => {
                 res.send(getFormat(item, format))
             })
@@ -41,7 +41,7 @@ controllerFunctions = {
         if (budgets && budgets.length > 0) {
             for (let i = 0; i < budgets.length; i++) {
                 const budget = budgets[i]
-                promiseArray.push(db.get.semi_random.item(budget * .5, budget).then(itemResult => getRestOfItemOnBudget(budget, itemResult[0], db, req, res).then( result => getFormat(result, format))))
+                promiseArray.push(db.get.semi_random.item(budget).then(itemResult => getRestOfItemOnBudget(budget, itemResult[0], db, req, res).then( result => getFormat(result, format))))
             }
         } else {
             if (numberOfItems > 25) {
@@ -50,7 +50,7 @@ controllerFunctions = {
 
             for (let i = 0; i < numberOfItems; i++) {
                 if (budget) {
-                    promiseArray.push(db.get.semi_random.item(budget * .5, budget).then(itemResult => getRestOfItemOnBudget(budget, itemResult[0], db, req, res).then( result => getFormat(result, format))))
+                    promiseArray.push(db.get.semi_random.item(budget).then(itemResult => getRestOfItemOnBudget(budget, itemResult[0], db, req, res).then( result => getFormat(result, format))))
                 } else {
                     promiseArray.push(db.get.random.item().then(itemResult => getRestOfItem(itemResult[0], db, req, res).then( result => getFormat(result, format))))
                 }
