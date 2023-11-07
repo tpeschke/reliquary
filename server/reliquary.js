@@ -4,6 +4,7 @@ const { connection } = require('./serverConfig')
     , cors = require('cors')
     , massive = require('massive')
 const uniqueItemCtrl = require('./uniqueItemController.js')
+    , potionCtrl = require('./potionController.js')
 
 const app = new express()
 app.use(bodyParser.json())
@@ -12,6 +13,8 @@ app.use(cors())
 app.get('/api/getUniquieItem', uniqueItemCtrl.getUniqueItem)
 
 app.post('/api/getUniquieItems', uniqueItemCtrl.getUniqueItems)
+app.post('/api/getRandomPotion', potionCtrl.getRandomPotion)
+app.post('/api/getRandomPotions', potionCtrl.getRandomPotions)
 
 const root = require('path').join(__dirname, '../build')
 app.use(express.static(root));

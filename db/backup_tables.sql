@@ -57,3 +57,16 @@ create table rsubject (
 	adjectives int,
 	body_parts int
 )
+
+create table rpotion (
+	id serial primary key,
+	weight int,
+	name text,
+	effect text
+)
+
+create table rxingpotion (
+	id serial primary key,
+	variant text,
+	effect text
+)
