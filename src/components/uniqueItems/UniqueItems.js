@@ -96,7 +96,7 @@ const categoryIconDictionary = {
     'Weapons_Swords': swords,
     'Weapons_Thrown': thrown,
     'Weapons_Trauma': trauma,
-    'Works of : Art': art
+    'Works of Art': art
 }
 
 export default function UniqueItems() {
