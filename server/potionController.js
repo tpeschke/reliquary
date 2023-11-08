@@ -73,15 +73,23 @@ modifyPotion = (potion) => {
     }
 
     const rarityPriceDictionary = {
-        'Common': 100,
-        'Uncommon': 200,
-        'Rare': 400
+        'Common': 50,
+        'Uncommon': 100,
+        'Rare': 150
     }
 
     const { name, effect, rarity } = potion
-    const price = rarityPriceDictionary[rarity]
+    const swigs = Math.floor(Math.random() * 3) + 1
+    const price = rarityPriceDictionary[rarity] * swigs
 
-    return { name: toTitleCase(name), effect, rarity, price: isSalve ? price * 1.5 : price }
+    let typeTooltip = "Potions are drunk."
+    let generalTooltip = "Potions with 'swigs'. Each swig lasts ~ 3 hours and effects stacks. \nSo, gulping down 3 swigs of a potion gives 3 hours where you get triple the benefits, 3 hours where you get double the benefits, and 3 hours where you get the baseline for a total of 9 hours"
+    if (isSalve) {
+        typeTooltip = "Salves can be applied to a person's skin to gain the effect. They can also be throw like molotov cocktails but that only applies half the applications left (rounded up)."
+        generalTooltip = "Salves with 'applications'. Each application lasts ~ 3 hours and effects stacks. \nSo, applying down 3 application of a salve gives 3 hours where you get triple the benefits, 3 hours where you get double the benefits, and 3 hours where you get the baseline for a total of 9 hours"
+    }
+
+    return { name: toTitleCase(name), effect, rarity, price: isSalve ? price * 1.5 : price, swigs, isSalve, typeTooltip, generalTooltip }
 }
 
 rarityChance = () => {

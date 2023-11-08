@@ -5,7 +5,8 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import UniqueItems from './components/UniqueItems'
+import UniqueItems from './components/uniqueItems/UniqueItems'
+import Potions from './components/potions/Potions'
 import { styled } from '@mui/material/styles';
 import ConstructionIcon from '@mui/icons-material/Construction';
 import WhiteFire from './assets/WhiteFire.png'
@@ -86,8 +87,10 @@ function App() {
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <StyledTabs value={value} onChange={handleChange} aria-label="basic tabs example" >
             <StyledTab label="Unique Items" {...a11yProps(0)} />
-            <StyledTab label="Relics" {...a11yProps(1)} />
-            <StyledTab label="Enchanted Items" {...a11yProps(2)} />
+            <StyledTab label="Potions/Salves" {...a11yProps(1)} />
+            <StyledTab label="Talismans" {...a11yProps(2)} />
+            <StyledTab label="Relics" {...a11yProps(3)} />
+            <StyledTab label="Enchanted Items" {...a11yProps(4)} />
           </StyledTabs>
         </Box>
       </div>
@@ -95,6 +98,19 @@ function App() {
         <UniqueItems />
       </TabPanel>
       <TabPanel value={value} index={1}>
+        <Potions />
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        <div className='construction-shell'>
+          <div className='construction-title'>
+            <ConstructionIcon />
+            <h3>Talismans</h3>
+            <ConstructionIcon />
+          </div>
+          (under construction)
+        </div>
+      </TabPanel>
+      <TabPanel value={value} index={3}>
         <div className='construction-shell'>
           <div className='construction-title'>
             <ConstructionIcon />
@@ -104,7 +120,7 @@ function App() {
           (under construction)
         </div>
       </TabPanel>
-      <TabPanel value={value} index={2}>
+      <TabPanel value={value} index={4}>
       <div className='construction-shell'>
           <div className='construction-title'>
             <ConstructionIcon />

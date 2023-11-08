@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'Baldur';
-  src: local('Baldur'), url(./assets/Baldur.ttf) format('truetype');
+  font-family: 'Hamlet';
+  src: local('Hamlet'), url(./assets/Hamletornot.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Ancient';
@@ -30,17 +30,18 @@ body {
 
 h1, h2, h3, h4, h5, p {
   margin: 0;
+  letter-spacing: 1.5px;
 }
 
 h1 {
   color: whitesmoke;
-  font-family: 'Baldur';
+  font-family: 'Hamlet';
   font-size: 38px;
 }
 
 h2 {
   color: #a36528;
-  font-family: 'Baldur';
+  font-family: 'Hamlet';
 }
 
 h3 {
@@ -125,12 +126,19 @@ input {
   margin-left: 5px;
   font-family: 'Ancient';
   font-size: 18px;
+}
 
+.potion-shell {
+  display: flex;
 }
 
 .construction-title {
   display: flex;
   align-items: center;
+}
+
+.construction-title h3 {
+  color: whitesmoke;
 }
 
 .construction-shell {
@@ -160,6 +168,10 @@ input {
 
 .item-detail p {
   margin-left: 5px;
+}
+
+.bottom-margin {
+  margin-bottom: 10px;
 }
 
 .subject-shell { 
