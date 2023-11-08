@@ -3,10 +3,17 @@ import { mapSubject, mapSecondaryObject } from './SubjectDisplays';
 
 const materialCategoriesToInclude = ['Leather', 'Wood', 'Wax']
 
+function formatItemCategoryName (name) {
+    if (name.includes('_')) {
+        return name.split('_')[1]
+    }
+    return name
+}
+
 export default function ItemDetails({ item }) {
     return (
         <div className='item-detail-shell'>
-            {item.itemcategory && <div className='item-detail'><h3>Item Category</h3> <p>{item.itemcategory}</p></div>}
+            {item.itemcategory && <div className='item-detail'><h3>Item Category</h3> <p>{formatItemCategoryName(item.itemcategory)}</p></div>}
             {item.item && <div className='item-detail'><h3>Item</h3> <p>{item.item}</p></div>}
             {item.materials && item.materials.length > 0 && item.materials[0] && <div><h3>Material(s)</h3> <ul>{item.materials.map((material, i) => (<li key={material.material + i}>{material.label && material.label !== 'NONE' ? material.label + ': ' : ''}{material.submaterial ? material.submaterial : material.material}{materialCategoriesToInclude.includes(material.materialcategory) ? " " + material.materialcategory : ''}</li>))}</ul></div>}
             {item.number > 1 && <div className='item-detail'><h3>Number</h3> <p>{item.number}</p></div>}

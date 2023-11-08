@@ -132,6 +132,10 @@ input {
   display: flex;
 }
 
+.potion-shell img {
+  margin-right: 10px;
+}
+
 .construction-title {
   display: flex;
   align-items: center;

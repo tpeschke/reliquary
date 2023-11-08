@@ -7,10 +7,9 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Button from '@mui/material/Button';
-import RefreshIcon from '@mui/icons-material/Refresh';
 import Loading from '../loading/Loading'
-import potion from '../../assets/potion.svg'
-import salve from '../../assets/salve.svg'
+import potion from '../../assets/icons/potions/potion.svg'
+import salve from '../../assets/icons/potions/salve.svg'
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
