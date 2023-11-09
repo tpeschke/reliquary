@@ -106,7 +106,7 @@ export default function UniqueItems() {
 
     useEffect(() => {
         if (items.length === 0) {
-            axios.post(constants.baseUrl + constants.endpoint + budget).then(({ data }) => {
+            axios.post(constants.baseUrl + '/api/getUniquieItems?numberOfItems=10&budget=' + budget).then(({ data }) => {
                 setItems(data);
                 setLoading(false)
             })
@@ -117,7 +117,7 @@ export default function UniqueItems() {
         if (budget !== event.target.value) {
             setLoading(true)
             setBudget(event.target.value)
-            axios.post(constants.baseUrl + constants.endpoint + event.target.value).then(({ data }) => {
+            axios.post(constants.baseUrl + '/api/getUniquieItems?numberOfItems=10&budget=' + event.target.value).then(({ data }) => {
                 setItems(data);
                 setLoading(false)
             })
@@ -126,7 +126,7 @@ export default function UniqueItems() {
 
     function refreshItems() {
         setLoading(true)
-        axios.post(constants.baseUrl + constants.endpoint + budget).then(({ data }) => {
+        axios.post(constants.baseUrl + '/api/getUniquieItems?numberOfItems=10&budget=' + budget).then(({ data }) => {
             setItems(data);
             setLoading(false)
         })

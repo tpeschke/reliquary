@@ -1,5 +1,3 @@
-// add param to select specific rarity
-
 controllerFunctions = {
     getRandomPotion: (req, res) => {
         const db = req.app.get('db')

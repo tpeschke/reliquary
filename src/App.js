@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import UniqueItems from './components/uniqueItems/UniqueItems'
 import Potions from './components/potions/Potions'
+import Talismans from './components/talismans/Talismans'
 import { styled } from '@mui/material/styles';
 import ConstructionIcon from '@mui/icons-material/Construction';
 import WhiteFire from './assets/WhiteFire.png'
@@ -101,14 +102,7 @@ function App() {
         <Potions />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <div className='construction-shell'>
-          <div className='construction-title'>
-            <ConstructionIcon />
-            <h3>Talismans</h3>
-            <ConstructionIcon />
-          </div>
-          (under construction)
-        </div>
+        <Talismans/>
       </TabPanel>
       <TabPanel value={value} index={3}>
         <div className='construction-shell'>

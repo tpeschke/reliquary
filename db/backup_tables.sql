@@ -70,3 +70,9 @@ create table rxingpotion (
 	variant text,
 	effect text
 )
+
+create table rtalisman (
+	id serial primary key,
+	skill text,
+	skillsuite text
+)
