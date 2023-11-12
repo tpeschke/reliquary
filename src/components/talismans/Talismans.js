@@ -78,7 +78,7 @@ export default function Talismans() {
                                             <h2>Talisman of {item.skill}</h2>
                                         </div>
                                         <div>
-                                            When you fail a {item.skill} Check, you may have this talisman break & gain +3. You can only apply 1 talisman / Check.
+                                            {item.explanation}
                                         </div>
                                     </div>
                                 </div>
