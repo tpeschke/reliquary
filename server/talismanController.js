@@ -1,3 +1,6 @@
+const { sendErrorForwardNoFile } = require('./helpers')
+const sendErrorForward = sendErrorForwardNoFile('Talismans')
+
 controllerFunctions = {
     getRandomTalismans: (req, res) => {
         const db = req.app.get('db')
@@ -11,7 +14,7 @@ controllerFunctions = {
         
         db.get.random.talisman(numberOfItems).then(talisman => {
             res.send(talisman)
-        })
+        }).catch(e => sendErrorForward('get random talisman', e, res))
     }
 }
 

@@ -38,7 +38,7 @@ export default function Potions() {
 
     useEffect(() => {
         if (items.length === 0) {
-            axios.post(constants.baseUrl + '/api/getRandomPotions?numberOfItems=25').then(({ data }) => {
+            axios.post(constants.baseUrl + '/api/getRandomPotions?numberOfItems=10').then(({ data }) => {
                 setItems(data);
                 setLoading(false)
             })
@@ -47,7 +47,7 @@ export default function Potions() {
 
     function refreshItems(event, rarity = null) {
         setLoading(true)
-        axios.post(constants.baseUrl + '/api/getRandomPotions?numberOfItems=25' + (rarity ? '&rarity=' + rarity : '')).then(({ data }) => {
+        axios.post(constants.baseUrl + '/api/getRandomPotions?numberOfItems=10' + (rarity ? '&rarity=' + rarity : '')).then(({ data }) => {
             setItems(data);
             setLoading(false)
         })

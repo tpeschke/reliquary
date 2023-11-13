@@ -43,7 +43,7 @@ export default function Talismans() {
 
     useEffect(() => {
         if (items.length === 0) {
-            axios.post(constants.baseUrl + '/api/getTalismans?numberOfItems=25').then(({ data }) => {
+            axios.post(constants.baseUrl + '/api/getTalismans?numberOfItems=10').then(({ data }) => {
                 setItems(data);
                 setLoading(false)
             })
@@ -52,7 +52,7 @@ export default function Talismans() {
 
     function refreshItems(event, rarity = null) {
         setLoading(true)
-        axios.post(constants.baseUrl + '/api/getTalismans?numberOfItems=25').then(({ data }) => {
+        axios.post(constants.baseUrl + '/api/getTalismans?numberOfItems=10').then(({ data }) => {
             setItems(data);
             setLoading(false)
         })

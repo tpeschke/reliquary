@@ -11,6 +11,15 @@ const GemSizeDictionary = {
 }
 
 const helperObjects = {
+    sendErrorForwardNoFile: (file) => {
+        return (location, error, res) => {
+            if (res) {
+                res.send({error: true, message: error.message + ` (${location} - ${file})`})
+            } else {
+                console.log(file + ' ' + location + ' ~ ', error.message)
+            }
+        }
+    },
     getSubject: async function (arrayToPushTo, db, isSecondary = false) {
         return db.get.random.subject().then(subjectResult => {
             let subjectPromiseArray = []

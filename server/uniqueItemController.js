@@ -1,4 +1,6 @@
-const { getRestOfItem, getRestOfItemOnBudget, getFormat } = require('./helpers')
+const { getRestOfItem, getRestOfItemOnBudget, getFormat, sendErrorForwardNoFile } = require('./helpers')
+
+const sendErrorForward = sendErrorForwardNoFile('Unique Items')
 
 controllerFunctions = {
     getUniqueItem: (req, res) => {
@@ -19,8 +21,8 @@ controllerFunctions = {
         db.get.random.item().then(itemResult => {
             getRestOfItem(itemResult[0], db, req, res).then(item => {
                 res.send(getFormat(item, format))
-            })
-        })
+            }).catch(e => sendErrorForward('get rest of item', e, res))
+        }).catch(e => sendErrorForward('get random unique item', e, res))
     },
     getItemOnBudget: (budget, req, res) => {
         const db = req.app.get('db')
@@ -29,8 +31,8 @@ controllerFunctions = {
         db.get.semi_random.item(budget).then(itemResult => {
             getRestOfItemOnBudget(budget, itemResult[0], db, req, res).then(item => {
                 res.send(getFormat(item, format))
-            })
-        })
+            }).catch(e => sendErrorForward('get rest of item on budget', e, res))
+        }).catch(e => sendErrorForward('get random unique item on budget', e, res))
     },
     getUniqueItems: (req, res) => {
         const db = req.app.get('db')
@@ -41,7 +43,7 @@ controllerFunctions = {
         if (budgets && budgets.length > 0) {
             for (let i = 0; i < budgets.length; i++) {
                 const budget = budgets[i]
-                promiseArray.push(db.get.semi_random.item(budget).then(itemResult => getRestOfItemOnBudget(budget, itemResult[0], db, req, res).then( result => getFormat(result, format))))
+                promiseArray.push(db.get.semi_random.item(budget).then(itemResult => getRestOfItemOnBudget(budget, itemResult[0], db, req, res).then(result => getFormat(result, format)).catch(e => sendErrorForward('get format', e, res))).catch(e => sendErrorForward('get rest of item on budget 2', e, res)))
             }
         } else {
             if (numberOfItems > 25) {
@@ -50,16 +52,16 @@ controllerFunctions = {
 
             for (let i = 0; i < numberOfItems; i++) {
                 if (budget) {
-                    promiseArray.push(db.get.semi_random.item(budget).then(itemResult => getRestOfItemOnBudget(budget, itemResult[0], db, req, res).then( result => getFormat(result, format))))
+                    promiseArray.push(db.get.semi_random.item(budget).then(itemResult => getRestOfItemOnBudget(budget, itemResult[0], db, req, res).then(result => getFormat(result, format))).catch(e => sendErrorForward('get semi-random item', e, res)))
                 } else {
-                    promiseArray.push(db.get.random.item().then(itemResult => getRestOfItem(itemResult[0], db, req, res).then( result => getFormat(result, format))))
+                    promiseArray.push(db.get.random.item().then(itemResult => getRestOfItem(itemResult[0], db, req, res).then(result => getFormat(result, format)).catch(e => sendErrorForward('get format 2', e, res))).catch(e => sendErrorForward('get random item 2', e, res)))
                 }
             }
         }
 
         Promise.all(promiseArray).then(finalArray => {
             res.send(finalArray)
-        })
+        }).catch(e => sendErrorForward('final promise', e, res))
     },
     getSpecificUniqueItem: (itemId, req, res) => {
         const db = req.app.get('db')
@@ -77,8 +79,8 @@ controllerFunctions = {
         db.get.random.item_by_id(itemId).then(itemResult => {
             getRestOfItem(itemResult[0], db, req, res).then(item => {
                 res.send(getFormat(item, format))
-            })
-        })
+            }).catch(e => sendErrorForward('get specific unique item', e, res))
+        }).catch(e => sendErrorForward('get item by id', e, res))
     },
 }
 

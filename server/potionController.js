@@ -1,3 +1,6 @@
+const { sendErrorForwardNoFile } = require('./helpers')
+const sendErrorForward = sendErrorForwardNoFile('Potions')
+
 controllerFunctions = {
     getRandomPotion: (req, res) => {
         const db = req.app.get('db')
@@ -5,7 +8,7 @@ controllerFunctions = {
 
         new Promise((resolve) => {
             getPotion(db, rarity, resolve)
-        }).then(potion => res.send(potion));
+        }).then(potion => res.send(potion)).catch(e => sendErrorForward('get random potion', e, res));
     },
     getRandomPotions: (req, res) => {
         const db = req.app.get('db')
@@ -21,7 +24,7 @@ controllerFunctions = {
             }))
         }
 
-        Promise.all(promiseArray).then(finalArray => res.send(finalArray))
+        Promise.all(promiseArray).then(finalArray => res.send(finalArray)).catch(e => sendErrorForward('get random potions promise', e, res))
     }
 }
 
@@ -51,7 +54,7 @@ getPotion = (db, rarity, resolve) => {
         } else {
             resolve(modifyPotion(potion))
         }
-    })
+    }).catch(e => sendErrorForward('semi-random potion', e, res))
 }
 
 toTitleCase = (str) => {
