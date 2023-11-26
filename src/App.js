@@ -8,6 +8,7 @@ import Box from '@mui/material/Box';
 import UniqueItems from './components/uniqueItems/UniqueItems'
 import Potions from './components/potions/Potions'
 import Talismans from './components/talismans/Talismans'
+import Scrolls from './components/scrolls/Scrolls'
 import { styled } from '@mui/material/styles';
 import ConstructionIcon from '@mui/icons-material/Construction';
 import WhiteFire from './assets/WhiteFire.png'
@@ -90,8 +91,9 @@ function App() {
             <StyledTab label="Unique Items" {...a11yProps(0)} />
             <StyledTab label="Potions/Salves" {...a11yProps(1)} />
             <StyledTab label="Talismans" {...a11yProps(2)} />
-            <StyledTab label="Relics" {...a11yProps(3)} />
-            <StyledTab label="Enchanted Items" {...a11yProps(4)} />
+            <StyledTab label="Scrolls" {...a11yProps(3)} />
+            <StyledTab label="Relics" {...a11yProps(4)} />
+            <StyledTab label="Enchanted Items" {...a11yProps(5)} />
           </StyledTabs>
         </Box>
       </div>
@@ -105,6 +107,9 @@ function App() {
         <Talismans/>
       </TabPanel>
       <TabPanel value={value} index={3}>
+        <Scrolls/>
+      </TabPanel>
+      <TabPanel value={value} index={4}>
         <div className='construction-shell'>
           <div className='construction-title'>
             <ConstructionIcon />
@@ -114,7 +119,7 @@ function App() {
           (under construction)
         </div>
       </TabPanel>
-      <TabPanel value={value} index={4}>
+      <TabPanel value={value} index={5}>
       <div className='construction-shell'>
           <div className='construction-title'>
             <ConstructionIcon />
