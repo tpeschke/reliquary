@@ -63,6 +63,7 @@ export default function Scrolls() {
                 <div>
                     <div className='input-shell'>
                         <div>
+                            <p>Requires Literacy in the language and takes 2 Sec / SP to read, after which, it shapes the spell. The scroll is destroyed on shape.</p>
                         </div>
                         <Button variant="contained" onClick={_ => refreshItems()} theme={theme}><RefreshIcon /></Button>
                     </div>
