@@ -1164,11 +1164,18 @@ const helperObjects = {
 
         })
     },
+    getSemiRandom: async (budget, db) => {
+        return db.get.semi_random.item(budget).then(results => {
+            if (results.length === 0) {
+                return db.get.random.item_with_price()
+            }
+            return results
+        })
+    },
     getRestOfItemOnBudget: async (budget, rawItem, db, req, res) => {
         let promiseArray = []
 
         delete rawItem['?column?']
-
         promiseArray.push(db.get.not_random.item_materials(rawItem.id).then(materialResult => {
             if (materialResult.length > 0 && materialResult[0].material) {
                 let materials = []
@@ -1398,5 +1405,7 @@ const helperObjects = {
         }
     }
 }
+
+const sendErrorForward = helperObjects.sendErrorForwardNoFile('Helpers')
 
 module.exports = helperObjects
