@@ -39,7 +39,7 @@ controllerFunctions = {
         let promiseArray = []
         if (budgets && budgets.length > 0) {
             for (let i = 0; i < budgets.length; i++) {
-                const budget = budgets[i]
+                const budget = budgets[i] > 1000 ? 1000 : budgets[i]
                 promiseArray.push(getSemiRandom(budget, db).then(itemResult => getRestOfItemOnBudget(budget, itemResult[0], db, req, res).then(result => getFormat(result, format)).catch(e => sendErrorForward('get format', e, res))).catch(e => sendErrorForward('get rest of item on budget 2', e, res)))
             }
         } else {
@@ -48,6 +48,9 @@ controllerFunctions = {
             }
             for (let i = 0; i < numberOfItems; i++) {
                 if (budget) {
+                    if (budget > 1000) {
+                        budget = 1000
+                    }
                     promiseArray.push(getSemiRandom(budget, db).then(itemResult => getRestOfItemOnBudget(budget, itemResult[0], db, req, res).then(result => getFormat(result, format))).catch(e => sendErrorForward('get semi-random item', e, res)))
                 } else {
                     promiseArray.push(db.get.random.item().then(itemResult => getRestOfItem(itemResult[0], db, req, res).then(result => getFormat(result, format)).catch(e => sendErrorForward('get format 2', e, res))).catch(e => sendErrorForward('get random item 2', e, res)))
