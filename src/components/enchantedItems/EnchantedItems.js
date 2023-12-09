@@ -61,6 +61,14 @@ const theme = createTheme({
     },
 });
 
+const secondarytheme = createTheme({
+    palette: {
+        primary: {
+            main: '#f5f5f5',
+        }
+    },
+});
+
 const categoryIconDictionary = {
     'Academic Tools': academic,
     'Adventuring Gear': adventuring,
@@ -101,7 +109,7 @@ const categoryIconDictionary = {
     'Relic': relic
 }
 
-function formatItemCategoryName (name) {
+function formatItemCategoryName(name) {
     if (name.includes('_')) {
         return name.split('_')[1]
     }
@@ -114,16 +122,16 @@ export default function EnchantedItems() {
 
     useEffect(() => {
         if (items.length === 0) {
-            axios.get(constants.baseUrl + '/api/getEnchantedItem?numberOfItems=5').then(({ data }) => {
+            axios.get(constants.baseUrl + '/api/getEnchantedItem?numberOfItems=10').then(({ data }) => {
                 setItems(data);
                 setLoading(false)
             })
         }
     }, [loading]);
 
-    function refreshItems(event, rarity = null) {
+    function refreshItems(event, status = null) {
         setLoading(true)
-        axios.get(constants.baseUrl + '/api/getEnchantedItem?numberOfItems=5').then(({ data }) => {
+        axios.get(constants.baseUrl + '/api/getEnchantedItem?numberOfItems=10' + (status ? '&status=' + status : '')).then(({ data }) => {
             setItems(data);
             setLoading(false)
         })
@@ -135,7 +143,10 @@ export default function EnchantedItems() {
             {!loading && (
                 <div>
                     <div className='input-shell'>
-                        <div></div>
+                        <div>
+                            <Button variant="contained" onClick={e => refreshItems(e, false)} theme={secondarytheme}>Minor</Button>
+                            <Button variant="contained" onClick={e => refreshItems(e, true)} theme={secondarytheme}>Major</Button>
+                        </div>
                         <Button variant="contained" onClick={_ => refreshItems()} theme={theme}><RefreshIcon /></Button>
                     </div>
                     <div className='accordion-shell'>

@@ -88,15 +88,15 @@ function App() {
         </div>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <StyledTabs value={value} onChange={handleChange} aria-label="basic tabs example" >
-            <StyledTab label="Unique Items" {...a11yProps(0)} />
+            <StyledTab label="Unique Items" {...a11yProps(4)} />
             <StyledTab label="Potions/Salves" {...a11yProps(1)} />
             <StyledTab label="Talismans" {...a11yProps(2)} />
             <StyledTab label="Scrolls" {...a11yProps(3)} />
-            <StyledTab label="Enchanted Items" {...a11yProps(4)} />
+            <StyledTab label="Enchanted Items" {...a11yProps(0)} />
           </StyledTabs>
         </Box>
       </div>
-      <TabPanel value={value} index={0}>
+      <TabPanel value={value} index={4}>
         <UniqueItems />
       </TabPanel>
       <TabPanel value={value} index={1}>
@@ -108,7 +108,7 @@ function App() {
       <TabPanel value={value} index={3}>
         <Scrolls />
       </TabPanel>
-      <TabPanel value={value} index={4}>
+      <TabPanel value={value} index={0}>
         <EnchantedItems />
       </TabPanel>
     </div>
