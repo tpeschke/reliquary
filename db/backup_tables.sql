@@ -76,3 +76,15 @@ create table rtalisman (
 	skill text,
 	skillsuite text
 )
+
+create table renchanteditems (
+    id serial primary key,
+    name  varchar(1000),
+	description  varchar(1000),
+	itemcategory  varchar(1000),
+	power varchar(1000),
+	price  varchar(1000),
+	history  varchar(1000),
+	major boolean,
+	size varchar(1000)
+)

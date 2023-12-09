@@ -7,10 +7,10 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import UniqueItems from './components/uniqueItems/UniqueItems'
 import Potions from './components/potions/Potions'
+import EnchantedItems from './components/enchantedItems/EnchantedItems'
 import Talismans from './components/talismans/Talismans'
 import Scrolls from './components/scrolls/Scrolls'
 import { styled } from '@mui/material/styles';
-import ConstructionIcon from '@mui/icons-material/Construction';
 import WhiteFire from './assets/WhiteFire.png'
 
 const StyledTabs = styled(Tabs)({
@@ -88,46 +88,28 @@ function App() {
         </div>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <StyledTabs value={value} onChange={handleChange} aria-label="basic tabs example" >
-            <StyledTab label="Unique Items" {...a11yProps(0)} />
+            <StyledTab label="Unique Items" {...a11yProps(5)} />
             <StyledTab label="Potions/Salves" {...a11yProps(1)} />
             <StyledTab label="Talismans" {...a11yProps(2)} />
             <StyledTab label="Scrolls" {...a11yProps(3)} />
-            <StyledTab label="Relics" {...a11yProps(4)} />
-            <StyledTab label="Enchanted Items" {...a11yProps(5)} />
+            <StyledTab label="Enchanted Items" {...a11yProps(0)} />
           </StyledTabs>
         </Box>
       </div>
-      <TabPanel value={value} index={0}>
+      <TabPanel value={value} index={5}>
         <UniqueItems />
       </TabPanel>
       <TabPanel value={value} index={1}>
         <Potions />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <Talismans/>
+        <Talismans />
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <Scrolls/>
+        <Scrolls />
       </TabPanel>
-      <TabPanel value={value} index={4}>
-        <div className='construction-shell'>
-          <div className='construction-title'>
-            <ConstructionIcon />
-            <h3>Relics</h3>
-            <ConstructionIcon />
-          </div>
-          (under construction)
-        </div>
-      </TabPanel>
-      <TabPanel value={value} index={5}>
-      <div className='construction-shell'>
-          <div className='construction-title'>
-            <ConstructionIcon />
-            <h3>Enchanted Items</h3>
-            <ConstructionIcon />
-          </div>
-          (under construction)
-        </div>
+      <TabPanel value={value} index={0}>
+        <EnchantedItems />
       </TabPanel>
     </div>
   );

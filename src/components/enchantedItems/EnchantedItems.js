@@ -9,7 +9,6 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Button from '@mui/material/Button';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import Loading from '../loading/Loading'
-import ItemDetails from './ItemDetails'
 import academic from '../../assets/icons/equipment/academic-tools.svg'
 import adventuring from '../../assets/icons/equipment/adventuring-gear.svg'
 import alchemical from '../../assets/icons/equipment/alchemical-substances.svg'
@@ -46,7 +45,9 @@ import swords from '../../assets/icons/equipment/weapons-swords.svg'
 import thrown from '../../assets/icons/equipment/weapons-thrown.svg'
 import trauma from '../../assets/icons/equipment/weapons-trauma.svg'
 import art from '../../assets/icons/equipment/works-of-art.svg'
- 
+import relic from '../../assets/icons/relic.svg'
+import major from '../../assets/icons/major.svg'
+
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const theme = createTheme({
@@ -66,7 +67,7 @@ const categoryIconDictionary = {
     'Alchemical Substances': alchemical,
     'Armor': armor,
     'Beverages': beverages,
-    'Clothing_Accessories': accessories, 
+    'Clothing_Accessories': accessories,
     'Clothing_Body': body,
     'Clothing_Footwear': footwear,
     'Clothing_Headgear': headgear,
@@ -75,17 +76,17 @@ const categoryIconDictionary = {
     'Food_Bread': bread,
     'Food_Fruit & Vegetables': fruit,
     'Food_Nuts': nuts,
-    'Food_Prepped Food': prepped, 
+    'Food_Prepped Food': prepped,
     'Food_Protein': protein,
-    'Food_Spices & Seasonings': spices, 
+    'Food_Spices & Seasonings': spices,
     'Household Items': household,
-    'Illumination':  illumination,
+    'Illumination': illumination,
     'Jewelry': jewelry,
     'Medical Tools': medical,
     'Musical Instruments': music,
     'Personal Containers': containers,
     'Raw Good': raw,
-    'Religious Items': religious, 
+    'Religious Items': religious,
     'Shields': shields,
     'Trade Tools': trade,
     'Weapons_Axes': axes,
@@ -96,37 +97,33 @@ const categoryIconDictionary = {
     'Weapons_Swords': swords,
     'Weapons_Thrown': thrown,
     'Weapons_Trauma': trauma,
-    'Works of Art': art
+    'Works of Art': art,
+    'Relic': relic
 }
 
-export default function UniqueItems() {
+function formatItemCategoryName (name) {
+    if (name.includes('_')) {
+        return name.split('_')[1]
+    }
+    return name
+}
+
+export default function EnchantedItems() {
     const [loading, setLoading] = useState(true);
     const [items, setItems] = useState([]);
-    const [budget, setBudget] = useState(100);
 
     useEffect(() => {
         if (items.length === 0) {
-            axios.post(constants.baseUrl + '/api/getUniquieItems?numberOfItems=10&budget=' + budget).then(({ data }) => {
+            axios.get(constants.baseUrl + '/api/getEnchantedItem?numberOfItems=5').then(({ data }) => {
                 setItems(data);
                 setLoading(false)
             })
         }
     }, [loading]);
 
-    function getBudget(event) {
-        if (budget !== event.target.value) {
-            setLoading(true)
-            setBudget(event.target.value)
-            axios.post(constants.baseUrl + '/api/getUniquieItems?numberOfItems=10&budget=' + event.target.value).then(({ data }) => {
-                setItems(data);
-                setLoading(false)
-            })
-        }
-    }
-
-    function refreshItems() {
+    function refreshItems(event, rarity = null) {
         setLoading(true)
-        axios.post(constants.baseUrl + '/api/getUniquieItems?numberOfItems=10&budget=' + budget).then(({ data }) => {
+        axios.get(constants.baseUrl + '/api/getEnchantedItem?numberOfItems=5').then(({ data }) => {
             setItems(data);
             setLoading(false)
         })
@@ -138,11 +135,8 @@ export default function UniqueItems() {
             {!loading && (
                 <div>
                     <div className='input-shell'>
-                        <div>
-                            <input onBlur={getBudget} placeholder={budget}></input>
-                            <p>Budget (sc)</p>
-                        </div>
-                        <Button variant="contained" onClick={refreshItems} theme={theme}><RefreshIcon /></Button>
+                        <div></div>
+                        <Button variant="contained" onClick={_ => refreshItems()} theme={theme}><RefreshIcon /></Button>
                     </div>
                     <div className='accordion-shell'>
                         {items.map((item, i) => {
@@ -153,24 +147,34 @@ export default function UniqueItems() {
                                         aria-controls="panel1a-content"
                                         id="panel1a-header"
                                     >
-                                        <Typography component={'span'} variant={'body2'}><div>
+                                        <Typography component={'span'} variant={'body2'}>
                                             <div className='potion-shell'>
-                                                <img src={categoryIconDictionary[item.itemcategory]} height="50" />
+                                                <div className='enchanted-item-image'>
+                                                    <img src={categoryIconDictionary[item.itemcategory]} height="50" />
+                                                    <img className={item.major ? 'major-item' : 'display-none'} src={major} height="25" />
+                                                </div>
                                                 <div>
                                                     <div className='item-title-shell'>
-                                                        <h2>{item.item}</h2>
-                                                        <p>{item.finalPrice} sc {item.wear ? ` with ${item.wear} Wear` : ''}</p>
+                                                        <h2>{item.name}</h2>
+                                                        <p>{item.size}</p>
                                                     </div>
-                                                    <div>
-                                                        {item.description}
-                                                    </div>
+                                                    <div dangerouslySetInnerHTML={{ __html: item.description }}></div>
                                                 </div>
                                             </div>
-                                        </div></Typography>
+                                        </Typography>
                                     </AccordionSummary>
                                     <AccordionDetails>
                                         <Typography component={'span'} variant={'body2'}>
-                                            <ItemDetails item={item} ></ItemDetails>
+                                            <div>
+                                                {item.itemcategory && <div className='item-detail'><h3>Item Category</h3> <p>{formatItemCategoryName(item.itemcategory)}</p></div>}
+                                                {item.itemcategory && <div className='item-detail'><h3>Status</h3> <p>{item.major ? 'Major' : 'Minor'}</p></div>}
+                                                <h3>Price</h3>
+                                                <div className='bottom-margin' dangerouslySetInnerHTML={{ __html: item.price }}></div>
+                                                <h3>Power</h3>
+                                                <div className='bottom-margin' dangerouslySetInnerHTML={{ __html: item.power }}></div>
+                                                <h3 className={item.history ? '' : 'display-none'}>History</h3>
+                                                <div dangerouslySetInnerHTML={{ __html: item.history }}></div>
+                                            </div>
                                         </Typography>
                                     </AccordionDetails>
                                 </Accordion>

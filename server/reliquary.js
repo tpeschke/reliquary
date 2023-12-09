@@ -7,12 +7,14 @@ const uniqueItemCtrl = require('./uniqueItemController.js')
     , potionCtrl = require('./potionController.js')
     , talismanCtrl = require('./talismanController.js')
     , scrollCtrl = require('./scrollController.js')
+    , enchantedCtrl = require('./enchantedController.js')
 
 const app = new express()
 app.use(bodyParser.json())
 app.use(cors())
 
 app.get('/api/getUniquieItem', uniqueItemCtrl.getUniqueItem)
+app.get('/api/getEnchantedItem', enchantedCtrl.getEnchantedItem)
 
 app.post('/api/getUniquieItems', uniqueItemCtrl.getUniqueItems)
 app.post('/api/getRandomPotion', potionCtrl.getRandomPotion)
