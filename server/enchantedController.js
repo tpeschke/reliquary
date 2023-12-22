@@ -1,4 +1,4 @@
-const { sendErrorForwardNoFile } = require('./helpers')
+const { sendErrorForwardNoFile, checkForContentTypeBeforeSending } = require('./helpers')
 const sendErrorForward = sendErrorForwardNoFile('Enchanted Items')
 
 controllerFunctions = {
@@ -13,7 +13,7 @@ controllerFunctions = {
         }
 
         db.get.semi_random.enchanted_item(numberOfItems, !!status).then(items => {
-            res.send(items)
+            checkForContentTypeBeforeSending(res, items)
         }).catch(e => sendErrorForward('get enchanted item', e, res))
     }
 }

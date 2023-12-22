@@ -1,4 +1,4 @@
-const { sendErrorForwardNoFile } = require('./helpers')
+const { sendErrorForwardNoFile, checkForContentTypeBeforeSending } = require('./helpers')
 const sendErrorForward = sendErrorForwardNoFile('Potions')
 
 controllerFunctions = {
@@ -8,7 +8,7 @@ controllerFunctions = {
 
         new Promise((resolve) => {
             getPotion(db, rarity, resolve)
-        }).then(potion => res.send(potion)).catch(e => sendErrorForward('get random potion', e, res));
+        }).then(potion => checkForContentTypeBeforeSending(res, potion)).catch(e => sendErrorForward('get random potion', e, res));
     },
     getRandomPotions: (req, res) => {
         const db = req.app.get('db')
@@ -24,7 +24,7 @@ controllerFunctions = {
             }))
         }
 
-        Promise.all(promiseArray).then(finalArray => res.send(finalArray)).catch(e => sendErrorForward('get random potions promise', e, res))
+        Promise.all(promiseArray).then(finalArray => checkForContentTypeBeforeSending(res, finalArray)).catch(e => sendErrorForward('get random potions promise', e, res))
     }
 }
 

@@ -1,5 +1,5 @@
 const axios = require('axios')
-const { sendErrorForwardNoFile } = require('./helpers')
+const { sendErrorForwardNoFile, checkForContentTypeBeforeSending } = require('./helpers')
 const sendErrorForward = sendErrorForwardNoFile('Scrolls')
 
 controllerFunctions = {
@@ -13,7 +13,7 @@ controllerFunctions = {
         }
 
         axios.get('https://bonfire.dragon-slayer.net/getRandomSpells/' + numberOfItems).then(({data}) => {
-            res.send(data)
+            checkForContentTypeBeforeSending(res, data)
         }).catch(e => sendErrorForward('get random scrolls', e, res))
     }
 }

@@ -1,4 +1,4 @@
-const { getRestOfItem, getRestOfItemOnBudget, getFormat, sendErrorForwardNoFile, getSemiRandom } = require('./helpers')
+const { getRestOfItem, getRestOfItemOnBudget, getFormat, sendErrorForwardNoFile, getSemiRandom , checkForContentTypeBeforeSending} = require('./helpers')
 
 const sendErrorForward = sendErrorForwardNoFile('Unique Items')
 
@@ -18,7 +18,7 @@ controllerFunctions = {
         let { format } = req.query
         db.get.random.item().then(itemResult => {
             getRestOfItem(itemResult[0], db, req, res).then(item => {
-                res.send(getFormat(item, format))
+                checkForContentTypeBeforeSending(res, getFormat(item, format))
             }).catch(e => sendErrorForward('get rest of item', e, res))
         }).catch(e => sendErrorForward('get random unique item', e, res))
     },
@@ -27,7 +27,7 @@ controllerFunctions = {
         let { format } = req.query
         getSemiRandom(budget, db).then(itemResult => {
             getRestOfItemOnBudget(budget, itemResult[0], db, req, res).then(item => {
-                res.send(getFormat(item, format))
+                checkForContentTypeBeforeSending(res, getFormat(item, format))
             }).catch(e => sendErrorForward('get rest of item on budget', e, res))
         }).catch(e => sendErrorForward('get random unique item on budget', e, res))
     },
@@ -59,7 +59,7 @@ controllerFunctions = {
         }
 
         Promise.all(promiseArray).then(finalArray => {
-            res.send(finalArray)
+            checkForContentTypeBeforeSending(res, finalArray)
         }).catch(e => sendErrorForward('final promise', e, res))
     },
     getSpecificUniqueItem: (itemId, req, res) => {
@@ -77,7 +77,7 @@ controllerFunctions = {
 
         db.get.random.item_by_id(itemId).then(itemResult => {
             getRestOfItem(itemResult[0], db, req, res).then(item => {
-                res.send(getFormat(item, format))
+                checkForContentTypeBeforeSending(res, getFormat(item, format))
             }).catch(e => sendErrorForward('get specific unique item', e, res))
         }).catch(e => sendErrorForward('get item by id', e, res))
     },

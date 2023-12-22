@@ -14,10 +14,15 @@ const helperObjects = {
     sendErrorForwardNoFile: (file) => {
         return (location, error, res) => {
             if (res) {
-                res.send({error: true, message: error.message + ` (${location} - ${file})`})
+                helperObjects.checkForContentTypeBeforeSending(res, { color: 'red', message: error.message + ` (${location} - ${file})` })
             } else {
                 console.log(file + ' ' + location + ' ~ ', error.message)
             }
+        }
+    },
+    checkForContentTypeBeforeSending: (res, package) => {
+        if (!res.get("content-type")) {
+            res.send(package)
         }
     },
     getSubject: async function (arrayToPushTo, db, isSecondary = false) {
