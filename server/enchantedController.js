@@ -15,6 +15,14 @@ controllerFunctions = {
         db.get.semi_random.enchanted_item(numberOfItems, !!status).then(items => {
             checkForContentTypeBeforeSending(res, items)
         }).catch(e => sendErrorForward('get enchanted item', e, res))
+    },
+    getSingleEnchantedItem: (req, res) => {
+        const db = req.app.get('db')
+        let { id } = req.params
+
+        db.get.not_random.enchanted_item(+id).then(item => {
+            checkForContentTypeBeforeSending(res, item)
+        }).catch(e => sendErrorForward('get single enchanted item', e, res))
     }
 }
 

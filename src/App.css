@@ -140,6 +140,16 @@ input {
   font-size: 18px;
 }
 
+.modal {
+  padding: 10px;
+
+}
+
+.pop-up {
+  align-items: center;
+  margin-bottom: 5px;
+}
+
 .potion-shell {
   display: flex;
 }
@@ -182,8 +192,24 @@ input {
   align-items: baseline;
 }
 
+.id-details {
+  vertical-align: baseline;
+}
+
 .item-detail p {
   margin-left: 5px;
+}
+
+.item-detail img {
+  transition: .6s;
+  margin-left: 10px;
+  padding: 0 5px;
+  vertical-align: bottom; 
+}
+
+.item-detail img:hover {
+  background: lightgrey;
+  border-radius: 25%;
 }
 
 .bottom-margin {

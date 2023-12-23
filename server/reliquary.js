@@ -15,6 +15,7 @@ app.use(cors())
 
 app.get('/api/getUniquieItem', uniqueItemCtrl.getUniqueItem)
 app.get('/api/getEnchantedItem', enchantedCtrl.getEnchantedItem)
+app.get('/api/getSingleEnchantedItem/:id', enchantedCtrl.getSingleEnchantedItem)
 
 app.post('/api/getUniquieItems', uniqueItemCtrl.getUniqueItems)
 app.post('/api/getRandomPotion', potionCtrl.getRandomPotion)

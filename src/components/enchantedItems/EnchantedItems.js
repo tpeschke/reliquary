@@ -47,6 +47,10 @@ import trauma from '../../assets/icons/equipment/weapons-trauma.svg'
 import art from '../../assets/icons/equipment/works-of-art.svg'
 import relic from '../../assets/icons/relic.svg'
 import major from '../../assets/icons/major.svg'
+import link from '../../assets/link.svg'
+import toast from 'react-hot-toast';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
@@ -119,6 +123,28 @@ function formatItemCategoryName(name) {
 export default function EnchantedItems() {
     const [loading, setLoading] = useState(true);
     const [items, setItems] = useState([]);
+    const [singleItem, setSingleItem] = useState(null);
+
+    useEffect(() => {
+        const splitUrl = window.location.href.split('/')
+        if (splitUrl.length > 4) {
+            toast.promise(
+                axios.get(constants.baseUrl + '/api/getSingleEnchantedItem/' + splitUrl[4]).then(({ data }) => {
+                    if (data[0].itemcategory) {
+                        setSingleItem(data[0])
+                        return true
+                    } else {
+                        return false
+                    }
+                }),
+                {
+                    success: 'Fetched',
+                    loading: 'Fetching Item...',
+                    error: 'Uh oh.'
+                }
+            );
+        }
+    }, [])
 
     useEffect(() => {
         if (items.length === 0) {
@@ -135,6 +161,11 @@ export default function EnchantedItems() {
             setItems(data);
             setLoading(false)
         })
+    }
+
+    function copyLink(id) {
+        navigator.clipboard.writeText(window.location.origin + '/enchanted/' + id)
+        toast.success('Link to Enchanted Item Copied')
     }
 
     return (
@@ -185,6 +216,7 @@ export default function EnchantedItems() {
                                                 <div className='bottom-margin' dangerouslySetInnerHTML={{ __html: item.power }}></div>
                                                 <h3 className={item.history ? '' : 'display-none'}>History</h3>
                                                 <div dangerouslySetInnerHTML={{ __html: item.history }}></div>
+                                                {item.itemcategory && <div className='item-detail id-details'><h3>ID</h3> <p>{item.id}</p> <span><img onClick={_ => copyLink(item.id)} src={link} height="25" /></span></div>}
                                             </div>
                                         </Typography>
                                     </AccordionDetails>
@@ -192,6 +224,30 @@ export default function EnchantedItems() {
                             )
                         })}
                     </div>
+                    <Popup open={singleItem} closeOnDocumentClick >
+                        <div className="modal">
+                            <div>
+                                <div className='item-title-shell pop-up'>
+                                    <div className='enchanted-item-image'>
+                                        <img src={singleItem && singleItem.itemcategory ? categoryIconDictionary[singleItem.itemcategory] : categoryIconDictionary['Raw Good']} height="50" />
+                                        <img className={singleItem && singleItem.major ? 'major-item' : 'display-none'} src={major} height="25" />
+                                    </div>
+                                    <h2>{singleItem ? singleItem.name : ''}</h2>
+                                </div>
+                                <h3>Description</h3>
+                                <div className='bottom-margin' dangerouslySetInnerHTML={{ __html: singleItem ? singleItem.description : '' }}></div>
+                                {singleItem && singleItem.itemcategory && <div className='item-detail'><h3>Item Category</h3> <p>{formatItemCategoryName(singleItem.itemcategory)}</p></div>}
+                                {singleItem && singleItem.itemcategory && <div className='item-detail'><h3>Status</h3> <p>{singleItem.major ? 'Major' : 'Minor'}</p></div>}
+                                {singleItem && singleItem.itemcategory && <div className='item-detail bottom-margin'><h3>Size</h3> <p>{singleItem.size}</p></div>}
+                                <h3>Price</h3>
+                                <div className='bottom-margin' dangerouslySetInnerHTML={{ __html: singleItem ? singleItem.price : '' }}></div>
+                                <h3>Power</h3>
+                                <div className='bottom-margin' dangerouslySetInnerHTML={{ __html: singleItem ? singleItem.power : '' }}></div>
+                                <h3 className={singleItem && singleItem.history ? '' : 'display-none'}>History</h3>
+                                <div dangerouslySetInnerHTML={{ __html: singleItem ? singleItem.history : '' }}></div>
+                            </div>
+                        </div>
+                    </Popup>
                 </div>
             )}
         </div>
