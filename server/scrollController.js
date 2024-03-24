@@ -12,7 +12,7 @@ controllerFunctions = {
             numberOfItems = 25
         }
 
-        axios.get('https://bonfire.dragon-slayer.net/getRandomSpells/' + numberOfItems).then(({data}) => {
+        axios.get('https://bonfire.stone-fish.com/getRandomSpells/' + numberOfItems).then(({data}) => {
             checkForContentTypeBeforeSending(res, data)
         }).catch(e => sendErrorForward('get random scrolls', e, res))
     }
