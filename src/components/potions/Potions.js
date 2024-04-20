@@ -53,6 +53,14 @@ export default function Potions() {
         })
     }
 
+    function getPotions(event) {
+        setLoading(true)
+        axios.post(constants.baseUrl + '/api/searchPotions?searchTerm=' + event.target.value).then(({ data }) => {
+            setItems(data);
+            setLoading(false)
+        })
+    }
+
     return (
         <div>
             {loading && <Loading />}
@@ -60,11 +68,15 @@ export default function Potions() {
                 <div>
                     <div className='input-shell'>
                         <div>
-                            <Button variant="contained" onClick={e=>refreshItems(e, 'Common')} theme={secondarytheme}>Common</Button>
-                            <Button variant="contained" onClick={e=>refreshItems(e, 'Uncommon')} theme={secondarytheme}>Uncommon</Button>
-                            <Button variant="contained" onClick={e=>refreshItems(e, 'Rare')} theme={secondarytheme}>Rare</Button>
+                            <input onBlur={getPotions}></input>
+                            <p>Search Potions & Salves</p>
                         </div>
-                        <Button variant="contained" onClick={_=>refreshItems()} theme={theme}>Any</Button>
+                        <div>
+                            <Button variant="contained" onClick={e => refreshItems(e, 'Common')} theme={secondarytheme}>Common</Button>
+                            <Button variant="contained" onClick={e => refreshItems(e, 'Uncommon')} theme={secondarytheme}>Uncommon</Button>
+                            <Button variant="contained" onClick={e => refreshItems(e, 'Rare')} theme={secondarytheme}>Rare</Button>
+                            <Button variant="contained" onClick={_ => refreshItems()} theme={theme}>Any</Button>
+                        </div>
                     </div>
                     <div className='accordion-shell'>
                         {items.map((item, i) => {

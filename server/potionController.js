@@ -25,6 +25,49 @@ controllerFunctions = {
         }
 
         Promise.all(promiseArray).then(finalArray => checkForContentTypeBeforeSending(res, finalArray)).catch(e => sendErrorForward('get random potions promise', e, res))
+    },
+    searchPotions: (req, res) => {
+        const db = req.app.get('db')
+        let { searchTerm } = req.query
+        let promiseArray = []
+        let basicPotions = []
+        let xingPotions = []
+
+        searchTerm = searchTerm.toUpperCase().replace('SALVE', 'POTION')
+        searchTerm = searchTerm.toUpperCase().replace('APPLICATION', 'SWIG')
+
+        promiseArray.push(db.get.not_random.potion_search(searchTerm).then(results => {
+            basicPotions = results
+            return results
+        }).catch(e => sendErrorForward('search potion basic potions', e, res)))
+        promiseArray.push(db.get.not_random.xing_search(searchTerm).then(results => {
+            xingPotions = results.map(result => {
+                return {
+                    id: 76,
+                    weight: 2,
+                    name: result.variant + ' Potion',
+                    effect: `Gain the "${result.effect}" Emotional State at Rank 2 or increase it by 2 / swig if they already have it. Targets are unaware that their mood has been Weirdingly altered after the effects wear off.`,
+                    rarity: 2
+                }
+            })
+            return results
+        }).catch(e => sendErrorForward('search potion xing potions', e, res)))
+
+        Promise.all(promiseArray).then(_ => {
+            if (xingPotions.length > 0) {
+                basicPotions = [...basicPotions, ...xingPotions]
+            }
+            const finishedPotions = basicPotions.map(potion => {
+                const rarityDictionary = {
+                    1: 'Common',
+                    2: 'Uncommon',
+                    4: 'Rare'
+                }
+                potion.rarity = rarityDictionary[potion.rarity]
+                return modifyPotion(potion, false)
+            })
+            checkForContentTypeBeforeSending(res, finishedPotions)
+        }).catch(e => sendErrorForward('search potion all promises', e, res))
     }
 }
 
@@ -49,10 +92,10 @@ getPotion = (db, rarity, resolve) => {
                 const modifier = modifierInArray[0]
                 potion.name = potion.name.replace('Xing', modifier.variant)
                 potion.effect = potion.effect.replace('X', modifier.effect)
-                resolve(modifyPotion(potion))
+                resolve(modifyPotionWithSalveCheck(potion))
             })
         } else {
-            resolve(modifyPotion(potion))
+            resolve(modifyPotionWithSalveCheck(potion))
         }
     }).catch(e => sendErrorForward('semi-random potion', e, res))
 }
@@ -66,8 +109,12 @@ toTitleCase = (str) => {
     );
 }
 
-modifyPotion = (potion) => {
+modifyPotionWithSalveCheck = (potion) => {
     const isSalve = checkIfSalve()
+    return modifyPotion(potion, isSalve)
+}
+
+modifyPotion = (potion, isSalve = false) => {
     if (isSalve) {
         potion.name = potion.name.replace('Potion', 'Salve')
         potion.effect = potion.effect.replace('swig', 'application')
