@@ -23,6 +23,14 @@ controllerFunctions = {
         db.get.not_random.enchanted_item(+id).then(item => {
             checkForContentTypeBeforeSending(res, item)
         }).catch(e => sendErrorForward('get single enchanted item', e, res))
+    },
+    searchEnchantedItem: (req, res) => {
+        const db = req.app.get('db')
+        let { searchTerm } = req.query
+
+        db.get.not_random.enchanted_item_search(searchTerm).then(items => {
+            checkForContentTypeBeforeSending(res, items)
+        }).catch(e => sendErrorForward('search enchanted item', e, res))
     }
 }
 

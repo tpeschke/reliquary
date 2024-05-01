@@ -21,6 +21,7 @@ app.post('/api/getUniquieItems', uniqueItemCtrl.getUniqueItems)
 app.post('/api/getRandomPotion', potionCtrl.getRandomPotion)
 app.post('/api/getRandomPotions', potionCtrl.getRandomPotions)
 app.post('/api/searchPotions', potionCtrl.searchPotions)
+app.post('/api/searchEnchantedItems', enchantedCtrl.searchEnchantedItem)
 app.post('/api/getTalismans', talismanCtrl.getRandomTalismans)
 app.post('/api/getScrolls', scrollCtrl.getRandomScrolls)
 

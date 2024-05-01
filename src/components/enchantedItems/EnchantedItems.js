@@ -124,6 +124,7 @@ export default function EnchantedItems() {
     const [loading, setLoading] = useState(true);
     const [items, setItems] = useState([]);
     const [singleItem, setSingleItem] = useState(null);
+    const [searchTerm, setSearchTerm] = useState(null);
 
     useEffect(() => {
         const splitUrl = window.location.href.split('/')
@@ -168,6 +169,15 @@ export default function EnchantedItems() {
         toast.success('Link to Enchanted Item Copied')
     }
 
+    function getEnchantedItems(event) {
+        setLoading(true)
+        setSearchTerm(event.target.value)
+        axios.post(constants.baseUrl + '/api/searchEnchantedItems?searchTerm=' + event.target.value).then(({ data }) => {
+            setItems(data);
+            setLoading(false)
+        })
+    }
+
     return (
         <div>
             {loading && <Loading />}
@@ -175,10 +185,14 @@ export default function EnchantedItems() {
                 <div>
                     <div className='input-shell'>
                         <div>
+                            <input onBlur={getEnchantedItems} placeholder={searchTerm}></input>
+                            <p>Search Enchanted Items</p>
+                        </div>
+                        <div>
                             <Button variant="contained" onClick={e => refreshItems(e, false)} theme={secondarytheme}>Minor</Button>
                             <Button variant="contained" onClick={e => refreshItems(e, true)} theme={secondarytheme}>Major</Button>
+                            <Button variant="contained" onClick={_ => refreshItems()} theme={theme}><RefreshIcon /></Button>
                         </div>
-                        <Button variant="contained" onClick={_ => refreshItems()} theme={theme}><RefreshIcon /></Button>
                     </div>
                     <div className='accordion-shell'>
                         {items.map((item, i) => {
