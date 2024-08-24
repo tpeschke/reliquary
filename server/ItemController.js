@@ -1,4 +1,5 @@
-const { getRandomInt, sendErrorForwardNoFile, getSemiRandom, checkForContentTypeBeforeSending, helperObjects } = require('./helpers')
+const { shape } = require('@mui/system')
+const { getRandomInt, getSubject, getFromTableToObject, sendErrorForwardNoFile, checkForContentTypeBeforeSending, getFromTable } = require('./helpers')
 const dictionaries = require('./ItemDictionaries.js')
 
 const sendErrorForward = sendErrorForwardNoFile('Items')
@@ -50,7 +51,7 @@ controllerFunctions = {
                 let populatedMaterials = []
                 item.materials.forEach(material => {
                     if (material.subtable) {
-                        promiseArray.push(helperObjects.getFromTable(populatedMaterials, material, db))
+                        promiseArray.push(getFromTable(populatedMaterials, material, db))
                     } else {
                         if (materialRarity.toUpperCase() === 'L' && ['Cloth', 'Metal', 'Stone/Earthwork', 'Wood'].includes(material.material)) {
                             promiseArray.push(db.get.semi_random.loot_materials(`Exotic ${material.material}`, 0, 0).then(specificMaterial => {
@@ -65,15 +66,28 @@ controllerFunctions = {
                     }
                 })
 
-                promiseArray.push(getDetailing(db, 'Adjectives', detailing, item.adjectives).then(adjectives => {
+                promiseArray.push(getDetailing(db, 'Adjectives', detailing, item.adjectives, res).then(adjectives => {
                     item.adjectives = adjectives
                     return true
                 }).catch(e => sendErrorForward('get Adjectives details function', e, res)))
 
-                promiseArray.push(getDetailing(db, 'Colors', detailing, item.colors).then(colors => {
+                promiseArray.push(getDetailing(db, 'Colors', detailing, item.colors, res).then(colors => {
                     item.colors = colors
                     return true
                 }).catch(e => sendErrorForward('get Colors details function', e, res)))
+
+                promiseArray.push(
+                    getGems(db, detailing, materialRarity, item.gems, res).then(gems => {
+                        item.gems = gems
+                        getEngravings(db, detailing, item.engravings, item.gems, res).then(engravings => {
+                            item.engravings = engravings
+                        }).catch(e => sendErrorForward('get engravings details function', e, res))
+                    }).catch(e => sendErrorForward('get gems details function', e, res))
+                )
+
+                promiseArray.push(getStitchings(db, detailing, item.stitchings, res).then(stitchings => {
+                    item.stitchings = stitchings
+                }).catch(e => sendErrorForward('get stitching details function', e, res)))
 
                 Promise.all(promiseArray).then(_ => {
                     item.materials = populatedMaterials
@@ -100,15 +114,93 @@ getNumberOfDetails = (chance) => {
     return numberOfDetails
 }
 
-getDetailing = async (db, type, detailing, baseChance) => {
-    let chance = dictionaries.detailingChance[detailing] * baseChance
-    const numberOfDetails = getNumberOfDetails(chance) 
-    return db.get.random.detail(type, numberOfDetails).catch(e => sendErrorForward('get detail query', e, res))
+getDetailing = async (db, type, detailing, baseChance, res) => {
+    if (baseChance) {
+        let chance = dictionaries.detailingChance[detailing.toUpperCase()] * baseChance
+        const numberOfDetails = getNumberOfDetails(chance)
+        return db.get.random.detail(type, numberOfDetails).catch(e => sendErrorForward('get detail query', e, res))
+    }
+    return null
 }
 
-// engravings
-// stitchings
-// gems
-//  should be affected by materialRarity
+getStitchings = async (db, detailing, baseChance, res) => {
+    if (baseChance) {
+        const chance = dictionaries.detailingChance[detailing.toUpperCase()] * baseChance
+        const randomNumber = getRandomInt(10)
+        if (randomNumber <= chance) {
+            let subjectArray = []
+            return getSubject(subjectArray, db, false).then(_ => {
+                return [{
+                    subject: subjectArray[0],
+                    type: {
+                        detail: 'Hand Stitching',
+                        price: 0.5
+                    }
+                }]
+            }).catch(e => sendErrorForward('get stitching subject', e, res))
+        } else {
+            return []
+        }
+    }
+    return null
+}
+
+getEngravings = async (db, detailing, baseChance, gems, res) => {
+    if (baseChance) {
+        const chance = dictionaries.detailingChance[detailing.toUpperCase()] * baseChance
+        const randomNumber = getRandomInt(10)
+        if (randomNumber <= chance) {
+            let subjectArray = []
+            return getSubject(subjectArray, db, false).then(_ => {
+                let typeObject = {}
+                const engravingSubtable = gems && gems.length > 0 ? 'Engraving Type with Gems' : 'Engraving Type Without Gems'
+                return getFromTableToObject(typeObject, 'type', { subtable: engravingSubtable }, db).then(_ => {
+                    return [{
+                        subject: subjectArray[0].subject,
+                        type: typeObject.type
+                    }]
+                }).catch(e => sendErrorForward('get engraging type', e, res))
+            }).catch(e => sendErrorForward('get engraging subject', e, res))
+        } else {
+            return []
+        }
+    }
+    return null
+}
+
+getGems = async (db, detailing, materialRarity, baseChance, res) => {
+    if (baseChance) {
+        const chance = dictionaries.detailingChance[detailing.toUpperCase()] * baseChance
+        const randomNumber = getRandomInt(10)
+        if (randomNumber <= chance) {
+            let rawGem = { type: null, shape: null, size: null }
+
+            let gemPromiseArray = []
+
+            const gemSizeMultiplier = dictionaries.materialRarityMultiplier['Gem Size']
+            gemPromiseArray.push(db.get.semi_random.gem_details('Gem Size', gemSizeMultiplier[materialRarity.toUpperCase()].min, gemSizeMultiplier[materialRarity.toUpperCase()].max).then(gemSize => {
+                rawGem.size = gemSize[0].detail
+                return true
+            }).catch(e => sendErrorForward('get gem size', e, res)))
+
+            gemPromiseArray.push(getFromTableToObject(rawGem, 'shape', { subtable: 'Gem Shape' }, db).catch(e => sendErrorForward('get gem shape', e, res)))
+
+            const gemTypeMultiplier = dictionaries.materialRarityMultiplier['Gem Type']
+            gemPromiseArray.push(db.get.semi_random.gem_type_new(gemTypeMultiplier[materialRarity.toUpperCase()].min, gemTypeMultiplier[materialRarity.toUpperCase()].max).then(gemType => {
+                rawGem.type = gemType[0].detail
+                rawGem.price = gemType[0].price
+                return true
+            }).catch(e => sendErrorForward('get gem size', e, res)))
+
+            return Promise.all(gemPromiseArray).then(_ => {
+                rawGem.shape = rawGem.shape.subtableResults[0].detail
+                return [rawGem]
+            })
+        } else {
+            return []
+        }
+    }
+    return null
+}
 
 module.exports = controllerFunctions

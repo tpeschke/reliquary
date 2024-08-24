@@ -44,6 +44,42 @@ const dictionaries = {
         'Raw Good'
     ],
     materialRarityMultiplier: {
+        'Gem Size': {
+            C: {
+                min: 1,
+                max: 1.5
+            },
+            U: {
+                min: 2,
+                max: 3
+            },
+            R: {
+                min: 4,
+                max: 5
+            },
+            L: {
+                min: 5,
+                max: 5
+            }
+        },
+        'Gem Type': {
+            C: {
+                min: 1,
+                max: 8
+            },
+            U: {
+                min: 10,
+                max: 40
+            },
+            R: {
+                min: 40,
+                max: 400
+            },
+            L: {
+                min: 400,
+                max: 3000001
+            }
+        },
         'Cloth': {
             C: {
                 min: .1,
@@ -210,7 +246,8 @@ const dictionaries = {
     detailingChance: {
         L: .5,
         M: 1,
-        H: 2
+        H: 2,
+        A: 5
     }
 }
 
