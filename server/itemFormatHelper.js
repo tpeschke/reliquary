@@ -40,7 +40,7 @@ itemFormatHelper = {
                 }
             })
         } else {
-            finalPrice = 1
+            finalPrice = item.price
         }
 
         finalPrice += getDetailPriceModifier(finalPrice, item, 'adjectives') + getDetailPriceModifier(finalPrice, item, 'colors')
