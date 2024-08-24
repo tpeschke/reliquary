@@ -118,19 +118,19 @@ const dictionaries = {
         },
         'Paper Product': {
             C: {
-                min: .5,
+                min: .25,
                 max: 1
             },
             U: {
-                min: .5,
+                min: .25,
                 max: 1
             },
             R: {
-                min: .5,
+                min: .25,
                 max: 1
             },
             L: {
-                min: .5,
+                min: .25,
                 max: 1
             }
         },
@@ -244,6 +244,7 @@ const dictionaries = {
         }
     },
     detailingChance: {
+        N: 0,
         L: .5,
         M: 1,
         H: 2,

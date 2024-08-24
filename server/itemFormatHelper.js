@@ -19,7 +19,7 @@ itemFormatHelper = {
     },
     cleanUpItem: (item) => {
         for (const key in item) {
-            if (!item[key]) {
+            if (!item[key] || item[key].length === 0) {
                 delete item[key]
             }
         }
@@ -31,9 +31,17 @@ itemFormatHelper = {
     calculateFinalPrice: (item) => {
         let finalPrice = 0;
 
-        item.materials.forEach(material => {
-            finalPrice += (item.price / item.materials.length) * material.multiplier
-        })
+        if (item.materials) {
+            item.materials.forEach(material => {
+                if (material.multiplier) {
+                    finalPrice += (item.price / item.materials.length) * material.multiplier
+                } else if (material.price) {
+                    finalPrice += material.price
+                }
+            })
+        } else {
+            finalPrice = 1
+        }
 
         finalPrice += getDetailPriceModifier(finalPrice, item, 'adjectives') + getDetailPriceModifier(finalPrice, item, 'colors')
 
@@ -81,13 +89,13 @@ createBaseNameString = (item, itemcategory, number) => {
     let itemDescription = ''
 
     if (itemName.includes(',')) {
-        let itemArray = itemName.split(',')
+        let itemArray = itemName.split(', ')
         itemName = [itemArray[1], itemArray[0]].join(' ')
     }
     if (number > 1) {
         itemDescription += `${number} ${itemName}s`
     } else {
-        itemDescription += `A ${itemcategory === 'Armor' ? 'suit of' : ''} ${itemName}`
+        itemDescription += `A ${itemcategory === 'Armor' ? 'suit of ' : ''}${itemName}`
     }
 
     if (itemcategory === 'Shields') {

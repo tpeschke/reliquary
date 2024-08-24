@@ -26,7 +26,6 @@ processSubject = (subject) => {
         if (key === 'subject') {
             cleanedSubject[key] = subject[key]
         } else if (key === 'secondary_subject') {
-            console.log(subject[key])
             cleanedSubject[key] = subject[key].map(singleSubject => processSubject(singleSubject))
         } else if (key === 'events') {
             cleanedSubject[key] = subject[key].map(detail => {
@@ -94,27 +93,38 @@ itemHelpers = {
                 if (materialRarity.toUpperCase() === 'L' && ['Cloth', 'Metal', 'Stone/Earthwork', 'Wood'].includes(material.material)) {
                     promiseArray.push(db.get.semi_random.loot_materials(`Exotic ${material.material}`, 0, 0).then(specificMaterial => {
                         return populatedMaterials.push(specificMaterial[0])
-                    }).catch(e => sendErrorForward('get specific item', e, res)))
-                } else {
+                    }).catch(e => sendErrorForward('get legendary specific item', e, res)))
+                } else if (material.material === 'Paper Product') {
+                    const specificMaterialRarityMultiplier = dictionaries.materialRarityMultiplier[material.material]
+                    promiseArray.push(db.get.semi_random.loot_materials_price(material.material, specificMaterialRarityMultiplier[materialRarity.toUpperCase()].min, specificMaterialRarityMultiplier[materialRarity.toUpperCase()].max).then(specificMaterial => {
+                        return populatedMaterials.push(specificMaterial[0])
+                    }).catch(e => sendErrorForward('get specific item by price', e, res)))
+                } else if (['Cloth', 'Fur', 'Leather', 'Metal', 'Stone/Earthwork', 'Vellum', 'Wax', 'Wood'].includes(material.material)) {
                     const specificMaterialRarityMultiplier = dictionaries.materialRarityMultiplier[material.material]
                     promiseArray.push(db.get.semi_random.loot_materials(material.material, specificMaterialRarityMultiplier[materialRarity.toUpperCase()].min, specificMaterialRarityMultiplier[materialRarity.toUpperCase()].max).then(specificMaterial => {
                         return populatedMaterials.push(specificMaterial[0])
                     }).catch(e => sendErrorForward('get specific item', e, res)))
+                } else {
+                    promiseArray.push(db.get.semi_random.loot_material_specific(material.material).then(specificMaterial => {
+                        return populatedMaterials.push(specificMaterial[0])
+                    }).catch(e => sendErrorForward('get specific item from subtable', e, res)))
                 }
             }
         })
 
         return Promise.all(promiseArray).then(finalArray => {
             return populatedMaterials.map(material => {
-                if (material.materialcategory === 'Metal' || material.materialcategory === 'Exotic Metal' || material.materialcategory === 'Stone/Earthwork' || material.materialcategory === 'Exotic Stone/Earthwork') {
+                if (material.materialcategory === 'Metal' || material.materialcategory === 'Exotic Metal' || material.materialcategory === 'Stone/Earthwork' || material.materialcategory === 'Exotic Stone/Earthwork'  || material.materialcategory === 'Paper Product') {
                     return {
                         material: material.material,
-                        multiplier: material.multiplier
+                        multiplier: material.multiplier,
+                        price: material.price
                     }
                 } else {
                     return {
                         material: `${material.material} ${material.materialcategory}`,
-                        multiplier: material.multiplier
+                        multiplier: material.multiplier,
+                        price: material.price
                     }
                 }
             })
@@ -124,7 +134,6 @@ itemHelpers = {
         if (baseChance) {
             let chance = dictionaries.detailingChance[detailing.toUpperCase()] * baseChance
             const numberOfDetails = getNumberOfDetails(chance)
-
             return db.get.random.detail(type, numberOfDetails).then(details => {
                 let promiseArray = []
 
