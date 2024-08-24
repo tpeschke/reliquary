@@ -26,7 +26,8 @@ processSubject = (subject) => {
         if (key === 'subject') {
             cleanedSubject[key] = subject[key]
         } else if (key === 'secondary_subject') {
-            cleanedSubject[key] = processSubject(subject[key])
+            console.log(subject[key])
+            cleanedSubject[key] = subject[key].map(singleSubject => processSubject(singleSubject))
         } else if (key === 'events') {
             cleanedSubject[key] = subject[key].map(detail => {
                 return {
@@ -203,6 +204,7 @@ itemHelpers = {
                 const gemSizeMultiplier = dictionaries.materialRarityMultiplier['Gem Size']
                 gemPromiseArray.push(db.get.semi_random.gem_details('Gem Size', gemSizeMultiplier[materialRarity.toUpperCase()].min, gemSizeMultiplier[materialRarity.toUpperCase()].max).then(gemSize => {
                     rawGem.size = gemSize[0].detail
+                    rawGem.multiplier = dictionaries.GemSizeMultiplier[rawGem.size]
                     return true
                 }).catch(e => sendErrorForward('get gem size', e, res)))
 
@@ -217,6 +219,7 @@ itemHelpers = {
 
                 return Promise.all(gemPromiseArray).then(_ => {
                     rawGem.shape = rawGem.shape.subtableResults[0].detail
+                    rawGem.price *= rawGem.multiplier
                     return [rawGem]
                 })
             } else {
