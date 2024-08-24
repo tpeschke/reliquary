@@ -1,6 +1,6 @@
 const { sendErrorForwardNoFile, checkForContentTypeBeforeSending, randomIntBetweenTwoInts } = require('./helpers')
 const { getDetailing, getStitchings, getEngravings, getGems, processMaterialResults, populationWithSpecificMaterials } = require('./ItemHelpers')
-const { getStringDescription, cleanUpItem, calculateFinalPrice } = require('./itemFormatHelper.js')
+const { getStringDescription, cleanUpItem, calculateFinalPrice, getFormat } = require('./itemFormatHelper.js')
 const dictionaries = require('./ItemDictionaries.js')
 
 const sendErrorForward = sendErrorForwardNoFile('Items')
@@ -8,7 +8,7 @@ const sendErrorForward = sendErrorForwardNoFile('Items')
 controllerFunctions = {
     getItem: (req, res) => {
         const db = req.app.get('db')
-        const { itemCategory, materialRarity = 'C', detailing = 'L', wear = '0' } = req.query
+        const { itemCategory, materialRarity = 'C', detailing = 'L', wear = '0', format } = req.query
 
         const searchFunctionToUse = dictionaries.getWhichCategoryToGet(dictionaries.itemCategory[+itemCategory])
 
@@ -55,7 +55,7 @@ controllerFunctions = {
                     item.finalPrice = calculateFinalPrice(item)
                     item.wear = randomIntBetweenTwoInts(0, +wear)
                     item.description = getStringDescription(item)
-                    checkForContentTypeBeforeSending(res, item)
+                    checkForContentTypeBeforeSending(res, getFormat(item, format))
                 })
             }).catch(e => sendErrorForward('get material by item', e, res))
         }).catch(e => sendErrorForward('get item by category', e, res))

@@ -7,6 +7,16 @@ getDetailPriceModifier = (finalPrice, item, type) => {
 }
 
 itemFormatHelper = {
+    getFormat: function (item, format) {
+        if (format && format.toUpperCase() === 'JSON') {
+            delete item.description
+            return item
+        } else if (format && format.toUpperCase() === 'STRING') {
+            return item.description
+        } else {
+            return item
+        }
+    },
     cleanUpItem: (item) => {
         for (const key in item) {
             if (!item[key]) {
