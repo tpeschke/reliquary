@@ -78,6 +78,12 @@ input {
   border-bottom-left-radius: 5px;
 }
 
+ select {
+  border: none;
+  border-radius: 5px;
+  padding: 8px;
+ }
+
 .tab-menu {
   display: flex;
   justify-content: space-between;

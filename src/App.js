@@ -82,22 +82,22 @@ function App() {
   };
 
   useEffect(() => {
-      const splitUrl = window.location.href.split('/')
-      if (splitUrl.length > 3) {
-        if (splitUrl[3] === 'potions') {
-          a11yProps(1)
-          setValue(1);
-        } else if (splitUrl[3] === 'talismans') {
-          a11yProps(2)
-          setValue(2);
-        } else if (splitUrl[3] === 'scrolls') {
-          a11yProps(3)
-          setValue(3);
-        } else if (splitUrl[3] === 'enchanted') {
-          a11yProps(4)
-          setValue(4);
-        }
+    const splitUrl = window.location.href.split('/')
+    if (splitUrl.length > 3) {
+      if (splitUrl[3] === 'potions') {
+        a11yProps(1)
+        setValue(1);
+      } else if (splitUrl[3] === 'talismans') {
+        a11yProps(2)
+        setValue(2);
+      } else if (splitUrl[3] === 'scrolls') {
+        a11yProps(3)
+        setValue(3);
+      } else if (splitUrl[3] === 'enchanted') {
+        a11yProps(4)
+        setValue(4);
       }
+    }
   }, [])
 
   return (
@@ -132,7 +132,20 @@ function App() {
       <TabPanel value={value} index={4}>
         <EnchantedItems />
       </TabPanel>
-      <Toaster position="top-right"/>
+      <Toaster position="top-right" toastOptions={{
+        success: {
+          style: {
+            background: 'green',
+          },
+        },
+        error: {
+          duration: 60000,
+          style: {
+            background: 'red',
+            color: 'whitesmoke'
+          },
+        },
+      }} />
     </div>
   );
 }

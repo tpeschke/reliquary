@@ -14,7 +14,7 @@ const helperObjects = {
     sendErrorForwardNoFile: (file) => {
         return (location, error, res) => {
             if (res) {
-                helperObjects.checkForContentTypeBeforeSending(res, { color: 'red', message: error.message + ` (${location} - ${file})` })
+                helperObjects.checkForContentTypeBeforeSending(res, { color: 'red', message: error.message + ` (${location} - ${file})${error.extraInfo ? error.extraInfo : ''}` })
             } else {
                 console.log(file + ' ' + location + ' ~ ', error.message)
             }

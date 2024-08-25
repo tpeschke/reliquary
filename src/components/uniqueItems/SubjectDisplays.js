@@ -1,7 +1,6 @@
 import React from 'react';
 
 export function mapSubject(subjects) {
-    console.log(subjects)
     if (!subjects || !subjects.length || subjects.length === 0) {
         return <div></div>
     }
@@ -22,13 +21,13 @@ export function mapSubject(subjects) {
                         {subject.animal_subtype ? (<>
                             <h4>Animal(s)</h4>
                             <ul>
-                                {subject.animal_subtype.map((animal, i) => (<li key={animal.submaterial + i}>{animal.submaterial}</li>))}
+                                {subject.animal_subtype.map((animal, i) => (<li key={animal + i}>{animal}</li>))}
                             </ul></>) : <div></div>
                         }
                         {subject.body_parts ? (<>
                             <h4>Body Part(s)</h4>
                             <ul>
-                                {subject.body_parts.map((body_part, i) => (<li key={body_part.submaterial + i}>{body_part.submaterial}</li>))}
+                                {subject.body_parts.map((body_part, i) => (<li key={body_part + i}>{body_part}</li>))}
                             </ul></>) : <div></div>
                         }
                         {subject.events ? (<>
@@ -77,7 +76,7 @@ export function mapSecondary(subjects) {
                         {subject.persons ? (<>
                             <h5>Person(s)</h5>
                             <ul>
-                                {subject.persons.map((person, i) => (<li key={person.detail + i}>{person.detail}</li>))}
+                                {subject.persons.map((person, i) => (<li key={person + i}>{person}</li>))}
                             </ul></>) : <div></div>
                         }
                         {subject.animal_subtype ? (<>
@@ -135,7 +134,7 @@ export function mapSecondaryObject(subject) {
                 {subject.persons ? (<>
                     <h5>Person(s)</h5>
                     <ul>
-                        {subject.persons.map((person, i) => (<li key={person.detail + i}>{person.detail}</li>))}
+                        {subject.persons.map((person, i) => (<li key={person + i}>{person}</li>))}
                     </ul></>) : <div></div>
                 }
                 {subject.animal_subtype ? (<>

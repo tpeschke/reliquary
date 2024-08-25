@@ -46,7 +46,9 @@ import swords from '../../assets/icons/equipment/weapons-swords.svg'
 import thrown from '../../assets/icons/equipment/weapons-thrown.svg'
 import trauma from '../../assets/icons/equipment/weapons-trauma.svg'
 import art from '../../assets/icons/equipment/works-of-art.svg'
- 
+
+import toast from 'react-hot-toast';
+
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const theme = createTheme({
@@ -66,7 +68,7 @@ const categoryIconDictionary = {
     'Alchemical Substances': alchemical,
     'Armor': armor,
     'Beverages': beverages,
-    'Clothing_Accessories': accessories, 
+    'Clothing_Accessories': accessories,
     'Clothing_Body': body,
     'Clothing_Footwear': footwear,
     'Clothing_Headgear': headgear,
@@ -75,17 +77,17 @@ const categoryIconDictionary = {
     'Food_Bread': bread,
     'Food_Fruit & Vegetables': fruit,
     'Food_Nuts': nuts,
-    'Food_Prepped Food': prepped, 
+    'Food_Prepped Food': prepped,
     'Food_Protein': protein,
-    'Food_Spices & Seasonings': spices, 
+    'Food_Spices & Seasonings': spices,
     'Household Items': household,
-    'Illumination':  illumination,
+    'Illumination': illumination,
     'Jewelry': jewelry,
     'Medical Tools': medical,
     'Musical Instruments': music,
     'Personal Containers': containers,
     'Raw Good': raw,
-    'Religious Items': religious, 
+    'Religious Items': religious,
     'Shields': shields,
     'Trade Tools': trade,
     'Weapons_Axes': axes,
@@ -102,9 +104,9 @@ const categoryIconDictionary = {
 export default function UniqueItems() {
     const [loading, setLoading] = useState(true);
     const [items, setItems] = useState([]);
-    const [budget, setBudget] = useState(100);
+    const [itemCategory, setitemCategory] = useState(null);
 
-    // itemCategory, materialRarity, detailing
+    // materialRarity, detailing
 
     useEffect(() => {
         if (items.length === 0) {
@@ -112,18 +114,31 @@ export default function UniqueItems() {
         }
     }, [loading]);
 
-    function getBudget(event) {
-        if (budget !== event.target.value) {
-            setBudget(event.target.value)
-            refreshItems()
+    function setItemCategory(event) {
+        if (itemCategory !== event.target.value) {
+            const value = event.target.value === 'Any' ? null : event.target.value
+            setitemCategory(value)
+            refreshItems({itemCategory: value})
         }
     }
 
-    function refreshItems() {
+    function refreshItems(newParams = {}) {
         setLoading(true)
-        axios.post(constants.baseUrl + '/api/getItems?number=10').then(({ data }) => {
-            setItems(data);
-            setLoading(false)
+        const params = {itemCategory, ...newParams}
+        let paramString = ''
+        for (const key in params) {
+            if (params[key]) {
+                paramString += `&${key}=${params[key]}`
+            }
+        }
+        axios.post(constants.baseUrl + '/api/getItems?number=10' + paramString).then(({ data }) => {
+            if (data.color) {
+                toast.error(data.message)
+                setLoading(false)
+            } else {
+                setItems(data);
+                setLoading(false)
+            }
         })
     }
 
@@ -134,8 +149,12 @@ export default function UniqueItems() {
                 <div>
                     <div className='input-shell'>
                         <div>
-                            <input onBlur={getBudget} placeholder={budget}></input>
-                            <p>Budget (sc)</p>
+                            <select onChange={setItemCategory} value={itemCategory ? itemCategory : ''}>
+                                <option>Any</option>
+                                {itemCategories.map((category, i) => {
+                                    return <option value={category.id} key={category.label + i}>{category.label}</option>
+                                })}
+                            </select>
                         </div>
                         <Button variant="contained" onClick={refreshItems} theme={theme}><RefreshIcon /></Button>
                     </div>
@@ -177,3 +196,158 @@ export default function UniqueItems() {
         </div>
     );
 }
+
+const itemCategories = [
+    {
+        "label": "Academic Tools",
+        "id": 29
+    },
+    {
+        "label": "Accessories",
+        "id": 6
+    },
+    {
+        "label": "Adventuring Gear",
+        "id": 37
+    },
+    {
+        "label": "Alchemical Substances",
+        "id": 30
+    },
+    {
+        "label": "Armor, Large",
+        "id": 4
+    },
+    {
+        "label": "Armor, Light",
+        "id": 2
+    },
+    {
+        "label": "Armor, Medium",
+        "id": 3
+    },
+    {
+        "label": "Beverages",
+        "id": 14
+    },
+    {
+        "label": "Clothing, Body",
+        "id": 34
+    },
+    {
+        "label": "Clothing, Footwear",
+        "id": 35
+    },
+    {
+        "label": "Clothing, Headgear",
+        "id": 23
+    },
+    {
+        "label": "Entertainment",
+        "id": 7
+    },
+    {
+        "label": "Fabrics & Ropes",
+        "id": 25
+    },
+    {
+        "label": "Food, Bread",
+        "id": 9
+    },
+    {
+        "label": "Food, Fruit & Vegetables",
+        "id": 36
+    },
+    {
+        "label": "Food, Nuts",
+        "id": 10
+    },
+    {
+        "label": "Food, Prepped",
+        "id": 16
+    },
+    {
+        "label": "Food, Protein",
+        "id": 12
+    },
+    {
+        "label": "Food, Spices & Seasonings",
+        "id": 21
+    },
+    {
+        "label": "Household Items",
+        "id": 15
+    },
+    {
+        "label": "Illumination",
+        "id": 22
+    },
+    {
+        "label": "Jewelry",
+        "id": 24
+    },
+    {
+        "label": "Medical Tools",
+        "id": 33
+    },
+    {
+        "label": "Musical Instruments",
+        "id": 5
+    },
+    {
+        "label": "Personal Containers",
+        "id": 1
+    },
+    {
+        "label": "Raw Goods",
+        "id": 38
+    },
+    {
+        "label": "Religious Items",
+        "id": 26
+    },
+    {
+        "label": "Shields",
+        "id": 11
+    },
+    {
+        "label": "Trade Tools",
+        "id": 31
+    },
+    {
+        "label": "Weapons, Axes",
+        "id": 32
+    },
+    {
+        "label": "Weapons, Firearms",
+        "id": 13
+    },
+    {
+        "label": "Weapons, Mechanical Ranged",
+        "id": 18
+    },
+    {
+        "label": "Weapons, Polearms",
+        "id": 27
+    },
+    {
+        "label": "Weapons, Sidearms",
+        "id": 8
+    },
+    {
+        "label": "Weapons, Swords",
+        "id": 19
+    },
+    {
+        "label": "Weapons, Thrown",
+        "id": 17
+    },
+    {
+        "label": "Weapons, Trauma",
+        "id": 20
+    },
+    {
+        "label": "Works of Art",
+        "id": 28
+    }
+]
