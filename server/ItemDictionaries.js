@@ -11,7 +11,6 @@ const dictionaries = {
         'Musical Instruments',
         'Clothing_Accessories',
         'Entertainment',
-        // Stopped here
         'Weapons_Sidearms',
         'Food_Bread',
         'Food_Nuts',

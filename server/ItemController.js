@@ -14,8 +14,6 @@ controllerFunctions = {
 
         db.get.random[searchFunctionToUse](dictionaries.itemCategory[+itemCategory]).then(item => {
             item = item[0]
-            console.log('--------------------------------------')
-            console.log(item)
             db.get.not_random.item_materials(item.id).then(materialResult => {
                 if (materialResult.length > 0 && materialResult[0].material) {
                     item.materials = processMaterialResults(materialResult)
@@ -24,7 +22,6 @@ controllerFunctions = {
                 }
 
                 let promiseArray = []
-                console.log(item.materials)
                 if (item.materials.length > 0) {
                     promiseArray.push(populationWithSpecificMaterials(db, item.materials, materialRarity, res).then(populatedMaterials => {
                         item.materials = populatedMaterials

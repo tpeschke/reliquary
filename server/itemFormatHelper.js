@@ -3,7 +3,7 @@ getDetailPriceModifier = (finalPrice, item, type) => {
     if (item[type]) {
         detailPrice += (finalPrice * item[type].length * .1)
     }
-    return detailPrice
+    return +detailPrice.toFixed(2)
 }
 
 itemFormatHelper = {
@@ -56,12 +56,12 @@ itemFormatHelper = {
             finalPrice += item.gems.reduce((accumulator, gems) => accumulator + gems.price, 0)
         }
 
-        return finalPrice
+        return +finalPrice.toFixed(2)
     },
-    getStringDescription: function ({ number, item, materials, colors, adjectives, wear, finalPrice, gems, subject, itemcategory, engravings, stitchings }) {
-        let itemDescription = createBaseNameString(item, itemcategory, number)
+    getStringDescription: function ({ number, item, type: itemtype, materials, colors, adjectives, wear, finalPrice, gems, subject, itemcategory, engravings, stitchings }) {
+        let itemDescription = createBaseNameString(item, itemtype, itemcategory, materials, number)
 
-        if (materials && materials[0] && materials.length > 0) { itemDescription += createMaterialsString(materials) }
+        if (materials && materials[0] && materials.length > 0) { itemDescription += createMaterialsString(materials, itemcategory) }
 
         itemDescription += "."
 
@@ -84,33 +84,45 @@ itemFormatHelper = {
     },
 }
 
-createBaseNameString = (item, itemcategory, number) => {
-    let itemName = item
+createBaseNameString = (item, itemtype, itemcategory, materials, number) => {
+    let itemName = item.trim().toLowerCase()
     let itemDescription = ''
 
-    if (itemName.includes(',')) {
-        let itemArray = itemName.split(', ')
-        itemName = [itemArray[1], itemArray[0]].join(' ')
-    }
-    if (number > 1) {
-        itemDescription += `${number} ${itemName}s`
+    if (itemcategory === 'Raw Good') {
+        if (materials) {
+            itemDescription = `Some ${materials[0].material.toLowerCase()}`
+        } else {
+            itemDescription = `Some ${itemName}`
+        }
     } else {
-        itemDescription += `A ${itemcategory === 'Armor' ? 'suit of ' : ''}${itemName}`
-    }
+        if (itemName.includes(',')) {
+            let itemArray = itemName.split(', ')
+            itemName = [itemArray[1], itemArray[0]].join(' ')
+        }
+        if (number > 1) {
+            if (itemtype) {
+                itemDescription += `${number} ${itemtype}${itemtype === 'ft' ? '' : 's'} of ${itemName}`
+            } else {
+                itemDescription += `${number} ${itemName}s`
+            }
+        } else {
+            itemDescription += `A ${itemtype ? `${itemtype} of ` : ''}${itemName}`
+        }
 
-    if (itemcategory === 'Shields') {
-        itemDescription += ` ${itemcategory.slice(0, -1)}`
-    } else if (itemcategory === 'Armor' || itemcategory === 'Cloth') {
-        itemDescription += ` ${itemcategory}`
+        if (itemcategory === 'Shields') {
+            itemDescription += ` ${itemcategory.slice(0, -1)}`
+        } else if (itemcategory === 'Armor' || itemcategory === 'Cloth') {
+            itemDescription += ` ${itemcategory.toLowerCase()}`
+        }
     }
 
     return itemDescription
 }
 
-createMaterialsString = (materials) => {
+createMaterialsString = (materials, itemcategory) => {
     let baseString = ''
     materials.forEach((material, index) => {
-        let materialToShow = material.material
+        let materialToShow = material.material.toLowerCase()
         if (material.subtableResults) {
             materialToShow = material.subtableResults[0].material
         }
@@ -121,17 +133,15 @@ createMaterialsString = (materials) => {
             baseString += ` with a ${material.label} of ${materialToShow}`
         } else if (material.label) {
             baseString += ` and a ${material.label} of ${materialToShow}`
-        } else if (index === 0 && !material.label) {
+        } else if (index === 0 && !material.label && itemcategory !== 'Raw Good') {
             baseString += ` made of ${materialToShow}`
-        } else if (!material.label) {
+        } else if (!material.label && itemcategory !== 'Raw Good') {
             baseString += ` and ${materialToShow}`
-        } else {
-            console.log("something went wrong: ", material)
         }
 
         const materialCategoriesToInclude = ['Leather', 'Wood', 'Wax']
         if (materialCategoriesToInclude.includes(material.materialcategory)) {
-            baseString += ` ${material.materialcategory}`
+            baseString += ` ${material.materialcategory.toLowerCase()}`
         }
     })
     return baseString;
@@ -144,7 +154,7 @@ createColorsString = (colors) => {
         if (index === colors.length - 1 && colors.length > 1) {
             baseString += ' and'
         }
-        baseString += ` ${detail}`
+        baseString += ` ${detail.toLowerCase()}`
         if (index < colors.length - 1) {
             baseString += ','
         }
@@ -163,28 +173,28 @@ createGemString = (gems) => {
             if (index === gems.length - 1 && gems.length > 1) {
                 baseString += ' and'
             }
-            baseString += ` a ${gem.shape} ${gem.type} about ${gem.size} mm in size`
+            baseString += ` a ${gem.shape.toLowerCase()} ${gem.type.toLowerCase()} about ${gem.size} mm in size`
             if (index < gems.length - 1) {
                 baseString += ','
             }
         })
         baseString += '.'
     } else {
-        baseString += ` It has a single gem: a ${gems[0].shape} ${gems[0].type} about ${gems[0].size} mm in size.`
+        baseString += ` It has a single gem: a ${gems[0].shape.toLowerCase()} ${gems[0].type.toLowerCase()} about ${gems[0].size} mm in size.`
     }
 
     return baseString
 }
 
 createSubjectString = (subject) => {
-    let baseString = ` The subject of the work appears to be ${subject[0].subject} in nature`
+    let baseString = ` The subject of the work appears to be ${subject[0].subject.toLowerCase()} in nature`
     if (subject[0].secondary_subject && subject[0].secondary_subject[0].length > 0) {
         baseString += ` as well as`
         subject[0].secondary_subject[0].forEach((subject, index) => {
             if (index === subject[0].secondary_subject[0].length - 1 && subject[0].secondary_subject[0].length > 1) {
                 baseString += ' and'
             }
-            baseString += ` ${subject[0].shape}`
+            baseString += ` ${subject[0].shape.toLowerCase()}`
             if (index < subject[0].secondary_subject[0].length - 1) {
                 baseString += ','
             }
@@ -196,14 +206,14 @@ createSubjectString = (subject) => {
         baseString += ` It depicts`
         subject[0].events.forEach((event, index) => {
             if (index === 0) {
-                baseString += ` ${event.subject} events from ${event.time_period} times`
+                baseString += ` ${event.subject.toLowerCase()} events from ${event.time_period.toLowerCase()} times`
             } else if (index === 1) {
-                baseString += `. It also draws parallels to ${event.subject} events from ${event.time_period} times`
+                baseString += `. It also draws parallels to ${event.subject.toLowerCase()} events from ${event.time_period.toLowerCase()} times`
             } else {
                 if (index === subject[0].events.length - 1 && subject[0].events.length > 1) {
                     baseString += ' and'
                 }
-                baseString += ` ${event.subject} events from ${event.time_period} times`
+                baseString += ` ${event.subject.toLowerCase()} events from ${event.time_period.toLowerCase()} times`
                 if (index < subject[0].events.length - 1) {
                     baseString += ','
                 }
@@ -218,7 +228,7 @@ createSubjectString = (subject) => {
             if (index === subject[0].persons.length - 1 && subject[0].persons.length > 1) {
                 baseString += ' and'
             }
-            baseString += ` ${detail}`
+            baseString += ` ${detail.toLowerCase()}`
             if (index < subject[0].persons.length - 1) {
                 baseString += ','
             }
@@ -236,7 +246,7 @@ createSubjectString = (subject) => {
             if (index === subject[0].body_parts.length - 1 && subject[0].body_parts.length > 1) {
                 baseString += ' and'
             }
-            baseString += ` ${submaterial.detail}`
+            baseString += ` ${submaterial.detail.toLowerCase()}`
             if (submaterial.detail.charAt(submaterial.detail.length - 1) !== 's') {
                 baseString += 's'
             }
@@ -262,7 +272,7 @@ createSubjectString = (subject) => {
             if (index === subject[0].animal_subtype.length - 1 && subject[0].animal_subtype.length > 1) {
                 baseString += ' and'
             }
-            baseString += ` ${submaterial.detail}s`
+            baseString += ` ${submaterial.detail.toLowerCase()}s`
             if (index < subject[0].animal_subtype.length - 1) {
                 baseString += ','
             }
@@ -278,7 +288,7 @@ createSubjectString = (subject) => {
             if (index === subject[0].colors.length - 1 && subject[0].colors.length > 1) {
                 baseString += ' and'
             }
-            baseString += ` ${detail}`
+            baseString += ` ${detail.toLowerCase()}`
             if (index < subject[0].colors.length - 1) {
                 baseString += ','
             }
@@ -292,9 +302,9 @@ createSubjectString = (subject) => {
             if (index === subject[0].adjectives.length - 1 && subject[0].adjectives.length > 1) {
                 baseString += ' and'
             }
-            baseString += ` ${detail}`
+            baseString += ` ${detail.toLowerCase()}`
             if (submaterial) {
-                baseString += ` ${submaterial.detail}`
+                baseString += ` ${submaterial.detail.toLowerCase()}`
             }
             if (index < subject[0].adjectives.length - 1) {
                 baseString += ','
@@ -320,14 +330,14 @@ createEngravingsString = (engravings) => {
 
     if (engravings[0].subject) {
         const subject = engravings[0].subject
-        baseString += ` which appear to be ${subject.subject} in nature`
+        baseString += ` which appear to be ${subject.subject.toLowerCase()} in nature`
         if (subject.secondary_subject && subject.secondary_subject.length > 0) {
             baseString += ` as well as`
             subject.secondary_subject.forEach((innerSubject, index) => {
                 if (index === subject.secondary_subject.length - 1 && subject.secondary_subject.length > 1) {
                     baseString += ' and'
                 }
-                baseString += ` ${innerSubject.subject}`
+                baseString += ` ${innerSubject.subject.toLowerCase()}`
                 if (index < subject.secondary_subject.length - 1) {
                     baseString += ','
                 }
@@ -339,14 +349,14 @@ createEngravingsString = (engravings) => {
             baseString += ` It depicts`
             subject.events.forEach((event, index) => {
                 if (index === 0) {
-                    baseString += ` ${event.subject} events from ${event.time_period} times`
+                    baseString += ` ${event.subject.toLowerCase()} events from ${event.time_period.toLowerCase()} times`
                 } else if (index === 1) {
-                    baseString += `. It also draws parallels to ${event.subject} events from ${event.time_period} times`
+                    baseString += `. It also draws parallels to ${event.subject.toLowerCase()} events from ${event.time_period.toLowerCase()} times`
                 } else {
                     if (index === subject.events.length - 1 && subject.events.length > 1) {
                         baseString += ' and'
                     }
-                    baseString += ` ${event.subject} events from ${event.time_period} times`
+                    baseString += ` ${event.subject.toLowerCase()} events from ${event.time_period.toLowerCase()} times`
                     if (index < subject.events.length - 1) {
                         baseString += ','
                     }
@@ -361,7 +371,7 @@ createEngravingsString = (engravings) => {
                 if (index === subject.persons.length - 1 && subject.persons.length > 1) {
                     baseString += ' and'
                 }
-                baseString += ` ${detail}`
+                baseString += ` ${detail.toLowerCase()}`
                 if (index < subject.persons.length - 1) {
                     baseString += ','
                 }
@@ -379,7 +389,7 @@ createEngravingsString = (engravings) => {
                 if (index === subject.body_parts.length - 1 && subject.body_parts.length > 1) {
                     baseString += ' and'
                 }
-                baseString += ` ${detail}`
+                baseString += ` ${detail.toLowerCase()}`
                 if (detail.charAt(detail.length - 1) !== 's') {
                     baseString += 's'
                 }
@@ -405,7 +415,7 @@ createEngravingsString = (engravings) => {
                 if (index === subject.animal_subtype.length - 1 && subject.animal_subtype.length > 1) {
                     baseString += ' and'
                 }
-                baseString += ` ${detail}s`
+                baseString += ` ${detail.toLowerCase()}s`
                 if (index < subject.animal_subtype.length - 1) {
                     baseString += ','
                 }
@@ -423,7 +433,7 @@ createEngravingsString = (engravings) => {
             if (index === colors.length - 1 && colors.length > 1) {
                 baseString += ' and'
             }
-            baseString += ` ${detail}`
+            baseString += ` ${detail.toLowerCase()}`
             if (index < colors.length - 1) {
                 baseString += ','
             }
@@ -438,7 +448,7 @@ createEngravingsString = (engravings) => {
             if (index === adjectives.length - 1 && adjectives.length > 1) {
                 baseString += ' and'
             }
-            baseString += ` ${detail}`
+            baseString += ` ${detail.toLowerCase()}`
             if (index < adjectives.length - 1) {
                 baseString += ','
             }
@@ -454,14 +464,14 @@ createStitchingString = (stitchings) => {
 
     if (stitchings[0].subject) {
         const subject = stitchings[0].subject
-        baseString += ` which are ${subject.subject} in nature`
+        baseString += ` which are ${subject.subject.toLowerCase()} in nature`
         if (subject.secondary_subject && subject.secondary_subject.length > 0) {
             baseString += ` as well as`
             subject.secondary_subject.forEach((innerSubject, index) => {
                 if (index === subject.secondary_subject.length - 1 && subject.secondary_subject.length > 1) {
                     baseString += ' and'
                 }
-                baseString += ` ${innerSubject.subject}`
+                baseString += ` ${innerSubject.subject.toLowerCase()}`
                 if (index < subject.secondary_subject.length - 1) {
                     baseString += ','
                 }
@@ -473,14 +483,14 @@ createStitchingString = (stitchings) => {
             baseString += ` It depicts`
             subject.events.forEach((event, index) => {
                 if (index === 0) {
-                    baseString += ` ${event.subject} events from ${event.time_period} times`
+                    baseString += ` ${event.subject.toLowerCase()} events from ${event.time_period.toLowerCase()} times`
                 } else if (index === 1) {
-                    baseString += `. It also draws parallels to ${event.subject} events from ${event.time_period} times`
+                    baseString += `. It also draws parallels to ${event.subject.toLowerCase()} events from ${event.time_period.toLowerCase()} times`
                 } else {
                     if (index === subject.events.length - 1 && subject.events.length > 1) {
                         baseString += ' and'
                     }
-                    baseString += ` ${event.subject} events from ${event.time_period} times`
+                    baseString += ` ${event.subject.toLowerCase()} events from ${event.time_period.toLowerCase()} times`
                     if (index < subject.events.length - 1) {
                         baseString += ','
                     }
@@ -495,7 +505,7 @@ createStitchingString = (stitchings) => {
                 if (index === subject.persons.length - 1 && subject.persons.length > 1) {
                     baseString += ' and'
                 }
-                baseString += ` ${detail}`
+                baseString += ` ${detail.toLowerCase()}`
                 if (index < subject.persons.length - 1) {
                     baseString += ','
                 }
@@ -513,7 +523,7 @@ createStitchingString = (stitchings) => {
                 if (index === subject.body_parts.length - 1 && subject.body_parts.length > 1) {
                     baseString += ' and'
                 }
-                baseString += ` ${detail}`
+                baseString += ` ${detail.toLowerCase()}`
                 if (detail.charAt(detail.length - 1) !== 's') {
                     baseString += 's'
                 }
@@ -539,7 +549,7 @@ createStitchingString = (stitchings) => {
                 if (index === subject.animal_subtype.length - 1 && subject.animal_subtype.length > 1) {
                     baseString += ' and'
                 }
-                baseString += ` ${detail}s`
+                baseString += ` ${detail.toLowerCase()}s`
                 if (index < subject.animal_subtype.length - 1) {
                     baseString += ','
                 }
@@ -557,7 +567,7 @@ createStitchingString = (stitchings) => {
             if (index === colors.length - 1 && colors.length > 1) {
                 itemDescription += ' and'
             }
-            itemDescription += ` ${detail}`
+            itemDescription += ` ${detail.toLowerCase()}`
             if (index < colors.length - 1) {
                 itemDescription += ','
             }
@@ -572,7 +582,7 @@ createStitchingString = (stitchings) => {
             if (index === adjectives.length - 1 && adjectives.length > 1) {
                 itemDescription += ' and'
             }
-            itemDescription += ` ${detail}`
+            itemDescription += ` ${detail.toLowerCase()}`
             if (index < adjectives.length - 1) {
                 itemDescription += ','
             }
@@ -589,7 +599,7 @@ createAdjectiveString = (adjectives) => {
         if (index === adjectives.length - 1 && adjectives.length > 1) {
             baseString += ' and'
         }
-        baseString += ` ${detail}`
+        baseString += ` ${detail.toLowerCase()}`
         if (index < adjectives.length - 1) {
             baseString += ','
         }

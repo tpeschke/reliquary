@@ -104,9 +104,18 @@ itemHelpers = {
                     promiseArray.push(db.get.semi_random.loot_materials(material.material, specificMaterialRarityMultiplier[materialRarity.toUpperCase()].min, specificMaterialRarityMultiplier[materialRarity.toUpperCase()].max).then(specificMaterial => {
                         return populatedMaterials.push(specificMaterial[0])
                     }).catch(e => sendErrorForward('get specific item', e, res)))
+                } else if (material.material.substring(0,6) === 'Animal') {
+                    promiseArray.push(db.get.random.animal_by_type(material.material).then(specificAnimal => {
+                        specificAnimal.price = 1
+                        return populatedMaterials.push(specificAnimal[0])
+                    }).catch(e => sendErrorForward('get specific animal from subtable', e, res)))
                 } else {
                     promiseArray.push(db.get.semi_random.loot_material_specific(material.material).then(specificMaterial => {
-                        return populatedMaterials.push(specificMaterial[0])
+                        if (specificMaterial[0].materialcategory === 'other_table') {
+                            
+                        } else {
+                            return populatedMaterials.push(specificMaterial[0])
+                        }
                     }).catch(e => sendErrorForward('get specific item from subtable', e, res)))
                 }
             }
@@ -122,7 +131,7 @@ itemHelpers = {
                     }
                 } else {
                     return {
-                        material: `${material.material} ${material.materialcategory}`,
+                        material: `${material.material}${material.materialcategory && material.materialcategory !== 'other_table' ? ' ' + material.materialcategory : ''}`,
                         multiplier: material.multiplier,
                         price: material.price
                     }
