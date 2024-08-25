@@ -105,8 +105,8 @@ export default function UniqueItems() {
     const [loading, setLoading] = useState(true);
     const [items, setItems] = useState([]);
     const [itemCategory, setitemCategory] = useState(null);
-
-    // materialRarity, detailing
+    const [materialRarity, setmaterialRarity] = useState('C');
+    const [detailing, setdetailing] = useState('M');
 
     useEffect(() => {
         if (items.length === 0) {
@@ -118,13 +118,27 @@ export default function UniqueItems() {
         if (itemCategory !== event.target.value) {
             const value = event.target.value === 'Any' ? null : event.target.value
             setitemCategory(value)
-            refreshItems({itemCategory: value})
+            refreshItems({ itemCategory: value })
+        }
+    }
+
+    function setMaterialRarity(event) {
+        if (materialRarity !== event.target.value) {
+            setmaterialRarity(event.target.value)
+            refreshItems({ materialRarity: event.target.value })
+        }
+    }
+
+    function setDetailing(event) {
+        if (detailing !== event.target.value) {
+            setdetailing(event.target.value)
+            refreshItems({ detailing: event.target.value })
         }
     }
 
     function refreshItems(newParams = {}) {
         setLoading(true)
-        const params = {itemCategory, ...newParams}
+        const params = { itemCategory, materialRarity, ...newParams }
         let paramString = ''
         for (const key in params) {
             if (params[key]) {
@@ -155,6 +169,18 @@ export default function UniqueItems() {
                                     return <option value={category.id} key={category.label + i}>{category.label}</option>
                                 })}
                             </select>
+                            <select onChange={setMaterialRarity} value={materialRarity}>
+                                <option value={'C'}>Common</option>
+                                <option value={'U'}>Uncommon</option>
+                                <option value={'R'}>Rare</option>
+                                <option value={'L'}>Legendary</option>
+                            </select>
+                            <select onChange={setDetailing} value={detailing}>
+                                <option value={'C'}>None</option>
+                                <option value={'U'}>Low</option>
+                                <option value={'M'}>Normal</option>
+                                <option value={'H'}>High</option>
+                            </select>
                         </div>
                         <Button variant="contained" onClick={refreshItems} theme={theme}><RefreshIcon /></Button>
                     </div>
@@ -184,7 +210,7 @@ export default function UniqueItems() {
                                     </AccordionSummary>
                                     <AccordionDetails>
                                         <Typography component={'span'} variant={'body2'}>
-                                            <ItemDetails item={item} ></ItemDetails>
+                                            <ItemDetails item={item}></ItemDetails>
                                         </Typography>
                                     </AccordionDetails>
                                 </Accordion>

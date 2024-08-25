@@ -19,7 +19,7 @@ export default function ItemDetails({ item }) {
             {item.number > 1 && <div className='item-detail'><h3>Number</h3> <p>{item.number}</p></div>}
             {item.size && <div className='item-detail'><h3>Size</h3> <p>{item.size}</p></div>}
             {item.finalPrice && <div className='item-detail'><h3>Price</h3> <p>{item.finalPrice} sc</p></div>}
-            {item.wear && <div className='item-detail'><h3>Wear</h3> <p>{item.wear}</p></div>}
+            {/* <div className='item-detail'><h3>Wear</h3> <p>{item.wear}</p></div> */}
             {mapSubject(item.subject)}
             {item.engravings && item.engravings.length > 0 && <div><h3>Engravings(s)</h3> {item.engravings.map((engraving, i) => {
                 return (
