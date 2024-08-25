@@ -132,7 +132,7 @@ function App() {
       <TabPanel value={value} index={4}>
         <EnchantedItems />
       </TabPanel>
-      <Toaster position="top-right" toastOptions={{
+      <Toaster position="bottom-right" toastOptions={{
         success: {
           style: {
             background: 'green',

@@ -169,18 +169,24 @@ export default function UniqueItems() {
                                     return <option value={category.id} key={category.label + i}>{category.label}</option>
                                 })}
                             </select>
-                            <select onChange={setMaterialRarity} value={materialRarity}>
-                                <option value={'C'}>Common</option>
-                                <option value={'U'}>Uncommon</option>
-                                <option value={'R'}>Rare</option>
-                                <option value={'L'}>Legendary</option>
-                            </select>
-                            <select onChange={setDetailing} value={detailing}>
-                                <option value={'C'}>None</option>
-                                <option value={'U'}>Low</option>
-                                <option value={'M'}>Normal</option>
-                                <option value={'H'}>High</option>
-                            </select>
+                            <div>
+                                <p className='select-label'>Material Rarity</p>
+                                <select onChange={setMaterialRarity} value={materialRarity}>
+                                    <option value={'C'}>Common</option>
+                                    <option value={'U'}>Uncommon</option>
+                                    <option value={'R'}>Rare</option>
+                                    <option value={'L'}>Legendary</option>
+                                </select>
+                            </div>
+                            <div>
+                                <p className='select-label'>Detailing</p>
+                                <select onChange={setDetailing} value={detailing}>
+                                    <option value={'C'}>None</option>
+                                    <option value={'U'}>Low</option>
+                                    <option value={'M'}>Normal</option>
+                                    <option value={'H'}>High</option>
+                                </select>
+                            </div>
                         </div>
                         <Button variant="contained" onClick={refreshItems} theme={theme}><RefreshIcon /></Button>
                     </div>
