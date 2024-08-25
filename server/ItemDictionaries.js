@@ -1,6 +1,6 @@
 const dictionaries = {
-    getWhichCategoryToGet: (type) => {
-        return type.substring(0, 5) === 'Armor' ? 'loot_armor' : 'loot_by_category'
+    getWhichCategoryToGet: (itemCategory) => {
+        return dictionaries.itemCategory[+itemCategory].substring(0, 5) === 'Armor' ? 'loot_armor' : 'loot_by_category'
     },
     itemCategory: [
         null,

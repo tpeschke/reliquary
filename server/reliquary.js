@@ -15,10 +15,10 @@ app.use(bodyParser.json())
 app.use(cors())
 
 app.get('/api/getUniquieItem', uniqueItemCtrl.getUniqueItem)
-app.get('/api/getItem', itemCtrl.getItem)
 app.get('/api/getEnchantedItem', enchantedCtrl.getEnchantedItem)
 app.get('/api/getSingleEnchantedItem/:id', enchantedCtrl.getSingleEnchantedItem)
 
+app.post('/api/getItems', itemCtrl.getItems)
 app.post('/api/getUniquieItems', uniqueItemCtrl.getUniqueItems)
 app.post('/api/getRandomPotion', potionCtrl.getRandomPotion)
 app.post('/api/getRandomPotions', potionCtrl.getRandomPotions)
