@@ -22,7 +22,7 @@ controllerFunctions = {
             })
         }
 
-        for (let i = 1; i < number; i++) {
+        for (let i = 0; i < number; i++) {
             finishedItemArray.push(new Promise(resolve => {
                 return getItem(db, res, resolve, format, {itemCategory, materialRarity, detailing, wear})
             }))
