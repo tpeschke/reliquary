@@ -104,29 +104,24 @@ export default function UniqueItems() {
     const [items, setItems] = useState([]);
     const [budget, setBudget] = useState(100);
 
+    // itemCategory, materialRarity, detailing
+
     useEffect(() => {
         if (items.length === 0) {
-            axios.post(constants.baseUrl + '/api/getUniquieItems?numberOfItems=10&budget=' + budget).then(({ data }) => {
-                setItems(data);
-                setLoading(false)
-            })
+            refreshItems()
         }
     }, [loading]);
 
     function getBudget(event) {
         if (budget !== event.target.value) {
-            setLoading(true)
             setBudget(event.target.value)
-            axios.post(constants.baseUrl + '/api/getUniquieItems?numberOfItems=10&budget=' + event.target.value).then(({ data }) => {
-                setItems(data);
-                setLoading(false)
-            })
+            refreshItems()
         }
     }
 
     function refreshItems() {
         setLoading(true)
-        axios.post(constants.baseUrl + '/api/getUniquieItems?numberOfItems=10&budget=' + budget).then(({ data }) => {
+        axios.post(constants.baseUrl + '/api/getItems?number=10').then(({ data }) => {
             setItems(data);
             setLoading(false)
         })

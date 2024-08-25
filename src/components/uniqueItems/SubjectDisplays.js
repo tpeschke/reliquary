@@ -1,8 +1,8 @@
 import React from 'react';
 
 export function mapSubject(subjects) {
-
-    if (!subjects || subjects.length === 0) {
+    console.log(subjects)
+    if (!subjects || !subjects.length || subjects.length === 0) {
         return <div></div>
     }
     return (
@@ -16,19 +16,19 @@ export function mapSubject(subjects) {
                         {subject.persons ? (<>
                             <h4>Person(s)</h4>
                             <ul>
-                                {subject.persons.map((person, i) => (<li key={person.detail + i}>{person.detail}</li>))}
+                                {subject.persons.map((person, i) => (<li key={person + i}>{person}</li>))}
                             </ul></>) : <div></div>
                         }
                         {subject.animal_subtype ? (<>
                             <h4>Animal(s)</h4>
                             <ul>
-                                {subject.animal_subtype.map((animal, i) => (<li key={animal.submaterial.detail + i}>{animal.submaterial.detail}</li>))}
+                                {subject.animal_subtype.map((animal, i) => (<li key={animal.submaterial + i}>{animal.submaterial}</li>))}
                             </ul></>) : <div></div>
                         }
                         {subject.body_parts ? (<>
                             <h4>Body Part(s)</h4>
                             <ul>
-                                {subject.body_parts.map((body_part, i) => (<li key={body_part.submaterial.detail + i}>{body_part.submaterial.detail}</li>))}
+                                {subject.body_parts.map((body_part, i) => (<li key={body_part.submaterial + i}>{body_part.submaterial}</li>))}
                             </ul></>) : <div></div>
                         }
                         {subject.events ? (<>
@@ -46,19 +46,13 @@ export function mapSubject(subjects) {
                         {subject.colors ? (<>
                             <h4>Color(s)</h4>
                             <ul>
-                                {subject.colors.map((color, i) => (<li key={color.detail + i}>{color.detail}</li>))}
+                                {subject.colors.map((color, i) => (<li key={color + i}>{color}</li>))}
                             </ul></>) : <div></div>
                         }
                         {subject.adjectives ? (<>
                             <h4>Adjective(s)</h4>
                             <ul>
-                                {subject.adjectives.map((adjective, i) => (<li key={adjective.detail + i}>{adjective.detail}{adjective.submaterial ? ' ' + adjective.submaterial.detail : ''}</li>))}
-                            </ul></>) : <div></div>
-                        }
-                        {subject.quirks ? (<>
-                            <h4>Quirk(s)</h4>
-                            <ul>
-                                {subject.quirks.map((quirk, i) => (<li key={quirk.detail + i}>{quirk.detail}</li>))}
+                                {subject.adjectives.map((adjective, i) => (<li key={adjective + i}>{adjective}{adjective.submaterial ? ' ' + adjective.submaterial : ''}</li>))}
                             </ul></>) : <div></div>
                         }
                     </div>
@@ -89,13 +83,13 @@ export function mapSecondary(subjects) {
                         {subject.animal_subtype ? (<>
                             <h5>Animal(s)</h5>
                             <ul>
-                                {subject.animal_subtype.map((animal, i) => (<li key={animal.submaterial.detail + i}>{animal.submaterial.detail}</li>))}
+                                {subject.animal_subtype.map((animal, i) => (<li key={animal + i}>{animal}</li>))}
                             </ul></>) : <div></div>
                         }
                         {subject.body_parts ? (<>
                             <h5>Body Part(s)</h5>
                             <ul>
-                                {subject.body_parts.map((body_part, i) => (<li key={body_part.submaterial.detail + i}>{body_part.submaterial.detail}</li>))}
+                                {subject.body_parts.map((body_part, i) => (<li key={body_part + i}>{body_part}</li>))}
                             </ul></>) : <div></div>
                         }
                         {subject.events ? (<>
@@ -113,19 +107,13 @@ export function mapSecondary(subjects) {
                         {subject.colors ? (<>
                             <h5>Color(s)</h5>
                             <ul>
-                                {subject.colors.map((color, i) => (<li key={color.detail + i}>{color.detail}</li>))}
+                                {subject.colors.map((color, i) => (<li key={color + i}>{color}</li>))}
                             </ul></>) : <div></div>
                         }
                         {subject.adjectives ? (<>
                             <h5>Adjective(s)</h5>
                             <ul>
-                                {subject.adjectives.map((adjective, i) => (<li key={adjective.detail + i}>{adjective.detail}{adjective.submaterial ? ' ' + adjective.submaterial.detail : ''}</li>))}
-                            </ul></>) : <div></div>
-                        }
-                        {subject.quirks ? (<>
-                            <h5>Quirk(s)</h5>
-                            <ul>
-                                {subject.quirks.map((quirk, i) => (<li key={quirk.detail + i}>{quirk.detail}</li>))}
+                                {subject.adjectives.map((adjective, i) => (<li key={adjective + i}>{adjective}{adjective.submaterial ? ' ' + adjective : ''}</li>))}
                             </ul></>) : <div></div>
                         }
                     </div>
@@ -153,13 +141,13 @@ export function mapSecondaryObject(subject) {
                 {subject.animal_subtype ? (<>
                     <h5>Animal(s)</h5>
                     <ul>
-                        {subject.animal_subtype.map((animal, i) => (<li key={animal.submaterial.detail + i}>{animal.submaterial.detail}</li>))}
+                        {subject.animal_subtype.map((animal, i) => (<li key={animal + i}>{animal}</li>))}
                     </ul></>) : <div></div>
                 }
                 {subject.body_parts ? (<>
                     <h5>Body Part(s)</h5>
                     <ul>
-                        {subject.body_parts.map((body_part, i) => (<li key={body_part.submaterial.detail + i}>{body_part.submaterial.detail}</li>))}
+                        {subject.body_parts.map((body_part, i) => (<li key={body_part + i}>{body_part}</li>))}
                     </ul></>) : <div></div>
                 }
                 {subject.events ? (<>
@@ -177,19 +165,13 @@ export function mapSecondaryObject(subject) {
                 {subject.colors ? (<>
                     <h5>Color(s)</h5>
                     <ul>
-                        {subject.colors.map((color, i) => (<li key={color.detail + i}>{color.detail}</li>))}
+                        {subject.colors.map((color, i) => (<li key={color + i}>{color}</li>))}
                     </ul></>) : <div></div>
                 }
                 {subject.adjectives ? (<>
                     <h5>Adjective(s)</h5>
                     <ul>
-                        {subject.adjectives.map((adjective, i) => (<li key={adjective.detail + i}>{adjective.detail}{adjective.submaterial ? ' ' + adjective.submaterial.detail : ''}</li>))}
-                    </ul></>) : <div></div>
-                }
-                {subject.quirks ? (<>
-                    <h5>Quirk(s)</h5>
-                    <ul>
-                        {subject.quirks.map((quirk, i) => (<li key={quirk.detail + i}>{quirk.detail}</li>))}
+                        {subject.adjectives.map((adjective, i) => (<li key={adjective + i}>{adjective}{adjective.submaterial ? ' ' + adjective : ''}</li>))}
                     </ul></>) : <div></div>
                 }
             </div>

@@ -10,15 +10,23 @@ controllerFunctions = {
         const db = req.app.get('db')
 
         const { items } = req.body
-        const { format } = req.query
+        const { format, itemCategory, materialRarity, detailing, wear, number } = req.query
 
         let finishedItemArray = []
 
-        items.forEach(item => {
+        if (items > 0) {
+            items.forEach(item => {
+                finishedItemArray.push(new Promise(resolve => {
+                    return getItem(db, res, resolve, format, {...item, itemCategory, materialRarity, detailing, wear})
+                }))
+            })
+        }
+
+        for (let i = 1; i < number; i++) {
             finishedItemArray.push(new Promise(resolve => {
-                return getItem(db, res, resolve, format, item)
+                return getItem(db, res, resolve, format, {itemCategory, materialRarity, detailing, wear})
             }))
-        })
+        }
 
         Promise.all(finishedItemArray).then(finalItemArray => {
             checkForContentTypeBeforeSending(res, finalItemArray)
@@ -26,7 +34,7 @@ controllerFunctions = {
     }
 }
 
-getItem = async (db, res, resolve, format, { itemCategory = randomIntBetweenTwoInts(1, 38), materialRarity = 'C', detailing = 'L', wear = '0' }) => {
+getItem = async (db, res, resolve, format, { itemCategory = randomIntBetweenTwoInts(1, 38), materialRarity = 'C', detailing = 'M', wear = '0' }) => {
     const searchFunctionToUse = dictionaries.getWhichCategoryToGet(itemCategory)
 
     db.get.random[searchFunctionToUse](dictionaries.itemCategory[+itemCategory]).then(item => {
