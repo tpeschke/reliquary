@@ -94,12 +94,12 @@ itemHelpers = {
                     promiseArray.push(db.get.semi_random.loot_materials(`Exotic ${material.material}`, 0, 0).then(specificMaterial => {
                         return populatedMaterials.push(specificMaterial[0])
                     }).catch(e => sendErrorForward('get legendary specific item', {...e, extraInfo: material}, res)))
-                } else if (material.material === 'Paper Product') {
+                } else if (['Paper Product', 'Wax'].includes(material.material)) {
                     const specificMaterialRarityMultiplier = dictionaries.materialRarityMultiplier[material.material]
                     promiseArray.push(db.get.semi_random.loot_materials_price(material.material, specificMaterialRarityMultiplier[materialRarity.toUpperCase()].min, specificMaterialRarityMultiplier[materialRarity.toUpperCase()].max).then(specificMaterial => {
                         return populatedMaterials.push(specificMaterial[0])
                     }).catch(e => sendErrorForward('get specific item by price', {...e, extraInfo: material}, res)))
-                } else if (['Cloth', 'Fur', 'Leather', 'Metal', 'Stone/Earthwork', 'Vellum', 'Wax', 'Wood'].includes(material.material)) {
+                } else if (['Cloth', 'Fur', 'Leather', 'Metal', 'Stone/Earthwork', 'Vellum', 'Wood'].includes(material.material)) {
                     const specificMaterialRarityMultiplier = dictionaries.materialRarityMultiplier[material.material]
                     promiseArray.push(db.get.semi_random.loot_materials(material.material, specificMaterialRarityMultiplier[materialRarity.toUpperCase()].min, specificMaterialRarityMultiplier[materialRarity.toUpperCase()].max).then(specificMaterial => {
                         return populatedMaterials.push(specificMaterial[0])

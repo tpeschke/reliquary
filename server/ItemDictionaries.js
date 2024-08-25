@@ -241,6 +241,24 @@ const dictionaries = {
                 min: 3,
                 max: 5
             }
+        },
+        'Wax': {
+            C: {
+                min: .0001,
+                max: .5
+            },
+            U: {
+                min: .5,
+                max: 1.5
+            },
+            R: {
+                min: 2.5,
+                max: 5
+            },
+            L: {
+                min: 5,
+                max: 5
+            }
         }
     },
     detailingChance: {
