@@ -182,7 +182,7 @@ export default function UniqueItems() {
                                 <p className='select-label'>Detailing</p>
                                 <select onChange={setDetailing} value={detailing}>
                                     <option value={'N'}>None</option>
-                                    <option value={'U'}>Low</option>
+                                    <option value={'L'}>Low</option>
                                     <option value={'M'}>Normal</option>
                                     <option value={'H'}>High</option>
                                 </select>
