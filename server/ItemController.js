@@ -21,7 +21,7 @@ controllerFunctions = {
                     materialRarity ? item.materialRarity = materialRarity : null
                     detailing ? item.detailing = detailing : null
                     wear ? item.wear = wear : null
-                    return getItem(db, res, resolve, format, {...item, itemCategory, materialRarity, detailing, wear})
+                    return getItem(db, res, resolve, format, item)
                 }))
             })
         }
