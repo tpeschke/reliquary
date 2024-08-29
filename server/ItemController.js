@@ -14,9 +14,13 @@ controllerFunctions = {
 
         let finishedItemArray = []
 
-        if (items > 0) {
+        if (items.length > 0) {
             items.forEach(item => {
                 finishedItemArray.push(new Promise(resolve => {
+                    itemCategory ? item.itemCategory = itemCategory : null
+                    materialRarity ? item.materialRarity = materialRarity : null
+                    detailing ? item.detailing = detailing : null
+                    wear ? item.wear = wear : null
                     return getItem(db, res, resolve, format, {...item, itemCategory, materialRarity, detailing, wear})
                 }))
             })
