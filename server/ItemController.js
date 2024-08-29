@@ -14,7 +14,7 @@ controllerFunctions = {
 
         let finishedItemArray = []
 
-        if (items.length > 0) {
+        if (items && items.length > 0) {
             items.forEach(item => {
                 finishedItemArray.push(new Promise(resolve => {
                     itemCategory ? item.itemCategory = itemCategory : null
