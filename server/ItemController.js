@@ -10,15 +10,15 @@ controllerFunctions = {
         const db = req.app.get('db')
 
         const { items } = req.body
-        const { format, itemCategory, materialRarity, detailing, wear, number } = req.query
+        const { format, itemcategory, materialrarity, detailing, wear, number } = req.query
 
         let finishedItemArray = []
 
         if (items && items.length > 0) {
             items.forEach(item => {
                 finishedItemArray.push(new Promise(resolve => {
-                    itemCategory ? item.itemCategory = itemCategory : null
-                    materialRarity ? item.materialRarity = materialRarity : null
+                    itemcategory ? item.itemcategory = itemcategory : null
+                    materialrarity ? item.materialrarity = materialrarity : null
                     detailing ? item.detailing = detailing : null
                     wear ? item.wear = wear : null
                     return getItem(db, res, resolve, format, item)
@@ -28,7 +28,7 @@ controllerFunctions = {
 
         for (let i = 0; i < number; i++) {
             finishedItemArray.push(new Promise(resolve => {
-                return getItem(db, res, resolve, format, {itemCategory, materialRarity, detailing, wear})
+                return getItem(db, res, resolve, format, {itemcategory, materialrarity, detailing, wear})
             }))
         }
 
@@ -38,10 +38,10 @@ controllerFunctions = {
     }
 }
 
-getItem = async (db, res, resolve, format, { itemCategory = randomIntBetweenTwoInts(1, 38), materialRarity = 'C', detailing = 'M', wear = '0' }) => {
-    const searchFunctionToUse = dictionaries.getWhichCategoryToGet(itemCategory)
+getItem = async (db, res, resolve, format, { itemcategory = randomIntBetweenTwoInts(1, 38), materialrarity = 'C', detailing = 'M', wear = '0' }) => {
+    const searchFunctionToUse = dictionaries.getWhichCategoryToGet(itemcategory)
 
-    db.get.random[searchFunctionToUse](dictionaries.itemCategory[+itemCategory]).then(item => {
+    db.get.random[searchFunctionToUse](dictionaries.itemCategory[+itemcategory]).then(item => {
         item = item[0]
         db.get.not_random.item_materials(item.id).then(materialResult => {
             if (materialResult.length > 0 && materialResult[0].material) {
@@ -52,7 +52,7 @@ getItem = async (db, res, resolve, format, { itemCategory = randomIntBetweenTwoI
 
             let promiseArray = []
             if (item.materials.length > 0) {
-                promiseArray.push(populationWithSpecificMaterials(db, item.materials, materialRarity, res).then(populatedMaterials => {
+                promiseArray.push(populationWithSpecificMaterials(db, item.materials, materialrarity, res).then(populatedMaterials => {
                     item.materials = populatedMaterials
                     return true
                 }).catch(e => sendErrorForward('populate materials', e, res)))
@@ -68,7 +68,7 @@ getItem = async (db, res, resolve, format, { itemCategory = randomIntBetweenTwoI
                 return true
             }).catch(e => sendErrorForward('get Colors details function', e, res)))
 
-            promiseArray.push(getGems(db, detailing, materialRarity, item.gems, res).then(gems => {
+            promiseArray.push(getGems(db, detailing, materialrarity, item.gems, res).then(gems => {
                 item.gems = gems
                 return getEngravings(db, detailing, item.engravings, item.gems, res).then(engravings => {
                     item.engravings = engravings
