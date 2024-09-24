@@ -104,8 +104,8 @@ const categoryIconDictionary = {
 export default function UniqueItems() {
     const [loading, setLoading] = useState(true);
     const [items, setItems] = useState([]);
-    const [itemCategory, setitemCategory] = useState(null);
-    const [materialRarity, setmaterialRarity] = useState('C');
+    const [itemcategory, setitemCategory] = useState(null);
+    const [materialrarity, setmaterialRarity] = useState('C');
     const [detailing, setdetailing] = useState('M');
 
     useEffect(() => {
@@ -115,17 +115,17 @@ export default function UniqueItems() {
     }, [loading]);
 
     function setItemCategory(event) {
-        if (itemCategory !== event.target.value) {
+        if (itemcategory !== event.target.value) {
             const value = event.target.value === 'Any' ? null : event.target.value
             setitemCategory(value)
-            refreshItems({ itemCategory: value })
+            refreshItems({ itemcategory: value })
         }
     }
 
     function setMaterialRarity(event) {
-        if (materialRarity !== event.target.value) {
+        if (materialrarity !== event.target.value) {
             setmaterialRarity(event.target.value)
-            refreshItems({ materialRarity: event.target.value })
+            refreshItems({ materialrarity: event.target.value })
         }
     }
 
@@ -138,7 +138,7 @@ export default function UniqueItems() {
 
     function refreshItems(newParams = {}) {
         setLoading(true)
-        const params = { itemCategory, materialRarity, ...newParams }
+        const params = { itemcategory, materialrarity, ...newParams }
         let paramString = ''
         for (const key in params) {
             if (params[key]) {
@@ -163,7 +163,7 @@ export default function UniqueItems() {
                 <div>
                     <div className='input-shell'>
                         <div>
-                            <select onChange={setItemCategory} value={itemCategory ? itemCategory : ''}>
+                            <select onChange={setItemCategory} value={itemcategory ? itemcategory : ''}>
                                 <option>Any</option>
                                 {itemCategories.map((category, i) => {
                                     return <option value={category.id} key={category.label + i}>{category.label}</option>
@@ -171,7 +171,7 @@ export default function UniqueItems() {
                             </select>
                             <div>
                                 <p className='select-label'>Material Rarity</p>
-                                <select onChange={setMaterialRarity} value={materialRarity}>
+                                <select onChange={setMaterialRarity} value={materialrarity}>
                                     <option value={'C'}>Common</option>
                                     <option value={'U'}>Uncommon</option>
                                     <option value={'R'}>Rare</option>
@@ -247,16 +247,16 @@ const itemCategories = [
         "id": 30
     },
     {
-        "label": "Armor, Large",
-        "id": 4
-    },
-    {
         "label": "Armor, Light",
         "id": 2
     },
     {
         "label": "Armor, Medium",
         "id": 3
+    },
+    {
+        "label": "Armor, Heavy",
+        "id": 4
     },
     {
         "label": "Beverages",

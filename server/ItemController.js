@@ -15,7 +15,8 @@ controllerFunctions = {
         let finishedItemArray = []
 
         if (items && items.length > 0) {
-            items.forEach(item => {
+            for (let i = 0; i < items.length && i < 25; i++) {
+                const item = items[i]
                 finishedItemArray.push(new Promise(resolve => {
                     itemcategory ? item.itemcategory = itemcategory : null
                     materialrarity ? item.materialrarity = materialrarity : null
@@ -23,12 +24,12 @@ controllerFunctions = {
                     wear ? item.wear = wear : null
                     return getItem(db, res, resolve, format, item)
                 }))
-            })
+            }
         }
 
-        for (let i = 0; i < number; i++) {
+        for (let i = 0; i < number && i < 25; i++) {
             finishedItemArray.push(new Promise(resolve => {
-                return getItem(db, res, resolve, format, {itemcategory, materialrarity, detailing, wear})
+                return getItem(db, res, resolve, format, { itemcategory, materialrarity, detailing, wear })
             }))
         }
 
