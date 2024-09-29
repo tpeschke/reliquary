@@ -17,19 +17,21 @@ controllerFunctions = {
         let promiseArray = []
 
         requestArray.forEach((request, index) => {
-            let itemObjects = {}
-
+            if (!resultArray[index]) {
+                resultArray[index] = []
+            }
+            
             if (request.enchanted) {
                 const { numberOfItems, status } = request.enchanted
                 promiseArray.push(enchantedCtrl.getEnchantedItemsWorkHorse(res, db, numberOfItems, status).then(result => {
-                    itemObjects.enchantedItems = result
+                    resultArray[index] = [...resultArray[index], ...result]
                 }).catch(e => sendErrorForward('get enchanted item in all treasures', e, res)))
             }
 
             if (request.potions) {
                 const { numberOfItems, rarity } = request.potions
                 promiseArray.push(potionCtrl.getRandomPotionsWorkhorse(res, db, numberOfItems, rarity).then(result => {
-                    itemObjects.potions = result
+                    resultArray[index] = [...resultArray[index], ...result]
                 }).catch(e => sendErrorForward('get potions in all treasures', e, res)))
 
             }
@@ -37,7 +39,7 @@ controllerFunctions = {
             if (request.scrolls) {
                 const { numberOfItems } = request.scrolls
                 promiseArray.push(scrollCtrl.getRandomScrollsWorkhorse(res, numberOfItems).then(result => {
-                    itemObjects.scrolls = result
+                    resultArray[index] = [...resultArray[index], ...result]
                 }).catch(e => sendErrorForward('get scrolls in all treasures', e, res)))
 
             }
@@ -45,7 +47,7 @@ controllerFunctions = {
             if (request.talismans) {
                 const { numberOfItems } = request.talismans
                 promiseArray.push(talismanCtrl.getRandomTalismansWorkhorse(res, db, numberOfItems).then(result => {
-                    itemObjects.talismans = result
+                    resultArray[index] = [...resultArray[index], ...result]
                 }).catch(e => sendErrorForward('get talismans in all treasures', e, res)))
             }
 
@@ -56,12 +58,10 @@ controllerFunctions = {
                 itemCtrl.getItemsFromArray(res, db, itemArray, itemPromiseArray, {format: 'string'})
 
                 promiseArray.push(Promise.all(itemPromiseArray).then(items => {
-                    itemObjects.items = items
+                    resultArray[index] = [...resultArray[index], ...items]
                     return items
                 }))
             }
-
-            resultArray[index] = itemObjects
         })
 
         Promise.all(promiseArray).then(_ => {
