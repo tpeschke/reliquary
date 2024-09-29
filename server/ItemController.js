@@ -5,7 +5,7 @@ const dictionaries = require('./ItemDictionaries.js')
 
 const sendErrorForward = sendErrorForwardNoFile('Items')
 
-controllerFunctions = {
+const controllerFunctions = {
     getItems: async (req, res) => {
         const db = req.app.get('db')
 
@@ -13,33 +13,37 @@ controllerFunctions = {
         const { format, itemcategory, materialrarity, detailing, wear, number } = req.query
 
         let finishedItemArray = []
-
         if (items && items.length > 0) {
-            for (let i = 0; i < items.length && i < 25; i++) {
-                const item = items[i]
-                finishedItemArray.push(new Promise(resolve => {
-                    itemcategory ? item.itemcategory = itemcategory : null
-                    materialrarity ? item.materialrarity = materialrarity : null
-                    detailing ? item.detailing = detailing : null
-                    wear ? item.wear = wear : null
-                    return getItem(db, res, resolve, format, item)
-                }))
-            }
+            controllerFunctions.getItemsFromArray(res, db, items, finishedItemArray, {format, itemcategory, materialrarity, detailing, wear})
         }
 
         for (let i = 0; i < number && i < 25; i++) {
             finishedItemArray.push(new Promise(resolve => {
-                return getItem(db, res, resolve, format, { itemcategory, materialrarity, detailing, wear })
+                return getItem(res, db, resolve, format, { itemcategory, materialrarity, detailing, wear })
             }))
         }
 
         Promise.all(finishedItemArray).then(finalItemArray => {
             checkForContentTypeBeforeSending(res, finalItemArray)
         })
+    },
+    getItemsFromArray: async (res, db, itemArray, promiseArray, defaults) => {
+        const { format, itemcategory, materialrarity, detailing, wear } = defaults
+
+        for (let i = 0; i < itemArray.length && i < 25; i++) {
+            const item = itemArray[i]
+            promiseArray.push(new Promise(resolve => {
+                itemcategory ? item.itemcategory = itemcategory : null
+                materialrarity ? item.materialrarity = materialrarity : null
+                detailing ? item.detailing = detailing : null
+                wear ? item.wear = wear : null
+                return getItem(res, db, resolve, format, item)
+            }))
+        }
     }
 }
 
-getItem = async (db, res, resolve, format, { itemcategory = randomIntBetweenTwoInts(1, 38), materialrarity = 'C', detailing = 'M', wear = '0' }) => {
+getItem = async (res, db, resolve, format, { itemcategory = randomIntBetweenTwoInts(1, 38), materialrarity = 'C', detailing = 'M', wear = '0' }) => {
     const searchFunctionToUse = dictionaries.getWhichCategoryToGet(itemcategory)
 
     db.get.random[searchFunctionToUse](dictionaries.itemCategory[+itemcategory]).then(item => {

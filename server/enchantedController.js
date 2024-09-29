@@ -1,20 +1,20 @@
 const { sendErrorForwardNoFile, checkForContentTypeBeforeSending } = require('./helpers')
 const sendErrorForward = sendErrorForwardNoFile('Enchanted Items')
 
-controllerFunctions = {
-    getEnchantedItem: (req, res) => {
+const controllerFunctions = {
+    getEnchantedItems: async (req, res) => {
         const db = req.app.get('db')
         let { numberOfItems, status } = req.query
 
-        if (!numberOfItems) {
-            numberOfItems = 1
-        } else if (numberOfItems > 25) {
+        const items = await controllerFunctions.getEnchantedItemsWorkHorse(res, db, numberOfItems, status).catch(e => sendErrorForward('get enchanted item', e, res))
+        checkForContentTypeBeforeSending(res, items)
+    },
+    getEnchantedItemsWorkHorse: async (res, db, numberOfItems = 1, status) => {
+        if (numberOfItems > 25) {
             numberOfItems = 25
         }
-
-        db.get.semi_random.enchanted_item(numberOfItems, !!status).then(items => {
-            checkForContentTypeBeforeSending(res, items)
-        }).catch(e => sendErrorForward('get enchanted item', e, res))
+    
+        return db.get.semi_random.enchanted_item(numberOfItems, !!status).catch(e => sendErrorForward('get enchanted item workhorse', e, res))
     },
     getSingleEnchantedItem: (req, res) => {
         const db = req.app.get('db')
@@ -33,5 +33,7 @@ controllerFunctions = {
         }).catch(e => sendErrorForward('search enchanted item', e, res))
     }
 }
+
+
 
 module.exports = controllerFunctions

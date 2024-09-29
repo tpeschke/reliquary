@@ -8,12 +8,13 @@ const itemCtrl = require('./ItemController.js')
     , talismanCtrl = require('./talismanController.js')
     , scrollCtrl = require('./scrollController.js')
     , enchantedCtrl = require('./enchantedController.js')
+    , combinedCtrl = require('./combinedController.js')
 
 const app = new express()
 app.use(bodyParser.json())
 app.use(cors())
 
-app.get('/api/getEnchantedItem', enchantedCtrl.getEnchantedItem)
+app.get('/api/getEnchantedItem', enchantedCtrl.getEnchantedItems)
 app.get('/api/getSingleEnchantedItem/:id', enchantedCtrl.getSingleEnchantedItem)
 
 app.post('/api/getItems', itemCtrl.getItems)
@@ -23,6 +24,8 @@ app.post('/api/searchPotions', potionCtrl.searchPotions)
 app.post('/api/searchEnchantedItems', enchantedCtrl.searchEnchantedItem)
 app.post('/api/getTalismans', talismanCtrl.getRandomTalismans)
 app.post('/api/getScrolls', scrollCtrl.getRandomScrolls)
+
+app.post('/api/treasure', combinedCtrl.getTreasure)
 
 const root = require('path').join(__dirname, '../build')
 app.use(express.static(root));

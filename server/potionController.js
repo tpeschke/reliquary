@@ -1,7 +1,7 @@
 const { sendErrorForwardNoFile, checkForContentTypeBeforeSending } = require('./helpers')
 const sendErrorForward = sendErrorForwardNoFile('Potions')
 
-controllerFunctions = {
+const controllerFunctions = {
     getRandomPotion: (req, res) => {
         const db = req.app.get('db')
         let { rarity } = req.query
@@ -10,9 +10,14 @@ controllerFunctions = {
             getPotion(db, rarity, resolve)
         }).then(potion => checkForContentTypeBeforeSending(res, potion)).catch(e => sendErrorForward('get random potion', e, res));
     },
-    getRandomPotions: (req, res) => {
+    getRandomPotions: async (req, res) => {
         const db = req.app.get('db')
         let { numberOfItems, rarity } = req.query
+
+        const potions = await controllerFunctions.getRandomPotionsWorkhorse(res, db, numberOfItems, rarity)     
+        checkForContentTypeBeforeSending(res, potions)
+    },
+    getRandomPotionsWorkhorse: async (res, db, numberOfItems = 1, rarity) => {
         let promiseArray = []
 
         if (numberOfItems > 25) {
@@ -24,7 +29,7 @@ controllerFunctions = {
             }))
         }
 
-        Promise.all(promiseArray).then(finalArray => checkForContentTypeBeforeSending(res, finalArray)).catch(e => sendErrorForward('get random potions promise', e, res))
+        return Promise.all(promiseArray).catch(e => sendErrorForward('get random potions promise', e, res))
     },
     searchPotions: (req, res) => {
         const db = req.app.get('db')
