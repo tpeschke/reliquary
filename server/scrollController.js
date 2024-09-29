@@ -9,12 +9,14 @@ const controllerFunctions = {
         const scrolls = await controllerFunctions.getRandomScrollsWorkhorse(res, numberOfItems)
         checkForContentTypeBeforeSending(res, scrolls)
     },
-    getRandomScrollsWorkhorse: async (res, numberOfItems = 1) => {
+    getRandomScrollsWorkhorse: async (res, numberOfItems = 1, power) => {
         if (numberOfItems > 25) {
             numberOfItems = 25
         }
 
-        return axios.get('https://bonfire.stone-fish.com/getRandomSpells/' + numberOfItems).then(result => result.data).catch(e => sendErrorForward('get random scrolls', e, res))
+        return axios.get('https://bonfire.stone-fish.com/getRandomSpells/' + numberOfItems).then(result => {
+            return result.data.map(scroll => {return {...scroll, sp: power}})
+        }).catch(e => sendErrorForward('get random scrolls', e, res))
     }
 }
 

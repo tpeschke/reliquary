@@ -37,11 +37,12 @@ controllerFunctions = {
             }
 
             if (request.scrolls) {
-                const { numberOfItems } = request.scrolls
-                promiseArray.push(scrollCtrl.getRandomScrollsWorkhorse(res, numberOfItems).then(result => {
-                    resultArray[index] = [...resultArray[index], ...result]
-                }).catch(e => sendErrorForward('get scrolls in all treasures', e, res)))
-
+                request.scrolls.forEach(scroll => {
+                    const { numberOfItems, power } = scroll
+                    promiseArray.push(scrollCtrl.getRandomScrollsWorkhorse(res, numberOfItems, power).then(result => {
+                        resultArray[index] = [...resultArray[index], ...result]
+                    }).catch(e => sendErrorForward('get scrolls in all treasures', e, res)))
+                })
             }
 
             if (request.talismans) {
