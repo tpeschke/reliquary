@@ -227,14 +227,14 @@ const dictionaries = {
         'Metal': {
             C: {
                 min: .1,
-                max: 2
+                max: 1.25
             },
             U: {
-                min: 2,
-                max: 3
+                min: 1.25,
+                max: 2
             },
             R: {
-                min: 4,
+                min: 2,
                 max: 6
             },
             L: {
