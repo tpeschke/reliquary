@@ -1,7 +1,6 @@
 import React from 'react';
 import { mapSubject, mapSecondaryObject } from './SubjectDisplays';
-
-const materialCategoriesToInclude = ['Leather', 'Wood', 'Wax']
+import { mapMaterial } from './materialDisplay'
 
 function formatItemCategoryName (name) {
     if (name.includes('_')) {
@@ -15,7 +14,7 @@ export default function ItemDetails({ item }) {
         <div className='item-detail-shell'>
             {item.itemcategory && <div className='item-detail'><h3>Item Category</h3> <p>{formatItemCategoryName(item.itemcategory)}</p></div>}
             {item.item && <div className='item-detail'><h3>Item</h3> <p>{item.item}</p></div>}
-            {item.materials && item.materials.length > 0 && item.materials[0] && <div><h3>Material(s)</h3> <ul>{item.materials.map((material, i) => (<li key={'material' + i}>{material.label && material.label !== 'NONE' ? material.label + ': ' : ''}{material.submaterial ? material.submaterial : material.material}{materialCategoriesToInclude.includes(material.materialcategory) ? " " + material.materialcategory : ''}</li>))}</ul></div>}
+            {item.materials && item.materials.length > 0 && item.materials[0] && <div><h3>Material(s)</h3> <ul>{item.materials.map((material, i) => (mapMaterial(material, i)))}</ul></div>}
             {item.number > 1 && <div className='item-detail'><h3>Number</h3> <p>{item.number}</p></div>}
             {item.size && <div className='item-detail'><h3>Size</h3> <p>{item.size}</p></div>}
             {item.finalPrice > 0 && <div className='item-detail'><h3>Price</h3> <p>{item.finalPrice} sc</p></div>}

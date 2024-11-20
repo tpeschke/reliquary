@@ -88,3 +88,10 @@ create table renchanteditems (
 	major boolean,
 	size varchar(1000)
 )
+
+create table rmultiplierbonus (
+	id serial primary key,
+	multiplier float,
+	confbonus varchar(50)
+)
+

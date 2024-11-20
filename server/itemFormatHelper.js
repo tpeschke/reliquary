@@ -139,6 +139,20 @@ createMaterialsString = (materials, itemcategory) => {
             baseString += ` and ${materialToShow}`
         }
 
+        if (material.bonus || material.confbonus) {
+            baseString += ` (`
+            if (material.bonus) {
+                baseString += material.bonus
+                if (material.confbonus) {
+                    baseString += ` / `
+                }
+            }
+            if (material.confbonus) {
+                baseString += material.confbonus
+            }
+            baseString += `) `
+        }
+
         const materialCategoriesToInclude = ['Leather', 'Wood', 'Wax']
         if (materialCategoriesToInclude.includes(material.materialcategory)) {
             baseString += ` ${material.materialcategory.toLowerCase()}`

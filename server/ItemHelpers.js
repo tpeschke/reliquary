@@ -127,13 +127,17 @@ itemHelpers = {
                     return {
                         material: material.material,
                         multiplier: material.multiplier,
-                        price: material.price
+                        price: material.price,
+                        bonus: material.bonus,
+                        confbonus: material.confbonus
                     }
                 } else {
                     return {
                         material: `${material.material}${material.materialcategory && material.materialcategory !== 'other_table' ? ' ' + material.materialcategory : ''}`,
                         multiplier: material.multiplier,
-                        price: material.price
+                        price: material.price,
+                        bonus: material.bonus,
+                        confbonus: material.confbonus
                     }
                 }
             })
