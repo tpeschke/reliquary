@@ -136,6 +136,7 @@ function App() {
         success: {
           style: {
             background: 'green',
+            color: 'whitesmoke'
           },
         },
         error: {

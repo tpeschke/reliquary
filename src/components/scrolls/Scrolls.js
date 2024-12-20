@@ -12,6 +12,7 @@ import Investiture from '../../assets/icons/scrolls/Investiture.svg'
 import Occultism from '../../assets/icons/scrolls/Occultism.svg'
 import Sortilege from '../../assets/icons/scrolls/Sortilege.svg'
 
+import toast from 'react-hot-toast';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const categoryIconDictionary = {
@@ -56,6 +57,13 @@ export default function Scrolls() {
         })
     }
 
+    function copyToClipboard(event, scroll) {
+        event.stopPropagation()
+
+        navigator.clipboard.writeText(`${scroll.name} ( ${scroll.tooltip} )`);
+        toast.success(`The ${scroll.name} has been copied`)
+    }
+
     return (
         <div>
             {loading && <Loading />}
@@ -77,7 +85,7 @@ export default function Scrolls() {
                                             <h2>{item.name}</h2>
                                         </div>
                                         <div>
-                                            {item.tooltip}
+                                            {item.tooltip}  <i onClick={e => copyToClipboard(e, item)} class="fa-solid fa-copy"></i>
                                         </div>
                                     </div>
                                 </div>

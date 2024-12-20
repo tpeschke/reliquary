@@ -11,6 +11,7 @@ import Loading from '../loading/Loading'
 import potion from '../../assets/icons/potions/potion.svg'
 import salve from '../../assets/icons/potions/salve.svg'
 
+import toast from 'react-hot-toast';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const theme = createTheme({
@@ -61,6 +62,13 @@ export default function Potions() {
         })
     }
 
+    function copyToClipboard(event, potion) {
+        event.stopPropagation()
+
+        navigator.clipboard.writeText(`${potion.name} w/ ${potion.swigs} ${potion.isSalve ? 'application' : 'swig'}${potion.swigs > 1 ? 's' : ''} : ${potion.effect} (${potion.price} sc)`);
+        toast.success(`The ${potion.name} has been copied`)
+    }
+
     return (
         <div>
             {loading && <Loading />}
@@ -96,7 +104,7 @@ export default function Potions() {
                                                         <p>w/ {item.swigs} {item.isSalve ? 'application' : 'swig'}{item.swigs > 1 ? 's' : ''}</p>
                                                     </div>
                                                     <div>
-                                                        {item.effect}
+                                                        {item.effect} <i onClick={e => copyToClipboard(e, item)} class="fa-solid fa-copy"></i>
                                                     </div>
                                                 </div>
                                             </div>

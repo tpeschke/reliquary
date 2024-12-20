@@ -252,3 +252,16 @@ input {
 .display-none {
   display: none;
 }
+
+.fa-copy {
+  color: lightgray;
+  margin-left: 5px
+}
+
+.fa-copy:hover {
+  color: black
+}
+
+.span-flex {
+  display: flex;
+}

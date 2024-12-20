@@ -178,6 +178,17 @@ export default function EnchantedItems() {
         })
     }
 
+    function copyToClipboard(event, item) {
+        event.stopPropagation()
+
+        navigator.clipboard.writeText(`${item.name}: 
+        - Description: ${item.description}
+        - Price: ${item.price}
+        - Power: ${item.power}
+        - Size: ${item.size}`);
+        toast.success(`${item.name}'s info has been copied`)
+    }
+
     return (
         <div>
             {loading && <Loading />}
@@ -214,7 +225,10 @@ export default function EnchantedItems() {
                                                         <h2>{item.name}</h2>
                                                         <p>{item.size}</p>
                                                     </div>
-                                                    <div dangerouslySetInnerHTML={{ __html: item.description }}></div>
+                                                    <span className='span-flex'>
+                                                        <div dangerouslySetInnerHTML={{ __html: item.description }}></div>
+                                                        <i onClick={e => copyToClipboard(e, item)} class="fa-solid fa-copy"></i>
+                                                    </span>
                                                 </div>
                                             </div>
                                         </Typography>
@@ -230,7 +244,7 @@ export default function EnchantedItems() {
                                                 <div className='bottom-margin' dangerouslySetInnerHTML={{ __html: item.power }}></div>
                                                 <h3 className={item.history ? '' : 'display-none'}>History</h3>
                                                 <div dangerouslySetInnerHTML={{ __html: item.history }}></div>
-                                                {item.itemcategory && <div className='item-detail id-details'><h3>ID</h3> <p>{item.id}</p> <span><img onClick={_ => copyLink(item.id)} src={link} height="25" /></span></div>}
+                                                {item.itemcategory && <div className='item-detail id-details'><h3>ID</h3> <p>{item.id}</p> <span><i onClick={_ => copyLink(item.id)} class="fa-solid fa-copy"></i></span></div>}
                                             </div>
                                         </Typography>
                                     </AccordionDetails>

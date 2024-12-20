@@ -13,6 +13,7 @@ import Trades from '../../assets/icons/talismans/trades.svg'
 import Weirdcraft from '../../assets/icons/talismans/weirdcraft.svg'
 import Combat from '../../assets/icons/talismans/combat.svg'
 
+import toast from 'react-hot-toast';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const categoryIconDictionary = {
@@ -58,6 +59,13 @@ export default function Talismans() {
         })
     }
 
+    function copyToClipboard(event, talisman) {
+        event.stopPropagation()
+
+        navigator.clipboard.writeText(`${talisman.skill}: ${talisman.explanation}`);
+        toast.success(`The Talisman of ${talisman.skill} has been copied`)
+    }
+
     return (
         <div>
             {loading && <Loading />}
@@ -78,7 +86,7 @@ export default function Talismans() {
                                             <h2>Talisman of {item.skill}</h2>
                                         </div>
                                         <div>
-                                            {item.explanation}
+                                            {item.explanation} <i onClick={e => copyToClipboard(e, item)} class="fa-solid fa-copy"></i>
                                         </div>
                                     </div>
                                 </div>
