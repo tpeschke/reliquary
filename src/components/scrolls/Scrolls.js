@@ -11,6 +11,7 @@ import Glamour from '../../assets/icons/scrolls/Glamour.svg'
 import Investiture from '../../assets/icons/scrolls/Investiture.svg'
 import Occultism from '../../assets/icons/scrolls/Occultism.svg'
 import Sortilege from '../../assets/icons/scrolls/Sortilege.svg'
+import Hexing from '../../assets/icons/scrolls/Hexing.svg'
 
 import toast from 'react-hot-toast';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -23,6 +24,7 @@ const categoryIconDictionary = {
     'Investiture': Investiture,
     'Occultism': Occultism,
     'Sortilege': Sortilege,
+    'Hexing': Hexing
 }
 
 const theme = createTheme({
