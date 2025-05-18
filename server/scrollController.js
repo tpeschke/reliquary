@@ -15,7 +15,7 @@ const controllerFunctions = {
         }
 
         return axios.get('https://bonfire.stone-fish.com/getRandomSpells/' + numberOfItems).then(result => {
-            return result.data.map(scroll => {return {...scroll, sp: power}})
+            return result.data.map(scroll => {return {...scroll, sp: power, type: 'scroll'}})
         }).catch(e => sendErrorForward('get random scrolls', e, res))
     }
 }

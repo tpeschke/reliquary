@@ -129,7 +129,8 @@ itemHelpers = {
                         multiplier: material.multiplier,
                         price: material.price,
                         bonus: material.bonus,
-                        confbonus: material.confbonus
+                        confbonus: material.confbonus,
+                        type: 'generic'
                     }
                 } else {
                     return {
@@ -137,7 +138,8 @@ itemHelpers = {
                         multiplier: material.multiplier,
                         price: material.price,
                         bonus: material.bonus,
-                        confbonus: material.confbonus
+                        confbonus: material.confbonus,
+                        type: 'generic'
                     }
                 }
             })

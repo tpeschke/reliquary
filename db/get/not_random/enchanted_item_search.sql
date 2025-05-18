@@ -1,4 +1,4 @@
-select * from renchanteditems r 
+select *, 'enchanted' as type from renchanteditems r 
 where UPPER(name) like UPPER(( '%' || $1 || '%' ))
 or
 UPPER(description) like UPPER(( '%' || $1 || '%' ))

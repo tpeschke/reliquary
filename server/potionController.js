@@ -52,7 +52,8 @@ const controllerFunctions = {
                     weight: 2,
                     name: result.variant + ' Potion',
                     effect: `Gain the "${result.effect}" Emotional State at Rank 2 or increase it by 2 / swig if they already have it. Targets are unaware that their mood has been Weirdingly altered after the effects wear off.`,
-                    rarity: 2
+                    rarity: 2,
+                    type: 'potion'
                 }
             })
             return results
@@ -69,6 +70,7 @@ const controllerFunctions = {
                     4: 'Rare'
                 }
                 potion.rarity = rarityDictionary[potion.rarity]
+                potion.type = 'potion'
                 return modifyPotion(potion, false)
             })
             checkForContentTypeBeforeSending(res, finishedPotions)
