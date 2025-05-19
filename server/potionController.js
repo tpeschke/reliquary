@@ -93,6 +93,7 @@ getPotion = (db, rarity, resolve) => {
     db.get.semi_random.potion(rarityDictionary[rarity]).then(potionInArray => {
         let potion = potionInArray[0]
         potion.rarity = rarity
+        potion.type = 'potion'
 
         if (potion.name === 'Xing Potion') {
             db.get.random.xing_potion().then(modifierInArray => {
