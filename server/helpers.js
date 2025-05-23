@@ -1398,16 +1398,6 @@ const helperObjects = {
             })
 
         })
-    },
-    getFormat: function (item, format) {
-        if (format && format.toUpperCase() === 'JSON') {
-            delete item.description
-            return item
-        } else if (format && format.toUpperCase() === 'STRING') {
-            return item.description
-        } else {
-            return item
-        }
     }
 }
 

@@ -51,12 +51,11 @@ controllerFunctions = {
                     resultArray[index] = [...resultArray[index], ...result]
                 }).catch(e => sendErrorForward('get talismans in all treasures', e, res)))
             }
-
-            if (request.items) {
-                const { itemArray } = request.items
+            if (request.items && request.items.length > 0) {
+                const { items } = request
                 
                 let itemPromiseArray = []
-                itemCtrl.getItemsFromArray(res, db, itemArray, itemPromiseArray, {format: 'string'})
+                itemCtrl.getItemsFromArray(res, db, items, itemPromiseArray, {format: 'OBJECT'})
 
                 promiseArray.push(Promise.all(itemPromiseArray).then(items => {
                     resultArray[index] = [...resultArray[index], ...items]

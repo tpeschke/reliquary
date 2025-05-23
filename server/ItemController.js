@@ -13,6 +13,7 @@ const controllerFunctions = {
         const { format, itemcategory, materialrarity, detailing, wear, number } = req.query
 
         let finishedItemArray = []
+
         if (items && items.length > 0) {
             controllerFunctions.getItemsFromArray(res, db, items, finishedItemArray, {format, itemcategory, materialrarity, detailing, wear})
         }

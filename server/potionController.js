@@ -7,7 +7,7 @@ const controllerFunctions = {
         let { rarity } = req.query
 
         new Promise((resolve) => {
-            getPotion(db, rarity, resolve)
+            getPotion(db, rarity, resolve, res)
         }).then(potion => checkForContentTypeBeforeSending(res, potion)).catch(e => sendErrorForward('get random potion', e, res));
     },
     getRandomPotions: async (req, res) => {
@@ -25,7 +25,7 @@ const controllerFunctions = {
         }
         for (let i = 0; i < +numberOfItems; i++) {
             promiseArray.push(new Promise((resolve) => {
-                getPotion(db, rarity, resolve)
+                getPotion(db, rarity, resolve, res)
             }))
         }
 
@@ -78,7 +78,7 @@ const controllerFunctions = {
     }
 }
 
-getPotion = (db, rarity, resolve) => {
+getPotion = (db, rarity, resolve, res) => {
     if (!rarity) {
         rarity = rarityChance()
     } else {
@@ -100,6 +100,7 @@ getPotion = (db, rarity, resolve) => {
                 const modifier = modifierInArray[0]
                 potion.name = potion.name.replace('Xing', modifier.variant)
                 potion.effect = potion.effect.replace('X', modifier.effect)
+                potion.type = 'potion'
                 resolve(modifyPotionWithSalveCheck(potion))
             })
         } else {
@@ -145,7 +146,7 @@ modifyPotion = (potion, isSalve = false) => {
         generalTooltip = "Salves with 'applications'. Each application lasts ~ 3 hours and effects stacks. \nSo, applying down 3 application of a salve gives 3 hours where you get triple the benefits, 3 hours where you get double the benefits, and 3 hours where you get the baseline for a total of 9 hours"
     }
 
-    return { name: toTitleCase(name), effect, rarity, price: isSalve ? price * 1.5 : price, swigs, isSalve, typeTooltip, generalTooltip }
+    return { name: toTitleCase(name), effect, rarity, price: isSalve ? price * 1.5 : price, swigs, isSalve, typeTooltip, generalTooltip, type: 'potion' }
 }
 
 rarityChance = () => {

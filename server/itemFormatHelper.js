@@ -13,8 +13,16 @@ itemFormatHelper = {
             return item
         } else if (format && format.toUpperCase() === 'STRING') {
             return item.description
+        } else if (format && format.toUpperCase() === 'OBJECT') {
+            return {
+                info: item.description,
+                type: 'generic'
+            }
         } else {
-            return item
+            return {
+                info: item.description,
+                type: 'generic'
+            }
         }
     },
     cleanUpItem: (item) => {
