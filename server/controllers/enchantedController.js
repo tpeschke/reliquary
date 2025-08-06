@@ -5,7 +5,7 @@ const controllerFunctions = {
     getEnchantedItems: async (req, res) => {
         const db = req.app.get('db')
         let { numberOfItems, status } = req.query
-        console.log(db.get)
+        console.log(db.semi_random)
         const items = await controllerFunctions.getEnchantedItemsWorkHorse(res, db, numberOfItems, status).catch(e => sendErrorForward('get enchanted item', e, res))
         checkForContentTypeBeforeSending(res, items)
     },
