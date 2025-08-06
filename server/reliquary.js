@@ -27,10 +27,10 @@ app.post('/api/getScrolls', scrollCtrl.getRandomScrolls)
 
 app.post('/api/treasure', combinedCtrl.getTreasure)
 
-const root = require('path').join(__dirname, '../build')
-app.use(express.static(root));
-app.get("*", (req, res) => {
-    res.sendFile('index.html', { root });
+const path = require('path')
+app.use(express.static(__dirname + `/../build`));
+app.get('/*', (request, response) => {
+    response.sendFile(path.join(__dirname + '/../build/index.html'))
 })
 
 massive(connection).then(dbI => {
