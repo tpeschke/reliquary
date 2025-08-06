@@ -1,5 +1,5 @@
 const axios = require('axios')
-const { sendErrorForwardNoFile, checkForContentTypeBeforeSending } = require('./helpers')
+const { sendErrorForwardNoFile, checkForContentTypeBeforeSending } = require('../helpers')
 const sendErrorForward = sendErrorForwardNoFile('Scrolls')
 
 const controllerFunctions = {

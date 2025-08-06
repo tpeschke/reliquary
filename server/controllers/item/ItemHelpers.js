@@ -1,5 +1,5 @@
 
-const { getRandomInt, getSubject, getFromTableToObject, sendErrorForwardNoFile, getFromTable } = require('./helpers')
+const { getRandomInt, getSubject, getFromTableToObject, sendErrorForwardNoFile, getFromTable } = require('../../helpers')
 const dictionaries = require('./ItemDictionaries.js')
 
 const sendErrorForward = sendErrorForwardNoFile('Item Helper')

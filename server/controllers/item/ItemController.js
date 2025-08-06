@@ -1,4 +1,4 @@
-const { sendErrorForwardNoFile, checkForContentTypeBeforeSending, randomIntBetweenTwoInts } = require('./helpers')
+const { sendErrorForwardNoFile, checkForContentTypeBeforeSending, randomIntBetweenTwoInts } = require('../../helpers')
 const { getDetailing, getStitchings, getEngravings, getGems, processMaterialResults, populationWithSpecificMaterials } = require('./ItemHelpers')
 const { getStringDescription, cleanUpItem, calculateFinalPrice, getFormat } = require('./itemFormatHelper.js')
 const dictionaries = require('./ItemDictionaries.js')

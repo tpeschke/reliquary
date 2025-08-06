@@ -1,12 +1,12 @@
 
-const { sendErrorForwardNoFile, checkForContentTypeBeforeSending } = require('./helpers')
+const { sendErrorForwardNoFile, checkForContentTypeBeforeSending } = require('../helpers')
     , sendErrorForward = sendErrorForwardNoFile('Combined')
 
 const enchantedCtrl = require('./enchantedController')
     , potionCtrl = require('./potionController')
     , scrollCtrl = require('./scrollController')
     , talismanCtrl = require('./talismanController')
-    , itemCtrl = require('./ItemController')
+    , itemCtrl = require('./item/ItemController')
 
 controllerFunctions = {
     getTreasure: (req, res) => {

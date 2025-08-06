@@ -1,4 +1,4 @@
-const { sendErrorForwardNoFile, checkForContentTypeBeforeSending } = require('./helpers')
+const { sendErrorForwardNoFile, checkForContentTypeBeforeSending } = require('../helpers')
 const sendErrorForward = sendErrorForwardNoFile('Enchanted Items')
 
 const controllerFunctions = {
@@ -10,9 +10,7 @@ const controllerFunctions = {
         checkForContentTypeBeforeSending(res, items)
     },
     getEnchantedItemsWorkHorse: async (res, db, numberOfItems, status) => {
-        if (!numberOfItems) { 
-            numberOfItems = 1
-        } else if (numberOfItems > 25) {
+        if (numberOfItems > 25) {
             numberOfItems = 25
         }
     

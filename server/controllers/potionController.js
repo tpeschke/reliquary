@@ -1,4 +1,4 @@
-const { sendErrorForwardNoFile, checkForContentTypeBeforeSending } = require('./helpers')
+const { sendErrorForwardNoFile, checkForContentTypeBeforeSending } = require('../helpers')
 const sendErrorForward = sendErrorForwardNoFile('Potions')
 
 const controllerFunctions = {
