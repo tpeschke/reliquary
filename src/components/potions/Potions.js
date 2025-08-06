@@ -104,7 +104,7 @@ export default function Potions() {
                                                         <p>w/ {item.swigs} {item.isSalve ? 'application' : 'swig'}{item.swigs > 1 ? 's' : ''}</p>
                                                     </div>
                                                     <div>
-                                                        {item.effect} <i onClick={e => copyToClipboard(e, item)} class="fa-solid fa-copy"></i>
+                                                        {item.effect} <i onClick={e => copyToClipboard(e, item)} className="fa-solid fa-copy"></i>
                                                     </div>
                                                 </div>
                                             </div>

@@ -14,10 +14,7 @@ itemFormatHelper = {
         } else if (format && format.toUpperCase() === 'STRING') {
             return item.description
         } else if (format && format.toUpperCase() === 'OBJECT') {
-            return {
-                info: item.description,
-                type: 'generic'
-            }
+            return { type: 'generic', ...item }
         } else {
             return {
                 info: item.description,

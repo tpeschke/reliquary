@@ -87,7 +87,7 @@ export default function Scrolls() {
                                             <h2>{item.name}</h2>
                                         </div>
                                         <div>
-                                            {item.tooltip}  <i onClick={e => copyToClipboard(e, item)} class="fa-solid fa-copy"></i>
+                                            {item.tooltip}  <i onClick={e => copyToClipboard(e, item)} className="fa-solid fa-copy"></i>
                                         </div>
                                     </div>
                                 </div>

@@ -138,7 +138,7 @@ export default function UniqueItems() {
 
     function refreshItems(newParams = {}) {
         setLoading(true)
-        const params = { itemcategory, materialrarity, ...newParams }
+        const params = { itemcategory, materialrarity, format: 'object', ...newParams }
         let paramString = ''
         for (const key in params) {
             if (params[key]) {
@@ -215,7 +215,7 @@ export default function UniqueItems() {
                                                         <p>{item.finalPrice} sc {item.wear ? ` with ${item.wear} Wear` : ''}</p>
                                                     </div>
                                                     <div>
-                                                        {item.description} <i onClick={e => copyToClipboard(e, item.item, item.description)} class="fa-solid fa-copy"></i>
+                                                        {item.description} <i onClick={e => copyToClipboard(e, item.item, item.description)} className="fa-solid fa-copy"></i>
                                                     </div>
                                                 </div>
                                             </div>

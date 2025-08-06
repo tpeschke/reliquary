@@ -227,7 +227,7 @@ export default function EnchantedItems() {
                                                     </div>
                                                     <span className='span-flex'>
                                                         <div dangerouslySetInnerHTML={{ __html: item.description }}></div>
-                                                        <i onClick={e => copyToClipboard(e, item)} class="fa-solid fa-copy"></i>
+                                                        <i onClick={e => copyToClipboard(e, item)} className="fa-solid fa-copy"></i>
                                                     </span>
                                                 </div>
                                             </div>
@@ -244,7 +244,7 @@ export default function EnchantedItems() {
                                                 <div className='bottom-margin' dangerouslySetInnerHTML={{ __html: item.power }}></div>
                                                 <h3 className={item.history ? '' : 'display-none'}>History</h3>
                                                 <div dangerouslySetInnerHTML={{ __html: item.history }}></div>
-                                                {item.itemcategory && <div className='item-detail id-details'><h3>ID</h3> <p>{item.id}</p> <span><i onClick={_ => copyLink(item.id)} class="fa-solid fa-copy"></i></span></div>}
+                                                {item.itemcategory && <div className='item-detail id-details'><h3>ID</h3> <p>{item.id}</p> <span><i onClick={_ => copyLink(item.id)} className="fa-solid fa-copy"></i></span></div>}
                                             </div>
                                         </Typography>
                                     </AccordionDetails>

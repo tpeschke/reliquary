@@ -86,7 +86,7 @@ export default function Talismans() {
                                             <h2>Talisman of {item.skill}</h2>
                                         </div>
                                         <div>
-                                            {item.explanation} <i onClick={e => copyToClipboard(e, item)} class="fa-solid fa-copy"></i>
+                                            {item.explanation} <i onClick={e => copyToClipboard(e, item)} className="fa-solid fa-copy"></i>
                                         </div>
                                     </div>
                                 </div>
