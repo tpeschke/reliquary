@@ -46,7 +46,8 @@ const controllerFunctions = {
 
 getItem = async (res, db, resolve, format, { itemcategory = randomIntBetweenTwoInts(1, 38), materialrarity = 'C', detailing = 'M', wear = '0' }) => {
     const searchFunctionToUse = dictionaries.getWhichCategoryToGet(itemcategory)
-
+console.log(db)
+console.log(get)
     db.get.random[searchFunctionToUse](dictionaries.itemCategory[+itemcategory]).then(item => {
         item = item[0]
         db.get.not_random.item_materials(item.id).then(materialResult => {
