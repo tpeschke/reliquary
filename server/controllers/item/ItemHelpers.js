@@ -91,26 +91,26 @@ itemHelpers = {
                 promiseArray.push(getFromTable(populatedMaterials, material, db))
             } else {
                 if (materialRarity.toUpperCase() === 'L' && ['Cloth', 'Metal', 'Stone/Earthwork', 'Wood'].includes(material.material)) {
-                    promiseArray.push(db.get.semi_random.loot_materials(`Exotic ${material.material}`, 0, 0).then(specificMaterial => {
+                    promiseArray.push(db.gets.semi_random.loot_materials(`Exotic ${material.material}`, 0, 0).then(specificMaterial => {
                         return populatedMaterials.push(specificMaterial[0])
                     }).catch(e => sendErrorForward('get legendary specific item', {...e, extraInfo: material.material}, res)))
                 } else if (['Paper Product', 'Wax'].includes(material.material)) {
                     const specificMaterialRarityMultiplier = dictionaries.materialRarityMultiplier[material.material]
-                    promiseArray.push(db.get.semi_random.loot_materials_price(material.material, specificMaterialRarityMultiplier[materialRarity.toUpperCase()].min, specificMaterialRarityMultiplier[materialRarity.toUpperCase()].max).then(specificMaterial => {
+                    promiseArray.push(db.gets.semi_random.loot_materials_price(material.material, specificMaterialRarityMultiplier[materialRarity.toUpperCase()].min, specificMaterialRarityMultiplier[materialRarity.toUpperCase()].max).then(specificMaterial => {
                         return populatedMaterials.push(specificMaterial[0])
                     }).catch(e => sendErrorForward('get specific item by price', {...e, extraInfo: material.material}, res)))
                 } else if (['Cloth', 'Fur', 'Leather', 'Metal', 'Stone/Earthwork', 'Vellum', 'Wood'].includes(material.material)) {
                     const specificMaterialRarityMultiplier = dictionaries.materialRarityMultiplier[material.material]
-                    promiseArray.push(db.get.semi_random.loot_materials(material.material, specificMaterialRarityMultiplier[materialRarity.toUpperCase()].min, specificMaterialRarityMultiplier[materialRarity.toUpperCase()].max).then(specificMaterial => {
+                    promiseArray.push(db.gets.semi_random.loot_materials(material.material, specificMaterialRarityMultiplier[materialRarity.toUpperCase()].min, specificMaterialRarityMultiplier[materialRarity.toUpperCase()].max).then(specificMaterial => {
                         return populatedMaterials.push(specificMaterial[0])
                     }).catch(e => sendErrorForward('get specific item', {...e, extraInfo: material.material}, res)))
                 } else if (material.material.substring(0,6) === 'Animal') {
-                    promiseArray.push(db.get.random.animal_by_type(material.material).then(specificAnimal => {
+                    promiseArray.push(db.gets.random.animal_by_type(material.material).then(specificAnimal => {
                         specificAnimal.price = 1
                         return populatedMaterials.push(specificAnimal[0])
                     }).catch(e => sendErrorForward('get specific animal from subtable', {...e, extraInfo: material.material}, res)))
                 } else {
-                    promiseArray.push(db.get.semi_random.loot_material_specific(material.material).then(specificMaterial => {
+                    promiseArray.push(db.gets.semi_random.loot_material_specific(material.material).then(specificMaterial => {
                         if (specificMaterial[0].materialcategory === 'other_table') {
                             
                         } else {
@@ -149,13 +149,13 @@ itemHelpers = {
         if (baseChance) {
             let chance = dictionaries.detailingChance[detailing.toUpperCase()] * baseChance
             const numberOfDetails = getNumberOfDetails(chance)
-            return db.get.random.detail(type, numberOfDetails).then(details => {
+            return db.gets.random.detail(type, numberOfDetails).then(details => {
                 let promiseArray = []
 
                 for (let i = 0; i < details.length; i++) {
                     let detail = details[i]
                     if (detail.subtable) {
-                        promiseArray.push(db.get.random.detail_by_category(detail.subtable).then(subdetail => {
+                        promiseArray.push(db.gets.random.detail_by_category(detail.subtable).then(subdetail => {
                             return `${detail.detail} ${subdetail[0].detail}`
                         }).catch(e => sendErrorForward('subtable detail', e, res)))
                     } else {
@@ -226,7 +226,7 @@ itemHelpers = {
                 let gemPromiseArray = []
 
                 const gemSizeMultiplier = dictionaries.materialRarityMultiplier['Gem Size']
-                gemPromiseArray.push(db.get.semi_random.gem_details('Gem Size', gemSizeMultiplier[materialRarity.toUpperCase()].min, gemSizeMultiplier[materialRarity.toUpperCase()].max).then(gemSize => {
+                gemPromiseArray.push(db.gets.semi_random.gem_details('Gem Size', gemSizeMultiplier[materialRarity.toUpperCase()].min, gemSizeMultiplier[materialRarity.toUpperCase()].max).then(gemSize => {
                     rawGem.size = gemSize[0].detail
                     rawGem.multiplier = dictionaries.GemSizeMultiplier[rawGem.size]
                     return true
@@ -235,7 +235,7 @@ itemHelpers = {
                 gemPromiseArray.push(getFromTableToObject(rawGem, 'shape', { subtable: 'Gem Shape' }, db).catch(e => sendErrorForward('get gem shape', e, res)))
 
                 const gemTypeMultiplier = dictionaries.materialRarityMultiplier['Gem Type']
-                gemPromiseArray.push(db.get.semi_random.gem_type_new(gemTypeMultiplier[materialRarity.toUpperCase()].min, gemTypeMultiplier[materialRarity.toUpperCase()].max).then(gemType => {
+                gemPromiseArray.push(db.gets.semi_random.gem_type_new(gemTypeMultiplier[materialRarity.toUpperCase()].min, gemTypeMultiplier[materialRarity.toUpperCase()].max).then(gemType => {
                     rawGem.type = gemType[0].detail
                     rawGem.price = gemType[0].price
                     return true

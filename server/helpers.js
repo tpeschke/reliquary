@@ -26,7 +26,7 @@ const helperObjects = {
         }
     },
     getSubject: async function (arrayToPushTo, db, isSecondary = false) {
-        return db.get.random.subject().then(subjectResult => {
+        return db.gets.random.subject().then(subjectResult => {
             let subjectPromiseArray = []
             subjectResult = subjectResult[0]
 
@@ -133,7 +133,7 @@ const helperObjects = {
         let materialCategoryArray = ['Cloth', 'Exotic Cloth', 'Exotic Metal', 'Exotic Stone/Earthwork', 'Exotic Wood', 'Fur', 'Leather', 'Metal', 'other_table', 'Paper Product', 'Parchment', 'Stone/Earthwork', 'Vellum', 'Wax', 'Wood', 'other_table']
 
         if (materialCategoryArray.includes(result.subtable)) {
-            return db.get.random.material_by_category(result.subtable ? result.subtable : 'other_table').then(subtableResult => {
+            return db.gets.random.material_by_category(result.subtable ? result.subtable : 'other_table').then(subtableResult => {
                 result.subtableResults = subtableResult;
                 if (subtableResult[0].subtable) {
                     result.subtableResults = []
@@ -148,7 +148,7 @@ const helperObjects = {
             })
         } else if (!result.subtable) {
             if (materialCategoryArray.includes(result.material)) {
-                return db.get.random.material_by_category(result.material).then(subtableResult => {
+                return db.gets.random.material_by_category(result.material).then(subtableResult => {
                     result.subtableResults = subtableResult;
                     if (subtableResult[0].subtable) {
                         result.subtableResults = []
@@ -162,13 +162,13 @@ const helperObjects = {
                     }
                 })
             } else {
-                return db.get.not_random.material(result.material, 'other_table').then(subtableResult => {
+                return db.gets.not_random.material(result.material, 'other_table').then(subtableResult => {
                     result = subtableResult[0]
                     arrayToPushTo.push(result)
                 })
             }
         } else {
-            return db.get.random.detail_by_category(result.subtable).then(subtableResult => {
+            return db.gets.random.detail_by_category(result.subtable).then(subtableResult => {
                 result.subtableResults = subtableResult;
 
                 if (subtableResult.length > 0 && subtableResult[0].subtable) {
@@ -188,7 +188,7 @@ const helperObjects = {
         let materialCategoryArray = ['Cloth', 'Exotic Cloth', 'Exotic Metal', 'Exotic Stone/Earthwork', 'Exotic Wood', 'Fur', 'Leather', 'Metal', 'other_table', 'Paper Product', 'Parchment', 'Stone/Earthwork', 'Vellum', 'Wax', 'Wood']
 
         if (materialCategoryArray.includes(result.subtable)) {
-            return db.get.random.material_by_category(result.subtable).then(subtableResult => {
+            return db.gets.random.material_by_category(result.subtable).then(subtableResult => {
                 result.subtableResults = subtableResult;
 
                 if (subtableResult[0].subtable) {
@@ -203,7 +203,7 @@ const helperObjects = {
                 }
             })
         } else {
-            return db.get.random.detail_by_category(result.subtable).then(subtableResult => {
+            return db.gets.random.detail_by_category(result.subtable).then(subtableResult => {
                 result.subtableResults = subtableResult;
 
                 if (subtableResult[0].subtable) {
@@ -965,7 +965,7 @@ const helperObjects = {
 
         delete rawItem['?column?']
 
-        promiseArray.push(db.get.not_random.item_materials(rawItem.id).then(materialResult => {
+        promiseArray.push(db.gets.not_random.item_materials(rawItem.id).then(materialResult => {
             if (materialResult.length > 0 && materialResult[0].material) {
                 let materials = []
                 materialResult.forEach(material => {
@@ -1136,7 +1136,7 @@ const helperObjects = {
             let innerPromiseArray = []
             let populatedMaterials = []
             rawItem.materials.forEach(material => {
-                innerPromiseArray.push(db.get.random.material(material.material).then(innerMaterialResult => {
+                innerPromiseArray.push(db.gets.random.material(material.material).then(innerMaterialResult => {
                     if (innerMaterialResult[0]) {
                         innerMaterialResult[0].label = material.label
                         if (!innerMaterialResult[0].subtable) {
@@ -1145,7 +1145,7 @@ const helperObjects = {
                         }
                         return helperObjects.getFromTable(populatedMaterials, innerMaterialResult[0], db)
                     } else {
-                        return db.get.random.item_by_category(material.material).then(itemByCategory => {
+                        return db.gets.random.item_by_category(material.material).then(itemByCategory => {
                             if (itemByCategory.length > 0) {
                                 itemByCategory[0].label = material.label
                                 if (!itemByCategory[0].subtable) {
@@ -1170,9 +1170,9 @@ const helperObjects = {
         })
     },
     getSemiRandom: async (budget, db) => {
-        return db.get.semi_random.item(budget).then(results => {
+        return db.gets.semi_random.item(budget).then(results => {
             if (results.length === 0) {
-                return db.get.random.item_with_price()
+                return db.gets.random.item_with_price()
             }
             return results
         })
@@ -1181,7 +1181,7 @@ const helperObjects = {
         let promiseArray = []
 
         delete rawItem['?column?']
-        promiseArray.push(db.get.not_random.item_materials(rawItem.id).then(materialResult => {
+        promiseArray.push(db.gets.not_random.item_materials(rawItem.id).then(materialResult => {
             if (materialResult.length > 0 && materialResult[0].material) {
                 let materials = []
                 materialResult.forEach(material => {
@@ -1245,11 +1245,11 @@ const helperObjects = {
                             let rawGem = { type: null, shape: null, size: null }
 
                             let gemPromiseArray = []
-                            gemPromiseArray.push(db.get.semi_random.gem_type(budget - rawItem.price).then(result => {
+                            gemPromiseArray.push(db.gets.semi_random.gem_type(budget - rawItem.price).then(result => {
                                 rawGem.type = result[0]
                                 return true
                             }))
-                            gemPromiseArray.push(db.get.semi_random.gem_size().then(result => {
+                            gemPromiseArray.push(db.gets.semi_random.gem_size().then(result => {
                                 rawGem.size = result[0]
                                 return true
                             }))
@@ -1363,7 +1363,7 @@ const helperObjects = {
                 if (material.subtable) {
                     innerPromiseArray.push(helperObjects.getFromTable(populatedMaterials, material, db))
                 } else {
-                    innerPromiseArray.push(db.get.semi_random.material(material.material, rawItem.price, budget).then(innerMaterialResult => {
+                    innerPromiseArray.push(db.gets.semi_random.material(material.material, rawItem.price, budget).then(innerMaterialResult => {
                         if (innerMaterialResult[0]) {
                             innerMaterialResult[0].label = material.label
                             if (!innerMaterialResult[0].subtable) {
@@ -1372,7 +1372,7 @@ const helperObjects = {
                             }
                             return helperObjects.getFromTable(populatedMaterials, innerMaterialResult[0], db)
                         } else {
-                            return db.get.random.item_by_category(material.material).then(itemByCategory => {
+                            return db.gets.random.item_by_category(material.material).then(itemByCategory => {
                                 if (itemByCategory.length > 0) {
                                     itemByCategory[0].label = material.label
                                     if (!itemByCategory[0].subtable) {

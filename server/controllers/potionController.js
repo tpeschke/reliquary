@@ -41,11 +41,11 @@ const controllerFunctions = {
         searchTerm = searchTerm.toUpperCase().replace('SALVE', 'POTION')
         searchTerm = searchTerm.toUpperCase().replace('APPLICATION', 'SWIG')
 
-        promiseArray.push(db.get.not_random.potion_search(searchTerm).then(results => {
+        promiseArray.push(db.gets.not_random.potion_search(searchTerm).then(results => {
             basicPotions = results
             return results
         }).catch(e => sendErrorForward('search potion basic potions', e, res)))
-        promiseArray.push(db.get.not_random.xing_search(searchTerm).then(results => {
+        promiseArray.push(db.gets.not_random.xing_search(searchTerm).then(results => {
             xingPotions = results.map(result => {
                 return {
                     id: 76,
@@ -90,13 +90,13 @@ getPotion = (db, rarity, resolve, res) => {
         'Rare': 4
     }
 
-    db.get.semi_random.potion(rarityDictionary[rarity]).then(potionInArray => {
+    db.gets.semi_random.potion(rarityDictionary[rarity]).then(potionInArray => {
         let potion = potionInArray[0]
         potion.rarity = rarity
         potion.type = 'potion'
 
         if (potion.name === 'Xing Potion') {
-            db.get.random.xing_potion().then(modifierInArray => {
+            db.gets.random.xing_potion().then(modifierInArray => {
                 const modifier = modifierInArray[0]
                 potion.name = potion.name.replace('Xing', modifier.variant)
                 potion.effect = potion.effect.replace('X', modifier.effect)

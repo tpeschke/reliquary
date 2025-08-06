@@ -14,7 +14,7 @@ const controllerFunctions = {
             numberOfItems = 25
         }
 
-        return db.get.random.talisman(numberOfItems).catch(e => sendErrorForward('get random talisman', e, res))
+        return db.gets.random.talisman(numberOfItems).catch(e => sendErrorForward('get random talisman', e, res))
     }
 }
 
