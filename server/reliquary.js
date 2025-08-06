@@ -29,7 +29,7 @@ app.post('/api/treasure', combinedCtrl.getTreasure)
 
 const path = require('path')
 app.use(express.static(__dirname + `/../build`));
-app.get('/*', (request, response) => {
+app.get('/*', (_, response) => {
     response.sendFile(path.join(__dirname + '/../build/index.html'))
 })
 
