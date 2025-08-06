@@ -9,8 +9,10 @@ const controllerFunctions = {
         const items = await controllerFunctions.getEnchantedItemsWorkHorse(res, db, numberOfItems, status).catch(e => sendErrorForward('get enchanted item', e, res))
         checkForContentTypeBeforeSending(res, items)
     },
-    getEnchantedItemsWorkHorse: async (res, db, numberOfItems = 1, status) => {
-        if (numberOfItems > 25) {
+    getEnchantedItemsWorkHorse: async (res, db, numberOfItems, status) => {
+        if (!numberOfItems) { 
+            numberOfItems = 1
+        } else if (numberOfItems > 25) {
             numberOfItems = 25
         }
     
