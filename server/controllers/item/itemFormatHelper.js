@@ -50,14 +50,14 @@ itemFormatHelper = {
 
         finalPrice += getDetailPriceModifier(finalPrice, item, 'adjectives') + getDetailPriceModifier(finalPrice, item, 'colors')
 
-        if (item.engravings) {
+        if (item.engravings?.length > 0) {
             finalPrice += item.engravings.reduce((accumulator, engravings) => accumulator + engravings.type.price, 0)
         }
-        if (item.stitchings) {
+        if (item.stitchings?.length > 0) {
             finalPrice += item.stitchings.reduce((accumulator, stitchings) => accumulator + stitchings.type.price, 0)
         }
 
-        if (item.gems) {
+        if (item.gems?.length > 0) {
             finalPrice += item.gems.reduce((accumulator, gems) => accumulator + gems.price, 0)
         }
 

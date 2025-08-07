@@ -1,3 +1,7 @@
+const { query } = require('../db/index')
+const { random_subject, material_specific, random_material_by_category, random_detail_by_category, material_item, random_material, semi_random_gem_type, semi_random_gem_size, semi_random_material } = require('../db/details')
+const itemSQL = require('../db/items')
+
 const GemSizeDictionary = {
     '0.2': .1,
     '0.5': .25,
@@ -25,8 +29,8 @@ const helperObjects = {
             res.send(package)
         }
     },
-    getSubject: async function (arrayToPushTo, db, isSecondary = false) {
-        return db.gets.random.subject().then(subjectResult => {
+    getSubject: async function (arrayToPushTo, isSecondary = false) {
+        return query(random_subject).then(subjectResult => {
             let subjectPromiseArray = []
             subjectResult = subjectResult[0]
 
@@ -39,7 +43,7 @@ const helperObjects = {
                         const detailAmount = Math.ceil(subjectResult[key] / randomNumber)
                         subjectResult[key] = []
                         for (let i = 0; i < detailAmount; i++) {
-                            subjectPromiseArray.push(helperObjects.getFromTable(subjectResult[key], { subtable: helperObjects.toTitleCase(key) }, db))
+                            subjectPromiseArray.push(helperObjects.getFromTable(subjectResult[key], { subtable: helperObjects.toTitleCase(key) }))
                         }
                     } else {
                         delete subjectResult[key]
@@ -50,7 +54,7 @@ const helperObjects = {
                         const detailAmount = Math.ceil(subjectResult[key] / randomNumber)
                         subjectResult[key] = []
                         for (let i = 0; i < detailAmount; i++) {
-                            subjectPromiseArray.push(helperObjects.getFromTable(subjectResult[key], { subtable: 'Animal Subtype' }, db))
+                            subjectPromiseArray.push(helperObjects.getFromTable(subjectResult[key], { subtable: 'Animal Subtype' }))
                         }
                     } else {
                         delete subjectResult[key]
@@ -61,7 +65,7 @@ const helperObjects = {
                         const detailAmount = Math.ceil(subjectResult[key] / randomNumber)
                         subjectResult[key] = []
                         for (let i = 0; i < detailAmount; i++) {
-                            subjectPromiseArray.push(helperObjects.getFromTable(subjectResult[key], { subtable: 'Body Parts' }, db))
+                            subjectPromiseArray.push(helperObjects.getFromTable(subjectResult[key], { subtable: 'Body Parts' }))
                         }
                     } else {
                         delete subjectResult[key]
@@ -80,8 +84,8 @@ const helperObjects = {
                                 let rawEvent = { subject: null, time_period: null }
 
                                 let eventPromiseArray = []
-                                eventPromiseArray.push(helperObjects.getFromTableToObject(rawEvent, 'time_period', { subtable: EVENT_TIME_PERIOD }, db))
-                                eventPromiseArray.push(helperObjects.getFromTableToObject(rawEvent, 'subject', { subtable: EVENT_SUBJECT }, db))
+                                eventPromiseArray.push(helperObjects.getFromTableToObject(rawEvent, 'time_period', { subtable: EVENT_TIME_PERIOD }))
+                                eventPromiseArray.push(helperObjects.getFromTableToObject(rawEvent, 'subject', { subtable: EVENT_SUBJECT }))
 
                                 Promise.all(eventPromiseArray).then(finalGem => {
                                     let event = {
@@ -108,7 +112,7 @@ const helperObjects = {
                         for (let i = 0; i < detailAmount; i++) {
                             subjectPromiseArray.push(new Promise(resolve => {
                                 let secondarySubjectArray = []
-                                secondarySubjectArray.push(helperObjects.getSubject(subjectResult[key], db, true))
+                                secondarySubjectArray.push(helperObjects.getSubject(subjectResult[key], true))
 
                                 Promise.all(secondarySubjectArray).then(_ => {
                                     resolve(true);
@@ -129,15 +133,15 @@ const helperObjects = {
 
         })
     },
-    getFromTable: async function (arrayToPushTo, result, db) {
+    getFromTable: async function (arrayToPushTo, result) {
         let materialCategoryArray = ['Cloth', 'Exotic Cloth', 'Exotic Metal', 'Exotic Stone/Earthwork', 'Exotic Wood', 'Fur', 'Leather', 'Metal', 'other_table', 'Paper Product', 'Parchment', 'Stone/Earthwork', 'Vellum', 'Wax', 'Wood', 'other_table']
 
         if (materialCategoryArray.includes(result.subtable)) {
-            return db.gets.random.material_by_category(result.subtable ? result.subtable : 'other_table').then(subtableResult => {
+            return query(random_material_by_category, [result.subtable ? result.subtable : 'other_table']).then(subtableResult => {
                 result.subtableResults = subtableResult;
                 if (subtableResult[0].subtable) {
                     result.subtableResults = []
-                    return helperObjects.getFromTable(result.subtableResults, subtableResult[0], db).then(_ => {
+                    return helperObjects.getFromTable(result.subtableResults, subtableResult[0]).then(_ => {
                         arrayToPushTo.push(result)
                         return true
                     })
@@ -148,11 +152,11 @@ const helperObjects = {
             })
         } else if (!result.subtable) {
             if (materialCategoryArray.includes(result.material)) {
-                return db.gets.random.material_by_category(result.material).then(subtableResult => {
+                return query(random_material_by_category, [result.material]).then(subtableResult => {
                     result.subtableResults = subtableResult;
                     if (subtableResult[0].subtable) {
                         result.subtableResults = []
-                        return helperObjects.getFromTable(result.subtableResults, subtableResult[0], db).then(_ => {
+                        return helperObjects.getFromTable(result.subtableResults, subtableResult[0]).then(_ => {
                             arrayToPushTo.push(result)
                             return true
                         })
@@ -162,18 +166,18 @@ const helperObjects = {
                     }
                 })
             } else {
-                return db.gets.not_random.material(result.material, 'other_table').then(subtableResult => {
+                return query(material, [result.material, 'other_table']).then(subtableResult => {
                     result = subtableResult[0]
                     arrayToPushTo.push(result)
                 })
             }
         } else {
-            return db.gets.random.detail_by_category(result.subtable).then(subtableResult => {
+            return query(random_detail_by_category, [result.subtable]).then(subtableResult => {
                 result.subtableResults = subtableResult;
 
                 if (subtableResult.length > 0 && subtableResult[0].subtable) {
                     result.subtableResults = []
-                    return helperObjects.getFromTable(result.subtableResults, subtableResult[0], db).then(_ => {
+                    return helperObjects.getFromTable(result.subtableResults, subtableResult[0]).then(_ => {
                         arrayToPushTo.push(result)
                         return true
                     })
@@ -184,16 +188,16 @@ const helperObjects = {
             })
         }
     },
-    getFromTableToObject: async function (objectToAddTo, key, result, db) {
+    getFromTableToObject: async function (objectToAddTo, key, result) {
         let materialCategoryArray = ['Cloth', 'Exotic Cloth', 'Exotic Metal', 'Exotic Stone/Earthwork', 'Exotic Wood', 'Fur', 'Leather', 'Metal', 'other_table', 'Paper Product', 'Parchment', 'Stone/Earthwork', 'Vellum', 'Wax', 'Wood']
 
         if (materialCategoryArray.includes(result.subtable)) {
-            return db.gets.random.material_by_category(result.subtable).then(subtableResult => {
-                result.subtableResults = subtableResult;
+            return query(random_material_by_category, [result.subtable]).then(subtableResult => {
+                result.subtableResults = subtableResult
 
                 if (subtableResult[0].subtable) {
                     result.subtableResults = []
-                    return helperObjects.getFromTable(result.subtableResults, subtableResult[0], db).then(_ => {
+                    return helperObjects.getFromTable(result.subtableResults, subtableResult[0]).then(_ => {
                         objectToAddTo[key] = result
                         return true
                     })
@@ -203,12 +207,12 @@ const helperObjects = {
                 }
             })
         } else {
-            return db.gets.random.detail_by_category(result.subtable).then(subtableResult => {
-                result.subtableResults = subtableResult;
+            return query(random_detail_by_category, [result.subtable]).then(subtableResult => {
+                result.subtableResults = subtableResult
 
-                if (subtableResult[0].subtable) {
+                if (subtableResult[0]?.subtable) {
                     result.subtableResults = []
-                    return helperObjects.getFromTable(result.subtableResults, subtableResult[0], db).then(_ => {
+                    return helperObjects.getFromTable(result.subtableResults, subtableResult[0]).then(_ => {
                         objectToAddTo[key] = result
                         return true
                     })
@@ -960,12 +964,12 @@ const helperObjects = {
             return innerObject
         })
     },
-    getRestOfItem: async (rawItem, db, req, res) => {
+    getRestOfItem: async (rawItem, req, res) => {
         let promiseArray = []
 
         delete rawItem['?column?']
 
-        promiseArray.push(db.gets.not_random.item_materials(rawItem.id).then(materialResult => {
+        promiseArray.push(query(material_specific, [rawItem.id]).then(materialResult => {
             if (materialResult.length > 0 && materialResult[0].material) {
                 let materials = []
                 materialResult.forEach(material => {
@@ -1009,7 +1013,7 @@ const helperObjects = {
                     const detailAmount = Math.ceil(rawItem[key] / randomNumber)
                     rawItem[key] = []
                     for (let i = 0; i < detailAmount; i++) {
-                        promiseArray.push(helperObjects.getFromTable(rawItem[key], { subtable: helperObjects.toTitleCase(key) }, db))
+                        promiseArray.push(helperObjects.getFromTable(rawItem[key], { subtable: helperObjects.toTitleCase(key) }))
                     }
                 } else {
                     delete rawItem[key]
@@ -1029,9 +1033,9 @@ const helperObjects = {
                             let rawGem = { type: null, shape: null, size: null }
 
                             let gemPromiseArray = []
-                            gemPromiseArray.push(helperObjects.getFromTableToObject(rawGem, 'shape', { subtable: GEM_SHAPE }, db))
-                            gemPromiseArray.push(helperObjects.getFromTableToObject(rawGem, 'size', { subtable: GEM_SIZE }, db))
-                            gemPromiseArray.push(helperObjects.getFromTableToObject(rawGem, 'type', { subtable: GEM_TYPE }, db))
+                            gemPromiseArray.push(helperObjects.getFromTableToObject(rawGem, 'shape', { subtable: GEM_SHAPE }))
+                            gemPromiseArray.push(helperObjects.getFromTableToObject(rawGem, 'size', { subtable: GEM_SIZE }))
+                            gemPromiseArray.push(helperObjects.getFromTableToObject(rawGem, 'type', { subtable: GEM_TYPE }))
 
                             Promise.all(gemPromiseArray).then(finalGem => {
                                 let gem = {
@@ -1052,7 +1056,7 @@ const helperObjects = {
             } else if (key === 'subject') {
                 // } else if (rawItem[key] && key === 'subject') {
                 rawItem[key] = []
-                helperObjects.getSubject(rawItem[key], db, false)
+                helperObjects.getSubject(rawItem[key], false)
             }
         }
 
@@ -1076,7 +1080,7 @@ const helperObjects = {
                     }
 
                     let stitchingPromiseArray = []
-                    stitchingPromiseArray.push(helperObjects.getSubject(rawStitching.subject, db, false))
+                    stitchingPromiseArray.push(helperObjects.getSubject(rawStitching.subject, false))
 
                     Promise.all(stitchingPromiseArray).then(_ => {
                         let stitchings = {
@@ -1112,9 +1116,9 @@ const helperObjects = {
                     }
 
                     let engarvingPromiseArray = []
-                    engarvingPromiseArray.push(helperObjects.getSubject(rawEngraving.subject, db, false))
+                    engarvingPromiseArray.push(helperObjects.getSubject(rawEngraving.subject, false))
                     const engravingSubtable = rawItem.gems ? ENGRAVING_WITH_GEMS : ENGRAVING_WITHOUT_GEMS
-                    engarvingPromiseArray.push(helperObjects.getFromTableToObject(rawEngraving, 'type', { subtable: engravingSubtable }, db))
+                    engarvingPromiseArray.push(helperObjects.getFromTableToObject(rawEngraving, 'type', { subtable: engravingSubtable }))
 
                     Promise.all(engarvingPromiseArray).then(_ => {
                         let engravings = {
@@ -1136,25 +1140,25 @@ const helperObjects = {
             let innerPromiseArray = []
             let populatedMaterials = []
             rawItem.materials.forEach(material => {
-                innerPromiseArray.push(db.gets.random.material(material.material).then(innerMaterialResult => {
+                innerPromiseArray.push(query(random_material, [material.material]).then(innerMaterialResult => {
                     if (innerMaterialResult[0]) {
                         innerMaterialResult[0].label = material.label
                         if (!innerMaterialResult[0].subtable) {
                             populatedMaterials.push(innerMaterialResult[0])
                             return true
                         }
-                        return helperObjects.getFromTable(populatedMaterials, innerMaterialResult[0], db)
+                        return helperObjects.getFromTable(populatedMaterials, innerMaterialResult[0])
                     } else {
-                        return db.gets.random.item_by_category(material.material).then(itemByCategory => {
+                        return query(itemSQL.random_by_category, [material.material]).then(itemByCategory => {
                             if (itemByCategory.length > 0) {
                                 itemByCategory[0].label = material.label
                                 if (!itemByCategory[0].subtable) {
                                     populatedMaterials.push(itemByCategory[0])
                                     return true
                                 }
-                                return helperObjects.getFromTable(populatedMaterials, itemByCategory[0], db)
+                                return helperObjects.getFromTable(populatedMaterials, itemByCategory[0])
                             } else {
-                                return helperObjects.getFromTable(populatedMaterials, material, db)
+                                return helperObjects.getFromTable(populatedMaterials, material)
                             }
                         })
                     }
@@ -1169,19 +1173,19 @@ const helperObjects = {
 
         })
     },
-    getSemiRandom: async (budget, db) => {
-        return db.gets.semi_random.item(budget).then(results => {
+    getSemiRandom: async (budget) => {
+        return query(item.semi_random, [budget]).then(results => {
             if (results.length === 0) {
-                return db.gets.random.item_with_price()
+                return query(itemSQL.with_price)
             }
             return results
         })
     },
-    getRestOfItemOnBudget: async (budget, rawItem, db, req, res) => {
+    getRestOfItemOnBudget: async (budget, rawItem, req, res) => {
         let promiseArray = []
 
         delete rawItem['?column?']
-        promiseArray.push(db.gets.not_random.item_materials(rawItem.id).then(materialResult => {
+        promiseArray.push(query(material_specific, [rawItem.id]).then(materialResult => {
             if (materialResult.length > 0 && materialResult[0].material) {
                 let materials = []
                 materialResult.forEach(material => {
@@ -1225,7 +1229,7 @@ const helperObjects = {
                     const detailAmount = Math.ceil(rawItem[key] / randomNumber)
                     rawItem[key] = []
                     for (let i = 0; i < detailAmount; i++) {
-                        promiseArray.push(helperObjects.getFromTable(rawItem[key], { subtable: helperObjects.toTitleCase(key) }, db))
+                        promiseArray.push(helperObjects.getFromTable(rawItem[key], { subtable: helperObjects.toTitleCase(key) }))
                     }
                 } else {
                     delete rawItem[key]
@@ -1245,15 +1249,15 @@ const helperObjects = {
                             let rawGem = { type: null, shape: null, size: null }
 
                             let gemPromiseArray = []
-                            gemPromiseArray.push(db.gets.semi_random.gem_type(budget - rawItem.price).then(result => {
+                            gemPromiseArray.push(query(semi_random_gem_type, [budget - rawItem.price]).then(result => {
                                 rawGem.type = result[0]
                                 return true
                             }))
-                            gemPromiseArray.push(db.gets.semi_random.gem_size().then(result => {
+                            gemPromiseArray.push(query(semi_random_gem_size).then(result => {
                                 rawGem.size = result[0]
                                 return true
                             }))
-                            gemPromiseArray.push(helperObjects.getFromTableToObject(rawGem, 'shape', { subtable: GEM_SHAPE }, db))
+                            gemPromiseArray.push(helperObjects.getFromTableToObject(rawGem, 'shape', { subtable: GEM_SHAPE }))
 
                             Promise.all(gemPromiseArray).then(finalGem => {
                                 if (rawGem.type) {
@@ -1276,7 +1280,7 @@ const helperObjects = {
             } else if (rawItem[key] && key === 'subject') {
                 // } else if (rawItem[key] && key === 'subject') {
                 rawItem[key] = []
-                helperObjects.getSubject(rawItem[key], db, false)
+                helperObjects.getSubject(rawItem[key], false)
             }
         }
 
@@ -1300,7 +1304,7 @@ const helperObjects = {
                     }
 
                     let stitchingPromiseArray = []
-                    stitchingPromiseArray.push(helperObjects.getSubject(rawStitching.subject, db, false))
+                    stitchingPromiseArray.push(helperObjects.getSubject(rawStitching.subject, false))
 
                     Promise.all(stitchingPromiseArray).then(_ => {
                         let stitchings = {
@@ -1336,9 +1340,9 @@ const helperObjects = {
                     }
 
                     let engarvingPromiseArray = []
-                    engarvingPromiseArray.push(helperObjects.getSubject(rawEngraving.subject, db, false))
+                    engarvingPromiseArray.push(helperObjects.getSubject(rawEngraving.subject, false))
                     const engravingSubtable = rawItem.gems ? ENGRAVING_WITH_GEMS : ENGRAVING_WITHOUT_GEMS
-                    engarvingPromiseArray.push(helperObjects.getFromTableToObject(rawEngraving, 'type', { subtable: engravingSubtable }, db))
+                    engarvingPromiseArray.push(helperObjects.getFromTableToObject(rawEngraving, 'type', { subtable: engravingSubtable }))
 
                     Promise.all(engarvingPromiseArray).then(_ => {
                         let engravings = {
@@ -1361,27 +1365,27 @@ const helperObjects = {
             let populatedMaterials = []
             rawItem.materials.forEach(material => {
                 if (material.subtable) {
-                    innerPromiseArray.push(helperObjects.getFromTable(populatedMaterials, material, db))
+                    innerPromiseArray.push(helperObjects.getFromTable(populatedMaterials, material))
                 } else {
-                    innerPromiseArray.push(db.gets.semi_random.material(material.material, rawItem.price, budget).then(innerMaterialResult => {
+                    innerPromiseArray.push(query(semi_random_material, [material.material, rawItem.price, budget]).then(innerMaterialResult => {
                         if (innerMaterialResult[0]) {
                             innerMaterialResult[0].label = material.label
                             if (!innerMaterialResult[0].subtable) {
                                 populatedMaterials.push(innerMaterialResult[0])
                                 return true
                             }
-                            return helperObjects.getFromTable(populatedMaterials, innerMaterialResult[0], db)
+                            return helperObjects.getFromTable(populatedMaterials, innerMaterialResult[0])
                         } else {
-                            return db.gets.random.item_by_category(material.material).then(itemByCategory => {
+                            return query(itemSQL.random_by_category, [material.material]).then(itemByCategory => {
                                 if (itemByCategory.length > 0) {
                                     itemByCategory[0].label = material.label
                                     if (!itemByCategory[0].subtable) {
                                         populatedMaterials.push(itemByCategory[0])
                                         return true
                                     }
-                                    return helperObjects.getFromTable(populatedMaterials, itemByCategory[0], db)
+                                    return helperObjects.getFromTable(populatedMaterials, itemByCategory[0])
                                 } else {
-                                    return helperObjects.getFromTable(populatedMaterials, material, db)
+                                    return helperObjects.getFromTable(populatedMaterials, material)
                                 }
                             })
                         }

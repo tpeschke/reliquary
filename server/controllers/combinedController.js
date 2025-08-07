@@ -10,7 +10,6 @@ const enchantedCtrl = require('./enchantedController')
 
 controllerFunctions = {
     getTreasure: (req, res) => {
-        const db = req.app.get('db')
         let { requestArray } = req.body
 
         let resultArray = []
@@ -23,14 +22,14 @@ controllerFunctions = {
             
             if (request.enchanted) {
                 const { numberOfItems, status } = request.enchanted
-                promiseArray.push(enchantedCtrl.getEnchantedItemsWorkHorse(res, db, numberOfItems, status).then(result => {
+                promiseArray.push(enchantedCtrl.getEnchantedItemsWorkHorse(numberOfItems, status).then(result => {
                     resultArray[index] = [...resultArray[index], ...result]
                 }).catch(e => sendErrorForward('get enchanted item in all treasures', e, res)))
             }
 
             if (request.potions) {
                 const { numberOfItems, rarity } = request.potions
-                promiseArray.push(potionCtrl.getRandomPotionsWorkhorse(res, db, numberOfItems, rarity).then(result => {
+                promiseArray.push(potionCtrl.getRandomPotionsWorkhorse(numberOfItems, rarity).then(result => {
                     resultArray[index] = [...resultArray[index], ...result]
                 }).catch(e => sendErrorForward('get potions in all treasures', e, res)))
 
@@ -47,7 +46,7 @@ controllerFunctions = {
 
             if (request.talismans) {
                 const { numberOfItems } = request.talismans
-                promiseArray.push(talismanCtrl.getRandomTalismansWorkhorse(res, db, numberOfItems).then(result => {
+                promiseArray.push(talismanCtrl.getRandomTalismansWorkhorse(numberOfItems).then(result => {
                     resultArray[index] = [...resultArray[index], ...result]
                 }).catch(e => sendErrorForward('get talismans in all treasures', e, res)))
             }
@@ -55,7 +54,7 @@ controllerFunctions = {
                 const { items } = request
                 
                 let itemPromiseArray = []
-                itemCtrl.getItemsFromArray(res, db, items, itemPromiseArray, {format: 'OBJECT'})
+                itemCtrl.getItemsFromArray(items, itemPromiseArray, {format: 'OBJECT'})
 
                 promiseArray.push(Promise.all(itemPromiseArray).then(items => {
                     resultArray[index] = [...resultArray[index], ...items]

@@ -1,1 +1,0 @@
-select * from ritems where id = $1

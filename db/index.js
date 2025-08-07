@@ -5,7 +5,7 @@ const pool = new Pool(connection)
 
 module.exports = {
     query: async (text, params) => {
-        const { rows } = await pool.query(text, params)
-        return rows
+        const result = await pool.query(text, params).catch(e => console.log(text, '\n', params, '\n', e))
+        return result?.rows ? result.rows : []
     }
 }

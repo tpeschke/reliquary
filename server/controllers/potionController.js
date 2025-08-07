@@ -1,23 +1,23 @@
 const { sendErrorForwardNoFile, checkForContentTypeBeforeSending } = require('../helpers')
+const { query } = require('../../db/index')
+const potionSQL = require('../../db/potions')
 const sendErrorForward = sendErrorForwardNoFile('Potions')
 
 const controllerFunctions = {
     getRandomPotion: (req, res) => {
-        const db = req.app.get('db')
         let { rarity } = req.query
 
         new Promise((resolve) => {
-            getPotion(db, rarity, resolve, res)
+            getPotion(rarity, resolve, res)
         }).then(potion => checkForContentTypeBeforeSending(res, potion)).catch(e => sendErrorForward('get random potion', e, res));
     },
     getRandomPotions: async (req, res) => {
-        const db = req.app.get('db')
         let { numberOfItems, rarity } = req.query
 
-        const potions = await controllerFunctions.getRandomPotionsWorkhorse(res, db, numberOfItems, rarity)     
+        const potions = await controllerFunctions.getRandomPotionsWorkhorse(res, numberOfItems, rarity)
         checkForContentTypeBeforeSending(res, potions)
     },
-    getRandomPotionsWorkhorse: async (res, db, numberOfItems = 1, rarity) => {
+    getRandomPotionsWorkhorse: async (res, numberOfItems = 1, rarity) => {
         let promiseArray = []
 
         if (numberOfItems > 25) {
@@ -25,14 +25,13 @@ const controllerFunctions = {
         }
         for (let i = 0; i < +numberOfItems; i++) {
             promiseArray.push(new Promise((resolve) => {
-                getPotion(db, rarity, resolve, res)
+                getPotion(rarity, resolve, res)
             }))
         }
 
         return Promise.all(promiseArray).catch(e => sendErrorForward('get random potions promise', e, res))
     },
     searchPotions: (req, res) => {
-        const db = req.app.get('db')
         let { searchTerm } = req.query
         let promiseArray = []
         let basicPotions = []
@@ -41,11 +40,11 @@ const controllerFunctions = {
         searchTerm = searchTerm.toUpperCase().replace('SALVE', 'POTION')
         searchTerm = searchTerm.toUpperCase().replace('APPLICATION', 'SWIG')
 
-        promiseArray.push(db.gets.not_random.potion_search(searchTerm).then(results => {
+        promiseArray.push(query(potionSQL.search, [searchTerm]).then(results => {
             basicPotions = results
             return results
         }).catch(e => sendErrorForward('search potion basic potions', e, res)))
-        promiseArray.push(db.gets.not_random.xing_search(searchTerm).then(results => {
+        promiseArray.push(query(potionSQL.xing_search, [searchTerm]).then(results => {
             xingPotions = results.map(result => {
                 return {
                     id: 76,
@@ -78,7 +77,7 @@ const controllerFunctions = {
     }
 }
 
-getPotion = (db, rarity, resolve, res) => {
+getPotion = (rarity, resolve, res) => {
     if (!rarity) {
         rarity = rarityChance()
     } else {
@@ -90,13 +89,13 @@ getPotion = (db, rarity, resolve, res) => {
         'Rare': 4
     }
 
-    db.gets.semi_random.potion(rarityDictionary[rarity]).then(potionInArray => {
+    query(potionSQL.semi_random, [rarityDictionary[rarity]]).then(potionInArray => {
         let potion = potionInArray[0]
         potion.rarity = rarity
         potion.type = 'potion'
 
         if (potion.name === 'Xing Potion') {
-            db.gets.random.xing_potion().then(modifierInArray => {
+            query(potionSQL.random_xing).then(modifierInArray => {
                 const modifier = modifierInArray[0]
                 potion.name = potion.name.replace('Xing', modifier.variant)
                 potion.effect = potion.effect.replace('X', modifier.effect)

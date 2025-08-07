@@ -2,7 +2,6 @@ const { connection } = require('./serverConfig')
     , express = require('express')
     , bodyParser = require('body-parser')
     , cors = require('cors')
-    , massive = require('massive')
 const itemCtrl = require('./controllers/item/ItemController.js')
     , potionCtrl = require('./controllers/potionController.js')
     , talismanCtrl = require('./controllers/talismanController.js')
@@ -33,9 +32,6 @@ app.get('/*', (_, response) => {
     response.sendFile(path.join(__dirname + '/../build/index.html'))
 })
 
-massive(connection).then(dbI => {
-    app.set('db', dbI)
-    app.listen(3434, _ => {
-        console.log(`One Thousand Good Deeds Cannot Blot Out the Stain of One Sin 3434`)
-    })
+app.listen(3434, _ => {
+    console.log(`One Thousand Good Deeds Cannot Blot Out the Stain of One Sin 3434`)
 })

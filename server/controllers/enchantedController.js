@@ -1,41 +1,36 @@
 const { sendErrorForwardNoFile, checkForContentTypeBeforeSending } = require('../helpers')
 const sendErrorForward = sendErrorForwardNoFile('Enchanted Items')
-const { query }  = require('../../db/index')
+const { query } = require('../../db/index')
+const { semi_random, not_random, search } = require('../../db/enchantedItems')
 
 const controllerFunctions = {
     getEnchantedItems: async (req, res) => {
-        const db = req.app.get('db')
         let { numberOfItems, status } = req.query
 
-        const items = await controllerFunctions.getEnchantedItemsWorkHorse(res, db, numberOfItems, status).catch(e => sendErrorForward('get enchanted item', e, res))
+        const items = await controllerFunctions.getEnchantedItemsWorkHorse(numberOfItems, status).catch(e => sendErrorForward('get enchanted item', e, res))
         checkForContentTypeBeforeSending(res, items)
     },
-    getEnchantedItemsWorkHorse: async (res, db, numberOfItems = 1, status) => {
+    getEnchantedItemsWorkHorse: async (numberOfItems = 1, status) => {
         if (numberOfItems > 25) {
             numberOfItems = 25
         }
 
-        return query("select *, 'enchanted' as type from renchanteditems where major = $1 order by random() limit $2", [!!status, numberOfItems])
-        // return db.gets.semi_random.enchanted_item(numberOfItems, !!status).catch(e => sendErrorForward('get enchanted item workhorse', e, res))
+        return query(semi_random, [!!status, numberOfItems])
     },
-    getSingleEnchantedItem: (req, res) => {
-        const db = req.app.get('db')
+    getSingleEnchantedItem: async (req, res) => {
         let { id } = req.params
 
-        db.gets.not_random.enchanted_item(+id).then(item => {
-            checkForContentTypeBeforeSending(res, item)
-        }).catch(e => sendErrorForward('get single enchanted item', e, res))
+        const item = await query(not_random, [+id])
+
+        checkForContentTypeBeforeSending(res, item)
     },
-    searchEnchantedItem: (req, res) => {
-        const db = req.app.get('db')
+    searchEnchantedItem: async (req, res) => {
         let { searchTerm } = req.query
 
-        db.gets.not_random.enchanted_item_search(searchTerm).then(items => {
-            checkForContentTypeBeforeSending(res, items)
-        }).catch(e => sendErrorForward('search enchanted item', e, res))
+        const items = await query(search, [searchTerm])
+
+        checkForContentTypeBeforeSending(res, items)
     }
 }
-
-
 
 module.exports = controllerFunctions
