@@ -50,7 +50,7 @@ getItem = async (res, resolve, format, { itemcategory = randomIntBetweenTwoInts(
 
     return query(itemSQL[sqlToUse], [dictionaries.itemCategory[+itemcategory]]).then(item => {
         item = item[0]
-        query(detailsSQL.material_specific, [item.id]).then(materialResult => {
+        query(detailsSQL.material_item, [item.id]).then(materialResult => {
             if (materialResult.length > 0 && materialResult[0].material) {
                 item.materials = processMaterialResults(materialResult)
             } else {

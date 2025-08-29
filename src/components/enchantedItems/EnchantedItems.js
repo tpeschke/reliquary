@@ -178,15 +178,19 @@ export default function EnchantedItems() {
         })
     }
 
-    function copyToClipboard(event, item) {
+    function copyToClipboard(event, {name, description, price, power, size}) {
         event.stopPropagation()
 
-        navigator.clipboard.writeText(`${item.name}: 
-        - Description: ${item.description}
-        - Price: ${item.price}
-        - Power: ${item.power}
-        - Size: ${item.size}`);
-        toast.success(`${item.name}'s info has been copied`)
+        navigator.clipboard.writeText(`${name}: 
+  - *Description*: ${removeTags(description)}
+  - *Price*: ${removeTags(price)}
+  - *Power*: ${removeTags(power)}
+  - *Size*: ${size}`);
+        toast.success(`${name}'s info has been copied`)
+    }
+
+    function removeTags(string) {
+        return string.substring(0, string.length - 4).substring(3)
     }
 
     return (

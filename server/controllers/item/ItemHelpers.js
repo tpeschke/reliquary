@@ -88,30 +88,41 @@ itemHelpers = {
     populationWithSpecificMaterials: async (materials, materialRarity, res) => {
         let populatedMaterials = []
         let promiseArray = []
+
         materials.forEach(material => {
             if (material.subtable) {
                 promiseArray.push(getFromTable(populatedMaterials, material))
             } else {
                 if (materialRarity.toUpperCase() === 'L' && ['Cloth', 'Metal', 'Stone/Earthwork', 'Wood'].includes(material.material)) {
+
                     promiseArray.push(query(detailsSQL.semi_random_material, [`Exotic ${material.material}`, 0, 0]).then(specificMaterial => {
                         return populatedMaterials.push(specificMaterial[0])
                     }).catch(e => sendErrorForward('get legendary specific item', { ...e, extraInfo: material.material }, res)))
+
                 } else if (['Paper Product', 'Wax'].includes(material.material)) {
+
                     const specificMaterialRarityMultiplier = dictionaries.materialRarityMultiplier[material.material]
                     promiseArray.push(query(detailsSQL.semi_random_material_price, [material.material, specificMaterialRarityMultiplier[materialRarity.toUpperCase()].min, specificMaterialRarityMultiplier[materialRarity.toUpperCase()].max]).then(specificMaterial => {
                         return populatedMaterials.push(specificMaterial[0])
                     }).catch(e => sendErrorForward('get specific item by price', { ...e, extraInfo: material.material }, res)))
+
                 } else if (['Cloth', 'Fur', 'Leather', 'Metal', 'Stone/Earthwork', 'Vellum', 'Wood'].includes(material.material)) {
+
                     const specificMaterialRarityMultiplier = dictionaries.materialRarityMultiplier[material.material]
+
                     promiseArray.push(query(detailsSQL.semi_random_material, [material.material, specificMaterialRarityMultiplier[materialRarity.toUpperCase()].min, specificMaterialRarityMultiplier[materialRarity.toUpperCase()].max]).then(specificMaterial => {
                         return populatedMaterials.push(specificMaterial[0])
                     }).catch(e => sendErrorForward('get specific item', { ...e, extraInfo: material.material }, res)))
+
                 } else if (material.material.substring(0, 6) === 'Animal') {
                     promiseArray.push(query(detailsSQL.random_animal, [material.material]).then(specificAnimal => {
+
                         specificAnimal.price = 1
                         return populatedMaterials.push(specificAnimal[0])
                     }).catch(e => sendErrorForward('get specific animal from subtable', { ...e, extraInfo: material.material }, res)))
+
                 } else {
+
                     promiseArray.push(query(detailsSQL.semi_random_material_specific, [material.material]).then(specificMaterial => {
                         if (specificMaterial[0].materialcategory === 'other_table') {
 
@@ -119,6 +130,7 @@ itemHelpers = {
                             return populatedMaterials.push(specificMaterial[0])
                         }
                     }).catch(e => sendErrorForward('get specific item from subtable', { ...e, extraInfo: material.material }, res)))
+
                 }
             }
         })

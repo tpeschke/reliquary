@@ -62,7 +62,7 @@ export default function Talismans() {
     function copyToClipboard(event, talisman) {
         event.stopPropagation()
 
-        navigator.clipboard.writeText(`${talisman.skill}: ${talisman.explanation}`);
+        navigator.clipboard.writeText(`Talisman of ${talisman.skill}: ${talisman.explanation}`);
         toast.success(`The Talisman of ${talisman.skill} has been copied`)
     }
 

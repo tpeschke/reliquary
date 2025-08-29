@@ -6,7 +6,7 @@ module.exports = {
     random_animal: "select detail as material from ritemdetails r where category = $1 order by random() limit 1",
     random_detail: "select RANDOM() * weight as random, r.* from ritemdetails r  where category = $1 order by random desc limit $2",
     detail_by_category: "select RANDOM() * weight as random, r.* from ritemdetails r  where category = $1 order by random desc limit 1",
-    semi_random_material: "select RANDOM() * m.multiplier as randomweight, m.*, mb.confbonus from rmaterial m left join rmultiplierbonus mb on mb.multiplier = m.multiplier where materialcategory = $1  and m.multiplier * $2 <= $3 and m.multiplier * $2 >= ($3 / 2) and m.multiplier != 0 order by randomweight desc limit 1",
+    semi_random_material: "select RANDOM() * m.multiplier as randomweight, m.*, mb.confbonus from rmaterial m left join rmultiplierbonus mb on mb.multiplier = m.multiplier where materialcategory = $1 and m.multiplier >= $2 and m.multiplier <= $3 and m.multiplier != 0 order by randomweight desc limit 1",
     semi_random_material_price: "select m.*, mb.confbonus from rmaterial m left join rmultiplierbonus mb on mb.multiplier = m.multiplier where materialcategory = $1 and price >= $2 and price <= $3 order by random() limit 1",
     semi_random_material_specific: "select m.*, mb.confbonus from rmaterial m left join rmultiplierbonus mb on mb.multiplier = m.multiplier where material = $1",
     material: "select * from rmaterial r where material = $1 and materialcategory = $2;",

@@ -137,15 +137,15 @@ const dictionaries = {
         'Leather': {
             C: {
                 min: 1,
-                max: 2
+                max: 1.5
             },
             U: {
-                min: 2,
-                max: 3
+                min: 1.5,
+                max: 2.5
             },
             R: {
-                min: 4,
-                max: 7
+                min: 2.5,
+                max: 4
             },
             L: {
                 min: 4,
@@ -163,10 +163,10 @@ const dictionaries = {
             },
             R: {
                 min: 3,
-                max: 6
+                max: 4
             },
             L: {
-                min: 3,
+                min: 4,
                 max: 6
             }
         },
@@ -191,15 +191,15 @@ const dictionaries = {
         'Wood': {
             C: {
                 min: 1,
-                max: 2
+                max: 1.75
             },
             U: {
-                min: 2,
-                max: 4
+                min: 1.75,
+                max: 3
             },
             R: {
-                min: 4,
-                max: 7
+                min: 3,
+                max: 4
             },
             L: {
                 min: 4,
@@ -208,16 +208,16 @@ const dictionaries = {
         },
         'Stone/Earthwork': {
             C: {
-                min: 1,
-                max: 2
+                min: .1,
+                max: 1
             },
             U: {
-                min: 2,
-                max: 4
+                min: 1,
+                max: 1.75
             },
             R: {
-                min: 4,
-                max: 5
+                min: 2,
+                max: 4
             },
             L: {
                 min: 4,
@@ -231,14 +231,14 @@ const dictionaries = {
             },
             U: {
                 min: 1.25,
-                max: 2
+                max: 1.5
             },
             R: {
                 min: 2,
-                max: 6
+                max: 4
             },
             L: {
-                min: 3,
+                min: 4,
                 max: 5
             }
         },
