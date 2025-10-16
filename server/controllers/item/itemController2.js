@@ -101,6 +101,8 @@ function getSpecificMaterial(specificMaterial, columnName, tableName) {
     where Upper(${columnName}) = '${specificMaterial.toUpperCase()}'`
 }
 
+// TODO also, leather, wax, some wood, some earth, and some cloth need to display the base material (ie 'bees wax' instead of 'bees')
+
 async function getMaterialInfo(materialid, material, materialtableid, part, rarity) {
     const tableNameDictionary = [null, 'cloth', 'fur_n_leather', 'metal_table', 'paper_table', 'stone_table', 'wood_table', 'wax_table']
     const columnNameDictionary = [null, 'cloth', 'furleather', 'metal', 'type', 'stone', 'wood', 'wax']
@@ -291,7 +293,6 @@ function formatFour(item, materialInfo) {
 
 function formatFive(item, materialInfo) {
     // TODO need to display 'Wax' Here
-    // TODO also, leather, wax, some wood, some earth, and some cloth need to display the base material (ie 'bees wax' instead of 'bees')
     return `${aOrAn(item.collective)} ${item.collective} of ${materialInfo[0].material} ${item.item}`
 }
 
