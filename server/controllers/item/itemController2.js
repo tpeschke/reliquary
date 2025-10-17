@@ -1,6 +1,5 @@
-const { color } = require('@mui/system')
 const { query } = require('../../../db')
-const { sendErrorForwardNoFile, checkForContentTypeBeforeSending, getRandomInt } = require('../../helpers')
+const { sendErrorForwardNoFile, checkForContentTypeBeforeSending, getRandomInt, randomIntBetweenTwoInts } = require('../../helpers')
 
 const sendErrorForward = sendErrorForwardNoFile('Items')
 
@@ -9,7 +8,6 @@ const sendErrorForward = sendErrorForwardNoFile('Items')
 // uncommon
 // rare
 // legendary - currently not supported
-
 
 // material table ids
 //  cloth = 1
@@ -41,13 +39,12 @@ const controllerFunctions = {
 
 module.exports = controllerFunctions
 
-// const itemSQL = `select * from academic_tools
-// ORDER BY random() * weight desc
-// limit 1`
-
-// TODO Sealing Wax isn't properly displaying (id 12)
 const itemSQL = `select * from academic_tools
-where id = 12`
+ORDER BY random() * weight desc
+limit 1`
+
+// const itemSQL = `select * from academic_tools
+// where id = 13`
 
 const itemMaterialSQL = `SELECT 
 *
@@ -75,33 +72,39 @@ async function getItem(res, resolve, { category, rarity, detail, wear }) {
     })
 
     const materialInfo = await Promise.all(promiseArray).then(results => {
-        return results.map(result => result[0])
+        return results.map(result => {
+            return {
+                ...result[0],
+                category: getMaterialCategory(result[0]),
+                displayName: getDisplayName(result[0])
+            }
+        })
     })
 
     const colors = await getColors(item.colors, detail)
     const engravings = await getEngravings(item.engravings, detail)
-    const gems = await getGems(item.gems, detail)
+    const gems = await getGems(item.gems, detail, rarity)
 
-    // TODO Price
+    const price = getPrice(item, materialInfo, gems)
 
-    const formattedItem = formatItem(item, materialInfo, colors, engravings, gems, wear)
+    const rolledWear = randomIntBetweenTwoInts(0, +wear)
+
+    const formattedItem = formatItem(item, materialInfo, colors, engravings, gems, rolledWear, price)
 
     resolve(formattedItem)
 }
 
 function getTable(columnName, tableName) {
-    return `select *, ${columnName} as material, $1 as part, $2 as materialid from ${tableName}
+    return `select *, ${columnName} as material, $1 as part, $2 as categoryid from ${tableName}
     where rarity = $3
     ORDER BY random()
     limit 1`
 }
 
 function getSpecificMaterial(specificMaterial, columnName, tableName) {
-    return `select *, ${columnName} as material, $1 as part, $2 as materialid from ${tableName}
+    return `select *, ${columnName} as material, $1 as part, $2 as categoryid from ${tableName}
     where Upper(${columnName}) = '${specificMaterial.toUpperCase()}'`
 }
-
-// TODO also, leather, wax, some wood, some earth, and some cloth need to display the base material (ie 'bees wax' instead of 'bees')
 
 async function getMaterialInfo(materialid, material, materialtableid, part, rarity) {
     const tableNameDictionary = [null, 'cloth', 'fur_n_leather', 'metal_table', 'paper_table', 'stone_table', 'wood_table', 'wax_table']
@@ -110,7 +113,7 @@ async function getMaterialInfo(materialid, material, materialtableid, part, rari
     if (materialid) {
         return query(getTable(columnNameDictionary[materialid], tableNameDictionary[materialid]), [part, materialid, rarity])
     } else if (material && materialtableid) {
-        return query(getSpecificMaterial(material, columnNameDictionary[materialtableid], tableNameDictionary[materialtableid]), [part, materialid])
+        return query(getSpecificMaterial(material, columnNameDictionary[materialtableid], tableNameDictionary[materialtableid]), [part, materialtableid])
     } else if (material) {
         // TODO
         // 'Porcupine Spine'
@@ -118,6 +121,7 @@ async function getMaterialInfo(materialid, material, materialtableid, part, rari
         return [
             {
                 material: 'Placeholder',
+                displayName: 'Placeholder',
                 price_multiplier: 1,
                 bonus: '',
                 conf_bonus: '',
@@ -127,6 +131,36 @@ async function getMaterialInfo(materialid, material, materialtableid, part, rari
         ]
     } else {
         console.log('something went wrong')
+    }
+}
+
+const materialNameDictionary = [null, 'Cloth', null, 'Metal', 'Paper', 'Stone', 'Wood', 'Wax']
+
+function getMaterialCategory(materialInfo) {
+
+    if (+materialInfo.materialid === 2) {
+        return materialInfo.type
+    }
+    return materialNameDictionary[+materialInfo.materialid]
+}
+
+function getDisplayName(materialInfo) {
+    switch (+materialInfo.categoryid) {
+        case 1:
+            return materialInfo.material
+        case 2:
+            return `${materialInfo.material} ${materialInfo.type}`
+        case 3:
+        case 4:
+        case 5:
+            return materialInfo.material
+        case 6:
+            if (string.includes('wood')) {
+                return materialInfo.material
+            }
+            return `${materialInfo.material} Wood`
+        case 7:
+            return `${materialInfo.material} ${materialNameDictionary[+materialInfo.categoryid]}`
     }
 }
 
@@ -189,15 +223,16 @@ const gemSizeSQL = `select * from gem_size_table
 order by random() * weight
 limit $1`
 const gemTypeSQL = `select * from gem_type_table
+where rarity = $1
 order by random() * weight
-limit $1`
+limit $2`
 
-async function getGems(gemChance, detail) {
+async function getGems(gemChance, detail, rarity) {
     const number = getNumberOfDetail(gemChance, detail)
 
     const sizes = await query(gemSizeSQL, [number])
     const shapes = await query(gemShapeSQL, [number])
-    const types = await query(gemTypeSQL, [number])
+    const types = await query(gemTypeSQL, [rarity, number])
 
     return types.map((type, index) => {
         return {
@@ -208,7 +243,7 @@ async function getGems(gemChance, detail) {
     })
 }
 
-function formatItem(item, materialInfo, colors, engravings, gems, wear) {
+function formatItem(item, materialInfo, colors, engravings, gems, rolledWear, price) {
     let baseString = formatAccordingToType(item, materialInfo)
 
     if (colors.length > 0 || engravings > 0 || gems > 0) {
@@ -228,10 +263,16 @@ function formatItem(item, materialInfo, colors, engravings, gems, wear) {
             baseString += formatGems(gems)
         }
     }
+    
+    if (rolledWear) {
+        baseString += `. ${createDescriptiveWear(rolledWear)}`
+    }
 
-    // TODO
-    //  Wear
-    //  Price
+    if (rolledWear) {
+        baseString += ` It'll be worth ${price} sc once repaired.`
+    } else {
+        baseString += ` It's worth ${price} sc.`
+    }
 
     return baseString
 }
@@ -248,28 +289,32 @@ function formatAccordingToType(item, materialInfo) {
             return formatFour(item, materialInfo)
         case 5:
             return formatFive(item, materialInfo)
+        case 6:
+            return formatSix(item, materialInfo)
         default:
             return ''
     }
 }
 
 function formatOne(item, materialInfo) {
-    return `${aOrAn(materialInfo[0].material)} ${materialInfo[0].material} ${item.item}`
+    console.log(materialInfo)
+    return `${aOrAn(materialInfo[0].displayName)} ${materialInfo[0].displayName} ${item.item}`
 }
 
 function formatTwo(item, materialInfo) {
-    return `${aOrAn(item.collective)} ${item.collective} of ${materialInfo[0].material} ${item.item}`
+    return `${aOrAn(item.collective)} ${item.collective} of ${materialInfo[0].displayName} ${item.item}`
 }
 
 function formatThree(item, materialInfo) {
     const baseString = `${aOrAn(item.item)} ${item.item} with`
+
     const materialString = materialInfo.map((material, index) => {
         if (index === materialInfo.length - 1 && index > 0) {
-            return `, and ${aOrAn(material.part)} ${material.part} of ${material.material}`
+            return ` and ${aOrAn(material.part)} ${material.part} of ${material.displayName}`
         } else if (index === 0) {
-            return ` ${aOrAn(material.part)} ${material.part} of ${material.material}`
+            return ` ${aOrAn(material.part)} ${material.part} of ${material.displayName}`
         } else {
-            return `, ${aOrAn(material.part)} ${material.part} of ${material.material}`
+            return `, ${aOrAn(material.part)} ${material.part} of ${material.displayName}`
         }
     })
 
@@ -278,13 +323,14 @@ function formatThree(item, materialInfo) {
 
 function formatFour(item, materialInfo) {
     const baseString = `${aOrAn(item.collective)} ${item.collective} of ${item.item} with`
+
     const materialString = materialInfo.map((material, index) => {
         if (index === materialInfo.length - 1 && index > 0) {
-            return `, and ${aOrAn(material.part)} ${material.part} of ${material.material}`
+            return ` and ${aOrAn(material.part)} ${material.part} of ${material.displayName}`
         } else if (index === 0) {
-            return ` ${aOrAn(material.part)} ${material.part} of ${material.material}`
+            return ` ${aOrAn(material.part)} ${material.part} of ${material.displayName}`
         } else {
-            return `, ${aOrAn(material.part)} ${material.part} of ${material.material}`
+            return `, ${aOrAn(material.part)} ${material.part} of ${material.displayName}`
         }
     })
 
@@ -292,8 +338,11 @@ function formatFour(item, materialInfo) {
 }
 
 function formatFive(item, materialInfo) {
-    // TODO need to display 'Wax' Here
-    return `${aOrAn(item.collective)} ${item.collective} of ${materialInfo[0].material} ${item.item}`
+    return `${aOrAn(item.collective)} ${item.collective} of ${materialInfo[0].material} ${item.item} ${materialNameDictionary[+materialInfo[0].categoryid]}`
+}
+
+function formatSix(item, materialInfo) {
+    return `${aOrAn(item.collective)} ${item.collective} of ${materialInfo[0].displayName}`
 }
 
 function aOrAn(noun) {
@@ -307,7 +356,7 @@ function formatColors(colors) {
 
     colors.forEach((color, index) => {
         if (index === colors.length - 1 && index > 0) {
-            colorString += `, and ${color.color}`
+            colorString += ` and ${color.color}`
         } else if (index === 0) {
             colorString += ` ${color.color}`
         } else {
@@ -323,7 +372,7 @@ function formatEngravings(materialInfo, engravings) {
 
     engravings.forEach((engravings, index) => {
         if (index === engravings.length - 1 && index > 0) {
-            engravingsString += `, and ${aOrAn(engravings.engraving_theme)} ${engravings.engraving_theme} Event from ${engravings.timePeriod.time} Times`
+            engravingsString += ` and ${aOrAn(engravings.engraving_theme)} ${engravings.engraving_theme} Event from ${engravings.timePeriod.time} Times`
         } else if (index === 0) {
             engravingsString += ` ${aOrAn(engravings.engraving_theme)} ${engravings.engraving_theme} Event from ${engravings.timePeriod.time} Times`
         } else {
@@ -344,7 +393,7 @@ function getEngravingVerb(materialInfo) {
         case '3':
             return 'engraved with'
         case '4':
-            return 'recording a'
+            return 'recording a story featuring'
         case '5':
             return 'engraved with'
         case '6':
@@ -370,4 +419,45 @@ function formatGems(gems) {
     })
 
     return gemString
+}
+
+function getPrice(item, materialInfo, gems) {
+    const basePrice = +item.price * materialInfo.reduce((multiplier, material) => {
+        return multiplier * +material.price_multiplier
+    }, 1)
+
+    const gemSizeDictionary = {
+        0.2: 0.1,
+        0.5: 0.25,
+        1: 0.5,
+        1.5: 0.75,
+        2: 1,
+        2.5: 2,
+        3: 5,
+        4: 10,
+        5: 20
+    }
+
+    const gemPrice = gems.reduce((price, gem) => {
+        const gemPrice = +gem.price * gemSizeDictionary[+gem.size.size]
+        return price + gemPrice
+    }, 0)
+    
+    return basePrice + gemPrice
+}
+
+function createDescriptiveWear(wear) {
+    if (wear <= 2) {
+        return ` It has a little worn (${wear} Wear).`
+    } else if (wear <= 4) {
+        return ` It's slightly worn (${wear} Wear).`
+    } else if (wear <= 6) {
+        return ` It's pretty worn (${wear} Wear).`
+    } else if (wear <= 8) {
+        return ` It's very worn (${wear} Wear).`
+    } else if (wear <= 10) {
+        return ` It's about to break (${wear} Wear).`
+    } else {
+        return ` It's broken (${wear} Wear).`
+    }
 }
