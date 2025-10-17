@@ -112,18 +112,18 @@ async function getItem(resolve, { category, rarity, detail, wear }) {
 }
 
 function getCategorySQL(category) {
-    if (!category) {
-        // TODO Update with table id
-        category = randomIntBetweenTwoInts(1, 3)
-    }
-
     // TODO Update with table name
     const tableDictionary = [
         null,
         'academic_tools',
         'adventuring_gear',
-        'alchemical_substances'
+        'alchemical_substances',
+        'armor_table'
     ]
+
+    if (!category) {
+        category = randomIntBetweenTwoInts(1, tableDictionary.length - 1)
+    }
 
     // return `select * from ${tableDictionary[category]}
     // where id = 17`
@@ -167,15 +167,15 @@ async function getMaterialInfo(materialid, material, materialtableid, part, rari
         // Hemp
         // Linseed
         // Whale
-//         Blue Glory
-// Bondweed
-// Griffin Hair
-// Lylullin
-// Maidenscap
-// Palm of St Germain
-// Tears of Sicyon
-// Unknown
-// Monster
+        // Blue Glory
+        // Bondweed
+        // Griffin Hair
+        // Lylullin
+        // Maidenscap
+        // Palm of St Germain
+        // Tears of Sicyon
+        // Unknown
+        // Monster
         return [
             {
                 material: 'Placeholder',

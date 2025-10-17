@@ -135,3 +135,36 @@ INSERT INTO alchemical_substances (weight, item, format, collective, max_number,
 (5, 'Talcum Powder', '7', 'Ounce', NULL, 1.3, 'T', 4, 3),
 (5, 'Wax', '2', 'Ounce', NULL, 5, 'T', 9, 3),
 (5, 'Weaponblack', '7', 'Dose', NULL, 1, 'T', 1, 3);
+
+-- Armor ID: 4
+CREATE TABLE armor_table (
+    id SERIAL PRIMARY KEY,
+    weight NUMERIC,
+    item TEXT NOT NULL,
+    format INTEGER,
+    collective TEXT,
+    max_number TEXT,
+    price NUMERIC,
+    colors INTEGER,
+    engraving_stitching INTEGER,
+    gems INTEGER,
+    tableid integer default 4
+);
+
+INSERT INTO armor_table 
+(weight, item, format, collective, max_number, price, colors, engraving_stitching, gems)
+VALUES
+(65, 'Brigandine', 3, 'Suit', 'M', 650, 7, 4, 1),
+(13, 'Buff Coat', 2, 'Suit', 'S', 130, 8, 2, NULL),
+(39, 'Chainmail', 2, 'Suit', 'M', 390, 4, 2, 1),
+(19, 'Coat of Plates', 3, 'Suit', 'M', 190, 4, 4, 1),
+(9, 'Gambeson', 2, 'Suit', 'S', 90, 8, 2, NULL),
+(37, 'Lamellar', 3, 'Suit', 'M', 370, 3, 4, 1),
+(33, 'Banded Mail', 3, 'Suit', 'M', 335, 2, 4, 1),
+(19, 'Leather', 2, 'Suit', 'S', 190, 4, 2, 1),
+(212, 'Full Plate', 2, 'Suit', 'L', 2125, 2, 7, 2),
+(114, 'Plated Mail', 2, 'Suit', 'L', 1140, 2, 6, 2),
+(107, 'Scale', 2, 'Suit', 'L', 1075, 2, 6, 2),
+(20, 'Breastplate', 3, 'Suit', 'M', 200, 4, 2, 1),
+(35, 'Ringmail', 3, 'Suit', 'M', 350, 3, 4, 1),
+(27, 'Splintmail', 3, 'Suit', 'M', 275, 3, 4, 1);

@@ -139,3 +139,31 @@ INSERT INTO item_material_table (weight, itemid, tableid, materialid, material, 
 (9, 13, 3, NULL, 'Unknown', NULL, NULL),
 (10, 13, 3, NULL, 'Monster', NULL, NULL),
 (NULL, 18, 3, 7, NULL, NULL, NULL);
+
+-- Armor
+INSERT INTO item_material_table (weight, itemid, tableid, materialid, material, materialtableid, part)
+VALUES
+(2, 1, 4, 2, NULL, NULL, 'Covering'),
+(4, 1, 4, 1, NULL, NULL, 'Covering'),
+(NULL, 1, 4, 3, NULL, NULL, 'Plates'),
+(NULL, 2, 4, 2, NULL, NULL, NULL),
+(NULL, 3, 4, 3, NULL, NULL, NULL),
+(NULL, 4, 4, 2, NULL, NULL, 'Covering'),
+(NULL, 4, 4, 3, NULL, NULL, 'Plates'),
+(8, 5, 4, 1, NULL, NULL, NULL),
+(2, 5, 4, 2, NULL, NULL, NULL),
+(NULL, 6, 4, 3, NULL, NULL, 'Plates'),
+(NULL, 6, 4, 1, NULL, NULL, 'Straps'),
+(NULL, 7, 4, 3, NULL, NULL, 'Plates'),
+(NULL, 7, 4, 2, NULL, NULL, 'Straps'),
+(NULL, 8, 4, 2, NULL, NULL, NULL),
+(NULL, 9, 4, 3, NULL, NULL, NULL),
+(NULL, 10, 4, 3, NULL, NULL, NULL),
+(NULL, 11, 4, 3, NULL, NULL, NULL),
+(NULL, 12, 4, 3, NULL, NULL, 'A Plate'),
+(9, 12, 4, 1, NULL, NULL, 'Straps'),
+(1, 12, 4, 2, NULL, NULL, 'Straps'),
+(NULL, 13, 4, 2, NULL, NULL, 'Straps'),
+(NULL, 13, 4, 3, NULL, NULL, 'Rivets'),
+(NULL, 14, 4, 2, NULL, NULL, 'Straps'),
+(NULL, 14, 4, 3, NULL, NULL, 'Splints');
