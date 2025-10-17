@@ -1,3 +1,4 @@
+-- Table ID: 1
 CREATE TABLE academic_tools (
     id SERIAL PRIMARY KEY,
     tableid INTEGER NOT NULL DEFAULT 1,
@@ -13,41 +14,6 @@ CREATE TABLE academic_tools (
     gems INTEGER
 );
 
-
-CREATE TABLE item_material_table (
-    id SERIAL PRIMARY KEY,
-    weight NUMERIC,
-    itemid INTEGER NOT NULL,
-    tableid INTEGER NOT NULL,
-    materialid INTEGER,
-    material TEXT,
-    materialtableid INTEGER,
-    part TEXT
-);
-
-INSERT INTO item_material_table (weight, itemid, tableid, materialid, material, materialtableid, part) VALUES
-(NULL, 1, 1, 3, NULL, NULL, NULL),
-(2, 1, 1, 3, NULL, NULL, NULL),
-(3, 1, 1, 3, NULL, NULL, NULL),
-(1, 4, 1, 3, NULL, NULL, 'cover'),
-(5, 4, 1, 1, NULL, NULL, 'cover'),
-(2, 4, 1, 2, NULL, NULL, 'cover'),
-(1, 4, 1, 6, NULL, NULL, 'cover'),
-(NULL, 4, 1, 4, NULL, NULL, 'interior'),
-(NULL, 5, 1, 3, NULL, NULL, NULL),
-(NULL, 6, 1, 3, NULL, NULL, NULL),
-(NULL, 7, 1, 3, NULL, NULL, NULL),
-(NULL, 8, 1, 4, NULL, NULL, NULL),
-(NULL, 9, 1, 3, NULL, NULL, NULL),
-(NULL, 10, 1, NULL, 'Porcupine Spine', NULL, NULL),
-(NULL, 10, 1, NULL, 'Goose Feather', NULL, NULL),
-(NULL, 11, 1, 3, NULL, NULL, NULL),
-(NULL, 12, 1, 7, NULL, NULL, NULL),
-(6, 13, 1, NULL, 'Clay', 5, NULL),
-(2, 13, 1, 7, NULL, NULL, NULL),
-(1, 13, 1, NULL, 'Slate', 5, NULL);
-
--- Table ID: 1
 INSERT INTO academic_tools (
     tableid, weight, item, format, collective, max_number, price, size, colors, engravings, gems
 ) VALUES
@@ -65,3 +31,107 @@ INSERT INTO academic_tools (
 (1, 8, 'Sealing', 5, 'Ounce', NULL, 1, 'D', 9, NULL, NULL),
 (1, 8, 'Writing Tablet', 2, 'Pile', NULL, 1, 'S', 4, 1, 0);
 
+-- Table ID: 2
+CREATE TABLE adventuring_gear (
+    id SERIAL PRIMARY KEY,
+    weight INT NOT NULL,
+    item TEXT NOT NULL,
+    format INT,
+    collective TEXT,
+    max_number TEXT,
+    price NUMERIC,
+    size CHAR(1),
+    colors INT,
+    engravings INT,
+    tableid integer default 2
+);
+
+INSERT INTO adventuring_gear (weight, item, format, collective, max_number, price, size, colors, engravings) VALUES
+(2, 'Bedroll', 1, NULL, NULL, 1, 'M', 4, 3),
+(2, 'Blade Pole', 3, NULL, NULL, 3, 'L', 1, 1),
+(2, 'Blanket', 1, NULL, 4.5, 4.5, 'S', 4, 4),
+(2, 'Block & Tackle', 1, NULL, NULL, 5, 'S', 1, 1),
+(2, 'Rabbit Trap Cage', 1, NULL, NULL, 16, 'M', 1, 1),
+(2, 'Caltrops', 2, 'Collection', 10, 0.3, 'S', 1, 1),
+(2, 'Camp Bed', 1, NULL, NULL, 16, 'L', 5, 1),
+(2, 'Chain', 2, 'Foot', 10, 3, 'S', 1, 1),
+(2, 'Stick', 1, NULL, 20, 0.05, 'S', 7, 1),
+(2, 'Climbing Harness', 1, NULL, NULL, 8, 'S', 2, 2),
+(1, 'Compass', 1, NULL, NULL, 75, 'S', 1, 3),
+(2, 'Crampons', 4, 'Pair', NULL, 4, 'S', 1, 1),
+(2, 'Cross-Staff', 1, NULL, NULL, 15, 'L', 1, 1),
+(2, 'Crowbar', 1, NULL, NULL, 1, 'M', 1, 1),
+(2, 'Darksuit', 1, NULL, NULL, 25, 'S', 1, 2),
+(2, 'Dowsing Rod', 1, NULL, NULL, 1, 'S', 1, 1),
+(2, 'Firestarter', 3, NULL, NULL, 1, 'T', 1, 1),
+(2, 'Fish Trap', 1, NULL, 0.5, 0.5, 'M', 1, 1),
+(2, 'Fishhook', 1, NULL, NULL, 1, 'D', 1, 1),
+(2, 'Fishing Line', 2, 'Foot', '10 + 10', 0.5, 'T', 1, 1),
+(2, 'Fishing Net', 2, '25 sq ft', NULL, 3, 'L', 1, 1),
+(2, 'Fishing Pole', 1, NULL, NULL, 1.2, 'M', 1, 3),
+(2, 'Footpads', 1, NULL, NULL, 4, 'T', 1, 1),
+(2, 'Grapnel Hook', 1, NULL, NULL, 16, 'M', 1, 1),
+(2, 'Hammock', 1, NULL, NULL, 2, 'S', 4, 1),
+(2, 'Hooked Pole', 1, NULL, NULL, 5, 'L', 1, 1),
+(2, 'Horseshoe', 1, NULL, NULL, 0.2, 'T', 1, 2),
+(2, 'Insect Netting', 1, NULL, NULL, 3, 'M', 1, 1),
+(2, '10 ft Ladder', 1, NULL, NULL, 1, 'L', 1, 1),
+(1, 'Lard', 2, 'Pint', NULL, 1, 'S', 1, 1),
+(1, 'Listening Cone', 1, NULL, NULL, 2, 'S', 3, 1),
+(2, 'Lock', 1, NULL, NULL, 100, 'T', 1, 2),
+(2, 'Lock Chisel', 1, NULL, NULL, 2, 'T', 1, 1),
+(2, 'Lockpicks, Set', 1, NULL, NULL, 12, 'T', 1, 2),
+(2, 'Manacles', 1, NULL, NULL, 15, 'S', 1, 2),
+(1, 'Marbles', 2, 'Handful', NULL, 15, 'D', 9, 3),
+(2, 'Mini-blade', 1, NULL, NULL, 0.5, 'T', 1, 1),
+(2, 'Mirror Pole', 3, NULL, NULL, 22, 'L', 1, 1),
+(2, 'Pegleg', 1, NULL, NULL, 8, 'S', 3, 4),
+(1, 'Pell', 1, NULL, NULL, 0.5, 'T', 2, 1),
+(2, '10 ft Pole', 1, NULL, NULL, 2, 'L', 1, 1),
+(2, 'Quintain', 1, NULL, NULL, 1, 'H', 1, 1),
+(2, 'Hollow Reed', 1, NULL, NULL, 1, 'T', 1, 1),
+(1, 'Sewing Needle', 1, NULL, NULL, 0.5, 'D', 1, 1),
+(2, 'Sextant', 1, NULL, NULL, 500, 'S', 1, 4),
+(2, 'Anti-Vampire Stake', 1, NULL, NULL, 0.25, 'T', 1, 1),
+(2, '3/4” Tack', 1, NULL, NULL, 0.01, 'D', 1, 1),
+(2, 'Tar Paper', 2, 'Piece', NULL, 1, 'F', 1, 1),
+(2, '1-Man Tent', 1, NULL, NULL, 5, 'M', 4, 1),
+(2, '2-Man Tent', 1, NULL, NULL, 12, 'L', 4, 1),
+(2, 'Tinderbox', 1, NULL, NULL, 3, 'T', 1, 1),
+(2, 'Whetstone', 1, NULL, NULL, 0.02, 'T', 1, 1),
+(2, 'Whistle', 1, NULL, NULL, 2, 'T', 2, 3);
+
+-- Table ID: 3
+CREATE TABLE alchemical_substances (
+    id SERIAL PRIMARY KEY,
+    weight NUMERIC,
+    item TEXT NOT NULL,
+    format TEXT,
+    collective TEXT,
+    max_number NUMERIC,
+    price NUMERIC,
+    size TEXT,
+    colors INTEGER,
+    tableid INTEGER
+);
+
+INSERT INTO alchemical_substances (weight, item, format, collective, max_number, price, size, colors, tableid) VALUES
+(5, 'Metal-Eating Acid, metal-eating', '7', 'Ounce', NULL, 13.74, 'D', 3, 3),
+(5, 'Alchemist’s Fire', '7', 'Pint', NULL, 124, 'S', 2, 3),
+(2, 'Ambergris', '7', 'Ounce', NULL, 141, 'D', 2, 3),
+(5, 'Aniseed', '7', 'Ounce', NULL, 0.21, 'D', 1, 3),
+(5, 'Antitoxin', '7', 'Dose', NULL, 10, 'D', 6, 3),
+(6, 'Blinding Powder', '7', 'Handful', NULL, 16, 'D', 5, 3),
+(6, 'Coal', '7', 'Pound', NULL, 0.02, 'S', 1, 3),
+(5, 'Disappearing Ink', '7', 'Ounce', NULL, 1, 'T', 4, 3),
+(6, 'Faceblack', '7', 'Pint', NULL, 0.6, 'S', 1, 3),
+(5, 'Holy Water', '7', 'Vial', NULL, 1, 'T', 1, 3),
+(5, 'Oil', '2', 'Vial', NULL, NULL, 'T', 4, 3),
+(5, 'Pearlash', '7', 'Pound', NULL, 4, 'S', 3, 3),
+(3, 'Poison', '2', 'Dose', NULL, NULL, 'D', 9, 3),
+(6, 'Potash', '7', 'Pound', NULL, 1, 'S', 3, 3),
+(5, 'Pearly Shell', '7', 'Ounce', NULL, 0.03, 'T', 3, 3),
+(6, 'Soap', '7', 'Ounce', NULL, 0.05, 'T', 4, 3),
+(5, 'Talcum Powder', '7', 'Ounce', NULL, 1.3, 'T', 4, 3),
+(5, 'Wax', '2', 'Ounce', NULL, 5, 'T', 9, 3),
+(5, 'Weaponblack', '7', 'Dose', NULL, 1, 'T', 1, 3);

@@ -25,9 +25,13 @@ const controllerFunctions = {
 
         let finishedItemArray = []
 
+        if (items && items.length > 0) {
+            getItemsFromArray(items, finishedItemArray, { format, category, rarity, detail, wear })
+        }
+
         for (let i = 0; i < number && i < 25; i++) {
             finishedItemArray.push(new Promise(resolve => {
-                return getItem(res, resolve, { category, rarity, detail, wear })
+                return getItem(resolve, { category, rarity, detail, wear })
             }))
         }
 
@@ -39,12 +43,22 @@ const controllerFunctions = {
 
 module.exports = controllerFunctions
 
-const itemSQL = `select * from academic_tools
-ORDER BY random() * weight desc
-limit 1`
+async function getItemsFromArray(items, finishedItemArray, defaults) {
+    const { format, category, rarity, detail, wear } = defaults
 
-// const itemSQL = `select * from academic_tools
-// where id = 13`
+    for (let i = 0; i < items.length && i < 25; i++) {
+        const item = items[i]
+
+        finishedItemArray.push(new Promise(resolve => {
+            category ? item.category = category : null
+            rarity ? item.rarity = rarity : null
+            detail ? item.detail = detail : null
+            wear ? item.wear = wear : null
+
+            return getItem(resolve, format, item)
+        }))
+    }
+}
 
 const itemMaterialSQL = `SELECT 
 *
@@ -55,15 +69,15 @@ SELECT
 FROM 
     item_material_table
 where 
-    itemid = $1
-) AS ranked_sales
+    itemid = $1 and tableid = $2
+) AS items
 WHERE 
 row_num = 1;`
 
-async function getItem(res, resolve, { category, rarity, detail, wear }) {
-    const [item] = await query(itemSQL, [])
+async function getItem(resolve, { category, rarity, detail, wear }) {
+    const [item] = await query(getCategorySQL(category), [])
 
-    const materials = await query(itemMaterialSQL, [item.id])
+    const materials = await query(itemMaterialSQL, [item.id, item.tableid])
 
     let promiseArray = []
 
@@ -91,7 +105,33 @@ async function getItem(res, resolve, { category, rarity, detail, wear }) {
 
     const formattedItem = formatItem(item, materialInfo, colors, engravings, gems, rolledWear, price)
 
-    resolve(formattedItem)
+    resolve({
+        id: item.id,
+        string: formattedItem
+    })
+}
+
+function getCategorySQL(category) {
+    if (!category) {
+        // TODO Update with table id
+        category = randomIntBetweenTwoInts(1, 3)
+    }
+
+    // TODO Update with table name
+    const tableDictionary = [
+        null,
+        'academic_tools',
+        'adventuring_gear',
+        'alchemical_substances'
+    ]
+
+    // return `select * from ${tableDictionary[category]}
+    // where id = 17`
+
+    return `select * from ${tableDictionary[category]}
+ORDER BY random() * weight desc
+limit 1`
+
 }
 
 function getTable(columnName, tableName) {
@@ -116,8 +156,26 @@ async function getMaterialInfo(materialid, material, materialtableid, part, rari
         return query(getSpecificMaterial(material, columnNameDictionary[materialtableid], tableNameDictionary[materialtableid]), [part, materialtableid])
     } else if (material) {
         // TODO
-        // 'Porcupine Spine'
-        // 'Goose Feather'
+        // Porcupine Spine
+        // Goose Feather
+        // Animal Bone
+        // Monster Bone
+        // Thread
+        // Twine
+        // Chalk
+        // Wicker
+        // Hemp
+        // Linseed
+        // Whale
+//         Blue Glory
+// Bondweed
+// Griffin Hair
+// Lylullin
+// Maidenscap
+// Palm of St Germain
+// Tears of Sicyon
+// Unknown
+// Monster
         return [
             {
                 material: 'Placeholder',
@@ -126,6 +184,7 @@ async function getMaterialInfo(materialid, material, materialtableid, part, rari
                 bonus: '',
                 conf_bonus: '',
                 rarity: 1,
+                materialid: '8',
                 part
             }
         ]
@@ -134,7 +193,7 @@ async function getMaterialInfo(materialid, material, materialtableid, part, rari
     }
 }
 
-const materialNameDictionary = [null, 'Cloth', null, 'Metal', 'Paper', 'Stone', 'Wood', 'Wax']
+const materialNameDictionary = [null, 'Cloth', null, 'Metal', 'Paper', 'Stone', 'Wood', 'Wax', 'Misc']
 
 function getMaterialCategory(materialInfo) {
 
@@ -161,6 +220,8 @@ function getDisplayName(materialInfo) {
             return `${materialInfo.material} Wood`
         case 7:
             return `${materialInfo.material} ${materialNameDictionary[+materialInfo.categoryid]}`
+        default:
+            return materialInfo.material
     }
 }
 
@@ -263,22 +324,22 @@ function formatItem(item, materialInfo, colors, engravings, gems, rolledWear, pr
             baseString += formatGems(gems)
         }
     }
-    
+
     if (rolledWear) {
         baseString += `. ${createDescriptiveWear(rolledWear)}`
     }
 
     if (rolledWear) {
-        baseString += ` It'll be worth ${price} sc once repaired.`
+        baseString += `. It'll be worth ${price} sc once repaired.`
     } else {
-        baseString += ` It's worth ${price} sc.`
+        baseString += `. It's worth ${price} sc.`
     }
 
     return baseString
 }
 
 function formatAccordingToType(item, materialInfo) {
-    switch (item.format) {
+    switch (+item.format) {
         case 1:
             return formatOne(item, materialInfo)
         case 2:
@@ -291,13 +352,14 @@ function formatAccordingToType(item, materialInfo) {
             return formatFive(item, materialInfo)
         case 6:
             return formatSix(item, materialInfo)
+        case 7:
+            return formatSeven(item)
         default:
             return ''
     }
 }
 
 function formatOne(item, materialInfo) {
-    console.log(materialInfo)
     return `${aOrAn(materialInfo[0].displayName)} ${materialInfo[0].displayName} ${item.item}`
 }
 
@@ -343,6 +405,10 @@ function formatFive(item, materialInfo) {
 
 function formatSix(item, materialInfo) {
     return `${aOrAn(item.collective)} ${item.collective} of ${materialInfo[0].displayName}`
+}
+
+function formatSeven(item) {
+    return `${aOrAn(item.collective)} ${item.collective} of ${item.item}`
 }
 
 function aOrAn(noun) {
@@ -442,22 +508,22 @@ function getPrice(item, materialInfo, gems) {
         const gemPrice = +gem.price * gemSizeDictionary[+gem.size.size]
         return price + gemPrice
     }, 0)
-    
+
     return basePrice + gemPrice
 }
 
 function createDescriptiveWear(wear) {
     if (wear <= 2) {
-        return ` It has a little worn (${wear} Wear).`
+        return `It has a little worn (${wear} Wear)`
     } else if (wear <= 4) {
-        return ` It's slightly worn (${wear} Wear).`
+        return `It's slightly worn (${wear} Wear)`
     } else if (wear <= 6) {
-        return ` It's pretty worn (${wear} Wear).`
+        return `It's pretty worn (${wear} Wear)`
     } else if (wear <= 8) {
-        return ` It's very worn (${wear} Wear).`
+        return `It's very worn (${wear} Wear)`
     } else if (wear <= 10) {
-        return ` It's about to break (${wear} Wear).`
+        return `It's about to break (${wear} Wear)`
     } else {
-        return ` It's broken (${wear} Wear).`
+        return `It's broken (${wear} Wear)`
     }
 }
