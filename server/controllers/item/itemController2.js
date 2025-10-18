@@ -124,19 +124,21 @@ function getCategorySQL(category) {
         'footwear_table',
         'headgear_table',
         'clothing_table',
-        'accessories_table'
+        'accessories_table',
+        'entertainment_table',
+        'fabric_n_ropes_table'
     ]
 
     if (!category) {
         category = randomIntBetweenTwoInts(1, tableDictionary.length - 1)
     }
 
-    return `select * from ${tableDictionary[category]}
-    where id = 3`
+    // return `select * from ${tableDictionary[category]}
+    // where id = 18`
 
-//     return `select * from ${tableDictionary[category]}
-// ORDER BY random() * weight desc
-// limit 1`
+    return `select * from ${tableDictionary[category]}
+ORDER BY random() * weight desc
+limit 1`
 
 }
 
@@ -188,6 +190,11 @@ async function getMaterialInfo(materialid, material, materialtableid, part, rari
         // Wool
         // Ivory
         // Gauze
+        // Chewing
+        // Smoking
+        // Down
+        // Heavy Down
+        // Heavy Feathers
         return [
             {
                 material: 'Placeholder',
@@ -462,23 +469,25 @@ function formatEngravings(materialInfo, engravings) {
 }
 
 function getEngravingVerb(materialInfo) {
-    const { materialid } = materialInfo[Math.floor(Math.random() * materialInfo.length)];
-
-    switch (materialid) {
-        case '1':
-        case '2':
-            return 'stitched with'
-        case '3':
-            return 'engraved with'
-        case '4':
-            return 'recording a story featuring'
-        case '5':
-            return 'engraved with'
-        case '6':
-            return 'carved with'
-        case '7':
-            return 'etched with'
-
+    if (materialInfo.length > 0) {
+        const { materialid } = materialInfo[Math.floor(Math.random() * materialInfo.length)];
+    
+        switch (materialid) {
+            case '1':
+            case '2':
+                return 'stitched with'
+            case '3':
+                return 'engraved with'
+            case '4':
+                return 'recording a story featuring'
+            case '5':
+                return 'engraved with'
+            case '6':
+                return 'carved with'
+            case '7':
+                return 'etched with'
+    
+        }
     }
     return 'engraved with'
 }

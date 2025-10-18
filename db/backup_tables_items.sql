@@ -367,3 +367,67 @@ INSERT INTO accessories_table (weight, item, format, collective, max_number, pri
 (1, 'Saddle', '1', NULL, 75, NULL, 'L', 1, 3, 1, 9),
 (1, 'Scarf', '1', NULL, 5.5, NULL, 'S', 8, 3, NULL, 9),
 (1, 'Walking Staff', '1', NULL, 2, NULL, 'S', 1, 1, 1, 9);
+
+-- Entertainment ID: 10
+CREATE TABLE Entertainment_table (
+    id SERIAL PRIMARY KEY,
+    weight NUMERIC NOT NULL,  -- chance out of 100
+    item TEXT NOT NULL,
+    format INTEGER,
+    collective TEXT,
+    max_number NUMERIC,
+    price NUMERIC,
+    size TEXT,
+    colors INTEGER,
+    engravings INTEGER,
+    gems INTEGER,
+    tableid INTEGER
+);
+
+INSERT INTO Entertainment_table (weight, item, format, collective, max_number, price, size, colors, engravings, gems, tableid) VALUES
+(5,  'Ankle Bells',        2, 'Pair',       NULL, 3,   'S', 4, 3, 2, 10),
+(5,  'Bean Bags',          2, 'Set',        NULL, 3,   'D', 8, 2, NULL, 10),
+(5,  'Collapsing Cane',    1, NULL,         NULL, 4,   'S', 7, 1, 6, 10),
+(5,  'Cards',              2, 'Deck',       NULL, 0.5, 'T', 8, NULL, NULL, 10),
+(5,  'Marked Cards',       2, 'Deck',       NULL, 1,   'T', 8, NULL, NULL, 10),
+(5,  'Tarot Cards',        2, 'Deck',       NULL, 1,   'T', 9, NULL, NULL, 10),
+(5,  'Chess Set',          1, NULL,         NULL, 5,   'M', 3, 2, 3, 10),
+(5,  'Dice',               2, 'Pair',       NULL, 0.2, 'D', 4, NULL, 1, 10),
+(5,  'Loaded Dice',        2, 'Pair',       NULL, 5,   'D', 4, NULL, 1, 10),
+(5,  'Handheld Fan',       1, NULL,         NULL, 3,   'S', 9, 6, NULL, 10),
+(5,  'Finger Cymbals',     2, 'Pair',       NULL, 2,   'T', 3, 3, NULL, 10),
+(5,  'Hair Dye',           7, 'Dose',       NULL, 0.1, 'T', 9, NULL, NULL, 10),
+(4,  'Hair Extensions',    7, 'Handful',    NULL, 0.1, 'S', 7, NULL, NULL, 10),
+(4,  'Speaking Horn',      1, NULL,         NULL, 4,   'S', 4, 2, NULL, 10),
+(4,  'Juggling Knife',     2, 'Set',        NULL, 14,  'S', 5, 1, 1, 10),
+(4,  'Retractable Knife',  2, 'Set',        NULL, 12,  'S', 5, 2, 3, 10),
+(4,  'Marionette',         1, NULL,         NULL, 7,   'S', 9, 5, 1, 10),
+(5,  'Perfume',            7, 'Vial',       NULL, 15,  'T', 7, 3, 4, 10),
+(5,  'Puppet',             1, NULL,         NULL, 10,  'T', 9, 3, NULL, 10),
+(5,  'Tobacco',            2, 'Pinch',     10,    1,   'T', 1, NULL, NULL, 10),
+(5,  'Toy Sword',          1, NULL,         NULL, 2,   'T', 3, 2, 1, 10);
+
+-- Fabrics & Ropes ID: 11
+CREATE TABLE fabric_n_ropes_table (
+    id SERIAL PRIMARY KEY,
+    weight INTEGER,                -- chance out of 100
+    item TEXT NOT NULL,
+    format INTEGER,
+    collective TEXT,
+    max_number INTEGER,
+    price NUMERIC,
+    size TEXT,
+    colors INTEGER,
+    engravings INTEGER,
+    tableid INTEGER NOT NULL
+);
+
+INSERT INTO fabric_n_ropes_table 
+(weight, item, format, collective, max_number, price, size, colors, engravings, tableid)
+VALUES
+(3, '3.5’ x 6’ Comforter', 3, NULL, NULL, 10, 'L', 7, 4, 11),
+(4, 'Cut Fabric', 2, '1 Sq Yard', NULL, 2.6, 'S', 2, 2, 11),
+(3, 'Flag', 1, 'Material', NULL, 5, 'S', 9, 3, 11),
+(3, 'Thread', 2, 'Yard', 4, 0.01, 'T', 1, NULL, 11),
+(3, 'Yarn', 2, 'Yard', 4, 0.01, 'T', 2, NULL, 11),
+(4, 'Rope', 2, '50 ft', NULL, 13, 'M', 2, 2, 11);
