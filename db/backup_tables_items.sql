@@ -431,3 +431,216 @@ VALUES
 (3, 'Thread', 2, 'Yard', 4, 0.01, 'T', 1, NULL, 11),
 (3, 'Yarn', 2, 'Yard', 4, 0.01, 'T', 2, NULL, 11),
 (4, 'Rope', 2, '50 ft', NULL, 13, 'M', 2, 2, 11);
+
+-- Prepped Food ID: 12
+CREATE TABLE prepped_foods_table (
+    id SERIAL PRIMARY KEY,
+    weight INT,               -- chance out of 100
+    item TEXT,
+    format INT,
+    collective TEXT,
+    max_number NUMERIC,
+    price NUMERIC,
+    size CHAR(1),
+    colors INT,
+    tableid INT
+);
+
+INSERT INTO prepped_foods_table (weight, item, format, collective, max_number, price, size, colors, tableid) VALUES
+(2, 'Almond-Cream', 7, 'Handful', NULL, 1, 'T', 1, 12),
+(3, 'Bear Fat Dumplings', 7, 'Handful', NULL, 1, 'S', 1, 12),
+(2, 'Blood', 7, 'Pint', NULL, 0.02, 'T', 1, 12),
+(2, 'Boe', 7, 'Handful', NULL, 1, 'T', 1, 12),
+(2, 'Brie', 7, 'Handful', NULL, 1.7, 'T', 1, 12),
+(2, 'Brose', 7, 'Handful', NULL, 0.5, 'T', 1, 12),
+(2, 'Broth', 7, 'Pint', NULL, 0.02, 'T', 1, 12),
+(2, 'Browncap', 7, 'Handful', NULL, 0.01, 'T', 1, 12),
+(2, 'Butter', 7, 'Pound', NULL, 1.2, 'T', 1, 12),
+(3, 'Candy', 7, 'Handful', NULL, 3, 'T', 1, 12),
+(2, 'Charmeats', 7, 'Handful', NULL, 1, 'T', 1, 12),
+(2, 'Cheese', 7, 'Pound', NULL, 1.2, 'T', 1, 12),
+(2, 'Comfirts', 7, 'Handful', NULL, 1, 'T', 1, 12),
+(2, 'Crips', 7, 'Handful', NULL, 1, 'T', 1, 12),
+(2, 'Daintiers', 7, 'Handful', NULL, 2.3, 'T', 1, 12),
+(2, 'Egg', 7, 'Half Dozen', NULL, 0.05, 'F', 1, 12),
+(3, 'Fish Flay', 7, 'Handful', NULL, 1, 'T', 1, 12),
+(3, 'Forcemeat', 7, 'Pound', NULL, 1, 'T', 1, 12),
+(2, 'Fry', 7, 'Pint', NULL, 1, 'T', 1, 12),
+(2, 'Galainte', 7, 'Handful', NULL, 1, 'T', 1, 12),
+(2, 'Giblets', 2, 'Pound', NULL, 1, 'T', 1, 12),
+(2, 'Gut Warmer', 7, 'Pint', NULL, 0.75, 'T', 1, 12),
+(2, 'Handpie', 7, 'Handful', NULL, 1.2, 'T', 1, 12),
+(2, 'Hot Water Pastries', 7, 'Handful', NULL, 1.6, 'T', 1, 12),
+(2, 'Lard', 7, 'Pint', NULL, 1, 'S', 1, 12),
+(2, 'Livers', 7, 'Handful', NULL, 0.02, 'T', 1, 12),
+(2, 'Muggets', 2, 'Handful', NULL, 1, 'T', 1, 12),
+(2, 'Musted Sauce', 7, 'Bowl', NULL, 0.4, 'T', 1, 12),
+(3, 'Nice Drippings', 7, 'Pint', NULL, 0.01, 'T', 1, 12),
+(2, 'Numbles', 7, 'Handful', NULL, 0.03, 'T', 1, 12),
+(2, 'Pap', 7, 'Handful', NULL, 0.3, 'T', 1, 12),
+(2, 'Pasta', 7, 'Handful', NULL, 0.02, 'T', 1, 12),
+(2, 'Pie', 7, 'Handful', NULL, 1.3, 'T', 1, 12),
+(2, 'Pottage', 7, 'Handful', NULL, 0.3, 'T', 1, 12),
+(3, 'Preserves', 2, 'Pint', NULL, 1.3, 'T', 1, 12),
+(2, 'Pynepaste', 7, 'Pound', NULL, 0.1, 'T', 1, 12),
+(2, 'Quenelle', 7, 'Pound', NULL, 1, 'T', 1, 12),
+(2, 'Quoses', 7, 'Pound', NULL, 1, 'T', 1, 12),
+(2, 'Roe', 7, 'Pound', NULL, 2, 'T', 1, 12),
+(2, 'Blood Sausage', 7, 'Link', NULL, 0.01, 'T', 1, 12),
+(2, 'Pepper Sausage', 7, 'Link', NULL, 0.03, 'T', 1, 12),
+(2, 'Sailor’s Sausage', 7, 'Link', NULL, 0.01, 'T', 1, 12),
+(2, 'Scratch-Root Stew', 7, 'Bowl', NULL, 0.3, 'T', 1, 12),
+(2, 'Soorea', 7, 'Pint', NULL, 1, 'T', 1, 12),
+(2, 'Souse', 7, 'Pint', NULL, 1.6, 'T', 1, 12),
+(2, 'Syrup', 7, 'Pint', NULL, 0.1, 'T', 1, 12);
+
+-- Bread ID: 13
+CREATE TABLE bread_table (
+    id SERIAL PRIMARY KEY,
+    weight NUMERIC(5,2),
+    item TEXT,
+    format INTEGER,
+    collective TEXT,
+    max_number NUMERIC(6,2),
+    price NUMERIC(6,2),
+    size CHAR(1),
+    colors INTEGER,
+    tableid INTEGER
+);
+
+INSERT INTO bread_table (weight, item, format, collective, max_number, price, size, colors, tableid) VALUES
+(2.00, 'Corn Dodgers', 7, 'Meal', NULL, 0.3, 'T', 1, 13),
+(2.00, 'Fry Bread', 7, 'Loaf', NULL, 0.4, 'T', 1, 13),
+(2.00, 'Horse Bread', 7, 'Loaf', NULL, 0.38, 'T', 1, 13),
+(1.00, 'Manchet Bread', 7, 'Loaf', NULL, 1.3, 'T', 1, 13),
+(1.00, 'Maslin Bread', 7, 'Loaf', NULL, 0.48, 'T', 1, 13),
+(1.00, 'Pan & Egg Bread', 7, 'Meal', NULL, 1, 'T', 1, 13),
+(1.00, 'Sop Bread', 7, 'Loaf', NULL, 0.86, 'T', 1, 13),
+(2.00, 'Strongbread', 7, 'Loaf', NULL, 0.3, 'T', 1, 13),
+(1.00, 'Wastel Bread', 7, 'Loaf', NULL, 1, 'T', 1, 13),
+(3.00, 'Rations', 7, 'Day', NULL, 2.5, 'T', 1, 13),
+(2.00, 'Hardtack', 7, 'Biscuit', NULL, 0.2, 'T', 1, 13),
+(1.00, 'Rye Bread', 7, 'Loaf', NULL, 0.44, 'T', 1, 13),
+(1.00, 'Wheat Bread', 7, 'Loaf', NULL, 0.5, 'T', 1, 13);
+
+-- Fruits & Veggies
+CREATE TABLE fruits_n_veggies_table (
+    id SERIAL PRIMARY KEY,
+    weight NUMERIC(5,2),
+    item TEXT,
+    format INTEGER,
+    collective TEXT,
+    max_number NUMERIC,
+    price NUMERIC,
+    size CHAR(1),
+    colors INTEGER,
+    tableid INTEGER
+);
+
+INSERT INTO fruits_n_veggies_table (weight, item, format, collective, max_number, price, size, colors, tableid) VALUES
+(3, 'Barberries', 7, 'Handful', NULL, 1.5, 'M', 1, 14),
+(3, 'Bush Tomatoes', 7, 'Handful', NULL, 1, 'M', 1, 14),
+(3, 'Canabens', 7, 'Handful', NULL, 1, 'M', 1, 14),
+(3, 'Beets', 7, 'Handful', NULL, 1, 'M', 1, 14),
+(3, 'Cardoons', 7, 'Handful', NULL, 1, 'M', 1, 14),
+(3, 'Carrots', 7, 'Handful', NULL, 1, 'M', 1, 14),
+(3, 'Celozia', 7, 'Handful', NULL, 1, 'M', 1, 14),
+(3, 'Currants', 7, 'Handful', NULL, 1.5, 'M', 1, 14),
+(3, 'Flattops', 7, 'Handful', NULL, 1, 'M', 1, 14),
+(3, 'Lemon', 7, 'Handful', NULL, 2, 'M', 1, 14),
+(3, 'Liakeer', 7, 'Handful', NULL, 1, 'M', 1, 14),
+(3, 'Limes', 7, 'Handful', NULL, 2, 'M', 1, 14),
+(3, 'Meat Grass', 7, 'Handful', NULL, 1.5, 'M', 1, 14),
+(3, 'Mutries', 7, 'Handful', NULL, 1, 'M', 1, 14),
+(3, 'Onions', 7, 'Handful', NULL, 1, 'M', 1, 14),
+(3, 'Orange', 7, 'Handful', NULL, 2, 'M', 1, 14),
+(3, 'Pippins', 7, 'Handful', NULL, 2, 'M', 1, 14),
+(3, 'Pomace', 7, 'Handful', NULL, 1.5, 'M', 1, 14),
+(3, 'Quadong', 7, 'Handful', NULL, 1.5, 'M', 1, 14),
+(3, 'Quinces', 7, 'Handful', NULL, 1, 'M', 1, 14),
+(3, 'Raisins', 7, 'Handful', NULL, 1.5, 'M', 1, 14),
+(3, 'Roundberries', 7, 'Handful', NULL, 1.5, 'M', 1, 14),
+(3, 'Rozele', 7, 'Handful', NULL, 2, 'M', 1, 14),
+(3, 'Salad', 7, 'Plate', NULL, 1, 'M', 1, 14),
+(3, 'Smalledge', 7, 'Handful', NULL, 1, 'M', 1, 14),
+(3, 'Skyrwits', 7, 'Handful', NULL, 1, 'M', 1, 14),
+(3, 'Spinach', 7, 'Handful', NULL, 1, 'M', 1, 14),
+(3, 'Taola', 7, 'Handful', NULL, 1, 'M', 1, 14),
+(3, 'Wardons', 7, 'Handful', NULL, 1, 'M', 1, 14),
+(3, 'Warrigals', 7, 'Handful', NULL, 1, 'M', 1, 14),
+(2, 'Wortes', 7, 'Handful', NULL, 1, 'M', 1, 14),
+(2, 'Jam', 7, 'Cup', NULL, 3, 'M', 1, 14),
+(2, 'Pickles', 7, 'Handful', NULL, 2, 'M', 1, 14),
+(2, 'Raisins', 7, 'Handful', NULL, 1.5, 'M', 1, 14),
+(2, 'Tobacco Seed', 7, 'Handful', NULL, 3, 'M', 1, 14);
+
+-- Meat ID: 15
+CREATE TABLE meat_table (
+    id SERIAL PRIMARY KEY,
+    weight NUMERIC(5,2),
+    item TEXT,
+    format INTEGER,
+    collective TEXT,
+    max_number NUMERIC,
+    price NUMERIC,
+    size CHAR(1),
+    colors INTEGER,
+    tableid INTEGER
+);
+
+INSERT INTO meat_table (weight, item, format, collective, max_number, price, size, colors, tableid) VALUES
+(2, 'Meat', 7, 'Pound', NULL, 20, 'T', 1, 15),
+(2, 'Fish', 7, 'Pound', NULL, 10, 'T', 1, 15),
+(2, 'Fowl', 7, 'Pound', NULL, 30, 'T', 1, 15);
+
+-- Nut ID: 16
+CREATE TABLE nuts_table (
+    id SERIAL PRIMARY KEY,
+    weight NUMERIC(5,2),
+    item TEXT,
+    format INTEGER,
+    collective TEXT,
+    max_number NUMERIC,
+    price NUMERIC,
+    size CHAR(1),
+    colors INTEGER,
+    tableid INTEGER
+);
+
+INSERT INTO nuts_table (weight, item, format, collective, max_number, price, size, colors, tableid) VALUES
+(1, 'Acorns', 7, 'Handful', NULL, 0.3, 'M', 1, 16),
+(1, 'Almonds', 7, 'Handful', NULL, 0.5, 'M', 1, 16),
+(1, 'Chestnuts', 7, 'Handful', NULL, 0.3, 'M', 1, 16),
+(1, 'Hazelnuts', 7, 'Handful', NULL, 0.3, 'M', 1, 16),
+(1, 'Pinenuts', 7, 'Handful', NULL, 0.3, 'M', 1, 16),
+(1, 'Pistachios', 7, 'Handful', NULL, 0.5, 'M', 1, 16),
+(1, 'Sesame Seeds', 7, 'Handful', NULL, 0.5, 'M', 1, 16),
+(1, 'Walnuts', 7, 'Handful', NULL, 0.5, 'M', 1, 16);
+
+-- Spices ID: 17
+CREATE TABLE spices_table (
+    id SERIAL PRIMARY KEY,
+    weight NUMERIC,
+    item TEXT,
+    format INTEGER,
+    collective TEXT,
+    max_number NUMERIC,
+    price TEXT,
+    size CHAR(1),
+    colors INTEGER,
+    tableid INTEGER
+);
+
+INSERT INTO spices_table (weight, item, format, collective, max_number, price, size, colors, tableid) VALUES
+(2, 'Honey', 7, 'Ounce', NULL, '1', 'D', 1, 17),
+(1, 'Sugar', 7, 'Ounce', NULL, '1', 'M', 1, 17),
+(1, 'Cinnamon', 7, 'Ounce', NULL, '4', 'M', 1, 17),
+(1, 'Ginger', 7, 'Ounce', NULL, '1.5', 'M', 1, 17),
+(1, 'Mace', 7, 'Ounce', NULL, '5', 'M', 1, 17),
+(1, 'Molasses', 7, 'Ounce', NULL, '4', 'M', 1, 17),
+(1, 'Mustard', 7, 'Ounce', NULL, '1', 'M', 1, 17),
+(1, 'Nutmeg', 7, 'Ounce', NULL, '2.5', 'M', 1, 17),
+(1, 'Pectin', 7, 'Ounce', NULL, '0.2', 'D', 1, 17),
+(1, 'Salt', 7, 'Ounce', NULL, '0.45', 'M', 1, 17),
+(1, 'Saffron', 7, 'Ounce', NULL, '160', 'M', 1, 17);
+

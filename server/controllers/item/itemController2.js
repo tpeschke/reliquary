@@ -126,7 +126,13 @@ function getCategorySQL(category) {
         'clothing_table',
         'accessories_table',
         'entertainment_table',
-        'fabric_n_ropes_table'
+        'fabric_n_ropes_table',
+        'prepped_foods_table',
+        'bread_table',
+        'fruits_n_veggies_table',
+        'meat_table',
+        'nuts_table',
+        'spices_table'
     ]
 
     if (!category) {

@@ -380,3 +380,18 @@ VALUES
 (3, 6, 11, NULL, 'Cotton', 1, NULL),
 (2, 6, 11, 1, NULL, NULL, NULL),
 (1, 6, 11, NULL, 'Silk', 1, NULL);
+
+-- Prepped Food
+INSERT INTO item_material_table (weight, itemid, tableid, materialid, material, materialtableid, part) VALUES
+(5, 21, 12, NULL, 'Chicken', NULL, NULL),
+(3, 21, 12, NULL, 'Goose', NULL, NULL),
+(1, 21, 12, NULL, 'Other Animal', NULL, NULL),
+(1, 21, 12, NULL, 'Monster', NULL, NULL),
+(5, 27, 12, NULL, 'Calf', NULL, NULL),
+(5, 27, 12, NULL, 'Hog', NULL, NULL),
+(3, 27, 12, NULL, 'Other Animal', NULL, NULL),
+(1, 27, 12, NULL, 'Monster', NULL, NULL),
+(1, 35, 12, NULL, 'Strawberry', NULL, NULL),
+(1, 35, 12, NULL, 'Blueberry', NULL, NULL),
+(1, 35, 12, NULL, 'Raspberry', NULL, NULL),
+(1, 35, 12, NULL, 'Cranberry', NULL, NULL);
