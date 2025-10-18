@@ -76,6 +76,7 @@ row_num = 1;`
 
 async function getItem(resolve, { category, rarity, detail, wear }) {
     const [item] = await query(getCategorySQL(category), [])
+    console.log(item.id, item.tableid)
 
     const materials = await query(itemMaterialSQL, [item.id, item.tableid])
 
@@ -118,19 +119,24 @@ function getCategorySQL(category) {
         'academic_tools',
         'adventuring_gear',
         'alchemical_substances',
-        'armor_table'
+        'armor_table',
+        'beverage_table',
+        'footwear_table',
+        'headgear_table',
+        'clothing_table',
+        'accessories_table'
     ]
 
     if (!category) {
         category = randomIntBetweenTwoInts(1, tableDictionary.length - 1)
     }
 
-    // return `select * from ${tableDictionary[category]}
-    // where id = 17`
-
     return `select * from ${tableDictionary[category]}
-ORDER BY random() * weight desc
-limit 1`
+    where id = 3`
+
+//     return `select * from ${tableDictionary[category]}
+// ORDER BY random() * weight desc
+// limit 1`
 
 }
 
@@ -176,6 +182,12 @@ async function getMaterialInfo(materialid, material, materialtableid, part, rari
         // Tears of Sicyon
         // Unknown
         // Monster
+        // Straw
+        // Felt
+        // Feathers
+        // Wool
+        // Ivory
+        // Gauze
         return [
             {
                 material: 'Placeholder',
@@ -214,7 +226,7 @@ function getDisplayName(materialInfo) {
         case 5:
             return materialInfo.material
         case 6:
-            if (string.includes('wood')) {
+            if (materialInfo.material.includes('wood')) {
                 return materialInfo.material
             }
             return `${materialInfo.material} Wood`
@@ -509,7 +521,7 @@ function getPrice(item, materialInfo, gems) {
         return price + gemPrice
     }, 0)
 
-    return basePrice + gemPrice
+    return +((basePrice + gemPrice).toFixed(2))
 }
 
 function createDescriptiveWear(wear) {
