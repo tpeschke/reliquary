@@ -137,7 +137,10 @@ function getCategorySQL(category) {
         'household_items_table',
         'illumination_table',
         'jewelry_table',
-        'medical_tools_table'
+        'medical_tools_table',
+        'musical_instrument_table',
+        'personal_containers_table',
+        'raw_good_table'
     ]
 
     if (!category) {
@@ -388,6 +391,8 @@ function formatAccordingToType(item, materialInfo) {
             return formatSeven(item)
         case 8:
             return formatEight(item)
+        case 9:
+            return formatNine(item, materialInfo)
         default:
             return ''
     }
@@ -447,6 +452,10 @@ function formatSeven(item) {
 
 function formatEight(item) {
     return `${aOrAn(item.item)} ${item.item}`
+}
+
+function formatNine(item, materialInfo) {
+    return `${aOrAn(item.collective)} ${item.collective} ${materialInfo[0].displayName} ${item.item}`
 }
 
 function aOrAn(noun) {
