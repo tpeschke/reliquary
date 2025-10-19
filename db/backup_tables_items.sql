@@ -644,3 +644,164 @@ INSERT INTO spices_table (weight, item, format, collective, max_number, price, s
 (1, 'Salt', 7, 'Ounce', NULL, '0.45', 'M', 1, 17),
 (1, 'Saffron', 7, 'Ounce', NULL, '160', 'M', 1, 17);
 
+-- Household Items ID: 18
+CREATE TABLE household_items_table (
+    id SERIAL PRIMARY KEY,
+    weight NUMERIC,        -- chance out of 100
+    item TEXT,
+    format INTEGER,
+    collective TEXT,
+    max_number NUMERIC,
+    price NUMERIC,
+    size CHAR(1),
+    colors INTEGER,
+    engravings INTEGER,
+    gems INTEGER,
+    tableid INTEGER,
+    material TEXT
+);
+
+INSERT INTO household_items_table (weight, item, format, collective, max_number, price, size, colors, engravings, gems, tableid, material) VALUES
+(3, 'Sheet', 1, NULL, NULL, 0.5, 'L', 3, 2, NULL, 18, 'Cloth'),
+(3, 'Curtain', 1, NULL, NULL, 5, 'H', 4, 3, NULL, 18, '1-8 Cloth; 9-10 Leather'),
+(3, 'Blanket', 1, NULL, NULL, 5, 'H', 2, 1, NULL, 18, 'Fur'),
+(3, '1-person Bench', 1, NULL, NULL, 10, 'H', 1, 1, NULL, 18, '1-9 Wood; 10 Metal'),
+(3, 'Carpet', 1, NULL, NULL, 6, 'G', 5, 2, NULL, 18, '1-3 Cloth; 4-10 Wool'),
+(3, 'Chair', 1, NULL, NULL, 35, 'H', 1, 1, NULL, 18, '1-9 Wood; 10 Metal'),
+(3, 'Chandelier', 1, NULL, NULL, 20, 'G', 1, 4, 2, 18, 'Metal'),
+(3, 'Seat Cushion', 1, NULL, NULL, 2, 'M', 4, 3, NULL, 18, '1-8 Cloth; 9-10 Leather'),
+(3, 'Stool', 1, NULL, NULL, 30, 'L', 1, 1, NULL, 18, '1-9 Wood; 10 Metal'),
+(3, 'Tapestry', 1, NULL, NULL, 20, 'G', 9, 9, NULL, 18, '1-8 Wool; 9 Leather; 10 Cloth'),
+(3, 'Cloth', 2, 'Bolt', NULL, 11, 'L', 6, 1, NULL, 18, 'Cloth'),
+(3, 'Cauldron', 1, NULL, NULL, 12, 'H', 1, 1, 1, 18, 'Metal'),
+(2, 'Pastry Coffin', 1, NULL, NULL, 0.5, 'S', 2, 2, 1, 18, '1-7 Wood; 8-10 Metal'),
+(2, 'Galley-pot', 1, NULL, NULL, 1, 'S', 1, 1, NULL, 18, 'Metal'),
+(2, 'Larding Needle', 1, NULL, NULL, 0.05, 'S', 1, 1, NULL, 18, '1-3 Metal; 4-6 Wood; 7 Bone, Sentient; 8-9 Bone, Animal; 10 Bone, Monster'),
+(2, 'Pipkin', 1, NULL, NULL, 0.02, 'L', 2, 1, NULL, 18, 'Stone/Earthwork'),
+(2, 'Porringers', 1, NULL, NULL, 2, 'S', 2, 1, NULL, 18, '1-8 Metal; 9-10 Stone/Earthwork'),
+(2, 'Querne', 1, NULL, NULL, 16, 'M', 2, 1, NULL, 18, '1-8 Stone/Earthwork; 9-10 Wood'),
+(2, 'Rowel', 1, NULL, NULL, 0.4, 'S', 2, 1, NULL, 18, 'Metal'),
+(2, 'Salamander Plate', 1, NULL, NULL, 2, 'M', 2, 2, NULL, 18, 'Stone/Earthwork'),
+(2, 'Trencher', 1, NULL, NULL, 0.1, 'S', 2, 1, NULL, 18, 'Wood'),
+(2, 'Tripod', 1, NULL, NULL, 0.5, 'L', 1, 1, NULL, 18, 'Metal'),
+(2, 'Bowl', 1, NULL, NULL, 0.6, 'S', 4, 3, 1, 18, '1-6 Wood; 7-10 Metal'),
+(2, 'Drinking Horn', 8, NULL, NULL, 1, 'S', 2, 2, 1, 18, 'n/a'),
+(2, 'Fork', 1, NULL, NULL, 0.4, 'T', 1, 1, NULL, 18, 'Metal'),
+(2, 'Goblet', 1, NULL, NULL, 0.5, 'T', 2, 3, 1, 18, '1-3 Glass; 4 Crystal; 6-10 Metal'),
+(2, 'Kettle', 1, NULL, NULL, 3, 'S', 1, 2, NULL, 18, 'Metal'),
+(2, 'Knife', 1, NULL, NULL, 2.5, 'T', 1, 1, NULL, 18, 'Metal'),
+(2, 'Ladle', 1, NULL, NULL, 0.01, 'T', 1, 1, NULL, 18, '1-7 Wood; 8-10 Metal'),
+(2, 'Mug', 1, NULL, NULL, 0.1, 'T', 4, 3, 1, 18, '1-4 Wood; 5-6 Metal; 7-10 Stone/Earthwork'),
+(2, 'Pan', 1, NULL, NULL, 1, 'T', 1, 2, NULL, 18, 'Metal'),
+(2, 'Pitcher', 1, NULL, NULL, 0.5, 'T', 2, 2, 1, 18, 'Metal'),
+(2, 'Platter', 1, NULL, NULL, 1.25, 'T', 4, 2, NULL, 18, '1-7 Wood; 8-10 Metal'),
+(2, 'Pot hanger', 1, NULL, NULL, 0.08, 'D', 1, 1, NULL, 18, 'Metal'),
+(2, 'Salt Cellar', 1, NULL, NULL, 0.3, 'D', 3, 2, 1, 18, '1-8 Metal; 9-10 Wood'),
+(2, 'Small Spit', 1, NULL, NULL, 0.3, 'S', 1, 1, NULL, 18, 'Metal'),
+(2, 'Spoon', 1, NULL, NULL, 0.3, 'T', 1, 1, NULL, 18, '1-7 Metal; 8-10 Wood'),
+(2, 'Drinking Glass', 1, NULL, NULL, NULL, 'D', 4, 2, NULL, 18, 'Glass'),
+(3, 'Pillow', 1, NULL, NULL, 4, 'S', 4, 3, NULL, 18, '1-8 Cloth; 9-10 Leather'),
+(3, 'Woven Rug', 1, NULL, NULL, 10, 'L', 8, 5, NULL, 18, '1-3 Cloth; 4-5 Leather; 6-10 Wool'),
+(3, 'Stein', 1, NULL, NULL, 2, 'T', 1, 4, 1, 18, 'Metal');
+
+-- Illumination Items ID: 19
+CREATE TABLE illumination_table (
+    id SERIAL PRIMARY KEY,
+    weight INT NOT NULL,          -- Chance out of 100
+    item TEXT NOT NULL,           -- Item name
+    format INT,                   -- Format ID
+    collective TEXT,              -- Collective (if any)
+    max_number NUMERIC,           -- Maximum number
+    price NUMERIC,                -- Price value
+    size CHAR(1),                 -- Size category
+    colors INT,                   -- Number of colors
+    engravings INT,               -- Number of engravings
+    gems INT,                     -- Number of gems
+    tableid INT NOT NULL          -- Reference table ID
+);
+
+INSERT INTO illumination_table 
+(weight, item, format, collective, max_number, price, size, colors, engravings, gems, tableid)
+VALUES
+(1, 'Candelabra', 1, NULL, NULL, 1, 'H', 2, 3, 1, 19),
+(1, 'Candle', 1, NULL, NULL, 0.05, 'T', 4, 1, NULL, 19),
+(1, 'Timekeeping Candle', 1, NULL, NULL, 3, 'S', 3, NULL, NULL, 19),
+(1, 'Candlestick', 1, NULL, NULL, 0.5, 'D', 2, 2, 1, 19),
+(1, 'Lamp', 1, NULL, NULL, 3, 'S', 1, 2, 1, 19),
+(1, 'Beacon Lantern', 1, NULL, NULL, 5, 'S', 1, 2, 1, 19),
+(1, 'Bullseye Lantern', 3, NULL, NULL, 7, 'S', 1, 1, NULL, 19),
+(1, 'Hooded Lantern', 1, NULL, NULL, 9, 'S', 1, 1, NULL, 19),
+(1, 'Storm Lantern', 1, NULL, NULL, 2, 'S', 1, 2, NULL, 19),
+(1, 'Torch', 1, NULL, NULL, 0.04, 'S', 1, NULL, NULL, 19);
+
+-- Illumination Items ID: 20
+CREATE TABLE jewelry_table (
+    id SERIAL PRIMARY KEY,
+    weight NUMERIC,              -- Chance out of 100
+    item TEXT,
+    format INTEGER,
+    collective TEXT,
+    max_number NUMERIC,
+    price NUMERIC,
+    size CHAR(1),
+    colors INTEGER,
+    engravings INTEGER,
+    gems INTEGER,
+    tableid INTEGER
+);
+
+INSERT INTO jewelry_table (weight, item, format, collective, max_number, price, size, colors, engravings, gems, tableid)
+VALUES
+(10, 'Ring', 1, NULL, NULL, 5, 'D', 2, 3, 4, 20),
+(5, 'Necklace', 1, NULL, NULL, 1, 'D', 2, 1, 3, 20),
+(5, 'Teeth', 2, 'Set', NULL, 1, 'D', 3, 5, 1, 20),
+(5, 'Earings', 2, 'Set', NULL, 0.5, 'F', 2, 2, 4, 20),
+(5, 'Pendant', 1, NULL, NULL, 1, 'F', 2, 2, 4, 20),
+(5, 'Bangle', 1, NULL, NULL, 1, 'F', 3, 2, 2, 20),
+(5, 'Belly Chain', 1, NULL, NULL, 1, 'F', 3, 1, 2, 20),
+(5, 'Chatelaine', 1, NULL, NULL, 10, 'D', 4, 2, 2, 20),
+(5, 'Pin', 1, NULL, NULL, 1, 'F', 2, 2, 4, 20),
+(5, 'Torc', 1, NULL, NULL, 1, 'D', 2, 4, 3, 20),
+(5, 'Bracelet', 1, NULL, NULL, 1, 'F', 5, 4, 2, 20),
+(5, 'Choker', 1, NULL, NULL, 0.5, 'F', 5, 2, 1, 20),
+(5, 'Anklet', 1, NULL, NULL, 0.5, 'F', 3, 3, 2, 20),
+(5, 'Armlet', 1, NULL, NULL, 1, 'F', 4, 3, 3, 20),
+(5, 'Slave Bracelet', 1, NULL, NULL, 1, 'F', 4, 1, 2, 20),
+(5, 'Prayer Beads', 1, NULL, NULL, 0.5, 'D', 1, 1, 1, 20),
+(5, 'Brooch', 1, NULL, NULL, 1, 'D', 2, 4, 4, 20),
+(5, 'Locket', 1, NULL, NULL, 1, 'D', 2, 2, 4, 20),
+(5, 'Crown', 1, NULL, NULL, 20, 'S', 3, 4, 5, 20),
+(5, 'Tiara', 1, NULL, NULL, 20, 'S', 3, 4, 5, 20),
+(5, 'Bracer', 1, NULL, NULL, 1, 'F', 4, 3, 3, 20);
+
+-- Medical Tools ID: 21
+CREATE TABLE medical_tools_table (
+    weight NUMERIC,
+    item TEXT,
+    format INTEGER,
+    collective TEXT,
+    max_number NUMERIC,
+    price NUMERIC,
+    size CHAR(1),
+    colors INTEGER,
+    engravings INTEGER,
+    tableid INTEGER
+);
+
+INSERT INTO medical_tools_table (weight, item, format, collective, max_number, price, size, colors, engravings, tableid)
+VALUES
+(4, 'Bandages', 1, NULL, NULL, 0.01, 'S', 2, 1, 21),
+(1, 'Bleeding Basin', 1, NULL, NULL, 1, 'S', 2, 2, 21),
+(2, 'Crutches', 1, NULL, NULL, 0.3, 'S', 2, 3, 21),
+(1, 'Eyeglasses', 1, NULL, NULL, 100, 'T', 1, 3, 21),
+(1, 'Probe', 1, NULL, NULL, 0.4, 'T', 1, NULL, 21),
+(1, 'Scalpel', 1, NULL, NULL, 15, 'T', 1, NULL, 21),
+(1, 'Lancet', 1, NULL, NULL, 1, 'T', 1, NULL, 21),
+(1, 'Litter', 1, NULL, NULL, 3, 'T', 1, NULL, 21),
+(1, 'Sutures', 1, NULL, NULL, 1, 'T', 1, NULL, 21),
+(2, 'Pegleg', 1, NULL, NULL, 8, 'S', 2, 3, 21),
+(1, 'Amputation Saw', 1, NULL, NULL, 15, 'S', 1, NULL, 21),
+(1, 'Stretcher', 3, NULL, NULL, 3, 'T', 3, 1, 21),
+(1, 'Tooth Wrench', 1, NULL, NULL, 2, 'T', 1, NULL, 21),
+(1, 'Arrow Extractor', 1, NULL, NULL, 4, 'S', 1, NULL, 21),
+(1, 'Arm Sling', 1, NULL, NULL, 0.01, 'T', 3, 1, 21);

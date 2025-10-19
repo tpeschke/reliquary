@@ -119,6 +119,7 @@ function getCategorySQL(category) {
         'academic_tools',
         'adventuring_gear',
         'alchemical_substances',
+        // TODO separate into light, medium, and heavy
         'armor_table',
         'beverage_table',
         'footwear_table',
@@ -132,7 +133,11 @@ function getCategorySQL(category) {
         'fruits_n_veggies_table',
         'meat_table',
         'nuts_table',
-        'spices_table'
+        'spices_table',
+        'household_items_table',
+        'illumination_table',
+        'jewelry_table',
+        'medical_tools_table'
     ]
 
     if (!category) {
@@ -169,7 +174,7 @@ async function getMaterialInfo(materialid, material, materialtableid, part, rari
     } else if (material && materialtableid) {
         return query(getSpecificMaterial(material, columnNameDictionary[materialtableid], tableNameDictionary[materialtableid]), [part, materialtableid])
     } else if (material) {
-        // TODO
+        // TODO Create this table
         // Porcupine Spine
         // Goose Feather
         // Animal Bone
@@ -201,6 +206,8 @@ async function getMaterialInfo(materialid, material, materialtableid, part, rari
         // Down
         // Heavy Down
         // Heavy Feathers
+        // Tallow
+        // Animal Guts
         return [
             {
                 material: 'Placeholder',
@@ -379,6 +386,8 @@ function formatAccordingToType(item, materialInfo) {
             return formatSix(item, materialInfo)
         case 7:
             return formatSeven(item)
+        case 8:
+            return formatEight(item)
         default:
             return ''
     }
@@ -436,6 +445,10 @@ function formatSeven(item) {
     return `${aOrAn(item.collective)} ${item.collective} of ${item.item}`
 }
 
+function formatEight(item) {
+    return `${aOrAn(item.item)} ${item.item}`
+}
+
 function aOrAn(noun) {
     const firstLetter = noun.substring(0, 1)
 
@@ -477,7 +490,7 @@ function formatEngravings(materialInfo, engravings) {
 function getEngravingVerb(materialInfo) {
     if (materialInfo.length > 0) {
         const { materialid } = materialInfo[Math.floor(Math.random() * materialInfo.length)];
-    
+
         switch (materialid) {
             case '1':
             case '2':
@@ -492,7 +505,7 @@ function getEngravingVerb(materialInfo) {
                 return 'carved with'
             case '7':
                 return 'etched with'
-    
+
         }
     }
     return 'engraved with'
