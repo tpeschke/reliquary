@@ -8,7 +8,7 @@ const item2Ctrl = require('./controllers/item/ItemController2.js')
     , talismanCtrl = require('./controllers/talismanController.js')
     , scrollCtrl = require('./controllers/scroll/scrollController.js')
     , enchantedCtrl = require('./controllers/enchantedController.js')
-    , combinedCtrl = require('./controllers/combinedController.js')
+    , combinedCtrl = require('./controllers/combinedController.js') 
 
 const app = new express()
 app.use(bodyParser.json())
