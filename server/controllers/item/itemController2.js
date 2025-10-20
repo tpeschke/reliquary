@@ -1,8 +1,6 @@
 const { query } = require('../../../db')
 const { sendErrorForwardNoFile, checkForContentTypeBeforeSending, getRandomInt, randomIntBetweenTwoInts } = require('../../helpers')
 
-const sendErrorForward = sendErrorForwardNoFile('Items')
-
 // rarity
 // common
 // uncommon
