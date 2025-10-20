@@ -4,7 +4,7 @@ const { sendErrorForwardNoFile, checkForContentTypeBeforeSending } = require('..
 
 const enchantedCtrl = require('./enchantedController')
     , potionCtrl = require('./potionController')
-    , scrollCtrl = require('./scrollController')
+    , scrollCtrl = require('./scroll/scrollController')
     , talismanCtrl = require('./talismanController')
     , itemCtrl = require('./item/ItemController')
 
