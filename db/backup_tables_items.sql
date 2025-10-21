@@ -935,3 +935,60 @@ INSERT INTO raw_good_table (weight, item, format, collective, max_number, size, 
 (1, '', 2, 'Ingot', 20, 'M', NULL, 23),
 (1, '', 2, 'Collection', 5, 'M', NULL, 23),
 (1, 'Wood', 2, 'Plank', 5, 'M', NULL, 23);
+
+-- Religious Items ID: 24
+CREATE TABLE religious_items_table (
+    id SERIAL PRIMARY KEY,
+    weight NUMERIC,
+    item TEXT,
+    format INT,
+    collective TEXT,
+    price NUMERIC,
+    size TEXT,
+    colors INT,
+    engravings INT,
+    gems INT,
+    tableid INT
+);
+
+INSERT INTO religious_items_table (weight, item, format, collective, price, size, colors, engravings, gems, tableid) VALUES
+(2, 'Altar Cloth', 1, NULL, 10, 'S', 7, 9, NULL, 24),
+(1, 'Aspergillum', 3, NULL, 5, 'S', 1, 3, 2, 24),
+(2, 'Brazier', 1, NULL, 5, 'S', 1, 7, 2, 24),
+(2, 'Temple Candle', 1, NULL, 0.5, 'M', 8, 2, NULL, 24),
+(1, 'Censer', 1, NULL, 3, 'S', 1, 6, 2, 24),
+(1, 'Chalise', 1, NULL, 5, 'T', 2, 6, 2, 24),
+(2, 'Holy Symbol', 1, NULL, 5, 'T', 3, 5, 2, 24),
+(1, 'Incense', 7, 'Handful', 10, 'D', 9, NULL, NULL, 24),
+(1, 'Pilgrimage Badge', 1, NULL, 1, 'D', 7, 9, NULL, 24),
+(1, 'Prayer Beads', 1, NULL, 1, 'D', 9, 5, 1, 24),
+(1, 'Sacred Texts', 4, 'Collection', 50, 'S', 6, 7, NULL, 24),
+(1, 'Snuffing Bell', 1, NULL, 2, 'T', 2, 4, 1, 24),
+(1, 'Talisman', 1, NULL, 1, 'T', 5, 1, 2, 24),
+(1, 'Totem', 1, NULL, 0.5, 'T', 4, 1, 1, 24);
+
+-- Shields ID: 25
+CREATE TABLE shields_table (
+    id SERIAL PRIMARY KEY,
+    weight INT,
+    item VARCHAR(100),
+    format INT,
+    collective VARCHAR(100),
+    price NUMERIC(10,2),
+    size CHAR(1),
+    colors INT,
+    engravings INT,
+    gems INT,
+    tableid INT
+);
+
+INSERT INTO shields_table (weight, item, format, collective, price, size, colors, engravings, gems, tableid) VALUES
+(1, 'Buckler', 1, NULL, 40, 'S', 4, 4, 1, 25),
+(1, 'Clothe', 1, NULL, 0.5, 'S', 9, 1, NULL, 25),
+(4, 'Figure Eight', 3, NULL, 60, 'M', 9, 3, 1, 25),
+(5, 'Heater', 1, NULL, 70, 'M', 6, 4, 1, 25),
+(5, 'Hoplon', 1, NULL, 45, 'M', 5, 3, 1, 25),
+(5, 'Kite', 3, NULL, 110, 'L', 7, 4, 1, 25),
+(2, 'Pavise', 1, NULL, 135, 'L', 9, 7, 1, 25),
+(3, 'Round', 3, NULL, 95, 'M', 6, 5, 1, 25),
+(2, 'Tower', 1, NULL, 100, 'L', 7, 6, 1, 25);

@@ -138,7 +138,9 @@ function getCategorySQL(category) {
         'medical_tools_table',
         'musical_instrument_table',
         'personal_containers_table',
-        'raw_good_table'
+        'raw_good_table',
+        'religious_items_table',
+        'shields_table'
     ]
 
     if (!category) {

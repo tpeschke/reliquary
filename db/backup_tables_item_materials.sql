@@ -686,3 +686,53 @@ INSERT INTO item_material_table (itemid, tableid, materialid, material, material
 (3, 23, 3, NULL, NULL, NULL),
 (4, 23, 5, NULL, NULL, NULL),
 (5, 23, 6, NULL, NULL, NULL);
+
+-- Religious Items
+INSERT INTO item_material_table (weight, itemid, tableid, materialid, material, materialtableid, part) VALUES
+(9, 1, 24, 1, NULL, NULL, NULL),
+(1, 1, 24, 2, NULL, NULL, NULL),
+(NULL, 2, 24, 3, NULL, NULL, 'Body'),
+(NULL, 2, 24, 6, NULL, NULL, 'Handle'),
+(NULL, 3, 24, 3, NULL, NULL, NULL),
+(NULL, 4, 24, 7, NULL, NULL, NULL),
+(NULL, 5, 24, 3, NULL, NULL, NULL),
+(NULL, 6, 24, 3, NULL, NULL, NULL),
+(7, 7, 24, 3, NULL, NULL, NULL),
+(3, 7, 24, 6, NULL, NULL, NULL),
+(6, 9, 24, 1, NULL, NULL, NULL),
+(2, 9, 24, 2, NULL, NULL, NULL),
+(1, 9, 24, 6, NULL, NULL, NULL),
+(1, 9, 24, 3, NULL, NULL, NULL),
+(6, 10, 24, 6, NULL, NULL, NULL),
+(4, 10, 24, 3, NULL, NULL, NULL),
+(1, 11, 24, 3, NULL, NULL, 'Cover'),
+(6, 11, 24, 1, NULL, NULL, 'Cover'),
+(2, 11, 24, 2, NULL, NULL, 'Cover'),
+(1, 11, 24, 6, NULL, NULL, 'Cover'),
+(NULL, 11, 24, 4, NULL, NULL, 'Interior'),
+(NULL, 12, 24, 3, NULL, NULL, NULL),
+(2, 13, 24, 3, NULL, NULL, NULL),
+(4, 13, 24, 6, NULL, NULL, NULL),
+(1, 13, 24, 2, NULL, NULL, NULL),
+(3, 13, 24, 1, NULL, NULL, NULL),
+(4, 14, 24, 3, NULL, NULL, NULL),
+(5, 14, 24, 6, NULL, NULL, NULL),
+(1, 14, 24, 2, NULL, NULL, NULL),
+(1, 14, 24, 1, NULL, NULL, NULL);
+
+-- Shields
+INSERT INTO item_material_table (weight, itemid, tableid, materialid, material, materialtableid, part) VALUES
+(NULL, 1, 25, 3, NULL, NULL, NULL),
+(NULL, 2, 25, 1, NULL, NULL, NULL),
+(NULL, 3, 25, 6, NULL, NULL, 'Frame'),
+(NULL, 3, 25, 2, NULL, NULL, 'Cover'),
+(8, 4, 25, 6, NULL, NULL, NULL),
+(2, 4, 25, 3, NULL, NULL, NULL),
+(8, 5, 25, 6, NULL, NULL, NULL),
+(2, 5, 25, 3, NULL, NULL, NULL),
+(NULL, 6, 25, 6, NULL, NULL, 'Body'),
+(NULL, 6, 25, 3, NULL, NULL, 'Fastenings'),
+(NULL, 7, 25, 6, NULL, NULL, NULL),
+(NULL, 8, 25, 6, NULL, NULL, 'Body'),
+(NULL, 8, 25, 3, NULL, NULL, 'Fastenings'),
+(NULL, 9, 25, 6, NULL, NULL, NULL);
