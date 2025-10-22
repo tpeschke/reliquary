@@ -1051,3 +1051,85 @@ INSERT INTO trade_tools_table (weight, item, format, collective, max_number, pri
 (1, 'Wedge', 1, NULL, NULL, 0.5, 'T', 1, 1, 26),
 (1, 'Windlass', 1, NULL, NULL, 5, 'T', 1, 2, 26),
 (1, 'Wire', 2, 'Foot', 100, 1, 'D', 3, NULL, 26);
+
+-- Weapon Axes ID: 27
+CREATE TABLE weapons_axes_table (
+    weight INTEGER,
+    item TEXT,
+    format INTEGER,
+    collective TEXT,
+    max_number INTEGER,
+    price NUMERIC,
+    size CHAR(1),
+    colors INTEGER,
+    engravings INTEGER
+);
+
+INSERT INTO weapons_axes_table (
+    weight, item, format, collective, max_number, price, size, colors, engravings
+) VALUES
+(1, 'Bardiche', 3, NULL, NULL, 120, 'L', 1, 5),
+(1, 'Battle Axe', 3, NULL, NULL, 90, 'M', 1, 5),
+(2, 'Handaxe', 3, NULL, NULL, 12, 'S', 1, 5),
+(1, 'Horsemans Pick', 3, NULL, NULL, 105, 'M', 1, 5),
+(1, 'Lochaber Axe', 3, NULL, NULL, 117, 'L', 1, 5);
+
+-- Weapon Polarms ID: 28
+CREATE TABLE weapons_polearms_table (
+    weight NUMERIC,
+    item TEXT,
+    format INTEGER,
+    collective TEXT,
+    max_number INTEGER,
+    price NUMERIC,
+    size TEXT,
+    colors INTEGER,
+    engravings INTEGER,
+    tableid INTEGER
+);
+
+INSERT INTO weapons_polearms_table (
+    weight, item, format, collective, max_number, price, size, colors, engravings, tableid
+) VALUES
+(1, 'Ahlspiess', 3, NULL, NULL, 17, 'L', 1, 3, 28),
+(1, 'Bill', 3, NULL, NULL, 17, 'L', 1, 3, 28),
+(1, 'Glaive', 3, NULL, NULL, 35, 'L', 1, 3, 28),
+(1, 'Guisarme', 3, NULL, NULL, 22, 'L', 1, 3, 28),
+(1, 'Halberd', 3, NULL, NULL, 42, 'L', 1, 3, 28),
+(1, 'Lance', 3, NULL, NULL, 45, 'L', 1, 3, 28),
+(1, 'Lucerne', 3, NULL, NULL, 37, 'L', 1, 3, 28),
+(1, 'Military Fork', 3, NULL, NULL, 19, 'L', 1, 3, 28),
+(1, 'Pike', 3, NULL, NULL, 10, 'H', 1, 3, 28),
+(1, 'Planson', 3, NULL, NULL, 20, 'S', 1, 3, 28),
+(1, 'Ranseur', 3, NULL, NULL, 33, 'L', 1, 3, 28),
+(1, 'Short Spear', 3, NULL, NULL, 16, 'M', 1, 3, 28),
+(1, 'Sovnya', 3, NULL, NULL, 32, 'L', 1, 3, 28),
+(1, 'Voulge', 3, NULL, NULL, 27, 'L', 1, 3, 28),
+(1, 'War-scythe', 3, NULL, NULL, 16, 'L', 1, 3, 28);
+
+-- Weapon Sidearms ID: 29
+CREATE TABLE weapons_sidearms_table (
+    weight INTEGER,
+    item TEXT,
+    format INTEGER,
+    collective TEXT,
+    max_number NUMERIC,
+    price NUMERIC,
+    size TEXT,
+    colors INTEGER,
+    engravings INTEGER,
+    gems INTEGER,
+    tableid INTEGER
+);
+
+INSERT INTO weapons_sidearms_table (
+    weight, item, format, collective, max_number, price, size, colors, engravings, gems, tableid
+) VALUES
+(1, 'Brass Knuckles', 1, NULL, NULL, 10, 'S', 3, 3, 1, 29),
+(3, 'Cinquedea', 3, NULL, NULL, 15, 'S', 3, 3, 1, 29),
+(5, 'Dagger', 3, NULL, NULL, 12, 'S', 3, 3, 1, 29),
+(5, 'Knife', 3, NULL, NULL, 10, 'S', 3, 3, 1, 29),
+(3, 'Stiletto', 3, NULL, NULL, 17, 'S', 3, 3, 2, 29),
+(3, 'Dusack', 3, NULL, NULL, 49, 'S', 3, 3, 2, 29),
+(3, 'Katzbalger', 3, NULL, NULL, 55, 'S', 3, 3, 2, 29),
+(1, 'Scourge', 3, NULL, NULL, 10, 'M', 3, 3, 1, 29);

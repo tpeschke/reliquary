@@ -141,7 +141,10 @@ function getCategorySQL(category) {
         'raw_good_table',
         'religious_items_table',
         'shields_table',
-        'trade_tools_table'
+        'trade_tools_table',
+        'weapons_axes_table',
+        'weapons_polearms_table',
+        'weapons_sidearms_table'
     ]
 
     if (!category) {

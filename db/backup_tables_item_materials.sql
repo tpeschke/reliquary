@@ -806,3 +806,76 @@ INSERT INTO item_material_table (weight, itemid, tableid, materialid, material, 
 (5, 41, 26, 6, NULL, NULL, NULL),
 (NULL, 42, 26, 3, NULL, NULL, NULL),
 (NULL, 43, 26, 3, NULL, NULL, NULL);
+
+-- Weapon Axes
+INSERT INTO item_material_table (
+    weight, itemid, tableid, materialid, material, materialtableid, part
+) VALUES
+(NULL, 1, 27, 6, NULL, NULL, 'Handle'),
+(NULL, 1, 27, 3, NULL, NULL, 'Blade'),
+(NULL, 2, 27, 6, NULL, NULL, 'Handle'),
+(NULL, 2, 27, 3, NULL, NULL, 'Blade'),
+(NULL, 3, 27, 6, NULL, NULL, 'Handle'),
+(NULL, 3, 27, 3, NULL, NULL, 'Blade'),
+(NULL, 4, 27, 6, NULL, NULL, 'Handle'),
+(NULL, 4, 27, 3, NULL, NULL, 'Blade'),
+(NULL, 5, 27, 6, NULL, NULL, 'Handle'),
+(NULL, 5, 27, 3, NULL, NULL, 'Blade');
+
+-- Weapon Polearms
+INSERT INTO item_material_table (
+    weight, itemid, tableid, materialid, material, materialtableid, part
+) VALUES
+(NULL, 1, 28, 6, NULL, NULL, 'Haft'),
+(NULL, 1, 28, 3, NULL, NULL, 'Tip'),
+(NULL, 2, 28, 6, NULL, NULL, 'Haft'),
+(NULL, 2, 28, 3, NULL, NULL, 'Blade'),
+(NULL, 3, 28, 6, NULL, NULL, 'Haft'),
+(NULL, 3, 28, 3, NULL, NULL, 'Blade'),
+(NULL, 4, 28, 6, NULL, NULL, 'Haft'),
+(NULL, 4, 28, 3, NULL, NULL, 'Head'),
+(NULL, 5, 28, 6, NULL, NULL, 'Haft'),
+(NULL, 5, 28, 3, NULL, NULL, 'Head'),
+(NULL, 6, 28, 6, NULL, NULL, 'Haft'),
+(NULL, 6, 28, 3, NULL, NULL, 'Tip'),
+(NULL, 7, 28, 6, NULL, NULL, 'Haft'),
+(NULL, 7, 28, 3, NULL, NULL, 'Head'),
+(NULL, 8, 28, 6, NULL, NULL, 'Haft'),
+(NULL, 8, 28, 3, NULL, NULL, 'Points'),
+(NULL, 9, 28, 6, NULL, NULL, 'Haft'),
+(NULL, 9, 28, 3, NULL, NULL, 'Tip'),
+(NULL, 10, 28, 6, NULL, NULL, 'Haft'),
+(NULL, 10, 28, 3, NULL, NULL, 'Tip'),
+(NULL, 11, 28, 6, NULL, NULL, 'Haft'),
+(NULL, 11, 28, 3, NULL, NULL, 'Tip'),
+(NULL, 12, 28, 6, NULL, NULL, 'Haft'),
+(NULL, 12, 28, 3, NULL, NULL, 'Tip'),
+(NULL, 13, 28, 6, NULL, NULL, 'Haft'),
+(NULL, 13, 28, 3, NULL, NULL, 'Blade'),
+(NULL, 14, 28, 6, NULL, NULL, 'Haft'),
+(NULL, 14, 28, 3, NULL, NULL, 'Head'),
+(NULL, 15, 28, 6, NULL, NULL, 'Haft'),
+(NULL, 15, 28, 3, NULL, NULL, 'Blade');
+
+-- Weapon Sidearms
+INSERT INTO item_material_table (
+    weight, itemid, tableid, materialid, material, materialtableid, part
+) VALUES
+(NULL, 1, 29, 3, NULL, NULL, NULL),
+(NULL, 2, 29, 3, NULL, NULL, 'Blade'),
+(NULL, 2, 29, 6, NULL, NULL, 'Hilt'),
+(NULL, 3, 29, 3, NULL, NULL, 'Blade'),
+(NULL, 3, 29, 6, NULL, NULL, 'Hilt'),
+(NULL, 4, 29, 3, NULL, NULL, 'Blade'),
+(NULL, 4, 29, 6, NULL, NULL, 'Hilt'),
+(NULL, 5, 29, 3, NULL, NULL, 'Blade'),
+(NULL, 5, 29, 6, NULL, NULL, 'Hilt'),
+(NULL, 6, 29, 3, NULL, NULL, 'Blade'),
+(NULL, 6, 29, 6, NULL, NULL, 'Hilt'),
+(NULL, 7, 29, 3, NULL, NULL, 'Blade'),
+(NULL, 7, 29, 6, NULL, NULL, 'Hilt'),
+(7, 8, 29, 2, NULL, NULL, 'Thongs'),
+(3, 8, 29, 1, NULL, NULL, 'Thongs'),
+(3, 8, 29, 6, NULL, NULL, 'Handle'),
+(1, 8, 29, 3, NULL, NULL, 'Handle'),
+(4, 8, 29, 2, NULL, NULL, 'Handle');
