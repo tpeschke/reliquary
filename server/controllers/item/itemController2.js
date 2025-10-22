@@ -140,7 +140,8 @@ function getCategorySQL(category) {
         'personal_containers_table',
         'raw_good_table',
         'religious_items_table',
-        'shields_table'
+        'shields_table',
+        'trade_tools_table'
     ]
 
     if (!category) {
