@@ -1133,3 +1133,35 @@ INSERT INTO weapons_sidearms_table (
 (3, 'Dusack', 3, NULL, NULL, 49, 'S', 3, 3, 2, 29),
 (3, 'Katzbalger', 3, NULL, NULL, 55, 'S', 3, 3, 2, 29),
 (1, 'Scourge', 3, NULL, NULL, 10, 'M', 3, 3, 1, 29);
+
+-- Weapon Swords ID: 30
+CREATE TABLE weapons_swords_table (
+    id SERIAL PRIMARY KEY,
+    weight INTEGER,
+    item TEXT NOT NULL,
+    format INTEGER,
+    collective TEXT,
+    max_number INTEGER,
+    price NUMERIC(10,2),
+    size CHAR(1),
+    colors INTEGER,
+    engravings INTEGER,
+    gems INTEGER,
+    tableid INTEGER
+);
+
+INSERT INTO weapons_swords_table (
+    weight, item, format, collective, max_number, price, size, colors, engravings, gems, tableid
+) VALUES
+(1, 'Arming Sword', 3, NULL, NULL, 70, 'M', 3, 3, 2, 30),
+(1, 'Court Sword', 3, NULL, NULL, 63, 'S', 3, 3, 2, 30),
+(1, 'Estoc', 3, NULL, NULL, 78, 'M', 3, 3, 2, 30),
+(1, 'Executioner''s Sword', 3, NULL, NULL, 250, 'H', 3, 3, 2, 30),
+(1, 'Falchion', 3, NULL, NULL, 80, 'M', 3, 3, 2, 30),
+(1, 'Koncerz', 3, NULL, NULL, 83, 'M', 3, 3, 2, 30),
+(1, 'Longsword', 3, NULL, NULL, 75, 'M', 3, 3, 2, 30),
+(1, 'Messer', 3, NULL, NULL, 68, 'M', 3, 3, 2, 30),
+(1, 'Rapier', 3, NULL, NULL, 80, 'M', 3, 3, 2, 30),
+(1, 'Sabre', 3, NULL, NULL, 78, 'M', 3, 3, 2, 30),
+(1, 'Schaivona', 3, NULL, NULL, 60, 'S', 3, 3, 2, 30),
+(1, 'Zweihander', 3, NULL, NULL, 130, 'L', 3, 3, 2, 30);

@@ -144,7 +144,8 @@ function getCategorySQL(category) {
         'trade_tools_table',
         'weapons_axes_table',
         'weapons_polearms_table',
-        'weapons_sidearms_table'
+        'weapons_sidearms_table',
+        'weapons_swords_table'
     ]
 
     if (!category) {

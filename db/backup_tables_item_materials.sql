@@ -879,3 +879,31 @@ INSERT INTO item_material_table (
 (3, 8, 29, 6, NULL, NULL, 'Handle'),
 (1, 8, 29, 3, NULL, NULL, 'Handle'),
 (4, 8, 29, 2, NULL, NULL, 'Handle');
+
+INSERT INTO item_material_table (
+    itemid, tableid, materialid, material, materialtableid, part
+) VALUES
+(1, 30, 3, NULL, NULL, 'Blade'),
+(1, 30, 6, NULL, NULL, 'Hilt'),
+(2, 30, 3, NULL, NULL, 'Blade'),
+(2, 30, 6, NULL, NULL, 'Hilt'),
+(3, 30, 3, NULL, NULL, 'Blade'),
+(3, 30, 6, NULL, NULL, 'Hilt'),
+(4, 30, 3, NULL, NULL, 'Blade'),
+(4, 30, 6, NULL, NULL, 'Hilt'),
+(5, 30, 3, NULL, NULL, 'Blade'),
+(5, 30, 6, NULL, NULL, 'Hilt'),
+(6, 30, 3, NULL, NULL, 'Blade'),
+(6, 30, 6, NULL, NULL, 'Hilt'),
+(7, 30, 3, NULL, NULL, 'Blade'),
+(7, 30, 6, NULL, NULL, 'Hilt'),
+(8, 30, 3, NULL, NULL, 'Blade'),
+(8, 30, 6, NULL, NULL, 'Hilt'),
+(9, 30, 3, NULL, NULL, 'Blade'),
+(9, 30, 6, NULL, NULL, 'Hilt'),
+(10, 30, 3, NULL, NULL, 'Blade'),
+(10, 30, 6, NULL, NULL, 'Hilt'),
+(11, 30, 3, NULL, NULL, 'Blade'),
+(11, 30, 6, NULL, NULL, 'Hilt'),
+(12, 30, 3, NULL, NULL, 'Blade'),
+(12, 30, 6, NULL, NULL, 'Hilt');
