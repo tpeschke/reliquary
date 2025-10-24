@@ -19,19 +19,19 @@ const { sendErrorForwardNoFile, checkForContentTypeBeforeSending, getRandomInt, 
 const controllerFunctions = {
     getItems: async (req, res) => {
         const { items } = req.body
-        const { format, category, rarity = 1, detail = 'N', wear, number = 1, version = 1 } = req.query
+        const { format, category, rarity = 1, detail = 'N', wear = 0, number = 1, version = 1 } = req.query
 
-        const categoryID = getCategoryID(category, version)
+        const categoryID = getCategoryID(category, +version)
 
         let finishedItemArray = []
 
         if (items && items.length > 0) {
-            getItemsFromArray(items, finishedItemArray, { format, category: categoryID, rarity, detail, wear })
+            getItemsFromArray(items, finishedItemArray, { format, category: categoryID, rarity: +rarity, detail, wear })
         }
 
         for (let i = 0; i < number && i < 25; i++) {
             finishedItemArray.push(new Promise(resolve => {
-                return getItem(resolve, { category: categoryID, rarity, detail, wear })
+                return getItem(resolve, { category: categoryID, rarity: +rarity, detail, wear })
             }))
         }
 
@@ -163,7 +163,6 @@ row_num = 1;`
 
 async function getItem(resolve, { category, rarity, detail, wear }) {
     const [item] = await query(getCategorySQL(category), [])
-    console.log(item.id, item.tableid)
 
     const materials = await query(itemMaterialSQL, [item.id, item.tableid])
 
@@ -242,9 +241,6 @@ function getCategorySQL(category) {
         category = randomIntBetweenTwoInts(1, tableDictionary.length - 1)
     }
 
-    // return `select * from ${tableDictionary[category]}
-    // where id = 18`
-
     return `select * from ${tableDictionary[category]}
 ORDER BY random() * weight desc
 limit 1`
@@ -252,7 +248,7 @@ limit 1`
 }
 
 function getTable(columnName, tableName) {
-    return `select *, ${columnName} as material, $1 as part, $2 as categoryid, $3 as rarity from ${tableName}
+    return `select *, ${columnName} as material, $1 as part, $2 as categoryid from ${tableName}
     where rarity = $3
     ORDER BY random()
     limit 1`
@@ -263,7 +259,7 @@ function getSpecificMaterial(specificMaterial, columnName, tableName) {
     where Upper(${columnName}) = '${specificMaterial.toUpperCase()}'`
 }
 
-function getMiscMaterial() {
+function getMiscMaterial(specificMaterial) {
     return `select *, 'Misc' as material, $1 as part, $2 as rarity from misc_item_material_table
     where Upper(material) = '${specificMaterial.toUpperCase()}'`
 }
@@ -286,6 +282,7 @@ async function getMaterialInfo(materialid, material, materialtableid, part, rari
 const materialNameDictionary = [null, 'Cloth', null, 'Metal', 'Paper', 'Stone', 'Wood', 'Wax', 'Misc']
 
 function getMaterialCategory(materialInfo) {
+    if (!materialInfo.materialid) { return 'Misc' }
 
     if (+materialInfo.materialid === 2) {
         return materialInfo.type
@@ -538,18 +535,23 @@ function getBonusString(bonus, rarity) {
 
     if (bonusBase === '') { return '' }
 
-    return rarity && rarity - 1 !== 0 ? bonusBase + ` / ${rarity - 1} Position)` : baseBase + ')'
+    return rarity && rarity - 1 !== 0 ? bonusBase + ` / ${rarity - 1} Position)` : bonusBase + ')'
 }
 
 function formatOne(item, materialInfo) {
+    if (materialInfo.length === 0) {
+        console.log(item, materialInfo)
+    }
     return `${aOrAn(materialInfo[0].displayName)} ${materialInfo[0].displayName}${getBonusString(materialInfo[0].bonus, materialInfo[0].rarity)} ${item.item}`
 }
 
 function formatTwo(item, materialInfo) {
+    console.log(materialInfo)
     return `${aOrAn(item.collective)} ${item.collective} of ${materialInfo[0].displayName}${getBonusString(materialInfo[0].bonus, materialInfo[0].rarity)} ${item.item}`
 }
 
 function formatThree(item, materialInfo) {
+    console.log(item.id, item.tableid)
     const baseString = `${aOrAn(item.item)} ${item.item} with`
 
     const materialString = materialInfo.map((material, index) => {
@@ -698,12 +700,12 @@ const gemSizeDictionary = {
 function getPrice(item, materialInfo, gems) {
     const basePrice = +item.price * materialInfo.reduce((multiplier, material) => {
         return multiplier * +material.price_multiplier
-    })
+    }, 0)
 
     const gemPrice = gems.reduce((price, gem) => {
         const gemPrice = +gem.price * gemSizeDictionary[+gem.size.size]
         return price + gemPrice
-    })
+    }, 0)
 
     return +((basePrice + gemPrice).toFixed(2))
 }

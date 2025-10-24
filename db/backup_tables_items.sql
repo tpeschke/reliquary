@@ -288,6 +288,7 @@ VALUES
 
 -- Body Clothing ID: 8
 CREATE TABLE clothing_table (
+    id SERIAL PRIMARY KEY,
     weight NUMERIC NOT NULL, 
     item TEXT NOT NULL,
     format INT,
@@ -776,6 +777,7 @@ VALUES
 
 -- Medical Tools ID: 21
 CREATE TABLE medical_tools_table (
+    id SERIAL PRIMARY KEY,
     weight NUMERIC,
     item TEXT,
     format INTEGER,
@@ -995,6 +997,7 @@ INSERT INTO shields_table (weight, item, format, collective, price, size, colors
 
 -- Trade Tools ID: 26
 CREATE TABLE trade_tools_table (
+    id SERIAL PRIMARY KEY,
     weight INT,
     item TEXT,
     format INT,
@@ -1054,6 +1057,7 @@ INSERT INTO trade_tools_table (weight, item, format, collective, max_number, pri
 
 -- Weapon Axes ID: 27
 CREATE TABLE weapons_axes_table (
+    id SERIAL PRIMARY KEY,
     weight INTEGER,
     item TEXT,
     format INTEGER,
@@ -1076,6 +1080,7 @@ INSERT INTO weapons_axes_table (
 
 -- Weapon Polarms ID: 28
 CREATE TABLE weapons_polearms_table (
+    id SERIAL PRIMARY KEY,
     weight NUMERIC,
     item TEXT,
     format INTEGER,
@@ -1109,6 +1114,7 @@ INSERT INTO weapons_polearms_table (
 
 -- Weapon Sidearms ID: 29
 CREATE TABLE weapons_sidearms_table (
+    id SERIAL PRIMARY KEY,
     weight INTEGER,
     item TEXT,
     format INTEGER,
