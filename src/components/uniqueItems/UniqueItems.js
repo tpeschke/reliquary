@@ -146,6 +146,7 @@ export default function UniqueItems() {
             }
         }
         axios.post(constants.baseUrl + '/api/getItems?number=10' + paramString).then(({ data }) => {
+            console.log(data)
             if (data.color) {
                 toast.error(data.message)
                 setLoading(false)

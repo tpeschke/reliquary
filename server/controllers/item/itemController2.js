@@ -191,12 +191,7 @@ async function getItem(resolve, { category, rarity, detail, wear }) {
 
     const rolledWear = randomIntBetweenTwoInts(0, +wear)
 
-    const formattedItem = formatItem(item, materialInfo, colors, engravings, gems, rolledWear, price)
-
-    resolve({
-        id: item.id,
-        string: formattedItem
-    })
+    resolve(formatItem(item, materialInfo, colors, engravings, gems, rolledWear, price))
 }
 
 function getCategorySQL(category) {
@@ -235,7 +230,6 @@ function getCategorySQL(category) {
         'weapons_swords_table',
         'weapons_trauma_table',
         'weapons_ranged_thrown_table',
-        'weapons_ranged_mechanical_table',
         'weapons_ranged_mechanical_table',
         'weapons_ranged_firearm_table',
         'works_of_art_table',
@@ -401,8 +395,42 @@ async function getGems(gemChance, detail, rarity) {
 }
 
 function formatItem(item, materialInfo, colors, engravings, gems, rolledWear, price) {
-    // TODO JSON Version
+    return {
+        id: item.id,
+        string: formatStringDescription(item, materialInfo, colors, engravings, gems, rolledWear, price),
+        category: getCategoryName(item.category),
+        item: item.item,
+        materials: materialInfo.map(({material, category, bonus, rarity}) => {
+            return {
+                material,
+                materialCategory: category,
+                bonus,
+                confBonus: (bonus && rarity - 1 > 0) ?? `+${rarity - 1} Position`
+            }
+        }),
+        number: 1,
+        size: item.size,
+        price,
+        engravings: engravings.map((engraving_theme, timePeriod) => {
+            return {
+                theme: engraving_theme,
+                timePeriod: timePeriod.time
+            }
+        }),
+        colors: colors.map(color => color.color),
+        gems: gems.map((size, shape, name, price) => {
+            return {
+                size: +size.size,
+                shape: shape.gem_shape,
+                price: +price * gemSizeDictionary[+size.size],
+                name
+            }
+        }),
+        wear: rolledWear
+    }
+}
 
+function formatStringDescription(item, materialInfo, colors, engravings, gems, rolledWear, price) {
     let baseString = formatAccordingToType(item, materialInfo)
 
     if (colors.length > 0 || engravings > 0 || gems > 0) {
@@ -436,6 +464,50 @@ function formatItem(item, materialInfo, colors, engravings, gems, rolledWear, pr
     return baseString
 }
 
+function getCategoryName(categoryID) {
+    const categoryNameDictionary = [
+        null,
+        'Academic Tools',
+        'Adventuring Gear',
+        'Alchemical Substances',
+        'Armor',
+        'Beverage',
+        'Footwear',
+        'Headgear',
+        'Clothing',
+        'Accessories',
+        'Entertainment',
+        'Fabric & Ropes',
+        'Prepped Foods',
+        'Bread',
+        'Fruits & Veggies',
+        'Meat',
+        'Nuts',
+        'Spices',
+        'Household Items',
+        'Illumination',
+        'Jewelry',
+        'Medical Tools',
+        'Musical Instrument',
+        'Personal Containers',
+        'Raw Goods',
+        'Religious Items',
+        'Shields',
+        'Trade Tools',
+        'Weapon: Axes',
+        'Weapon: Polearms',
+        'Weapon: Sidearms',
+        'Weapon: Swords',
+        'Weapon: Trauma',
+        'Ranged Weapon: Thrown',
+        'Ranged Weapon: Mechanical',
+        'Ranged Weapon: Firearms',
+        'Works of Art'
+    ]
+
+    return categoryNameDictionary[categoryID]
+}
+
 function formatAccordingToType(item, materialInfo) {
     switch (+item.format) {
         case 1:
@@ -464,7 +536,7 @@ function formatAccordingToType(item, materialInfo) {
 function getBonusString(bonus, rarity) {
     const bonusBase = bonus ? ` (${bonus}` : ''
 
-    if (bonusBase === '') {return ''}
+    if (bonusBase === '') { return '' }
 
     return rarity && rarity - 1 !== 0 ? bonusBase + ` / ${rarity - 1} Position)` : baseBase + ')'
 }
@@ -611,22 +683,22 @@ function formatGems(gems) {
     return gemString
 }
 
+const gemSizeDictionary = {
+    0.2: 0.1,
+    0.5: 0.25,
+    1: 0.5,
+    1.5: 0.75,
+    2: 1,
+    2.5: 2,
+    3: 5,
+    4: 10,
+    5: 20
+}
+
 function getPrice(item, materialInfo, gems) {
     const basePrice = +item.price * materialInfo.reduce((multiplier, material) => {
         return multiplier * +material.price_multiplier
     })
-
-    const gemSizeDictionary = {
-        0.2: 0.1,
-        0.5: 0.25,
-        1: 0.5,
-        1.5: 0.75,
-        2: 1,
-        2.5: 2,
-        3: 5,
-        4: 10,
-        5: 20
-    }
 
     const gemPrice = gems.reduce((price, gem) => {
         const gemPrice = +gem.price * gemSizeDictionary[+gem.size.size]
