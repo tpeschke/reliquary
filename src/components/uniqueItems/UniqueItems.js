@@ -69,7 +69,7 @@ const categoryIconDictionary = {
     'Armor': armor,
     'Beverage': beverages,
     'Accessories': accessories,
-    'Body': body,
+    'Clothing': body,
     'Footwear': footwear,
     'Headgear': headgear,
     'Entertainment': entertainment,
@@ -104,7 +104,7 @@ const categoryIconDictionary = {
 export default function UniqueItems() {
     const [loading, setLoading] = useState(true);
     const [items, setItems] = useState([]);
-    const [category, setCategory] = useState(2);
+    const [category, setCategory] = useState(9);
     const [rarity, setRarity] = useState(1);
     const [detail, setDetail] = useState('M');
 
@@ -146,7 +146,6 @@ export default function UniqueItems() {
             }
         }
         axios.post(constants.baseUrl + '/api/getItems?number=25' + paramString).then(({ data }) => {
-            console.log(data)
             if (data.color) {
                 toast.error(data.message)
                 setLoading(false)
@@ -174,7 +173,7 @@ export default function UniqueItems() {
                             <select onChange={setCategoryOnChange} value={category ? category : ''}>
                                 <option>Any</option>
                                 {itemCategories.map(({id, category}, index) => {
-                                    return <option value={index + 1} key={id}>{category}</option>
+                                    return <option value={id} key={id}>{category}</option>
                                 })}
                             </select>
                             <div>

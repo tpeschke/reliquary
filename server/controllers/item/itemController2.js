@@ -173,7 +173,6 @@ async function getItem(resolve, { category, rarity, detail, wear }) {
     })
 
     const materialInfo = await Promise.all(promiseArray).then(results => {
-        console.log(item, results)
         return results.map(result => {
             return {
                 ...result[0],
@@ -261,7 +260,7 @@ function getSpecificMaterial(specificMaterial, columnName, tableName) {
 }
 
 function getMiscMaterial(specificMaterial) {
-    return `select *, '' as material, $1 as part, $2 as rarity from misc_item_material_table
+    return `select *, $1 as part, $2 as rarity from misc_item_material_table
     where Upper(material) = '${specificMaterial.toUpperCase()}'`
 }
 
