@@ -918,7 +918,8 @@ VALUES
 (4, 'Vial Holder Belt', 1, NULL, NULL, 'T', 2, 2, NULL, 22),
 (2, 'Waterskin', 1, NULL, NULL, 'S', 1, 2, NULL, 22);
 
--- Raw Good ID: 23
+-- FUCK UP HERE
+-- Raw Good ID: 23 -> 24
 CREATE TABLE raw_good_table (
     id SERIAL PRIMARY KEY,
     weight INT,
@@ -932,13 +933,13 @@ CREATE TABLE raw_good_table (
 );
 
 INSERT INTO raw_good_table (weight, item, format, collective, max_number, size, colors, tableid) VALUES
-(1, 'Cloth', 2, 'Bolt', 10, 'M', NULL, 23),
-(1, '', 2, 'Bolt', 30, 'M', NULL, 23),
-(1, '', 2, 'Ingot', 20, 'M', NULL, 23),
-(1, '', 2, 'Collection', 5, 'M', NULL, 23),
-(1, 'Wood', 2, 'Plank', 5, 'M', NULL, 23);
+(1, 'Cloth', 2, 'Bolt', 10, 'M', NULL, 24),
+(1, '', 2, 'Bolt', 30, 'M', NULL, 24),
+(1, '', 2, 'Ingot', 20, 'M', NULL, 24),
+(1, '', 2, 'Collection', 5, 'M', NULL, 24),
+(1, 'Wood', 2, 'Plank', 5, 'M', NULL, 24);
 
--- Religious Items ID: 24
+-- Religious Items ID: 24 -> 25
 CREATE TABLE religious_items_table (
     id SERIAL PRIMARY KEY,
     weight NUMERIC,
@@ -954,22 +955,22 @@ CREATE TABLE religious_items_table (
 );
 
 INSERT INTO religious_items_table (weight, item, format, collective, price, size, colors, engravings, gems, tableid) VALUES
-(2, 'Altar Cloth', 1, NULL, 10, 'S', 7, 9, NULL, 24),
-(1, 'Aspergillum', 3, NULL, 5, 'S', 1, 3, 2, 24),
-(2, 'Brazier', 1, NULL, 5, 'S', 1, 7, 2, 24),
-(2, 'Temple Candle', 1, NULL, 0.5, 'M', 8, 2, NULL, 24),
-(1, 'Censer', 1, NULL, 3, 'S', 1, 6, 2, 24),
-(1, 'Chalise', 1, NULL, 5, 'T', 2, 6, 2, 24),
-(2, 'Holy Symbol', 1, NULL, 5, 'T', 3, 5, 2, 24),
-(1, 'Incense', 7, 'Handful', 10, 'D', 9, NULL, NULL, 24),
-(1, 'Pilgrimage Badge', 1, NULL, 1, 'D', 7, 9, NULL, 24),
-(1, 'Prayer Beads', 1, NULL, 1, 'D', 9, 5, 1, 24),
-(1, 'Sacred Texts', 4, 'Collection', 50, 'S', 6, 7, NULL, 24),
-(1, 'Snuffing Bell', 1, NULL, 2, 'T', 2, 4, 1, 24),
-(1, 'Talisman', 1, NULL, 1, 'T', 5, 1, 2, 24),
-(1, 'Totem', 1, NULL, 0.5, 'T', 4, 1, 1, 24);
+(2, 'Altar Cloth', 1, NULL, 10, 'S', 7, 9, NULL, 25),
+(1, 'Aspergillum', 3, NULL, 5, 'S', 1, 3, 2, 25),
+(2, 'Brazier', 1, NULL, 5, 'S', 1, 7, 2, 25),
+(2, 'Temple Candle', 1, NULL, 0.5, 'M', 8, 2, NULL, 25),
+(1, 'Censer', 1, NULL, 3, 'S', 1, 6, 2, 25),
+(1, 'Chalise', 1, NULL, 5, 'T', 2, 6, 2, 25),
+(2, 'Holy Symbol', 1, NULL, 5, 'T', 3, 5, 2, 25),
+(1, 'Incense', 7, 'Handful', 10, 'D', 9, NULL, NULL, 25),
+(1, 'Pilgrimage Badge', 1, NULL, 1, 'D', 7, 9, NULL, 25),
+(1, 'Prayer Beads', 1, NULL, 1, 'D', 9, 5, 1, 25),
+(1, 'Sacred Texts', 4, 'Collection', 50, 'S', 6, 7, NULL, 25),
+(1, 'Snuffing Bell', 1, NULL, 2, 'T', 2, 4, 1, 25),
+(1, 'Talisman', 1, NULL, 1, 'T', 5, 1, 2, 25),
+(1, 'Totem', 1, NULL, 0.5, 'T', 4, 1, 1, 25);
 
--- Shields ID: 25
+-- Shields ID: 25 -> 26
 CREATE TABLE shields_table (
     id SERIAL PRIMARY KEY,
     weight INT,
@@ -985,17 +986,17 @@ CREATE TABLE shields_table (
 );
 
 INSERT INTO shields_table (weight, item, format, collective, price, size, colors, engravings, gems, tableid) VALUES
-(1, 'Buckler', 1, NULL, 40, 'S', 4, 4, 1, 25),
-(1, 'Clothe', 1, NULL, 0.5, 'S', 9, 1, NULL, 25),
-(4, 'Figure Eight', 3, NULL, 60, 'M', 9, 3, 1, 25),
-(5, 'Heater', 1, NULL, 70, 'M', 6, 4, 1, 25),
-(5, 'Hoplon', 1, NULL, 45, 'M', 5, 3, 1, 25),
-(5, 'Kite', 3, NULL, 110, 'L', 7, 4, 1, 25),
-(2, 'Pavise', 1, NULL, 135, 'L', 9, 7, 1, 25),
-(3, 'Round', 3, NULL, 95, 'M', 6, 5, 1, 25),
-(2, 'Tower', 1, NULL, 100, 'L', 7, 6, 1, 25);
+(1, 'Buckler', 1, NULL, 40, 'S', 4, 4, 1, 26),
+(1, 'Clothe', 1, NULL, 0.5, 'S', 9, 1, NULL, 26),
+(4, 'Figure Eight', 3, NULL, 60, 'M', 9, 3, 1, 26),
+(5, 'Heater', 1, NULL, 70, 'M', 6, 4, 1, 26),
+(5, 'Hoplon', 1, NULL, 45, 'M', 5, 3, 1, 26),
+(5, 'Kite', 3, NULL, 110, 'L', 7, 4, 1, 26),
+(2, 'Pavise', 1, NULL, 135, 'L', 9, 7, 1, 26),
+(3, 'Round', 3, NULL, 95, 'M', 6, 5, 1, 26),
+(2, 'Tower', 1, NULL, 100, 'L', 7, 6, 1, 26);
 
--- Trade Tools ID: 26
+-- Trade Tools ID: 26 -> 27
 CREATE TABLE trade_tools_table (
     id SERIAL PRIMARY KEY,
     weight INT,
@@ -1011,51 +1012,51 @@ CREATE TABLE trade_tools_table (
 );
 
 INSERT INTO trade_tools_table (weight, item, format, collective, max_number, price, size, colors, engravings, tableid) VALUES
-(1, 'Adze', 3, NULL, NULL, 5, 'S', 1, 1, 26),
-(1, 'Auger', 3, NULL, NULL, 15, 'L', 1, 1, 26),
-(1, 'Ax', 3, NULL, NULL, 12, 'M', 1, 2, 26),
-(1, 'Bear Trap', 1, NULL, NULL, 40, 'M', 1, 1, 26),
-(1, 'Bellows', 3, NULL, NULL, 1, 'M', 2, 1, 26),
-(1, 'Bow Drill', 3, NULL, NULL, 2, 'S', 1, 1, 26),
-(1, 'Branding Iron', 1, NULL, NULL, 0.5, 'S', 1, 1, 26),
-(1, 'Cleaning Brush', 1, NULL, NULL, 0.5, 'S', 1, 1, 26),
-(1, 'Carding Comb', 3, NULL, NULL, 3, 'S', 2, 3, 26),
-(1, 'Carpenter’s Square', 1, NULL, NULL, 0.5, 'S', 2, 2, 26),
-(1, 'Chisel', 1, NULL, NULL, 0.5, 'T', 1, 1, 26),
-(1, 'Cleaver', 3, NULL, NULL, 12, 'S', 1, 1, 26),
-(1, 'Drill', 1, NULL, NULL, 6, 'T', 1, 1, 26),
-(1, 'File', 1, NULL, NULL, 7, 'T', 1, 1, 26),
-(1, 'Funnel', 3, NULL, NULL, 3, 'S', 1, 1, 26),
-(1, 'Glass Cutter', 3, NULL, NULL, 15, 'T', 2, 2, 26),
-(1, 'Hammer', 3, NULL, NULL, 10, 'T', 1, 2, 26),
-(1, 'Hatchet', 3, NULL, NULL, 12, 'S', 1, 1, 26),
-(1, 'Hoe', 3, NULL, NULL, 10, 'L', 1, 1, 26),
-(1, 'Horseshoe', 1, NULL, NULL, 1, 'T', 1, 1, 26),
-(1, 'Mallet', 1, NULL, NULL, 1, 'T', 1, 1, 26),
-(1, 'Nail 3”', 2, 'Bag', 8, 0.5, 'F', 1, 1, 26),
-(1, 'Oar', 1, NULL, NULL, 15, 'M', 2, 1, 26),
-(1, 'Paddle', 1, NULL, NULL, 15, 'L', 2, 1, 26),
-(1, 'Pick', 3, NULL, NULL, 20, 'L', 1, 1, 26),
-(1, 'Pitch Fork', 3, NULL, NULL, 7, 'L', 1, 1, 26),
-(1, 'Planer', 3, NULL, NULL, 3, 'S', 1, 1, 26),
-(1, 'Pliers', 1, NULL, NULL, 1, 'T', 1, 1, 26),
-(1, 'Chalk Powder', 10, 'Bag', NULL, 0.1, 'D', 4, NULL, 26),
-(1, '2:1 Pully', 1, NULL, NULL, 15, 'T', 1, 1, 26),
-(1, 'Rake', 3, NULL, NULL, 7, 'L', 1, 1, 26),
-(1, 'Saw', 3, NULL, NULL, 13, 'S', 1, 1, 26),
-(1, 'Scissors', 3, NULL, NULL, 8, 'T', 1, 1, 26),
-(1, 'Shears', 1, NULL, NULL, 9, 'T', 1, 1, 26),
-(1, 'Shepherd''s Crook', 1, NULL, NULL, 3, 'L', 1, 2, 26),
-(1, 'Shovel', 3, NULL, NULL, 9, 'L', 1, 1, 26),
-(1, 'Sickle', 3, NULL, NULL, 9, 'S', 1, 2, 26),
-(1, 'Sledge', 3, NULL, NULL, 12, 'S', 1, 1, 26),
-(1, 'Tongs', 1, NULL, NULL, 3, 'T', 1, 1, 26),
-(1, 'Trowel', 3, NULL, NULL, 1, 'T', 1, 1, 26),
-(1, 'Wedge', 1, NULL, NULL, 0.5, 'T', 1, 1, 26),
-(1, 'Windlass', 1, NULL, NULL, 5, 'T', 1, 2, 26),
-(1, 'Wire', 2, 'Foot', 100, 1, 'D', 3, NULL, 26);
+(1, 'Adze', 3, NULL, NULL, 5, 'S', 1, 1, 27),
+(1, 'Auger', 3, NULL, NULL, 15, 'L', 1, 1, 27),
+(1, 'Ax', 3, NULL, NULL, 12, 'M', 1, 2, 27),
+(1, 'Bear Trap', 1, NULL, NULL, 40, 'M', 1, 1, 27),
+(1, 'Bellows', 3, NULL, NULL, 1, 'M', 2, 1, 27),
+(1, 'Bow Drill', 3, NULL, NULL, 2, 'S', 1, 1, 27),
+(1, 'Branding Iron', 1, NULL, NULL, 0.5, 'S', 1, 1, 27),
+(1, 'Cleaning Brush', 1, NULL, NULL, 0.5, 'S', 1, 1, 27),
+(1, 'Carding Comb', 3, NULL, NULL, 3, 'S', 2, 3, 27),
+(1, 'Carpenter’s Square', 1, NULL, NULL, 0.5, 'S', 2, 2, 27),
+(1, 'Chisel', 1, NULL, NULL, 0.5, 'T', 1, 1, 27),
+(1, 'Cleaver', 3, NULL, NULL, 12, 'S', 1, 1, 27),
+(1, 'Drill', 1, NULL, NULL, 6, 'T', 1, 1, 27),
+(1, 'File', 1, NULL, NULL, 7, 'T', 1, 1, 27),
+(1, 'Funnel', 3, NULL, NULL, 3, 'S', 1, 1, 27),
+(1, 'Glass Cutter', 3, NULL, NULL, 15, 'T', 2, 2, 27),
+(1, 'Hammer', 3, NULL, NULL, 10, 'T', 1, 2, 27),
+(1, 'Hatchet', 3, NULL, NULL, 12, 'S', 1, 1, 27),
+(1, 'Hoe', 3, NULL, NULL, 10, 'L', 1, 1, 27),
+(1, 'Horseshoe', 1, NULL, NULL, 1, 'T', 1, 1, 27),
+(1, 'Mallet', 1, NULL, NULL, 1, 'T', 1, 1, 27),
+(1, 'Nail 3”', 2, 'Bag', 8, 0.5, 'F', 1, 1, 27),
+(1, 'Oar', 1, NULL, NULL, 15, 'M', 2, 1, 27),
+(1, 'Paddle', 1, NULL, NULL, 15, 'L', 2, 1, 27),
+(1, 'Pick', 3, NULL, NULL, 20, 'L', 1, 1, 27),
+(1, 'Pitch Fork', 3, NULL, NULL, 7, 'L', 1, 1, 27),
+(1, 'Planer', 3, NULL, NULL, 3, 'S', 1, 1, 27),
+(1, 'Pliers', 1, NULL, NULL, 1, 'T', 1, 1, 27),
+(1, 'Chalk Powder', 10, 'Bag', NULL, 0.1, 'D', 4, NULL, 27),
+(1, '2:1 Pully', 1, NULL, NULL, 15, 'T', 1, 1, 27),
+(1, 'Rake', 3, NULL, NULL, 7, 'L', 1, 1, 27),
+(1, 'Saw', 3, NULL, NULL, 13, 'S', 1, 1, 27),
+(1, 'Scissors', 3, NULL, NULL, 8, 'T', 1, 1, 27),
+(1, 'Shears', 1, NULL, NULL, 9, 'T', 1, 1, 27),
+(1, 'Shepherd''s Crook', 1, NULL, NULL, 3, 'L', 1, 2, 27),
+(1, 'Shovel', 3, NULL, NULL, 9, 'L', 1, 1, 27),
+(1, 'Sickle', 3, NULL, NULL, 9, 'S', 1, 2, 27),
+(1, 'Sledge', 3, NULL, NULL, 12, 'S', 1, 1, 27),
+(1, 'Tongs', 1, NULL, NULL, 3, 'T', 1, 1, 27),
+(1, 'Trowel', 3, NULL, NULL, 1, 'T', 1, 1, 27),
+(1, 'Wedge', 1, NULL, NULL, 0.5, 'T', 1, 1, 27),
+(1, 'Windlass', 1, NULL, NULL, 5, 'T', 1, 2, 27),
+(1, 'Wire', 2, 'Foot', 100, 1, 'D', 3, NULL, 27);
 
--- Weapon Axes ID: 27
+-- Weapon Axes ID: 27 -> 28
 CREATE TABLE weapons_axes_table (
     id SERIAL PRIMARY KEY,
     weight INTEGER,
@@ -1066,7 +1067,8 @@ CREATE TABLE weapons_axes_table (
     price NUMERIC,
     size CHAR(1),
     colors INTEGER,
-    engravings INTEGER
+    engravings INTEGER,
+    tableid integer default 28
 );
 
 INSERT INTO weapons_axes_table (
@@ -1078,7 +1080,7 @@ INSERT INTO weapons_axes_table (
 (1, 'Horsemans Pick', 3, NULL, NULL, 105, 'M', 1, 5),
 (1, 'Lochaber Axe', 3, NULL, NULL, 117, 'L', 1, 5);
 
--- Weapon Polarms ID: 28
+-- Weapon Polarms ID: 28 -> 29
 CREATE TABLE weapons_polearms_table (
     id SERIAL PRIMARY KEY,
     weight NUMERIC,
@@ -1112,7 +1114,7 @@ INSERT INTO weapons_polearms_table (
 (1, 'Voulge', 3, NULL, NULL, 27, 'L', 1, 3, 28),
 (1, 'War-scythe', 3, NULL, NULL, 16, 'L', 1, 3, 28);
 
--- Weapon Sidearms ID: 29
+-- Weapon Sidearms ID: 29 -> 30
 CREATE TABLE weapons_sidearms_table (
     id SERIAL PRIMARY KEY,
     weight INTEGER,
@@ -1131,16 +1133,16 @@ CREATE TABLE weapons_sidearms_table (
 INSERT INTO weapons_sidearms_table (
     weight, item, format, collective, max_number, price, size, colors, engravings, gems, tableid
 ) VALUES
-(1, 'Brass Knuckles', 1, NULL, NULL, 10, 'S', 3, 3, 1, 29),
-(3, 'Cinquedea', 3, NULL, NULL, 15, 'S', 3, 3, 1, 29),
-(5, 'Dagger', 3, NULL, NULL, 12, 'S', 3, 3, 1, 29),
-(5, 'Knife', 3, NULL, NULL, 10, 'S', 3, 3, 1, 29),
-(3, 'Stiletto', 3, NULL, NULL, 17, 'S', 3, 3, 2, 29),
-(3, 'Dusack', 3, NULL, NULL, 49, 'S', 3, 3, 2, 29),
-(3, 'Katzbalger', 3, NULL, NULL, 55, 'S', 3, 3, 2, 29),
-(1, 'Scourge', 3, NULL, NULL, 10, 'M', 3, 3, 1, 29);
+(1, 'Brass Knuckles', 1, NULL, NULL, 10, 'S', 3, 3, 1, 30),
+(3, 'Cinquedea', 3, NULL, NULL, 15, 'S', 3, 3, 1, 30),
+(5, 'Dagger', 3, NULL, NULL, 12, 'S', 3, 3, 1, 30),
+(5, 'Knife', 3, NULL, NULL, 10, 'S', 3, 3, 1, 30),
+(3, 'Stiletto', 3, NULL, NULL, 17, 'S', 3, 3, 2, 30),
+(3, 'Dusack', 3, NULL, NULL, 49, 'S', 3, 3, 2, 30),
+(3, 'Katzbalger', 3, NULL, NULL, 55, 'S', 3, 3, 2, 30),
+(1, 'Scourge', 3, NULL, NULL, 10, 'M', 3, 3, 1, 30);
 
--- Weapon Swords ID: 30
+-- Weapon Swords ID: 30 -> 31
 CREATE TABLE weapons_swords_table (
     id SERIAL PRIMARY KEY,
     weight INTEGER,
@@ -1159,20 +1161,20 @@ CREATE TABLE weapons_swords_table (
 INSERT INTO weapons_swords_table (
     weight, item, format, collective, max_number, price, size, colors, engravings, gems, tableid
 ) VALUES
-(1, 'Arming Sword', 3, NULL, NULL, 70, 'M', 3, 3, 2, 30),
-(1, 'Court Sword', 3, NULL, NULL, 63, 'S', 3, 3, 2, 30),
-(1, 'Estoc', 3, NULL, NULL, 78, 'M', 3, 3, 2, 30),
-(1, 'Executioner''s Sword', 3, NULL, NULL, 250, 'H', 3, 3, 2, 30),
-(1, 'Falchion', 3, NULL, NULL, 80, 'M', 3, 3, 2, 30),
-(1, 'Koncerz', 3, NULL, NULL, 83, 'M', 3, 3, 2, 30),
-(1, 'Longsword', 3, NULL, NULL, 75, 'M', 3, 3, 2, 30),
-(1, 'Messer', 3, NULL, NULL, 68, 'M', 3, 3, 2, 30),
-(1, 'Rapier', 3, NULL, NULL, 80, 'M', 3, 3, 2, 30),
-(1, 'Sabre', 3, NULL, NULL, 78, 'M', 3, 3, 2, 30),
-(1, 'Schaivona', 3, NULL, NULL, 60, 'S', 3, 3, 2, 30),
-(1, 'Zweihander', 3, NULL, NULL, 130, 'L', 3, 3, 2, 30);
+(1, 'Arming Sword', 3, NULL, NULL, 70, 'M', 3, 3, 2, 31),
+(1, 'Court Sword', 3, NULL, NULL, 63, 'S', 3, 3, 2, 31),
+(1, 'Estoc', 3, NULL, NULL, 78, 'M', 3, 3, 2, 31),
+(1, 'Executioner''s Sword', 3, NULL, NULL, 250, 'H', 3, 3, 2, 31),
+(1, 'Falchion', 3, NULL, NULL, 80, 'M', 3, 3, 2, 31),
+(1, 'Koncerz', 3, NULL, NULL, 83, 'M', 3, 3, 2, 31),
+(1, 'Longsword', 3, NULL, NULL, 75, 'M', 3, 3, 2, 31),
+(1, 'Messer', 3, NULL, NULL, 68, 'M', 3, 3, 2, 31),
+(1, 'Rapier', 3, NULL, NULL, 80, 'M', 3, 3, 2, 31),
+(1, 'Sabre', 3, NULL, NULL, 78, 'M', 3, 3, 2, 31),
+(1, 'Schaivona', 3, NULL, NULL, 60, 'S', 3, 3, 2, 31),
+(1, 'Zweihander', 3, NULL, NULL, 130, 'L', 3, 3, 2, 31);
 
--- Weapon Trauma ID: 31
+-- Weapon Trauma ID: 31 -> 32
 CREATE TABLE weapons_trauma_table (
     id SERIAL PRIMARY KEY,
     weight INTEGER,
@@ -1191,19 +1193,19 @@ CREATE TABLE weapons_trauma_table (
 INSERT INTO weapons_trauma_table (
     weight, item, format, collective, max_number, price, size, colors, engravings, gems, tableid
 ) VALUES
-(1, 'Bec De Corbin', 3, NULL, 75, NULL, 'L', 2, 4, 1, 31),
-(1, 'Bludgeon', 1, NULL, 8, NULL, 'S', 6, 2, NULL, 31),
-(1, 'Club', 1, NULL, 5, NULL, 'M', 4, 2, NULL, 31),
-(1, 'Mace', 3, NULL, 48, NULL, 'M', 2, 5, 2, 31),
-(1, 'Maul', 3, NULL, 35, NULL, 'L', 2, 4, 1, 31),
-(1, 'Goedendag', 3, NULL, 24, NULL, 'L', 3, 3, NULL, 31),
-(1, 'Great Hammer', 3, NULL, 200, NULL, 'H', 2, 6, 2, 31),
-(1, 'Peasant''s Flail', 3, NULL, 20, NULL, 'L', 2, 2, NULL, 31),
-(1, 'Quarterstaff', 1, NULL, 8, NULL, 'L', 3, 7, 1, 31),
-(1, 'War Flail', 3, NULL, 50, NULL, 'M', 5, 2, 2, 31),
-(1, 'War Hammer', 3, NULL, 83, NULL, 'M', 2, 6, 2, 31);
+(1, 'Bec De Corbin', 3, NULL, 75, NULL, 'L', 2, 4, 1, 32),
+(1, 'Bludgeon', 1, NULL, 8, NULL, 'S', 6, 2, NULL, 32),
+(1, 'Club', 1, NULL, 5, NULL, 'M', 4, 2, NULL, 32),
+(1, 'Mace', 3, NULL, 48, NULL, 'M', 2, 5, 2, 32),
+(1, 'Maul', 3, NULL, 35, NULL, 'L', 2, 4, 1, 32),
+(1, 'Goedendag', 3, NULL, 24, NULL, 'L', 3, 3, NULL, 32),
+(1, 'Great Hammer', 3, NULL, 200, NULL, 'H', 2, 6, 2, 32),
+(1, 'Peasant''s Flail', 3, NULL, 20, NULL, 'L', 2, 2, NULL, 32),
+(1, 'Quarterstaff', 1, NULL, 8, NULL, 'L', 3, 7, 1, 32),
+(1, 'War Flail', 3, NULL, 50, NULL, 'M', 5, 2, 2, 32),
+(1, 'War Hammer', 3, NULL, 83, NULL, 'M', 2, 6, 2, 32);
 
--- Weapon Ranged Thrown ID: 32
+-- Weapon Ranged Thrown ID: 32 -> 33
 CREATE TABLE weapons_ranged_thrown_table (
     id SERIAL PRIMARY KEY,
     weight INTEGER,
@@ -1222,11 +1224,11 @@ CREATE TABLE weapons_ranged_thrown_table (
 INSERT INTO weapons_ranged_thrown_table (
     weight, item, format, collective, max_number, price, size, colors, engravings, tableid, materials
 ) VALUES
-(1, 'Javelin', 1, NULL, NULL, 8, 'L', 7, 3, 32, '1 - 8 Wood; 9 - 10 Metal'),
-(1, 'Throwing Axe', 3, NULL, NULL, 12, 'M', 3, 3, 32, 'Wood & Metal'),
-(1, 'Throwing Knife', 3, NULL, NULL, 10, 'S', 2, 4, 32, 'Wood & Metal');
+(1, 'Javelin', 1, NULL, NULL, 8, 'L', 7, 3, 33, '1 - 8 Wood; 9 - 10 Metal'),
+(1, 'Throwing Axe', 3, NULL, NULL, 12, 'M', 3, 3, 33, 'Wood & Metal'),
+(1, 'Throwing Knife', 3, NULL, NULL, 10, 'S', 2, 4, 33, 'Wood & Metal');
 
--- Weapon Ranged Mechanical ID: 33
+-- Weapon Ranged Mechanical ID: 33 -> 34
 CREATE TABLE weapons_ranged_mechanical_table (
     id SERIAL PRIMARY KEY,
     weight NUMERIC,
@@ -1245,15 +1247,15 @@ CREATE TABLE weapons_ranged_mechanical_table (
 INSERT INTO weapons_ranged_mechanical_table (
     weight, item, format, collective, max_number, price, size, colors, engravings, gems, tableid
 ) VALUES
-(5,  'Bellybow',          3, NULL, NULL, 175, 'L', 3, 7, 1, 33),
-(10, 'Composite Bow',     1, NULL, NULL, 45,  'M', 7, 3, 1, 33),
-(5,  'Crossbow',          3, NULL, NULL, 75,  'L', 5, 3, 1, 33),
-(3,  'Latchet Crossbow',  3, NULL, NULL, 50,  'M', 6, 4, 1, 33),
-(3,  'Longbow',           1, NULL, NULL, 60,  'L', 8, 2, 1, 33),
-(20, 'Sling',             1, NULL, NULL, 5,   'S', 8, 5, NULL, 33),
-(1,  'Warbow',            1, NULL, NULL, 255, 'H', 9, 3, 2, 33);
+(5,  'Bellybow',          3, NULL, NULL, 175, 'L', 3, 7, 1, 34)
+(10, 'Composite Bow',     1, NULL, NULL, 45,  'M', 7, 3, 1, 34)
+(5,  'Crossbow',          3, NULL, NULL, 75,  'L', 5, 3, 1, 34)
+(3,  'Latchet Crossbow',  3, NULL, NULL, 50,  'M', 6, 4, 1, 34)
+(3,  'Longbow',           1, NULL, NULL, 60,  'L', 8, 2, 1, 34)
+(20, 'Sling',             1, NULL, NULL, 5,   'S', 8, 5, NULL, 34)
+(1,  'Warbow',            1, NULL, NULL, 255, 'H', 9, 3, 2, 34)
 
--- Weapon Ranged Firearm ID: 34
+-- Weapon Ranged Firearm ID: 34 -> 35
 CREATE TABLE weapons_ranged_firearm_table (
     id SERIAL PRIMARY KEY,
     weight NUMERIC,
@@ -1272,11 +1274,11 @@ CREATE TABLE weapons_ranged_firearm_table (
 INSERT INTO weapons_ranged_firearm_table 
 (weight, item, format, collective, max_number, price, size, colors, engravings, gems, tableid)
 VALUES
-(1, 'Fire Lance', 3, NULL, NULL, 105, 'L', 4, 4, NULL, 34),
-(1, 'Arquebus', 3, NULL, NULL, 235, 'L', 5, 6, 1, 34),
-(1, 'Hand Canon', 3, NULL, NULL, 110, 'M', 6, 5, 1, 34);
+(1, 'Fire Lance', 3, NULL, NULL, 105, 'L', 4, 4, NULL, 35),
+(1, 'Arquebus', 3, NULL, NULL, 235, 'L', 5, 6, 1, 35),
+(1, 'Hand Canon', 3, NULL, NULL, 110, 'M', 6, 5, 1, 35);
 
--- Works of Art ID: 35
+-- Works of Art ID: 35 -> 36
 CREATE TABLE works_of_art_table (
     id SERIAL PRIMARY KEY,
     weight INTEGER,
@@ -1295,14 +1297,14 @@ CREATE TABLE works_of_art_table (
 INSERT INTO works_of_art_table 
 (weight, item, format, collective, max_number, price, size, colors, engravings, gems, tableid)
 VALUES
-(1, 'Painting', 1, NULL, NULL, 150, 'L', 9, 9, NULL, 35),
-(1, 'Pottery', 1, NULL, NULL, 25, 'S', 7, 9, 1, 35),
-(1, 'Sculpture', 1, NULL, NULL, 200, 'H', 8, 9, 1, 35),
-(1, 'Book', 3, NULL, NULL, 50, 'S', 6, 9, NULL, 35),
-(1, 'Glassware', 7, 'Piece', NULL, 200, 'S', 8, 9, 1, 35),
-(1, 'Tapestry', 1, NULL, NULL, 250, 'H', 9, 9, NULL, 35);
+(1, 'Painting', 1, NULL, NULL, 150, 'L', 9, 9, NULL, 36),
+(1, 'Pottery', 1, NULL, NULL, 25, 'S', 7, 9, 1, 36),
+(1, 'Sculpture', 1, NULL, NULL, 200, 'H', 8, 9, 1, 36),
+(1, 'Book', 3, NULL, NULL, 50, 'S', 6, 9, NULL, 36),
+(1, 'Glassware', 7, 'Piece', NULL, 200, 'S', 8, 9, 1, 36),
+(1, 'Tapestry', 1, NULL, NULL, 250, 'H', 9, 9, NULL, 36);
 
--- Armor Light ID: (technically) 36
+-- Armor Light ID: (technically) 37
 CREATE TABLE armor_light_table (
     id SERIAL PRIMARY KEY,
     weight INTEGER,
@@ -1323,7 +1325,7 @@ VALUES
 (9, 'Gambeson', 2, 'Suit', 'S', 90, 8, 2, NULL, 4),
 (19, 'Leather', 2, 'Suit', 'S', 190, 4, 2, 1, 4);
 
--- Armor Medium ID: (technically) 37
+-- Armor Medium ID: (technically) 38
 CREATE TABLE armor_medium_table (
     id SERIAL PRIMARY KEY,
     weight INTEGER,
@@ -1349,7 +1351,7 @@ VALUES
 (35, 'Ringmail', 3, 'Suit', 'M', 350, 3, 4, 1, 4),
 (27, 'Splintmail', 3, 'Suit', 'M', 275, 3, 4, 1, 4);
 
--- Armor Heavy ID: (technically) 38
+-- Armor Heavy ID: (technically) 39
 CREATE TABLE armor_heavy_table (
     id SERIAL PRIMARY KEY,
     weight INTEGER,

@@ -173,6 +173,7 @@ async function getItem(resolve, { category, rarity, detail, wear }) {
     })
 
     const materialInfo = await Promise.all(promiseArray).then(results => {
+        console.log(item, results)
         return results.map(result => {
             return {
                 ...result[0],
@@ -547,6 +548,7 @@ function formatTwo(item, materialInfo) {
 }
 
 function formatThree(item, materialInfo) {
+    console.log(item, materialInfo)
     const baseString = `${aOrAn(item.item)} ${item.item} with`
     const materialString = materialInfo.map((material, index) => {
         const bonusString = getBonusString(material.bonus, material.rarity)

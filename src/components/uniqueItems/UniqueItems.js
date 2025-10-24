@@ -104,7 +104,7 @@ const categoryIconDictionary = {
 export default function UniqueItems() {
     const [loading, setLoading] = useState(true);
     const [items, setItems] = useState([]);
-    const [category, setCategory] = useState(1);
+    const [category, setCategory] = useState(2);
     const [rarity, setRarity] = useState(1);
     const [detail, setDetail] = useState('M');
 
@@ -173,8 +173,8 @@ export default function UniqueItems() {
                         <div>
                             <select onChange={setCategoryOnChange} value={category ? category : ''}>
                                 <option>Any</option>
-                                {itemCategories.map((category, index) => {
-                                    return <option value={index + 1} key={category}>{category}</option>
+                                {itemCategories.map(({id, category}, index) => {
+                                    return <option value={index + 1} key={id}>{category}</option>
                                 })}
                             </select>
                             <div>
@@ -239,40 +239,42 @@ export default function UniqueItems() {
 }
 
 const itemCategories = [
-    'Academic Tools',
-    'Adventuring Gear',
-    'Alchemical Substances',
-    null,
-    'Beverage',
-    'Footwear',
-    'Headgear',
-    'Clothing',
-    'Accessories',
-    'Entertainment',
-    'Fabric & Ropes',
-    'Prepped Foods',
-    'Bread',
-    'Fruits & Veggies',
-    'Meat',
-    'Nuts',
-    'Spices',
-    'Household Items',
-    'Illumination',
-    'Jewelry',
-    'Medical Tools',
-    'Musical Instrument',
-    'Personal Containers',
-    'Raw Goods',
-    'Religious Items',
-    'Shields',
-    'Trade Tools',
-    'Weapon: Axes',
-    'Weapon: Polearms',
-    'Weapon: Sidearms',
-    'Weapon: Swords',
-    'Weapon: Trauma',
-    'Ranged Weapon: Thrown',
-    'Ranged Weapon: Mechanical',
-    'Ranged Weapon: Firearms',
-    'Works of Art'
-]
+    { id: 1, category: 'Academic Tools' },
+    { id: 2, category: 'Adventuring Gear' },
+    { id: 3, category: 'Alchemical Substances' },
+    { id: 37, category: 'Armor, Light' },
+    { id: 38, category: 'Armor, Medium' },
+    { id: 39, category: 'Armor, Heavy' },
+    { id: 5, category: 'Beverage' },
+    { id: 6, category: 'Footwear' },
+    { id: 7, category: 'Headgear' },
+    { id: 8, category: 'Clothing' },
+    { id: 9, category: 'Accessories' },
+    { id: 10, category: 'Entertainment' },
+    { id: 11, category: 'Fabric & Ropes' },
+    { id: 12, category: 'Prepped Foods' },
+    { id: 13, category: 'Bread' },
+    { id: 14, category: 'Fruits & Veggies' },
+    { id: 15, category: 'Meat' },
+    { id: 16, category: 'Nuts' },
+    { id: 17, category: 'Spices' },
+    { id: 18, category: 'Household Items' },
+    { id: 19, category: 'Illumination' },
+    { id: 20, category: 'Jewelry' },
+    { id: 21, category: 'Medical Tools' },
+    { id: 22, category: 'Musical Instrument' },
+    { id: 23, category: 'Personal Containers' },
+    { id: 24, category: 'Raw Goods' },
+    { id: 25, category: 'Religious Items' },
+    { id: 26, category: 'Shields' },
+    { id: 27, category: 'Trade Tools' },
+    { id: 28, category: 'Weapon: Axes' },
+    { id: 29, category: 'Weapon: Polearms' },
+    { id: 30, category: 'Weapon: Sidearms' },
+    { id: 31, category: 'Weapon: Swords' },
+    { id: 32, category: 'Weapon: Trauma' },
+    { id: 33, category: 'Ranged Weapon: Thrown' },
+    { id: 34, category: 'Ranged Weapon: Mechanical' },
+    { id: 35, category: 'Ranged Weapon: Firearms' },
+    { id: 36, category: 'Works of Art' }
+  ]
