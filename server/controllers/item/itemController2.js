@@ -258,19 +258,19 @@ limit 1`
 }
 
 function getTable(columnName, tableName) {
-    return `select *, ${columnName} as material, $1 as part, $2 as categoryid from ${tableName}
+    return `select *, ${columnName} as material, $1 as part, $2 as categoryid, $3 as rarity from ${tableName}
     where rarity = $3
     ORDER BY random()
     limit 1`
 }
 
 function getSpecificMaterial(specificMaterial, columnName, tableName) {
-    return `select *, ${columnName} as material, $1 as part, $2 as categoryid from ${tableName}
+    return `select *, ${columnName} as material, $1 as part, $2 as categoryid, $3 as rarity from ${tableName}
     where Upper(${columnName}) = '${specificMaterial.toUpperCase()}'`
 }
 
 function getMiscMaterial() {
-    return `select *, 'Misc' as material, $1 as part from misc_item_material_table
+    return `select *, 'Misc' as material, $1 as part, $2 as rarity from misc_item_material_table
     where Upper(material) = '${specificMaterial.toUpperCase()}'`
 }
 
@@ -281,9 +281,9 @@ async function getMaterialInfo(materialid, material, materialtableid, part, rari
     if (materialid) {
         return query(getTable(columnNameDictionary[materialid], tableNameDictionary[materialid]), [part, materialid, rarity])
     } else if (material && materialtableid) {
-        return query(getSpecificMaterial(material, columnNameDictionary[materialtableid], tableNameDictionary[materialtableid]), [part, materialtableid])
+        return query(getSpecificMaterial(material, columnNameDictionary[materialtableid], tableNameDictionary[materialtableid]), [part, materialtableid, rarity])
     } else if (material) {
-        return query(getMiscMaterial(material), [part])
+        return query(getMiscMaterial(material), [part, rarity])
     } else {
         console.log('something went wrong')
     }
@@ -403,8 +403,6 @@ async function getGems(gemChance, detail, rarity) {
 function formatItem(item, materialInfo, colors, engravings, gems, rolledWear, price) {
     // TODO JSON Version
 
-    // TODO Material Bonuses
-        // Conf Bonus should just be a Position Adjust = Rarity - 1
     let baseString = formatAccordingToType(item, materialInfo)
 
     if (colors.length > 0 || engravings > 0 || gems > 0) {
@@ -463,24 +461,34 @@ function formatAccordingToType(item, materialInfo) {
     }
 }
 
+function getBonusString(bonus, rarity) {
+    const bonusBase = bonus ? ` (${bonus}` : ''
+
+    if (bonusBase === '') {return ''}
+
+    return rarity && rarity - 1 !== 0 ? bonusBase + ` / ${rarity - 1} Position)` : baseBase + ')'
+}
+
 function formatOne(item, materialInfo) {
-    return `${aOrAn(materialInfo[0].displayName)} ${materialInfo[0].displayName} ${item.item}`
+    return `${aOrAn(materialInfo[0].displayName)} ${materialInfo[0].displayName}${getBonusString(materialInfo[0].bonus, materialInfo[0].rarity)} ${item.item}`
 }
 
 function formatTwo(item, materialInfo) {
-    return `${aOrAn(item.collective)} ${item.collective} of ${materialInfo[0].displayName} ${item.item}`
+    return `${aOrAn(item.collective)} ${item.collective} of ${materialInfo[0].displayName}${getBonusString(materialInfo[0].bonus, materialInfo[0].rarity)} ${item.item}`
 }
 
 function formatThree(item, materialInfo) {
     const baseString = `${aOrAn(item.item)} ${item.item} with`
 
     const materialString = materialInfo.map((material, index) => {
+        const bonusString = getBonusString(material.bonus, material.rarity)
+
         if (index === materialInfo.length - 1 && index > 0) {
-            return ` and ${aOrAn(material.part)} ${material.part} of ${material.displayName}`
+            return ` and ${aOrAn(material.part)} ${material.part} of ${material.displayName}${bonusString}`
         } else if (index === 0) {
-            return ` ${aOrAn(material.part)} ${material.part} of ${material.displayName}`
+            return ` ${aOrAn(material.part)} ${material.part} of ${material.displayName}${bonusString}`
         } else {
-            return `, ${aOrAn(material.part)} ${material.part} of ${material.displayName}`
+            return `, ${aOrAn(material.part)} ${material.part} of ${material.displayName}${bonusString}`
         }
     })
 
@@ -491,12 +499,14 @@ function formatFour(item, materialInfo) {
     const baseString = `${aOrAn(item.collective)} ${item.collective} of ${item.item} with`
 
     const materialString = materialInfo.map((material, index) => {
+        const bonusString = getBonusString(material.bonus, material.rarity)
+
         if (index === materialInfo.length - 1 && index > 0) {
-            return ` and ${aOrAn(material.part)} ${material.part} of ${material.displayName}`
+            return ` and ${aOrAn(material.part)} ${material.part} of ${material.displayName}${bonusString}`
         } else if (index === 0) {
-            return ` ${aOrAn(material.part)} ${material.part} of ${material.displayName}`
+            return ` ${aOrAn(material.part)} ${material.part} of ${material.displayName}${bonusString}`
         } else {
-            return `, ${aOrAn(material.part)} ${material.part} of ${material.displayName}`
+            return `, ${aOrAn(material.part)} ${material.part} of ${material.displayName}${bonusString}`
         }
     })
 
@@ -504,11 +514,11 @@ function formatFour(item, materialInfo) {
 }
 
 function formatFive(item, materialInfo) {
-    return `${aOrAn(item.collective)} ${item.collective} of ${materialInfo[0].material} ${item.item} ${materialNameDictionary[+materialInfo[0].categoryid]}`
+    return `${aOrAn(item.collective)} ${item.collective} of ${materialInfo[0].material}${getBonusString(materialInfo[0].bonus, materialInfo[0].rarity)} ${item.item} ${materialNameDictionary[+materialInfo[0].categoryid]}`
 }
 
 function formatSix(item, materialInfo) {
-    return `${aOrAn(item.collective)} ${item.collective} of ${materialInfo[0].displayName}`
+    return `${aOrAn(item.collective)} ${item.collective} of ${materialInfo[0].displayName}${getBonusString(materialInfo[0].bonus, materialInfo[0].rarity)}`
 }
 
 function formatSeven(item) {
@@ -520,7 +530,7 @@ function formatEight(item) {
 }
 
 function formatNine(item, materialInfo) {
-    return `${aOrAn(item.collective)} ${item.collective} ${materialInfo[0].displayName} ${item.item}`
+    return `${aOrAn(item.collective)} ${item.collective} ${materialInfo[0].displayName}${getBonusString(materialInfo[0].bonus, materialInfo[0].rarity)} ${item.item}`
 }
 
 function aOrAn(noun) {
