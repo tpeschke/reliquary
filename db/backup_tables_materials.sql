@@ -11,7 +11,7 @@ INSERT INTO cloth (cloth, price_multiplier, bonus) VALUES
 ('Burlap', 0.25, 'Repair = 1/2 cost'),
 ('Canvas', 0.50, 'Repair = 1/2 cost'),
 ('Linen', 1.00, '+2 vs Heat'),
-('Cotton', 1.00, 'None'),
+('Cotton', 1.00, null),
 ('Wool', 1.00, '+1 vs Cold & Rain'),
 ('Calico', 1.25, '+2 vs Heat'),
 ('Satin', 1.25, 'Lower the Size by a third for Carry'),
@@ -61,7 +61,7 @@ set type = 'Fur'
 where type is null
 
 INSERT INTO fur_n_leather (furleather, price_multiplier, bonus) VALUES
-('Cow', 1.00, 'None'),
+('Cow', 1.00, null),
 ('Chamois', 1.50, 'Ignore the first Wear gained'),
 ('Cordovan', 2.00, 'Ignore the first Wear gained'),
 ('Snakeskin', 2.25, 'Ignore the first Wear gained'),
@@ -86,14 +86,14 @@ CREATE TABLE metal_table (
 
 INSERT INTO metal_table (metal, price_multiplier, bonus) VALUES
 ('Lead', 0.50, '+5 damage vs Outsiders / +3 DR vs Outsiders'),
-('Iron', 1.00, 'None'),
+('Iron', 1.00, null),
 ('Tin', 1.25, 'Ignore the first Wear gained'),
 ('Steel', 1.50, '+2 damage / +1 DR'),
 ('Copper', 1.50, 'Repair costs are halved'),
 ('Brass', 2.00, 'Spell Effects are +/-1 Order based on the wielder''s desire'),
 ('Bronze', 2.25, 'Can do twice as many Maintenance Checks on it between Wear'),
 ('Silver', 4.00, 'Always counted as Pure Metal'),
-('Gold', 6.00, 'None');
+('Gold', 6.00, null);
 
 CREATE TABLE paper_table (
     id SERIAL PRIMARY KEY,
@@ -129,11 +129,11 @@ CREATE TABLE stone_table (
 );
 
 INSERT INTO stone_table (stone, price_multiplier, bonus) VALUES
-('Clay', 0.25, 'None'),
-('Armorstone', 0.25, 'None'),
-('Basalt', 0.25, 'None'),
-('Limestone', 0.50, 'None'),
-('Earthenware', 1.00, 'None'),
+('Clay', 0.25, null),
+('Armorstone', 0.25, null),
+('Basalt', 0.25, null),
+('Limestone', 0.50, null),
+('Earthenware', 1.00, null),
 ('Pottery', 1.25, 'Ignore the first Wear gained'),
 ('Tufa', 1.50, 'Ignore the first Wear gained'),
 ('Travertine', 1.50, 'Ignore the first Wear gained'),
@@ -157,7 +157,7 @@ CREATE TABLE wood_table (
 );
 
 INSERT INTO wood_table (wood, price_multiplier, bonus, conf_bonus) VALUES
-('Pine', 1.00, 'None'),
+('Pine', 1.00, null),
 ('Aspen', 1.00, 'Double your breakage threshold'),
 ('Oak', 1.25, 'Double your breakage threshold'),
 ('Basswood', 1.25, 'Lower the Size by a third for Carry'),

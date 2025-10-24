@@ -260,7 +260,7 @@ function getSpecificMaterial(specificMaterial, columnName, tableName) {
 }
 
 function getMiscMaterial(specificMaterial) {
-    return `select *, 'Misc' as material, $1 as part, $2 as rarity from misc_item_material_table
+    return `select *, '' as material, $1 as part, $2 as rarity from misc_item_material_table
     where Upper(material) = '${specificMaterial.toUpperCase()}'`
 }
 
@@ -279,19 +279,19 @@ async function getMaterialInfo(materialid, material, materialtableid, part, rari
     }
 }
 
-const materialNameDictionary = [null, 'Cloth', null, 'Metal', 'Paper', 'Stone', 'Wood', 'Wax', 'Misc']
+const materialNameDictionary = [null, 'Cloth', null, 'Metal', 'Paper', 'Stone', 'Wood', 'Wax', '']
 
 function getMaterialCategory(materialInfo) {
-    if (!materialInfo.materialid) { return 'Misc' }
+    if (!materialInfo?.categoryid) { return '' }
 
-    if (+materialInfo.materialid === 2) {
+    if (+materialInfo.categoryid === 2) {
         return materialInfo.type
     }
-    return materialNameDictionary[+materialInfo.materialid]
+    return materialNameDictionary[+materialInfo.categoryid]
 }
 
 function getDisplayName(materialInfo) {
-    switch (+materialInfo.categoryid) {
+    switch (+materialInfo?.categoryid) {
         case 1:
             return materialInfo.material
         case 2:
@@ -395,7 +395,7 @@ function formatItem(item, materialInfo, colors, engravings, gems, rolledWear, pr
     return {
         id: item.id,
         string: formatStringDescription(item, materialInfo, colors, engravings, gems, rolledWear, price),
-        category: getCategoryName(item.category),
+        category: getCategoryName(item.tableid),
         item: item.item,
         materials: materialInfo.map(({material, category, bonus, rarity}) => {
             return {
@@ -408,7 +408,7 @@ function formatItem(item, materialInfo, colors, engravings, gems, rolledWear, pr
         number: 1,
         size: item.size,
         price,
-        engravings: engravings.map((engraving_theme, timePeriod) => {
+        engravings: engravings.map(({engraving_theme, timePeriod}) => {
             return {
                 theme: engraving_theme,
                 timePeriod: timePeriod.time
@@ -539,21 +539,15 @@ function getBonusString(bonus, rarity) {
 }
 
 function formatOne(item, materialInfo) {
-    if (materialInfo.length === 0) {
-        console.log(item, materialInfo)
-    }
     return `${aOrAn(materialInfo[0].displayName)} ${materialInfo[0].displayName}${getBonusString(materialInfo[0].bonus, materialInfo[0].rarity)} ${item.item}`
 }
 
 function formatTwo(item, materialInfo) {
-    console.log(materialInfo)
     return `${aOrAn(item.collective)} ${item.collective} of ${materialInfo[0].displayName}${getBonusString(materialInfo[0].bonus, materialInfo[0].rarity)} ${item.item}`
 }
 
 function formatThree(item, materialInfo) {
-    console.log(item.id, item.tableid)
     const baseString = `${aOrAn(item.item)} ${item.item} with`
-
     const materialString = materialInfo.map((material, index) => {
         const bonusString = getBonusString(material.bonus, material.rarity)
 
@@ -700,7 +694,7 @@ const gemSizeDictionary = {
 function getPrice(item, materialInfo, gems) {
     const basePrice = +item.price * materialInfo.reduce((multiplier, material) => {
         return multiplier * +material.price_multiplier
-    }, 0)
+    }, 1)
 
     const gemPrice = gems.reduce((price, gem) => {
         const gemPrice = +gem.price * gemSizeDictionary[+gem.size.size]

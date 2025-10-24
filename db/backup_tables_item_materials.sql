@@ -30,7 +30,9 @@ INSERT INTO item_material_table (weight, itemid, tableid, materialid, material, 
 (NULL, 12, 1, 7, NULL, NULL, NULL),
 (6, 13, 1, NULL, 'Clay', 5, NULL),
 (2, 13, 1, 7, NULL, NULL, NULL),
-(1, 13, 1, NULL, 'Slate', 5, NULL);
+(1, 13, 1, NULL, 'Slate', 5, NULL),
+(null, 3, 1, 3, NULL, NULL, NULL),
+(null, 2, 1, 3, NULL, NULL, NULL);
 
 -- Adventuring Tools
 INSERT INTO item_material_table (weight, itemid, tableid, materialid, material, materialtableid, part) VALUES

@@ -3,8 +3,8 @@
   src: local('Hamlet'), url(./assets/Hamletornot.ttf) format('truetype');
 }
 @font-face {
-  font-family: 'Ancient';
-  src: url(./assets/jancient.ttf) format('truetype');
+  font-family: 'OldClaude';
+  src: url(./assets/OldClaude.otf) format('opentype');
 }
 
 /* width */
@@ -48,24 +48,24 @@ h2 {
 h3 {
   font-size: 18px;
   color: grey;
-  font-family: 'Ancient';
+  font-family: 'OldClaude';
 }
 
 h4 {
   font-weight: 100;
   color: grey;
-  font-family: 'Ancient';
+  font-family: 'OldClaude';
   font-size: 17px;
 }
 
 h5 {
   font-weight: 100;
-  font-family: 'Ancient';
+  font-family: 'OldClaude';
   font-size: 16px;
 }
 
 ul {
-  margin: 0;
+  margin: 5px 0;
   padding-left: 25px;
 }
 
@@ -119,7 +119,7 @@ input {
 .input-shell p {
   padding-left: 5px;
   color: whitesmoke;
-  font-family: 'Ancient';
+  font-family: 'OldClaude';
   font-size: 18px;
 }
 
@@ -147,7 +147,7 @@ input {
 .item-title-shell p {
   color: gray;
   margin-left: 5px;
-  font-family: 'Ancient';
+  font-family: 'OldClaude';
   font-size: 18px;
 }
 
@@ -206,7 +206,7 @@ input {
 
 .item-detail {
   display: flex;
-  align-items: baseline;
+  align-items: center;
 }
 
 .id-details {

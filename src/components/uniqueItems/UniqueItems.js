@@ -67,44 +67,44 @@ const categoryIconDictionary = {
     'Adventuring Gear': adventuring,
     'Alchemical Substances': alchemical,
     'Armor': armor,
-    'Beverages': beverages,
-    'Clothing_Accessories': accessories,
-    'Clothing_Body': body,
-    'Clothing_Footwear': footwear,
-    'Clothing_Headgear': headgear,
+    'Beverage': beverages,
+    'Accessories': accessories,
+    'Body': body,
+    'Footwear': footwear,
+    'Headgear': headgear,
     'Entertainment': entertainment,
     'Fabrics & Ropes': fabrics,
-    'Food_Bread': bread,
-    'Food_Fruit & Vegetables': fruit,
-    'Food_Nuts': nuts,
-    'Food_Prepped Food': prepped,
-    'Food_Protein': protein,
-    'Food_Spices & Seasonings': spices,
+    'Bread': bread,
+    'Fruit & Vegetables': fruit,
+    'Nuts': nuts,
+    'Prepped Foods': prepped,
+    'Protein': protein,
+    'Spices': spices,
     'Household Items': household,
     'Illumination': illumination,
     'Jewelry': jewelry,
     'Medical Tools': medical,
-    'Musical Instruments': music,
+    'Musical Instrument': music,
     'Personal Containers': containers,
-    'Raw Good': raw,
+    'Raw Goods': raw,
     'Religious Items': religious,
     'Shields': shields,
     'Trade Tools': trade,
-    'Weapons_Axes': axes,
-    'Weapons_Firearms': firearms,
-    'Weapons_Mechanical Ranged': mechanical,
-    'Weapons_Polearms': polearms,
-    'Weapons_Sidearms': sidearms,
-    'Weapons_Swords': swords,
-    'Weapons_Thrown': thrown,
-    'Weapons_Trauma': trauma,
+    'Weapon: Axes': axes,
+    'Weapon: Firearms': firearms,
+    'Ranged Weapon: Mechanical': mechanical,
+    'Weapon: Polearms': polearms,
+    'Weapon: Sidearms': sidearms,
+    'Weapon: Swords': swords,
+    'Ranged Weapon: Thrown': thrown,
+    'Ranged Weapon: Trauma': trauma,
     'Works of Art': art
 }
 
 export default function UniqueItems() {
     const [loading, setLoading] = useState(true);
     const [items, setItems] = useState([]);
-    const [category, setCategory] = useState(null);
+    const [category, setCategory] = useState(1);
     const [rarity, setRarity] = useState(1);
     const [detail, setDetail] = useState('M');
 
@@ -138,14 +138,14 @@ export default function UniqueItems() {
 
     function refreshItems(newParams = {}) {
         setLoading(true)
-        const params = { category, rarity, format: 'object', ...newParams }
+        const params = { category, rarity, format: 'object', version: 2, ...newParams }
         let paramString = ''
         for (const key in params) {
             if (params[key]) {
                 paramString += `&${key}=${params[key]}`
             }
         }
-        axios.post(constants.baseUrl + '/api/getItems?number=10' + paramString).then(({ data }) => {
+        axios.post(constants.baseUrl + '/api/getItems?number=25' + paramString).then(({ data }) => {
             console.log(data)
             if (data.color) {
                 toast.error(data.message)
@@ -173,8 +173,8 @@ export default function UniqueItems() {
                         <div>
                             <select onChange={setCategoryOnChange} value={category ? category : ''}>
                                 <option>Any</option>
-                                {itemCategories.map((category, i) => {
-                                    return <option value={category.id} key={category.label + i}>{category.label}</option>
+                                {itemCategories.map((category, index) => {
+                                    return <option value={index + 1} key={category}>{category}</option>
                                 })}
                             </select>
                             <div>
@@ -213,14 +213,15 @@ export default function UniqueItems() {
                                                 <div>
                                                     <div className='item-title-shell'>
                                                         <h2>{item.item}</h2>
-                                                        <p>{item.finalPrice} sc {item.wear ? ` with ${item.wear} Wear` : ''}</p>
+                                                        <p>{item.price} sc {item.wear ? ` with ${item.wear} Wear` : ''}</p>
                                                     </div>
                                                     <div>
-                                                        {item.description} <i onClick={e => copyToClipboard(e, item.item, item.description)} className="fa-solid fa-copy"></i>
+                                                        {item.string} <i onClick={e => copyToClipboard(e, item.item, item.string)} className="fa-solid fa-copy"></i>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div></Typography>
+                                        </div>
+                                        </Typography>
                                     </AccordionSummary>
                                     <AccordionDetails>
                                         <Typography component={'span'} variant={'body2'}>
@@ -238,156 +239,40 @@ export default function UniqueItems() {
 }
 
 const itemCategories = [
-    {
-        "label": "Academic Tools",
-        "id": 29
-    },
-    {
-        "label": "Accessories",
-        "id": 6
-    },
-    {
-        "label": "Adventuring Gear",
-        "id": 37
-    },
-    {
-        "label": "Alchemical Substances",
-        "id": 30
-    },
-    {
-        "label": "Armor, Light",
-        "id": 2
-    },
-    {
-        "label": "Armor, Medium",
-        "id": 3
-    },
-    {
-        "label": "Armor, Heavy",
-        "id": 4
-    },
-    {
-        "label": "Beverages",
-        "id": 14
-    },
-    {
-        "label": "Clothing, Body",
-        "id": 34
-    },
-    {
-        "label": "Clothing, Footwear",
-        "id": 35
-    },
-    {
-        "label": "Clothing, Headgear",
-        "id": 23
-    },
-    {
-        "label": "Entertainment",
-        "id": 7
-    },
-    {
-        "label": "Fabrics & Ropes",
-        "id": 25
-    },
-    {
-        "label": "Food, Bread",
-        "id": 9
-    },
-    {
-        "label": "Food, Fruit & Vegetables",
-        "id": 36
-    },
-    {
-        "label": "Food, Nuts",
-        "id": 10
-    },
-    {
-        "label": "Food, Prepped",
-        "id": 16
-    },
-    {
-        "label": "Food, Protein",
-        "id": 12
-    },
-    {
-        "label": "Food, Spices & Seasonings",
-        "id": 21
-    },
-    {
-        "label": "Household Items",
-        "id": 15
-    },
-    {
-        "label": "Illumination",
-        "id": 22
-    },
-    {
-        "label": "Jewelry",
-        "id": 24
-    },
-    {
-        "label": "Medical Tools",
-        "id": 33
-    },
-    {
-        "label": "Musical Instruments",
-        "id": 5
-    },
-    {
-        "label": "Personal Containers",
-        "id": 1
-    },
-    {
-        "label": "Raw Goods",
-        "id": 38
-    },
-    {
-        "label": "Religious Items",
-        "id": 26
-    },
-    {
-        "label": "Shields",
-        "id": 11
-    },
-    {
-        "label": "Trade Tools",
-        "id": 31
-    },
-    {
-        "label": "Weapons, Axes",
-        "id": 32
-    },
-    {
-        "label": "Weapons, Firearms",
-        "id": 13
-    },
-    {
-        "label": "Weapons, Mechanical Ranged",
-        "id": 18
-    },
-    {
-        "label": "Weapons, Polearms",
-        "id": 27
-    },
-    {
-        "label": "Weapons, Sidearms",
-        "id": 8
-    },
-    {
-        "label": "Weapons, Swords",
-        "id": 19
-    },
-    {
-        "label": "Weapons, Thrown",
-        "id": 17
-    },
-    {
-        "label": "Weapons, Trauma",
-        "id": 20
-    },
-    {
-        "label": "Works of Art",
-        "id": 28
-    }
+    'Academic Tools',
+    'Adventuring Gear',
+    'Alchemical Substances',
+    null,
+    'Beverage',
+    'Footwear',
+    'Headgear',
+    'Clothing',
+    'Accessories',
+    'Entertainment',
+    'Fabric & Ropes',
+    'Prepped Foods',
+    'Bread',
+    'Fruits & Veggies',
+    'Meat',
+    'Nuts',
+    'Spices',
+    'Household Items',
+    'Illumination',
+    'Jewelry',
+    'Medical Tools',
+    'Musical Instrument',
+    'Personal Containers',
+    'Raw Goods',
+    'Religious Items',
+    'Shields',
+    'Trade Tools',
+    'Weapon: Axes',
+    'Weapon: Polearms',
+    'Weapon: Sidearms',
+    'Weapon: Swords',
+    'Weapon: Trauma',
+    'Ranged Weapon: Thrown',
+    'Ranged Weapon: Mechanical',
+    'Ranged Weapon: Firearms',
+    'Works of Art'
 ]
