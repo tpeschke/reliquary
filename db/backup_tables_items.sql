@@ -1165,3 +1165,134 @@ INSERT INTO weapons_swords_table (
 (1, 'Sabre', 3, NULL, NULL, 78, 'M', 3, 3, 2, 30),
 (1, 'Schaivona', 3, NULL, NULL, 60, 'S', 3, 3, 2, 30),
 (1, 'Zweihander', 3, NULL, NULL, 130, 'L', 3, 3, 2, 30);
+
+-- Weapon Trauma ID: 31
+
+CREATE TABLE weapons_trauma_table (
+    id SERIAL PRIMARY KEY,
+    weight INTEGER,
+    item TEXT,
+    format INTEGER,
+    collective TEXT,
+    max_number INTEGER,
+    price INTEGER,
+    size TEXT,
+    colors INTEGER,
+    engravings INTEGER,
+    gems INTEGER,
+    tableid INTEGER
+);
+
+INSERT INTO weapons_trauma_table (
+    weight, item, format, collective, max_number, price, size, colors, engravings, gems, tableid
+) VALUES
+(1, 'Bec De Corbin', 3, NULL, 75, NULL, 'L', 2, 4, 1, 31),
+(1, 'Bludgeon', 1, NULL, 8, NULL, 'S', 6, 2, NULL, 31),
+(1, 'Club', 1, NULL, 5, NULL, 'M', 4, 2, NULL, 31),
+(1, 'Mace', 3, NULL, 48, NULL, 'M', 2, 5, 2, 31),
+(1, 'Maul', 3, NULL, 35, NULL, 'L', 2, 4, 1, 31),
+(1, 'Goedendag', 3, NULL, 24, NULL, 'L', 3, 3, NULL, 31),
+(1, 'Great Hammer', 3, NULL, 200, NULL, 'H', 2, 6, 2, 31),
+(1, 'Peasant''s Flail', 3, NULL, 20, NULL, 'L', 2, 2, NULL, 31),
+(1, 'Quarterstaff', 1, NULL, 8, NULL, 'L', 3, 7, 1, 31),
+(1, 'War Flail', 3, NULL, 50, NULL, 'M', 5, 2, 2, 31),
+(1, 'War Hammer', 3, NULL, 83, NULL, 'M', 2, 6, 2, 31);
+
+-- Weapon Ranged Thrown ID: 32
+CREATE TABLE weapons_ranged_thrown_table (
+    id SERIAL PRIMARY KEY,
+    weight INTEGER,
+    item TEXT NOT NULL,
+    format INTEGER,
+    collective TEXT,
+    max_number INTEGER,
+    price NUMERIC(10,2),
+    size CHAR(1),
+    colors INTEGER,
+    engravings INTEGER,
+    tableid INTEGER,
+    materials TEXT
+);
+
+INSERT INTO weapons_ranged_thrown_table (
+    weight, item, format, collective, max_number, price, size, colors, engravings, tableid, materials
+) VALUES
+(1, 'Javelin', 1, NULL, NULL, 8, 'L', 7, 3, 32, '1 - 8 Wood; 9 - 10 Metal'),
+(1, 'Throwing Axe', 3, NULL, NULL, 12, 'M', 3, 3, 32, 'Wood & Metal'),
+(1, 'Throwing Knife', 3, NULL, NULL, 10, 'S', 2, 4, 32, 'Wood & Metal');
+
+-- Weapon Ranged Mechanical ID: 33
+CREATE TABLE weapons_ranged_mechanical_table (
+    id SERIAL PRIMARY KEY,
+    weight NUMERIC,
+    item TEXT,
+    format INTEGER,
+    collective TEXT,
+    max_number NUMERIC,
+    price NUMERIC,
+    size CHAR(1),
+    colors INTEGER,
+    engravings INTEGER,
+    gems INTEGER,
+    tableid INTEGER
+);
+
+INSERT INTO weapons_ranged_mechanical_table (
+    weight, item, format, collective, max_number, price, size, colors, engravings, gems, tableid
+) VALUES
+(5,  'Bellybow',          3, NULL, NULL, 175, 'L', 3, 7, 1, 33),
+(10, 'Composite Bow',     1, NULL, NULL, 45,  'M', 7, 3, 1, 33),
+(5,  'Crossbow',          3, NULL, NULL, 75,  'L', 5, 3, 1, 33),
+(3,  'Latchet Crossbow',  3, NULL, NULL, 50,  'M', 6, 4, 1, 33),
+(3,  'Longbow',           1, NULL, NULL, 60,  'L', 8, 2, 1, 33),
+(20, 'Sling',             1, NULL, NULL, 5,   'S', 8, 5, NULL, 33),
+(1,  'Warbow',            1, NULL, NULL, 255, 'H', 9, 3, 2, 33);
+
+-- Weapon Ranged Firearm ID: 34
+CREATE TABLE weapons_ranged_firearm_table (
+    id SERIAL PRIMARY KEY,
+    weight NUMERIC,
+    item TEXT NOT NULL,
+    format INTEGER,
+    collective TEXT,
+    max_number INTEGER,
+    price NUMERIC,
+    size TEXT,
+    colors INTEGER,
+    engravings INTEGER,
+    gems INTEGER,
+    tableid INTEGER NOT NULL
+);
+
+INSERT INTO weapons_ranged_firearm_table 
+(weight, item, format, collective, max_number, price, size, colors, engravings, gems, tableid)
+VALUES
+(1, 'Fire Lance', 3, NULL, NULL, 105, 'L', 4, 4, NULL, 34),
+(1, 'Arquebus', 3, NULL, NULL, 235, 'L', 5, 6, 1, 34),
+(1, 'Hand Canon', 3, NULL, NULL, 110, 'M', 6, 5, 1, 34);
+
+-- Works of Art ID: 35
+CREATE TABLE works_of_art_table (
+    id SERIAL PRIMARY KEY,
+    weight INTEGER,
+    item TEXT,
+    format INTEGER,
+    collective TEXT,
+    max_number INTEGER,
+    price NUMERIC,
+    size TEXT,
+    colors INTEGER,
+    engravings INTEGER,
+    gems INTEGER,
+    tableid INTEGER
+);
+
+INSERT INTO works_of_art_table 
+(weight, item, format, collective, max_number, price, size, colors, engravings, gems, tableid)
+VALUES
+(1, 'Painting', 1, NULL, NULL, 150, 'L', 9, 9, NULL, 35),
+(1, 'Pottery', 1, NULL, NULL, 25, 'S', 7, 9, 1, 35),
+(1, 'Sculpture', 1, NULL, NULL, 200, 'H', 8, 9, 1, 35),
+(1, 'Book', 3, NULL, NULL, 50, 'S', 6, 9, NULL, 35),
+(1, 'Glassware', 7, 'Piece', NULL, 200, 'S', 8, 9, 1, 35),
+(1, 'Tapestry', 1, NULL, NULL, 250, 'H', 9, 9, NULL, 35);

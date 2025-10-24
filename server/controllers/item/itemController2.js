@@ -19,7 +19,9 @@ const { sendErrorForwardNoFile, checkForContentTypeBeforeSending, getRandomInt, 
 const controllerFunctions = {
     getItems: async (req, res) => {
         const { items } = req.body
-        const { format, category, rarity = 1, detail = 'N', wear, number = 1 } = req.query
+        const { format, category, rarity = 1, detail = 'N', wear, number = 1, version = 1 } = req.query
+    
+        // TODO convert category id to new
 
         let finishedItemArray = []
 
@@ -145,7 +147,13 @@ function getCategorySQL(category) {
         'weapons_axes_table',
         'weapons_polearms_table',
         'weapons_sidearms_table',
-        'weapons_swords_table'
+        'weapons_swords_table',
+        'weapons_trauma_table',
+        'weapons_ranged_thrown_table',
+        'weapons_ranged_mechanical_table',
+        'weapons_ranged_mechanical_table',
+        'weapons_ranged_firearm_table',
+        'works_of_art_table'
     ]
 
     if (!category) {
@@ -216,6 +224,7 @@ async function getMaterialInfo(materialid, material, materialtableid, part, rari
         // Heavy Feathers
         // Tallow
         // Animal Guts
+        // Horn
         return [
             {
                 material: 'Placeholder',
@@ -223,8 +232,6 @@ async function getMaterialInfo(materialid, material, materialtableid, part, rari
                 price_multiplier: 1,
                 bonus: '',
                 conf_bonus: '',
-                rarity: 1,
-                materialid: '8',
                 part
             }
         ]
@@ -345,6 +352,7 @@ async function getGems(gemChance, detail, rarity) {
 }
 
 function formatItem(item, materialInfo, colors, engravings, gems, rolledWear, price) {
+    // TODO JSON Version
     let baseString = formatAccordingToType(item, materialInfo)
 
     if (colors.length > 0 || engravings > 0 || gems > 0) {

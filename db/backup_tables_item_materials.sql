@@ -880,6 +880,7 @@ INSERT INTO item_material_table (
 (1, 8, 29, 3, NULL, NULL, 'Handle'),
 (4, 8, 29, 2, NULL, NULL, 'Handle');
 
+-- Weapon Swords
 INSERT INTO item_material_table (
     itemid, tableid, materialid, material, materialtableid, part
 ) VALUES
@@ -907,3 +908,95 @@ INSERT INTO item_material_table (
 (11, 30, 6, NULL, NULL, 'Hilt'),
 (12, 30, 3, NULL, NULL, 'Blade'),
 (12, 30, 6, NULL, NULL, 'Hilt');
+
+-- Weapon Trauma
+INSERT INTO item_material_table (
+    weight, itemid, tableid, materialid, material, materialtableid, part
+) VALUES
+(NULL, 1, 31, 3, NULL, NULL, 'Head'),
+(NULL, 1, 31, 6, NULL, NULL, 'Handle'),
+(6, 2, 31, 3, NULL, NULL, NULL),
+(4, 2, 31, 6, NULL, NULL, NULL),
+(NULL, 3, 31, 6, NULL, NULL, NULL),
+(7, 4, 31, 6, NULL, NULL, 'Handle'),
+(3, 4, 31, 3, NULL, NULL, 'Handle'),
+(NULL, 4, 31, 3, NULL, NULL, 'Head'),
+(7, 5, 31, 6, NULL, NULL, 'Handle'),
+(3, 5, 31, 3, NULL, NULL, 'Handle'),
+(7, 5, 31, 6, NULL, NULL, 'Head'),
+(3, 5, 31, 3, NULL, NULL, 'Head'),
+(NULL, 6, 31, 6, NULL, NULL, 'Shaft'),
+(NULL, 6, 31, 3, NULL, NULL, 'Tip'),
+(NULL, 7, 31, 6, NULL, NULL, 'Haft'),
+(NULL, 7, 31, 3, NULL, NULL, 'Head'),
+(7, 8, 31, 6, NULL, NULL, 'Shaft'),
+(3, 8, 31, 3, NULL, NULL, 'Shaft'),
+(7, 8, 31, 6, NULL, NULL, 'Head'),
+(3, 8, 31, 3, NULL, NULL, 'Head'),
+(8, 9, 31, 6, NULL, NULL, NULL),
+(2, 9, 31, 3, NULL, NULL, NULL),
+(NULL, 10, 31, 6, NULL, NULL, 'Handle'),
+(NULL, 10, 31, 3, NULL, NULL, 'Head'),
+(NULL, 11, 31, 6, NULL, NULL, 'Handle'),
+(NULL, 11, 31, 3, NULL, NULL, 'Head');
+
+-- Weapon Ranged Thrown
+INSERT INTO item_material_table (
+    weight, itemid, tableid, materialid, material, materialtableid, part
+) VALUES
+(8, 1, 32, 6, NULL, NULL, NULL),
+(2, 1, 32, 3, NULL, NULL, NULL),
+(NULL, 2, 32, 6, NULL, NULL, 'Handle'),
+(NULL, 2, 32, 3, NULL, NULL, 'Blade'),
+(NULL, 3, 32, 6, NULL, NULL, 'Handle'),
+(NULL, 3, 32, 3, NULL, NULL, 'Blade');
+
+-- Weapon Ranged Mechanical
+INSERT INTO item_material_table (
+    weight, itemid, tableid, materialid, material, materialtableid, part
+) VALUES
+(NULL, 1, 33, 6, NULL, NULL, 'Stock'),
+(NULL, 1, 33, 3, NULL, NULL, 'Fastenings'),
+(3, 2, 33, 6, NULL, NULL, NULL),
+(6, 2, 33, NULL, 'Horn', NULL, NULL),
+(1, 2, 33, 3, NULL, NULL, NULL),
+(NULL, 3, 33, 6, NULL, NULL, 'Stock'),
+(NULL, 3, 33, 3, NULL, NULL, 'Fastenings'),
+(NULL, 4, 33, 6, NULL, NULL, 'Stock'),
+(NULL, 4, 33, 3, NULL, NULL, 'Fastenings'),
+(9, 5, 33, 6, NULL, NULL, NULL),
+(1, 5, 33, 3, NULL, NULL, NULL),
+(5, 6, 33, 1, NULL, NULL, NULL),
+(5, 6, 33, 2, NULL, NULL, NULL),
+(6, 7, 33, 6, NULL, NULL, NULL),
+(4, 7, 33, 3, NULL, NULL, NULL);
+
+-- Weapon Ranged Firearms
+INSERT INTO item_material_table 
+(weight, itemid, tableid, materialid, material, materialtableid, part)
+VALUES
+(NULL, 1, 34, 6, NULL, NULL, 'Stock'),
+(NULL, 1, 34, 3, NULL, NULL, 'Fastenings'),
+(NULL, 2, 34, 6, NULL, NULL, 'Stock'),
+(NULL, 2, 34, 3, NULL, NULL, 'Fastenings'),
+(NULL, 3, 34, 6, NULL, NULL, 'Stock'),
+(NULL, 3, 34, 3, NULL, NULL, 'Fastenings');
+
+-- Works of Art
+INSERT INTO item_material_table 
+(weight, itemid, tableid, materialid, material, materialtableid, part)
+VALUES
+(3, 1, 35, 1, NULL, NULL, NULL),
+(3, 1, 35, 2, NULL, NULL, NULL),
+(2, 1, 35, 6, NULL, NULL, NULL),
+(1, 1, 35, 3, NULL, NULL, NULL),
+(NULL, 2, 35, 5, NULL, NULL, NULL),
+(NULL, 2, 35, 5, NULL, NULL, NULL),
+(1, 4, 35, 3, NULL, NULL, 'Cover'),
+(6, 4, 35, 1, NULL, NULL, 'Cover'),
+(2, 4, 35, 2, NULL, NULL, 'Cover'),
+(1, 4, 35, 6, NULL, NULL, 'Cover'),
+(NULL, 4, 35, 4, NULL, NULL, 'Interior'),
+(NULL, 5, 35, NULL, 'Glass', NULL, NULL),
+(7, 6, 35, 1, NULL, NULL, NULL),
+(3, 6, 35, 6, NULL, NULL, NULL);
