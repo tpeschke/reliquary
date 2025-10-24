@@ -1000,3 +1000,48 @@ VALUES
 (NULL, 5, 35, NULL, 'Glass', NULL, NULL),
 (7, 6, 35, 1, NULL, NULL, NULL),
 (3, 6, 35, 6, NULL, NULL, NULL);
+
+-- Misc Materials
+CREATE TABLE misc_item_material_table (
+    material TEXT PRIMARY KEY,
+    price_multiplier NUMERIC,
+    bonus TEXT,
+    conf_bonus TEXT
+);
+
+INSERT INTO misc_item_material_table (material, price_multiplier, bonus, conf_bonus)
+VALUES
+('Porcupine Spine', 1.25, NULL, NULL),
+('Goose Feather', 1, NULL, NULL),
+('Animal Bone', 1, NULL, NULL),
+('Monster Bone', 3, 'Per Monster', '+1 Position'),
+('Thread', 1, NULL, NULL),
+('Twine', 1, NULL, NULL),
+('Chalk', 1, NULL, NULL),
+('Wicker', 1, NULL, NULL),
+('Hemp', 1, NULL, NULL),
+('Linseed', 1, NULL, NULL),
+('Whale', 1.5, 'Ignore the first Wear gained', '+1 Position'),
+('Blue Glory', 70, '+0/10 Sec/0.5 Str - ing', '+1 Position'),
+('Bondweed', 55, '+d10/2 Min/1 Stress - Con', '+1 Position'),
+('Griffin Hair', 40, '+d10!/6 Min/-0.5 Fatigue - ing', '+1 Position'),
+('Lylullin', 105, '+d10!/30 Sec/0.5 Ins  - ing', '+1 Position'),
+('Maidenscap', 135, '+0/1 Hour/0.5 Con - Ing', '+1 Position'),
+('Palm of St Germain', 60, '+0/10 Sec/0.5 Pre  - Ing', '+1 Position'),
+('Tears of Sicyon', 115, '+0/20 Sec/0.5 Dex - Con', '+1 Position'),
+('Unknown', 135, '?', '+2 Position'),
+('Monster', 200, 'Per Monster', '+2 Position'),
+('Straw', 0.75, NULL, NULL),
+('Felt', 1.25, NULL, NULL),
+('Feathers', 1, NULL, NULL),
+('Wool', 1, NULL, NULL),
+('Ivory', 10, 'Double your breakage threshold', '+2 Position'),
+('Gauze', 1.25, NULL, NULL),
+('Chewing', 1, NULL, NULL),
+('Smoking', 1, NULL, NULL),
+('Down', 1, NULL, NULL),
+('Heavy Down', 1.5, NULL, NULL),
+('Heavy Feathers', 1.5, NULL, NULL),
+('Tallow', 1, NULL, NULL),
+('Animal Guts', 1, NULL, NULL),
+('Horn', 1, NULL, NULL);

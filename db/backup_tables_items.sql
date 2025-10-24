@@ -1296,3 +1296,71 @@ VALUES
 (1, 'Book', 3, NULL, NULL, 50, 'S', 6, 9, NULL, 35),
 (1, 'Glassware', 7, 'Piece', NULL, 200, 'S', 8, 9, 1, 35),
 (1, 'Tapestry', 1, NULL, NULL, 250, 'H', 9, 9, NULL, 35);
+
+-- Armor Light ID: (technically) 36
+CREATE TABLE armor_light_table (
+    id SERIAL PRIMARY KEY,
+    weight INTEGER,
+    item TEXT,
+    format INTEGER,
+    collective TEXT,
+    size TEXT,
+    price NUMERIC,
+    colors INTEGER,
+    engravings INTEGER,
+    gems INTEGER,
+    tableid INTEGER
+);
+
+INSERT INTO armor_light_table (weight, item, format, collective, size, price, colors, engravings, gems, tableid)
+VALUES
+(13, 'Buff Coat', 2, 'Suit', 'S', 130, 8, 2, NULL, 4),
+(9, 'Gambeson', 2, 'Suit', 'S', 90, 8, 2, NULL, 4),
+(19, 'Leather', 2, 'Suit', 'S', 190, 4, 2, 1, 4);
+
+-- Armor Medium ID: (technically) 37
+CREATE TABLE armor_medium_table (
+    id SERIAL PRIMARY KEY,
+    weight INTEGER,
+    item TEXT,
+    format INTEGER,
+    collective TEXT,
+    size TEXT,
+    price NUMERIC,
+    colors INTEGER,
+    engravings INTEGER,
+    gems INTEGER,
+    tableid INTEGER
+);
+
+INSERT INTO armor_medium_table (weight, item, format, collective, size, price, colors, engravings, gems, tableid)
+VALUES
+(65, 'Brigandine', 3, 'Suit', 'M', 650, 7, 4, 1, 4),
+(39, 'Chainmail', 2, 'Suit', 'M', 390, 4, 2, 1, 4),
+(19, 'Coat of Plates', 3, 'Suit', 'M', 190, 4, 4, 1, 4),
+(37, 'Lamellar', 3, 'Suit', 'M', 370, 3, 4, 1, 4),
+(33, 'Banded Mail', 3, 'Suit', 'M', 335, 2, 4, 1, 4),
+(20, 'Breastplate', 3, 'Suit', 'M', 200, 4, 2, 1, 4),
+(35, 'Ringmail', 3, 'Suit', 'M', 350, 3, 4, 1, 4),
+(27, 'Splintmail', 3, 'Suit', 'M', 275, 3, 4, 1, 4);
+
+-- Armor Heavy ID: (technically) 38
+CREATE TABLE armor_heavy_table (
+    id SERIAL PRIMARY KEY,
+    weight INTEGER,
+    item TEXT,
+    format INTEGER,
+    collective TEXT,
+    size TEXT,
+    price NUMERIC,
+    colors INTEGER,
+    engravings INTEGER,
+    gems INTEGER,
+    tableid INTEGER
+);
+
+INSERT INTO armor_heavy_table (weight, item, format, collective, size, price, colors, engravings, gems, tableid)
+VALUES
+(212, 'Full Plate', 2, 'Suit', 'L', 2125, 2, 7, 2, 4),
+(114, 'Plated Mail', 2, 'Suit', 'L', 1140, 2, 6, 2, 4),
+(107, 'Scale', 2, 'Suit', 'L', 1075, 2, 6, 2, 4);

@@ -16,6 +16,8 @@ const { sendErrorForwardNoFile, checkForContentTypeBeforeSending, getRandomInt, 
 //  wood = 6
 //  wax = 7
 
+// TODO Update Material bonuses to 2e (especially Conf Bonus)
+
 const controllerFunctions = {
     getItems: async (req, res) => {
         const { items } = req.body
@@ -113,13 +115,11 @@ async function getItem(resolve, { category, rarity, detail, wear }) {
 }
 
 function getCategorySQL(category) {
-    // TODO Update with table name
     const tableDictionary = [
         null,
         'academic_tools',
         'adventuring_gear',
         'alchemical_substances',
-        // TODO separate into light, medium, and heavy
         'armor_table',
         'beverage_table',
         'footwear_table',
@@ -153,7 +153,10 @@ function getCategorySQL(category) {
         'weapons_ranged_mechanical_table',
         'weapons_ranged_mechanical_table',
         'weapons_ranged_firearm_table',
-        'works_of_art_table'
+        'works_of_art_table',
+        'armor_light_table',
+        'armor_medium_table',
+        'armor_heavy_table'
     ]
 
     if (!category) {
@@ -181,6 +184,11 @@ function getSpecificMaterial(specificMaterial, columnName, tableName) {
     where Upper(${columnName}) = '${specificMaterial.toUpperCase()}'`
 }
 
+function getMiscMaterial() {
+    return `select *, 'Misc' as material, $1 as part from misc_item_material_table
+    where Upper(material) = '${specificMaterial.toUpperCase()}'`
+}
+
 async function getMaterialInfo(materialid, material, materialtableid, part, rarity) {
     const tableNameDictionary = [null, 'cloth', 'fur_n_leather', 'metal_table', 'paper_table', 'stone_table', 'wood_table', 'wax_table']
     const columnNameDictionary = [null, 'cloth', 'furleather', 'metal', 'type', 'stone', 'wood', 'wax']
@@ -190,51 +198,7 @@ async function getMaterialInfo(materialid, material, materialtableid, part, rari
     } else if (material && materialtableid) {
         return query(getSpecificMaterial(material, columnNameDictionary[materialtableid], tableNameDictionary[materialtableid]), [part, materialtableid])
     } else if (material) {
-        // TODO Create this table
-        // Porcupine Spine
-        // Goose Feather
-        // Animal Bone
-        // Monster Bone
-        // Thread
-        // Twine
-        // Chalk
-        // Wicker
-        // Hemp
-        // Linseed
-        // Whale
-        // Blue Glory
-        // Bondweed
-        // Griffin Hair
-        // Lylullin
-        // Maidenscap
-        // Palm of St Germain
-        // Tears of Sicyon
-        // Unknown
-        // Monster
-        // Straw
-        // Felt
-        // Feathers
-        // Wool
-        // Ivory
-        // Gauze
-        // Chewing
-        // Smoking
-        // Down
-        // Heavy Down
-        // Heavy Feathers
-        // Tallow
-        // Animal Guts
-        // Horn
-        return [
-            {
-                material: 'Placeholder',
-                displayName: 'Placeholder',
-                price_multiplier: 1,
-                bonus: '',
-                conf_bonus: '',
-                part
-            }
-        ]
+        return query(getMiscMaterial(material), [part])
     } else {
         console.log('something went wrong')
     }
@@ -353,6 +317,8 @@ async function getGems(gemChance, detail, rarity) {
 
 function formatItem(item, materialInfo, colors, engravings, gems, rolledWear, price) {
     // TODO JSON Version
+
+    // TODO Material Bonuses
     let baseString = formatAccordingToType(item, materialInfo)
 
     if (colors.length > 0 || engravings > 0 || gems > 0) {

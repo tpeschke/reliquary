@@ -17,8 +17,9 @@ app.use(cors())
 app.get('/api/getEnchantedItem', enchantedCtrl.getEnchantedItems)
 app.get('/api/getSingleEnchantedItem/:id', enchantedCtrl.getSingleEnchantedItem)
 
-app.post('/api/getItems', itemCtrl.getItems)
-app.post('/api/v2/getItems', item2Ctrl.getItems)
+// TODO remove when ready
+// app.post('/api/getItems', itemCtrl.getItems)
+app.post('/api/getItems', item2Ctrl.getItems)
 app.post('/api/getRandomPotion', potionCtrl.getRandomPotion)
 app.post('/api/getRandomPotions', potionCtrl.getRandomPotions)
 app.post('/api/searchPotions', potionCtrl.searchPotions)
