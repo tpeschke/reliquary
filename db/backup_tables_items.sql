@@ -523,7 +523,7 @@ INSERT INTO bread_table (weight, item, format, collective, max_number, price, si
 (1.00, 'Rye Bread', 7, 'Loaf', NULL, 0.44, 'T', 1, 13),
 (1.00, 'Wheat Bread', 7, 'Loaf', NULL, 0.5, 'T', 1, 13);
 
--- Fruits & Veggies
+-- Fruits & Veggies ID: 14
 CREATE TABLE fruits_n_veggies_table (
     id SERIAL PRIMARY KEY,
     weight NUMERIC(5,2),
@@ -1167,7 +1167,6 @@ INSERT INTO weapons_swords_table (
 (1, 'Zweihander', 3, NULL, NULL, 130, 'L', 3, 3, 2, 30);
 
 -- Weapon Trauma ID: 31
-
 CREATE TABLE weapons_trauma_table (
     id SERIAL PRIMARY KEY,
     weight INTEGER,
