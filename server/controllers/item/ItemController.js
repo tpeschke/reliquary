@@ -1,102 +1,31 @@
-const { sendErrorForwardNoFile, checkForContentTypeBeforeSending, randomIntBetweenTwoInts } = require('../../helpers')
-const { getDetailing, getStitchings, getEngravings, getGems, processMaterialResults, populationWithSpecificMaterials } = require('./ItemHelpers')
-const { getStringDescription, cleanUpItem, calculateFinalPrice, getFormat } = require('./itemFormatHelper.js')
-const { query } = require('../../../db/index')
-const itemSQL = require('../../../db/items')
-const detailsSQL = require('../../../db/details')
-const dictionaries = require('./ItemDictionaries.js')
+const { checkForContentTypeBeforeSending } = require('../../helpers')
+const { updatedCategoryIDDictionary } = require('./dictionaries/updatedCategoryIDDictionary')
+const { getItemsFromArray, getItem } = require('./getters/item')
 
-const sendErrorForward = sendErrorForwardNoFile('Items')
+async function getItems(req, res) {
+    const { items } = req.body
+    const { format, category, rarity = 1, detail = 'N', wear = 0, number = 1, version = 1 } = req.query
 
-const controllerFunctions = {
-    getItems: async (req, res) => {
-        const { items } = req.body
-        const { format, itemcategory, materialrarity, detailing, wear, number } = req.query
+    const categoryID = updatedCategoryIDDictionary(category, +version)
 
-        let finishedItemArray = []
+    let finishedItemArray = []
 
-        if (items && items.length > 0) {
-            controllerFunctions.getItemsFromArray(res, items, finishedItemArray, { format, itemcategory, materialrarity, detailing, wear })
-        }
-
-        for (let i = 0; i < number && i < 25; i++) {
-            finishedItemArray.push(new Promise(resolve => {
-                return getItem(res, resolve, format, { itemcategory, materialrarity, detailing, wear })
-            }))
-        }
-
-        Promise.all(finishedItemArray).then(finalItemArray => {
-            checkForContentTypeBeforeSending(res, finalItemArray)
-        })
-    },
-    getItemsFromArray: async (res, itemArray, promiseArray, defaults) => {
-        const { format, itemcategory, materialrarity, detailing, wear } = defaults
-
-        for (let i = 0; i < itemArray.length && i < 25; i++) {
-            const item = itemArray[i]
-            promiseArray.push(new Promise(resolve => {
-                itemcategory ? item.itemcategory = itemcategory : null
-                materialrarity ? item.materialrarity = materialrarity : null
-                detailing ? item.detailing = detailing : null
-                wear ? item.wear = wear : null
-                return getItem(res, resolve, format, item)
-            }))
-        }
+    if (items && items.length > 0) {
+        getItemsFromArray(items, finishedItemArray, { format, category: categoryID, rarity: +rarity, detail, wear })
     }
-}
 
-getItem = async (res, resolve, format, { itemcategory = randomIntBetweenTwoInts(1, 38), materialrarity = 'C', detailing = 'M', wear = '0' }) => {
-    const sqlToUse = dictionaries.getWhichCategoryToGet(itemcategory)
+    for (let i = 0; i < number && i < 25; i++) {
+        finishedItemArray.push(new Promise(resolve => {
+            return getItem(resolve, { category: categoryID, rarity: +rarity, detail, wear })
+        }))
+    }
 
-    return query(itemSQL[sqlToUse], [dictionaries.itemCategory[+itemcategory]]).then(item => {
-        item = item[0]
-        query(detailsSQL.material_item, [item.id]).then(materialResult => {
-            if (materialResult.length > 0 && materialResult[0].material) {
-                item.materials = processMaterialResults(materialResult)
-            } else {
-                item.materials = []
-            }
-
-            let promiseArray = []
-            if (item.materials.length > 0) {
-                promiseArray.push(populationWithSpecificMaterials(item.materials, materialrarity, res).then(populatedMaterials => {
-                    item.materials = populatedMaterials
-                    return true
-                }).catch(e => sendErrorForward('populate materials', e, res)))
-            }
-
-            promiseArray.push(getDetailing('Adjectives', detailing, item.adjectives, res).then(adjectives => {
-                item.adjectives = adjectives
-                return true
-            }).catch(e => sendErrorForward('get Adjectives details function', e, res)))
-
-            promiseArray.push(getDetailing('Colors', detailing, item.colors, res).then(colors => {
-                item.colors = colors
-                return true
-            }).catch(e => sendErrorForward('get Colors details function', e, res)))
-
-            promiseArray.push(getGems(detailing, materialrarity, item.gems, res).then(gems => {
-                item.gems = gems
-                return getEngravings(detailing, item.engravings, item.gems, res).then(engravings => {
-                    item.engravings = engravings
-                    return true
-                }).catch(e => sendErrorForward('get engravings details function', e, res))
-            }).catch(e => sendErrorForward('get gems details function', e, res)))
-
-            promiseArray.push(getStitchings(detailing, item.stitchings, res).then(stitchings => {
-                item.stitchings = stitchings
-            }).catch(e => sendErrorForward('get stitching details function', e, res)))
-
-            Promise.all(promiseArray).then(_ => {
-                item.number = randomIntBetweenTwoInts(item.amount_min, item.amount_max)
-                item = cleanUpItem(item)
-                item.finalPrice = calculateFinalPrice(item)
-                item.wear = randomIntBetweenTwoInts(0, +wear)
-                item.description = getStringDescription(item)
-                resolve(getFormat(item, format))
-            })
-        })
+    Promise.all(finishedItemArray).then(finalItemArray => {
+        checkForContentTypeBeforeSending(res, finalItemArray)
     })
 }
 
-module.exports = controllerFunctions
+
+module.exports = {
+    getItems
+}

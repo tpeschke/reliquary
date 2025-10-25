@@ -987,4 +987,8 @@ VALUES
 ('Heavy Feathers', 1.5, NULL, NULL),
 ('Tallow', 1, NULL, NULL),
 ('Animal Guts', 1, NULL, NULL),
-('Horn', 1, NULL, NULL);
+('Horn', 1, NULL, NULL),
+('Strawberry', 1.25, NULL, NULL),
+('Blueberry', 1, NULL, NULL),
+('Raspberry', 1.25, NULL, NULL),
+('Cranberry', .75, NULL, NULL);

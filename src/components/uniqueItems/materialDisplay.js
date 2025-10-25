@@ -1,6 +1,6 @@
 export function mapMaterial({ material, materialCategory, bonus, confBonus }, i) {
     return (
-        <li key={'material' + i}>
+        <ul key={'material' + i}>
             <li>{material} {materialCategory ? `( ${materialCategory} )` : ''}</li>
             <ul>
                 {bonus && (
@@ -10,6 +10,6 @@ export function mapMaterial({ material, materialCategory, bonus, confBonus }, i)
                     </>
                 )}
             </ul>
-        </li>
+        </ul>
     )
 }

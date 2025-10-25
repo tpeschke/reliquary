@@ -104,7 +104,7 @@ const categoryIconDictionary = {
 export default function UniqueItems() {
     const [loading, setLoading] = useState(true);
     const [items, setItems] = useState([]);
-    const [category, setCategory] = useState(9);
+    const [category, setCategory] = useState(10);
     const [rarity, setRarity] = useState(1);
     const [detail, setDetail] = useState('M');
 
@@ -160,7 +160,7 @@ export default function UniqueItems() {
         event.stopPropagation()
 
         navigator.clipboard.writeText(description);
-        toast.success(`${itemName}'s desctipion has been copied`)
+        toast.success(`${itemName}'s description has been copied`)
     }
 
     return (
