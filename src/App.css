@@ -41,19 +41,19 @@ h1 {
 }
 
 h2 {
-  color: #a36528;
+  color: #222;
   font-family: 'Hamlet';
 }
 
 h3 {
-  font-size: 18px;
-  color: grey;
+  font-size: 15px;
+  color: #222;
   font-family: 'OldClaude';
 }
 
 h4 {
   font-weight: 100;
-  color: grey;
+  color: gray;
   font-family: 'OldClaude';
   font-size: 17px;
 }
@@ -198,7 +198,7 @@ input {
   justify-content: start;
   flex-wrap: wrap;
   flex-direction: column;
-  height: 150px;
+  max-height: 150px;
   overflow: auto;
   border-top: 1px solid lightgrey;
   padding-top: 15px;
@@ -215,6 +215,7 @@ input {
 
 .item-detail p {
   margin-left: 5px;
+  color: #000;
 }
 
 .item-detail img {

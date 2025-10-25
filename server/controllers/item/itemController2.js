@@ -186,6 +186,7 @@ async function getItem(resolve, { category, rarity, detail, wear }) {
     const engravings = await getEngravings(item.engravings, detail)
     const gems = await getGems(item.gems, detail, rarity)
 
+    // TODO price is coming back 0 for Accessories
     const price = getPrice(item, materialInfo, gems)
 
     const rolledWear = randomIntBetweenTwoInts(0, +wear)

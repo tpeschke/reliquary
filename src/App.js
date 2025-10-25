@@ -11,7 +11,7 @@ import EnchantedItems from './components/enchantedItems/EnchantedItems'
 import Talismans from './components/talismans/Talismans'
 import Scrolls from './components/scrolls/Scrolls'
 import { styled } from '@mui/material/styles';
-import WhiteFire from './assets/WhiteFire.png'
+import logo from './assets/logo.png'
 import { useEffect } from 'react';
 import { Toaster } from 'react-hot-toast';
 
@@ -104,7 +104,7 @@ function App() {
     <div className="App">
       <div className="tab-menu">
         <div className='title-shell'>
-          <img src={WhiteFire} alt="Bonfire Logo" width="50" height="50" />
+          <img src={logo} alt="Bonfire Logo" width="50" height="50" />
           <h1>Bonfire Reliquary</h1>
         </div>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
