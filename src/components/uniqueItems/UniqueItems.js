@@ -145,7 +145,7 @@ export default function UniqueItems() {
                 paramString += `&${key}=${params[key]}`
             }
         }
-        axios.post(constants.baseUrl + '/api/getItems?number=25' + paramString).then(({ data }) => {
+        axios.post(constants.baseUrl + '/api/getItems?number=10' + paramString).then(({ data }) => {
             if (data.color) {
                 toast.error(data.message)
                 setLoading(false)
