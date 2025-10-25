@@ -10,7 +10,6 @@ function formatTwo(item, materialInfo) {
 }
 
 function formatThree(item, materialInfo) {
-    console.log(item, materialInfo)
     const baseString = `${aOrAn(item.item)} ${item.item} with`
     const materialString = materialInfo.map((material, index) => {
         const bonusString = getBonusString(material.bonus, material.rarity)

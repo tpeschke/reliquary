@@ -827,35 +827,35 @@ CREATE TABLE musical_instrument_table (
 INSERT INTO musical_instrument_table
 (weight, item, format, collective, max_number, price, size, colors, engravings, gems, tableid)
 VALUES
-(1, 'Adufe', 1, NULL, 5.3, NULL, 'S', 1, 1, 1, 21),
-(1, 'Bagpipes', 3, NULL, 94.9, NULL, 'M', 3, 2, NULL, 21),
-(1, 'Bladder Pipe', 3, NULL, 35, NULL, 'S', 2, 1, NULL, 21),
-(1, 'Citole', 1, NULL, 50, NULL, 'M', 1, 1, NULL, 21),
-(1, 'Crumhorn', 1, NULL, 25, NULL, 'S', 1, 1, NULL, 21),
-(1, 'Dulcimer', 1, NULL, 70, NULL, 'L', 1, 1, 1, 21),
-(1, 'Fiddle', 1, NULL, 80, NULL, 'M', 1, 1, 1, 21),
-(1, 'Frame Drum', 3, NULL, 3, NULL, 'S', 1, 1, NULL, 21),
-(1, 'Gittern', 1, NULL, 75, NULL, 'S', 1, 1, NULL, 21),
-(1, 'Glockenspiel', 3, NULL, 7, NULL, 'L', 1, 2, 1, 21),
-(1, 'Guitarra', 1, NULL, 35, NULL, 'M', 1, 2, NULL, 21),
-(1, 'Harp', 1, NULL, 40, NULL, 'M', 1, 3, 2, 21),
-(1, 'Hurdy-Gurdy', 3, NULL, 100, NULL, 'L', 1, 2, NULL, 21),
-(1, 'Lute', 1, NULL, 95, NULL, 'M', 1, 2, NULL, 21),
-(1, 'Mandolin', 1, NULL, 60, NULL, 'M', 1, 2, NULL, 21),
-(1, 'Naqareh', 3, NULL, 18.7, NULL, 'S', 1, 2, NULL, 21),
-(1, 'Oud', 1, NULL, 42.5, NULL, 'L', 1, 1, NULL, 21),
-(1, 'Psalterium', 1, NULL, 200, NULL, 'L', 1, 3, 3, 21),
-(1, 'Rebec', 1, NULL, 42.5, NULL, 'M', 1, 1, NULL, 21),
-(1, 'Recorder', 1, NULL, 5, NULL, 'S', 1, 1, NULL, 21),
-(1, 'Sackbut', 1, NULL, 41.5, NULL, 'M', 1, 1, NULL, 21),
-(1, 'Shawm', 1, NULL, 34.5, NULL, 'L', 1, 1, NULL, 21),
-(1, 'String Drum', 1, NULL, 27, NULL, 'M', 2, 1, NULL, 21),
-(1, 'Tabor Drum', 3, NULL, 6.5, NULL, 'M', 2, 1, NULL, 21),
-(1, 'Tabor Pipe', 1, NULL, 26.5, NULL, 'S', 1, 1, NULL, 21),
-(1, 'Timbrel', 3, NULL, 5.5, NULL, 'S', 1, 1, NULL, 21),
-(1, 'Viol', 1, NULL, 100, NULL, 'M', 1, 1, NULL, 21),
-(1, 'Zampogna', 3, NULL, 75, NULL, 'L', 2, 1, NULL, 21),
-(1, 'Hunting Horn', 1, NULL, 25, NULL, 'S', 1, 1, NULL, 21);
+(1, 'Adufe', 1, NULL, 5.3, NULL, 'S', 1, 1, 1, 22),
+(1, 'Bagpipes', 3, NULL, 94.9, NULL, 'M', 3, 2, NULL, 22),
+(1, 'Bladder Pipe', 3, NULL, 35, NULL, 'S', 2, 1, NULL, 22),
+(1, 'Citole', 1, NULL, 50, NULL, 'M', 1, 1, NULL, 22),
+(1, 'Crumhorn', 1, NULL, 25, NULL, 'S', 1, 1, NULL, 22),
+(1, 'Dulcimer', 1, NULL, 70, NULL, 'L', 1, 1, 1, 22),
+(1, 'Fiddle', 1, NULL, 80, NULL, 'M', 1, 1, 1, 22),
+(1, 'Frame Drum', 3, NULL, 3, NULL, 'S', 1, 1, NULL, 22),
+(1, 'Gittern', 1, NULL, 75, NULL, 'S', 1, 1, NULL, 22),
+(1, 'Glockenspiel', 3, NULL, 7, NULL, 'L', 1, 2, 1, 22),
+(1, 'Guitarra', 1, NULL, 35, NULL, 'M', 1, 2, NULL, 22),
+(1, 'Harp', 1, NULL, 40, NULL, 'M', 1, 3, 2, 22),
+(1, 'Hurdy-Gurdy', 3, NULL, 100, NULL, 'L', 1, 2, NULL, 22),
+(1, 'Lute', 1, NULL, 95, NULL, 'M', 1, 2, NULL, 22),
+(1, 'Mandolin', 1, NULL, 60, NULL, 'M', 1, 2, NULL, 22),
+(1, 'Naqareh', 3, NULL, 18.7, NULL, 'S', 1, 2, NULL, 22),
+(1, 'Oud', 1, NULL, 42.5, NULL, 'L', 1, 1, NULL, 22),
+(1, 'Psalterium', 1, NULL, 200, NULL, 'L', 1, 3, 3, 22),
+(1, 'Rebec', 1, NULL, 42.5, NULL, 'M', 1, 1, NULL, 22),
+(1, 'Recorder', 1, NULL, 5, NULL, 'S', 1, 1, NULL, 22),
+(1, 'Sackbut', 1, NULL, 41.5, NULL, 'M', 1, 1, NULL, 22),
+(1, 'Shawm', 1, NULL, 34.5, NULL, 'L', 1, 1, NULL, 22),
+(1, 'String Drum', 1, NULL, 27, NULL, 'M', 2, 1, NULL, 22),
+(1, 'Tabor Drum', 3, NULL, 6.5, NULL, 'M', 2, 1, NULL, 22),
+(1, 'Tabor Pipe', 1, NULL, 26.5, NULL, 'S', 1, 1, NULL, 22),
+(1, 'Timbrel', 3, NULL, 5.5, NULL, 'S', 1, 1, NULL, 22),
+(1, 'Viol', 1, NULL, 100, NULL, 'M', 1, 1, NULL, 22),
+(1, 'Zampogna', 3, NULL, 75, NULL, 'L', 2, 1, NULL, 22),
+(1, 'Hunting Horn', 1, NULL, 25, NULL, 'S', 1, 1, NULL, 22);
 
 -- Personal Containers ID: 23
 CREATE TABLE personal_containers_table (
@@ -876,47 +876,90 @@ CREATE TABLE personal_containers_table (
 INSERT INTO personal_containers_table
 (weight, item, format, collective, price, size, colors, engravings, gems, tableid)
 VALUES
-(2, 'Amphora', 1, NULL, 'L', 9, 7, 1, NULL, 22),
-(2, 'Backpack', 9, 'Large', NULL, 'S', 3, 1, NULL, 22),
-(2, 'Backpack', 9, 'Medium', NULL, 'S', 3, 1, NULL, 22),
-(2, 'Backpack', 9, 'Small', NULL, 'S', 3, 1, NULL, 22),
-(2, 'Bag', 9, 'Medium', NULL, 'S', 3, 1, NULL, 22),
-(2, 'Bag', 9, 'Small', NULL, 'S', 3, 1, NULL, 22),
-(2, 'Bandoleer', 1, NULL, NULL, 'T', 1, 2, NULL, 22),
-(2, 'Barrel', 9, '12 Gal.', NULL, 'S', 1, 1, NULL, 22),
-(2, 'Basket', 9, 'Medium', NULL, 'S', 1, NULL, NULL, 22),
-(2, 'Basket', 9, 'Small', NULL, 'S', 1, NULL, NULL, 22),
-(2, 'Beaker', 1, NULL, NULL, 'D', 1, NULL, NULL, 22),
-(2, 'Bottle', 1, NULL, NULL, 'T', 2, 1, NULL, 22),
-(2, 'Box', 9, 'Medium', NULL, 'S', 3, 1, NULL, 22),
-(2, 'Box', 9, 'Small', NULL, 'S', 3, 1, NULL, 22),
-(2, 'Bucket', 9, '1 Gal.', NULL, 'S', 1, NULL, NULL, 22),
-(2, 'Bucket', 9, '5 Gal.', NULL, 'S', 1, NULL, NULL, 22),
-(2, 'Canteen', 1, NULL, NULL, 'S', 3, 3, 1, 22),
-(2, 'Map/Scroll Case', 1, NULL, NULL, 'S', 3, 4, 1, 22),
-(2, 'Cask', 9, '2 Gal.', NULL, 'S', 1, 1, NULL, 22),
-(2, 'Chest', 9, 'Medium', NULL, 'L', 1, 2, NULL, 22),
-(2, 'Chest', 9, 'Small', NULL, 'M', 1, 2, NULL, 22),
-(2, 'Coin Purse', 1, NULL, NULL, 'T', 4, 3, NULL, 22),
-(2, 'Cup', 1, NULL, NULL, 'T', 1, 1, 1, 22),
-(2, 'Flask', 1, NULL, NULL, 'T', 1, 4, 1, 22),
-(2, 'Jar', 1, NULL, NULL, 'T', 1, 1, NULL, 22),
-(2, 'Jug', 1, NULL, NULL, 'S', 1, 1, NULL, 22),
-(3, 'Mug', 1, NULL, NULL, 'T', 1, 2, NULL, 22),
-(2, 'Pitcher', 1, NULL, NULL, 'S', 1, 2, NULL, 22),
-(4, 'Pot', 9, 'Small', NULL, 'S', 1, 1, NULL, 22),
-(3, 'Belt Pouch', 9, 'Medium', NULL, 'S', 3, 1, NULL, 22),
-(2, 'Belt Pouch', 9, 'Small', NULL, 'S', 3, 1, NULL, 22),
-(5, 'Quiver', 1, NULL, NULL, 'S', 4, 2, 1, 22),
-(1, 'Ring with a Poison Container', 1, NULL, NULL, 'D', 4, 4, 3, 22),
-(2, 'Saddlebags', 9, 'Large', NULL, 'H', 3, 2, 1, 22),
-(2, 'Saddlebags', 9, 'Medium', NULL, 'L', 3, 2, 1, 22),
-(2, 'Saddlebags', 9, 'Small', NULL, 'M', 3, 2, 1, 22),
-(3, 'Sheathe', 9, 'Small', NULL, 'S', 4, 3, 2, 22),
-(3, 'Sheathe', 9, 'Medium', NULL, 'S', 4, 2, 2, 22),
-(3, 'Sheathe', 9, 'Large', NULL, 'S', 4, 2, 2, 22),
-(4, 'Vial Holder Belt', 1, NULL, NULL, 'T', 2, 2, NULL, 22),
-(2, 'Waterskin', 1, NULL, NULL, 'S', 1, 2, NULL, 22);
+(2, 'Amphora', 1, NULL, null, 'L', 7, 1, NULL, 23),
+(2, 'Backpack', 9, 'Large', NULL, 'S', 3, 1, NULL, 23),
+(2, 'Backpack', 9, 'Medium', NULL, 'S', 3, 1, NULL, 23),
+(2, 'Backpack', 9, 'Small', NULL, 'S', 3, 1, NULL, 23),
+(2, 'Bag', 9, 'Medium', NULL, 'S', 3, 1, NULL, 23),
+(2, 'Bag', 9, 'Small', NULL, 'S', 3, 1, NULL, 23),
+(2, 'Bandoleer', 1, NULL, NULL, 'T', 1, 2, NULL, 23),
+(2, 'Barrel', 9, '12 Gal.', NULL, 'S', 1, 1, NULL, 23),
+(2, 'Basket', 9, 'Medium', NULL, 'S', 1, NULL, NULL, 23),
+(2, 'Basket', 9, 'Small', NULL, 'S', 1, NULL, NULL, 23),
+(2, 'Beaker', 1, NULL, NULL, 'D', 1, NULL, NULL, 23),
+(2, 'Bottle', 1, NULL, NULL, 'T', 2, 1, NULL, 23),
+(2, 'Box', 9, 'Medium', NULL, 'S', 3, 1, NULL, 23),
+(2, 'Box', 9, 'Small', NULL, 'S', 3, 1, NULL, 23),
+(2, 'Bucket', 9, '1 Gal.', NULL, 'S', 1, NULL, NULL, 23),
+(2, 'Bucket', 9, '5 Gal.', NULL, 'S', 1, NULL, NULL, 23),
+(2, 'Canteen', 1, NULL, NULL, 'S', 3, 3, 1, 23),
+(2, 'Map/Scroll Case', 1, NULL, NULL, 'S', 3, 4, 1, 23),
+(2, 'Cask', 9, '2 Gal.', NULL, 'S', 1, 1, NULL, 23),
+(2, 'Chest', 9, 'Medium', NULL, 'L', 1, 2, NULL, 23),
+(2, 'Chest', 9, 'Small', NULL, 'M', 1, 2, NULL, 23),
+(2, 'Coin Purse', 1, NULL, NULL, 'T', 4, 3, NULL, 23),
+(2, 'Cup', 1, NULL, NULL, 'T', 1, 1, 1, 23),
+(2, 'Flask', 1, NULL, NULL, 'T', 1, 4, 1, 23),
+(2, 'Jar', 1, NULL, NULL, 'T', 1, 1, NULL, 23),
+(2, 'Jug', 1, NULL, NULL, 'S', 1, 1, NULL, 23),
+(3, 'Mug', 1, NULL, NULL, 'T', 1, 2, NULL, 23),
+(2, 'Pitcher', 1, NULL, NULL, 'S', 1, 2, NULL, 23),
+(4, 'Pot', 9, 'Small', NULL, 'S', 1, 1, NULL, 23),
+(3, 'Belt Pouch', 9, 'Medium', NULL, 'S', 3, 1, NULL, 23),
+(2, 'Belt Pouch', 9, 'Small', NULL, 'S', 3, 1, NULL, 23),
+(5, 'Quiver', 1, NULL, NULL, 'S', 4, 2, 1, 23),
+(1, 'Ring with a Poison Container', 1, NULL, NULL, 'D', 4, 4, 3, 23),
+(2, 'Saddlebags', 9, 'Large', NULL, 'H', 3, 2, 1, 23),
+(2, 'Saddlebags', 9, 'Medium', NULL, 'L', 3, 2, 1, 23),
+(2, 'Saddlebags', 9, 'Small', NULL, 'M', 3, 2, 1, 23),
+(3, 'Sheathe', 9, 'Small', NULL, 'S', 4, 3, 2, 23),
+(3, 'Sheathe', 9, 'Medium', NULL, 'S', 4, 2, 2, 23),
+(3, 'Sheathe', 9, 'Large', NULL, 'S', 4, 2, 2, 23),
+(4, 'Vial Holder Belt', 1, NULL, NULL, 'T', 2, 2, NULL, 23),
+(2, 'Waterskin', 1, NULL, NULL, 'S', 1, 2, NULL, 23);
+
+
+UPDATE personal_containers_table SET price = 0.5 WHERE id = 1;
+UPDATE personal_containers_table SET price = 15 WHERE id = 2;
+UPDATE personal_containers_table SET price = 10 WHERE id = 3;
+UPDATE personal_containers_table SET price = 9 WHERE id = 4;
+UPDATE personal_containers_table SET price = 6.5 WHERE id = 5;
+UPDATE personal_containers_table SET price = 5 WHERE id = 6;
+UPDATE personal_containers_table SET price = 5 WHERE id = 7;
+UPDATE personal_containers_table SET price = 10 WHERE id = 8;
+UPDATE personal_containers_table SET price = 10 WHERE id = 9;
+UPDATE personal_containers_table SET price = 5 WHERE id = 10;
+UPDATE personal_containers_table SET price = 50 WHERE id = 11;
+UPDATE personal_containers_table SET price = 0.04 WHERE id = 12;
+UPDATE personal_containers_table SET price = 10 WHERE id = 13;
+UPDATE personal_containers_table SET price = 5 WHERE id = 14;
+UPDATE personal_containers_table SET price = 3 WHERE id = 15;
+UPDATE personal_containers_table SET price = 5 WHERE id = 16;
+UPDATE personal_containers_table SET price = 2 WHERE id = 17;
+UPDATE personal_containers_table SET price = 6 WHERE id = 18;
+UPDATE personal_containers_table SET price = 3 WHERE id = 19;
+UPDATE personal_containers_table SET price = 6 WHERE id = 20;
+UPDATE personal_containers_table SET price = 3 WHERE id = 21;
+UPDATE personal_containers_table SET price = 0.4 WHERE id = 22;
+UPDATE personal_containers_table SET price = 0.7 WHERE id = 23;
+UPDATE personal_containers_table SET price = 0.7 WHERE id = 24;
+UPDATE personal_containers_table SET price = 0.7 WHERE id = 25;
+UPDATE personal_containers_table SET price = 5 WHERE id = 26;
+UPDATE personal_containers_table SET price = 0.02 WHERE id = 27;
+UPDATE personal_containers_table SET price = 0.5 WHERE id = 28;
+UPDATE personal_containers_table SET price = 1.2 WHERE id = 29;
+UPDATE personal_containers_table SET price = 1.2 WHERE id = 30;
+UPDATE personal_containers_table SET price = 0.5 WHERE id = 31;
+UPDATE personal_containers_table SET price = 2.5 WHERE id = 32;
+UPDATE personal_containers_table SET price = 15 WHERE id = 33;
+UPDATE personal_containers_table SET price = 15 WHERE id = 34;
+UPDATE personal_containers_table SET price = 10 WHERE id = 35;
+UPDATE personal_containers_table SET price = 5 WHERE id = 36;
+UPDATE personal_containers_table SET price = 2.5 WHERE id = 37;
+UPDATE personal_containers_table SET price = 5 WHERE id = 38;
+UPDATE personal_containers_table SET price = 10 WHERE id = 39;
+UPDATE personal_containers_table SET price = 5 WHERE id = 40;
+UPDATE personal_containers_table SET price = 4.5 WHERE id = 41;
 
 -- FUCK UP HERE
 -- Raw Good ID: 23 -> 24

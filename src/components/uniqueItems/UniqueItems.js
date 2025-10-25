@@ -73,12 +73,12 @@ const categoryIconDictionary = {
     'Footwear': footwear,
     'Headgear': headgear,
     'Entertainment': entertainment,
-    'Fabrics & Ropes': fabrics,
+    'Fabric & Ropes': fabrics,
     'Bread': bread,
-    'Fruit & Vegetables': fruit,
+    'Fruits & Veggies': fruit,
     'Nuts': nuts,
     'Prepped Foods': prepped,
-    'Protein': protein,
+    'Meat': protein,
     'Spices': spices,
     'Household Items': household,
     'Illumination': illumination,
@@ -91,20 +91,20 @@ const categoryIconDictionary = {
     'Shields': shields,
     'Trade Tools': trade,
     'Weapon: Axes': axes,
-    'Weapon: Firearms': firearms,
+    'Ranged Weapon: Firearms': firearms,
     'Ranged Weapon: Mechanical': mechanical,
     'Weapon: Polearms': polearms,
     'Weapon: Sidearms': sidearms,
     'Weapon: Swords': swords,
     'Ranged Weapon: Thrown': thrown,
-    'Ranged Weapon: Trauma': trauma,
+    'Weapon: Trauma': trauma,
     'Works of Art': art
 }
 
 export default function UniqueItems() {
     const [loading, setLoading] = useState(true);
     const [items, setItems] = useState([]);
-    const [category, setCategory] = useState(10);
+    const [category, setCategory] = useState(null);
     const [rarity, setRarity] = useState(1);
     const [detail, setDetail] = useState('M');
 

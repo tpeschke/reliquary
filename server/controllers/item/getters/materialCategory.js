@@ -1,4 +1,4 @@
-const materialNameDictionary = [null, 'Cloth', null, 'Metal', 'Paper', 'Stone', 'Wood', 'Wax', '']
+const { materialNameDictionary } = require('../dictionaries/materialNameDictionary')
 
 function getMaterialCategory(materialInfo) {
     if (!materialInfo?.categoryid) { return '' }

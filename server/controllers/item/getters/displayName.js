@@ -1,3 +1,5 @@
+const { materialNameDictionary } = require("../dictionaries/materialNameDictionary")
+
 function getDisplayName(materialInfo) {
     switch (+materialInfo?.categoryid) {
         case 1:
