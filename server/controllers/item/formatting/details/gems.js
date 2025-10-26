@@ -13,3 +13,7 @@ function formatGems(gems) {
 
     return gemString
 }
+
+module.exports = {
+    formatGems
+}

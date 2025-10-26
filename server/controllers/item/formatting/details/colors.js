@@ -13,3 +13,7 @@ function formatColors(colors) {
 
     return colorString
 }
+
+module.exports = {
+   formatColors 
+}

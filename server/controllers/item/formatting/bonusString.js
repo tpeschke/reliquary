@@ -3,7 +3,7 @@ function getBonusString(bonus, rarity) {
 
     if (bonusBase === '') { return '' }
 
-    return rarity && rarity - 1 !== 0 ? bonusBase + ` / ${rarity - 1} Position)` : bonusBase + ')'
+    return rarity && rarity - 1 !== 0 ? bonusBase + ` / +${rarity - 1} Position)` : bonusBase + ')'
 }
 
 module.exports = {

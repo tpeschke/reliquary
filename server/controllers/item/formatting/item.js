@@ -1,5 +1,6 @@
 const { formatStringDescription } = require("./stringDescription")
 const { getCategoryName } = require('../getters/categoryName')
+const { gemSizeDictionary } = require('../dictionaries/gemSize')
 
 function formatItem(item, materialInfo, colors, engravings, gems, rolledWear, price) {
     return {

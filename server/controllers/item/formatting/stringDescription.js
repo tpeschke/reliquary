@@ -10,6 +10,9 @@ const {
     formatNine
 } = require('./descriptionFormats')
 const { createDescriptiveWear } = require('./wear')
+const { formatColors } = require('./details/colors')
+const { formatEngravings } = require("./details/engravings")
+const { formatGems } = require("./details/gems")
 
 function formatStringDescription(item, materialInfo, colors, engravings, gems, rolledWear, price) {
     let baseString = formatAccordingToType(item, materialInfo)

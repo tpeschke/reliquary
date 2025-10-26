@@ -9,3 +9,7 @@ const gemSizeDictionary = {
     4: 10,
     5: 20
 }
+
+module.exports = {
+    gemSizeDictionary
+}

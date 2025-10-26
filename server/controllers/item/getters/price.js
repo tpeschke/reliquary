@@ -1,3 +1,5 @@
+const { gemSizeDictionary } = require('../dictionaries/gemSize')
+
 function getPrice(item, materialInfo, gems) {
     const basePrice = +item.price * materialInfo.reduce((multiplier, material) => {
         return multiplier * +material.price_multiplier

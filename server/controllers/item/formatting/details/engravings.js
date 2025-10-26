@@ -1,3 +1,5 @@
+const { aOrAn } = require('../aOrAn')
+
 function formatEngravings(materialInfo, engravings) {
     let engravingsString = getEngravingVerb(materialInfo)
 
@@ -36,4 +38,8 @@ function getEngravingVerb(materialInfo) {
         }
     }
     return 'engraved with'
+}
+
+module.exports = {
+    formatEngravings
 }

@@ -1,5 +1,6 @@
 const { aOrAn } = require('./aOrAn')
 const { getBonusString } = require('./bonusString')
+const { materialNameDictionary } = require('../dictionaries/materialNameDictionary')
 
 function formatOne(item, materialInfo) {
     return `${aOrAn(materialInfo[0].displayName)} ${materialInfo[0].displayName}${getBonusString(materialInfo[0].bonus, materialInfo[0].rarity)} ${item.item}`
