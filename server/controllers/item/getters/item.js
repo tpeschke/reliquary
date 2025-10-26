@@ -4,20 +4,21 @@ const { getDetails } = require('./details/main')
 const { getPrice} = require('./price')
 const { randomIntBetweenTwoInts } = require('../../../helpers')
 const { formatItem } = require('../formatting/item')
+const { updatedCategoryIDDictionary } = require("../dictionaries/updatedCategoryIDDictionary")
 
 async function getItemsFromArray(items, finishedItemArray, defaults) {
-    const { format, category, rarity, detail, wear } = defaults
-
+    const { format, category, rarity, detail, wear, version } = defaults
     for (let i = 0; i < items.length && i < 25; i++) {
         const item = items[i]
 
         finishedItemArray.push(new Promise(resolve => {
             category ? item.category = category : null
-            rarity ? item.rarity = rarity : null
-            detail ? item.detail = detail : null
-            wear ? item.wear = wear : null
+            rarity ? item.rarity = rarity : 1
+            detail ? item.detail = detail : 'N'
+            wear ? item.wear = wear : 0,
+            version ? item.version = version : 1
 
-            return getItem(resolve, format, item)
+            return getItem(resolve, {...item, format})
         }))
     }
 }
@@ -36,8 +37,11 @@ where
 WHERE 
 row_num = 1;`
 
-async function getItem(resolve, { category, rarity, detail, wear }) {
-    const [item] = await query(getCategorySQL(category), [])
+async function getItem(resolve, { category, rarity, detail, wear, version, format }) {
+    const categoryID = updatedCategoryIDDictionary(category, +version)
+
+    const [item] = await query(getCategorySQL(categoryID), [])
+
     const materials = await query(itemMaterialSQL, [item.id, item.tableid])
 
     const materialInfo = await getMaterialInfo(materials, rarity)
@@ -48,7 +52,7 @@ async function getItem(resolve, { category, rarity, detail, wear }) {
 
     const rolledWear = randomIntBetweenTwoInts(0, +wear)
 
-    resolve(formatItem(item, materialInfo, colors, engravings, gems, rolledWear, price))
+    resolve(formatItem(format, item, materialInfo, colors, engravings, gems, rolledWear, price))
 }
 
 module.exports = {

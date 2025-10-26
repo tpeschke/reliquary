@@ -6,7 +6,7 @@ const enchantedCtrl = require('./enchantedController')
     , potionCtrl = require('./potionController')
     , scrollCtrl = require('./scroll/scrollController')
     , talismanCtrl = require('./talismanController')
-    , itemCtrl = require('./item/ItemController')
+    , { getItemsFromArray } = require('./item/getters/item')
 
 controllerFunctions = {
     getTreasure: (req, res) => {
@@ -52,9 +52,9 @@ controllerFunctions = {
             }
             if (request.items && request.items.length > 0) {
                 const { items } = request
-                
+
                 let itemPromiseArray = []
-                itemCtrl.getItemsFromArray(items, itemPromiseArray, {format: 'OBJECT'})
+                getItemsFromArray(items, itemPromiseArray, {format: 'INFO'})
 
                 promiseArray.push(Promise.all(itemPromiseArray).then(items => {
                     resultArray[index] = [...resultArray[index], ...items]

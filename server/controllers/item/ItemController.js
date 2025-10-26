@@ -1,22 +1,19 @@
 const { checkForContentTypeBeforeSending } = require('../../helpers')
-const { updatedCategoryIDDictionary } = require('./dictionaries/updatedCategoryIDDictionary')
 const { getItemsFromArray, getItem } = require('./getters/item')
 
 async function getItems(req, res) {
     const { items } = req.body
     const { format, category, rarity = 1, detail = 'N', wear = 0, number = 1, version = 1 } = req.query
 
-    const categoryID = updatedCategoryIDDictionary(category, +version)
-
     let finishedItemArray = []
 
     if (items && items.length > 0) {
-        getItemsFromArray(items, finishedItemArray, { format, category: categoryID, rarity: +rarity, detail, wear })
+        getItemsFromArray(items, finishedItemArray, { format, category, rarity: +rarity, detail, wear, version })
     }
 
     for (let i = 0; i < number && i < 25; i++) {
         finishedItemArray.push(new Promise(resolve => {
-            return getItem(resolve, { category: categoryID, rarity: +rarity, detail, wear })
+            return getItem(resolve, { category, rarity: +rarity, detail, wear, version })
         }))
     }
 

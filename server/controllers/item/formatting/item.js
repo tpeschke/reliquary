@@ -2,10 +2,17 @@ const { formatStringDescription } = require("./stringDescription")
 const { getCategoryName } = require('../getters/categoryName')
 const { gemSizeDictionary } = require('../dictionaries/gemSize')
 
-function formatItem(item, materialInfo, colors, engravings, gems, rolledWear, price) {
+function formatItem(format, item, materialInfo, colors, engravings, gems, rolledWear, price) {
+    if (format === 'INFO') {
+        return {
+            type: 'generic',
+            info: formatStringDescription(item, materialInfo, colors, engravings, gems, rolledWear, price)
+        }
+    }
+
     return {
         id: item.id,
-        string: formatStringDescription(item, materialInfo, colors, engravings, gems, rolledWear, price),
+        info: formatStringDescription(item, materialInfo, colors, engravings, gems, rolledWear, price),
         category: getCategoryName(item.tableid),
         item: item.item,
         materials: materialInfo.map(({material, category, bonus, rarity}) => {
