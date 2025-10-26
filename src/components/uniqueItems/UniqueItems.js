@@ -215,7 +215,7 @@ export default function UniqueItems() {
                                                         <p>{item.price} sc {item.wear ? ` with ${item.wear} Wear` : ''}</p>
                                                     </div>
                                                     <div>
-                                                        {item.string} <i onClick={e => copyToClipboard(e, item.item, item.string)} className="fa-solid fa-copy"></i>
+                                                        {item.info} <i onClick={e => copyToClipboard(e, item.item, item.string)} className="fa-solid fa-copy"></i>
                                                     </div>
                                                 </div>
                                             </div>
