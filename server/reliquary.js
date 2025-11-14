@@ -1,5 +1,4 @@
-const { connection } = require('./serverConfig')
-    , express = require('express')
+const express = require('express')
     , bodyParser = require('body-parser')
     , cors = require('cors')
 const itemCtrl = require('./controllers/item/ItemController.js')
