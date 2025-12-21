@@ -30,7 +30,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "host": "pm2 restart server/reliquary.js"
+    "restart-server": "pm2 restart server/reliquary.js",
+    "host": "git pull && npm run build && npm run restart-server"
   },
   "eslintConfig": {
     "extends": [
