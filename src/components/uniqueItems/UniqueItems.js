@@ -186,7 +186,7 @@ export default function UniqueItems() {
                                 </select>
                             </div>
                             <div>
-                                <p className='select-label'>detail</p>
+                                <p className='select-label'>Detail</p>
                                 <select onChange={setDetailOnChange} value={detail}>
                                     <option value={'N'}>None</option>
                                     <option value={'L'}>Low</option>

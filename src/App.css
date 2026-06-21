@@ -2,6 +2,7 @@
   font-family: 'Hamlet';
   src: local('Hamlet'), url(./assets/Hamletornot.ttf) format('truetype');
 }
+
 @font-face {
   font-family: 'OldClaude';
   src: url(./assets/OldClaude.otf) format('opentype');
@@ -28,7 +29,12 @@ body {
   background-repeat: repeat;
 }
 
-h1, h2, h3, h4, h5, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
   margin: 0;
   letter-spacing: 1.5px;
 }
@@ -78,16 +84,16 @@ input {
   border-bottom-left-radius: 5px;
 }
 
- select {
+select {
   border: none;
   border-radius: 5px;
-  padding: 8px;
+  padding: 5px;
   margin-right: 5px
- }
+}
 
- .select-label {
+.select-label {
   margin-right: 5px;
- }
+}
 
 .tab-menu {
   display: flex;
@@ -104,6 +110,23 @@ input {
   align-items: center;
 }
 
+.item-link-shell a {
+  color: whitesmoke;
+  font-size: 25px;
+  margin-left: 20px;
+}
+
+.item-link-shell a:hover {
+  border-bottom: 3px solid whitesmoke
+}
+
+.item-link-shell a.disabled,
+.item-link-shell a.disabled:hover {
+  color: rgba(0, 0, 0, 0.25);
+  cursor: unset;
+  border-bottom: unset
+}
+
 .input-shell {
   padding: 0 0 15px;
   display: flex;
@@ -112,8 +135,13 @@ input {
 
 .input-shell div {
   display: flex;
+  flex-wrap: wrap;
   justify-content: start;
   align-items: center;
+}
+
+.input-shell div>* {
+  margin: 1px
 }
 
 .input-shell p {
@@ -171,7 +199,8 @@ input {
   display: flex;
 }
 
-.potion-shell img, .talisman-shell img {
+.potion-shell img,
+.talisman-shell img {
   margin-right: 10px;
 }
 
@@ -222,7 +251,7 @@ input {
   transition: .6s;
   margin-left: 10px;
   padding: 0 5px;
-  vertical-align: bottom; 
+  vertical-align: bottom;
 }
 
 .item-detail img:hover {
@@ -234,7 +263,7 @@ input {
   margin-bottom: 10px;
 }
 
-.subject-shell { 
+.subject-shell {
   margin-left: 15px;
 }
 
@@ -265,4 +294,30 @@ input {
 
 .span-flex {
   display: flex;
+}
+
+@media (max-width: 646px) {
+  h1 {
+    font-size: 28px;
+  }
+
+  .tab-menu {
+    flex-direction: column;
+    padding-bottom: 10px;
+  }
+
+  .item-link-shell {
+    margin-right: 15px;
+    margin-top: 5px;
+    display: flex;
+  }
+
+  .item-link-shell a {
+    font-size: 35px;
+  }
+
+  .input-shell {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
