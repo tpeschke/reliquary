@@ -6,7 +6,6 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Button from '@mui/material/Button';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import Loading from '../loading/Loading'
 import ItemDetails from './ItemDetails'
@@ -48,19 +47,6 @@ import trauma from '../../assets/icons/equipment/weapons-trauma.svg'
 import art from '../../assets/icons/equipment/works-of-art.svg'
 
 import toast from 'react-hot-toast';
-
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-
-const theme = createTheme({
-    palette: {
-        primary: {
-            main: '#a36528',
-        },
-        secondary: {
-            main: '#11cb5f',
-        },
-    },
-});
 
 const categoryIconDictionary = {
     'Academic Tools': academic,
@@ -195,7 +181,7 @@ export default function UniqueItems() {
                                 </select>
                             </div>
                         </div>
-                        <Button variant="contained" onClick={refreshItems} theme={theme}><RefreshIcon /></Button>
+                        <button onClick={refreshItems}><RefreshIcon /></button>
                     </div>
                     <div className='accordion-shell'>
                         {items.map((item, i) => {

@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import constants from '../../constants'
-import Button from '@mui/material/Button';
 import Loading from '../loading/Loading'
 import RefreshIcon from '@mui/icons-material/Refresh';
 import Animism from '../../assets/icons/scrolls/Animism.svg'
@@ -14,7 +13,6 @@ import Sortilege from '../../assets/icons/scrolls/Sortilege.svg'
 import Hexing from '../../assets/icons/scrolls/Hexing.svg'
 
 import toast from 'react-hot-toast';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const categoryIconDictionary = {
     'Animism': Animism,
@@ -26,17 +24,6 @@ const categoryIconDictionary = {
     'Sortilege': Sortilege,
     'Hexing': Hexing
 }
-
-const theme = createTheme({
-    palette: {
-        primary: {
-            main: '#a36528',
-        },
-        secondary: {
-            main: '#11cb5f',
-        },
-    },
-});
 
 export default function Scrolls() {
     const [loading, setLoading] = useState(true);
@@ -75,7 +62,7 @@ export default function Scrolls() {
                         <div>
                             <p>Requires Literacy in the language and takes 2 Sec / SP to read, after which, it shapes the spell. The scroll is destroyed on shape.</p>
                         </div>
-                        <Button variant="contained" onClick={_ => refreshItems()} theme={theme}><RefreshIcon /></Button>
+                        <button onClick={_ => refreshItems()}><RefreshIcon /></button>
                     </div>
                     <div className='accordion-shell-talisman'>
                         {items.map((item, i) => {

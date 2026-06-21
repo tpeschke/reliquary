@@ -6,32 +6,11 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Button from '@mui/material/Button';
 import Loading from '../loading/Loading'
 import potion from '../../assets/icons/potions/potion.svg'
 import salve from '../../assets/icons/potions/salve.svg'
 
 import toast from 'react-hot-toast';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-
-const theme = createTheme({
-    palette: {
-        primary: {
-            main: '#a36528',
-        },
-        secondary: {
-            main: '#11cb5f',
-        },
-    },
-});
-
-const secondarytheme = createTheme({
-    palette: {
-        primary: {
-            main: '#f5f5f5',
-        }
-    },
-});
 
 export default function Potions() {
     const [loading, setLoading] = useState(true);
@@ -80,10 +59,10 @@ export default function Potions() {
                             <p>Search Potions & Salves</p>
                         </div>
                         <div>
-                            <Button variant="contained" onClick={e => refreshItems(e, 'Common')} theme={secondarytheme}>Common</Button>
-                            <Button variant="contained" onClick={e => refreshItems(e, 'Uncommon')} theme={secondarytheme}>Uncommon</Button>
-                            <Button variant="contained" onClick={e => refreshItems(e, 'Rare')} theme={secondarytheme}>Rare</Button>
-                            <Button variant="contained" onClick={_ => refreshItems()} theme={theme}>Any</Button>
+                            <button onClick={e => refreshItems(e, 'Common')} className='secondary' >Common</button>
+                            <button onClick={e => refreshItems(e, 'Uncommon')} className='secondary' >Uncommon</button>
+                            <button onClick={e => refreshItems(e, 'Rare')} className='secondary' >Rare</button>
+                            <button onClick={_ => refreshItems()} >Any</button>
                         </div>
                     </div>
                     <div className='accordion-shell'>

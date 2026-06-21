@@ -6,7 +6,6 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Button from '@mui/material/Button';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import Loading from '../loading/Loading'
 import academic from '../../assets/icons/equipment/academic-tools.svg'
@@ -51,27 +50,6 @@ import link from '../../assets/link.svg'
 import toast from 'react-hot-toast';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-
-const theme = createTheme({
-    palette: {
-        primary: {
-            main: '#a36528',
-        },
-        secondary: {
-            main: '#11cb5f',
-        },
-    },
-});
-
-const secondarytheme = createTheme({
-    palette: {
-        primary: {
-            main: '#f5f5f5',
-        }
-    },
-});
 
 const categoryIconDictionary = {
     'Academic Tools': academic,
@@ -178,7 +156,7 @@ export default function EnchantedItems() {
         })
     }
 
-    function copyToClipboard(event, {name, description, price, power, size}) {
+    function copyToClipboard(event, { name, description, price, power, size }) {
         event.stopPropagation()
 
         navigator.clipboard.writeText(`${name}: 
@@ -204,9 +182,9 @@ export default function EnchantedItems() {
                             <p>Search Enchanted Items</p>
                         </div>
                         <div>
-                            <Button variant="contained" onClick={e => refreshItems(e, false)} theme={secondarytheme}>Minor</Button>
-                            <Button variant="contained" onClick={e => refreshItems(e, true)} theme={secondarytheme}>Major</Button>
-                            <Button variant="contained" onClick={_ => refreshItems()} theme={theme}><RefreshIcon /></Button>
+                            <button onClick={e => refreshItems(e, false)} className='secondary' >Minor</button>
+                            <button onClick={e => refreshItems(e, true)} className='secondary' >Major</button>
+                            <button onClick={_ => refreshItems()}><RefreshIcon /></button>
                         </div>
                     </div>
                     <div className='accordion-shell'>

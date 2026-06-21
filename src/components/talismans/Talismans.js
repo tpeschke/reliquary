@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import constants from '../../constants'
-import Button from '@mui/material/Button';
 import Loading from '../loading/Loading'
 import RefreshIcon from '@mui/icons-material/Refresh';
 import Athletics from '../../assets/icons/talismans/athletics.svg'
@@ -14,7 +13,6 @@ import Weirdcraft from '../../assets/icons/talismans/weirdcraft.svg'
 import Combat from '../../assets/icons/talismans/combat.svg'
 
 import toast from 'react-hot-toast';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const categoryIconDictionary = {
     'Athletics': Athletics,
@@ -26,17 +24,6 @@ const categoryIconDictionary = {
     'Weirdcraft': Weirdcraft,
     'Combat': Combat
 }
-
-const theme = createTheme({
-    palette: {
-        primary: {
-            main: '#a36528',
-        },
-        secondary: {
-            main: '#11cb5f',
-        },
-    },
-});
 
 export default function Talismans() {
     const [loading, setLoading] = useState(true);
@@ -74,7 +61,7 @@ export default function Talismans() {
                     <div className='input-shell'>
                         <div>
                         </div>
-                        <Button variant="contained" onClick={_ => refreshItems()} theme={theme}><RefreshIcon /></Button>
+                        <button onClick={_ => refreshItems()} ><RefreshIcon /></button>
                     </div>
                     <div className='accordion-shell-talisman'>
                         {items.map((item, i) => {
