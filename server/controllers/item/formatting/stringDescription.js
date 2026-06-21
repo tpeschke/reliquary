@@ -45,7 +45,7 @@ function formatStringDescription(item, materialInfo, colors, engravings, gems, r
         baseString += `. It's worth ${price} sc.`
     }
 
-    return baseString
+    return baseString.toLowerCase().replace(/(^\s*\w{1}|\.\s*\w{1})/gi, string => string.toUpperCase());
 }
 
 function formatAccordingToType(item, materialInfo) {
