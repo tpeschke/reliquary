@@ -142,10 +142,10 @@ export default function UniqueItems() {
         })
     }
 
-    function copyToClipboard(event, itemName, description) {
+    async function copyToClipboard(event, itemName, description) {
         event.stopPropagation()
-
-        navigator.clipboard.writeText(description);
+console.log(description)
+        await navigator.clipboard.writeText(description);
         toast.success(`${itemName}'s description has been copied`)
     }
 
@@ -201,7 +201,7 @@ export default function UniqueItems() {
                                                         <p>{item.price} sc {item.wear ? ` with ${item.wear} Wear` : ''}</p>
                                                     </div>
                                                     <div>
-                                                        {item.info} <i onClick={e => copyToClipboard(e, item.item, item.string)} className="fa-solid fa-copy"></i>
+                                                        {item.info} <i onClick={e => copyToClipboard(e, item.item, item.info)} className="fa-solid fa-copy"></i>
                                                     </div>
                                                 </div>
                                             </div>
