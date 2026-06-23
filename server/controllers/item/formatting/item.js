@@ -20,7 +20,7 @@ function formatItem(format, item, materialInfo, colors, engravings, gems, rolled
                 material,
                 materialCategory: category,
                 bonus,
-                confBonus: (bonus && rarity - 1 > 0) ?? `+${rarity - 1} Position`
+                confBonus: (bonus && rarity - 1 > 0) ? `+${rarity - 1} Position` : null
             }
         }),
         number: 1,
