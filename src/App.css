@@ -29,6 +29,11 @@ body {
   background-repeat: repeat;
 }
 
+.App {
+  margin: 0 auto;
+  max-width: 1440px;
+}
+
 h1,
 h2,
 h3,
