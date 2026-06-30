@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import constants from '../../constants'
-import Loading from '../loading/Loading'
+import Loading from '../../components/loading/Loading'
 import RefreshIcon from '@mui/icons-material/Refresh';
 import Animism from '../../assets/icons/scrolls/Animism.svg'
 import Calling from '../../assets/icons/scrolls/Calling.svg'

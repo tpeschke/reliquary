@@ -7,7 +7,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import RefreshIcon from '@mui/icons-material/Refresh';
-import Loading from '../loading/Loading'
+import Loading from '../../components/loading/Loading'
 import ItemDetails from './ItemDetails'
 import academic from '../../assets/icons/equipment/academic-tools.svg'
 import adventuring from '../../assets/icons/equipment/adventuring-gear.svg'
@@ -144,7 +144,7 @@ export default function UniqueItems() {
 
     async function copyToClipboard(event, itemName, description) {
         event.stopPropagation()
-console.log(description)
+
         await navigator.clipboard.writeText(description);
         toast.success(`${itemName}'s description has been copied`)
     }

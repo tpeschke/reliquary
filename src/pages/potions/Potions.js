@@ -6,7 +6,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Loading from '../loading/Loading'
+import Loading from '../../components/loading/Loading'
 import potion from '../../assets/icons/potions/potion.svg'
 import salve from '../../assets/icons/potions/salve.svg'
 

@@ -1,0 +1,12 @@
+.ingredients .potion-shell .ingredient-basic-info {
+    min-width: 250px;
+}
+
+.ingredients .item-detail-shell {
+    align-items: baseline;
+    justify-content: unset;
+    gap: 32px;
+    flex-wrap: wrap;
+    flex-direction: row;
+    max-height: unset;
+}

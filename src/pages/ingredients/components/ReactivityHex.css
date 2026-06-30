@@ -1,0 +1,55 @@
+.reactivity-hex {
+  text-align: center;
+  min-width: 50px;
+  max-width: 50px;
+  position: relative;
+}
+
+.reactivity-hex span {
+  font-size: 41px;
+}
+
+.reactivity-hex .node {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.node.stress {
+  background: blue;
+}
+
+.node.damage {
+  background: red;
+}
+
+.top {
+  top: 10px;
+  left: 20px;
+}
+
+.topRight {
+  top: 16px;
+  left: 31px;
+}
+
+.bottomRight {
+  top: 31px;
+  left: 31px;
+}
+
+.bottom {
+  top: 40px;
+  left: 20px;
+}
+
+.bottomLeft {
+  top: 31px;
+  left: 8px;
+}
+
+.topLeft {
+  top: 16px;
+  left: 8px;
+}

@@ -1,10 +1,11 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import Potions from "./components/potions/Potions";
-import UniqueItems from "./components/uniqueItems/UniqueItems";
-import Talismans from "./components/talismans/Talismans";
-import Scrolls from "./components/scrolls/Scrolls";
-import EnchantedItems from "./components/enchantedItems/EnchantedItems";
+import Potions from "./pages/potions/Potions";
+import UniqueItems from "./pages/uniqueItems/UniqueItems";
+import Talismans from "./pages/talismans/Talismans";
+import Scrolls from "./pages/scrolls/Scrolls";
+import EnchantedItems from "./pages/enchantedItems/EnchantedItems";
 import Page from "./components/page/Page";
+import Ingredients from "./pages/ingredients/Ingredients";
 
 export default function AllRoutes({ pathname, hash }) {
     return (
@@ -17,6 +18,11 @@ export default function AllRoutes({ pathname, hash }) {
             <Route path="uniqueItems" element={
                 <Page>
                     <UniqueItems />
+                </Page>
+            } />
+            <Route path="ingredients" element={
+                <Page>
+                    <Ingredients />
                 </Page>
             } />
             <Route path="potions" element={

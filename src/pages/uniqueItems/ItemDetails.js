@@ -21,8 +21,7 @@ export default function ItemDetails({ item }) {
                         })}
                     </ul>
                 </>
-            )
-            }
+            )}
             {item.colors && item.colors.length > 0 && <div><h3>Color(s)</h3> <ul>{item.colors.map((color, i) => (<li key={color + i}>{color}</li>))}</ul></div>}
         </div >
     )

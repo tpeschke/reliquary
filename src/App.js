@@ -5,11 +5,6 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import UniqueItems from './components/uniqueItems/UniqueItems'
-import Potions from './components/potions/Potions'
-import EnchantedItems from './components/enchantedItems/EnchantedItems'
-import Talismans from './components/talismans/Talismans'
-import Scrolls from './components/scrolls/Scrolls'
 import { styled } from '@mui/material/styles';
 import logo from './assets/logo.png'
 import { useEffect } from 'react';
@@ -29,6 +24,7 @@ function App() {
         </div>
         <div className='item-link-shell'>
           <Link to="/" className={pathname === '/' && 'disabled'}><i class="fa-solid fa-backpack"></i></Link>
+          <Link to="/ingredients" className={pathname === '/ingredients' && 'disabled'}><i class="fa-solid fa-mercury"></i></Link>
           <Link to="/potions" className={pathname === '/potions' && 'disabled'}><i class="fa-solid fa-flask-round-potion"></i></Link>
           <Link to="/talismans" className={pathname === '/talismans' && 'disabled'}><i class="fa-solid fa-hand-holding-magic"></i></Link>
           <Link to="/scrolls" className={pathname === '/scrolls' && 'disabled'}><i class="fa-solid fa-scroll"></i></Link>

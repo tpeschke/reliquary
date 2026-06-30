@@ -258,7 +258,7 @@ select {
 
 .item-detail {
   display: flex;
-  align-items: center;
+  align-items: end;
 }
 
 .id-details {
