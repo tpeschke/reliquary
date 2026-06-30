@@ -8,13 +8,27 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Loading from '../../components/loading/Loading'
 import leaves from '../../assets/icons/ingredients/leaves.svg'
+import roots from '../../assets/icons/ingredients/roots.svg'
+import blossoms from '../../assets/icons/ingredients/blossoms.svg'
+import vines from '../../assets/icons/ingredients/vines.svg'
+import seeds from '../../assets/icons/ingredients/seeds.svg'
+import fruit from '../../assets/icons/ingredients/fruit.svg'
+import stalks from '../../assets/icons/ingredients/stalks.svg'
+import moss from '../../assets/icons/ingredients/moss.svg'
 import './Ingredients.css'
 
 import toast from 'react-hot-toast';
 import ReactivityHex from './components/ReactivityHex';
 
 const iconDictionary = {
-    'Leaves': leaves
+    "Leaves": leaves,
+    "Roots": roots,
+    "Blossoms": blossoms,
+    "Vines": vines,
+    "Seeds": seeds,
+    "Fruit": fruit,
+    "Stalks": stalks,
+    "Moss": moss,
 }
 
 export default function Ingredients() {
@@ -23,92 +37,10 @@ export default function Ingredients() {
 
     useEffect(() => {
         if (items.length === 0) {
-            // axios.post(constants.baseUrl + '/api/getRandomPotions?numberOfItems=10').then(({ data }) => {
-            //     setItems(data);
-            // })
-
-            setItems([{
-                "id": 0,
-                "harvestablePart": 'Leaves',
-                "ingredientName": "Afocin Fruit",
-                "locations": [
-                    {
-                        "adjacency": "By",
-                        "location": "Forests"
-                    },
-                    {
-                        "adjacency": "In",
-                        "location": "Grasslands"
-                    },
-                    {
-                        "adjacency": "By",
-                        "location": "Deep Water"
-                    }
-                ],
-                "reactivity": [
-                    null,
-                    "Damage",
-                    "Damage",
-                    "Damage",
-                    "Stress",
-                    null
-                ],
-                "classifications": [
-                    "Tropical monsoon",
-                    "Mediterranean (warm summer)",
-                    "Mediterranean-influenced hot-summer humid",
-                    "Mediterranean-influenced extremely cold subarctic",
-                    "Continental (dry winter, cold summer)"
-                ],
-                "potionInfo": {
-                    "id": 30,
-                    "potion": "Rare Potion 31",
-                    "rarity": "Rare"
-                }
-            },
-            {
-                "id": 1,
-                "harvestablePart": 'Leaves',
-                "ingredientName": "April Heart",
-                "locations": [
-                    {
-                        "adjacency": "In",
-                        "location": "Still Water"
-                    },
-                    {
-                        "adjacency": "In",
-                        "location": "Cliffs"
-                    }
-                ],
-                "reactivity": [
-                    null,
-                    null,
-                    null,
-                    "Damage",
-                    null,
-                    "Damage"
-                ],
-                "classifications": [
-                    "Tropical monsoon",
-                    "Tropical savanna (dry winter)",
-                    "Hot deserts",
-                    "Cold deserts",
-                    "Steppe, Hot",
-                    "Steppe, Cold",
-                    "Dry-winter subtropical (humid)",
-                    "Temperate oceanic",
-                    "Continental (dry winter, warm summer)",
-                    "Continental (dry winter, cold summer)",
-                    "Continental (no dry season, warm summer)",
-                    "Subarctic/boreal"
-                ],
-                "potionInfo": {
-                    "id": 21,
-                    "potion": "Uncommon Potion 22",
-                    "rarity": "Uncommon"
-                }
-            }])
-            setLoading(false)
+            axios.get(constants.baseUrl + '/api/getRandomIngredients?numberOfItems=25').then(({ data }) => {
+                setItems(data);
+                setLoading(false)
+            })
         }
     }, [loading]);
 
@@ -164,7 +96,7 @@ export default function Ingredients() {
                                             <div className='item-detail-shell'>
                                                 <div className='item-detail'><h3>Harvestable Part</h3> <p>{item.harvestablePart}</p></div>
                                                 {item.classifications && item.classifications.length > 0 && <div><h3>Climates(s)</h3> <ul>{item.classifications.map((climate, i) => (<li key={climate + i}>{climate}</li>))}</ul></div>}
-                                                {item.locations && item.locations.length > 0 && <div><h3>Location(s)</h3> <ul>{item.locations.map(({adjacency, location}, i) => (<li key={adjacency + location + i}>{adjacency} {location}</li>))}</ul></div>}
+                                                {item.locations && item.locations.length > 0 && <div><h3>Location(s)</h3> <ul>{item.locations.map(({ adjacency, location }, i) => (<li key={adjacency + location + i}>{adjacency} {location}</li>))}</ul></div>}
                                             </div>
                                         </Typography>
                                     </AccordionDetails>

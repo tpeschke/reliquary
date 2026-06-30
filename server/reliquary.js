@@ -2,11 +2,12 @@ const express = require('express')
     , bodyParser = require('body-parser')
     , cors = require('cors')
 const itemCtrl = require('./controllers/item/ItemController.js')
+    , IngredientsCtrl = require('./controllers/ingredients/ingredientController.js')
     , potionCtrl = require('./controllers/potionController.js')
     , talismanCtrl = require('./controllers/talismanController.js')
     , scrollCtrl = require('./controllers/scroll/scrollController.js')
     , enchantedCtrl = require('./controllers/enchantedController.js')
-    , combinedCtrl = require('./controllers/combinedController.js') 
+    , combinedCtrl = require('./controllers/combinedController.js')
 
 const app = new express()
 app.use(bodyParser.json())
@@ -14,6 +15,8 @@ app.use(cors())
 
 app.get('/api/getEnchantedItem', enchantedCtrl.getEnchantedItems)
 app.get('/api/getSingleEnchantedItem/:id', enchantedCtrl.getSingleEnchantedItem)
+
+app.get('/api/getRandomIngredients', IngredientsCtrl.getRandomIngredients)
 
 app.post('/api/getItems', itemCtrl.getItems)
 app.post('/api/getRandomPotion', potionCtrl.getRandomPotion)
