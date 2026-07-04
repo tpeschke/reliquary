@@ -13490,7 +13490,7 @@ const ingredients = [
  },
  {
   "id": "kY5NqdgXUa",
-  "ingredientName": "Το φιλί της Αφροδίτης",
+  "ingredientName": "To fili tis Afroditis",
   "harvestablePart": "Roots",
   "locations": [
    {
@@ -14436,7 +14436,7 @@ const ingredients = [
  },
  {
   "id": "R8nGDTl2mO",
-  "ingredientName": "Falkners Mühle",
+  "ingredientName": "Falkners Muhle",
   "harvestablePart": "Vines",
   "locations": [
    {
@@ -16422,7 +16422,7 @@ const ingredients = [
  },
  {
   "id": "lcuKjBFPo6",
-  "ingredientName": "光沢のフクロウ",
+  "ingredientName": "Kotaku no Fukurou",
   "harvestablePart": "Stalks",
   "locations": [
    {
@@ -16646,7 +16646,7 @@ const ingredients = [
  },
  {
   "id": "iIVX0MB2oq",
-  "ingredientName": "Золотая чаша",
+  "ingredientName": "Zolotaya chasha",
   "harvestablePart": "Fruit",
   "locations": [
    {
@@ -20240,7 +20240,7 @@ const ingredients = [
  },
  {
   "id": "p24Yc0yQjA",
-  "ingredientName": "La chaumière de l'herboriste",
+  "ingredientName": "La chaumiere de l'herboriste",
   "harvestablePart": "Stalks",
   "locations": [
    {
@@ -20963,7 +20963,7 @@ const ingredients = [
  },
  {
   "id": "mXOzHkt8EV",
-  "ingredientName": "Μέντα του Ιππόγρυπα",
+  "ingredientName": "Menta tou Ippogripa",
   "harvestablePart": "Moss",
   "locations": [
    {
@@ -24117,7 +24117,7 @@ const ingredients = [
  },
  {
   "id": "R4zJrriNUH",
-  "ingredientName": "Белизна Хранителя",
+  "ingredientName": "Belizna Khranitelya",
   "harvestablePart": "Blossoms",
   "locations": [
    {
@@ -26084,7 +26084,7 @@ const ingredients = [
  },
  {
   "id": "Fu6bXvnlva",
-  "ingredientName": "Grób Kazimiery",
+  "ingredientName": "Grob Kazimiery",
   "harvestablePart": "Fruit",
   "locations": [
    {
@@ -26225,7 +26225,7 @@ const ingredients = [
  },
  {
   "id": "lb14YVlfzH",
-  "ingredientName": "Indeagó Lúnasa",
+  "ingredientName": "Indeago Lunasa",
   "harvestablePart": "Blossoms",
   "locations": [
    {
@@ -28174,7 +28174,7 @@ const ingredients = [
  },
  {
   "id": "rAnYUvQuvw",
-  "ingredientName": "La rueda de la mantícora",
+  "ingredientName": "La rueda de la manticora",
   "harvestablePart": "Moss",
   "locations": [
    {
@@ -32576,7 +32576,7 @@ const ingredients = [
  },
  {
   "id": "klOzYdb67O",
-  "ingredientName": "Северный румянец",
+  "ingredientName": "Severny rumyanets",
   "harvestablePart": "Stalks",
   "locations": [
    {
@@ -35141,7 +35141,7 @@ const ingredients = [
  },
  {
   "id": "2pms83Xr5Q",
-  "ingredientName": "Làmh a' Pheict",
+  "ingredientName": "Lamh a' Pheict",
   "harvestablePart": "Stalks",
   "locations": [
    {
@@ -37334,7 +37334,7 @@ const ingredients = [
  },
  {
   "id": "XfTofKEoTB",
-  "ingredientName": "清らかな泉",
+  "ingredientName": "Kiyoraka na Izumi",
   "harvestablePart": "Fruit",
   "locations": [
    {
@@ -37574,7 +37574,7 @@ const ingredients = [
  },
  {
   "id": "iVRHYBGW9G",
-  "ingredientName": "Spezia della Mantícora Viola",
+  "ingredientName": "Spezia della Manticora Viola",
   "harvestablePart": "Leaves",
   "locations": [
    {
@@ -40370,7 +40370,7 @@ const ingredients = [
  },
  {
   "id": "ZvWMXS6ogr",
-  "ingredientName": "Cnó Samhna",
+  "ingredientName": "Cno Samhna",
   "harvestablePart": "Blossoms",
   "locations": [
    {
@@ -41667,7 +41667,7 @@ const ingredients = [
  },
  {
   "id": "DpuSz0ezp4",
-  "ingredientName": "Óðins börkur",
+  "ingredientName": "Odins borkur",
   "harvestablePart": "Roots",
   "locations": [
    {
@@ -46056,7 +46056,7 @@ const ingredients = [
  },
  {
   "id": "BTa4zWadEE",
-  "ingredientName": "Весенняя шкура",
+  "ingredientName": "Vesennyaya shkura",
   "harvestablePart": "Fruit",
   "locations": [
    {
@@ -46165,7 +46165,7 @@ const ingredients = [
  },
  {
   "id": "LpoQeqxjWr",
-  "ingredientName": "Ανοιξιάτικη Μαντικόρα",
+  "ingredientName": "Anoixiatiki Mantikora",
   "harvestablePart": "Seeds",
   "locations": [
    {
@@ -47683,7 +47683,7 @@ const ingredients = [
  },
  {
   "id": "yeRLVynhcs",
-  "ingredientName": "Œil du Ruisseau",
+  "ingredientName": "Oeil du Ruisseau",
   "harvestablePart": "Leaves",
   "locations": [
    {
@@ -49191,7 +49191,7 @@ const ingredients = [
  },
  {
   "id": "x2dbEnwz1g",
-  "ingredientName": "Halcón Dulce",
+  "ingredientName": "Halcon Dulce",
   "harvestablePart": "Vines",
   "locations": [
    {
@@ -51872,7 +51872,7 @@ const ingredients = [
  },
  {
   "id": "WHJBBmeaOw",
-  "ingredientName": "Sureño Conmovedor",
+  "ingredientName": "Sureno Conmovedor",
   "harvestablePart": "Vines",
   "locations": [
    {
@@ -52072,7 +52072,7 @@ const ingredients = [
  },
  {
   "id": "qbREDUKvux",
-  "ingredientName": "Возвышающаяся Екатерина",
+  "ingredientName": "Vozvyshayushchayasya Yekaterina",
   "harvestablePart": "Leaves",
   "locations": [
    {
@@ -55720,7 +55720,7 @@ const ingredients = [
  },
  {
   "id": "hi2bOXP3Ez",
-  "ingredientName": "Talven Sinivihreä",
+  "ingredientName": "Talven Sinivihrea",
   "harvestablePart": "Blossoms",
   "locations": [
    {
@@ -56081,7 +56081,7 @@ const ingredients = [
  },
  {
   "id": "kXYvZglGKe",
-  "ingredientName": "Winteröl",
+  "ingredientName": "Winterol",
   "harvestablePart": "Leaves",
   "locations": [
    {
