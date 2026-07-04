@@ -12421,7 +12421,7 @@ const ingredients = [
  },
  {
   "id": "8kF8n1RecT",
-  "ingredientName": "Elisabeth's Kettle\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "El caldero de Isabela",
   "harvestablePart": "Seeds",
   "locations": [
    {
@@ -13133,7 +13133,7 @@ const ingredients = [
  },
  {
   "id": "cVYsjsMz5x",
-  "ingredientName": "Erukyermetimber\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Erukyermepuu",
   "harvestablePart": "Seeds",
   "locations": [
    {
@@ -13490,7 +13490,7 @@ const ingredients = [
  },
  {
   "id": "kY5NqdgXUa",
-  "ingredientName": "Estra's Kiss\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "To fili tis Afroditis",
   "harvestablePart": "Roots",
   "locations": [
    {
@@ -13700,7 +13700,7 @@ const ingredients = [
  },
  {
   "id": "hNEqrGFz5Q",
-  "ingredientName": "Evening Black\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Noir du Soir",
   "harvestablePart": "Blossoms",
   "locations": [
    {
@@ -14436,7 +14436,7 @@ const ingredients = [
  },
  {
   "id": "R8nGDTl2mO",
-  "ingredientName": "Falconer's Mill\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Falkners Muhle",
   "harvestablePart": "Vines",
   "locations": [
    {
@@ -15407,7 +15407,7 @@ const ingredients = [
  },
  {
   "id": "ekmV0KAkPF",
-  "ingredientName": "Fox Bellows\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Mantice della Volpe",
   "harvestablePart": "Roots",
   "locations": [
    {
@@ -16422,7 +16422,7 @@ const ingredients = [
  },
  {
   "id": "lcuKjBFPo6",
-  "ingredientName": "Glossy Owl\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Kotaku no Fukurou",
   "harvestablePart": "Stalks",
   "locations": [
    {
@@ -16646,7 +16646,7 @@ const ingredients = [
  },
  {
   "id": "iIVX0MB2oq",
-  "ingredientName": "Gold Bowl\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Zolotaya chasha",
   "harvestablePart": "Fruit",
   "locations": [
    {
@@ -18126,7 +18126,7 @@ const ingredients = [
  },
  {
   "id": "gj3UOZTirw",
-  "ingredientName": "Green Man's Blanket\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Blanced y Dyn Gwyrdd",
   "harvestablePart": "Vines",
   "locations": [
    {
@@ -19080,7 +19080,7 @@ const ingredients = [
  },
  {
   "id": "0qYhhg1pAz",
-  "ingredientName": "Hare's Blush\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Rubor Leporis",
   "harvestablePart": "Seeds",
   "locations": [
    {
@@ -19445,7 +19445,7 @@ const ingredients = [
  },
  {
   "id": "KY0uCtTZix",
-  "ingredientName": "Headnut\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Kopfnuss",
   "harvestablePart": "Seeds",
   "locations": [
    {
@@ -19990,7 +19990,7 @@ const ingredients = [
  },
  {
   "id": "egHprrA0Zp",
-  "ingredientName": "Herald's House\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "La casa del heraldo",
   "harvestablePart": "Roots",
   "locations": [
    {
@@ -20240,7 +20240,7 @@ const ingredients = [
  },
  {
   "id": "p24Yc0yQjA",
-  "ingredientName": "Herbalist's Cottage\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "La chaumiere de l'herboriste",
   "harvestablePart": "Stalks",
   "locations": [
    {
@@ -20331,7 +20331,7 @@ const ingredients = [
  },
  {
   "id": "1LI6oBadXl",
-  "ingredientName": "Heron's Vine\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "La vite dell'airone",
   "harvestablePart": "Fruit",
   "locations": [
    {
@@ -20711,7 +20711,7 @@ const ingredients = [
  },
  {
   "id": "d1GysjvPg1",
-  "ingredientName": "Hilda's Hut\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Astrids stuga",
   "harvestablePart": "Fruit",
   "locations": [
    {
@@ -20963,7 +20963,7 @@ const ingredients = [
  },
  {
   "id": "mXOzHkt8EV",
-  "ingredientName": "Hippogriff Mint\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Menta tou Ippogripa",
   "harvestablePart": "Moss",
   "locations": [
    {
@@ -21126,7 +21126,7 @@ const ingredients = [
  },
  {
   "id": "rrvmT0GeA2",
-  "ingredientName": "Hippogriff Rush\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Iuncus Hippogryphi",
   "harvestablePart": "Seeds",
   "locations": [
    {
@@ -24117,7 +24117,7 @@ const ingredients = [
  },
  {
   "id": "R4zJrriNUH",
-  "ingredientName": "Keeper's White\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Belizna Khranitelya",
   "harvestablePart": "Blossoms",
   "locations": [
    {
@@ -24817,7 +24817,7 @@ const ingredients = [
  },
  {
   "id": "j69SvRmut4",
-  "ingredientName": "Kiss's Orc\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Ork des Kusses",
   "harvestablePart": "Leaves",
   "locations": [
    {
@@ -25297,7 +25297,7 @@ const ingredients = [
  },
  {
   "id": "9diPuDHI16",
-  "ingredientName": "Kissing Map\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "La carte des baisers",
   "harvestablePart": "Leaves",
   "locations": [
    {
@@ -26084,7 +26084,7 @@ const ingredients = [
  },
  {
   "id": "Fu6bXvnlva",
-  "ingredientName": "Kunigunde's Grave\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Grob Kazimiery",
   "harvestablePart": "Fruit",
   "locations": [
    {
@@ -26225,7 +26225,7 @@ const ingredients = [
  },
  {
   "id": "lb14YVlfzH",
-  "ingredientName": "Lammas Indigo\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Indeago Lunasa",
   "harvestablePart": "Blossoms",
   "locations": [
    {
@@ -26449,7 +26449,7 @@ const ingredients = [
  },
  {
   "id": "XBaX4fFnt0",
-  "ingredientName": "Laugh's Dwarf\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Latterens dverg",
   "harvestablePart": "Roots",
   "locations": [
    {
@@ -26867,7 +26867,7 @@ const ingredients = [
  },
  {
   "id": "YFldHrKbjq",
-  "ingredientName": "Litha Sash\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Gwregys Litha",
   "harvestablePart": "Seeds",
   "locations": [
    {
@@ -27202,7 +27202,7 @@ const ingredients = [
  },
  {
   "id": "wYPPIOvEzu",
-  "ingredientName": "Lothar's Wyrm\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Il verme di Lorenzo",
   "harvestablePart": "Fruit",
   "locations": [
    {
@@ -28174,7 +28174,7 @@ const ingredients = [
  },
  {
   "id": "rAnYUvQuvw",
-  "ingredientName": "Manticore's Wheel\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "La rueda de la manticora",
   "harvestablePart": "Moss",
   "locations": [
    {
@@ -31670,7 +31670,7 @@ const ingredients = [
  },
  {
   "id": "SLdWJNEOYs",
-  "ingredientName": "Mule Mouth\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Bouche de Mule",
   "harvestablePart": "Stalks",
   "locations": [
    {
@@ -31987,7 +31987,7 @@ const ingredients = [
  },
  {
   "id": "S9VkLaB2Fg",
-  "ingredientName": "Mule's Song\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Il canto del mulo",
   "harvestablePart": "Stalks",
   "locations": [
    {
@@ -32108,7 +32108,7 @@ const ingredients = [
  },
  {
   "id": "yGgyubokJU",
-  "ingredientName": "Musty Flower\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Muffige Blume",
   "harvestablePart": "Stalks",
   "locations": [
    {
@@ -32576,7 +32576,7 @@ const ingredients = [
  },
  {
   "id": "klOzYdb67O",
-  "ingredientName": "Northern's Blush\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Severny rumyanets",
   "harvestablePart": "Stalks",
   "locations": [
    {
@@ -33091,7 +33091,7 @@ const ingredients = [
  },
  {
   "id": "aDr968G4aA",
-  "ingredientName": "Ogre's Stamen\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Stamen Orci",
   "harvestablePart": "Fruit",
   "locations": [
    {
@@ -35141,7 +35141,7 @@ const ingredients = [
  },
  {
   "id": "2pms83Xr5Q",
-  "ingredientName": "Pech Hand\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Lamh a' Pheict",
   "harvestablePart": "Stalks",
   "locations": [
    {
@@ -35692,7 +35692,7 @@ const ingredients = [
  },
  {
   "id": "1ZxUVmsEX9",
-  "ingredientName": "Pecking Berry\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Pikkende Bes",
   "harvestablePart": "Fruit",
   "locations": [
    {
@@ -37191,7 +37191,7 @@ const ingredients = [
  },
  {
   "id": "EtXst6ikDP",
-  "ingredientName": "Pinkanther\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Antera Rosa",
   "harvestablePart": "Seeds",
   "locations": [
    {
@@ -37334,7 +37334,7 @@ const ingredients = [
  },
  {
   "id": "XfTofKEoTB",
-  "ingredientName": "Pure Spring\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Kiyoraka na Izumi",
   "harvestablePart": "Fruit",
   "locations": [
    {
@@ -37461,7 +37461,7 @@ const ingredients = [
  },
  {
   "id": "ct30jw3VK8",
-  "ingredientName": "Purple Ear\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Oreille Pourpre",
   "harvestablePart": "Stalks",
   "locations": [
    {
@@ -37574,7 +37574,7 @@ const ingredients = [
  },
  {
   "id": "iVRHYBGW9G",
-  "ingredientName": "Purple Manticore Spice\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Spezia della Manticora Viola",
   "harvestablePart": "Leaves",
   "locations": [
    {
@@ -38173,7 +38173,7 @@ const ingredients = [
  },
  {
   "id": "wNTojygFb3",
-  "ingredientName": "Ratfolk's Soap\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Seife des Rattenvolks",
   "harvestablePart": "Seeds",
   "locations": [
    {
@@ -38657,7 +38657,7 @@ const ingredients = [
  },
  {
   "id": "cNpxyLLWZG",
-  "ingredientName": "Ridged Dragon\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Draig Rhychiog",
   "harvestablePart": "Roots",
   "locations": [
    {
@@ -40370,7 +40370,7 @@ const ingredients = [
  },
  {
   "id": "ZvWMXS6ogr",
-  "ingredientName": "Samhainnut\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Cno Samhna",
   "harvestablePart": "Blossoms",
   "locations": [
    {
@@ -41433,7 +41433,7 @@ const ingredients = [
  },
  {
   "id": "EZg48cvbFd",
-  "ingredientName": "Shire Red\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Grafschaftsrot",
   "harvestablePart": "Moss",
   "locations": [
    {
@@ -41536,7 +41536,7 @@ const ingredients = [
  },
  {
   "id": "Zg14C6WW5z",
-  "ingredientName": "Shrew's Teeth\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Dentes Soricis",
   "harvestablePart": "Stalks",
   "locations": [
    {
@@ -41667,7 +41667,7 @@ const ingredients = [
  },
  {
   "id": "DpuSz0ezp4",
-  "ingredientName": "Siegen's Bark\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Odins borkur",
   "harvestablePart": "Roots",
   "locations": [
    {
@@ -42448,7 +42448,7 @@ const ingredients = [
  },
  {
   "id": "BavC4s3mZO",
-  "ingredientName": "Silver Imbolc Bark\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Coirt Airgid Imbolg",
   "harvestablePart": "Seeds",
   "locations": [
    {
@@ -42870,7 +42870,7 @@ const ingredients = [
  },
  {
   "id": "B6ggOkxEze",
-  "ingredientName": "Sleeping Well\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "El pozo durmiente",
   "harvestablePart": "Blossoms",
   "locations": [
    {
@@ -43235,7 +43235,7 @@ const ingredients = [
  },
  {
   "id": "tRn6VSzSeh",
-  "ingredientName": "Smooth Olive\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Oliva Liscia",
   "harvestablePart": "Vines",
   "locations": [
    {
@@ -43901,7 +43901,7 @@ const ingredients = [
  },
  {
   "id": "4s6lq86SW1",
-  "ingredientName": "Songing Bat\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Chauve-souris Chantante",
   "harvestablePart": "Blossoms",
   "locations": [
    {
@@ -43994,7 +43994,7 @@ const ingredients = [
  },
  {
   "id": "UWVVp7Gma7",
-  "ingredientName": "Songing Grass\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Singendes Gras",
   "harvestablePart": "Vines",
   "locations": [
    {
@@ -45158,7 +45158,7 @@ const ingredients = [
  },
  {
   "id": "CFZ4jwUbBe",
-  "ingredientName": "Spiked Olive\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Aceituna Espigada",
   "harvestablePart": "Leaves",
   "locations": [
    {
@@ -45931,7 +45931,7 @@ const ingredients = [
  },
  {
   "id": "8wzMMOHHbB",
-  "ingredientName": "Spring Head\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Pen y Gwanwyn",
   "harvestablePart": "Stalks",
   "locations": [
    {
@@ -46056,7 +46056,7 @@ const ingredients = [
  },
  {
   "id": "BTa4zWadEE",
-  "ingredientName": "Spring Hide\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Vesennyaya shkura",
   "harvestablePart": "Fruit",
   "locations": [
    {
@@ -46165,7 +46165,7 @@ const ingredients = [
  },
  {
   "id": "LpoQeqxjWr",
-  "ingredientName": "Spring Manticore\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Anoixiatiki Mantikora",
   "harvestablePart": "Seeds",
   "locations": [
    {
@@ -46583,7 +46583,7 @@ const ingredients = [
  },
  {
   "id": "7IfUwcp1vO",
-  "ingredientName": "Spring Sheath\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Theca Veris",
   "harvestablePart": "Leaves",
   "locations": [
    {
@@ -47219,7 +47219,7 @@ const ingredients = [
  },
  {
   "id": "s85psL3gPE",
-  "ingredientName": "Stablecreeper\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Stallkriecher",
   "harvestablePart": "Blossoms",
   "locations": [
    {
@@ -47683,7 +47683,7 @@ const ingredients = [
  },
  {
   "id": "yeRLVynhcs",
-  "ingredientName": "Stream Eye\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Oeil du Ruisseau",
   "harvestablePart": "Leaves",
   "locations": [
    {
@@ -48299,7 +48299,7 @@ const ingredients = [
  },
  {
   "id": "kPTnhLd7VH",
-  "ingredientName": "Summer Foal\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Puledro d'Estate",
   "harvestablePart": "Leaves",
   "locations": [
    {
@@ -48400,7 +48400,7 @@ const ingredients = [
  },
  {
   "id": "22u41QpYmW",
-  "ingredientName": "Summer Foot\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Sommarfot",
   "harvestablePart": "Leaves",
   "locations": [
    {
@@ -48951,7 +48951,7 @@ const ingredients = [
  },
  {
   "id": "dPTNCGKWKA",
-  "ingredientName": "Summerfloil\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Zomerfloil",
   "harvestablePart": "Roots",
   "locations": [
    {
@@ -49191,7 +49191,7 @@ const ingredients = [
  },
  {
   "id": "x2dbEnwz1g",
-  "ingredientName": "Sweet Falcon\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Halcon Dulce",
   "harvestablePart": "Vines",
   "locations": [
    {
@@ -49306,7 +49306,7 @@ const ingredients = [
  },
  {
   "id": "gMf74i056o",
-  "ingredientName": "Sweet Morning\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Dolce Mattino",
   "harvestablePart": "Fruit",
   "locations": [
    {
@@ -51343,7 +51343,7 @@ const ingredients = [
  },
  {
   "id": "Mkxe8NsfBR",
-  "ingredientName": "Toewillow\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Zehenweide",
   "harvestablePart": "Seeds",
   "locations": [
    {
@@ -51458,7 +51458,7 @@ const ingredients = [
  },
  {
   "id": "UWmEPCF9hb",
-  "ingredientName": "Tongue Mouth\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Os Linguae",
   "harvestablePart": "Leaves",
   "locations": [
    {
@@ -51733,7 +51733,7 @@ const ingredients = [
  },
  {
   "id": "kFoEhWzYwj",
-  "ingredientName": "Touching Rush\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Jonc Touchant",
   "harvestablePart": "Roots",
   "locations": [
    {
@@ -51872,7 +51872,7 @@ const ingredients = [
  },
  {
   "id": "WHJBBmeaOw",
-  "ingredientName": "Touching Southern\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Sureno Conmovedor",
   "harvestablePart": "Vines",
   "locations": [
    {
@@ -52072,7 +52072,7 @@ const ingredients = [
  },
  {
   "id": "qbREDUKvux",
-  "ingredientName": "Towering Elisabeth\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Vozvyshayushchayasya Yekaterina",
   "harvestablePart": "Leaves",
   "locations": [
    {
@@ -52292,7 +52292,7 @@ const ingredients = [
  },
  {
   "id": "2cDPty2Nla",
-  "ingredientName": "Vesper Falcon\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Falco Vespertinus",
   "harvestablePart": "Roots",
   "locations": [
    {
@@ -52992,7 +52992,7 @@ const ingredients = [
  },
  {
   "id": "WTay3iOcjd",
-  "ingredientName": "Vitharr's Pistil\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Pistil Gwilym",
   "harvestablePart": "Blossoms",
   "locations": [
    {
@@ -54574,7 +54574,7 @@ const ingredients = [
  },
  {
   "id": "eMfkVlnK0L",
-  "ingredientName": "Weep's Pech\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Peict a' Ghuil",
   "harvestablePart": "Roots",
   "locations": [
    {
@@ -55720,7 +55720,7 @@ const ingredients = [
  },
  {
   "id": "hi2bOXP3Ez",
-  "ingredientName": "Winter Teal\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Talven Sinivihrea",
   "harvestablePart": "Blossoms",
   "locations": [
    {
@@ -56081,7 +56081,7 @@ const ingredients = [
  },
  {
   "id": "kXYvZglGKe",
-  "ingredientName": "Winteroil\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Winterol",
   "harvestablePart": "Leaves",
   "locations": [
    {
@@ -56168,7 +56168,7 @@ const ingredients = [
  },
  {
   "id": "StBXE9zLQx",
-  "ingredientName": "Wintervine\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Vite d'Inverno",
   "harvestablePart": "Leaves",
   "locations": [
    {
@@ -56911,7 +56911,7 @@ const ingredients = [
  },
  {
   "id": "HCU1fWIMnx",
-  "ingredientName": "Woodwose's Walk\nTRANSLATE TO ANOTHER LANGUAGE",
+  "ingredientName": "Gang des Wilden Mannes",
   "harvestablePart": "Leaves",
   "locations": [
    {
