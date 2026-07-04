@@ -84,7 +84,7 @@ export default function Ingredients() {
                                                         <h2>{item.ingredientName}</h2>
                                                     </div>
                                                     <div>
-                                                        {item.potionInfo.potion}
+                                                        {item.potion.name}
                                                     </div>
                                                 </div>
                                                 <ReactivityHex reactivity={item.reactivity} />
@@ -95,7 +95,7 @@ export default function Ingredients() {
                                         <Typography component={'span'} variant={'body2'}>
                                             <div className='item-detail-shell'>
                                                 <div className='item-detail'><h3>Harvestable Part</h3> <p>{item.harvestablePart}</p></div>
-                                                {item.classifications && item.classifications.length > 0 && <div><h3>Climates(s)</h3> <ul>{item.classifications.map((climate, i) => (<li key={climate + i}>{climate}</li>))}</ul></div>}
+                                                {item.classifications && item.classifications.length > 0 && <div><h3>Climates(s)</h3> <ul>{item.classifications.map((climate, i) => (<li key={climate.climate + i}>{climate.climate}</li>))}</ul></div>}
                                                 {item.locations && item.locations.length > 0 && <div><h3>Location(s)</h3> <ul>{item.locations.map(({ adjacency, location }, i) => (<li key={adjacency + location + i}>{adjacency} {location}</li>))}</ul></div>}
                                             </div>
                                         </Typography>
