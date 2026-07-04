@@ -104,7 +104,7 @@ export default function Potions() {
                                                 <p className='bottom-margin'>{item.generalTooltip}</p>
                                                 <div className='item-detail'><h3>Price</h3> <p>{item.price} sc</p></div>
                                                 <div className='item-detail'><h3>Rarity</h3> <p>{item.rarity}</p></div>
-                                                <a href={'/ingredients/' + item.name} target='_blank' className='potion-ingredients'>
+                                                <a href={'/ingredients/' + item.name.replace('Salve', 'Potion')} target='_blank' className='potion-ingredients'>
                                                     <div className='item-detail'>
                                                         <h3>Ingredients</h3>
                                                         <i className="fa-solid fa-arrow-up-right-from-square"></i>
