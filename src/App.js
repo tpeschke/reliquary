@@ -24,8 +24,8 @@ function App() {
         </div>
         <div className='item-link-shell'>
           <Link to="/" className={pathname === '/' && 'disabled'}><i className="fa-solid fa-backpack"></i></Link>
-          <Link to="/ingredients" className={pathname === '/ingredients' && 'disabled'}><i className="fa-solid fa-mercury"></i></Link>
-          <Link to="/potions" className={pathname === '/potions' && 'disabled'}><i className="fa-solid fa-flask-round-potion"></i></Link>
+          <Link to="/ingredients" className={pathname.substring(0, '/ingredients'.length) === '/ingredients' && 'disabled'}><i className="fa-solid fa-mercury"></i></Link>
+          <Link to="/potions" className={pathname.substring(0, '/potions'.length) === '/potions' && 'disabled'}><i className="fa-solid fa-flask-round-potion"></i></Link>
           <Link to="/talismans" className={pathname === '/talismans' && 'disabled'}><i className="fa-solid fa-hand-holding-magic"></i></Link>
           <Link to="/scrolls" className={pathname === '/scrolls' && 'disabled'}><i className="fa-solid fa-scroll"></i></Link>
           <Link to="/enchanted" className={pathname.substring(0, '/enchanted'.length) === '/enchanted' && 'disabled'}><i className="fa-solid fa-crown"></i></Link>

@@ -96,6 +96,12 @@ export default function Ingredients() {
             {loading && <Loading />}
             {!loading && (
                 <div className='ingredients'>
+                    <a className='header-link' href='https://docs.google.com/document/d/1_yay6puDxpBabz-ryNCQXCibRdljvdTKyGKzDHgURmo/edit?usp=sharing' target='_blank'>
+                        <div>
+                            Brewing Rules Here
+                            <i className="fa-solid fa-arrow-up-right-from-square"></i>
+                        </div>
+                    </a>
                     <div className='input-shell climates-shell'>
                         {climateSearchDictionary.map(climate => <button onClick={_ => getIngredientByClimate(climate.id)} className={climateID === climate.id ? '' : 'secondary'} key={climate.climate}>{climate.climate}</button>)}
                     </div>
