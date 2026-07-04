@@ -20,3 +20,17 @@
     margin-bottom: 5px;
     margin-right: 5px;
 }
+
+.ingredient-basic-info a {
+    color: unset;
+    text-decoration: none;
+}
+
+.ingredient-basic-info a:hover {
+    border-bottom: 1px solid black;
+}
+
+.ingredient-basic-info a i {
+    margin-left: 5px;
+    font-size: 12px;
+}

@@ -25,7 +25,17 @@ export default function AllRoutes({ pathname, hash }) {
                     <Ingredients />
                 </Page>
             } />
+            <Route path="ingredients/:ingredients-search" element={
+                <Page>
+                    <Ingredients />
+                </Page>
+            } />
             <Route path="potions" element={
+                <Page>
+                    <Potions />
+                </Page>
+            } />
+            <Route path="potions/:potion-search" element={
                 <Page>
                     <Potions />
                 </Page>

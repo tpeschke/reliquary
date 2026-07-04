@@ -39,7 +39,14 @@ export default function Ingredients() {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
-        if (items.length === 0) {
+        const splitUrl = window.location.href.split('/')
+        if (splitUrl.length > 4 && items.length === 0) {
+            setLoading(true)
+            axios.post(constants.baseUrl + '/api/searchIngredients?searchTerm=' + splitUrl[4]).then(({ data }) => {
+                setItems(data);
+                setLoading(false)
+            })
+        } else if (items.length === 0) {
             axios.get(constants.baseUrl + '/api/getRandomIngredients?numberOfItems=25').then(({ data }) => {
                 setItems(data);
                 setLoading(false)
@@ -113,9 +120,10 @@ export default function Ingredients() {
                                                     <div className='item-title-shell'>
                                                         <h2>{item.ingredientName}</h2>
                                                     </div>
-                                                    <div>
+                                                    <a href={'/potions/' + item.potion.name} target='_blank'>
                                                         {item.potion.name}
-                                                    </div>
+                                                        <i className="fa-solid fa-arrow-up-right-from-square"></i>
+                                                    </a>
                                                 </div>
                                                 <ReactivityHex reactivity={item.reactivity} />
                                             </div>

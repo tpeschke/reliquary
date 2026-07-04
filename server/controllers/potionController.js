@@ -1,6 +1,7 @@
 const { sendErrorForwardNoFile, checkForContentTypeBeforeSending } = require('../helpers')
 const { query } = require('../../db/index')
 const potionSQL = require('../../db/potions')
+const ingredients = require('./ingredients/dummyData')
 const sendErrorForward = sendErrorForwardNoFile('Potions')
 
 const controllerFunctions = {
@@ -103,6 +104,7 @@ getPotion = (rarity, resolve, res) => {
                 resolve(modifyPotionWithSalveCheck(potion))
             })
         } else {
+            potion.ingredients = ingredients.filter(({potion: potionIngredients}) => +potionIngredients.id === potion.id)
             resolve(modifyPotionWithSalveCheck(potion))
         }
     }).catch(e => sendErrorForward('semi-random potion', e, res))
@@ -134,7 +136,7 @@ modifyPotion = (potion, isSalve = false) => {
         'Rare': 150
     }
 
-    const { name, effect, rarity } = potion
+    const { name, effect, rarity, ingredients } = potion
     const swigs = Math.floor(Math.random() * 3) + 1
     const price = rarityPriceDictionary[rarity] * swigs
 
@@ -145,7 +147,7 @@ modifyPotion = (potion, isSalve = false) => {
         generalTooltip = "Salves with 'applications'. Each application lasts ~ 3 hours and effects stacks. \nSo, applying down 3 application of a salve gives 3 hours where you get triple the benefits, 3 hours where you get double the benefits, and 3 hours where you get the baseline for a total of 9 hours"
     }
 
-    return { name: toTitleCase(name), effect, rarity, price: isSalve ? price * 1.5 : price, swigs, isSalve, typeTooltip, generalTooltip, type: 'potion' }
+    return { name: toTitleCase(name), effect, rarity, price: isSalve ? price * 1.5 : price, swigs, isSalve, typeTooltip, generalTooltip, type: 'potion', ingredients }
 }
 
 rarityChance = () => {

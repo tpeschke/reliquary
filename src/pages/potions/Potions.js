@@ -9,6 +9,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Loading from '../../components/loading/Loading'
 import potion from '../../assets/icons/potions/potion.svg'
 import salve from '../../assets/icons/potions/salve.svg'
+import './Potions.css'
 
 import toast from 'react-hot-toast';
 
@@ -17,7 +18,14 @@ export default function Potions() {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
-        if (items.length === 0) {
+        const splitUrl = window.location.href.split('/')
+        if (splitUrl.length > 4 && items.length === 0) {
+            setLoading(true)
+            axios.post(constants.baseUrl + '/api/searchPotions?searchTerm=' + splitUrl[4]).then(({ data }) => {
+                setItems(data);
+                setLoading(false)
+            })
+        } else if (items.length === 0) {
             axios.post(constants.baseUrl + '/api/getRandomPotions?numberOfItems=10').then(({ data }) => {
                 setItems(data);
                 setLoading(false)
@@ -96,6 +104,15 @@ export default function Potions() {
                                                 <p className='bottom-margin'>{item.generalTooltip}</p>
                                                 <div className='item-detail'><h3>Price</h3> <p>{item.price} sc</p></div>
                                                 <div className='item-detail'><h3>Rarity</h3> <p>{item.rarity}</p></div>
+                                                <a href={'/ingredients/' + item.name} target='_blank' className='potion-ingredients'>
+                                                    <div className='item-detail'>
+                                                        <h3>Ingredients</h3>
+                                                        <i className="fa-solid fa-arrow-up-right-from-square"></i>
+                                                    </div>
+                                                </a>
+                                                <ul>
+                                                    {item.ingredients?.map(ingredient => <li>{ingredient.ingredientName}</li>)}
+                                                </ul>
                                             </div>
                                         </Typography>
                                     </AccordionDetails>

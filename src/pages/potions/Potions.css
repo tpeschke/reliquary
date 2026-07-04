@@ -1,0 +1,17 @@
+a.potion-ingredients {
+    color: unset;
+    text-decoration: none
+}
+
+a.potion-ingredients:hover {
+    border-bottom: 1px solid black;
+}
+
+a.potion-ingredients i {
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+a.potion-ingredients .item-detail {
+    align-items: center;
+}

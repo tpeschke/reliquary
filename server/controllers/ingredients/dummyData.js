@@ -915,7 +915,7 @@ const ingredients = [
  },
  {
   "id": "fyGRxLa8ne",
-  "ingredientName": "Roc Resin",
+  "ingredientName": "Rocesin",
   "harvestablePart": "Seeds",
   "locations": [
    {

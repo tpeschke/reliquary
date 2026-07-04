@@ -22,7 +22,7 @@ const controllerFunctions = {
             return ingredientName.toUpperCase().includes(searchTerm) || potion.name.toUpperCase().includes(searchTerm)
         })
 
-        checkForContentTypeBeforeSending(res, ingredientsToReturn)
+        checkForContentTypeBeforeSending(res, ingredientsToReturn.splice(0, 25))
     },
     searchByClimate: (req, res) => {
         const climateID = +req.query.climateID
@@ -31,7 +31,7 @@ const controllerFunctions = {
             return classifications.findIndex(climate => climate.id === climateID ) > -1
         })
 
-        checkForContentTypeBeforeSending(res, ingredientsToReturn)
+        checkForContentTypeBeforeSending(res, ingredientsToReturn.splice(0, 25))
     },
     searchByLocation: (req, res) => {
         const searchLocation = req.query.location
@@ -40,7 +40,7 @@ const controllerFunctions = {
             return locations.findIndex(location => location.location === searchLocation ) > -1
         })
 
-        checkForContentTypeBeforeSending(res, ingredientsToReturn)
+        checkForContentTypeBeforeSending(res, ingredientsToReturn.splice(0, 25))
     },
 }
 
