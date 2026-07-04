@@ -17,6 +17,9 @@ app.get('/api/getEnchantedItem', enchantedCtrl.getEnchantedItems)
 app.get('/api/getSingleEnchantedItem/:id', enchantedCtrl.getSingleEnchantedItem)
 
 app.get('/api/getRandomIngredients', IngredientsCtrl.getRandomIngredients)
+app.post('/api/searchIngredients', IngredientsCtrl.searchIngredients)
+app.post('/api/searchIngredientsByClimate', IngredientsCtrl.searchByClimate)
+app.post('/api/searchIngredientsByLocation', IngredientsCtrl.searchByLocation)
 
 app.post('/api/getItems', itemCtrl.getItems)
 app.post('/api/getRandomPotion', potionCtrl.getRandomPotion)

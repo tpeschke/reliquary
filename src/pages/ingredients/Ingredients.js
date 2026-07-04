@@ -15,10 +15,13 @@ import seeds from '../../assets/icons/ingredients/seeds.svg'
 import fruit from '../../assets/icons/ingredients/fruit.svg'
 import stalks from '../../assets/icons/ingredients/stalks.svg'
 import moss from '../../assets/icons/ingredients/moss.svg'
+import RefreshIcon from '@mui/icons-material/Refresh';
 import './Ingredients.css'
 
 import toast from 'react-hot-toast';
 import ReactivityHex from './components/ReactivityHex';
+import { climateSearchDictionary } from './utilities/climates';
+import { geographicLocations } from './utilities/locations';
 
 const iconDictionary = {
     "Leaves": leaves,
@@ -46,14 +49,34 @@ export default function Ingredients() {
 
     function refreshItems(event, rarity = null) {
         setLoading(true)
-        // axios.post(constants.baseUrl + '/api/getRandomPotions?numberOfItems=10' + (rarity ? '&rarity=' + rarity : '')).then(({ data }) => {
-        //     setItems(data);
-        setLoading(false)
-        // })
+        axios.get(constants.baseUrl + '/api/getRandomIngredients?numberOfItems=25').then(({ data }) => {
+            setItems(data);
+            setLoading(false)
+        })
     }
 
     function getIngredientByNameOrPotion(event) {
-        refreshItems()
+        setLoading(true)
+        axios.post(constants.baseUrl + '/api/searchIngredients?searchTerm=' + event.target.value).then(({ data }) => {
+            setItems(data);
+            setLoading(false)
+        })
+    }
+
+    function getIngredientByClimate(climateID) {
+        setLoading(true)
+        axios.post(constants.baseUrl + '/api/searchIngredientsByClimate?climateID=' + climateID).then(({ data }) => {
+            setItems(data);
+            setLoading(false)
+        })
+    }
+
+    function getIngredientByLocation(location) {
+        setLoading(true)
+        axios.post(constants.baseUrl + '/api/searchIngredientsByLocation?location=' + location).then(({ data }) => {
+            setItems(data);
+            setLoading(false)
+        })
     }
 
     return (
@@ -61,11 +84,18 @@ export default function Ingredients() {
             {loading && <Loading />}
             {!loading && (
                 <div className='ingredients'>
+                    <div className='input-shell climates-shell'>
+                        {climateSearchDictionary.map(climate => <button onClick={_ => getIngredientByClimate(climate.id)} className='secondary' key={climate.climate}>{climate.climate}</button>)}
+                    </div>
+                    <div className='input-shell climates-shell'>
+                        {geographicLocations.map(location => <button onClick={_ => getIngredientByLocation(location)} className='secondary' key={location}>{location}</button>)}
+                    </div>
                     <div className='input-shell'>
                         <div>
                             <input onBlur={getIngredientByNameOrPotion}></input>
                             <p>Search Ingredients by Name or Potion</p>
                         </div>
+                        <button onClick={refreshItems}><RefreshIcon /></button>
                     </div>
                     <div className='accordion-shell'>
                         {items.map((item, i) => {

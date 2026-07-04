@@ -465,7 +465,7 @@ const ingredients = [
   "potion": {
    "id": "71.2",
    "rarity": 1,
-   "name": "Disillusioning",
+   "name": "Disillusioning Potion",
    "climate": ""
   }
  },
@@ -675,7 +675,7 @@ const ingredients = [
   "potion": {
    "id": "71.24",
    "rarity": 1,
-   "name": "Infuriating",
+   "name": "Infuriating Potion",
    "climate": ""
   }
  },
@@ -909,13 +909,13 @@ const ingredients = [
   "potion": {
    "id": "71.22",
    "rarity": 1,
-   "name": "Withdrawing",
+   "name": "Withdrawing Potion",
    "climate": ""
   }
  },
  {
   "id": "fyGRxLa8ne",
-  "ingredientName": "Auroch Resin\nNAME CORRUPTED",
+  "ingredientName": "Roc Resin",
   "harvestablePart": "Seeds",
   "locations": [
    {
@@ -1127,7 +1127,7 @@ const ingredients = [
   "potion": {
    "id": "71.17",
    "rarity": 1,
-   "name": "Intimiating",
+   "name": "Intimiating Potion",
    "climate": ""
   }
  },
@@ -1581,7 +1581,7 @@ const ingredients = [
  },
  {
   "id": "u3dwBeSULl",
-  "ingredientName": "Bat's Spoon\nNAME CORRUPTED",
+  "ingredientName": "Baspoon",
   "harvestablePart": "Blossoms",
   "locations": [
    {
@@ -1783,7 +1783,7 @@ const ingredients = [
   "potion": {
    "id": "115",
    "rarity": 4,
-   "name": "Potion of Miraculous Relaxing ",
+   "name": "Potion of Miraculous Relaxing",
    "climate": ""
   }
  },
@@ -1981,7 +1981,7 @@ const ingredients = [
   "potion": {
    "id": "71.32",
    "rarity": 1,
-   "name": "Resenting",
+   "name": "Resenting Potion",
    "climate": ""
   }
  },
@@ -2078,7 +2078,7 @@ const ingredients = [
   "potion": {
    "id": "71.51",
    "rarity": 1,
-   "name": "Griefing",
+   "name": "Griefing Potion",
    "climate": ""
   }
  },
@@ -2179,7 +2179,7 @@ const ingredients = [
   "potion": {
    "id": "71.7",
    "rarity": 1,
-   "name": "Joying",
+   "name": "Joying Potion",
    "climate": ""
   }
  },
@@ -2294,7 +2294,7 @@ const ingredients = [
   "potion": {
    "id": "71.5",
    "rarity": 1,
-   "name": "Eagering",
+   "name": "Eagering Potion",
    "climate": ""
   }
  },
@@ -2651,7 +2651,7 @@ const ingredients = [
   "potion": {
    "id": "71.55",
    "rarity": 1,
-   "name": "Emptying",
+   "name": "Emptying Potion",
    "climate": ""
   }
  },
@@ -2748,7 +2748,7 @@ const ingredients = [
   "potion": {
    "id": "71.12",
    "rarity": 1,
-   "name": "Valuing",
+   "name": "Valuing Potion",
    "climate": ""
   }
  },
@@ -2942,13 +2942,13 @@ const ingredients = [
   "potion": {
    "id": "71.21",
    "rarity": 1,
-   "name": "Skepticaling",
+   "name": "Skepticaling Potion",
    "climate": ""
   }
  },
  {
   "id": "l823j7y04B",
-  "ingredientName": "Black Cat Wort\nNAME CORRUPTED",
+  "ingredientName": "Blakat Wort",
   "harvestablePart": "Blossoms",
   "locations": [
    {
@@ -3065,7 +3065,7 @@ const ingredients = [
   "potion": {
    "id": "71.27",
    "rarity": 1,
-   "name": "Furiousing",
+   "name": "Furiousing Potion",
    "climate": ""
   }
  },
@@ -3519,7 +3519,7 @@ const ingredients = [
   "potion": {
    "id": "71.30",
    "rarity": 1,
-   "name": "Ridiculing",
+   "name": "Ridiculing Potion",
    "climate": ""
   }
  },
@@ -3751,7 +3751,7 @@ const ingredients = [
   "potion": {
    "id": "71.4",
    "rarity": 1,
-   "name": "Astonishing",
+   "name": "Astonishing Potion",
    "climate": ""
   }
  },
@@ -3856,7 +3856,7 @@ const ingredients = [
  },
  {
   "id": "DvbQHmvBje",
-  "ingredientName": "Blue Heart\nNAME CORRUPTED",
+  "ingredientName": "Bluart",
   "harvestablePart": "Stalks",
   "locations": [
    {
@@ -3989,7 +3989,7 @@ const ingredients = [
  },
  {
   "id": "FJXcbJrite",
-  "ingredientName": "Blue Ratfolk Nettles\nNAME CORRUPTED",
+  "ingredientName": "Blue Rat Net",
   "harvestablePart": "Fruit",
   "locations": [
    {
@@ -4626,7 +4626,7 @@ const ingredients = [
   "potion": {
    "id": "71.9",
    "rarity": 1,
-   "name": "Curiousing",
+   "name": "Curiousing Potion",
    "climate": ""
   }
  },
@@ -4749,7 +4749,7 @@ const ingredients = [
   "potion": {
    "id": "71.10",
    "rarity": 1,
-   "name": "Confidenting",
+   "name": "Confidenting Potion",
    "climate": ""
   }
  },
@@ -4852,7 +4852,7 @@ const ingredients = [
   "potion": {
    "id": "71.40",
    "rarity": 1,
-   "name": "Judgementing",
+   "name": "Judgementing Potion",
    "climate": ""
   }
  },
@@ -5181,7 +5181,7 @@ const ingredients = [
   "potion": {
    "id": "71.54",
    "rarity": 1,
-   "name": "Remosing",
+   "name": "Remosing Potion",
    "climate": ""
   }
  },
@@ -5262,13 +5262,13 @@ const ingredients = [
   "potion": {
    "id": "71.14",
    "rarity": 1,
-   "name": "Couraging",
+   "name": "Couraging Potion",
    "climate": ""
   }
  },
  {
   "id": "zKRGcTCnwM",
-  "ingredientName": "Brunhilde's Brownie\nNAME CORRUPTED",
+  "ingredientName": "Brun Brown",
   "harvestablePart": "Fruit",
   "locations": [
    {
@@ -5528,7 +5528,7 @@ const ingredients = [
   "potion": {
    "id": "71.3",
    "rarity": 1,
-   "name": "Awing",
+   "name": "Awing Potion",
    "climate": ""
   }
  },
@@ -5633,7 +5633,7 @@ const ingredients = [
  },
  {
   "id": "myjCxFtE9z",
-  "ingredientName": "Candler's Deer\nNAME CORRUPTED",
+  "ingredientName": "Candle Deep",
   "harvestablePart": "Fruit",
   "locations": [
    {
@@ -5893,7 +5893,7 @@ const ingredients = [
  },
  {
   "id": "uc4zX1ks0n",
-  "ingredientName": "Candler's Shed\nNAME CORRUPTED",
+  "ingredientName": "Candle Ed",
   "harvestablePart": "Blossoms",
   "locations": [
    {
@@ -6165,7 +6165,7 @@ const ingredients = [
   "potion": {
    "id": "71.18",
    "rarity": 1,
-   "name": "Sensitiving",
+   "name": "Sensitiving Potion",
    "climate": ""
   }
  },
@@ -6258,7 +6258,7 @@ const ingredients = [
   "potion": {
    "id": "71.45",
    "rarity": 1,
-   "name": "Overwhelming",
+   "name": "Overwhelming Potion",
    "climate": ""
   }
  },
@@ -6349,7 +6349,7 @@ const ingredients = [
   "potion": {
    "id": "71.8",
    "rarity": 1,
-   "name": "Inquisitiving",
+   "name": "Inquisitiving Potion",
    "climate": ""
   }
  },
@@ -6712,7 +6712,7 @@ const ingredients = [
   "potion": {
    "id": "71.7",
    "rarity": 1,
-   "name": "Joying",
+   "name": "Joying Potion",
    "climate": ""
   }
  },
@@ -6936,7 +6936,7 @@ const ingredients = [
   "potion": {
    "id": "85",
    "rarity": 4,
-   "name": "Potion of Petrification Curing",
+   "name": "Potion of Petrification Curing Potion",
    "climate": ""
   }
  },
@@ -7736,7 +7736,7 @@ const ingredients = [
   "potion": {
    "id": "71.51",
    "rarity": 1,
-   "name": "Griefing",
+   "name": "Griefing Potion",
    "climate": ""
   }
  },
@@ -7815,7 +7815,7 @@ const ingredients = [
   "potion": {
    "id": "71.36",
    "rarity": 1,
-   "name": "Destesting",
+   "name": "Destesting Potion",
    "climate": ""
   }
  },
@@ -7954,7 +7954,7 @@ const ingredients = [
   "potion": {
    "id": "114",
    "rarity": 2,
-   "name": "Potion of Greater Relaxing ",
+   "name": "Potion of Greater Relaxing",
    "climate": ""
   }
  },
@@ -8130,7 +8130,7 @@ const ingredients = [
   "potion": {
    "id": "71.41",
    "rarity": 1,
-   "name": "Apathizing",
+   "name": "Apathizing Potion",
    "climate": ""
   }
  },
@@ -8645,7 +8645,7 @@ const ingredients = [
   "potion": {
    "id": "71.26",
    "rarity": 1,
-   "name": "Jealousing",
+   "name": "Jealousing Potion",
    "climate": ""
   }
  },
@@ -8871,7 +8871,7 @@ const ingredients = [
  },
  {
   "id": "ksGzcA3HDz",
-  "ingredientName": "Crane's Walk\nNAME CORRUPTED",
+  "ingredientName": "Cranwak",
   "harvestablePart": "Stalks",
   "locations": [
    {
@@ -9071,7 +9071,7 @@ const ingredients = [
   "potion": {
    "id": "71.61",
    "rarity": 1,
-   "name": "Persecuting",
+   "name": "Persecuting Potion",
    "climate": ""
   }
  },
@@ -9188,7 +9188,7 @@ const ingredients = [
   "potion": {
    "id": "71.68",
    "rarity": 1,
-   "name": "Concerning",
+   "name": "Concerning Potion",
    "climate": ""
   }
  },
@@ -9444,7 +9444,7 @@ const ingredients = [
   "potion": {
    "id": "71.52",
    "rarity": 1,
-   "name": "Powerlessing",
+   "name": "Powerlessing Potion",
    "climate": ""
   }
  },
@@ -9761,7 +9761,7 @@ const ingredients = [
   "potion": {
    "id": "71.48",
    "rarity": 1,
-   "name": "Isolating",
+   "name": "Isolating Potion",
    "climate": ""
   }
  },
@@ -10316,7 +10316,7 @@ const ingredients = [
   "potion": {
    "id": "71.41",
    "rarity": 1,
-   "name": "Apathizing",
+   "name": "Apathizing Potion",
    "climate": ""
   }
  },
@@ -10633,7 +10633,7 @@ const ingredients = [
   "potion": {
    "id": "71.29",
    "rarity": 1,
-   "name": "Indignanting",
+   "name": "Indignanting Potion",
    "climate": ""
   }
  },
@@ -11091,7 +11091,7 @@ const ingredients = [
   "potion": {
    "id": "71.25",
    "rarity": 1,
-   "name": "Hostiling",
+   "name": "Hostiling Potion",
    "climate": ""
   }
  },
@@ -11196,7 +11196,7 @@ const ingredients = [
   "potion": {
    "id": "71.47",
    "rarity": 1,
-   "name": "Abandoning",
+   "name": "Abandoning Potion",
    "climate": ""
   }
  },
@@ -11289,7 +11289,7 @@ const ingredients = [
   "potion": {
    "id": "85",
    "rarity": 4,
-   "name": "Potion of Petrification Curing",
+   "name": "Potion of Petrification Curing Potion",
    "climate": ""
   }
  },
@@ -11394,7 +11394,7 @@ const ingredients = [
   "potion": {
    "id": "71.28",
    "rarity": 1,
-   "name": "Violating",
+   "name": "Violating Potion",
    "climate": ""
   }
  },
@@ -11725,7 +11725,7 @@ const ingredients = [
   "potion": {
    "id": "115",
    "rarity": 4,
-   "name": "Potion of Miraculous Relaxing ",
+   "name": "Potion of Miraculous Relaxing",
    "climate": ""
   }
  },
@@ -12074,7 +12074,7 @@ const ingredients = [
   "potion": {
    "id": "71.63",
    "rarity": 1,
-   "name": "Insignificanting",
+   "name": "Insignificanting Potion",
    "climate": ""
   }
  },
@@ -12304,7 +12304,7 @@ const ingredients = [
  },
  {
   "id": "YgTQNOqrrF",
-  "ingredientName": "Elf's Soap\nNAME CORRUPTED",
+  "ingredientName": "Eloap",
   "harvestablePart": "Stalks",
   "locations": [
    {
@@ -12683,7 +12683,7 @@ const ingredients = [
  },
  {
   "id": "EAUjdXin4a",
-  "ingredientName": "Elk's Spice\nNAME CORRUPTED",
+  "ingredientName": "Ek Spice",
   "harvestablePart": "Leaves",
   "locations": [
    {
@@ -12804,7 +12804,7 @@ const ingredients = [
  },
  {
   "id": "yNPhyrWPss",
-  "ingredientName": "Ereyule Hawk\nNAME CORRUPTED",
+  "ingredientName": "Yule Hawk",
   "harvestablePart": "Fruit",
   "locations": [
    {
@@ -13016,7 +13016,7 @@ const ingredients = [
   "potion": {
    "id": "71.31",
    "rarity": 1,
-   "name": "Disrespecting",
+   "name": "Disrespecting Potion",
    "climate": ""
   }
  },
@@ -13484,7 +13484,7 @@ const ingredients = [
   "potion": {
    "id": "114",
    "rarity": 2,
-   "name": "Potion of Greater Relaxing ",
+   "name": "Potion of Greater Relaxing",
    "climate": ""
   }
  },
@@ -13595,7 +13595,7 @@ const ingredients = [
   "potion": {
    "id": "71.42",
    "rarity": 1,
-   "name": "Indifferenting",
+   "name": "Indifferenting Potion",
    "climate": ""
   }
  },
@@ -13908,7 +13908,7 @@ const ingredients = [
   "potion": {
    "id": "71.66",
    "rarity": 1,
-   "name": "Inadequating",
+   "name": "Inadequating Potion",
    "climate": ""
   }
  },
@@ -14307,7 +14307,7 @@ const ingredients = [
  },
  {
   "id": "1mRVTgdOeW",
-  "ingredientName": "Falconer's Hide\nNAME CORRUPTED",
+  "ingredientName": "Falide",
   "harvestablePart": "Roots",
   "locations": [
    {
@@ -14430,7 +14430,7 @@ const ingredients = [
   "potion": {
    "id": "71.57",
    "rarity": 1,
-   "name": "Disappointing",
+   "name": "Disappointing Potion",
    "climate": ""
   }
  },
@@ -14549,7 +14549,7 @@ const ingredients = [
  },
  {
   "id": "aBMz6jgTxU",
-  "ingredientName": "Fall Brown\nNAME CORRUPTED",
+  "ingredientName": "Allrown",
   "harvestablePart": "Fruit",
   "locations": [
    {
@@ -14656,7 +14656,7 @@ const ingredients = [
   "potion": {
    "id": "71.18",
    "rarity": 1,
-   "name": "Sensitiving",
+   "name": "Sensitiving Potion",
    "climate": ""
   }
  },
@@ -14759,7 +14759,7 @@ const ingredients = [
   "potion": {
    "id": "71.55",
    "rarity": 1,
-   "name": "Emptying",
+   "name": "Emptying Potion",
    "climate": ""
   }
  },
@@ -14878,7 +14878,7 @@ const ingredients = [
  },
  {
   "id": "kXgm6Y6Zwr",
-  "ingredientName": "Finger Toe\nNAME CORRUPTED",
+  "ingredientName": "Finoe",
   "harvestablePart": "Roots",
   "locations": [
    {
@@ -15030,7 +15030,7 @@ const ingredients = [
   "potion": {
    "id": "71.13",
    "rarity": 1,
-   "name": "Respecting",
+   "name": "Respecting Potion",
    "climate": ""
   }
  },
@@ -15270,7 +15270,7 @@ const ingredients = [
  },
  {
   "id": "Pr2y48HQtZ",
-  "ingredientName": "Foal Purple\nNAME CORRUPTED",
+  "ingredientName": "Alurp",
   "harvestablePart": "Leaves",
   "locations": [
    {
@@ -15401,7 +15401,7 @@ const ingredients = [
   "potion": {
    "id": "71.64",
    "rarity": 1,
-   "name": "Worthlessing",
+   "name": "Worthlessing Potion",
    "climate": ""
   }
  },
@@ -16301,7 +16301,7 @@ const ingredients = [
  },
  {
   "id": "3FfZogqPTL",
-  "ingredientName": "Glossy Eruhantale Root\nNAME CORRUPTED",
+  "ingredientName": "Glosantale Root",
   "harvestablePart": "Vines",
   "locations": [
    {
@@ -16834,13 +16834,13 @@ const ingredients = [
   "potion": {
    "id": "71.12",
    "rarity": 1,
-   "name": "Valuing",
+   "name": "Valuing Potion",
    "climate": ""
   }
  },
  {
   "id": "ypq4mvADEG",
-  "ingredientName": "Gold Sow Nettles\nNAME CORRUPTED",
+  "ingredientName": "Gow Nettle",
   "harvestablePart": "Moss",
   "locations": [
    {
@@ -16953,7 +16953,7 @@ const ingredients = [
   "potion": {
    "id": "71.21",
    "rarity": 1,
-   "name": "Skepticaling",
+   "name": "Skepticaling Potion",
    "climate": ""
   }
  },
@@ -17302,7 +17302,7 @@ const ingredients = [
   "potion": {
    "id": "71.54",
    "rarity": 1,
-   "name": "Remosing",
+   "name": "Remosing Potion",
    "climate": ""
   }
  },
@@ -17421,7 +17421,7 @@ const ingredients = [
  },
  {
   "id": "v547aAOESa",
-  "ingredientName": "Governor's Laugh\nNAME CORRUPTED",
+  "ingredientName": "Gov Laugh",
   "harvestablePart": "Fruit",
   "locations": [
    {
@@ -17520,7 +17520,7 @@ const ingredients = [
   "potion": {
    "id": "71.34",
    "rarity": 1,
-   "name": "Hesitating",
+   "name": "Hesitating Potion",
    "climate": ""
   }
  },
@@ -17734,7 +17734,7 @@ const ingredients = [
  },
  {
   "id": "49tYmJMazJ",
-  "ingredientName": "Gray Pech Flower\nNAME CORRUPTED",
+  "ingredientName": "Grach Flower",
   "harvestablePart": "Stalks",
   "locations": [
    {
@@ -17827,7 +17827,7 @@ const ingredients = [
   "potion": {
    "id": "71.3",
    "rarity": 1,
-   "name": "Awing",
+   "name": "Awing Potion",
    "climate": ""
   }
  },
@@ -18430,7 +18430,7 @@ const ingredients = [
   "potion": {
    "id": "71.58",
    "rarity": 1,
-   "name": "Embarrassing",
+   "name": "Embarrassing Potion",
    "climate": ""
   }
  },
@@ -18531,13 +18531,13 @@ const ingredients = [
   "potion": {
    "id": "71.6",
    "rarity": 1,
-   "name": "Cheekying",
+   "name": "Cheekying Potion",
    "climate": ""
   }
  },
  {
   "id": "xNFiDdJ85Y",
-  "ingredientName": "Griffin's Hammer\nNAME CORRUPTED",
+  "ingredientName": "Grif's Ham",
   "harvestablePart": "Blossoms",
   "locations": [
    {
@@ -18630,13 +18630,13 @@ const ingredients = [
   "potion": {
    "id": "113",
    "rarity": 1,
-   "name": "Potion of Relaxing ",
+   "name": "Potion of Relaxing",
    "climate": ""
   }
  },
  {
   "id": "LRi9um8Wib",
-  "ingredientName": "Gudrun's Well\nNAME CORRUPTED",
+  "ingredientName": "Gud Well",
   "harvestablePart": "Roots",
   "locations": [
    {
@@ -18725,7 +18725,7 @@ const ingredients = [
  },
  {
   "id": "NPwpysRzcq",
-  "ingredientName": "Guilder's Barghest\nNAME CORRUPTED",
+  "ingredientName": "Guild Ghest",
   "harvestablePart": "Stalks",
   "locations": [
    {
@@ -18844,13 +18844,13 @@ const ingredients = [
   "potion": {
    "id": "71.72",
    "rarity": 1,
-   "name": "Shocking",
+   "name": "Shocking Potion",
    "climate": ""
   }
  },
  {
   "id": "1iNgjfasjb",
-  "ingredientName": "Guilder's Berry\nNAME CORRUPTED",
+  "ingredientName": "Ilder's Berry",
   "harvestablePart": "Seeds",
   "locations": [
    {
@@ -19171,7 +19171,7 @@ const ingredients = [
   "potion": {
    "id": "71.46",
    "rarity": 1,
-   "name": "Unfocing",
+   "name": "Unfocing Potion",
    "climate": ""
   }
  },
@@ -19651,7 +19651,7 @@ const ingredients = [
  },
  {
   "id": "GKLrm8iM9g",
-  "ingredientName": "Heinrich's Weep\nNAME CORRUPTED",
+  "ingredientName": "Rich Weep",
   "harvestablePart": "Leaves",
   "locations": [
    {
@@ -19887,13 +19887,13 @@ const ingredients = [
   "potion": {
    "id": "71.32",
    "rarity": 1,
-   "name": "Resenting",
+   "name": "Resenting Potion",
    "climate": ""
   }
  },
  {
   "id": "8TgakxjjsS",
-  "ingredientName": "Herald's Finger\nNAME CORRUPTED",
+  "ingredientName": "Herger",
   "harvestablePart": "Leaves",
   "locations": [
    {
@@ -20234,7 +20234,7 @@ const ingredients = [
   "potion": {
    "id": "71.19",
    "rarity": 1,
-   "name": "Hopefuling",
+   "name": "Hopefuling Potion",
    "climate": ""
   }
  },
@@ -20442,7 +20442,7 @@ const ingredients = [
   "potion": {
    "id": "71.49",
    "rarity": 1,
-   "name": "Fragiling",
+   "name": "Fragiling Potion",
    "climate": ""
   }
  },
@@ -20636,7 +20636,7 @@ const ingredients = [
   "potion": {
    "id": "71.8",
    "rarity": 1,
-   "name": "Inquisitiving",
+   "name": "Inquisitiving Potion",
    "climate": ""
   }
  },
@@ -20826,7 +20826,7 @@ const ingredients = [
  },
  {
   "id": "JqUjd4axOL",
-  "ingredientName": "Hill Pink\nNAME CORRUPTED",
+  "ingredientName": "Ill Ink",
   "harvestablePart": "Blossoms",
   "locations": [
    {
@@ -21410,7 +21410,7 @@ const ingredients = [
  },
  {
   "id": "pWd39Hwg5L",
-  "ingredientName": "Hog's Fur\nNAME CORRUPTED",
+  "ingredientName": "Ogs Fur",
   "harvestablePart": "Moss",
   "locations": [
    {
@@ -21541,13 +21541,13 @@ const ingredients = [
   "potion": {
    "id": "71.39",
    "rarity": 1,
-   "name": "Condemning",
+   "name": "Condemning Potion",
    "climate": ""
   }
  },
  {
   "id": "dpRhDBQrXb",
-  "ingredientName": "Hollow Shednut\nNAME CORRUPTED",
+  "ingredientName": "Low Shednut",
   "harvestablePart": "Fruit",
   "locations": [
    {
@@ -21797,7 +21797,7 @@ const ingredients = [
  },
  {
   "id": "xonqQF1C1A",
-  "ingredientName": "Hollow Towel\nNAME CORRUPTED",
+  "ingredientName": "Hollo Owl",
   "harvestablePart": "Stalks",
   "locations": [
    {
@@ -21928,7 +21928,7 @@ const ingredients = [
  },
  {
   "id": "TMfDxA7Kpi",
-  "ingredientName": "Honey Laugh\nNAME CORRUPTED",
+  "ingredientName": "Honaugh",
   "harvestablePart": "Fruit",
   "locations": [
    {
@@ -22467,7 +22467,7 @@ const ingredients = [
   "potion": {
    "id": "71.44",
    "rarity": 1,
-   "name": "Pressuring",
+   "name": "Pressuring Potion",
    "climate": ""
   }
  },
@@ -22576,7 +22576,7 @@ const ingredients = [
   "potion": {
    "id": "71.43",
    "rarity": 1,
-   "name": "Rushing",
+   "name": "Rushing Potion",
    "climate": ""
   }
  },
@@ -22681,7 +22681,7 @@ const ingredients = [
   "potion": {
    "id": "71.28",
    "rarity": 1,
-   "name": "Violating",
+   "name": "Violating Potion",
    "climate": ""
   }
  },
@@ -22911,7 +22911,7 @@ const ingredients = [
  },
  {
   "id": "v4wc0HphmO",
-  "ingredientName": "Imbolc Goblin\nNAME CORRUPTED",
+  "ingredientName": "Imbolclin",
   "harvestablePart": "Seeds",
   "locations": [
    {
@@ -22996,7 +22996,7 @@ const ingredients = [
  },
  {
   "id": "P1QeejOZbi",
-  "ingredientName": "Indigo Clusterfern\nNAME CORRUPTED",
+  "ingredientName": "Inust Fern",
   "harvestablePart": "Leaves",
   "locations": [
    {
@@ -23497,7 +23497,7 @@ const ingredients = [
   "potion": {
    "id": "71.59",
    "rarity": 1,
-   "name": "Exposing",
+   "name": "Exposing Potion",
    "climate": ""
   }
  },
@@ -23596,7 +23596,7 @@ const ingredients = [
  },
  {
   "id": "JBLojgcraq",
-  "ingredientName": "Jester's Finger\nNAME CORRUPTED",
+  "ingredientName": "Jeser",
   "harvestablePart": "Stalks",
   "locations": [
    {
@@ -23812,7 +23812,7 @@ const ingredients = [
  },
  {
   "id": "MhcUjwLgZ9",
-  "ingredientName": "July Nest\nNAME CORRUPTED",
+  "ingredientName": "Julnes",
   "harvestablePart": "Roots",
   "locations": [
    {
@@ -24111,7 +24111,7 @@ const ingredients = [
   "potion": {
    "id": "71.23",
    "rarity": 1,
-   "name": "Annoying",
+   "name": "Annoying Potion",
    "climate": ""
   }
  },
@@ -24234,7 +24234,7 @@ const ingredients = [
  },
  {
   "id": "Pf56pOgDmk",
-  "ingredientName": "Kelpie's Thumb\nNAME CORRUPTED",
+  "ingredientName": "Kelp Tum",
   "harvestablePart": "Stalks",
   "locations": [
    {
@@ -24337,7 +24337,7 @@ const ingredients = [
  },
  {
   "id": "WX7dASzMOt",
-  "ingredientName": "King's Anther\nNAME CORRUPTED",
+  "ingredientName": "Anther King Potion",
   "harvestablePart": "Fruit",
   "locations": [
    {
@@ -24577,7 +24577,7 @@ const ingredients = [
  },
  {
   "id": "hPUxt5RjG1",
-  "ingredientName": "King's Silver\nNAME CORRUPTED",
+  "ingredientName": "King Ilve",
   "harvestablePart": "Fruit",
   "locations": [
    {
@@ -24688,13 +24688,13 @@ const ingredients = [
   "potion": {
    "id": "71.50",
    "rarity": 1,
-   "name": "Victiming",
+   "name": "Victiming Potion",
    "climate": ""
   }
  },
  {
   "id": "5D4sB2dVMi",
-  "ingredientName": "Kiss's Mule\nNAME CORRUPTED",
+  "ingredientName": "Kiss Mule",
   "harvestablePart": "Fruit",
   "locations": [
    {
@@ -24811,7 +24811,7 @@ const ingredients = [
   "potion": {
    "id": "71.66",
    "rarity": 1,
-   "name": "Inadequating",
+   "name": "Inadequating Potion",
    "climate": ""
   }
  },
@@ -25055,7 +25055,7 @@ const ingredients = [
   "potion": {
    "id": "115",
    "rarity": 4,
-   "name": "Potion of Miraculous Relaxing ",
+   "name": "Potion of Miraculous Relaxing",
    "climate": ""
   }
  },
@@ -25815,7 +25815,7 @@ const ingredients = [
  },
  {
   "id": "21UVlTshi5",
-  "ingredientName": "Kissing Tongue\nNAME CORRUPTED",
+  "ingredientName": "Kiss Ton",
   "harvestablePart": "Roots",
   "locations": [
    {
@@ -25995,7 +25995,7 @@ const ingredients = [
   "potion": {
    "id": "71.9",
    "rarity": 1,
-   "name": "Curiousing",
+   "name": "Curiousing Potion",
    "climate": ""
   }
  },
@@ -26078,7 +26078,7 @@ const ingredients = [
   "potion": {
    "id": "71.64",
    "rarity": 1,
-   "name": "Worthlessing",
+   "name": "Worthlessing Potion",
    "climate": ""
   }
  },
@@ -26338,7 +26338,7 @@ const ingredients = [
   "potion": {
    "id": "71.20",
    "rarity": 1,
-   "name": "Dismissing",
+   "name": "Dismissing Potion",
    "climate": ""
   }
  },
@@ -26562,7 +26562,7 @@ const ingredients = [
  },
  {
   "id": "dOF5ocvX9W",
-  "ingredientName": "Laughing Hand\nNAME CORRUPTED",
+  "ingredientName": "Laugh And",
   "harvestablePart": "Roots",
   "locations": [
    {
@@ -26742,7 +26742,7 @@ const ingredients = [
  },
  {
   "id": "JcmYkmNaVD",
-  "ingredientName": "Liesl's Pillow\nNAME CORRUPTED",
+  "ingredientName": "Liesl Ill",
   "harvestablePart": "Blossoms",
   "locations": [
    {
@@ -27077,7 +27077,7 @@ const ingredients = [
   "potion": {
    "id": "71.53",
    "rarity": 1,
-   "name": "Ashaming",
+   "name": "Ashaming Potion",
    "climate": ""
   }
  },
@@ -27303,7 +27303,7 @@ const ingredients = [
   "potion": {
    "id": "71.49",
    "rarity": 1,
-   "name": "Fragiling",
+   "name": "Fragiling Potion",
    "climate": ""
   }
  },
@@ -27686,7 +27686,7 @@ const ingredients = [
  },
  {
   "id": "zinRMi0DzR",
-  "ingredientName": "Magenta Mettare Rush\nNAME CORRUPTED",
+  "ingredientName": "Magare Rush",
   "harvestablePart": "Leaves",
   "locations": [
    {
@@ -27823,7 +27823,7 @@ const ingredients = [
   "potion": {
    "id": "71.70",
    "rarity": 1,
-   "name": "Helplessing",
+   "name": "Helplessing Potion",
    "climate": ""
   }
  },
@@ -28083,7 +28083,7 @@ const ingredients = [
  },
  {
   "id": "aSOhvzJOMC",
-  "ingredientName": "Magenta Young Mill\nNAME CORRUPTED",
+  "ingredientName": "Gent Mill",
   "harvestablePart": "Stalks",
   "locations": [
    {
@@ -28168,7 +28168,7 @@ const ingredients = [
   "potion": {
    "id": "71.42",
    "rarity": 1,
-   "name": "Indifferenting",
+   "name": "Indifferenting Potion",
    "climate": ""
   }
  },
@@ -28336,7 +28336,7 @@ const ingredients = [
   "potion": {
    "id": "71.13",
    "rarity": 1,
-   "name": "Respecting",
+   "name": "Respecting Potion",
    "climate": ""
   }
  },
@@ -28705,7 +28705,7 @@ const ingredients = [
   "potion": {
    "id": "71.60",
    "rarity": 1,
-   "name": "Nervousing",
+   "name": "Nervousing Potion",
    "climate": ""
   }
  },
@@ -28830,7 +28830,7 @@ const ingredients = [
  },
  {
   "id": "srqTpE3EhI",
-  "ingredientName": "Mason's Elf\nNAME CORRUPTED",
+  "ingredientName": "Mason Elf",
   "harvestablePart": "Seeds",
   "locations": [
    {
@@ -29552,7 +29552,7 @@ const ingredients = [
   "potion": {
    "id": "85",
    "rarity": 4,
-   "name": "Potion of Petrification Curing",
+   "name": "Potion of Petrification Curing Potion",
    "climate": ""
   }
  },
@@ -29675,7 +29675,7 @@ const ingredients = [
  },
  {
   "id": "D8ohdDwZUv",
-  "ingredientName": "Midnightnut\nNAME CORRUPTED",
+  "ingredientName": "Midnut",
   "harvestablePart": "Roots",
   "locations": [
    {
@@ -30107,7 +30107,7 @@ const ingredients = [
  },
  {
   "id": "cgfs0y7t7r",
-  "ingredientName": "Midwinter Black\nNAME CORRUPTED",
+  "ingredientName": "Midwinter Ack",
   "harvestablePart": "Roots",
   "locations": [
    {
@@ -30228,13 +30228,13 @@ const ingredients = [
   "potion": {
    "id": "71.60",
    "rarity": 1,
-   "name": "Nervousing",
+   "name": "Nervousing Potion",
    "climate": ""
   }
  },
  {
   "id": "dkVZsRXZfd",
-  "ingredientName": "Millsepal\nNAME CORRUPTED",
+  "ingredientName": "Millsepal",
   "harvestablePart": "Blossoms",
   "locations": [
    {
@@ -30484,7 +30484,7 @@ const ingredients = [
  },
  {
   "id": "cbk74hGFkU",
-  "ingredientName": "Miner's Purple\nNAME CORRUPTED",
+  "ingredientName": "Maner Urp",
   "harvestablePart": "Stalks",
   "locations": [
    {
@@ -30611,7 +30611,7 @@ const ingredients = [
  },
  {
   "id": "xjDQeAa89v",
-  "ingredientName": "Minstrel's Hair\nNAME CORRUPTED",
+  "ingredientName": "Min's Hair",
   "harvestablePart": "Leaves",
   "locations": [
    {
@@ -30692,7 +30692,7 @@ const ingredients = [
   "potion": {
    "id": "71.65",
    "rarity": 1,
-   "name": "Inferioring",
+   "name": "Inferioring Potion",
    "climate": ""
   }
  },
@@ -31099,13 +31099,13 @@ const ingredients = [
   "potion": {
    "id": "71.47",
    "rarity": 1,
-   "name": "Abandoning",
+   "name": "Abandoning Potion",
    "climate": ""
   }
  },
  {
   "id": "b3wNdwak69",
-  "ingredientName": "Morjana's Horn\nNAME CORRUPTED",
+  "ingredientName": "Jana Horn",
   "harvestablePart": "Roots",
   "locations": [
    {
@@ -31222,7 +31222,7 @@ const ingredients = [
   "potion": {
    "id": "71.34",
    "rarity": 1,
-   "name": "Hesitating",
+   "name": "Hesitating Potion",
    "climate": ""
   }
  },
@@ -31323,7 +31323,7 @@ const ingredients = [
   "potion": {
    "id": "71.6",
    "rarity": 1,
-   "name": "Cheekying",
+   "name": "Cheekying Potion",
    "climate": ""
   }
  },
@@ -31664,7 +31664,7 @@ const ingredients = [
   "potion": {
    "id": "71.10",
    "rarity": 1,
-   "name": "Confidenting",
+   "name": "Confidenting Potion",
    "climate": ""
   }
  },
@@ -32102,7 +32102,7 @@ const ingredients = [
   "potion": {
    "id": "71.45",
    "rarity": 1,
-   "name": "Overwhelming",
+   "name": "Overwhelming Potion",
    "climate": ""
   }
  },
@@ -32197,13 +32197,13 @@ const ingredients = [
   "potion": {
    "id": "71.14",
    "rarity": 1,
-   "name": "Couraging",
+   "name": "Couraging Potion",
    "climate": ""
   }
  },
  {
   "id": "7ZZkuDzvsT",
-  "ingredientName": "Noon Olive\nNAME CORRUPTED",
+  "ingredientName": "Nove",
   "harvestablePart": "Stalks",
   "locations": [
    {
@@ -32461,7 +32461,7 @@ const ingredients = [
  },
  {
   "id": "5F5gbIdB7j",
-  "ingredientName": "Northern Hutfern\nNAME CORRUPTED",
+  "ingredientName": "Northern utfern",
   "harvestablePart": "Vines",
   "locations": [
    {
@@ -32891,7 +32891,7 @@ const ingredients = [
   "potion": {
    "id": "71.67",
    "rarity": 1,
-   "name": "Worring",
+   "name": "Worring Potion",
    "climate": ""
   }
  },
@@ -33010,7 +33010,7 @@ const ingredients = [
  },
  {
   "id": "rkEB1G4bt9",
-  "ingredientName": "Ogre Honey\nNAME CORRUPTED",
+  "ingredientName": "Ogney",
   "harvestablePart": "Moss",
   "locations": [
    {
@@ -33210,7 +33210,7 @@ const ingredients = [
   "potion": {
    "id": "71.61",
    "rarity": 1,
-   "name": "Persecuting",
+   "name": "Persecuting Potion",
    "climate": ""
   }
  },
@@ -33295,7 +33295,7 @@ const ingredients = [
   "potion": {
    "id": "71.72",
    "rarity": 1,
-   "name": "Shocking",
+   "name": "Shocking Potion",
    "climate": ""
   }
  },
@@ -33406,7 +33406,7 @@ const ingredients = [
  },
  {
   "id": "ztlGclmRXn",
-  "ingredientName": "Olivespice\nNAME CORRUPTED",
+  "ingredientName": "Olispice",
   "harvestablePart": "Blossoms",
   "locations": [
    {
@@ -33646,7 +33646,7 @@ const ingredients = [
  },
  {
   "id": "w6FrCSjvqD",
-  "ingredientName": "Orc Laugh\nNAME CORRUPTED",
+  "ingredientName": "Ocug",
   "harvestablePart": "Fruit",
   "locations": [
    {
@@ -33739,13 +33739,13 @@ const ingredients = [
   "potion": {
    "id": "71.56",
    "rarity": 1,
-   "name": "Unseeing",
+   "name": "Unseeing Potion",
    "climate": ""
   }
  },
  {
   "id": "aMbMqg3kcN",
-  "ingredientName": "Orc Sleep\nNAME CORRUPTED",
+  "ingredientName": "Ocslee",
   "harvestablePart": "Stalks",
   "locations": [
    {
@@ -34546,7 +34546,7 @@ const ingredients = [
   "potion": {
    "id": "71.70",
    "rarity": 1,
-   "name": "Helplessing",
+   "name": "Helplessing Potion",
    "climate": ""
   }
  },
@@ -34665,7 +34665,7 @@ const ingredients = [
   "potion": {
    "id": "71.52",
    "rarity": 1,
-   "name": "Powerlessing",
+   "name": "Powerlessing Potion",
    "climate": ""
   }
  },
@@ -34776,7 +34776,7 @@ const ingredients = [
  },
  {
   "id": "uPigkwuA0x",
-  "ingredientName": "Pale Eruhantale\nNAME CORRUPTED",
+  "ingredientName": "Ale Eruhantale",
   "harvestablePart": "Seeds",
   "locations": [
    {
@@ -34881,13 +34881,13 @@ const ingredients = [
   "potion": {
    "id": "85",
    "rarity": 4,
-   "name": "Potion of Petrification Curing",
+   "name": "Potion of Petrification Curing Potion",
    "climate": ""
   }
  },
  {
   "id": "3J4LOdTVry",
-  "ingredientName": "Pale Goblin\nNAME CORRUPTED",
+  "ingredientName": "Paloblin",
   "harvestablePart": "Stalks",
   "locations": [
    {
@@ -35450,7 +35450,7 @@ const ingredients = [
   "potion": {
    "id": "71.1",
    "rarity": 1,
-   "name": "Perplexing",
+   "name": "Perplexing Potion",
    "climate": ""
   }
  },
@@ -35896,7 +35896,7 @@ const ingredients = [
   "potion": {
    "id": "71.50",
    "rarity": 1,
-   "name": "Victiming",
+   "name": "Victiming Potion",
    "climate": ""
   }
  },
@@ -36372,7 +36372,7 @@ const ingredients = [
   "potion": {
    "id": "71.36",
    "rarity": 1,
-   "name": "Destesting",
+   "name": "Destesting Potion",
    "climate": ""
   }
  },
@@ -36574,7 +36574,7 @@ const ingredients = [
   "potion": {
    "id": "71.16",
    "rarity": 1,
-   "name": "Loving",
+   "name": "Loving Potion",
    "climate": ""
   }
  },
@@ -37048,13 +37048,13 @@ const ingredients = [
   "potion": {
    "id": "113",
    "rarity": 1,
-   "name": "Potion of Relaxing ",
+   "name": "Potion of Relaxing",
    "climate": ""
   }
  },
  {
   "id": "KoZse8xQOv",
-  "ingredientName": "Pink Noon Branch\nNAME CORRUPTED",
+  "ingredientName": "Pin Noon Branch",
   "harvestablePart": "Moss",
   "locations": [
    {
@@ -37185,7 +37185,7 @@ const ingredients = [
   "potion": {
    "id": "71.71",
    "rarity": 1,
-   "name": "Dismaying",
+   "name": "Dismaying Potion",
    "climate": ""
   }
  },
@@ -37328,7 +37328,7 @@ const ingredients = [
   "potion": {
    "id": "71.38",
    "rarity": 1,
-   "name": "Appalling",
+   "name": "Appalling Potion",
    "climate": ""
   }
  },
@@ -38774,7 +38774,7 @@ const ingredients = [
   "potion": {
    "id": "71.35",
    "rarity": 1,
-   "name": "Horrifying",
+   "name": "Horrifying Potion",
    "climate": ""
   }
  },
@@ -38885,7 +38885,7 @@ const ingredients = [
   "potion": {
    "id": "85",
    "rarity": 4,
-   "name": "Potion of Petrification Curing",
+   "name": "Potion of Petrification Curing Potion",
    "climate": ""
   }
  },
@@ -39228,7 +39228,7 @@ const ingredients = [
  },
  {
   "id": "apaGqFeWM2",
-  "ingredientName": "Roofer's Wax\nNAME CORRUPTED",
+  "ingredientName": "Ofer Wax",
   "harvestablePart": "Seeds",
   "locations": [
    {
@@ -39559,7 +39559,7 @@ const ingredients = [
   "potion": {
    "id": "71.58",
    "rarity": 1,
-   "name": "Embarrassing",
+   "name": "Embarrassing Potion",
    "climate": ""
   }
  },
@@ -39882,7 +39882,7 @@ const ingredients = [
   "potion": {
    "id": "71.31",
    "rarity": 1,
-   "name": "Disrespecting",
+   "name": "Disrespecting Potion",
    "climate": ""
   }
  },
@@ -40225,7 +40225,7 @@ const ingredients = [
   "potion": {
    "id": "71.11",
    "rarity": 1,
-   "name": "Successfuling",
+   "name": "Successfuling Potion",
    "climate": ""
   }
  },
@@ -40925,7 +40925,7 @@ const ingredients = [
   "potion": {
    "id": "71.24",
    "rarity": 1,
-   "name": "Infuriating",
+   "name": "Infuriating Potion",
    "climate": ""
   }
  },
@@ -41064,7 +41064,7 @@ const ingredients = [
  },
  {
   "id": "YrjNnMmtgY",
-  "ingredientName": "Serpent's Cup\nNAME CORRUPTED",
+  "ingredientName": "Pent's Cup",
   "harvestablePart": "Roots",
   "locations": [
    {
@@ -41530,7 +41530,7 @@ const ingredients = [
   "potion": {
    "id": "71.37",
    "rarity": 1,
-   "name": "Revolting",
+   "name": "Revolting Potion",
    "climate": ""
   }
  },
@@ -42125,7 +42125,7 @@ const ingredients = [
   "potion": {
    "id": "71.71",
    "rarity": 1,
-   "name": "Dismaying",
+   "name": "Dismaying Potion",
    "climate": ""
   }
  },
@@ -42256,7 +42256,7 @@ const ingredients = [
  },
  {
   "id": "OcBlbOFkTi",
-  "ingredientName": "Siegfried's Bed\nNAME CORRUPTED",
+  "ingredientName": "Sieg Bed",
   "harvestablePart": "Leaves",
   "locations": [
    {
@@ -42343,7 +42343,7 @@ const ingredients = [
   "potion": {
    "id": "71.46",
    "rarity": 1,
-   "name": "Unfocing",
+   "name": "Unfocing Potion",
    "climate": ""
   }
  },
@@ -42442,7 +42442,7 @@ const ingredients = [
   "potion": {
    "id": "71.22",
    "rarity": 1,
-   "name": "Withdrawing",
+   "name": "Withdrawing Potion",
    "climate": ""
   }
  },
@@ -42755,7 +42755,7 @@ const ingredients = [
  },
  {
   "id": "ZEbSWLot3w",
-  "ingredientName": "Sleeping Indigo\nNAME CORRUPTED",
+  "ingredientName": "Sleeping Indigo",
   "harvestablePart": "Vines",
   "locations": [
    {
@@ -43136,7 +43136,7 @@ const ingredients = [
   "potion": {
    "id": "115",
    "rarity": 4,
-   "name": "Potion of Miraculous Relaxing ",
+   "name": "Potion of Miraculous Relaxing",
    "climate": ""
   }
  },
@@ -43328,7 +43328,7 @@ const ingredients = [
   "potion": {
    "id": "71.33",
    "rarity": 1,
-   "name": "Betraying",
+   "name": "Betraying Potion",
    "climate": ""
   }
  },
@@ -43554,7 +43554,7 @@ const ingredients = [
   "potion": {
    "id": "71.16",
    "rarity": 1,
-   "name": "Loving",
+   "name": "Loving Potion",
    "climate": ""
   }
  },
@@ -43988,7 +43988,7 @@ const ingredients = [
   "potion": {
    "id": "71.35",
    "rarity": 1,
-   "name": "Horrifying",
+   "name": "Horrifying Potion",
    "climate": ""
   }
  },
@@ -44218,7 +44218,7 @@ const ingredients = [
  },
  {
   "id": "amnO32QRa8",
-  "ingredientName": "Sour Comare\nNAME CORRUPTED",
+  "ingredientName": "Sor Comare",
   "harvestablePart": "Seeds",
   "locations": [
    {
@@ -44537,7 +44537,7 @@ const ingredients = [
  },
  {
   "id": "LYc3uMa2W2",
-  "ingredientName": "Sovallecreeper\nNAME CORRUPTED",
+  "ingredientName": "Sovallecreep",
   "harvestablePart": "Leaves",
   "locations": [
    {
@@ -44670,7 +44670,7 @@ const ingredients = [
  },
  {
   "id": "MvW3HzvA6s",
-  "ingredientName": "Sow Flour\nNAME CORRUPTED",
+  "ingredientName": "Sow Flur",
   "harvestablePart": "Roots",
   "locations": [
    {
@@ -44870,13 +44870,13 @@ const ingredients = [
   "potion": {
    "id": "71.69",
    "rarity": 1,
-   "name": "Frightening",
+   "name": "Frightening Potion",
    "climate": ""
   }
  },
  {
   "id": "i9D6ys72lG",
-  "ingredientName": "Spiked Crane\nNAME CORRUPTED",
+  "ingredientName": "Spik Cran",
   "harvestablePart": "Fruit",
   "locations": [
    {
@@ -44997,7 +44997,7 @@ const ingredients = [
   "potion": {
    "id": "71.40",
    "rarity": 1,
-   "name": "Judgementing",
+   "name": "Judgementing Potion",
    "climate": ""
   }
  },
@@ -45618,7 +45618,7 @@ const ingredients = [
   "potion": {
    "id": "71.15",
    "rarity": 1,
-   "name": "Thankfuling",
+   "name": "Thankfuling Potion",
    "climate": ""
   }
  },
@@ -45731,7 +45731,7 @@ const ingredients = [
   "potion": {
    "id": "71.5",
    "rarity": 1,
-   "name": "Eagering",
+   "name": "Eagering Potion",
    "climate": ""
   }
  },
@@ -46050,7 +46050,7 @@ const ingredients = [
   "potion": {
    "id": "71.20",
    "rarity": 1,
-   "name": "Dismissing",
+   "name": "Dismissing Potion",
    "climate": ""
   }
  },
@@ -46280,7 +46280,7 @@ const ingredients = [
  },
  {
   "id": "8TPX8vU83F",
-  "ingredientName": "Spring Mule\nNAME CORRUPTED",
+  "ingredientName": "Sprule",
   "harvestablePart": "Roots",
   "locations": [
    {
@@ -46468,7 +46468,7 @@ const ingredients = [
   "potion": {
    "id": "71.44",
    "rarity": 1,
-   "name": "Pressuring",
+   "name": "Pressuring Potion",
    "climate": ""
   }
  },
@@ -46821,7 +46821,7 @@ const ingredients = [
  },
  {
   "id": "oOMOUelKjk",
-  "ingredientName": "Spring Wimple\nNAME CORRUPTED",
+  "ingredientName": "Ring Imp",
   "harvestablePart": "Seeds",
   "locations": [
    {
@@ -47031,7 +47031,7 @@ const ingredients = [
  },
  {
   "id": "HCtinE1FVx",
-  "ingredientName": "Springflower\nNAME CORRUPTED",
+  "ingredientName": "Springflow",
   "harvestablePart": "Fruit",
   "locations": [
    {
@@ -47213,7 +47213,7 @@ const ingredients = [
   "potion": {
    "id": "71.69",
    "rarity": 1,
-   "name": "Frightening",
+   "name": "Frightening Potion",
    "climate": ""
   }
  },
@@ -47427,7 +47427,7 @@ const ingredients = [
   "potion": {
    "id": "71.67",
    "rarity": 1,
-   "name": "Worring",
+   "name": "Worring Potion",
    "climate": ""
   }
  },
@@ -47986,7 +47986,7 @@ const ingredients = [
   "potion": {
    "id": "71.62",
    "rarity": 1,
-   "name": "Excluding",
+   "name": "Excluding Potion",
    "climate": ""
   }
  },
@@ -48083,13 +48083,13 @@ const ingredients = [
   "potion": {
    "id": "71.30",
    "rarity": 1,
-   "name": "Ridiculing",
+   "name": "Ridiculing Potion",
    "climate": ""
   }
  },
  {
   "id": "HdrxJhWESr",
-  "ingredientName": "Summer Cyan\nNAME CORRUPTED",
+  "ingredientName": "Summan",
   "harvestablePart": "Blossoms",
   "locations": [
    {
@@ -48224,13 +48224,13 @@ const ingredients = [
   "potion": {
    "id": "71.2",
    "rarity": 1,
-   "name": "Disillusioning",
+   "name": "Disillusioning Potion",
    "climate": ""
   }
  },
  {
   "id": "Jn7XLw7zZU",
-  "ingredientName": "Summer Ewe\nNAME CORRUPTED",
+  "ingredientName": "Umer Ew",
   "harvestablePart": "Leaves",
   "locations": [
    {
@@ -48293,7 +48293,7 @@ const ingredients = [
   "potion": {
    "id": "71.43",
    "rarity": 1,
-   "name": "Rushing",
+   "name": "Rushing Potion",
    "climate": ""
   }
  },
@@ -48737,7 +48737,7 @@ const ingredients = [
   "potion": {
    "id": "71.38",
    "rarity": 1,
-   "name": "Appalling",
+   "name": "Appalling Potion",
    "climate": ""
   }
  },
@@ -48858,7 +48858,7 @@ const ingredients = [
   "potion": {
    "id": "71.19",
    "rarity": 1,
-   "name": "Hopefuling",
+   "name": "Hopefuling Potion",
    "climate": ""
   }
  },
@@ -49651,13 +49651,13 @@ const ingredients = [
   "potion": {
    "id": "71.62",
    "rarity": 1,
-   "name": "Excluding",
+   "name": "Excluding Potion",
    "climate": ""
   }
  },
  {
   "id": "BOqPALz2Dz",
-  "ingredientName": "Tanner's Hare\nNAME CORRUPTED",
+  "ingredientName": "Tannsare",
   "harvestablePart": "Leaves",
   "locations": [
    {
@@ -49925,13 +49925,13 @@ const ingredients = [
   "potion": {
    "id": "71.27",
    "rarity": 1,
-   "name": "Furiousing",
+   "name": "Furiousing Potion",
    "climate": ""
   }
  },
  {
   "id": "hPuysWf7Do",
-  "ingredientName": "Theresia's Cellar\nNAME CORRUPTED",
+  "ingredientName": "Theresallar",
   "harvestablePart": "Stalks",
   "locations": [
    {
@@ -50030,7 +50030,7 @@ const ingredients = [
  },
  {
   "id": "SSJRVGM00l",
-  "ingredientName": "Thorned March Fruit\nNAME CORRUPTED",
+  "ingredientName": "Thorn March Fruit",
   "harvestablePart": "Vines",
   "locations": [
    {
@@ -50254,13 +50254,13 @@ const ingredients = [
   "potion": {
    "id": "71.23",
    "rarity": 1,
-   "name": "Annoying",
+   "name": "Annoying Potion",
    "climate": ""
   }
  },
  {
   "id": "PYHvgY55gk",
-  "ingredientName": "Thorned Spring",
+  "ingredientName": "Thorned Spring Potion",
   "harvestablePart": "Leaves",
   "locations": [
    {
@@ -50603,7 +50603,7 @@ const ingredients = [
   "potion": {
    "id": "71.17",
    "rarity": 1,
-   "name": "Intimiating",
+   "name": "Intimiating Potion",
    "climate": ""
   }
  },
@@ -51024,13 +51024,13 @@ const ingredients = [
   "potion": {
    "id": "71.29",
    "rarity": 1,
-   "name": "Indignanting",
+   "name": "Indignanting Potion",
    "climate": ""
   }
  },
  {
   "id": "Ff2jfRNG7g",
-  "ingredientName": "Toe Blood\nNAME CORRUPTED",
+  "ingredientName": "Oblood",
   "harvestablePart": "Seeds",
   "locations": [
    {
@@ -51234,7 +51234,7 @@ const ingredients = [
   "potion": {
    "id": "71.53",
    "rarity": 1,
-   "name": "Ashaming",
+   "name": "Ashaming Potion",
    "climate": ""
   }
  },
@@ -51452,7 +51452,7 @@ const ingredients = [
   "potion": {
    "id": "71.57",
    "rarity": 1,
-   "name": "Disappointing",
+   "name": "Disappointing Potion",
    "climate": ""
   }
  },
@@ -51543,7 +51543,7 @@ const ingredients = [
   "potion": {
    "id": "115",
    "rarity": 4,
-   "name": "Potion of Miraculous Relaxing ",
+   "name": "Potion of Miraculous Relaxing",
    "climate": ""
   }
  },
@@ -51640,7 +51640,7 @@ const ingredients = [
  },
  {
   "id": "7K43zZeJz8",
-  "ingredientName": "Touching Coop\nNAME CORRUPTED",
+  "ingredientName": "Torch Coop",
   "harvestablePart": "Leaves",
   "locations": [
    {
@@ -51975,7 +51975,7 @@ const ingredients = [
   "potion": {
    "id": "71.25",
    "rarity": 1,
-   "name": "Hostiling",
+   "name": "Hostiling Potion",
    "climate": ""
   }
  },
@@ -52072,7 +52072,7 @@ const ingredients = [
  },
  {
   "id": "qbREDUKvux",
-  "ingredientName": "Vozvyshayushchayasya Yekaterina",
+  "ingredientName": "Vozvysha Katerin",
   "harvestablePart": "Leaves",
   "locations": [
    {
@@ -52417,7 +52417,7 @@ const ingredients = [
   "potion": {
    "id": "71.68",
    "rarity": 1,
-   "name": "Concerning",
+   "name": "Concerning Potion",
    "climate": ""
   }
  },
@@ -52510,7 +52510,7 @@ const ingredients = [
  },
  {
   "id": "Wl0ZpGM69Q",
-  "ingredientName": "Vitharr's Church\nNAME CORRUPTED",
+  "ingredientName": "Varrch",
   "harvestablePart": "Stalks",
   "locations": [
    {
@@ -52637,7 +52637,7 @@ const ingredients = [
   "potion": {
    "id": "71.4",
    "rarity": 1,
-   "name": "Astonishing",
+   "name": "Astonishing Potion",
    "climate": ""
   }
  },
@@ -53083,7 +53083,7 @@ const ingredients = [
   "potion": {
    "id": "71.65",
    "rarity": 1,
-   "name": "Inferioring",
+   "name": "Inferioring Potion",
    "climate": ""
   }
  },
@@ -53200,13 +53200,13 @@ const ingredients = [
   "potion": {
    "id": "71.11",
    "rarity": 1,
-   "name": "Successfuling",
+   "name": "Successfuling Potion",
    "climate": ""
   }
  },
  {
   "id": "wbUrItHqd2",
-  "ingredientName": "Vitharr's Toe\nNAME CORRUPTED",
+  "ingredientName": "Thart",
   "harvestablePart": "Leaves",
   "locations": [
    {
@@ -53341,7 +53341,7 @@ const ingredients = [
  },
  {
   "id": "9HxP9nm3lK",
-  "ingredientName": "Vitharr's Walk\nNAME CORRUPTED",
+  "ingredientName": "Walk Vitharr",
   "harvestablePart": "Seeds",
   "locations": [
    {
@@ -53567,13 +53567,13 @@ const ingredients = [
   "potion": {
    "id": "71.37",
    "rarity": 1,
-   "name": "Revolting",
+   "name": "Revolting Potion",
    "climate": ""
   }
  },
  {
   "id": "IGBwItTRie",
-  "ingredientName": "Walburga's Cottage\nNAME CORRUPTED",
+  "ingredientName": "Wal Tage",
   "harvestablePart": "Leaves",
   "locations": [
    {
@@ -53771,7 +53771,7 @@ const ingredients = [
  },
  {
   "id": "t9dr4SPYc1",
-  "ingredientName": "Walking Craig\nNAME CORRUPTED",
+  "ingredientName": "Walk Aig",
   "harvestablePart": "Fruit",
   "locations": [
    {
@@ -53995,13 +53995,13 @@ const ingredients = [
   "potion": {
    "id": "71.48",
    "rarity": 1,
-   "name": "Isolating",
+   "name": "Isolating Potion",
    "climate": ""
   }
  },
  {
   "id": "fOAXTmfg4g",
-  "ingredientName": "Walking Shed\nNAME CORRUPTED",
+  "ingredientName": "Welkin",
   "harvestablePart": "Blossoms",
   "locations": [
    {
@@ -54366,13 +54366,13 @@ const ingredients = [
   "potion": {
    "id": "71.56",
    "rarity": 1,
-   "name": "Unseeing",
+   "name": "Unseeing Potion",
    "climate": ""
   }
  },
  {
   "id": "65FvpKf3f4",
-  "ingredientName": "Weep's Elf\nNAME CORRUPTED",
+  "ingredientName": "Welf",
   "harvestablePart": "Seeds",
   "locations": [
    {
@@ -54568,7 +54568,7 @@ const ingredients = [
   "potion": {
    "id": "71.39",
    "rarity": 1,
-   "name": "Condemning",
+   "name": "Condemning Potion",
    "climate": ""
   }
  },
@@ -54794,7 +54794,7 @@ const ingredients = [
  },
  {
   "id": "muRlJLgO2p",
-  "ingredientName": "Well Saffron\nNAME CORRUPTED",
+  "ingredientName": "Waffron",
   "harvestablePart": "Vines",
   "locations": [
    {
@@ -55714,7 +55714,7 @@ const ingredients = [
   "potion": {
    "id": "71.63",
    "rarity": 1,
-   "name": "Insignificanting",
+   "name": "Insignificanting Potion",
    "climate": ""
   }
  },
@@ -55978,7 +55978,7 @@ const ingredients = [
  },
  {
   "id": "eR75D5CmVr",
-  "ingredientName": "Winter's Sleep\nNAME CORRUPTED",
+  "ingredientName": "Winslep",
   "harvestablePart": "Roots",
   "locations": [
    {
@@ -56162,7 +56162,7 @@ const ingredients = [
   "potion": {
    "id": "114",
    "rarity": 2,
-   "name": "Potion of Greater Relaxing ",
+   "name": "Potion of Greater Relaxing",
    "climate": ""
   }
  },
@@ -56501,7 +56501,7 @@ const ingredients = [
   "potion": {
    "id": "71.26",
    "rarity": 1,
-   "name": "Jealousing",
+   "name": "Jealousing Potion",
    "climate": ""
   }
  },
@@ -56620,7 +56620,7 @@ const ingredients = [
  },
  {
   "id": "Hd9irEJJVR",
-  "ingredientName": "Wizard's Gray\nNAME CORRUPTED",
+  "ingredientName": "Wizzen Gray",
   "harvestablePart": "Blossoms",
   "locations": [
    {
@@ -56725,7 +56725,7 @@ const ingredients = [
  },
  {
   "id": "aQajykNlHY",
-  "ingredientName": "Woodwose Anther\nNAME CORRUPTED",
+  "ingredientName": "Anther Wose",
   "harvestablePart": "Leaves",
   "locations": [
    {
@@ -56810,7 +56810,7 @@ const ingredients = [
   "potion": {
    "id": "71.33",
    "rarity": 1,
-   "name": "Betraying",
+   "name": "Betraying Potion",
    "climate": ""
   }
  },
@@ -57004,7 +57004,7 @@ const ingredients = [
  },
  {
   "id": "u7RF2tmmji",
-  "ingredientName": "Wyrm's Pistil\nNAME CORRUPTED",
+  "ingredientName": "Yrmistil",
   "harvestablePart": "Fruit",
   "locations": [
    {
@@ -57117,7 +57117,7 @@ const ingredients = [
   "potion": {
    "id": "71.1",
    "rarity": 1,
-   "name": "Perplexing",
+   "name": "Perplexing Potion",
    "climate": ""
   }
  },
@@ -57583,7 +57583,7 @@ const ingredients = [
   "potion": {
    "id": "71.15",
    "rarity": 1,
-   "name": "Thankfuling",
+   "name": "Thankfuling Potion",
    "climate": ""
   }
  },
@@ -57704,7 +57704,7 @@ const ingredients = [
  },
  {
   "id": "RpZXWQhNz3",
-  "ingredientName": "Yestare Saffron\nNAME CORRUPTED",
+  "ingredientName": "Saffron Yestare",
   "harvestablePart": "Blossoms",
   "locations": [
    {
@@ -57888,7 +57888,7 @@ const ingredients = [
   "potion": {
    "id": "71.59",
    "rarity": 1,
-   "name": "Exposing",
+   "name": "Exposing Potion",
    "climate": ""
   }
  }

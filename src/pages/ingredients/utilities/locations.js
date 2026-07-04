@@ -1,0 +1,18 @@
+export const geographicLocations = [
+  "Still Water",
+  "Running Water",
+  "Shallow Water",
+  "Deep Water",
+  "Sand",
+  "Forests",
+  "Grasslands",
+  "Farmland",
+  "Hills",
+  "Forested Hills",
+  "Mountains",
+  "Forested Mountains",
+  "Cliffs",
+  "Swamps",
+  "High Tide",
+  "Low Tide",
+]
