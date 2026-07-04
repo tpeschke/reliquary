@@ -11,6 +11,11 @@
     max-height: unset;
 }
 
+.ingredients .input-shell.climates-shell:first-child {
+    border-bottom: 3px solid rgba(163, 101, 40, 1);
+    margin-bottom: 15px;
+}
+
 .input-shell.climates-shell {
     flex-wrap: wrap;
     justify-content: flex-start;

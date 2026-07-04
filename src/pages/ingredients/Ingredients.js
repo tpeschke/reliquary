@@ -38,6 +38,9 @@ export default function Ingredients() {
     const [loading, setLoading] = useState(true);
     const [items, setItems] = useState([]);
 
+    const [climateID, setClimateID] = useState(null)
+    const [location, setLocation] = useState(null)
+
     useEffect(() => {
         const splitUrl = window.location.href.split('/')
         if (splitUrl.length > 4 && items.length === 0) {
@@ -47,7 +50,7 @@ export default function Ingredients() {
                 setLoading(false)
             })
         } else if (items.length === 0) {
-            axios.get(constants.baseUrl + '/api/getRandomIngredients?numberOfItems=25').then(({ data }) => {
+            axios.post(constants.baseUrl + '/api/getRandomIngredients?numberOfItems=25').then(({ data }) => {
                 setItems(data);
                 setLoading(false)
             })
@@ -56,7 +59,7 @@ export default function Ingredients() {
 
     function refreshItems(event, rarity = null) {
         setLoading(true)
-        axios.get(constants.baseUrl + '/api/getRandomIngredients?numberOfItems=25').then(({ data }) => {
+        axios.get(constants.baseUrl + '/api/getRandomIngredients?numberOfItems=25', { climateID, location }).then(({ data }) => {
             setItems(data);
             setLoading(false)
         })
@@ -64,23 +67,25 @@ export default function Ingredients() {
 
     function getIngredientByNameOrPotion(event) {
         setLoading(true)
-        axios.post(constants.baseUrl + '/api/searchIngredients?searchTerm=' + event.target.value).then(({ data }) => {
+        axios.post(constants.baseUrl + '/api/searchIngredients?searchTerm=' + event.target.value, { climateID, location }).then(({ data }) => {
             setItems(data);
             setLoading(false)
         })
     }
 
-    function getIngredientByClimate(climateID) {
+    function getIngredientByClimate(newClimateID) {
         setLoading(true)
-        axios.post(constants.baseUrl + '/api/searchIngredientsByClimate?climateID=' + climateID).then(({ data }) => {
+        setClimateID(newClimateID)
+        axios.post(constants.baseUrl + '/api/getRandomIngredients?numberOfItems=25', { climateID: newClimateID, location }).then(({ data }) => {
             setItems(data);
             setLoading(false)
         })
     }
 
-    function getIngredientByLocation(location) {
+    function getIngredientByLocation(newLocation) {
         setLoading(true)
-        axios.post(constants.baseUrl + '/api/searchIngredientsByLocation?location=' + location).then(({ data }) => {
+        setLocation(newLocation)
+        axios.post(constants.baseUrl + '/api/searchIngredientsByLocation?location=' + newLocation, { climateID, location: newLocation }).then(({ data }) => {
             setItems(data);
             setLoading(false)
         })
@@ -92,10 +97,10 @@ export default function Ingredients() {
             {!loading && (
                 <div className='ingredients'>
                     <div className='input-shell climates-shell'>
-                        {climateSearchDictionary.map(climate => <button onClick={_ => getIngredientByClimate(climate.id)} className='secondary' key={climate.climate}>{climate.climate}</button>)}
+                        {climateSearchDictionary.map(climate => <button onClick={_ => getIngredientByClimate(climate.id)} className={climateID === climate.id ? '' : 'secondary'} key={climate.climate}>{climate.climate}</button>)}
                     </div>
                     <div className='input-shell climates-shell'>
-                        {geographicLocations.map(location => <button onClick={_ => getIngredientByLocation(location)} className='secondary' key={location}>{location}</button>)}
+                        {geographicLocations.map(geoLocation => <button onClick={_ => getIngredientByLocation(geoLocation)} className={location === geoLocation ? '' : 'secondary'} key={geoLocation}>{geoLocation}</button>)}
                     </div>
                     <div className='input-shell'>
                         <div>
