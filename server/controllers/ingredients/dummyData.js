@@ -22473,7 +22473,7 @@ const ingredients = [
  },
  {
   "id": "tmu0bXilld",
-  "ingredientName": "Human's Creeper",
+  "ingredientName": "Man's Creeper",
   "harvestablePart": "Stalks",
   "locations": [
    {
@@ -42349,7 +42349,7 @@ const ingredients = [
  },
  {
   "id": "Gbv65uEJui",
-  "ingredientName": "Silver Human Flower",
+  "ingredientName": "Silver Man Flower",
   "harvestablePart": "Fruit",
   "locations": [
    {
@@ -48543,7 +48543,7 @@ const ingredients = [
  },
  {
   "id": "iX0MtKwqbG",
-  "ingredientName": "Summer Human",
+  "ingredientName": "Summer Man",
   "harvestablePart": "Moss",
   "locations": [
    {
@@ -54487,7 +54487,7 @@ const ingredients = [
  },
  {
   "id": "EY23sCOLcP",
-  "ingredientName": "Weep's Human",
+  "ingredientName": "Weep's Man",
   "harvestablePart": "Fruit",
   "locations": [
    {
@@ -55032,7 +55032,7 @@ const ingredients = [
  },
  {
   "id": "nQYnomQ4nQ",
-  "ingredientName": "Will's Human",
+  "ingredientName": "Will's Man",
   "harvestablePart": "Seeds",
   "locations": [
    {
