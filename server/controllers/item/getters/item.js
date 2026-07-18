@@ -7,7 +7,7 @@ const { formatItem } = require('../formatting/item')
 const { updatedCategoryIDDictionary } = require("../dictionaries/updatedCategoryIDDictionary")
 
 async function getItemsFromArray(items, finishedItemArray, defaults) {
-    const { format, category, rarity, detail, wear, version } = defaults
+    const { format, category, rarity, detail, wear, version, systemNumber } = defaults
     for (let i = 0; i < items.length && i < 25; i++) {
         const item = items[i]
 
@@ -18,7 +18,7 @@ async function getItemsFromArray(items, finishedItemArray, defaults) {
             wear ? item.wear = wear : 0,
             version ? item.version = version : 1
 
-            return getItem(resolve, {...item, format})
+            return getItem(resolve, {...item, format, systemNumber})
         }))
     }
 }

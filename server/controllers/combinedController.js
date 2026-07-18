@@ -10,7 +10,8 @@ const enchantedCtrl = require('./enchantedController')
 
 controllerFunctions = {
     getTreasure: (req, res) => {
-        let { requestArray } = req.body
+        let { requestArray, system = '0' } = req.body
+        const systemNumber = +system
 
         let resultArray = []
         let promiseArray = []
@@ -50,11 +51,12 @@ controllerFunctions = {
                     resultArray[index] = [...resultArray[index], ...result]
                 }).catch(e => sendErrorForward('get talismans in all treasures', e, res)))
             }
+
             if (request.items && request.items.length > 0) {
                 const { items } = request
 
                 let itemPromiseArray = []
-                getItemsFromArray(items, itemPromiseArray, {format: 'INFO'})
+                getItemsFromArray(items, itemPromiseArray, {format: 'INFO', systemNumber})
 
                 promiseArray.push(Promise.all(itemPromiseArray).then(items => {
                     resultArray[index] = [...resultArray[index], ...items]
