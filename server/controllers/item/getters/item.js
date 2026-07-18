@@ -37,7 +37,7 @@ where
 WHERE 
 row_num = 1;`
 
-async function getItem(resolve, { category, rarity, detail, wear, version, format }) {
+async function getItem(resolve, { category, rarity, detail, wear, version, format, systemNumber }) {
     const categoryID = updatedCategoryIDDictionary(category, +version)
 
     const [item] = await query(getCategorySQL(categoryID), [])
@@ -48,11 +48,11 @@ async function getItem(resolve, { category, rarity, detail, wear, version, forma
 
     const [colors, engravings, gems] = await getDetails(item, rarity, detail)
 
-    const price = getPrice(item, materialInfo, gems)
+    const price = getPrice(item, materialInfo, gems, systemNumber)
 
     const rolledWear = randomIntBetweenTwoInts(0, +wear)
 
-    resolve(formatItem(format, item, materialInfo, colors, engravings, gems, rolledWear, price))
+    resolve(formatItem(format, item, materialInfo, colors, engravings, gems, rolledWear, price, systemNumber))
 }
 
 module.exports = {

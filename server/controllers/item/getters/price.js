@@ -1,6 +1,10 @@
 const { gemSizeDictionary } = require('../dictionaries/gemSize')
 
-function getPrice(item, materialInfo, gems) {
+const BONFIRE = 0
+const DND = 1
+const HACKMASTER = 2
+
+function getPrice(item, materialInfo, gems, system) {
     const basePrice = +item.price * materialInfo.reduce((multiplier, material) => {
         return multiplier * +material.price_multiplier
     }, 1)
@@ -10,7 +14,19 @@ function getPrice(item, materialInfo, gems) {
         return price + gemPrice
     }, 0)
 
-    return convertPrice(basePrice + gemPrice)
+    if (system === BONFIRE) {
+        return convertPrice(basePrice + gemPrice)
+    } else if (system === DND) {
+        return {
+            amount: basePrice + gemPrice,
+            coin: 'gp'
+        }
+    }
+
+    return {
+        amount: basePrice + gemPrice,
+        coin: 'sp'
+    }
 }
 
 function convertPrice(basePrice) {

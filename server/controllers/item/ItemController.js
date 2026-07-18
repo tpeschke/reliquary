@@ -3,17 +3,18 @@ const { getItemsFromArray, getItem } = require('./getters/item')
 
 async function getItems(req, res) {
     const { items } = req.body
-    const { format, category, rarity = 1, detail = 'N', wear = 0, number = 1, version = 1 } = req.query
+    const { format, category, rarity = 1, detail = 'N', wear = 0, number = 1, version = 1, system = '0' } = req.query
+    const systemNumber = +system
 
     let finishedItemArray = []
 
     if (items && items.length > 0) {
-        getItemsFromArray(items, finishedItemArray, { format, category, rarity: +rarity, detail, wear, version })
+        getItemsFromArray(items, finishedItemArray, { format, category, rarity: +rarity, detail, wear, version, systemNumber })
     }
 
     for (let i = 0; i < number && i < 25; i++) {
         finishedItemArray.push(new Promise(resolve => {
-            return getItem(resolve, { category, rarity: +rarity, detail, wear, version })
+            return getItem(resolve, { category, rarity: +rarity, detail, wear, version, systemNumber })
         }))
     }
 

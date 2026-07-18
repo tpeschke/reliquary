@@ -1,4 +1,6 @@
-function getBonusString(bonus, rarity) {
+function getBonusString(bonus, rarity, isBonfire) {
+    if (!isBonfire) { return '' }
+
     const bonusBase = bonus ? ` (${bonus}` : ''
 
     if (bonusBase === '') { return '' }
