@@ -9,7 +9,7 @@ export default function ItemDetails({ item }) {
             {item.materials && item.materials.length > 0 && item.materials[0] && <div><h3>Material(s)</h3> <ul>{item.materials.map((material, i) => (mapMaterial(material, i)))}</ul></div>}
             {item.number > 1 && <div className='item-detail'><h3>Number</h3> <p>{item.number}</p></div>}
             {item.size && <div className='item-detail'><h3>Size</h3> <p>{item.size}</p></div>}
-            {item.price > 0 && <div className='item-detail'><h3>Price</h3> <p>{item.price} sc</p></div>}
+            {item.price > 0 && <div className='item-detail'><h3>Price</h3> <p>{item.price}</p></div>}
             {item.engravings && item.engravings.length > 0 && (
                 <>
                     <h3>Subject(s)</h3>

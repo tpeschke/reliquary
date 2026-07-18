@@ -40,9 +40,9 @@ function formatStringDescription(item, materialInfo, colors, engravings, gems, r
     }
 
     if (rolledWear) {
-        baseString += `. It'll be worth ${price} sc once repaired.`
+        baseString += `. It'll be worth ${price} once repaired.`
     } else {
-        baseString += `. It's worth ${price} sc.`
+        baseString += `. It's worth ${price}.`
     }
 
     return baseString.toLowerCase().replace(/(^\s*\w{1}|\.\s*\w{1})/gi, string => string.toUpperCase());

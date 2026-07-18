@@ -198,7 +198,7 @@ export default function UniqueItems() {
                                                 <div>
                                                     <div className='item-title-shell'>
                                                         <h2>{item.item}</h2>
-                                                        <p>{item.price} sc {item.wear ? ` with ${item.wear} Wear` : ''}</p>
+                                                        <p>{item.price} {item.wear ? ` with ${item.wear} Wear` : ''}</p>
                                                     </div>
                                                     <div>
                                                         {item.info} <i onClick={e => copyToClipboard(e, item.item, item.info)} className="fa-solid fa-copy"></i>
