@@ -5,6 +5,7 @@ const DND = 1
 const HACKMASTER = 2
 
 function getPrice(item, materialInfo, gems, system) {
+    console.log(system)
     const basePrice = +item.price * materialInfo.reduce((multiplier, material) => {
         return multiplier * +material.price_multiplier
     }, 1)
@@ -18,13 +19,13 @@ function getPrice(item, materialInfo, gems, system) {
         return convertPrice(basePrice + gemPrice)
     } else if (system === DND) {
         return {
-            amount: basePrice + gemPrice,
+            amount: +(basePrice + gemPrice).toFixed(2),
             coin: 'gp'
         }
     }
 
     return {
-        amount: basePrice + gemPrice,
+        amount: +(basePrice + gemPrice).toFixed(2),
         coin: 'sp'
     }
 }
