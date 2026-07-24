@@ -57,9 +57,9 @@ export default function Ingredients() {
         }
     }, [loading]);
 
-    function refreshItems(event, rarity = null) {
+    function refreshItems() {
         setLoading(true)
-        axios.get(constants.baseUrl + '/api/getRandomIngredients?numberOfItems=25', { climateID, location }).then(({ data }) => {
+        axios.post(constants.baseUrl + '/api/getRandomIngredients?numberOfItems=25', { climateID, location }).then(({ data }) => {
             setItems(data);
             setLoading(false)
         })
@@ -75,20 +75,30 @@ export default function Ingredients() {
 
     function getIngredientByClimate(newClimateID) {
         setLoading(true)
-        setClimateID(newClimateID)
-        axios.post(constants.baseUrl + '/api/getRandomIngredients?numberOfItems=25', { climateID: newClimateID, location }).then(({ data }) => {
-            setItems(data);
-            setLoading(false)
-        })
+        if (climateID === newClimateID) {
+            setClimateID(null)
+            refreshItems()
+        } else {
+            setClimateID(newClimateID)
+            axios.post(constants.baseUrl + '/api/getRandomIngredients?numberOfItems=25', { climateID: newClimateID, location }).then(({ data }) => {
+                setItems(data);
+                setLoading(false)
+            })
+        }
     }
 
     function getIngredientByLocation(newLocation) {
         setLoading(true)
-        setLocation(newLocation)
-        axios.post(constants.baseUrl + '/api/searchIngredientsByLocation?location=' + newLocation, { climateID, location: newLocation }).then(({ data }) => {
-            setItems(data);
-            setLoading(false)
-        })
+        if (location === newLocation) {
+            setLocation(null)
+            refreshItems()
+        } else {
+            setLocation(newLocation)
+            axios.post(constants.baseUrl + '/api/searchIngredientsByLocation?location=' + newLocation, { climateID, location: newLocation }).then(({ data }) => {
+                setItems(data);
+                setLoading(false)
+            })
+        }
     }
 
     return (

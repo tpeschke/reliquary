@@ -5,7 +5,6 @@ const DND = 1
 const HACKMASTER = 2
 
 function getPrice(item, materialInfo, gems, system) {
-    console.log(system)
     const basePrice = +item.price * materialInfo.reduce((multiplier, material) => {
         return multiplier * +material.price_multiplier
     }, 1)

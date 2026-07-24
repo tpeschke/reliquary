@@ -220,6 +220,7 @@ select {
 
 .potion-shell {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .potion-shell img,
