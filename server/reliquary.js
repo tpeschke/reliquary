@@ -15,6 +15,7 @@ app.use(cors())
 
 app.get('/api/getEnchantedItem', enchantedCtrl.getEnchantedItems)
 app.get('/api/getSingleEnchantedItem/:id', enchantedCtrl.getSingleEnchantedItem)
+app.get('/api/getRandomIngredients/:rarity', IngredientsCtrl.generateRandomIngredient)
 
 app.post('/api/getRandomIngredients', IngredientsCtrl.getRandomIngredients)
 app.post('/api/searchIngredients', IngredientsCtrl.searchIngredients)

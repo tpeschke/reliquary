@@ -1,40 +1,46 @@
-import randomIntFromInterval, { getRandomFromArray } from "../../getRandom";
+const { randomIntFromInterval, getRandomFromArray } = require("../getRandom");
 
-import commonEndings from "./nameArrays/commonEndings";
-import professions from "./nameArrays/professions";
-import everydayObjects from "./nameArrays/everydayObjects";
-import locations from "./nameArrays/locations";
-import colors from "./nameArrays/colors";
-import geography from "./nameArrays/geography";
-import animals from "./nameArrays/animals";
-import monsters from "./nameArrays/monsters";
-import names from "./nameArrays/names";
-import divines from "./nameArrays/divines";
-import bodyParts from "./nameArrays/bodyParts";
-import times from "./nameArrays/times";
-import seasons from "./nameArrays/seasons";
-import actions from "./nameArrays/actions";
-import ancestries from "./nameArrays/ancestries";
+const commonEndings = require("./nameArrays/commonEndings");
+const professions = require("./nameArrays/professions");
+const everydayObjects = require("./nameArrays/everydayObjects");
+const locations = require("./nameArrays/locations");
+const colors = require("./nameArrays/colors");
+const geography = require("./nameArrays/geography");
+const animals = require("./nameArrays/animals");
+const monsters = require("./nameArrays/monsters");
+const names = require("./nameArrays/names");
+const divines = require("./nameArrays/divines");
+const bodyParts = require("./nameArrays/bodyParts");
+const times = require("./nameArrays/times");
+const seasons = require("./nameArrays/seasons");
+const actions = require("./nameArrays/actions");
+const ancestries = require("./nameArrays/ancestries");
 
-import generateSyllableJumble from "./generateSyllableJumble";
-import adjectives from "./nameArrays/adjectives";
+const generateSyllableJumble = require("./generateSyllableJumble");
+const adjectives = require("./nameArrays/adjectives");
 
 module.exports = function generatePlantName() {
   const number = randomIntFromInterval(1, 6);
 
   if (number === 1) {
-    return generateSyllableJumble();
+    return {ingredientName: generateSyllableJumble()};
   }
 
   const baseName = getBaseName();
 
   if (number === 2) {
-    return `${baseName}\nTRANSLATE TO ANOTHER LANGUAGE`;
+    return {
+      ingredientName: baseName,
+      translate: true
+    };
   } else if (number === 3) {
-    return `${baseName}\nNAME CORRUPTED`;
+    return {
+      ingredientName: baseName,
+      corrupt: true
+    };
   }
 
-  return baseName;
+  return { ingredientName: baseName };
 }
 
 function getBaseName() {

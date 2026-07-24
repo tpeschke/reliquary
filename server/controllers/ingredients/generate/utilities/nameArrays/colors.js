@@ -1,0 +1,25 @@
+const colors = [
+  "Red",
+  "Blue",
+  "Green",
+  "Yellow",
+  "Saffron",
+  "Purple",
+  "Pink",
+  "Brown",
+  "Black",
+  "White",
+  "Gray",
+  "Beige",
+  "Cyan",
+  "Magenta",
+  "Indigo",
+  "Gold",
+  "Silver",
+  "Olive",
+  "Teal",
+  "Maroon",
+  "Russet",
+];
+
+module.exports = colors;

@@ -48,14 +48,15 @@ const controllerFunctions = {
         checkForContentTypeBeforeSending(res, filteredIngredients.splice(0, 25))
     },
     generateRandomIngredient: (req, res) => {
-        console.log(req)
         let number = +req.params.rarity ?? 2
 
         if (number > 5) { number = 5 }
 
         const ingredients = [...Array(number)].map(
-            generateIngredient(potion, index)
+            generateIngredient()
         );
+
+        checkForContentTypeBeforeSending(res, ingredients)
     }
 }
 

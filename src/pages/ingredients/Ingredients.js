@@ -101,6 +101,15 @@ export default function Ingredients() {
         }
     }
 
+    const [newIngredients, setNewIngredients] = useState([])
+
+    function getRandomIngredients(rarity) {
+        setNewIngredients([])
+        axios.get(constants.baseUrl + '/api/getRandomIngredients/' + rarity).then(({ data }) => {
+            setNewIngredients(data)
+        })
+    }
+
     return (
         <div>
             {loading && <Loading />}
@@ -145,8 +154,34 @@ export default function Ingredients() {
                             </AccordionSummary>
                             <AccordionDetails>
                                 <Typography component={'span'} variant={'body2'}>
-                                    <div className='item-detail-shell'>
-                                        Hello
+                                    <div className='item-detail-shell new-ingredients'>
+                                        <p>for a...</p>
+                                        <div>
+                                            <button onClick={_ => getRandomIngredients(2)}>Common Potion</button>
+                                            <button onClick={_ => getRandomIngredients(3)}>Uncommon Potion</button>
+                                            <button onClick={_ => getRandomIngredients(5)}>Rare Potion</button>
+                                        </div>
+
+                                        <div className='smaller-ingredient-shell'>
+                                            {newIngredients.map(({ id, ingredientName, translate, corrupt, harvestablePart, locations, reactivity }) => {
+                                                return (
+                                                    <div key={id}>
+                                                        <div>
+                                                            <img src={iconDictionary[harvestablePart]} height="35" />
+                                                            <span>
+                                                                <h4>{ingredientName}</h4>
+                                                                {translate && <p>(translate to another language)</p>}
+                                                                {corrupt && <p>(corrupt this name)</p>}
+                                                            </span>
+                                                            <ReactivityHex reactivity={reactivity} />
+                                                        </div>
+                                                        <ul>
+                                                            {locations.map(({ adjacency, location }, i) => (<li key={adjacency + location + i}>{adjacency} {location}</li>))}
+                                                        </ul>
+                                                    </div>
+                                                )
+                                            })}
+                                        </div>
                                     </div>
                                 </Typography>
                             </AccordionDetails>

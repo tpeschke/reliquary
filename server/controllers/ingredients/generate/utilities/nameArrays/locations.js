@@ -1,0 +1,26 @@
+const locations = [
+  "Barn",
+  "House",
+  "Coop",
+  "Pen",
+  "Shed",
+  "Grave",
+  "Coffin",
+  "Church",
+  "Cellar",
+  "Well",
+  "Ditch",
+  "Heap",
+  "Wagon",
+  "Chapel",
+  "Mill",
+  "Street",
+  "Stable",
+  "Hut",
+  "Cottage",
+  "Farm",
+  "Well",
+  "Shire",
+];
+
+module.exports = locations;
