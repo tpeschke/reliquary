@@ -125,6 +125,36 @@ export default function Ingredients() {
                         </div>
                         <button onClick={refreshItems}><RefreshIcon /></button>
                     </div>
+
+                    <div className='accordion-shell'>
+                        <Accordion>
+                            <AccordionSummary
+                                expandIcon={<ExpandMoreIcon />}
+                                aria-controls="panel1a-content"
+                                id="panel1a-header"
+                            >
+                                <Typography component={'span'} variant={'body2'}>
+                                    <div className='potion-shell'>
+                                        <div className='ingredient-basic-info'>
+                                            <div className='item-title-shell'>
+                                                <h3>Generate Random Ingredients</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </Typography>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <Typography component={'span'} variant={'body2'}>
+                                    <div className='item-detail-shell'>
+                                        Hello
+                                    </div>
+                                </Typography>
+                            </AccordionDetails>
+                        </Accordion>
+                    </div>
+
+                    <br />
+
                     <div className='accordion-shell'>
                         {items.map((item, i) => {
                             return (

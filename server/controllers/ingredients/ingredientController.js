@@ -1,5 +1,6 @@
 const { sendErrorForwardNoFile, checkForContentTypeBeforeSending } = require('../../helpers')
 const ingredients = require('./dummyData.js')
+const generateIngredient = require('./generate/generateIngredient.js')
 const sendErrorForward = sendErrorForwardNoFile('Ingredients')
 
 const controllerFunctions = {
@@ -46,6 +47,16 @@ const controllerFunctions = {
 
         checkForContentTypeBeforeSending(res, filteredIngredients.splice(0, 25))
     },
+    generateRandomIngredient: (req, res) => {
+        console.log(req)
+        let number = +req.params.rarity ?? 2
+
+        if (number > 5) { number = 5 }
+
+        const ingredients = [...Array(number)].map(
+            generateIngredient(potion, index)
+        );
+    }
 }
 
 module.exports = controllerFunctions
