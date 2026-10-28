@@ -1,7 +1,6 @@
-const { sendErrorForwardNoFile, checkForContentTypeBeforeSending } = require('../helpers')
+const { checkForContentTypeBeforeSending } = require('../helpers')
 const { random } = require('../../db/talisman')
 const { query } = require('../../db/index')
-const sendErrorForward = sendErrorForwardNoFile('Talismans')
 
 const controllerFunctions = {
     getRandomTalismans: async (req, res) => {
@@ -11,11 +10,16 @@ const controllerFunctions = {
         checkForContentTypeBeforeSending(res, talismans)
     },
     getRandomTalismansWorkhorse: async (numberOfItems = 1) => {
-        if (numberOfItems > 25) {
-            numberOfItems = 25
+        const count = Number(numberOfItems)
+        if (!Number.isFinite(count) || count <= 0) {
+            return []
         }
 
-        return query(random, [numberOfItems]).catch(e => sendErrorForward('get random talisman', e, res))
+        const limited = Math.min(25, Math.floor(count))
+        return query(random, [limited]).catch(e => {
+            console.log('Talismans get random talisman ~ ', e.message)
+            return []
+        })
     }
 }
 

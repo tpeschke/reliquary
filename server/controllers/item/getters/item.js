@@ -8,17 +8,25 @@ const { updatedCategoryIDDictionary } = require("../dictionaries/updatedCategory
 
 async function getItemsFromArray(items, finishedItemArray, defaults) {
     const { format, category, rarity, detail, wear, version, systemNumber } = defaults
-    for (let i = 0; i < items.length && i < 25; i++) {
-        const item = items[i]
+    const list = Array.isArray(items) ? items : []
+    for (let i = 0; i < list.length && i < 25; i++) {
+        if (!list[i] || typeof list[i] !== 'object') {
+            continue
+        }
+        const item = { ...list[i] }
+
+        if (category) item.category = category
+        if (!item.rarity) item.rarity = rarity || 1
+        if (item.detail === undefined || item.detail === null || item.detail === '') {
+            item.detail = detail || 'N'
+        }
+        if (item.wear === undefined || item.wear === null || item.wear === '') {
+            item.wear = wear ?? 0
+        }
+        if (!item.version) item.version = version || 1
 
         finishedItemArray.push(new Promise(resolve => {
-            category ? item.category = category : null
-            rarity ? item.rarity = rarity : 1
-            detail ? item.detail = detail : 'N'
-            wear ? item.wear = wear : 0,
-            version ? item.version = version : 1
-
-            return getItem(resolve, {...item, format, systemNumber})
+            getItem(resolve, { ...item, format, systemNumber })
         }))
     }
 }
@@ -37,10 +45,20 @@ where
 WHERE 
 row_num = 1;`
 
-async function getItem(resolve, { category, rarity, detail, wear, version, format, systemNumber }) {
+function getItem(resolve, params) {
+    buildItem(params).then(result => resolve(result)).catch(error => {
+        console.log('Reliquary get item ~ ', error.message)
+        resolve(null)
+    })
+}
+
+async function buildItem({ category, rarity, detail, wear, version, format, systemNumber }) {
     const categoryID = updatedCategoryIDDictionary(category, +version)
 
     const [item] = await query(getCategorySQL(categoryID), [])
+    if (!item) {
+        throw new Error(`no gear row for category ${categoryID}`)
+    }
 
     const materials = await query(itemMaterialSQL, [item.id, item.tableid])
 
@@ -50,9 +68,10 @@ async function getItem(resolve, { category, rarity, detail, wear, version, forma
 
     const price = getPrice(item, materialInfo, gems, systemNumber)
 
-    const rolledWear = randomIntBetweenTwoInts(0, +wear)
+    const wearMax = Number(wear)
+    const rolledWear = randomIntBetweenTwoInts(0, Number.isFinite(wearMax) ? wearMax : 0)
 
-    resolve(formatItem(format, item, materialInfo, colors, engravings, gems, rolledWear, price, systemNumber))
+    return formatItem(format, item, materialInfo, colors, engravings, gems, rolledWear, price, systemNumber)
 }
 
 module.exports = {

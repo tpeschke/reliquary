@@ -19,7 +19,10 @@ async function getItems(req, res) {
     }
 
     Promise.all(finishedItemArray).then(finalItemArray => {
-        checkForContentTypeBeforeSending(res, finalItemArray)
+        checkForContentTypeBeforeSending(res, finalItemArray.filter(item => item != null))
+    }).catch(error => {
+        console.log('get items ~ ', error.message)
+        checkForContentTypeBeforeSending(res, [])
     })
 }
 

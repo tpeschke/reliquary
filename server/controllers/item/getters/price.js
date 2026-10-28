@@ -5,13 +5,22 @@ const DND = 1
 const HACKMASTER = 2
 
 function getPrice(item, materialInfo, gems, system) {
-    const basePrice = +item.price * materialInfo.reduce((multiplier, material) => {
-        return multiplier * +material.price_multiplier
+    const materials = Array.isArray(materialInfo) ? materialInfo : []
+    const gemList = Array.isArray(gems) ? gems : []
+    const materialMultiplier = materials.reduce((multiplier, material) => {
+        const factor = Number(material?.price_multiplier)
+        return multiplier * (Number.isFinite(factor) ? factor : 1)
     }, 1)
+    const rawPrice = Number(item?.price) * materialMultiplier
+    const basePrice = Number.isFinite(rawPrice) ? rawPrice : 0
 
-    const gemPrice = gems.reduce((price, gem) => {
-        const gemPrice = +gem.price * gemSizeDictionary[+gem.size.size]
-        return price + gemPrice
+    const gemPrice = gemList.reduce((price, gem) => {
+        const sizeValue = gem?.size?.size
+        if (sizeValue === undefined || sizeValue === null) {
+            return price
+        }
+        const sizeMultiplier = gemSizeDictionary[+sizeValue] ?? 0
+        return price + (+gem.price * sizeMultiplier)
     }, 0)
 
     if (system === BONFIRE) {

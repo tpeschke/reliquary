@@ -7,68 +7,93 @@ const enchantedCtrl = require('./enchantedController')
     , scrollCtrl = require('./scroll/scrollController')
     , talismanCtrl = require('./talismanController')
     , { getItemsFromArray } = require('./item/getters/item')
+    , { scrollRequestCount } = require('./treasureRequest')
 
-controllerFunctions = {
-    getTreasure: (req, res) => {
-        let { requestArray, system = '0' } = req.body
-        const systemNumber = +system
+const controllerFunctions = {
+    getTreasure: async (req, res) => {
+        try {
+            const body = req.body || {}
+            const requestArray = Array.isArray(body.requestArray) ? body.requestArray : []
+            const systemNumber = Number(body.system ?? 0)
 
-        let resultArray = []
-        let promiseArray = []
+            const resultArray = requestArray.map(() => [])
+            const promiseArray = []
 
-        requestArray.forEach((request, index) => {
-            if (!resultArray[index]) {
-                resultArray[index] = []
-            }
-            
-            if (request.enchanted) {
-                const { numberOfItems, status } = request.enchanted
-                promiseArray.push(enchantedCtrl.getEnchantedItemsWorkHorse(numberOfItems, status).then(result => {
-                    resultArray[index] = [...resultArray[index], ...result]
-                }).catch(e => sendErrorForward('get enchanted item in all treasures', e, res)))
-            }
+            requestArray.forEach((request, index) => {
+                if (!request || typeof request !== 'object') {
+                    return
+                }
 
-            if (request.potions) {
-                const { numberOfItems, rarity } = request.potions
-                promiseArray.push(potionCtrl.getRandomPotionsWorkhorse(numberOfItems, rarity).then(result => {
-                    resultArray[index] = [...resultArray[index], ...result]
-                }).catch(e => sendErrorForward('get potions in all treasures', e, res)))
+                if (request.enchanted) {
+                    const { numberOfItems, status } = request.enchanted
+                    promiseArray.push(collect(
+                        enchantedCtrl.getEnchantedItemsWorkHorse(numberOfItems, status),
+                        resultArray,
+                        index,
+                        'enchanted'
+                    ))
+                }
 
-            }
+                if (request.potions) {
+                    const { numberOfItems, rarity } = request.potions
+                    promiseArray.push(collect(
+                        potionCtrl.getRandomPotionsWorkhorse(res, numberOfItems, rarity),
+                        resultArray,
+                        index,
+                        'potions'
+                    ))
+                }
 
-            if (request.scrolls) {
-                request.scrolls.forEach(scroll => {
-                    const { numberOfItems, power } = scroll
-                    promiseArray.push(scrollCtrl.getRandomScrollsWorkhorse(res, numberOfItems, power).then(result => {
-                        resultArray[index] = [...resultArray[index], ...result]
-                    }).catch(e => sendErrorForward('get scrolls in all treasures', e, res)))
-                })
-            }
+                if (Array.isArray(request.scrolls)) {
+                    request.scrolls.forEach(scroll => {
+                        const numberOfItems = scrollRequestCount(scroll)
+                        if (!numberOfItems) {
+                            return
+                        }
+                        promiseArray.push(collect(
+                            scrollCtrl.getRandomScrollsWorkhorse(numberOfItems, scroll.power),
+                            resultArray,
+                            index,
+                            'scrolls'
+                        ))
+                    })
+                }
 
-            if (request.talismans) {
-                const { numberOfItems } = request.talismans
-                promiseArray.push(talismanCtrl.getRandomTalismansWorkhorse(numberOfItems).then(result => {
-                    resultArray[index] = [...resultArray[index], ...result]
-                }).catch(e => sendErrorForward('get talismans in all treasures', e, res)))
-            }
+                if (request.talismans) {
+                    const { numberOfItems } = request.talismans
+                    promiseArray.push(collect(
+                        talismanCtrl.getRandomTalismansWorkhorse(numberOfItems),
+                        resultArray,
+                        index,
+                        'talismans'
+                    ))
+                }
 
-            if (request.items && request.items.length > 0) {
-                const { items } = request
+                if (Array.isArray(request.items) && request.items.length > 0) {
+                    const itemPromiseArray = []
+                    getItemsFromArray(request.items, itemPromiseArray, { format: 'INFO', systemNumber })
+                    promiseArray.push(collect(Promise.all(itemPromiseArray), resultArray, index, 'items'))
+                }
+            })
 
-                let itemPromiseArray = []
-                getItemsFromArray(items, itemPromiseArray, {format: 'INFO', systemNumber})
-
-                promiseArray.push(Promise.all(itemPromiseArray).then(items => {
-                    resultArray[index] = [...resultArray[index], ...items]
-                    return items
-                }))
-            }
-        })
-
-        Promise.all(promiseArray).then(_ => {
+            await Promise.all(promiseArray)
             checkForContentTypeBeforeSending(res, resultArray)
-        })
+        } catch (error) {
+            sendErrorForward('get treasure', error, res)
+        }
     }
+}
+
+function collect(work, resultArray, index, label) {
+    return Promise.resolve(work).then(result => {
+        const rows = (Array.isArray(result) ? result : []).filter(row => row != null)
+        const tagged = label === 'scrolls'
+            ? rows.map(row => row.type ? row : { ...row, type: 'scroll' })
+            : rows
+        resultArray[index] = [...resultArray[index], ...tagged]
+    }).catch(error => {
+        console.log(`Combined get ${label} in all treasures ~ `, error.message)
+    })
 }
 
 module.exports = controllerFunctions
