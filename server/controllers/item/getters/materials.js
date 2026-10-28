@@ -11,12 +11,16 @@ async function getMaterialInfo(materials, rarity) {
     
     return await Promise.all(promiseArray).then(results => {
         return results.map(result => {
-            return {
-                ...result[0],
-                category: getMaterialCategory(result[0]),
-                displayName: getDisplayName(result[0])
+            const row = result && result[0]
+            if (!row) {
+                return null
             }
-        })
+            return {
+                ...row,
+                category: getMaterialCategory(row),
+                displayName: getDisplayName(row)
+            }
+        }).filter(Boolean)
     })
 }
 

@@ -14,7 +14,7 @@ async function getGems(gemChance, detail, rarity) {
             size: sizes[index],
             shape: shapes[index]
         }
-    })
+    }).filter(gem => gem.size && gem.shape)
 }
 
 module.exports = {

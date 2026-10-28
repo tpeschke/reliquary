@@ -19,18 +19,23 @@ const controllerFunctions = {
         checkForContentTypeBeforeSending(res, potions)
     },
     getRandomPotionsWorkhorse: async (res, numberOfItems = 1, rarity) => {
-        let promiseArray = []
-
-        if (numberOfItems > 25) {
-            numberOfItems = 25
+        let count = Number(numberOfItems)
+        if (!Number.isFinite(count) || count < 0) {
+            count = 1
         }
-        for (let i = 0; i < +numberOfItems; i++) {
+        if (count > 25) {
+            count = 25
+        }
+
+        const promiseArray = []
+        for (let i = 0; i < count; i++) {
             promiseArray.push(new Promise((resolve) => {
                 getPotion(rarity, resolve, res)
             }))
         }
 
-        return Promise.all(promiseArray).catch(e => sendErrorForward('get random potions promise', e, res))
+        const potions = await Promise.all(promiseArray)
+        return potions.filter(Boolean)
     },
     searchPotions: (req, res) => {
         let { searchTerm } = req.query
@@ -92,22 +97,36 @@ getPotion = (rarity, resolve, res) => {
 
     query(potionSQL.semi_random, [rarityDictionary[rarity]]).then(potionInArray => {
         let potion = potionInArray[0]
+        if (!potion) {
+            resolve(null)
+            return
+        }
         potion.rarity = rarity
         potion.type = 'potion'
 
         if (potion.name === 'Xing Potion') {
             query(potionSQL.random_xing).then(modifierInArray => {
                 const modifier = modifierInArray[0]
+                if (!modifier) {
+                    resolve(modifyPotionWithSalveCheck(potion))
+                    return
+                }
                 potion.name = potion.name.replace('Xing', modifier.variant)
                 potion.effect = potion.effect.replace('X', modifier.effect)
                 potion.type = 'potion'
                 resolve(modifyPotionWithSalveCheck(potion))
+            }).catch(e => {
+                console.log('Potions random xing ~ ', e.message)
+                resolve(null)
             })
         } else {
-            potion.ingredients = ingredients.filter(({potion: potionIngredients}) => +potionIngredients.id === potion.id)
+            potion.ingredients = ingredients.filter(({potion: potionIngredients}) => potionIngredients && +potionIngredients.id === potion.id)
             resolve(modifyPotionWithSalveCheck(potion))
         }
-    }).catch(e => sendErrorForward('semi-random potion', e, res))
+    }).catch(e => {
+        console.log('Potions semi-random potion ~ ', e.message)
+        resolve(null)
+    })
 }
 
 toTitleCase = (str) => {

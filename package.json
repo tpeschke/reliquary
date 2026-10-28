@@ -30,6 +30,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:server": "node --test server/controllers/item/dictionaries/detailLevel.check.js server/controllers/treasureRequest.check.js",
     "eject": "react-scripts eject",
     "restart-server": "pm2 restart server/reliquary.js",
     "host": "git pull && npm run build && npm run restart-server"
