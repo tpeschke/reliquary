@@ -228,6 +228,10 @@ select {
   margin-right: 10px;
 }
 
+.potion-shell div {
+  width: calc(100% - 60px);
+}
+
 .construction-title {
   display: flex;
   align-items: center;
